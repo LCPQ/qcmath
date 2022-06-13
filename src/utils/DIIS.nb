@@ -1,0 +1,156 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6141,        148]
+NotebookOptionsPosition[      5766,        133]
+NotebookOutlinePosition[      6160,        149]
+CellTagsIndexPosition[      6117,        146]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DIIS", "[", 
+    RowBox[{"\[ScriptCapitalE]_", ",", "\[CapitalDelta]\[ScriptCapitalE]_"}], 
+    "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "maxDIIS", ",", "nDIIS", ",", "B", ",", "X", ",", "w", ",", 
+       "\[Epsilon]"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"maxDIIS", "=", "5"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"nDIIS", "=", 
+       RowBox[{"Min", "[", 
+        RowBox[{"maxDIIS", ",", 
+         RowBox[{"Length", "[", "\[CapitalDelta]\[ScriptCapitalE]", "]"}]}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"B", "=", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Which", "[", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"i", "\[LessEqual]", "nDIIS"}], "\[And]", 
+            RowBox[{"j", "\[LessEqual]", "nDIIS"}]}], ",", 
+           RowBox[{
+            RowBox[{"Flatten", "[", 
+             RowBox[{
+             "\[CapitalDelta]\[ScriptCapitalE]", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], "]"}], ".", 
+            RowBox[{"Flatten", "[", 
+             RowBox[{
+             "\[CapitalDelta]\[ScriptCapitalE]", "\[LeftDoubleBracket]", "j", 
+              "\[RightDoubleBracket]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+           
+           RowBox[{
+            RowBox[{"i", "\[LessEqual]", "nDIIS"}], "\[And]", 
+            RowBox[{"j", "\[Equal]", 
+             RowBox[{"nDIIS", "+", "1"}]}]}], ",", 
+           RowBox[{"-", "1"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"i", "\[Equal]", 
+             RowBox[{"nDIIS", "+", "1"}]}], "\[And]", 
+            RowBox[{"j", "\[LessEqual]", "nDIIS"}]}], ",", 
+           RowBox[{"-", "1"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"i", "\[Equal]", 
+             RowBox[{"nDIIS", "+", "1"}]}], "\[Or]", 
+            RowBox[{"j", "\[Equal]", 
+             RowBox[{"nDIIS", "+", "1"}]}]}], ",", "0"}], 
+          "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", 
+           RowBox[{"nDIIS", "+", "1"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "1", ",", 
+           RowBox[{"nDIIS", "+", "1"}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"X", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"k", "\[LessEqual]", "nDIIS"}], ",", "0", ",", 
+           RowBox[{"-", "1"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "1", ",", 
+           RowBox[{"nDIIS", "+", "1"}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"w", "=", 
+       RowBox[{"LinearSolve", "[", 
+        RowBox[{"B", ",", "X"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"\[Epsilon]", "=", 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"k", "=", "1"}], "nDIIS"], 
+        RowBox[{
+         RowBox[{"w", "\[LeftDoubleBracket]", "k", "\[RightDoubleBracket]"}], 
+         
+         RowBox[{
+         "\[ScriptCapitalE]", "\[LeftDoubleBracket]", "k", 
+          "\[RightDoubleBracket]"}]}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "\[Epsilon]", "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.703671995752675*^9, 3.7036720371431017`*^9}, {
+   3.7037374196247683`*^9, 3.703737422628208*^9}, {3.703737679188837*^9, 
+   3.7037377479148617`*^9}, {3.703740849551296*^9, 3.703740856117876*^9}, 
+   3.72457036140371*^9, {3.724570463443018*^9, 3.7245705750985117`*^9}, {
+   3.7245706051637897`*^9, 3.724570611842019*^9}, {3.724570655460703*^9, 
+   3.724570675323201*^9}, {3.7245708209470663`*^9, 3.724570864873888*^9}, {
+   3.724571116315844*^9, 3.7245711545144053`*^9}, {3.724572680250052*^9, 
+   3.724572719009955*^9}, {3.7245727814522543`*^9, 3.724572826865505*^9}, {
+   3.724572963058918*^9, 3.724572988465548*^9}, {3.724573026579364*^9, 
+   3.7245731262736063`*^9}, {3.724573167260618*^9, 3.724573205939488*^9}, {
+   3.724573263045055*^9, 3.724573310755588*^9}, {3.724573369252639*^9, 
+   3.7245733976275806`*^9}, {3.724573444019989*^9, 3.724573479020081*^9}, 
+   3.724576213565431*^9, 3.7246934303056393`*^9, {3.724773321565943*^9, 
+   3.724773327614037*^9}, {3.724905786656451*^9, 3.724905786968837*^9}, 
+   3.7253891659841833`*^9, 3.725389295222509*^9, 3.725389430432158*^9, {
+   3.728994362609828*^9, 3.7289943637217627`*^9}, {3.728994399922915*^9, 
+   3.728994439839837*^9}, 3.72899516137112*^9, 3.730051940188444*^9, 
+   3.730478635620401*^9, {3.747739061567622*^9, 3.747739079189642*^9}, 
+   3.747739950615943*^9, 3.7477400324879827`*^9, {3.7477400782254887`*^9, 
+   3.74774007832507*^9}, 3.7477401233119507`*^9, {3.816972608131172*^9, 
+   3.8169726142601357`*^9}, {3.822393759934609*^9, 3.822393783806608*^9}, {
+   3.822393946748745*^9, 3.822393962676474*^9}, 3.822581393521159*^9, {
+   3.864140340816597*^9, 
+   3.8641403530457087`*^9}},ExpressionUUID->"a20ff7e9-002c-4e86-98d0-\
+9d2558f747ed"]
+},
+WindowSize->{808, 747},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"13.0 for Mac OS X ARM (64-bit) (December 2, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"de004666-6fa7-44c7-b5fd-1d0b2e5d7d96"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5204, 111, 407, "Input",ExpressionUUID->"a20ff7e9-002c-4e86-98d0-9d2558f747ed",
+ InitializationCell->True]
+}
+]
+*)
+
