@@ -15,14 +15,14 @@ Note that qcmath is **not** designed for computational efficiency.
 # qcmath abilities
 
 ## Ground-state calculations
-- Restricted and unrestricted Hartree-Fock (HF)
+- restricted and unrestricted Hartree-Fock (HF)
 - Moller-Plesset (MP) perturbation theory
-- Various flavours of coupled-cluster (CC) calculations
+- various flavours of coupled-cluster (CC) calculations
 
 ## Charged excitations
 - *GW* approximation
 - T-matrix approximation
-- Second- and third-order Green's function (GF)
+- second- and third-order Green's function (GF)
 
 ## Neutral excitations
 - maximum overlap method (MOM)
