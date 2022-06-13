@@ -1,10 +1,10 @@
 # qcmath
 
 Mathematica modules for electronic structure calculations developed at the 
-Laboratoire de Chimie et Physique Quantiques UMR5626 (Toulouse, France).
+Laboratoire de Chimie et Physique Quantiques ([LCPQ](https://www.lcpq.ups-tlse.fr)) UMR5626 (Toulouse, France).
 
 **Contributors:**
-- Pierre-Francois Loos
+- [Pierre-Francois Loos](https://pfloos.github.io/WEB_LOOS)
 - Enzo Monino
 - Antoine Marie
 - Raul Quintero
@@ -12,14 +12,14 @@ Laboratoire de Chimie et Physique Quantiques UMR5626 (Toulouse, France).
 # qcmath abilities
 
 ## Ground-state calculations
-- Hartree-Fock 
-- Moller-Plesset 
-- Coupled-Cluster
+- Restricted and unrestricted Hartree-Fock (HF)
+- Moller-Plesset (MP) perturbation theory
+- Various flavours of coupled-cluster (CC) calculations
 
 ## Charged excitations
-- GW 
-- T-matrix
-- Second- and third-order Green's function
+- *GW* approximation
+- T-matrix approximation
+- Second- and third-order Green's function (GF)
 
 ## Neutral excitations
 - configuration interaction (CI)
@@ -29,6 +29,6 @@ Laboratoire de Chimie et Physique Quantiques UMR5626 (Toulouse, France).
 
 # Installation blueprint
 
-
+To be written...
 
 
