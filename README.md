@@ -25,6 +25,7 @@ Note that qcmath is **not** designed for computational efficiency.
 - Second- and third-order Green's function (GF)
 
 ## Neutral excitations
+- maximum overlap method (MOM)
 - configuration interaction (CI)
 - random-phase approximation (RPA)
 - Bethe-Salpeter equation (BSE)
