@@ -1,0 +1,112 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3864,        102]
+NotebookOptionsPosition[      3488,         87]
+NotebookOutlinePosition[      3912,        104]
+CellTagsIndexPosition[      3869,        101]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"RPAx", "[", 
+    RowBox[{
+    "nbasis_", ",", "nocc_", ",", "nvac_", ",", "\[Epsilon]_", ",", 
+     "OMIntegrals_", ",", "TDA_", ",", "BSE_", ",", "W_", ",", "singlet_", 
+     ",", "triplet_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "ispin", ",", "linearquantities", ",", "Ecsinglet", ",", "Ectriplet", 
+       ",", "dRPA", ",", "RPAxquantities", ",", "EcRPAx"}], "}"}], ",", "\n", 
+     "\n", 
+     RowBox[{
+      RowBox[{"Ecsinglet", "=", "0"}], ";", "\n", 
+      RowBox[{"Ectriplet", "=", "0"}], ";", "\n", "\n", 
+      RowBox[{"dRPA", "=", "False"}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{"singlet", ",", 
+        RowBox[{
+         RowBox[{"ispin", "=", "1"}], ";", "\n", "\n", 
+         RowBox[{"linearquantities", "=", 
+          RowBox[{"LinearResponse", "[", 
+           RowBox[{
+           "nbasis", ",", "nocc", ",", "nvac", ",", "\[Epsilon]", ",", 
+            "OMIntegrals", ",", "TDA", ",", "BSE", ",", "W", ",", "ispin", 
+            ",", "dRPA"}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"Ecsinglet", "=", 
+          RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";", "\n", 
+         RowBox[{"Ecsinglet", "=", 
+          RowBox[{"0.5", "Ecsinglet"}]}], ";"}]}], "\n", "]"}], ";", "\n", 
+      "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{"triplet", ",", 
+        RowBox[{
+         RowBox[{"ispin", "=", "2"}], ";", "\n", "\n", 
+         RowBox[{"linearquantities", "=", 
+          RowBox[{"LinearResponse", "[", 
+           RowBox[{
+           "nbasis", ",", "nocc", ",", "nvac", ",", "\[Epsilon]", ",", 
+            "OMIntegrals", ",", "TDA", ",", "BSE", ",", "W", ",", "ispin", 
+            ",", "dRPA"}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"Ectriplet", "=", 
+          RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";", "\n", 
+         RowBox[{"Ectriplet", "=", 
+          RowBox[{"1.5", "Ectriplet"}]}], ";"}]}], "\n", "]"}], ";", "\n", 
+      "\n", 
+      RowBox[{"EcRPAx", "=", 
+       RowBox[{"Ecsinglet", "+", "Ectriplet"}]}], ";", "\n", 
+      RowBox[{"RPAxquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{"\"\<EcRPAx\>\"", "\[Rule]", "EcRPAx"}], "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"Return", "[", "RPAxquantities", "]"}]}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.841305899885696*^9, 3.841305929432371*^9}, {
+   3.841308037218934*^9, 3.841308067392598*^9}, 3.841308100277718*^9, {
+   3.841308158725947*^9, 3.8413081626943207`*^9}, {3.8413085191629953`*^9, 
+   3.841308524150217*^9}, {3.846819966469096*^9, 3.8468199722887783`*^9}, {
+   3.8468202748920517`*^9, 3.846820317546153*^9}, {3.846820381481173*^9, 
+   3.846820400786178*^9}, {3.846821842010838*^9, 3.84682186650874*^9}, {
+   3.864292025922748*^9, 
+   3.864292029276567*^9}},ExpressionUUID->"1133c4df-ae52-4067-a778-\
+7a7ede62bd54"]
+},
+WindowSize->{1177, 691},
+WindowMargins->{{52, Automatic}, {0, Automatic}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"94f307e6-506a-4c7b-860e-f90bda73bf2d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2926, 65, 714, "Code",ExpressionUUID->"1133c4df-ae52-4067-a778-7a7ede62bd54"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

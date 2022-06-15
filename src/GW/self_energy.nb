@@ -1,0 +1,288 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11771,        278]
+NotebookOptionsPosition[     11390,        263]
+NotebookOutlinePosition[     11816,        280]
+CellTagsIndexPosition[     11773,        277]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SelfEnergyGW", "[", 
+    RowBox[{
+    "nbasis_", ",", "nocc_", ",", "nvac_", ",", "nS_", ",", "OMIntegrals_", 
+     ",", "\[Epsilon]_", ",", "TDAW_", ",", "BSE_", ",", "W_", ",", 
+     "singlet_", ",", "triplet_", ",", "\[Eta]_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "RPAquantities", ",", "XplusY", ",", "\[CapitalOmega]RPA", ",", 
+       "sIntegrals", ",", "ispin", ",", "dRPA", ",", "\[CapitalSigma]", ",", 
+       "Ec", ",", "SelfEnergyquantities", ",", "TDAGW", ",", "Z"}], "}"}], 
+     ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{"singlet", ",", 
+        RowBox[{"ispin", "=", "1"}]}], "]"}], ";", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{"triplet", ",", 
+          RowBox[{"ispin", "=", "2"}]}], "]"}], ";"}], "*)"}], "\n", "\n", 
+      RowBox[{"dRPA", "=", "True"}], ";", "\n", 
+      RowBox[{"TDAGW", "=", "False"}], ";", "\n", "\n", 
+      RowBox[{"RPAquantities", "=", 
+       RowBox[{"LinearResponse", "[", 
+        RowBox[{
+        "nbasis", ",", "nocc", ",", "nvac", ",", "\[Epsilon]", ",", 
+         "OMIntegrals", ",", "TDAGW", ",", "BSE", ",", "W", ",", "ispin", ",",
+          "dRPA"}], "]"}]}], ";", "\n", 
+      RowBox[{"XplusY", "=", 
+       RowBox[{"RPAquantities", "[", "\"\<XplusY\>\"", "]"}]}], ";", "\n", 
+      RowBox[{"\[CapitalOmega]RPA", "=", 
+       RowBox[{"RPAquantities", "[", "\"\<\[CapitalOmega]\>\"", "]"}]}], ";", 
+      "\n", 
+      RowBox[{"sIntegrals", "=", 
+       RowBox[{"RPAquantities", "[", "\"\<sIntegrals\>\"", "]"}]}], ";", "\n",
+       "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"GW", " ", "Self"}], "-", "Energy"}], "*)"}], "\n", 
+      RowBox[{"\[CapitalSigma]", "=", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "1"}], "nocc"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"jb", "=", "1"}], "nS"], 
+            FractionBox[
+             RowBox[{"2", 
+              RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "i", ",", "jb"}], "\[RightDoubleBracket]"}], 
+              
+              RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+               RowBox[{"q", ",", "i", ",", "jb"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Omega]", "-", 
+              RowBox[{
+              "\[Epsilon]", "\[LeftDoubleBracket]", "i", 
+               "\[RightDoubleBracket]"}], "+", 
+              RowBox[{
+              "\[CapitalOmega]RPA", "\[LeftDoubleBracket]", "jb", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}], "\n", "+", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"a", "=", 
+             RowBox[{"nocc", "+", "1"}]}], "nbasis"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"jb", "=", "1"}], "nS"], 
+            FractionBox[
+             RowBox[{"2", 
+              RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "a", ",", "jb"}], "\[RightDoubleBracket]"}], 
+              
+              RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+               RowBox[{"q", ",", "a", ",", "jb"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Omega]", "-", 
+              RowBox[{
+              "\[Epsilon]", "\[LeftDoubleBracket]", "a", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{
+              "\[CapitalOmega]RPA", "\[LeftDoubleBracket]", "jb", 
+               "\[RightDoubleBracket]"}], "+", 
+              RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nbasis"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"q", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Renormalization", " ", "factor"}], "*)"}], "\n", 
+      RowBox[{"Z", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "1"}], "nocc"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"jb", "=", "1"}], "nS"], 
+            RowBox[{
+             RowBox[{"-", "2"}], 
+             SuperscriptBox[
+              RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+               RowBox[{"x", ",", "i", ",", "jb"}], "\[RightDoubleBracket]"}], 
+              "2"], 
+             SuperscriptBox[
+              RowBox[{"(", 
+               FractionBox["1", 
+                RowBox[{"\[Omega]", "-", 
+                 RowBox[{
+                 "\[Epsilon]", "\[LeftDoubleBracket]", "i", 
+                  "\[RightDoubleBracket]"}], "+", 
+                 RowBox[{
+                 "\[CapitalOmega]RPA", "\[LeftDoubleBracket]", "jb", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]], ")"}], 
+              "2"]}]}]}], "\n", "    ", "+", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"a", "=", 
+             RowBox[{"nocc", "+", "1"}]}], "nbasis"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"jb", "=", "1"}], "nS"], 
+            RowBox[{
+             RowBox[{"-", "2"}], 
+             SuperscriptBox[
+              RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+               RowBox[{"x", ",", "a", ",", "jb"}], "\[RightDoubleBracket]"}], 
+              "2"], 
+             SuperscriptBox[
+              RowBox[{"(", 
+               FractionBox["1", 
+                RowBox[{"\[Omega]", "-", 
+                 RowBox[{
+                 "\[Epsilon]", "\[LeftDoubleBracket]", "a", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{
+                 "\[CapitalOmega]RPA", "\[LeftDoubleBracket]", "jb", 
+                  "\[RightDoubleBracket]"}], "+", 
+                 RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]], ")"}], 
+              "2"]}]}]}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+       "Galitskii", " ", "Migdal", " ", "correlation", " ", "energy"}], 
+       "*)"}], "\n", 
+      RowBox[{"Ec", "=", 
+       RowBox[{"(*", 
+        FractionBox["1", "2"], "*)"}], 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"i", "=", "1"}], "nocc"], 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"a", "=", 
+           RowBox[{"nocc", "+", "1"}]}], "nbasis"], 
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"jb", "=", "1"}], "nS"], 
+          RowBox[{"-", 
+           FractionBox[
+            RowBox[{"4", 
+             SuperscriptBox[
+              RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+               RowBox[{"a", ",", "i", ",", "jb"}], "\[RightDoubleBracket]"}], 
+              "2"], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "\[Epsilon]", "\[LeftDoubleBracket]", "a", 
+                "\[RightDoubleBracket]"}], "-", 
+               RowBox[{
+               "\[Epsilon]", "\[LeftDoubleBracket]", "i", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "\[CapitalOmega]RPA", "\[LeftDoubleBracket]", "jb", 
+                "\[RightDoubleBracket]"}]}], ")"}]}], 
+            RowBox[{
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                "\[Epsilon]", "\[LeftDoubleBracket]", "a", 
+                 "\[RightDoubleBracket]"}], "-", 
+                RowBox[{
+                "\[Epsilon]", "\[LeftDoubleBracket]", "i", 
+                 "\[RightDoubleBracket]"}], "+", 
+                RowBox[{
+                "\[CapitalOmega]RPA", "\[LeftDoubleBracket]", "jb", 
+                 "\[RightDoubleBracket]"}]}], ")"}], "2"], "+", 
+             SuperscriptBox["\[Eta]", "2"]}]]}]}]}]}]}], ";", "\n", "\n", 
+      RowBox[{"SelfEnergyquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{
+         RowBox[{"\"\<\[CapitalSigma]\>\"", "\[Rule]", "\[CapitalSigma]"}], 
+         ",", 
+         RowBox[{"\"\<Ec\>\"", "\[Rule]", "Ec"}], ",", 
+         RowBox[{"\"\<Z\>\"", "\[Rule]", "Z"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"Return", "[", "SelfEnergyquantities", "]"}]}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.8414595421981363`*^9, 3.8414599088099003`*^9}, {
+   3.841460079783073*^9, 3.841460080967532*^9}, {3.841460545547738*^9, 
+   3.841460566310479*^9}, {3.841463938815613*^9, 3.84146396451928*^9}, {
+   3.841464013821556*^9, 3.841464026650353*^9}, 3.841464128709902*^9, {
+   3.841464767304989*^9, 3.841464771024764*^9}, {3.8414648299314127`*^9, 
+   3.8414648924130793`*^9}, 3.841465216915617*^9, 3.841465296742672*^9, {
+   3.842602422550606*^9, 3.8426024245556*^9}, {3.8426027399320707`*^9, 
+   3.84260274086648*^9}, {3.8477107436646557`*^9, 3.8477107646874104`*^9}, {
+   3.847713084483592*^9, 3.847713092999009*^9}, {3.8477260288210993`*^9, 
+   3.847726029071418*^9}, {3.847769227855101*^9, 3.847769259584352*^9}, {
+   3.847769293203783*^9, 3.8477693027156267`*^9}, {3.847770021757164*^9, 
+   3.847770022442425*^9}, {3.8478547831627407`*^9, 3.847854824277999*^9}, {
+   3.847854926117777*^9, 3.847854935583432*^9}, {3.84845754876786*^9, 
+   3.848457554708892*^9}, {3.848457590867661*^9, 3.848457630082881*^9}, {
+   3.848457670343914*^9, 3.8484577335235023`*^9}, {3.8484578839786243`*^9, 
+   3.848457912747816*^9}, 3.848458333352656*^9, {3.848458386940462*^9, 
+   3.848458423722053*^9}, {3.8484584587539253`*^9, 3.8484584932767363`*^9}, 
+   3.848458548402095*^9, {3.848458610337772*^9, 3.848458731128223*^9}, {
+   3.848458922430046*^9, 3.848458946373423*^9}, {3.8484589793827143`*^9, 
+   3.848459038605958*^9}, {3.8484590771048393`*^9, 3.848459216233554*^9}, {
+   3.848459256196376*^9, 3.8484593066743793`*^9}, {3.8484594796303253`*^9, 
+   3.848459499866179*^9}, {3.848733171256217*^9, 3.848733229046777*^9}, {
+   3.848733301979504*^9, 3.848733309305628*^9}, {3.848733355976807*^9, 
+   3.8487333859701653`*^9}, {3.850288660002008*^9, 3.850288671041798*^9}, {
+   3.850288903555688*^9, 3.8502889218455133`*^9}, {3.8502889859546328`*^9, 
+   3.8502890041304893`*^9}, {3.8505379058028708`*^9, 3.850537907364862*^9}, 
+   3.850538183797068*^9, 3.8505383325514793`*^9, 3.8505476359540157`*^9, {
+   3.851056237036799*^9, 3.851056414215461*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"e1844279-bd01-43e4-869c-9e05db33c4c7"]
+},
+WindowSize->{1035, 687},
+WindowMargins->{{140, Automatic}, {36, Automatic}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"f207de0d-6252-4438-a38b-fc70e1f47e6d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 10828, 241, 1037, "Code",ExpressionUUID->"e1844279-bd01-43e4-869c-9e05db33c4c7"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

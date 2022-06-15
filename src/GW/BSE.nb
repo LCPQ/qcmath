@@ -1,0 +1,157 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6665,        147]
+NotebookOptionsPosition[      6318,        133]
+NotebookOutlinePosition[      6712,        149]
+CellTagsIndexPosition[      6669,        146]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BetheSalpeterEquation", "[", 
+   RowBox[{
+   "nbasis_", ",", "nocc_", ",", "nvac_", ",", "nS_", ",", "\[Epsilon]_", ",",
+     "OMIntegrals_", ",", "TDA_", ",", "TDAW_", ",", "singlet_", ",", 
+    "triplet_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", "\n", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "A", ",", "B", ",", "AminusB", ",", "\[CapitalOmega]RPA", ",", "XplusY", 
+      ",", "RHFquantities", ",", "Etot", ",", "BSEquantities", ",", "LR", ",",
+       "LRquantities", ",", "\n", "sIntegrals", ",", "W", ",", "Wquantities", 
+      ",", "EcBSE", ",", "ispin", ",", "dRPA", ",", "Ecsinglet", ",", 
+      "Ectriplet"}], "}"}], ",", "\n", "\n", 
+    RowBox[{
+     RowBox[{"Ecsinglet", "=", "0"}], ";", "\n", 
+     RowBox[{"Ectriplet", "=", "0"}], ";", "\n", "\n", 
+     RowBox[{"dRPA", "=", "True"}], ";", "\n", "\n", 
+     RowBox[{"(*", 
+      RowBox[{"Singlet", " ", "RPA", " ", "screening"}], "*)"}], "\n", 
+     RowBox[{"ispin", "=", "1"}], ";", "\n", "\n", 
+     RowBox[{"LRquantities", "=", 
+      RowBox[{"LinearResponse", "[", 
+       RowBox[{
+       "nbasis", ",", "nocc", ",", "nvac", ",", "\[Epsilon]", ",", 
+        "OMIntegrals", ",", "TDA", ",", "False", ",", "0", ",", "ispin", ",", 
+        "dRPA"}], "]"}]}], ";", "\n", 
+     RowBox[{"\[CapitalOmega]RPA", "=", 
+      RowBox[{"LRquantities", "[", "\"\<\[CapitalOmega]\>\"", "]"}]}], ";", 
+     "\n", 
+     RowBox[{"XplusY", "=", 
+      RowBox[{"LRquantities", "[", "\"\<XplusY\>\"", "]"}]}], ";", "\n", 
+     RowBox[{"sIntegrals", "=", 
+      RowBox[{"LRquantities", "[", "\"\<sIntegrals\>\"", "]"}]}], ";", "\n", 
+     "\n", 
+     RowBox[{"(*", "Screening", "*)"}], "\n", 
+     RowBox[{"Wquantities", "=", 
+      RowBox[{"Screening", "[", 
+       RowBox[{
+       "nbasis", ",", "nS", ",", "OMIntegrals", ",", "sIntegrals", ",", 
+        "\[CapitalOmega]RPA"}], "]"}]}], ";", "\n", 
+     RowBox[{"W", "=", 
+      RowBox[{"Wquantities", "[", "\"\<W\>\"", "]"}]}], ";", "\n", "\n", 
+     RowBox[{"If", "[", 
+      RowBox[{"singlet", ",", 
+       RowBox[{
+        RowBox[{"ispin", "=", "1"}], ";", "\n", 
+        RowBox[{"LRquantities", "=", 
+         RowBox[{"LinearResponse", "[", 
+          RowBox[{
+          "nbasis", ",", "nocc", ",", "nvac", ",", "\[Epsilon]", ",", 
+           "OMIntegrals", ",", "TDA", ",", "True", ",", "W", ",", "ispin", 
+           ",", "dRPA"}], "]"}]}], ";", "\n", 
+        RowBox[{"Ecsinglet", "=", 
+         RowBox[{"LRquantities", "[", "\"\<Ec\>\"", "]"}]}], ";"}]}], " ", 
+      "\n", "]"}], ";", "\n", "\n", 
+     RowBox[{"If", "[", 
+      RowBox[{"triplet", ",", 
+       RowBox[{
+        RowBox[{"ispin", "=", "2"}], ";", "\n", 
+        RowBox[{"LRquantities", "=", 
+         RowBox[{"LinearResponse", "[", 
+          RowBox[{
+          "nbasis", ",", "nocc", ",", "nvac", ",", "\[Epsilon]", ",", 
+           "OMIntegrals", ",", "TDA", ",", "True", ",", "W", ",", "ispin", 
+           ",", "dRPA"}], "]"}]}], ";", "\n", 
+        RowBox[{"Ectriplet", "=", 
+         RowBox[{"LRquantities", "[", "\"\<Ec\>\"", "]"}]}], ";"}]}], "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Ectriplet", "=", "0"}], ";"}], "*)"}], "\n", "]"}], ";", 
+     "\n", "\n", 
+     RowBox[{"EcBSE", "=", 
+      RowBox[{"Ecsinglet", "+", "Ectriplet"}]}], ";", "\n", "\n", 
+     RowBox[{"BSEquantities", "=", 
+      RowBox[{"Association", "[", 
+       RowBox[{"\"\<EcBSE\>\"", "\[Rule]", "EcBSE"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "BSEquantities", "]"}], ";"}]}], "\n", 
+   "]"}]}]], "Code",
+ CellChangeTimes->{{3.8335237521249*^9, 3.833523801917179*^9}, {
+   3.833523842211854*^9, 3.8335238934757032`*^9}, {3.8344820172013617`*^9, 
+   3.834482021726234*^9}, {3.834542005203425*^9, 3.834542006811949*^9}, {
+   3.834543367070191*^9, 3.8345433996850758`*^9}, {3.834543434532967*^9, 
+   3.834543520392411*^9}, {3.83454371594458*^9, 3.8345437901129837`*^9}, {
+   3.834543900767317*^9, 3.834544006268071*^9}, {3.834544054931324*^9, 
+   3.834544122319549*^9}, 3.835409219412117*^9, {3.835409517846059*^9, 
+   3.83540976174221*^9}, {3.835409907726419*^9, 3.8354099259024363`*^9}, {
+   3.835411805714244*^9, 3.8354118155567627`*^9}, {3.835411875644884*^9, 
+   3.8354120097600183`*^9}, {3.835412053864316*^9, 3.835412081429921*^9}, {
+   3.83541212245254*^9, 3.835412147129262*^9}, {3.8354122581617203`*^9, 
+   3.8354122921791487`*^9}, {3.835413061210837*^9, 3.8354130741610947`*^9}, {
+   3.835415431687818*^9, 3.835415501423642*^9}, {3.835415593656476*^9, 
+   3.8354156185345163`*^9}, {3.8354160956560926`*^9, 3.83541610027041*^9}, {
+   3.835416146286384*^9, 3.8354162214519863`*^9}, {3.835416605182461*^9, 
+   3.83541661169139*^9}, {3.835426773691185*^9, 3.83542678077652*^9}, {
+   3.835427379681705*^9, 3.8354273834222193`*^9}, {3.8354275624063683`*^9, 
+   3.835427583996602*^9}, {3.8354289223699493`*^9, 3.835428927327557*^9}, {
+   3.8354297358102427`*^9, 3.835429736999893*^9}, {3.835431045452544*^9, 
+   3.835431046354381*^9}, {3.835431400962798*^9, 3.835431401558599*^9}, {
+   3.8362797870496597`*^9, 3.83627978747103*^9}, {3.841477280536674*^9, 
+   3.841477326385889*^9}, {3.841477364405723*^9, 3.841477399879826*^9}, {
+   3.841477431880299*^9, 3.841477603492158*^9}, {3.84147785338942*^9, 
+   3.841477858348631*^9}, {3.841478052904729*^9, 3.841478057228704*^9}, {
+   3.841478118730595*^9, 3.8414781265310802`*^9}, {3.8414782764185753`*^9, 
+   3.841478351532276*^9}, {3.841478384381589*^9, 3.841478384539687*^9}, {
+   3.8414784492068453`*^9, 3.841478461558341*^9}, {3.841478726512467*^9, 
+   3.841478826066284*^9}, {3.842604185403062*^9, 3.842604187266881*^9}, {
+   3.847857314047851*^9, 3.847857351142308*^9}},
+ CellLabel->"In[74]:=",ExpressionUUID->"d7fd3186-9960-46ac-9279-33d750067c7d"]
+},
+WindowSize->{808, 685},
+WindowMargins->{{Automatic, 172}, {Automatic, 24}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"06fd3282-5c4e-4541-a3a2-5e15faa0e56f"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5756, 111, 737, "Code",ExpressionUUID->"d7fd3186-9960-46ac-9279-33d750067c7d"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

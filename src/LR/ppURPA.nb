@@ -1,0 +1,192 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8213,        182]
+NotebookOptionsPosition[      7865,        168]
+NotebookOutlinePosition[      8259,        184]
+CellTagsIndexPosition[      8216,        181]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ppURPA", "[", 
+    RowBox[{
+    "nbasis_", ",", "nocc_", ",", "nvac_", ",", "n\[Alpha]_", ",", 
+     "n\[Beta]_", ",", "\[Epsilon]a_", ",", "\[Epsilon]b_", ",", 
+     "OMIntegralsaa_", ",", "OMIntegralsab_", ",", "OMIntegralsba_", ",", 
+     "OMIntegralsbb_", ",", "TDA_", ",", "spinconserved_", ",", "spinflip_"}],
+     "]"}], ":=", "\n", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "ispin", ",", "Ulinearppquantities", ",", "Ecsc", ",", "Ecsf", "\n", 
+       ",", "ppURPAquantities", ",", "EcppURPA", ",", "nPaa", ",", "nPbb", 
+       ",", "nPsc", ",", "nHaa", ",", "nHbb", "\n", ",", "nHsc", ",", "nPab", 
+       ",", "nHab", ",", "nPsf", ",", "nHsf", ",", "nVa", ",", "nVb", ",", 
+       "nOa", ",", "nOb"}], "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"Ecsc", "=", "0"}], ";", "\n", 
+      RowBox[{"Ecsf", "=", "0"}], ";", "\n", "\n", 
+      RowBox[{"nOa", "=", "n\[Alpha]"}], ";", "\n", 
+      RowBox[{"nOb", "=", "n\[Beta]"}], ";", "\n", 
+      RowBox[{"nVa", "=", 
+       RowBox[{"nbasis", "-", "n\[Alpha]"}]}], ";", "\n", 
+      RowBox[{"nVb", "=", 
+       RowBox[{"nbasis", "-", "n\[Beta]"}]}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{"spinconserved", ",", "\n", 
+        RowBox[{
+         RowBox[{"nPaa", " ", "=", " ", 
+          RowBox[{"nVa", "*", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"nVa", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+         RowBox[{"nPbb", " ", "=", " ", 
+          RowBox[{"nVb", "*", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"nVb", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+         RowBox[{"nPsc", " ", "=", " ", 
+          RowBox[{"nPaa", "+", "nPbb"}]}], ";", "\n", 
+         RowBox[{"nHaa", " ", "=", " ", 
+          RowBox[{"nOa", "*", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"nOa", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+         RowBox[{"nHbb", " ", "=", " ", 
+          RowBox[{"nOb", "*", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"nOb", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+         RowBox[{"nHsc", " ", "=", " ", 
+          RowBox[{"nHaa", "+", "nHbb"}]}], ";", "\n", "\n", 
+         RowBox[{"ispin", "=", "1"}], ";", "\n", 
+         RowBox[{"Ulinearppquantities", "=", 
+          RowBox[{"Ulinearpp", "[", 
+           RowBox[{
+           "nbasis", ",", "nOa", ",", "nOb", ",", "nVa", ",", "nVb", ",", 
+            "nPaa", ",", "nPab", ",", "nPbb", ",", "nPsc", ",", "nHaa", ",", 
+            "nHab", ",", "nHbb", ",", "nHsc", "\n", ",", "\[Epsilon]a", ",", 
+            "\[Epsilon]b", ",", "OMIntegralsaa", ",", "OMIntegralsab", ",", 
+            "OMIntegralsba", ",", "OMIntegralsbb", ",", "TDA", ",", "ispin"}],
+            "]"}]}], ";", "\n", 
+         RowBox[{"Ecsc", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<EcppURPA\>\"", "]"}]}], 
+         ";"}]}], "\n", "\n", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"ispin", "=", "3"}], ";", "\n", 
+         RowBox[{"Ulinearppquantities", "=", 
+          RowBox[{"Ulinearpp", "[", 
+           RowBox[{
+           "nbasis", ",", "nOa", ",", "nOb", ",", "nVa", ",", "nVb", ",", 
+            "nPaa", ",", "nPab", ",", "nPbb", ",", "nPsc", ",", "nHaa", ",", 
+            "nHab", ",", "nHbb", ",", "nHsc", "\n", ",", "\[Epsilon]a", ",", 
+            "\[Epsilon]b", ",", "OMIntegralsaa", ",", "OMIntegralsab", ",", 
+            "OMIntegralsba", ",", "OMIntegralsbb", ",", "TDA", ",", "ispin"}],
+            "]"}]}], ";", "\n", 
+         RowBox[{"Ecsc", "=", 
+          RowBox[{"3", 
+           RowBox[{"(", 
+            RowBox[{"Ecsc", "+", 
+             RowBox[{"Ulinearppquantities", "[", "\"\<EcppURPA\>\"", "]"}]}], 
+            ")"}]}]}], ";"}], "*)"}], "\n", "]"}], ";", "\n", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{"spinflip", ",", 
+        RowBox[{
+         RowBox[{"ispin", "=", "2"}], ";", "\n", 
+         RowBox[{"nPab", "=", 
+          RowBox[{"nVa", "*", "nVb"}]}], ";", "\n", 
+         RowBox[{"nHab", "=", 
+          RowBox[{"nOa", "*", "nOb"}]}], ";", "\n", 
+         RowBox[{"nPsf", "=", "nPab"}], ";", "\n", 
+         RowBox[{"nHsf", "=", "nHab"}], ";", "\n", "\n", 
+         RowBox[{"Ulinearppquantities", "=", 
+          RowBox[{"Ulinearpp", "[", 
+           RowBox[{
+           "nbasis", ",", "nOa", ",", "nOb", ",", "nVa", ",", "nVb", ",", 
+            "nPaa", ",", "nPab", ",", "nPbb", ",", "nPsf", ",", "nHaa", ",", 
+            "nHab", ",", "nHbb", ",", "nHsf", "\n", ",", "\[Epsilon]a", ",", 
+            "\[Epsilon]b", ",", "OMIntegralsaa", ",", "OMIntegralsab", ",", 
+            "OMIntegralsba", ",", "OMIntegralsbb", ",", "TDA", ",", "ispin"}],
+            "]"}]}], ";", "\n", "\n", 
+         RowBox[{"Ecsf", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<EcppURPA\>\"", "]"}]}], 
+         ";", "\n", "\n", 
+         RowBox[{"ispin", "=", "4"}], ";", "\n", "\n", 
+         RowBox[{"Ulinearppquantities", "=", 
+          RowBox[{"Ulinearpp", "[", 
+           RowBox[{
+           "nbasis", ",", "nOa", ",", "nOb", ",", "nVa", ",", "nVb", ",", 
+            "nPaa", ",", "nPab", ",", "nPbb", ",", "nPsf", ",", "nHaa", ",", 
+            "nHab", ",", "nHbb", ",", "nHsf", "\n", ",", "\[Epsilon]a", ",", 
+            "\[Epsilon]b", ",", "OMIntegralsaa", ",", "OMIntegralsab", ",", 
+            "OMIntegralsba", ",", "OMIntegralsbb", ",", "TDA", ",", "ispin"}],
+            "]"}]}], ";", "\n", "\n", 
+         RowBox[{"Ecsf", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<EcppURPA\>\"", "]"}]}], 
+         ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+      RowBox[{"EcppURPA", "=", 
+       RowBox[{"Ecsc", "+", "Ecsf"}]}], ";", "\n", "\n", 
+      RowBox[{"ppURPAquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{"\"\<EcppURPA\>\"", "\[Rule]", "EcppURPA"}], "]"}]}], ";", 
+      "\n", "\n", 
+      RowBox[{"Return", "[", "ppURPAquantities", "]"}]}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.84898511021137*^9, 3.848985115145587*^9}, {
+   3.848985185327292*^9, 3.8489852576097403`*^9}, 3.8489852919483757`*^9, {
+   3.848985394375572*^9, 3.848985542035451*^9}, {3.848985643458027*^9, 
+   3.848985658700096*^9}, {3.848985849188908*^9, 3.8489860689210043`*^9}, {
+   3.8489862512169323`*^9, 3.848986278065605*^9}, {3.848993064260984*^9, 
+   3.8489931566862793`*^9}, 3.848994237009879*^9, {3.8490015621208067`*^9, 
+   3.849001588068158*^9}, {3.849057395054521*^9, 3.849057457846657*^9}, {
+   3.849057854441277*^9, 3.8490578680555563`*^9}, {3.84905856331289*^9, 
+   3.849058566311067*^9}, {3.849065115024551*^9, 3.849065117317409*^9}, 
+   3.849067200306677*^9, {3.849836813196664*^9, 3.849836817852661*^9}, {
+   3.849836862324576*^9, 3.8498368627234917`*^9}, {3.849936524917848*^9, 
+   3.849936530109539*^9}, 3.849939011332876*^9, {3.850205989789135*^9, 
+   3.850206026631113*^9}, {3.8502070277211227`*^9, 3.850207031660305*^9}, {
+   3.850207317882908*^9, 3.8502073666210403`*^9}, 3.8502226279323177`*^9, {
+   3.850359059132133*^9, 3.850359089435425*^9}, {3.850359165844911*^9, 
+   3.8503591879420233`*^9}, {3.850360350814396*^9, 3.850360367720632*^9}, 
+   3.852444609004231*^9},
+ CellLabel->"In[55]:=",ExpressionUUID->"dca508c2-bf52-40a3-ab02-fffaf0c35430"]
+},
+WindowSize->{808, 685},
+WindowMargins->{{308, Automatic}, {36, Automatic}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"0913e3f6-9504-4667-82b4-5780896c276c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 7303, 146, 1117, "Code",ExpressionUUID->"dca508c2-bf52-40a3-ab02-fffaf0c35430"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

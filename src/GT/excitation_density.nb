@@ -1,0 +1,406 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17491,        396]
+NotebookOptionsPosition[     17142,        382]
+NotebookOutlinePosition[     17536,        398]
+CellTagsIndexPosition[     17493,        395]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ppsIntegral", "[", 
+    RowBox[{
+    "nbasis_", ",", "nocc_", ",", "nvac_", ",", "OMIntegrals_", ",", "X1_", 
+     ",", "Y1_", ",", "X2_", ",", "Y2_", ",", "nOO_", ",", "nVV_", ",", 
+     "ispin_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\[Rho]1", ",", "\[Rho]2", ",", "cd", ",", "kl", ",", "ppquantities", 
+       ",", "dERI", ",", "xERI"}], "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"ispin", "\[Equal]", "3"}], ",", "\n", 
+        RowBox[{
+         RowBox[{"dERI", "=", "1"}], ";", "\n", 
+         RowBox[{"xERI", "=", "0"}], ";", "\n", 
+         RowBox[{"(*", 
+          RowBox[{"Screened", " ", "integrals"}], "*)"}], "\n", 
+         RowBox[{"\[Rho]1", "=", " ", 
+          RowBox[{"Table", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"cd", "=", "0"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"Sum", "[", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"cd", "++"}], ";", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"dERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "c", ",", "d"}], 
+                    "\[RightDoubleBracket]"}]}], "+", 
+                    RowBox[{"xERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "d", ",", "c"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], 
+                  RowBox[{"X1", "\[LeftDoubleBracket]", 
+                   RowBox[{"cd", ",", "ab"}], "\[RightDoubleBracket]"}]}]}], 
+                ")"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"c", ",", 
+                 RowBox[{"nocc", "+", "1"}], ",", "nbasis"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"d", ",", 
+                 RowBox[{"nocc", "+", "1"}], ",", "nbasis"}], "}"}]}], 
+              "]"}]}], ",", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"p", ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"q", ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"ab", ",", "nVV"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"\[Rho]1", "=", 
+          RowBox[{"\[Rho]1", "+", 
+           RowBox[{"Table", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"kl", "=", "0"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"Sum", "[", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"kl", "++"}], ";", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"dERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "k", ",", "l"}], 
+                    "\[RightDoubleBracket]"}]}], "+", 
+                    RowBox[{"xERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "l", ",", "k"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], 
+                   RowBox[{"Y1", "\[LeftDoubleBracket]", 
+                    RowBox[{"kl", ",", "ab"}], "\[RightDoubleBracket]"}]}]}], 
+                 ")"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"k", ",", "nocc"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"l", ",", "nocc"}], "}"}]}], "]"}]}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"p", ",", "nbasis"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"q", ",", "nbasis"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"ab", ",", "nVV"}], "}"}]}], "]"}]}]}], ";", "\n", "\n", 
+         RowBox[{"\[Rho]2", "=", " ", 
+          RowBox[{"Table", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"cd", "=", "0"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"Sum", "[", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"cd", "++"}], ";", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"dERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "c", ",", "d"}], 
+                    "\[RightDoubleBracket]"}]}], "+", 
+                    RowBox[{"xERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "d", ",", "c"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], 
+                  RowBox[{"X2", "\[LeftDoubleBracket]", 
+                   RowBox[{"cd", ",", "ij"}], "\[RightDoubleBracket]"}]}]}], 
+                ")"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"c", ",", 
+                 RowBox[{"nocc", "+", "1"}], ",", "nbasis"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"d", ",", 
+                 RowBox[{"nocc", "+", "1"}], ",", "nbasis"}], "}"}]}], 
+              "]"}]}], ",", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"p", ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"q", ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"ij", ",", "nOO"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"\[Rho]2", "=", 
+          RowBox[{"\[Rho]2", "+", 
+           RowBox[{"Table", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"kl", "=", "0"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"Sum", "[", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"kl", "++"}], ";", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"dERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "k", ",", "l"}], 
+                    "\[RightDoubleBracket]"}]}], "+", 
+                    RowBox[{"xERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "l", ",", "k"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], 
+                   RowBox[{"Y2", "\[LeftDoubleBracket]", 
+                    RowBox[{"kl", ",", "ij"}], "\[RightDoubleBracket]"}]}]}], 
+                 ")"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"k", ",", "nocc"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"l", ",", "nocc"}], "}"}]}], "]"}]}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"p", ",", "nbasis"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"q", ",", "nbasis"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"ij", ",", "nOO"}], "}"}]}], "]"}]}]}], ";"}]}], "\n", 
+       "]"}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"ispin", "\[Equal]", "4"}], ",", "\n", 
+        RowBox[{
+         RowBox[{"dERI", "=", "1"}], ";", "\n", 
+         RowBox[{"xERI", "=", 
+          RowBox[{"-", "1"}]}], ";", "\n", 
+         RowBox[{"(*", 
+          RowBox[{"Screened", " ", "integrals"}], "*)"}], "\n", 
+         RowBox[{"\[Rho]1", "=", " ", 
+          RowBox[{"Table", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"cd", "=", "0"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"Sum", "[", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"cd", "++"}], ";", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"dERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "c", ",", "d"}], 
+                    "\[RightDoubleBracket]"}]}], "+", 
+                    RowBox[{"xERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "d", ",", "c"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], 
+                  RowBox[{"X1", "\[LeftDoubleBracket]", 
+                   RowBox[{"cd", ",", "ab"}], "\[RightDoubleBracket]"}]}]}], 
+                ")"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"c", ",", 
+                 RowBox[{"nocc", "+", "1"}], ",", "nbasis"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"d", ",", 
+                 RowBox[{"c", "+", "1"}], ",", "nbasis"}], "}"}]}], "]"}]}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"p", ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"q", ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"ab", ",", "nVV"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"\[Rho]1", "=", 
+          RowBox[{"\[Rho]1", "+", 
+           RowBox[{"Table", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"kl", "=", "0"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"Sum", "[", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"kl", "++"}], ";", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"dERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "k", ",", "l"}], 
+                    "\[RightDoubleBracket]"}]}], "+", 
+                    RowBox[{"xERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "l", ",", "k"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], 
+                   RowBox[{"Y1", "\[LeftDoubleBracket]", 
+                    RowBox[{"kl", ",", "ab"}], "\[RightDoubleBracket]"}]}]}], 
+                 ")"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"k", ",", "nocc"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"l", ",", 
+                  RowBox[{"k", "+", "1"}], ",", "nocc"}], "}"}]}], "]"}]}], 
+             ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"p", ",", "nbasis"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"q", ",", "nbasis"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"ab", ",", "nVV"}], "}"}]}], "]"}]}]}], ";", "\n", "\n", 
+         RowBox[{"\[Rho]2", "=", " ", 
+          RowBox[{"Table", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"cd", "=", "0"}], ";", "\[IndentingNewLine]", 
+             RowBox[{"Sum", "[", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"cd", "++"}], ";", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"dERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "c", ",", "d"}], 
+                    "\[RightDoubleBracket]"}]}], "+", 
+                    RowBox[{"xERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "d", ",", "c"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], 
+                  RowBox[{"X2", "\[LeftDoubleBracket]", 
+                   RowBox[{"cd", ",", "ij"}], "\[RightDoubleBracket]"}]}]}], 
+                ")"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"c", ",", 
+                 RowBox[{"nocc", "+", "1"}], ",", "nbasis"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"d", ",", 
+                 RowBox[{"c", "+", "1"}], ",", "nbasis"}], "}"}]}], "]"}]}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"{", 
+             RowBox[{"p", ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"q", ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"ij", ",", "nOO"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"\[Rho]2", "=", 
+          RowBox[{"\[Rho]2", "+", 
+           RowBox[{"Table", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"kl", "=", "0"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"Sum", "[", 
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"kl", "++"}], ";", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"dERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "k", ",", "l"}], 
+                    "\[RightDoubleBracket]"}]}], "+", 
+                    RowBox[{"xERI", "*", 
+                    RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q", ",", "l", ",", "k"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], 
+                   RowBox[{"Y2", "\[LeftDoubleBracket]", 
+                    RowBox[{"kl", ",", "ij"}], "\[RightDoubleBracket]"}]}]}], 
+                 ")"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"k", ",", "nocc"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"l", ",", 
+                  RowBox[{"k", "+", "1"}], ",", "nocc"}], "}"}]}], "]"}]}], 
+             ",", "\[IndentingNewLine]", 
+             RowBox[{"{", 
+              RowBox[{"p", ",", "nbasis"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"q", ",", "nbasis"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"ij", ",", "nOO"}], "}"}]}], "]"}]}]}], ";"}]}], "\n", 
+       "]"}], ";", "\n", "\n", 
+      RowBox[{"ppquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{
+         RowBox[{"\"\<\[Rho]1\>\"", "\[Rule]", "\[Rho]1"}], ",", 
+         RowBox[{"\"\<\[Rho]2\>\"", "\[Rule]", "\[Rho]2"}]}], "]"}]}], ";", 
+      "\n", "\n", 
+      RowBox[{"Return", "[", "ppquantities", "]"}]}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.841292271411539*^9, 3.841292297122284*^9}, {
+   3.841292363595668*^9, 3.841292404503038*^9}, {3.841292779564866*^9, 
+   3.841292808196419*^9}, {3.8412928758234673`*^9, 3.841292894826519*^9}, {
+   3.8412931416294813`*^9, 3.841293363652114*^9}, {3.8412934647710943`*^9, 
+   3.841293505723068*^9}, {3.841293579541443*^9, 3.8412936295788603`*^9}, {
+   3.841293743496263*^9, 3.841293771761804*^9}, {3.841293898941845*^9, 
+   3.8412939140539923`*^9}, {3.841294178200535*^9, 3.841294183357069*^9}, {
+   3.8417229714746227`*^9, 3.8417230197011337`*^9}, {3.841724028045768*^9, 
+   3.841724083174007*^9}, {3.841724114673215*^9, 3.841724202836111*^9}, {
+   3.8418964641538*^9, 3.8418964685629807`*^9}, {3.8418965047865667`*^9, 
+   3.841896505660454*^9}, {3.841896554084071*^9, 3.8418965586072493`*^9}, {
+   3.8418972153775473`*^9, 3.841897215847888*^9}, {3.841898627544855*^9, 
+   3.841898678618054*^9}, {3.841898737028228*^9, 3.841898773197279*^9}, {
+   3.841904852709584*^9, 3.8419048591766157`*^9}, {3.841905063011196*^9, 
+   3.841905103895678*^9}, {3.8419052623643208`*^9, 3.841905266410261*^9}, {
+   3.8419058283103523`*^9, 3.841905837244789*^9}, {3.841908427012671*^9, 
+   3.841908433265068*^9}, {3.8419095743671083`*^9, 3.841909589441687*^9}, {
+   3.841909717524658*^9, 3.8419097211391478`*^9}, {3.8419097772676697`*^9, 
+   3.84190977739995*^9}, {3.8419098246223097`*^9, 3.8419098296606007`*^9}, {
+   3.841912358962673*^9, 3.841912359158354*^9}, {3.841979369304729*^9, 
+   3.841979376603209*^9}, 3.841979431902892*^9, {3.841980298378236*^9, 
+   3.8419802993435793`*^9}, {3.841980346774383*^9, 3.841980348068125*^9}, {
+   3.8419804209509287`*^9, 3.841980426195224*^9}, {3.844145205291553*^9, 
+   3.844145331526988*^9}},
+ CellLabel->"In[63]:=",ExpressionUUID->"c9ca0a94-a436-4e1d-946e-55f3671633fb"]
+},
+WindowSize->{808, 685},
+WindowMargins->{{Automatic, 260}, {16, Automatic}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"3cd80438-f61c-4e11-a9a6-fed3385d462e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 16580, 360, 1098, "Code",ExpressionUUID->"c9ca0a94-a436-4e1d-946e-55f3671633fb"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,137 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5145,        127]
+NotebookOptionsPosition[      4799,        113]
+NotebookOutlinePosition[      5193,        129]
+CellTagsIndexPosition[      5150,        126]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ppRPA", "[", 
+    RowBox[{
+    "nbasis_", ",", "nocc_", ",", "nvac_", ",", "OMIntegrals_", ",", 
+     "\[Epsilon]_", ",", "singlet_", ",", "triplet_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "ispin", ",", "nOO", ",", "nVV", ",", "linearppquantities", ",", 
+       "Ecsinglet", ",", "Ectriplet", ",", "ppRPAquantities", ",", 
+       "EcppRPA"}], "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"Ecsinglet", "=", "0"}], ";", "\n", 
+      RowBox[{"Ectriplet", "=", "0"}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{"singlet", ",", 
+        RowBox[{
+         RowBox[{"ispin", "=", "1"}], ";", "\n", 
+         RowBox[{"nOO", " ", "=", " ", 
+          RowBox[{"nocc", "*", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"nocc", "+", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+         RowBox[{"nVV", " ", "=", " ", 
+          RowBox[{"nvac", "*", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"nvac", "+", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+         "\n", 
+         RowBox[{"linearppquantities", "=", 
+          RowBox[{"linearpp", "[", 
+           RowBox[{
+           "nbasis", ",", "nocc", ",", "nvac", ",", "nOO", ",", "nVV", ",", 
+            "OMIntegrals", ",", "\[Epsilon]", ",", "ispin"}], "]"}]}], ";", 
+         "\n", "\n", 
+         RowBox[{"Ecsinglet", "=", 
+          RowBox[{"linearppquantities", "[", "\"\<EcppRPA\>\"", "]"}]}], 
+         ";"}]}], "\n", "]"}], ";", "\n", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{"triplet", ",", 
+        RowBox[{
+         RowBox[{"ispin", "=", "2"}], ";", "\n", 
+         RowBox[{"nOO", " ", "=", " ", 
+          RowBox[{"nocc", "*", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"nocc", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+         RowBox[{"nVV", " ", "=", " ", 
+          RowBox[{"nvac", "*", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"nvac", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+         "\n", 
+         RowBox[{"linearppquantities", "=", 
+          RowBox[{"linearpp", "[", 
+           RowBox[{
+           "nbasis", ",", "nocc", ",", "nvac", ",", "nOO", ",", "nVV", ",", 
+            "OMIntegrals", ",", "\[Epsilon]", ",", "ispin"}], "]"}]}], ";", 
+         "\n", "\n", 
+         RowBox[{"Ectriplet", "=", 
+          RowBox[{"3", 
+           RowBox[{"linearppquantities", "[", "\"\<EcppRPA\>\"", "]"}]}]}], 
+         ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+      RowBox[{"EcppRPA", "=", 
+       RowBox[{"Ecsinglet", "+", "Ectriplet"}]}], ";", "\n", "\n", 
+      RowBox[{"ppRPAquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{"\"\<EcppRPA\>\"", "\[Rule]", "EcppRPA"}], "]"}]}], ";", "\n",
+       "\n", 
+      RowBox[{"Return", "[", "ppRPAquantities", "]"}]}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.841288105085162*^9, 3.841288107577567*^9}, {
+   3.841288202674526*^9, 3.841288235973645*^9}, {3.841288400451676*^9, 
+   3.841288403064838*^9}, {3.841288434658662*^9, 3.841288693284761*^9}, {
+   3.8412887267764997`*^9, 3.841288740412697*^9}, {3.841288780914818*^9, 
+   3.841288846039337*^9}, {3.8412890582856693`*^9, 3.841289068113076*^9}, {
+   3.8412891494404182`*^9, 3.841289165950742*^9}, {3.8412892207016697`*^9, 
+   3.84128924318922*^9}, {3.841289492392619*^9, 3.841289540497003*^9}, {
+   3.841289584005015*^9, 3.841289624459467*^9}, {3.841290096825006*^9, 
+   3.841290102435964*^9}, {3.841290200617598*^9, 3.841290203968161*^9}, {
+   3.8412918364558764`*^9, 3.841291840608694*^9}, {3.841304483053672*^9, 
+   3.841304484946458*^9}, {3.841811867470241*^9, 3.841811895910252*^9}, {
+   3.841826589149931*^9, 3.841826622080515*^9}, {3.841828263209391*^9, 
+   3.841828267451336*^9}, {3.841828589641321*^9, 3.8418285945228786`*^9}, {
+   3.841891026518997*^9, 3.841891038628545*^9}, {3.841891156162434*^9, 
+   3.8418911600250463`*^9}, {3.8425852773490887`*^9, 3.842585295399976*^9}, 
+   3.8425866842566*^9, {3.842586721696726*^9, 3.842586727701538*^9}, {
+   3.8502070386300917`*^9, 3.850207043374653*^9}, 3.850222637099334*^9},
+ CellLabel->"In[53]:=",ExpressionUUID->"21982a73-7fa2-4cda-985a-1405f69604b2"]
+},
+WindowSize->{808, 685},
+WindowMargins->{{292, Automatic}, {Automatic, 24}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"0e75b7ad-ebae-4d73-bf01-305c1afce0cf"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4237, 91, 585, "Code",ExpressionUUID->"21982a73-7fa2-4cda-985a-1405f69604b2"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

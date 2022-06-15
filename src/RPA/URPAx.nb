@@ -1,0 +1,113 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4039,        103]
+NotebookOptionsPosition[      3663,         88]
+NotebookOutlinePosition[      4087,        105]
+CellTagsIndexPosition[      4044,        102]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"URPAx", "[", 
+    RowBox[{
+    "nbasis_", ",", "nocc_", ",", "nvac_", ",", "n\[Alpha]_", ",", 
+     "n\[Beta]_", ",", "\[Epsilon]a_", ",", "\[Epsilon]b_", ",", 
+     "OMIntegralsaa_", ",", "OMIntegralsab_", ",", "OMIntegralsba_", ",", 
+     "OMIntegralsbb_", ",", "TDA_", ",", "BSE_", ",", "W1_", ",", "W2_", ",", 
+     "spinconserved_", ",", "spinflip_"}], "]"}], ":=", "\n", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "Ecsinglet", ",", "Ectriplet", ",", "dRPA", ",", "ispin", ",", 
+       "Ulinearquantities", ",", "EcURPAx", ",", "URPAquantities"}], "}"}], 
+     ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"Ecsinglet", "=", "0"}], ";", "\n", 
+      RowBox[{"Ectriplet", "=", "0"}], ";", "\n", "\n", 
+      RowBox[{"dRPA", "=", "False"}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{"spinconserved", ",", 
+        RowBox[{
+         RowBox[{"ispin", "=", "1"}], ";", "\n", "\n", 
+         RowBox[{"Ulinearquantities", "=", 
+          RowBox[{"ULinearResponse", "[", 
+           RowBox[{
+           "nbasis", ",", "nocc", ",", "nvac", ",", "n\[Alpha]", ",", 
+            "n\[Beta]", ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", 
+            "OMIntegralsaa", ",", "OMIntegralsab", ",", "OMIntegralsba", ",", 
+            "OMIntegralsbb", ",", "TDA", ",", "BSE", ",", "W1", ",", "W2", 
+            ",", "ispin", ",", "dRPA"}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"Ecsinglet", "=", 
+          RowBox[{"Ulinearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";"}]}], 
+       "\n", "]"}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{"spinflip", ",", 
+        RowBox[{
+         RowBox[{"ispin", "=", "2"}], ";", "\n", "\n", 
+         RowBox[{"Ulinearquantities", "=", 
+          RowBox[{"ULinearResponse", "[", 
+           RowBox[{
+           "nbasis", ",", "nocc", ",", "nvac", ",", "n\[Alpha]", ",", 
+            "n\[Beta]", ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", 
+            "OMIntegralsaa", ",", "OMIntegralsab", ",", "OMIntegralsba", ",", 
+            "OMIntegralsbb", ",", "TDA", ",", "BSE", ",", "W1", ",", "W2", 
+            ",", "ispin", ",", "dRPA"}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"Ectriplet", "=", 
+          RowBox[{"Ulinearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";"}]}], 
+       "\n", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"Ectriplet", "=", "0"}], ";"}], "*)"}], "\n", "]"}], ";", 
+      "\n", "\n", 
+      RowBox[{"EcURPAx", "=", 
+       RowBox[{"Ecsinglet", "+", "Ectriplet"}]}], ";", "\n", 
+      RowBox[{"URPAquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{"\"\<EcURPAx\>\"", "\[Rule]", "EcURPAx"}], "]"}]}], ";", "\n",
+       "\n", 
+      RowBox[{"Return", "[", "URPAquantities", "]"}]}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.84130697621546*^9, 3.841306981515916*^9}, {
+  3.84130892178677*^9, 3.841308928959434*^9}, {3.84137207262812*^9, 
+  3.841372072822444*^9}, {3.842663976227047*^9, 3.842663977946039*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"c3d86781-5805-4d30-a70c-494bd98f941c"]
+},
+WindowSize->{1109, 685},
+WindowMargins->{{60, Automatic}, {Automatic, 4}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"f72748bd-9012-4f23-a24e-4c208594bf23"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3101, 66, 690, "Code",ExpressionUUID->"c3d86781-5805-4d30-a70c-494bd98f941c"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,229 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9521,        219]
+NotebookOptionsPosition[      9175,        205]
+NotebookOutlinePosition[      9568,        221]
+CellTagsIndexPosition[      9525,        218]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"evGF2", "[", 
+    RowBox[{
+    "nbasis_", ",", "nocc_", ",", "nvac_", ",", "nS_", ",", "\[Epsilon]_", 
+     ",", "OMIntegrals_", ",", "\[Eta]_", ",", "Regularized_", ",", 
+     "\[Kappa]_"}], "]"}], ":=", "\n", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "maxSCF", ",", "nSCF", ",", "conv", ",", "thresh", ",", "eGF2", ",", 
+       "oldeGF2", ",", "\[CapitalSigma]c", ",", "Z", ",", "Ec", ",", 
+       "evGF2quantities", ",", "SelfEnergyquantities", "\n", ",", "lin", ",", 
+       "Im\[CapitalSigma]c\[Omega]", ",", "Im\[CapitalSigma]c", ",", 
+       "\[CapitalSigma]c\[Omega]"}], "}"}], ",", "\n", "\n", 
+     RowBox[{"(*", 
+      RowBox[{"SCF", " ", "parameters"}], "*)"}], "\n", 
+     RowBox[{
+      RowBox[{"maxSCF", "=", "256"}], ";", " ", 
+      RowBox[{"thresh", "=", 
+       SuperscriptBox["10", 
+        RowBox[{"-", "5"}]]}], ";", "\n", "\n", 
+      RowBox[{"eGF2", "=", "\[Epsilon]"}], ";", "\n", 
+      RowBox[{"oldeGF2", " ", "=", " ", "eGF2"}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"SCF", " ", "loop"}], "*)"}], "\n", " ", 
+      RowBox[{"nSCF", " ", "=", " ", 
+       RowBox[{"-", "1"}]}], ";", " ", 
+      RowBox[{"conv", "=", "1"}], ";", "\n", " ", "\n", 
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"conv", " ", ">", " ", "thresh"}], " ", "\[And]", " ", 
+         RowBox[{"nSCF", " ", "<", " ", "maxSCF"}]}], ",", " ", 
+        RowBox[{
+         RowBox[{"nSCF", "++"}], ";", "\n", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{"Regularized", ",", "\n", 
+           RowBox[{"SelfEnergyquantities", "=", 
+            RowBox[{"RegularizedSelfEnergyGF2diag", "[", 
+             RowBox[{
+             "nbasis", ",", "nocc", ",", "nvac", ",", "nS", ",", "\[Epsilon]",
+               ",", "eGF2", ",", "OMIntegrals", ",", "\[Kappa]"}], "]"}]}], 
+           ",", "\n", 
+           RowBox[{"SelfEnergyquantities", "=", 
+            RowBox[{"SelfEnergyGF2diag", "[", 
+             RowBox[{
+             "nbasis", ",", "nocc", ",", "nvac", ",", "nS", ",", "\[Epsilon]",
+               ",", "eGF2", ",", "OMIntegrals", ",", "\[Eta]"}], "]"}]}]}], 
+          "\n", "]"}], ";", "\n", "\n", 
+         RowBox[{"\[CapitalSigma]c", "=", 
+          RowBox[{
+          "SelfEnergyquantities", "[", "\"\<\[CapitalSigma]c\>\"", "]"}]}], 
+         ";", "\n", 
+         RowBox[{"Im\[CapitalSigma]c\[Omega]", "=", "\[CapitalSigma]c"}], ";",
+          "\n", 
+         RowBox[{"\[CapitalSigma]c\[Omega]", "=", 
+          RowBox[{"Re", "[", "\[CapitalSigma]c", "]"}]}], ";", "\n", 
+         RowBox[{"\[CapitalSigma]c", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "\[CapitalSigma]c", "\[LeftDoubleBracket]", "p", 
+              "\[RightDoubleBracket]"}], "/.", 
+             RowBox[{"\[Omega]", "\[Rule]", 
+              RowBox[{
+              "eGF2", "\[LeftDoubleBracket]", "p", 
+               "\[RightDoubleBracket]"}]}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", 
+         RowBox[{"Im\[CapitalSigma]c", "=", "\[CapitalSigma]c"}], ";", "\n", 
+         RowBox[{"Z", "=", 
+          RowBox[{"SelfEnergyquantities", "[", "\"\<Z\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"Z", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "Z", "\[LeftDoubleBracket]", "p", "\[RightDoubleBracket]"}], "/.", 
+             RowBox[{"\[Omega]", "\[Rule]", 
+              RowBox[{
+              "eGF2", "\[LeftDoubleBracket]", "p", 
+               "\[RightDoubleBracket]"}]}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", 
+         RowBox[{"\[CapitalSigma]c", "=", 
+          RowBox[{"Re", "[", "\[CapitalSigma]c", "]"}]}], ";", "\n", 
+         RowBox[{"Z", "=", 
+          RowBox[{"Re", "[", "Z", "]"}]}], ";", "\n", 
+         RowBox[{"Z", "=", 
+          FractionBox["1", 
+           RowBox[{"1", "-", "Z"}]]}], ";", "\n", "\n", 
+         RowBox[{"(*", 
+          RowBox[{"Linearized", " ", "Quasiparticle", " ", "equation"}], 
+          "*)"}], "\n", 
+         RowBox[{"lin", "=", "False"}], ";", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"lin", "\[Equal]", "False"}], ",", 
+           RowBox[{"eGF2", "=", 
+            RowBox[{"\[Epsilon]", "+", "\[CapitalSigma]c"}]}], ",", "\n", 
+           RowBox[{
+            RowBox[{"eGF2", "=", 
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"FindRoot", "[", 
+                RowBox[{
+                 RowBox[{"\[Omega]", "\[Equal]", 
+                  RowBox[{
+                   RowBox[{
+                   "\[Epsilon]", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}], "+", 
+                   RowBox[{
+                   "\[CapitalSigma]c\[Omega]", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}]}]}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"\[Omega]", ",", 
+                   RowBox[{
+                   "\[Epsilon]", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}]}], "}"}]}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";"}]}], "\n",
+           "]"}], ";", "\n", "\n", 
+         RowBox[{"conv", "=", 
+          RowBox[{"Max", "[", 
+           RowBox[{"Abs", "[", 
+            RowBox[{"eGF2", "-", "oldeGF2"}], "]"}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"Ec", "=", 
+          RowBox[{"MP2", "[", 
+           RowBox[{"nocc", ",", "nbasis", ",", "OMIntegrals", ",", "eGF2"}], 
+           "]"}]}], ";", "\n", "\n", 
+         RowBox[{"oldeGF2", " ", "=", " ", "eGF2"}], ";", "\n", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"nSCF", "\[Equal]", "maxSCF"}], ",", 
+           RowBox[{
+            RowBox[{"Print", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<Convergence failed !\>\"", ",", "Red"}], "]"}], 
+             "]"}], ";", 
+            RowBox[{"Break", "[", "]"}]}]}], "]"}], ";"}]}], "  ", "\n", 
+       "]"}], ";", "\n", 
+      RowBox[{"evGF2quantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{
+         RowBox[{"\"\<eGF2\>\"", "\[Rule]", "eGF2"}], ",", 
+         RowBox[{"\"\<Ec\>\"", "\[Rule]", "Ec"}]}], "]"}]}], ";", "\n", "\n", 
+      
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"nSCF", "\[Equal]", "maxSCF"}], ",", 
+        RowBox[{"Return", "[", "]"}], ",", 
+        RowBox[{"Return", "[", "evGF2quantities", "]"}]}], "]"}]}]}], "]"}]}],
+   ";"}]], "Code",
+ CellChangeTimes->{{3.842325262453631*^9, 3.842325298967882*^9}, {
+   3.842325341238311*^9, 3.842325555037386*^9}, {3.842325588601387*^9, 
+   3.842325593619443*^9}, {3.8423256257682037`*^9, 3.842325629589212*^9}, {
+   3.842325663038576*^9, 3.8423257639082727`*^9}, {3.8423263656860657`*^9, 
+   3.842326368871643*^9}, {3.8423264205926037`*^9, 3.842326421122697*^9}, {
+   3.842326467606915*^9, 3.842326488984288*^9}, {3.842326931312394*^9, 
+   3.84232697426241*^9}, 3.842327237274054*^9, {3.842327334033299*^9, 
+   3.842327334815838*^9}, 3.842327385033842*^9, {3.842327651506549*^9, 
+   3.842327656835656*^9}, {3.8423277943730373`*^9, 3.842327803140905*^9}, 
+   3.842328016854835*^9, {3.842328072465438*^9, 3.8423280726193113`*^9}, {
+   3.842328366281539*^9, 3.842328373987796*^9}, {3.842328564009901*^9, 
+   3.842328589481483*^9}, {3.842328689812971*^9, 3.8423286936943817`*^9}, {
+   3.842329781104292*^9, 3.842329785840438*^9}, {3.842330090751656*^9, 
+   3.84233009100429*^9}, {3.847856043978738*^9, 3.847856051924214*^9}, {
+   3.847856929937933*^9, 3.84785693590583*^9}, {3.848719845959976*^9, 
+   3.848719902850806*^9}, {3.8503052231899757`*^9, 3.850305224482526*^9}, {
+   3.8503053785223227`*^9, 3.850305381826827*^9}, {3.85036598495759*^9, 
+   3.850365985122581*^9}, {3.851067446902851*^9, 3.851067571977749*^9}, {
+   3.8510757552548122`*^9, 3.851075755381833*^9}, {3.851404914311995*^9, 
+   3.851404917573331*^9}, 3.8514050090352287`*^9, {3.8514050734717903`*^9, 
+   3.851405074784246*^9}, 3.851408253177162*^9, {3.851408409725792*^9, 
+   3.8514084230946302`*^9}, {3.851408725594322*^9, 3.851408728389485*^9}, {
+   3.8514099584349203`*^9, 3.85140996732344*^9}, {3.851410052389097*^9, 
+   3.851410093627564*^9}, 3.8514102257529287`*^9, {3.85141151402607*^9, 
+   3.8514115429327497`*^9}},
+ CellLabel->"In[45]:=",ExpressionUUID->"c386c392-6f4b-44c2-915b-180380c2fc18"]
+},
+WindowSize->{808, 685},
+WindowMargins->{{228, Automatic}, {Automatic, 4}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"31653195-88ad-4566-ae9f-948ff5072a55"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 8613, 183, 992, "Code",ExpressionUUID->"c386c392-6f4b-44c2-915b-180380c2fc18"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

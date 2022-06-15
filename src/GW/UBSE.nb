@@ -1,0 +1,233 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10276,        223]
+NotebookOptionsPosition[      9928,        209]
+NotebookOutlinePosition[     10322,        225]
+CellTagsIndexPosition[     10279,        222]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"UnrestrictedBetheSalpeterEquation", "[", 
+   RowBox[{
+   "nbasis_", ",", "nocc_", ",", "nvac_", ",", "nS_", ",", "n\[Alpha]_", ",", 
+    "n\[Beta]_", ",", "\[Epsilon]a_", ",", "\[Epsilon]b_", ",", 
+    "OMIntegralsaa_", ",", "OMIntegralsab_", ",", "OMIntegralsba_", ",", 
+    "OMIntegralsbb_", ",", "TDA_", ",", "TDAW_", ",", "spinconserved_", ",", 
+    "spinflip_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", "\n", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "A", ",", "B", ",", "AminusB", ",", "\[CapitalOmega]RPA", ",", "XplusY", 
+      ",", "RHFquantities", ",", "Etot", ",", "BSEquantities", ",", "LR", ",",
+       "scLRquantities", ",", "sfLRquantities", ",", "\n", "sIntegrals", ",", 
+      "W", ",", "Wquantities", ",", "EcBSE", ",", "sIntegralsaa", ",", 
+      "sIntegralsbb", ",", "Waa", ",", "Wbb", ",", "Wab", ",", "Wba", ",", 
+      "nSaa", ",", "nSbb", ",", "\n", "nSc", ",", "nSab", ",", "nSba", ",", 
+      "nSf", ",", "LRquantities", ",", "ispin", ",", "dRPA"}], "}"}], ",", 
+    "\n", "\n", "\n", 
+    RowBox[{
+     RowBox[{"nSaa", "=", 
+      RowBox[{"n\[Alpha]", "*", 
+       RowBox[{"(", 
+        RowBox[{"nbasis", "-", "n\[Alpha]"}], ")"}]}]}], ";", "\n", 
+     RowBox[{"nSbb", "=", 
+      RowBox[{"n\[Beta]", "*", 
+       RowBox[{"(", 
+        RowBox[{"nbasis", "-", "n\[Beta]"}], ")"}]}]}], ";", "\n", 
+     RowBox[{"nSc", "=", 
+      RowBox[{"nSaa", "+", "nSbb"}]}], ";", "\n", "\n", 
+     RowBox[{"nSab", "=", 
+      RowBox[{"n\[Alpha]", "*", 
+       RowBox[{"(", 
+        RowBox[{"nbasis", "-", "n\[Beta]"}], ")"}]}]}], ";", "\n", 
+     RowBox[{"nSba", "=", 
+      RowBox[{"n\[Beta]", "*", 
+       RowBox[{"(", 
+        RowBox[{"nbasis", "-", "n\[Alpha]"}], ")"}]}]}], ";", "\n", 
+     RowBox[{"nSf", "=", 
+      RowBox[{"nSab", "+", "nSba"}]}], ";", "\n", "\n", 
+     RowBox[{"dRPA", "=", "True"}], ";", "\n", "\n", 
+     RowBox[{"(*", 
+      RowBox[{"Singlet", " ", "RPA", " ", "screening"}], "*)"}], "\n", 
+     RowBox[{"ispin", "=", "1"}], ";", "\n", 
+     RowBox[{"LRquantities", "=", 
+      RowBox[{"ULinearResponse", "[", 
+       RowBox[{
+       "nbasis", ",", "nocc", ",", "nvac", ",", "n\[Alpha]", ",", "n\[Beta]", 
+        ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", "OMIntegralsaa", ",", 
+        "OMIntegralsab", ",", "OMIntegralsba", ",", "OMIntegralsbb", ",", 
+        "TDA", ",", "False", ",", "0", ",", "0", ",", "ispin", ",", "dRPA"}], 
+       "]"}]}], ";", "\n", 
+     RowBox[{"\[CapitalOmega]RPA", "=", 
+      RowBox[{"LRquantities", "[", "\"\<\[CapitalOmega]\>\"", "]"}]}], ";", 
+     "\n", 
+     RowBox[{"XplusY", "=", 
+      RowBox[{"LRquantities", "[", "\"\<XuplusYu\>\"", "]"}]}], ";", "\n", 
+     RowBox[{"sIntegralsaa", "=", 
+      RowBox[{"LRquantities", "[", "\"\<sIntegralsaa\>\"", "]"}]}], ";", "\n", 
+     RowBox[{"sIntegralsbb", "=", 
+      RowBox[{"LRquantities", "[", "\"\<sIntegralsbb\>\"", "]"}]}], ";", "\n",
+      "\n", "\n", 
+     RowBox[{"(*", "Screening", "*)"}], "\n", 
+     RowBox[{"If", "[", 
+      RowBox[{"spinconserved", ",", " ", 
+       RowBox[{
+        RowBox[{"ispin", "=", "1"}], ";", "\n", 
+        RowBox[{"Wquantities", "=", 
+         RowBox[{"UnrestrictedScreening", "[", 
+          RowBox[{
+          "nbasis", ",", "nSc", ",", "OMIntegralsaa", ",", "OMIntegralsbb", 
+           ",", "OMIntegralsab", ",", "OMIntegralsba", ",", "sIntegralsaa", 
+           ",", "sIntegralsbb", ",", "\[CapitalOmega]RPA", ",", 
+           "spinconserved", ",", "False"}], "]"}]}], ";", "\n", 
+        RowBox[{"Waa", "=", 
+         RowBox[{"Wquantities", "[", "\"\<Waa\>\"", "]"}]}], ";", "\n", 
+        RowBox[{"Wbb", "=", 
+         RowBox[{"Wquantities", "[", "\"\<Wbb\>\"", "]"}]}], ";", "\n", "\n", 
+        
+        RowBox[{"scLRquantities", "=", 
+         RowBox[{"ULinearResponse", "[", 
+          RowBox[{
+          "nbasis", ",", "nocc", ",", "nvac", ",", "n\[Alpha]", ",", 
+           "n\[Beta]", ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", 
+           "OMIntegralsaa", ",", "OMIntegralsab", ",", "OMIntegralsba", ",", 
+           "OMIntegralsbb", ",", "TDAW", ",", "True", ",", "Waa", ",", "Wbb", 
+           ",", "ispin", ",", "dRPA"}], "]"}]}], ";"}]}], "\n", "\n", "]"}], 
+     ";", "\n", "\n", 
+     RowBox[{"If", "[", 
+      RowBox[{"spinflip", ",", " ", 
+       RowBox[{
+        RowBox[{"ispin", "=", "2"}], ";", "\n", 
+        RowBox[{"Wquantities", "=", 
+         RowBox[{"UnrestrictedScreening", "[", 
+          RowBox[{
+          "nbasis", ",", "nSc", ",", "OMIntegralsaa", ",", "OMIntegralsbb", 
+           ",", "OMIntegralsab", ",", "OMIntegralsba", ",", "sIntegralsaa", 
+           ",", "sIntegralsbb", ",", "\[CapitalOmega]RPA", ",", "False", ",", 
+           "spinflip"}], "]"}]}], ";", "\n", 
+        RowBox[{"Wab", "=", 
+         RowBox[{"Wquantities", "[", "\"\<Wab\>\"", "]"}]}], ";", "\n", 
+        RowBox[{"Wba", "=", 
+         RowBox[{"Wquantities", "[", "\"\<Wba\>\"", "]"}]}], ";", "\n", "\n", 
+        
+        RowBox[{"sfLRquantities", "=", 
+         RowBox[{"ULinearResponse", "[", 
+          RowBox[{
+          "nbasis", ",", "nocc", ",", "nvac", ",", "n\[Alpha]", ",", 
+           "n\[Beta]", ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", 
+           "OMIntegralsaa", ",", "OMIntegralsab", ",", "OMIntegralsba", ",", 
+           "OMIntegralsbb", ",", "TDAW", ",", "True", ",", "Wab", ",", "Wba", 
+           ",", "ispin", ",", "dRPA"}], "]"}]}], ";"}]}], "\n", "\n", "]"}], 
+     ";", "\n", "\n", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"sfLRquantities", "[", "\"\<Ec\>\"", "]"}], "=", "0.0"}], 
+       ";"}], "*)"}], "\n", 
+     RowBox[{"EcBSE", "=", 
+      RowBox[{
+       RowBox[{"scLRquantities", "[", "\"\<Ec\>\"", "]"}], "+", 
+       RowBox[{"sfLRquantities", "[", "\"\<Ec\>\"", "]"}]}]}], ";", "\n", 
+     RowBox[{"Print", "[", 
+      RowBox[{"scLRquantities", "[", "\"\<Ec\>\"", "]"}], "]"}], ";", "\n", 
+     RowBox[{"Print", "[", 
+      RowBox[{"sfLRquantities", "[", "\"\<Ec\>\"", "]"}], "]"}], ";", "\n", 
+     "\n", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Print", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{
+          "\"\<\!\(\*SubscriptBox[\(E\), \(cspin - conserved\)]\) = \>\"", 
+           ",", "Bold", ",", "Red"}], "]"}], ",", 
+         RowBox[{"SetAccuracy", "[", 
+          RowBox[{
+           RowBox[{"scLRquantities", "[", "\"\<Ec\>\"", "]"}], ",", "10"}], 
+          "]"}]}], "]"}], ";", "\n", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{
+          "\"\<\!\(\*SubscriptBox[\(E\), \(cspin - flip\)]\) = \>\"", ",", 
+           "Bold", ",", "Red"}], "]"}], ",", 
+         RowBox[{"SetAccuracy", "[", 
+          RowBox[{
+           RowBox[{"sfLRquantities", "[", "\"\<Ec\>\"", "]"}], ",", "10"}], 
+          "]"}]}], "]"}], ";"}], "*)"}], "\n", "\n", 
+     RowBox[{"BSEquantities", "=", 
+      RowBox[{"Association", "[", 
+       RowBox[{"\"\<EcBSE\>\"", "\[Rule]", "EcBSE"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Return", "[", "BSEquantities", "]"}], ";"}]}], "\n", 
+   "]"}]}]], "Code",
+ CellChangeTimes->{{3.835429079863525*^9, 3.835429085992833*^9}, {
+   3.835429218413072*^9, 3.835429248494973*^9}, {3.835429493792691*^9, 
+   3.8354295385239353`*^9}, {3.8354296212087927`*^9, 3.835429632151826*^9}, 
+   3.835429712142232*^9, 3.835429746500201*^9, {3.835431015195107*^9, 
+   3.835431088533257*^9}, {3.835431359832271*^9, 3.83543137420851*^9}, {
+   3.835431412968767*^9, 3.835431413151902*^9}, 3.835431702380046*^9, {
+   3.8362797506574097`*^9, 3.836279758041147*^9}, {3.8362801542581472`*^9, 
+   3.83628021396308*^9}, {3.8362804434534893`*^9, 3.8362806186027613`*^9}, {
+   3.836280661132976*^9, 3.836280677738412*^9}, {3.836281701643795*^9, 
+   3.836281866830594*^9}, {3.836288889320698*^9, 3.8362888971856728`*^9}, {
+   3.836289461367638*^9, 3.836289516266326*^9}, {3.836289574604167*^9, 
+   3.836289627323605*^9}, {3.836290494561748*^9, 3.83629054772855*^9}, {
+   3.836293088097225*^9, 3.836293090119541*^9}, {3.836293321189725*^9, 
+   3.836293321964281*^9}, 3.836296646197954*^9, {3.8395616350728827`*^9, 
+   3.8395616827887707`*^9}, {3.8395623847781057`*^9, 3.839562387729011*^9}, {
+   3.839562418998789*^9, 3.839562468088696*^9}, {3.839564097911149*^9, 
+   3.839564130371874*^9}, {3.839577831937901*^9, 3.8395778340960083`*^9}, {
+   3.839641586657785*^9, 3.839641588599818*^9}, {3.8399943876874857`*^9, 
+   3.839994390129592*^9}, {3.840600773673263*^9, 3.840600785503016*^9}, {
+   3.841479008986816*^9, 3.841479217624588*^9}, {3.841479325028943*^9, 
+   3.84147932998344*^9}, {3.8414793712452383`*^9, 3.841479400470965*^9}, {
+   3.841479438312726*^9, 3.841479439210997*^9}, {3.841480069288598*^9, 
+   3.841480100332959*^9}, {3.841481214434626*^9, 3.841481241173582*^9}, {
+   3.841482674118155*^9, 3.8414826743000717`*^9}, {3.841716349421612*^9, 
+   3.841716362897512*^9}, {3.841721622521288*^9, 3.841721622880249*^9}, {
+   3.8426688660084953`*^9, 3.8426688825559893`*^9}, {3.84267117813097*^9, 
+   3.842671207675745*^9}, {3.842671251759103*^9, 3.8426712611950197`*^9}, {
+   3.842671454366602*^9, 3.842671459200017*^9}, {3.842671576640603*^9, 
+   3.842671580044374*^9}, {3.842671832292527*^9, 3.842671843248348*^9}, {
+   3.8426722546982727`*^9, 3.842672254835121*^9}},
+ CellLabel->"In[76]:=",ExpressionUUID->"1d88bd77-f2d6-40cc-ad0a-1436bf55bb30"]
+},
+WindowSize->{808, 685},
+WindowMargins->{{Automatic, 156}, {36, Automatic}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d57d6914-0aed-424a-b1fa-6de44fd26efe"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 9366, 187, 1090, "Code",ExpressionUUID->"1d88bd77-f2d6-40cc-ad0a-1436bf55bb30"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

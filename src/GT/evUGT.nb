@@ -1,0 +1,618 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     28033,        608]
+NotebookOptionsPosition[     27684,        594]
+NotebookOutlinePosition[     28078,        610]
+CellTagsIndexPosition[     28035,        607]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"evUGT", "[", 
+    RowBox[{
+    "nbasis_", ",", "n\[Alpha]_", ",", "n\[Beta]_", ",", "\[Epsilon]a_", ",", 
+     "\[Epsilon]b_", ",", "OMIntegralsaa_", ",", "OMIntegralsab_", "\n", ",", 
+     "OMIntegralsba_", ",", "OMIntegralsbb_", ",", "S_", ",", "T_", ",", "V_",
+      ",", "U_", ",", "X_", ",", "Ca_", ",", "Cb_", ",", "Ka_", "\n", ",", 
+     "Kb_", ",", "Vxca_", ",", "Vxcb_", ",", "TDA_", ",", "spinconserved_", 
+     ",", "spinflip_", ",", "\[Eta]_", ",", "Regularized_", ",", 
+     "\[Kappa]_"}], "]"}], ":=", "\n", "\n", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "nOa", ",", "nOb", ",", "nVa", ",", "nVb", ",", "ispin", ",", 
+       "Ulinearppquantities", ",", "nPaa", ",", "nPab", ",", "nPbb", ",", 
+       "nPsc", ",", "nHaa", ",", "nHab", ",", "nHbb", ",", "nHsc", ",", 
+       "nPsf", ",", "nHsf", "\n", ",", "\[CapitalOmega]1aa", ",", "X1aa", ",",
+        "Y1aa", ",", "\[CapitalOmega]2aa", ",", "X2aa", ",", "Y2aa", ",", 
+       "\[CapitalOmega]1bb", ",", "X1bb", ",", "Y1bb", ",", 
+       "\[CapitalOmega]2bb", ",", "X2bb", ",", "Y2bb", ",", 
+       "\[CapitalOmega]1ab", ",", "X1ab", ",", "Y1ab", ",", 
+       "\[CapitalOmega]2ab", ",", "X2ab", ",", "Y2ab", ",", "Uppquantities", 
+       "\n", ",", "\[Rho]1aa", ",", "\[Rho]2aa", ",", "\[Rho]1bb", ",", 
+       "\[Rho]2bb", ",", "SelfEnergyGTquantities", ",", "\[CapitalSigma]csf", 
+       ",", "\[CapitalSigma]csc", ",", "\[CapitalSigma]xaa", ",", 
+       "\[CapitalSigma]xbb", ",", "\[CapitalOmega]1t", ",", "X1t", ",", "Y1t",
+        ",", "\[CapitalOmega]2t", ",", "X2t", ",", "Y2t", ",", "\[Rho]1t", 
+       ",", "\[Rho]2t", ",", "Zsf", ",", "Zsc", "\n", ",", "eG0T0", ",", 
+       "EcppURPA", ",", "GTquantities", ",", "EcppRPAsinglet", ",", 
+       "EcppRPAtriplet", ",", "lin", ",", "SelfEnergyquantities\[Omega]", ",",
+        "\[CapitalSigma]c\[Omega]", ",", "Z\[Omega]", ",", "sol", ",", 
+       "\[Rho]1ab", "\n", ",", "\[Rho]2ab", ",", "\[CapitalSigma]caa", ",", 
+       "\[CapitalSigma]cbb", ",", "Zaa", ",", "Zbb", ",", "eGTaa", ",", 
+       "eGTbb", ",", "maxSCF", ",", "thresh", ",", "oldeGTaa", ",", 
+       "oldeGTbb", ",", "nSCF", ",", "conv", ",", 
+       "\[CapitalSigma]caa\[Omega]", ",", "\[CapitalSigma]cbb\[Omega]"}], 
+      "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"nOa", "=", "n\[Alpha]"}], ";", "\n", 
+      RowBox[{"nOb", "=", "n\[Beta]"}], ";", "\n", 
+      RowBox[{"nVa", "=", 
+       RowBox[{"nbasis", "-", "n\[Alpha]"}]}], ";", "\n", 
+      RowBox[{"nVb", "=", 
+       RowBox[{"nbasis", "-", "n\[Beta]"}]}], ";", "\n", "\n", 
+      RowBox[{"nPaa", " ", "=", " ", 
+       RowBox[{"nVa", "*", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"nVa", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+      RowBox[{"nPbb", " ", "=", " ", 
+       RowBox[{"nVb", "*", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"nVb", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+      RowBox[{"nPsc", " ", "=", " ", 
+       RowBox[{"nPaa", "+", "nPbb"}]}], ";", "\n", 
+      RowBox[{"nHaa", " ", "=", " ", 
+       RowBox[{"nOa", "*", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"nOa", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+      RowBox[{"nHbb", " ", "=", " ", 
+       RowBox[{"nOb", "*", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"nOb", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+      RowBox[{"nHsc", " ", "=", " ", 
+       RowBox[{"nHaa", "+", "nHbb"}]}], ";", "\n", "\n", 
+      RowBox[{"nPab", "=", 
+       RowBox[{"nVa", "*", "nVb"}]}], ";", "\n", 
+      RowBox[{"nHab", "=", 
+       RowBox[{"nOa", "*", "nOb"}]}], ";", "\n", 
+      RowBox[{"nPsf", "=", "nPab"}], ";", "\n", 
+      RowBox[{"nHsf", "=", "nHab"}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Exchange", " ", "part", " ", "of", " ", "the", " ", "self"}],
+         "-", "energy"}], "*)"}], "\n", 
+      RowBox[{"\[CapitalSigma]xaa", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"\[Mu]", "=", "1"}], "nbasis"], 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"\[Nu]", "=", "1"}], "nbasis"], 
+           RowBox[{
+            RowBox[{"Ca", "\[LeftDoubleBracket]", 
+             RowBox[{"\[Mu]", ",", "p"}], "\[RightDoubleBracket]"}], "*", 
+            RowBox[{"Ka", "\[LeftDoubleBracket]", 
+             RowBox[{"\[Mu]", ",", "\[Nu]"}], "\[RightDoubleBracket]"}], "*", 
+            
+            RowBox[{"Ca", "\[LeftDoubleBracket]", 
+             RowBox[{"\[Nu]", ",", "p"}], "\[RightDoubleBracket]"}]}]}]}], 
+         ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", 
+      RowBox[{"\[CapitalSigma]xbb", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"\[Mu]", "=", "1"}], "nbasis"], 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"\[Nu]", "=", "1"}], "nbasis"], 
+           RowBox[{
+            RowBox[{"Cb", "\[LeftDoubleBracket]", 
+             RowBox[{"\[Mu]", ",", "p"}], "\[RightDoubleBracket]"}], "*", 
+            RowBox[{"Kb", "\[LeftDoubleBracket]", 
+             RowBox[{"\[Mu]", ",", "\[Nu]"}], "\[RightDoubleBracket]"}], "*", 
+            
+            RowBox[{"Cb", "\[LeftDoubleBracket]", 
+             RowBox[{"\[Nu]", ",", "p"}], "\[RightDoubleBracket]"}]}]}]}], 
+         ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"SCF", " ", "parameters"}], "*)"}], "\n", 
+      RowBox[{"maxSCF", "=", "256"}], ";", " ", 
+      RowBox[{"thresh", "=", 
+       SuperscriptBox["10", 
+        RowBox[{"-", "5"}]]}], ";", "\n", "\n", 
+      RowBox[{"eGTaa", "=", "\[Epsilon]a"}], ";", "\n", 
+      RowBox[{"eGTbb", "=", "\[Epsilon]b"}], ";", "\n", "\n", 
+      RowBox[{"oldeGTaa", "=", "eGTaa"}], ";", "\n", 
+      RowBox[{"oldeGTbb", "=", "eGTbb"}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"SCF", " ", "loop"}], "*)"}], "\n", " ", 
+      RowBox[{"nSCF", " ", "=", " ", 
+       RowBox[{"-", "1"}]}], ";", " ", 
+      RowBox[{"conv", "=", "1"}], ";", "\n", " ", "\n", 
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"conv", " ", ">", " ", "thresh"}], " ", "\[And]", " ", 
+         RowBox[{"nSCF", " ", "<", " ", "maxSCF"}]}], ",", " ", 
+        RowBox[{
+         RowBox[{"nSCF", "++"}], ";", "\n", "\n", 
+         RowBox[{"(*", 
+          RowBox[{"aaaa", " ", "block"}], "*)"}], "\n", 
+         RowBox[{"ispin", "=", "1"}], ";", "\n", 
+         RowBox[{"Ulinearppquantities", "=", 
+          RowBox[{"Ulinearpp", "[", 
+           RowBox[{
+           "nbasis", ",", "nOa", ",", "nOb", ",", "nVa", ",", "nVb", ",", 
+            "nPaa", ",", "nPab", ",", "nPbb", ",", "nPsc", ",", "nHaa", ",", 
+            "nHab", ",", "nHbb", ",", "nHsc", "\n", ",", "eGTaa", ",", 
+            "eGTbb", ",", "OMIntegralsaa", ",", "OMIntegralsab", ",", 
+            "OMIntegralsba", ",", "OMIntegralsbb", ",", "TDA", ",", "ispin"}],
+            "]"}]}], ";", "\n", 
+         RowBox[{"\[CapitalOmega]1aa", "=", 
+          RowBox[{
+          "Ulinearppquantities", "[", "\"\<\[CapitalOmega]1\>\"", "]"}]}], 
+         ";", "\n", 
+         RowBox[{"X1aa", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<X1\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"Y1aa", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<Y1\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"\[CapitalOmega]2aa", "=", 
+          RowBox[{
+          "Ulinearppquantities", "[", "\"\<\[CapitalOmega]2\>\"", "]"}]}], 
+         ";", "\n", 
+         RowBox[{"X2aa", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<X2\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"Y2aa", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<Y2\>\"", "]"}]}], ";", 
+         "\n", "\n", 
+         RowBox[{"Uppquantities", "=", 
+          RowBox[{"UppsIntegral", "[", 
+           RowBox[{
+           "nbasis", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "OMIntegralsaa", 
+            ",", "OMIntegralsab", "\n", ",", "OMIntegralsba", ",", 
+            "OMIntegralsbb", ",", "X1aa", ",", "Y1aa", ",", "X2aa", ",", 
+            "Y2aa", ",", "nHaa", ",", "nHab", ",", "nHbb", ",", "nPaa", "\n", 
+            ",", "nPab", ",", "nPbb", ",", "ispin"}], "]"}]}], ";", "\n", 
+         RowBox[{"\[Rho]1aa", "=", 
+          RowBox[{"Uppquantities", "[", "\"\<\[Rho]1\>\"", "]"}]}], ";", "\n", 
+         RowBox[{"\[Rho]2aa", "=", 
+          RowBox[{"Uppquantities", "[", "\"\<\[Rho]2\>\"", "]"}]}], ";", "\n",
+          "\n", 
+         RowBox[{"(*", 
+          RowBox[{"bbbb", " ", "block"}], "*)"}], "\n", 
+         RowBox[{"ispin", "=", "3"}], ";", "\n", 
+         RowBox[{"Ulinearppquantities", "=", 
+          RowBox[{"Ulinearpp", "[", 
+           RowBox[{
+           "nbasis", ",", "nOa", ",", "nOb", ",", "nVa", ",", "nVb", ",", 
+            "nPaa", ",", "nPab", ",", "nPbb", ",", "nPsc", ",", "nHaa", ",", 
+            "nHab", ",", "nHbb", ",", "nHsc", "\n", ",", "eGTaa", ",", 
+            "eGTbb", ",", "OMIntegralsaa", ",", "OMIntegralsab", ",", 
+            "OMIntegralsba", ",", "OMIntegralsbb", ",", "TDA", ",", "ispin"}],
+            "]"}]}], ";", "\n", 
+         RowBox[{"\[CapitalOmega]1bb", "=", 
+          RowBox[{
+          "Ulinearppquantities", "[", "\"\<\[CapitalOmega]1\>\"", "]"}]}], 
+         ";", "\n", 
+         RowBox[{"X1bb", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<X1\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"Y1bb", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<Y1\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"\[CapitalOmega]2bb", "=", 
+          RowBox[{
+          "Ulinearppquantities", "[", "\"\<\[CapitalOmega]2\>\"", "]"}]}], 
+         ";", "\n", 
+         RowBox[{"X2bb", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<X2\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"Y2bb", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<Y2\>\"", "]"}]}], ";", 
+         "\n", "\n", 
+         RowBox[{"Uppquantities", "=", 
+          RowBox[{"UppsIntegral", "[", 
+           RowBox[{
+           "nbasis", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "OMIntegralsaa", 
+            ",", "OMIntegralsab", "\n", ",", "OMIntegralsba", ",", 
+            "OMIntegralsbb", ",", "X1bb", ",", "Y1bb", ",", "X2bb", ",", 
+            "Y2bb", ",", "nHaa", ",", "nHab", ",", "nHbb", ",", "nPaa", "\n", 
+            ",", "nPab", ",", "nPbb", ",", "ispin"}], "]"}]}], ";", "\n", 
+         RowBox[{"\[Rho]1bb", "=", 
+          RowBox[{"Uppquantities", "[", "\"\<\[Rho]1\>\"", "]"}]}], ";", "\n", 
+         RowBox[{"\[Rho]2bb", "=", 
+          RowBox[{"Uppquantities", "[", "\"\<\[Rho]2\>\"", "]"}]}], ";", "\n",
+          "\n", 
+         RowBox[{"(*", 
+          RowBox[{"abab", " ", "block"}], "*)"}], "\n", 
+         RowBox[{"ispin", "=", "2"}], ";", "\n", 
+         RowBox[{"Ulinearppquantities", "=", 
+          RowBox[{"Ulinearpp", "[", 
+           RowBox[{
+           "nbasis", ",", "nOa", ",", "nOb", ",", "nVa", ",", "nVb", ",", 
+            "nPaa", ",", "nPab", ",", "nPbb", ",", "nPsc", ",", "nHaa", ",", 
+            "nHab", ",", "nHbb", ",", "nHsc", "\n", ",", "eGTaa", ",", 
+            "eGTbb", ",", "OMIntegralsaa", ",", "OMIntegralsab", ",", 
+            "OMIntegralsba", ",", "OMIntegralsbb", ",", "TDA", ",", "ispin"}],
+            "]"}]}], ";", "\n", 
+         RowBox[{"\[CapitalOmega]1ab", "=", 
+          RowBox[{
+          "Ulinearppquantities", "[", "\"\<\[CapitalOmega]1\>\"", "]"}]}], 
+         ";", "\n", 
+         RowBox[{"X1ab", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<X1\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"Y1ab", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<Y1\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"\[CapitalOmega]2ab", "=", 
+          RowBox[{
+          "Ulinearppquantities", "[", "\"\<\[CapitalOmega]2\>\"", "]"}]}], 
+         ";", "\n", 
+         RowBox[{"X2ab", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<X2\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"Y2ab", "=", 
+          RowBox[{"Ulinearppquantities", "[", "\"\<Y2\>\"", "]"}]}], ";", 
+         "\n", "\n", 
+         RowBox[{"Uppquantities", "=", 
+          RowBox[{"UppsIntegral", "[", 
+           RowBox[{
+           "nbasis", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "OMIntegralsaa", 
+            ",", "OMIntegralsab", "\n", ",", "OMIntegralsba", ",", 
+            "OMIntegralsbb", ",", "X1ab", ",", "Y1ab", ",", "X2ab", ",", 
+            "Y2ab", ",", "nHaa", ",", "nHab", ",", "nHbb", ",", "nPaa", "\n", 
+            ",", "nPab", ",", "nPbb", ",", "ispin"}], "]"}]}], ";", "\n", 
+         RowBox[{"\[Rho]1ab", "=", 
+          RowBox[{"Uppquantities", "[", "\"\<\[Rho]1\>\"", "]"}]}], ";", "\n", 
+         RowBox[{"\[Rho]2ab", "=", 
+          RowBox[{"Uppquantities", "[", "\"\<\[Rho]2\>\"", "]"}]}], ";", "\n",
+          "\n", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{"SelfEnergyGTquantities", "=", 
+            RowBox[{"SelfEnergyUGTdiag", "[", 
+             RowBox[{
+             "nbasis", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "nHaa", ",", 
+              "nHab", ",", "nHbb", ",", "nPaa", ",", "nPab", ",", "nPbb", ",",
+               "\[Epsilon]a", ",", "\[Epsilon]b", ",", "\[CapitalOmega]1ab", 
+              ",", "\[CapitalOmega]2ab", ",", "\[Rho]1ab", ",", "\[Rho]2ab", 
+              ",", "ispin", ",", "\[Eta]"}], "]"}]}], ";"}], "*)"}], "\n", 
+         "\n", 
+         RowBox[{"SelfEnergyGTquantities", "=", 
+          RowBox[{"SelfEnergyUGTdiag", "[", 
+           RowBox[{
+           "nbasis", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "nHaa", ",", 
+            "nHab", ",", "nHbb", ",", "nPaa", ",", "nPab", ",", "nPbb", ",", 
+            "eGTaa", ",", "eGTbb", ",", "\[CapitalOmega]1aa", ",", 
+            "\[CapitalOmega]2aa", ",", "\[CapitalOmega]1bb", ",", 
+            "\[CapitalOmega]2bb", "\n", ",", "\[CapitalOmega]1ab", ",", 
+            "\[CapitalOmega]2ab", ",", "\[Rho]1aa", ",", "\[Rho]2aa", ",", 
+            "\[Rho]1bb", ",", "\[Rho]2bb", ",", "\[Rho]1ab", ",", "\[Rho]2ab",
+             ",", "ispin", ",", "\[Eta]"}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"Zaa", "=", 
+          RowBox[{"SelfEnergyGTquantities", "[", "\"\<Zaa\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"Zbb", "=", 
+          RowBox[{"SelfEnergyGTquantities", "[", "\"\<Zbb\>\"", "]"}]}], ";", 
+         "\n", "\n", 
+         RowBox[{"\[CapitalSigma]caa", "=", 
+          RowBox[{
+          "SelfEnergyGTquantities", "[", "\"\<\[CapitalSigma]caa\>\"", 
+           "]"}]}], ";", "\n", 
+         RowBox[{"\[CapitalSigma]cbb", "=", 
+          RowBox[{
+          "SelfEnergyGTquantities", "[", "\"\<\[CapitalSigma]cbb\>\"", 
+           "]"}]}], ";", "\n", "\n", 
+         RowBox[{"\[CapitalSigma]caa\[Omega]", "=", 
+          RowBox[{"Re", "[", "\[CapitalSigma]caa", "]"}]}], ";", "\n", 
+         RowBox[{"\[CapitalSigma]cbb\[Omega]", "=", 
+          RowBox[{"Re", "[", "\[CapitalSigma]cbb", "]"}]}], ";", "\n", "\n", 
+         RowBox[{"\[CapitalSigma]caa", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "\[CapitalSigma]caa", "\[LeftDoubleBracket]", "p", 
+              "\[RightDoubleBracket]"}], "/.", 
+             RowBox[{"\[Omega]", "\[Rule]", 
+              RowBox[{
+              "eGTaa", "\[LeftDoubleBracket]", "p", 
+               "\[RightDoubleBracket]"}]}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", 
+         RowBox[{"\[CapitalSigma]cbb", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "\[CapitalSigma]cbb", "\[LeftDoubleBracket]", "p", 
+              "\[RightDoubleBracket]"}], "/.", 
+             RowBox[{"\[Omega]", "\[Rule]", 
+              RowBox[{
+              "eGTbb", "\[LeftDoubleBracket]", "p", 
+               "\[RightDoubleBracket]"}]}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+         
+         RowBox[{"Zaa", "=", 
+          RowBox[{"SelfEnergyGTquantities", "[", "\"\<Zaa\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"Zbb", "=", 
+          RowBox[{"SelfEnergyGTquantities", "[", "\"\<Zbb\>\"", "]"}]}], ";", 
+         "\n", "\n", 
+         RowBox[{"Zaa", "=", 
+          RowBox[{"Re", "[", "Zaa", "]"}]}], ";", "\n", 
+         RowBox[{"Zbb", "=", 
+          RowBox[{"Re", "[", "Zbb", "]"}]}], ";", "\n", "\n", 
+         RowBox[{"Zaa", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "Zaa", "\[LeftDoubleBracket]", "p", "\[RightDoubleBracket]"}], "/.", 
+             RowBox[{"\[Omega]", "\[Rule]", 
+              RowBox[{
+              "eGTaa", "\[LeftDoubleBracket]", "p", 
+               "\[RightDoubleBracket]"}]}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", 
+         RowBox[{"Zbb", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "Zbb", "\[LeftDoubleBracket]", "p", "\[RightDoubleBracket]"}], "/.", 
+             RowBox[{"\[Omega]", "\[Rule]", 
+              RowBox[{
+              "eGTbb", "\[LeftDoubleBracket]", "p", 
+               "\[RightDoubleBracket]"}]}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+         
+         RowBox[{"\[CapitalSigma]caa", "=", 
+          RowBox[{"Re", "[", "\[CapitalSigma]caa", "]"}]}], ";", "\n", 
+         RowBox[{"\[CapitalSigma]cbb", "=", 
+          RowBox[{"Re", "[", "\[CapitalSigma]cbb", "]"}]}], ";", "\n", 
+         RowBox[{"Zaa", "=", 
+          RowBox[{"Re", "[", "Zaa", "]"}]}], ";", "\n", 
+         RowBox[{"Zbb", "=", 
+          RowBox[{"Re", "[", "Zbb", "]"}]}], ";", "\n", 
+         RowBox[{"Zaa", "=", 
+          FractionBox["1", 
+           RowBox[{"1", "-", "Zaa"}]]}], ";", " ", 
+         RowBox[{"Zbb", "=", 
+          FractionBox["1", 
+           RowBox[{"1", "-", "Zbb"}]]}], ";", "\n", "\n", 
+         RowBox[{"(*", 
+          RowBox[{"Linearized", " ", "Quasiparticle", " ", "equation"}], 
+          "*)"}], "\n", 
+         RowBox[{"lin", "=", "False"}], ";", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"lin", "\[Equal]", "False"}], ",", "\n", 
+           RowBox[{
+            RowBox[{"eGTaa", "=", 
+             RowBox[{
+             "\[Epsilon]a", "+", "\[CapitalSigma]xaa", "+", 
+              "\[CapitalSigma]caa", "-", "Vxca"}]}], ";", "\n", 
+            RowBox[{"eGTbb", "=", 
+             RowBox[{
+             "\[Epsilon]b", "+", "\[CapitalSigma]xbb", "+", 
+              "\[CapitalSigma]cbb", "-", "Vxcb"}]}]}], ",", "\n", 
+           RowBox[{
+            RowBox[{"eGTaa", "=", 
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"FindRoot", "[", 
+                RowBox[{
+                 RowBox[{"\[Omega]", "\[Equal]", 
+                  RowBox[{
+                   RowBox[{
+                   "\[Epsilon]a", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}], "+", 
+                   RowBox[{
+                   "\[CapitalSigma]xaa", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}], "+", 
+                   RowBox[{
+                   "\[CapitalSigma]caa\[Omega]", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}], "-", 
+                   RowBox[{
+                   "Vxca", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}]}]}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"\[Omega]", ",", 
+                   RowBox[{
+                   "\[Epsilon]a", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}]}], "}"}]}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", 
+            RowBox[{"eGTbb", "=", 
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"FindRoot", "[", 
+                RowBox[{
+                 RowBox[{"\[Omega]", "\[Equal]", 
+                  RowBox[{
+                   RowBox[{
+                   "\[Epsilon]b", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}], "+", 
+                   RowBox[{
+                   "\[CapitalSigma]xbb", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}], "+", 
+                   RowBox[{
+                   "\[CapitalSigma]cbb\[Omega]", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}], "-", 
+                   RowBox[{
+                   "Vxcb", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}]}]}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"\[Omega]", ",", 
+                   RowBox[{
+                   "\[Epsilon]b", "\[LeftDoubleBracket]", "p", 
+                    "\[RightDoubleBracket]"}]}], "}"}]}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";"}]}], "\n",
+           "]"}], ";", "\n", "\n", 
+         RowBox[{"conv", "=", 
+          RowBox[{"Max", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Abs", "[", 
+              RowBox[{"eGTaa", "-", "oldeGTaa"}], "]"}], ",", 
+             RowBox[{"Abs", "[", 
+              RowBox[{"eGTbb", "-", "oldeGTbb"}], "]"}]}], "}"}], "]"}]}], 
+         ";", "\n", "\n", 
+         RowBox[{"oldeGTaa", "=", "eGTaa"}], ";", "\n", 
+         RowBox[{"oldeGTbb", "=", "eGTbb"}], ";", "\n", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"nSCF", "\[Equal]", "maxSCF"}], ",", 
+           RowBox[{
+            RowBox[{"Print", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<Convergence failed !\>\"", ",", "Red"}], "]"}], 
+             "]"}], ";", 
+            RowBox[{"Break", "[", "]"}]}]}], "]"}], ";"}]}], "\n", "]"}], ";",
+       "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"pp", "-", 
+        RowBox[{"RPA", " ", "correlation", " ", "energy"}]}], "*)"}], "\n", 
+      RowBox[{"ispin", "=", "1"}], ";", "\n", 
+      RowBox[{"Ulinearppquantities", "=", 
+       RowBox[{"Ulinearpp", "[", 
+        RowBox[{
+        "nbasis", ",", "nOa", ",", "nOb", ",", "nVa", ",", "nVb", ",", "nPaa",
+          ",", "nPab", ",", "nPbb", ",", "nPsc", ",", "nHaa", ",", "nHab", 
+         ",", "nHbb", ",", "nHsc", "\n", ",", "eGTaa", ",", "eGTbb", ",", 
+         "OMIntegralsaa", ",", "OMIntegralsab", ",", "OMIntegralsba", ",", 
+         "OMIntegralsbb", ",", "TDA", ",", "ispin"}], "]"}]}], ";", "\n", 
+      RowBox[{"EcppRPAtriplet", "=", 
+       RowBox[{"Ulinearppquantities", "[", "\"\<EcppURPA\>\"", "]"}]}], ";", 
+      "\n", "\n", "\n", 
+      RowBox[{"ispin", "=", "3"}], ";", "\n", 
+      RowBox[{"Ulinearppquantities", "=", 
+       RowBox[{"Ulinearpp", "[", 
+        RowBox[{
+        "nbasis", ",", "nOa", ",", "nOb", ",", "nVa", ",", "nVb", ",", "nPaa",
+          ",", "nPab", ",", "nPbb", ",", "nPsc", ",", "nHaa", ",", "nHab", 
+         ",", "nHbb", ",", "nHsc", "\n", ",", "eGTaa", ",", "eGTbb", ",", 
+         "OMIntegralsaa", ",", "OMIntegralsab", ",", "OMIntegralsba", ",", 
+         "OMIntegralsbb", ",", "TDA", ",", "ispin"}], "]"}]}], ";", "\n", 
+      RowBox[{"EcppRPAtriplet", "=", 
+       RowBox[{"EcppRPAtriplet", "+", 
+        RowBox[{"Ulinearppquantities", "[", "\"\<EcppURPA\>\"", "]"}]}]}], 
+      ";", "\n", "\n", 
+      RowBox[{"ispin", "=", "2"}], ";", "\n", 
+      RowBox[{"Ulinearppquantities", "=", 
+       RowBox[{"Ulinearpp", "[", 
+        RowBox[{
+        "nbasis", ",", "nOa", ",", "nOb", ",", "nVa", ",", "nVb", ",", "nPaa",
+          ",", "nPab", ",", "nPbb", ",", "nPsc", ",", "nHaa", ",", "nHab", 
+         ",", "nHbb", ",", "nHsc", "\n", ",", "eGTaa", ",", "eGTbb", ",", 
+         "OMIntegralsaa", ",", "OMIntegralsab", ",", "OMIntegralsba", ",", 
+         "OMIntegralsbb", ",", "TDA", ",", "ispin"}], "]"}]}], ";", "\n", 
+      RowBox[{"EcppRPAsinglet", "=", 
+       RowBox[{"Ulinearppquantities", "[", "\"\<EcppURPA\>\"", "]"}]}], ";", 
+      "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"EcppRPAtriplet", "=", "0"}], ";"}], "*)"}], "\n", "\n", 
+      RowBox[{"EcppRPAsinglet", "=", 
+       RowBox[{
+        RowBox[{"EcppRPAsinglet", "-", "EcppRPAtriplet"}], "//", "Chop"}]}], 
+      ";", "\n", "\n", 
+      RowBox[{"EcppRPAtriplet", "=", 
+       RowBox[{
+        RowBox[{"3", "EcppRPAtriplet"}], "//", "Chop"}]}], ";", "\n", "\n", 
+      RowBox[{"EcppURPA", "=", 
+       RowBox[{"EcppRPAsinglet", "+", "EcppRPAtriplet"}]}], ";", "\n", "\n", 
+      RowBox[{"GTquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{
+         RowBox[{"\"\<EcppURPA\>\"", "\[Rule]", "EcppURPA"}], ",", 
+         RowBox[{"\"\<eG0T0\>\"", "\[Rule]", "eG0T0"}], ",", 
+         RowBox[{"\"\<Z\>\"", "\[Rule]", "Z"}], ",", 
+         RowBox[{
+         "\"\<\[CapitalSigma]c\>\"", "\[Rule]", "\[CapitalSigma]c"}]}], 
+        "]"}]}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"nSCF", "\[Equal]", "maxSCF"}], ",", 
+        RowBox[{"Return", "[", "]"}], ",", 
+        RowBox[{"Return", "[", "GTquantities", "]"}]}], "]"}]}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.85022279509811*^9, 3.850222882756565*^9}, {
+   3.850223385570663*^9, 3.850223395020224*^9}, {3.850223470248664*^9, 
+   3.850223585120376*^9}, {3.850223628359859*^9, 3.850223661541143*^9}, {
+   3.8502236959310303`*^9, 3.850223719192484*^9}, {3.8502237585151033`*^9, 
+   3.850223801153721*^9}, {3.850224198783565*^9, 3.850224233987545*^9}, {
+   3.850224359572425*^9, 3.8502243608554163`*^9}, {3.85022470153487*^9, 
+   3.850224736935257*^9}, {3.850225010174385*^9, 3.8502250235490103`*^9}, {
+   3.85022510416518*^9, 3.850225107810051*^9}, 3.850225159304723*^9, {
+   3.850226251318809*^9, 3.850226252004341*^9}, {3.850226303023377*^9, 
+   3.850226358698929*^9}, {3.8502292914928703`*^9, 3.850229307094718*^9}, {
+   3.850305283210436*^9, 3.850305283924564*^9}, {3.850305437060697*^9, 
+   3.8503054406520977`*^9}, {3.850360527273121*^9, 3.850360535470414*^9}, {
+   3.850366030045567*^9, 3.850366030231257*^9}, {3.851075282685676*^9, 
+   3.8510753064023647`*^9}, {3.8510753884062366`*^9, 3.851075413013071*^9}, {
+   3.85107552526263*^9, 3.8510755928355*^9}, {3.854033763409978*^9, 
+   3.8540337912741947`*^9}, {3.85403388725644*^9, 3.854033888598303*^9}, {
+   3.8540339240978603`*^9, 3.854033975990403*^9}, {3.854034013182459*^9, 
+   3.854034279266686*^9}, 3.854034334933345*^9, 3.8540343705941887`*^9, {
+   3.854034407813966*^9, 3.854034453031639*^9}, {3.854072570863141*^9, 
+   3.85407259284129*^9}, {3.85407562063984*^9, 3.85407562120932*^9}},
+ CellLabel->"In[68]:=",ExpressionUUID->"58160486-b2ee-47a8-ae65-16ad2acaabba"]
+},
+WindowSize->{808, 685},
+WindowMargins->{{Automatic, 220}, {Automatic, 44}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"1d733472-cbf3-4e9b-8c72-c57dda515680"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 27122, 572, 3435, "Code",ExpressionUUID->"58160486-b2ee-47a8-ae65-16ad2acaabba"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

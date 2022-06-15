@@ -1,0 +1,106 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3519,         96]
+NotebookOptionsPosition[      3173,         82]
+NotebookOutlinePosition[      3567,         98]
+CellTagsIndexPosition[      3524,         95]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Screening", "[", 
+    RowBox[{
+    "nbasis_", ",", "nS_", ",", "OMIntegrals_", ",", "sIntegrals_", ",", 
+     "\[CapitalOmega]_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"W", ",", "Wquantities"}], "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"W", "=", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+           RowBox[{"p", ",", "r", ",", "q", ",", "s"}], 
+           "\[RightDoubleBracket]"}], "+", 
+          RowBox[{"2", 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"m", "=", "1"}], "nS"], 
+            RowBox[{
+             RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+              RowBox[{"p", ",", "q", ",", "m"}], "\[RightDoubleBracket]"}], 
+             RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+              RowBox[{"r", ",", "s", ",", "m"}], "\[RightDoubleBracket]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               FractionBox["1", 
+                RowBox[{"0", "-", 
+                 RowBox[{
+                 "\[CapitalOmega]", "\[LeftDoubleBracket]", "m", 
+                  "\[RightDoubleBracket]"}]}]], "-", 
+               FractionBox["1", 
+                RowBox[{"0", "+", 
+                 RowBox[{
+                 "\[CapitalOmega]", "\[LeftDoubleBracket]", "m", 
+                  "\[RightDoubleBracket]"}]}]]}], ")"}]}]}]}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nbasis"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"q", ",", "nbasis"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"r", ",", "nbasis"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"s", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"Wquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{"\"\<W\>\"", "\[Rule]", "W"}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"Return", "[", "Wquantities", "]"}]}]}], "]"}]}], ";"}]], "Code",\
+
+ CellChangeTimes->{{3.8345499911843224`*^9, 3.83455005665895*^9}, {
+  3.8354131680126*^9, 3.835413212361218*^9}, {3.835413316197884*^9, 
+  3.8354133485013847`*^9}, {3.8354155216834593`*^9, 3.8354155489604187`*^9}, {
+  3.83541852346099*^9, 3.835418558294361*^9}, {3.835426351695273*^9, 
+  3.835426355952672*^9}, {3.835427411378771*^9, 3.835427414257555*^9}, {
+  3.8362797749500103`*^9, 3.836279775224004*^9}},
+ CellLabel->"In[75]:=",ExpressionUUID->"5d6ab005-51f9-46b3-93e9-64eda7bbcc1c"]
+},
+WindowSize->{808, 685},
+WindowMargins->{{Automatic, 164}, {Automatic, 44}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"b830bf61-2cc3-437d-bffd-9a55058ad8c5"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2611, 60, 281, "Code",ExpressionUUID->"5d6ab005-51f9-46b3-93e9-64eda7bbcc1c"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

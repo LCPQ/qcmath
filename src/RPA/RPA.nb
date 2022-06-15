@@ -1,0 +1,111 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3965,        101]
+NotebookOptionsPosition[      3588,         86]
+NotebookOutlinePosition[      4013,        103]
+CellTagsIndexPosition[      3970,        100]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"RPA", "[", 
+    RowBox[{
+    "nbasis_", ",", "nocc_", ",", "nvac_", ",", "\[Epsilon]_", ",", 
+     "OMIntegrals_", ",", "TDA_", ",", "BSE_", ",", "W_", ",", "singlet_", 
+     ",", "triplet_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "ispin", ",", "linearquantities", ",", "Ecsinglet", ",", "Ectriplet", 
+       ",", "dRPA", ",", "RPAquantities", ",", "\n", "EcRPA"}], "}"}], ",", 
+     "\n", "\n", 
+     RowBox[{
+      RowBox[{"Ecsinglet", "=", "0"}], ";", "\n", 
+      RowBox[{"Ectriplet", "=", "0"}], ";", "\n", "\n", 
+      RowBox[{"dRPA", "=", "True"}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{"singlet", ",", 
+        RowBox[{
+         RowBox[{"ispin", "=", "1"}], ";", "\n", "\n", 
+         RowBox[{"linearquantities", "=", 
+          RowBox[{"LinearResponse", "[", 
+           RowBox[{
+           "nbasis", ",", "nocc", ",", "nvac", ",", "\[Epsilon]", ",", 
+            "OMIntegrals", ",", "TDA", ",", "BSE", ",", "W", ",", "ispin", 
+            ",", "dRPA"}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"Ecsinglet", "=", 
+          RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";"}]}], 
+       "\n", "]"}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{"triplet", ",", 
+        RowBox[{
+         RowBox[{"ispin", "=", "2"}], ";", "\n", "\n", 
+         RowBox[{"linearquantities", "=", 
+          RowBox[{"LinearResponse", "[", 
+           RowBox[{
+           "nbasis", ",", "nocc", ",", "nvac", ",", "\[Epsilon]", ",", 
+            "OMIntegrals", ",", "TDA", ",", "BSE", ",", "W", ",", "ispin", 
+            ",", "dRPA"}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"Ectriplet", "=", 
+          RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";"}]}], 
+       "\n", "]"}], ";", "\n", "\n", 
+      RowBox[{"EcRPA", "=", 
+       RowBox[{"Ecsinglet", "+", "Ectriplet"}]}], ";", "\n", 
+      RowBox[{"RPAquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{"\"\<EcRPA\>\"", "\[Rule]", "EcRPA"}], "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"Return", "[", "RPAquantities", "]"}]}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.8413037715475187`*^9, 3.841303789802655*^9}, 
+   3.841303887546039*^9, {3.8413040767141123`*^9, 3.8413041531397963`*^9}, {
+   3.841304284266075*^9, 3.841304296144919*^9}, {3.841304421772735*^9, 
+   3.841304503235188*^9}, {3.841304718025049*^9, 3.8413047324978733`*^9}, {
+   3.8413047721131*^9, 3.8413047773306227`*^9}, {3.8413048371608763`*^9, 
+   3.8413048469867783`*^9}, {3.841304920791436*^9, 3.841304922971776*^9}, {
+   3.8413056245779657`*^9, 3.841305659250207*^9}, {3.8413057117087517`*^9, 
+   3.841305726778667*^9}, {3.8413057839627867`*^9, 3.841305825828639*^9}, {
+   3.841306544269328*^9, 3.841306552532071*^9}, {3.8413078968029823`*^9, 
+   3.841307901002223*^9}, {3.841308009712099*^9, 3.8413080100817013`*^9}, 
+   3.8642917722519913`*^9},ExpressionUUID->"efb756d3-aae8-491f-b48f-\
+7ab34c9c3d6b"]
+},
+WindowSize->{808, 685},
+WindowMargins->{{312, Automatic}, {30, Automatic}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"2fafbe13-2a7a-4276-a7e8-43f70fae959c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3026, 64, 690, "Code",ExpressionUUID->"efb756d3-aae8-491f-b48f-7ab34c9c3d6b"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,181 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7019,        171]
+NotebookOptionsPosition[      6673,        157]
+NotebookOutlinePosition[      7066,        173]
+CellTagsIndexPosition[      7023,        170]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"UlinearppB", "[", 
+    RowBox[{
+    "nbasis_", ",", "n\[Alpha]_", ",", "n\[Beta]_", ",", "ea_", ",", "eb_", 
+     ",", "OMIntegralsaa_", ",", "OMIntegralsab_", ",", "OMIntegralsba_", ",",
+      "OMIntegralsbb_", ",", "ispin_"}], "]"}], ":=", "\n", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "B", ",", "eF", ",", "Baaaa", ",", "Bbbbb", ",", "Babab", ",", "Babba", 
+       ",", "Bbaab", ",", "Bbaba"}], "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"eF", "=", "0.0"}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"ispin", "\[Equal]", "1"}], ",", "\n", 
+        RowBox[{"(*", 
+         RowBox[{"aaaa", " ", "block"}], "*)"}], "\n", 
+        RowBox[{
+         RowBox[{"Baaaa", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"OMIntegralsaa", "\[LeftDoubleBracket]", 
+              RowBox[{"a", ",", "b", ",", "i", ",", "j"}], 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{"OMIntegralsaa", "\[LeftDoubleBracket]", 
+              RowBox[{"a", ",", "b", ",", "j", ",", "i"}], 
+              "\[RightDoubleBracket]"}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", 
+              RowBox[{"n\[Alpha]", "+", "1"}], ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"b", ",", 
+              RowBox[{"a", "+", "1"}], ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "n\[Alpha]"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", 
+              RowBox[{"i", "+", "1"}], ",", "n\[Alpha]"}], "}"}]}], "]"}]}], 
+         ";", "\n", 
+         RowBox[{"B", "=", "Baaaa"}], ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"ispin", "\[Equal]", "3"}], ",", "\n", 
+        RowBox[{"(*", 
+         RowBox[{"bbbb", " ", "block"}], "*)"}], "\n", 
+        RowBox[{
+         RowBox[{"Bbbbb", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"OMIntegralsbb", "\[LeftDoubleBracket]", 
+              RowBox[{"a", ",", "b", ",", "i", ",", "j"}], 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{"OMIntegralsbb", "\[LeftDoubleBracket]", 
+              RowBox[{"a", ",", "b", ",", "j", ",", "i"}], 
+              "\[RightDoubleBracket]"}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", 
+              RowBox[{"n\[Beta]", "+", "1"}], ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"b", ",", 
+              RowBox[{"a", "+", "1"}], ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "n\[Beta]"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", 
+              RowBox[{"i", "+", "1"}], ",", "n\[Beta]"}], "}"}]}], "]"}]}], 
+         ";", "\n", 
+         RowBox[{"B", "=", "Bbbbb"}], ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"ispin", "\[Equal]", "2"}], ",", "\n", 
+        RowBox[{"(*", 
+         RowBox[{"abab", " ", "block"}], "*)"}], "\n", 
+        RowBox[{
+         RowBox[{"Babab", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"OMIntegralsab", "\[LeftDoubleBracket]", 
+             RowBox[{"a", ",", "b", ",", "i", ",", "j"}], 
+             "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", 
+              RowBox[{"n\[Alpha]", "+", "1"}], ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"b", ",", 
+              RowBox[{"n\[Beta]", "+", "1"}], ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "n\[Alpha]"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "n\[Beta]"}], "}"}]}], "]"}]}], ";", "\n", 
+         RowBox[{"B", "=", "Babab"}], ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"ispin", "\[Equal]", "4"}], ",", "\n", 
+        RowBox[{"(*", 
+         RowBox[{"baba", " ", "block"}], "*)"}], "\n", 
+        RowBox[{
+         RowBox[{"Bbaba", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"OMIntegralsba", "\[LeftDoubleBracket]", 
+             RowBox[{"a", ",", "b", ",", "i", ",", "j"}], 
+             "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", 
+              RowBox[{"n\[Beta]", "+", "1"}], ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"b", ",", 
+              RowBox[{"n\[Alpha]", "+", "1"}], ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "n\[Beta]"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "n\[Alpha]"}], "}"}]}], "]"}]}], ";", "\n", 
+         RowBox[{"B", "=", "Bbaba"}], ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+      RowBox[{"Return", "[", "B", "]"}]}]}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.8489863455249043`*^9, 3.848986364837976*^9}, {
+   3.8489865880969877`*^9, 3.848987012837768*^9}, {3.848990922923366*^9, 
+   3.848990947240904*^9}, {3.8489909799895487`*^9, 3.848991017048671*^9}, {
+   3.848991054511606*^9, 3.848991140974655*^9}, {3.848991196288783*^9, 
+   3.8489912294605923`*^9}, {3.848991282838874*^9, 3.848991398977306*^9}, 
+   3.8489937402717257`*^9, {3.8489941060132008`*^9, 3.8489941091605673`*^9}, {
+   3.84899750892397*^9, 3.848997510555173*^9}, {3.848997547906547*^9, 
+   3.848997611688138*^9}, {3.849000450852831*^9, 3.849000490732332*^9}, {
+   3.8490005304779177`*^9, 3.849000552641005*^9}, {3.849000590635373*^9, 
+   3.849000739734174*^9}, {3.849056116471785*^9, 3.849056127922533*^9}, {
+   3.84905757001579*^9, 3.849057600072343*^9}, {3.849064263751184*^9, 
+   3.84906434236866*^9}, {3.8502066635066833`*^9, 3.850206691658032*^9}, {
+   3.850358852256369*^9, 3.850358909792544*^9}, {3.850360439837932*^9, 
+   3.850360468601178*^9}},
+ CellLabel->"In[58]:=",ExpressionUUID->"0d291551-18f6-4545-9e52-f7b3aefba8c0"]
+},
+WindowSize->{808, 685},
+WindowMargins->{{Automatic, 300}, {0, Automatic}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"3a2ad9a8-f62e-4701-a392-4cf380f52b9f"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 6111, 135, 604, "Code",ExpressionUUID->"0d291551-18f6-4545-9e52-f7b3aefba8c0"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,769 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     32571,        759]
+NotebookOptionsPosition[     32223,        745]
+NotebookOutlinePosition[     32616,        761]
+CellTagsIndexPosition[     32573,        758]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SelfEnergyUGT", "[", 
+    RowBox[{
+    "nbasis_", ",", "n\[Alpha]_", ",", "n\[Beta]_", ",", "nHaa_", ",", 
+     "nHab_", ",", "nHbb_", ",", "nPaa_", ",", "nPab_", ",", "nPbb_", ",", 
+     "\[Epsilon]a_", ",", "\[Epsilon]b_", "\n", ",", "\[CapitalOmega]1aa_", 
+     ",", "\[CapitalOmega]2aa_", ",", "\[CapitalOmega]1bb_", ",", 
+     "\[CapitalOmega]2bb_", ",", "\[CapitalOmega]1ab_", ",", 
+     "\[CapitalOmega]2ab_", ",", "\[CapitalOmega]1ba_", ",", 
+     "\[CapitalOmega]2ba_", ",", "\[Rho]1aa_", ",", "\[Rho]2aa_", ",", 
+     "\[Rho]1bb_", ",", "\[Rho]2bb_", "\n", ",", "\[Rho]1ab_", ",", 
+     "\[Rho]2ab_", ",", "\[Rho]1ba_", ",", "\[Rho]2ba_", ",", "ispin_", ",", 
+     "\[Eta]_"}], "]"}], ":=", "\n", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\[CapitalSigma]caa", ",", "\[CapitalSigma]cbb", ",", "Zaa", ",", "Zbb",
+        ",", "USelfEnergyquantities", ",", "EcGMaa", ",", "EcGMbb"}], "}"}], 
+     ",", "\n", "\n", 
+     RowBox[{"(*", 
+      RowBox[{"aa", " ", "part"}], "*)"}], "\n", 
+     RowBox[{
+      RowBox[{"\[CapitalSigma]caa", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "1"}], "n\[Alpha]"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"cd", "=", "1"}], "nPaa"], 
+            FractionBox[
+             RowBox[{
+              RowBox[{"\[Rho]1aa", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "i", ",", "cd"}], "\[RightDoubleBracket]"}], 
+              
+              RowBox[{"\[Rho]1aa", "\[LeftDoubleBracket]", 
+               RowBox[{"q", ",", "i", ",", "cd"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Omega]", "+", 
+              RowBox[{
+              "\[Epsilon]a", "\[LeftDoubleBracket]", "i", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{
+              "\[CapitalOmega]1aa", "\[LeftDoubleBracket]", "cd", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}], "+", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "1"}], "n\[Beta]"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"cd", "=", "1"}], "nPab"], 
+            FractionBox[
+             RowBox[{
+              RowBox[{"\[Rho]1ab", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "i", ",", "cd"}], "\[RightDoubleBracket]"}], 
+              
+              RowBox[{"\[Rho]1ab", "\[LeftDoubleBracket]", 
+               RowBox[{"q", ",", "i", ",", "cd"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Omega]", "+", 
+              RowBox[{
+              "\[Epsilon]a", "\[LeftDoubleBracket]", "i", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{
+              "\[CapitalOmega]1ab", "\[LeftDoubleBracket]", "cd", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}], "\n", "+", " ", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"a", "=", 
+             RowBox[{"n\[Alpha]", "+", "1"}]}], "nbasis"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"kl", "=", "1"}], "nHaa"], 
+            FractionBox[
+             RowBox[{
+              RowBox[{"\[Rho]2aa", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "a", ",", "kl"}], "\[RightDoubleBracket]"}], 
+              
+              RowBox[{"\[Rho]2aa", "\[LeftDoubleBracket]", 
+               RowBox[{"q", ",", "a", ",", "kl"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Omega]", "+", 
+              RowBox[{
+              "\[Epsilon]a", "\[LeftDoubleBracket]", "a", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{
+              "\[CapitalOmega]2aa", "\[LeftDoubleBracket]", "kl", 
+               "\[RightDoubleBracket]"}], "+", 
+              RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}], "+", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"a", "=", 
+             RowBox[{"n\[Beta]", "+", "1"}]}], "nbasis"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"kl", "=", "1"}], "nHab"], 
+            FractionBox[
+             RowBox[{
+              RowBox[{"\[Rho]2ab", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "a", ",", "kl"}], "\[RightDoubleBracket]"}], 
+              
+              RowBox[{"\[Rho]2ab", "\[LeftDoubleBracket]", 
+               RowBox[{"q", ",", "a", ",", "kl"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Omega]", "+", 
+              RowBox[{
+              "\[Epsilon]a", "\[LeftDoubleBracket]", "a", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{
+              "\[CapitalOmega]2ab", "\[LeftDoubleBracket]", "kl", 
+               "\[RightDoubleBracket]"}], "+", 
+              RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nbasis"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"q", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"Zaa", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "1"}], "n\[Alpha]"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"cd", "=", "1"}], "nPaa"], 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"\[Rho]1aa", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "i", ",", "cd"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Rho]1aa", "\[LeftDoubleBracket]", 
+              RowBox[{"p", ",", "i", ",", "cd"}], "\[RightDoubleBracket]"}], 
+             SuperscriptBox[
+              RowBox[{"(", 
+               FractionBox["1", 
+                RowBox[{"\[Omega]", "+", 
+                 RowBox[{
+                 "\[Epsilon]a", "\[LeftDoubleBracket]", "i", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{
+                 "\[CapitalOmega]1aa", "\[LeftDoubleBracket]", "cd", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]], ")"}], 
+              "2"]}]}]}], "\n", "+", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "1"}], "n\[Beta]"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"cd", "=", "1"}], "nPab"], 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"\[Rho]1ab", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "i", ",", "cd"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Rho]1ab", "\[LeftDoubleBracket]", 
+              RowBox[{"p", ",", "i", ",", "cd"}], "\[RightDoubleBracket]"}], 
+             SuperscriptBox[
+              RowBox[{"(", 
+               FractionBox["1", 
+                RowBox[{"\[Omega]", "+", 
+                 RowBox[{
+                 "\[Epsilon]a", "\[LeftDoubleBracket]", "i", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{
+                 "\[CapitalOmega]1ab", "\[LeftDoubleBracket]", "cd", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]], ")"}], 
+              "2"]}]}]}], "\n", "+", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"a", "=", 
+             RowBox[{"n\[Alpha]", "+", "1"}]}], "nbasis"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"kl", "=", "1"}], "nHaa"], 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"\[Rho]2aa", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "a", ",", "kl"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Rho]2aa", "\[LeftDoubleBracket]", 
+              RowBox[{"p", ",", "a", ",", "kl"}], "\[RightDoubleBracket]"}], 
+             SuperscriptBox[
+              RowBox[{"(", 
+               FractionBox["1", 
+                RowBox[{"\[Omega]", "+", 
+                 RowBox[{
+                 "\[Epsilon]a", "\[LeftDoubleBracket]", "a", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{
+                 "\[CapitalOmega]2aa", "\[LeftDoubleBracket]", "kl", 
+                  "\[RightDoubleBracket]"}], "+", 
+                 RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]], ")"}], 
+              "2"]}]}]}], "\n", "+", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"a", "=", 
+             RowBox[{"n\[Beta]", "+", "1"}]}], "nbasis"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"kl", "=", "1"}], "nHab"], 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"\[Rho]2ab", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "a", ",", "kl"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Rho]2ab", "\[LeftDoubleBracket]", 
+              RowBox[{"p", ",", "a", ",", "kl"}], "\[RightDoubleBracket]"}], 
+             SuperscriptBox[
+              RowBox[{"(", 
+               FractionBox["1", 
+                RowBox[{"\[Omega]", "+", 
+                 RowBox[{
+                 "\[Epsilon]a", "\[LeftDoubleBracket]", "a", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{
+                 "\[CapitalOmega]2ab", "\[LeftDoubleBracket]", "kl", 
+                  "\[RightDoubleBracket]"}], "+", 
+                 RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]], ")"}], 
+              "2"]}]}]}]}], "\n", ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"bb", " ", "part"}], "*)"}], "\n", 
+      RowBox[{"\[CapitalSigma]cbb", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "1"}], "n\[Beta]"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"cd", "=", "1"}], "nPbb"], 
+            FractionBox[
+             RowBox[{
+              RowBox[{"\[Rho]1bb", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "i", ",", "cd"}], "\[RightDoubleBracket]"}], 
+              
+              RowBox[{"\[Rho]1bb", "\[LeftDoubleBracket]", 
+               RowBox[{"q", ",", "i", ",", "cd"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Omega]", "+", 
+              RowBox[{
+              "\[Epsilon]b", "\[LeftDoubleBracket]", "i", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{
+              "\[CapitalOmega]1bb", "\[LeftDoubleBracket]", "cd", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}], "+", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "1"}], "n\[Alpha]"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"cd", "=", "1"}], "nPab"], 
+            FractionBox[
+             RowBox[{
+              RowBox[{"\[Rho]1ba", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "i", ",", "cd"}], "\[RightDoubleBracket]"}], 
+              
+              RowBox[{"\[Rho]1ba", "\[LeftDoubleBracket]", 
+               RowBox[{"q", ",", "i", ",", "cd"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Omega]", "+", 
+              RowBox[{
+              "\[Epsilon]b", "\[LeftDoubleBracket]", "i", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{
+              "\[CapitalOmega]1ba", "\[LeftDoubleBracket]", "cd", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}], "\n", "+", " ", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"a", "=", 
+             RowBox[{"n\[Beta]", "+", "1"}]}], "nbasis"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"kl", "=", "1"}], "nHbb"], 
+            FractionBox[
+             RowBox[{
+              RowBox[{"\[Rho]2bb", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "a", ",", "kl"}], "\[RightDoubleBracket]"}], 
+              
+              RowBox[{"\[Rho]2bb", "\[LeftDoubleBracket]", 
+               RowBox[{"q", ",", "a", ",", "kl"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Omega]", "+", 
+              RowBox[{
+              "\[Epsilon]b", "\[LeftDoubleBracket]", "a", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{
+              "\[CapitalOmega]2bb", "\[LeftDoubleBracket]", "kl", 
+               "\[RightDoubleBracket]"}], "+", 
+              RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}], "+", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"a", "=", 
+             RowBox[{"n\[Alpha]", "+", "1"}]}], "nbasis"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"kl", "=", "1"}], "nHab"], 
+            FractionBox[
+             RowBox[{
+              RowBox[{"\[Rho]2ba", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "a", ",", "kl"}], "\[RightDoubleBracket]"}], 
+              
+              RowBox[{"\[Rho]2ba", "\[LeftDoubleBracket]", 
+               RowBox[{"q", ",", "a", ",", "kl"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Omega]", "+", 
+              RowBox[{
+              "\[Epsilon]b", "\[LeftDoubleBracket]", "a", 
+               "\[RightDoubleBracket]"}], "-", 
+              RowBox[{
+              "\[CapitalOmega]2ba", "\[LeftDoubleBracket]", "kl", 
+               "\[RightDoubleBracket]"}], "+", 
+              RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nbasis"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"q", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"Zbb", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "1"}], "n\[Beta]"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"cd", "=", "1"}], "nPbb"], 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"\[Rho]1bb", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "i", ",", "cd"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Rho]1bb", "\[LeftDoubleBracket]", 
+              RowBox[{"p", ",", "i", ",", "cd"}], "\[RightDoubleBracket]"}], 
+             SuperscriptBox[
+              RowBox[{"(", 
+               FractionBox["1", 
+                RowBox[{"\[Omega]", "+", 
+                 RowBox[{
+                 "\[Epsilon]b", "\[LeftDoubleBracket]", "i", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{
+                 "\[CapitalOmega]1bb", "\[LeftDoubleBracket]", "cd", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]], ")"}], 
+              "2"]}]}]}], "\n", "+", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"i", "=", "1"}], "n\[Beta]"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"cd", "=", "1"}], "nPab"], 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"\[Rho]1ab", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "i", ",", "cd"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Rho]1ab", "\[LeftDoubleBracket]", 
+              RowBox[{"p", ",", "i", ",", "cd"}], "\[RightDoubleBracket]"}], 
+             SuperscriptBox[
+              RowBox[{"(", 
+               FractionBox["1", 
+                RowBox[{"\[Omega]", "+", 
+                 RowBox[{
+                 "\[Epsilon]b", "\[LeftDoubleBracket]", "i", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{
+                 "\[CapitalOmega]1ab", "\[LeftDoubleBracket]", "cd", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]], ")"}], 
+              "2"]}]}]}], "\n", "+", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"a", "=", 
+             RowBox[{"n\[Beta]", "+", "1"}]}], "nbasis"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"kl", "=", "1"}], "nHbb"], 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"\[Rho]2bb", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "a", ",", "kl"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Rho]2bb", "\[LeftDoubleBracket]", 
+              RowBox[{"p", ",", "a", ",", "kl"}], "\[RightDoubleBracket]"}], 
+             SuperscriptBox[
+              RowBox[{"(", 
+               FractionBox["1", 
+                RowBox[{"\[Omega]", "+", 
+                 RowBox[{
+                 "\[Epsilon]b", "\[LeftDoubleBracket]", "a", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{
+                 "\[CapitalOmega]2bb", "\[LeftDoubleBracket]", "kl", 
+                  "\[RightDoubleBracket]"}], "+", 
+                 RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]], ")"}], 
+              "2"]}]}]}], "\n", "+", 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"a", "=", 
+             RowBox[{"n\[Beta]", "+", "1"}]}], "nbasis"], 
+           RowBox[{
+            UnderoverscriptBox["\[Sum]", 
+             RowBox[{"kl", "=", "1"}], "nHab"], 
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"\[Rho]2ab", "\[LeftDoubleBracket]", 
+               RowBox[{"p", ",", "a", ",", "kl"}], 
+               "\[RightDoubleBracket]"}]}], 
+             RowBox[{"\[Rho]2ab", "\[LeftDoubleBracket]", 
+              RowBox[{"p", ",", "a", ",", "kl"}], "\[RightDoubleBracket]"}], 
+             SuperscriptBox[
+              RowBox[{"(", 
+               FractionBox["1", 
+                RowBox[{
+                 RowBox[{
+                 "\[Epsilon]b", "\[LeftDoubleBracket]", "p", 
+                  "\[RightDoubleBracket]"}], "+", 
+                 RowBox[{
+                 "\[Epsilon]b", "\[LeftDoubleBracket]", "a", 
+                  "\[RightDoubleBracket]"}], "-", 
+                 RowBox[{
+                 "\[CapitalOmega]2ab", "\[LeftDoubleBracket]", "kl", 
+                  "\[RightDoubleBracket]"}], "+", 
+                 RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]], ")"}], 
+              "2"]}]}]}]}], "\n", ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+       "Galitskii", " ", "Migdal", " ", "correlation", " ", "energy"}], 
+       "*)"}], "\n", 
+      RowBox[{"EcGMaa", "=", 
+       RowBox[{
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"i", "=", "1"}], "n\[Alpha]"], 
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"j", "=", "1"}], "n\[Alpha]"], 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"cd", "=", "1"}], "nPaa"], 
+           FractionBox[
+            SuperscriptBox[
+             RowBox[{"\[Rho]1aa", "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "j", ",", "cd"}], "\[RightDoubleBracket]"}], 
+             "2"], 
+            RowBox[{
+             RowBox[{
+             "\[Epsilon]a", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], "+", 
+             RowBox[{
+             "\[Epsilon]a", "\[LeftDoubleBracket]", "j", 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{
+             "\[CapitalOmega]1aa", "\[LeftDoubleBracket]", "cd", 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}], "+", 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"i", "=", "1"}], "n\[Alpha]"], 
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"j", "=", "1"}], "n\[Beta]"], 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"cd", "=", "1"}], "nPab"], 
+           FractionBox[
+            SuperscriptBox[
+             RowBox[{"\[Rho]1ab", "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "j", ",", "cd"}], "\[RightDoubleBracket]"}], 
+             "2"], 
+            RowBox[{
+             RowBox[{
+             "\[Epsilon]a", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], "+", 
+             RowBox[{
+             "\[Epsilon]a", "\[LeftDoubleBracket]", "j", 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{
+             "\[CapitalOmega]1ab", "\[LeftDoubleBracket]", "cd", 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}], "\n", "     ",
+         "-", 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"a", "=", 
+           RowBox[{"n\[Alpha]", "+", "1"}]}], "nbasis"], 
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"b", "=", 
+            RowBox[{"n\[Alpha]", "+", "1"}]}], "nbasis"], 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"kl", "=", "1"}], "nHab"], 
+           FractionBox[
+            SuperscriptBox[
+             RowBox[{"\[Rho]2ab", "\[LeftDoubleBracket]", 
+              RowBox[{"a", ",", "b", ",", "kl"}], "\[RightDoubleBracket]"}], 
+             "2"], 
+            RowBox[{
+             RowBox[{
+             "\[Epsilon]a", "\[LeftDoubleBracket]", "a", 
+              "\[RightDoubleBracket]"}], "+", 
+             RowBox[{
+             "\[Epsilon]a", "\[LeftDoubleBracket]", "b", 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{
+             "\[CapitalOmega]2ab", "\[LeftDoubleBracket]", "kl", 
+              "\[RightDoubleBracket]"}], "+", 
+             RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}], "-", 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"a", "=", 
+           RowBox[{"n\[Alpha]", "+", "1"}]}], "nbasis"], 
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"b", "=", 
+            RowBox[{"n\[Alpha]", "+", "1"}]}], "nbasis"], 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"kl", "=", "1"}], "nHaa"], 
+           FractionBox[
+            SuperscriptBox[
+             RowBox[{"\[Rho]2aa", "\[LeftDoubleBracket]", 
+              RowBox[{"a", ",", "b", ",", "kl"}], "\[RightDoubleBracket]"}], 
+             "2"], 
+            RowBox[{
+             RowBox[{
+             "\[Epsilon]a", "\[LeftDoubleBracket]", "a", 
+              "\[RightDoubleBracket]"}], "+", 
+             RowBox[{
+             "\[Epsilon]a", "\[LeftDoubleBracket]", "b", 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{
+             "\[CapitalOmega]2aa", "\[LeftDoubleBracket]", "kl", 
+              "\[RightDoubleBracket]"}], "+", 
+             RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}]}]}], ";", "\n",
+       "\n", 
+      RowBox[{"EcGMbb", "=", 
+       RowBox[{
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"i", "=", "1"}], "n\[Alpha]"], 
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"j", "=", "1"}], "n\[Alpha]"], 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"cd", "=", "1"}], "nPbb"], 
+           FractionBox[
+            SuperscriptBox[
+             RowBox[{"\[Rho]1bb", "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "j", ",", "cd"}], "\[RightDoubleBracket]"}], 
+             "2"], 
+            RowBox[{
+             RowBox[{
+             "\[Epsilon]b", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], "+", 
+             RowBox[{
+             "\[Epsilon]b", "\[LeftDoubleBracket]", "j", 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{
+             "\[CapitalOmega]1bb", "\[LeftDoubleBracket]", "cd", 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}], "+", 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"i", "=", "1"}], "n\[Alpha]"], 
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"j", "=", "1"}], "n\[Beta]"], 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"cd", "=", "1"}], "nPab"], 
+           FractionBox[
+            SuperscriptBox[
+             RowBox[{"\[Rho]1ba", "\[LeftDoubleBracket]", 
+              RowBox[{"i", ",", "j", ",", "cd"}], "\[RightDoubleBracket]"}], 
+             "2"], 
+            RowBox[{
+             RowBox[{
+             "\[Epsilon]b", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], "+", 
+             RowBox[{
+             "\[Epsilon]b", "\[LeftDoubleBracket]", "j", 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{
+             "\[CapitalOmega]1ba", "\[LeftDoubleBracket]", "cd", 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}], "\n", "     ",
+         "-", 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"a", "=", 
+           RowBox[{"n\[Alpha]", "+", "1"}]}], "nbasis"], 
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"b", "=", 
+            RowBox[{"n\[Alpha]", "+", "1"}]}], "nbasis"], 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"kl", "=", "1"}], "nHab"], 
+           FractionBox[
+            SuperscriptBox[
+             RowBox[{"\[Rho]2ba", "\[LeftDoubleBracket]", 
+              RowBox[{"a", ",", "b", ",", "kl"}], "\[RightDoubleBracket]"}], 
+             "2"], 
+            RowBox[{
+             RowBox[{
+             "\[Epsilon]b", "\[LeftDoubleBracket]", "a", 
+              "\[RightDoubleBracket]"}], "+", 
+             RowBox[{
+             "\[Epsilon]b", "\[LeftDoubleBracket]", "b", 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{
+             "\[CapitalOmega]2ba", "\[LeftDoubleBracket]", "kl", 
+              "\[RightDoubleBracket]"}], "+", 
+             RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}], "-", 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"a", "=", 
+           RowBox[{"n\[Alpha]", "+", "1"}]}], "nbasis"], 
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"b", "=", 
+            RowBox[{"n\[Alpha]", "+", "1"}]}], "nbasis"], 
+          RowBox[{
+           UnderoverscriptBox["\[Sum]", 
+            RowBox[{"kl", "=", "1"}], "nHbb"], 
+           FractionBox[
+            SuperscriptBox[
+             RowBox[{"\[Rho]2bb", "\[LeftDoubleBracket]", 
+              RowBox[{"a", ",", "b", ",", "kl"}], "\[RightDoubleBracket]"}], 
+             "2"], 
+            RowBox[{
+             RowBox[{
+             "\[Epsilon]b", "\[LeftDoubleBracket]", "a", 
+              "\[RightDoubleBracket]"}], "+", 
+             RowBox[{
+             "\[Epsilon]b", "\[LeftDoubleBracket]", "b", 
+              "\[RightDoubleBracket]"}], "-", 
+             RowBox[{
+             "\[CapitalOmega]2bb", "\[LeftDoubleBracket]", "kl", 
+              "\[RightDoubleBracket]"}], "+", 
+             RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}]}]}], ";", "\n",
+       "\n", 
+      RowBox[{"USelfEnergyquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{
+         RowBox[{
+         "\"\<\[CapitalSigma]caa\>\"", "\[Rule]", "\[CapitalSigma]caa"}], ",", 
+         RowBox[{
+         "\"\<\[CapitalSigma]cbb\>\"", "\[Rule]", "\[CapitalSigma]cbb"}], ",", 
+         RowBox[{"\"\<Zaa\>\"", "\[Rule]", "Zaa"}], ",", 
+         RowBox[{"\"\<Zbb\>\"", "\[Rule]", "Zbb"}], ",", 
+         RowBox[{"\"\<EcGM\>\"", "\[Rule]", 
+          RowBox[{"0.5", "*", 
+           RowBox[{"Re", "[", 
+            RowBox[{"(", 
+             RowBox[{"EcGMaa", "+", "EcGMbb"}], ")"}], "]"}]}]}]}], "]"}]}], 
+      ";", "\n", 
+      RowBox[{"Return", "[", "USelfEnergyquantities", "]"}], ";"}]}], "]"}]}],
+   ";"}]], "Code",
+ CellChangeTimes->{{3.8502704559951487`*^9, 3.85027076550956*^9}, {
+   3.850270830058936*^9, 3.850270830615819*^9}, {3.8502708685720453`*^9, 
+   3.8502708804472103`*^9}, {3.850271138701414*^9, 3.850271258579492*^9}, {
+   3.850271306377792*^9, 3.850271403365706*^9}, {3.8502714682470007`*^9, 
+   3.850271577608775*^9}, {3.850271630374983*^9, 3.85027170204181*^9}, {
+   3.850272630489772*^9, 3.850272630903039*^9}, {3.850273393808403*^9, 
+   3.8502734059440937`*^9}, {3.8502734440320473`*^9, 
+   3.8502734566551743`*^9}, {3.850273851290368*^9, 3.8502738627691298`*^9}, {
+   3.8502740738859797`*^9, 3.850274113472332*^9}, {3.8502796197277317`*^9, 
+   3.850279623817094*^9}, {3.850279707604371*^9, 3.850279709827196*^9}, {
+   3.8502797428559723`*^9, 3.85027974404149*^9}, {3.8502798629300413`*^9, 
+   3.8502799231698523`*^9}, {3.850279978869177*^9, 3.850280003233754*^9}, {
+   3.850293975493073*^9, 3.8502939804714327`*^9}, {3.850294230258555*^9, 
+   3.850294236758174*^9}, {3.85029473423213*^9, 3.850294979035799*^9}, {
+   3.850295062741748*^9, 3.850295071608378*^9}, {3.8502951171873903`*^9, 
+   3.850295258158457*^9}, 3.850295330306768*^9, {3.850295717279935*^9, 
+   3.850295720855012*^9}, {3.850295753844592*^9, 3.850295766576597*^9}, {
+   3.8502958019589987`*^9, 3.850295859532712*^9}, {3.850295921632498*^9, 
+   3.8502959698657*^9}, {3.850296009904998*^9, 3.850296013430007*^9}, {
+   3.8502962377264357`*^9, 3.8502963730919647`*^9}, 3.8502966604161587`*^9, 
+   3.850310389949068*^9, {3.850310429199882*^9, 3.850310432071548*^9}, {
+   3.850310506626693*^9, 3.850310516840989*^9}, 3.850310725364258*^9, {
+   3.85035778416011*^9, 3.850357854946645*^9}, {3.850357887531743*^9, 
+   3.850357892631887*^9}, {3.850358520166201*^9, 3.850358525111663*^9}, {
+   3.850358639647566*^9, 3.850358643862176*^9}, {3.850359449612273*^9, 
+   3.850359485782185*^9}, {3.850359644047401*^9, 3.850359659763008*^9}, {
+   3.850359727034514*^9, 3.8503597303656273`*^9}, {3.850359827260356*^9, 
+   3.850360015815609*^9}, {3.850360601982175*^9, 3.850360605533566*^9}, {
+   3.8504681392146397`*^9, 3.8504681719212313`*^9}, {3.850468206352556*^9, 
+   3.850468256406906*^9}, {3.850468305326982*^9, 3.850468311818697*^9}, {
+   3.850468357640815*^9, 3.850468431364002*^9}, {3.850468524290585*^9, 
+   3.8504686798897657`*^9}, {3.85046871736302*^9, 3.850468724775611*^9}, {
+   3.850468872702579*^9, 3.850468971528594*^9}, {3.850469084712524*^9, 
+   3.85046912164634*^9}, {3.8504691618795233`*^9, 3.8504692029742937`*^9}, {
+   3.850469339976873*^9, 3.850469344154572*^9}, {3.8504694307041893`*^9, 
+   3.8504694365638313`*^9}, {3.8504695558339853`*^9, 3.850469619234992*^9}, {
+   3.8504696520777187`*^9, 3.850469673544375*^9}, {3.850469734646188*^9, 
+   3.850469884424377*^9}, {3.850469944232094*^9, 3.850469963452571*^9}, {
+   3.850470021275915*^9, 3.850470029700014*^9}, {3.850470135712941*^9, 
+   3.850470167980386*^9}, {3.8504702375247507`*^9, 3.850470319500267*^9}, {
+   3.850470388765177*^9, 3.8504703916707163`*^9}, {3.850547307635826*^9, 
+   3.850547375525422*^9}, {3.853303205493228*^9, 3.853303208663948*^9}, {
+   3.854771544963202*^9, 3.854771565313878*^9}, {3.854771917167302*^9, 
+   3.854771959448677*^9}},
+ CellLabel->"In[73]:=",ExpressionUUID->"8727c219-84a8-4042-a723-3eac01f615b0"]
+},
+WindowSize->{808, 685},
+WindowMargins->{{Automatic, 180}, {Automatic, 4}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"3153a1c7-776c-417e-af2b-ce22605a1838"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 31661, 723, 1243, "Code",ExpressionUUID->"8727c219-84a8-4042-a723-3eac01f615b0"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
