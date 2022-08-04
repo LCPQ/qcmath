@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     83147,       1435]
-NotebookOptionsPosition[     82633,       1417]
-NotebookOutlinePosition[     83059,       1434]
-CellTagsIndexPosition[     83016,       1431]
+NotebookDataLength[     83758,       1445]
+NotebookOptionsPosition[     83247,       1427]
+NotebookOutlinePosition[     83670,       1444]
+CellTagsIndexPosition[     83627,       1441]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -190,8 +190,8 @@ Cell[BoxData[
         RowBox[{"Write", "[", 
          RowBox[{"sfile", ",", 
           RowBox[{
-          "atoms", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
-          ",", "\"\< \>\"", ",", 
+          "mol", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+          "\"\< \>\"", ",", 
           RowBox[{"Row", "[", 
            RowBox[{
             RowBox[{"xyz", "\[LeftDoubleBracket]", 
@@ -242,6 +242,14 @@ Cell[BoxData[
        RowBox[{"{", 
         RowBox[{"\"\<./integrals.sh\>\"", ",", "basis"}], "}"}], "]"}], ";", 
       "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+       "Read", " ", "the", " ", "basis", " ", "and", " ", "return", " ", 
+        "the", " ", "number", " ", "of", " ", "basis", " ", "functions"}], 
+       "*)"}], "\n", 
+      RowBox[{
+      "NotebookEvaluate", "[", 
+       "\"\<~/Work/qcmath/src/utils/read_basis.nb\>\"", "]"}], ";", "\n", 
       RowBox[{"nocc", "=", 
        RowBox[{
         RowBox[{"(", 
@@ -250,11 +258,7 @@ Cell[BoxData[
       RowBox[{"nvac", "=", 
        RowBox[{"nbasis", "-", "nocc"}]}], ";", " ", 
       RowBox[{"nS", "=", 
-       RowBox[{"nocc", "*", "nvac"}]}], ";", " ", 
-      RowBox[{"n\[Alpha]", "=", 
-       RowBox[{"Nelc", "/", "2"}]}], ";", " ", 
-      RowBox[{"n\[Beta]", "=", 
-       RowBox[{"Nelc", "/", "2"}]}], ";", "\n", "\n", 
+       RowBox[{"nocc", "*", "nvac"}]}], ";", " ", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"nuclear", " ", "energy"}], "*)"}], "\n", 
       RowBox[{"Enuc", "=", 
@@ -605,7 +609,7 @@ Cell[BoxData[
       RowBox[{"restricted", "=", "False"}], ";", "\n", 
       RowBox[{"unrestricted", "=", "False"}], ";", "\n", "\n", 
       RowBox[{"(*", "methods", "*)"}], "\n", 
-      RowBox[{"methodRHF", "=", "False"}], ";", "\n", "\n", "\n", 
+      RowBox[{"methodRHF", "=", "False"}], ";", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"Definition", " ", "the", " ", "desired", " ", "methods"}], 
        "*)"}], "\n", 
@@ -1410,13 +1414,19 @@ Cell[BoxData[
    3.8642843659386187`*^9, 3.864284454132587*^9}, {3.864284486715407*^9, 
    3.864284490300953*^9}, {3.864284682958343*^9, 3.864284695127687*^9}, {
    3.864284853860194*^9, 3.864284898907833*^9}, {3.864286954123251*^9, 
-   3.86428700303596*^9}, {3.864287775828964*^9, 
-   3.86428778052111*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
+   3.86428700303596*^9}, {3.864287775828964*^9, 3.86428778052111*^9}, 
+   3.868419518661227*^9, {3.868422195619293*^9, 3.868422211028113*^9}, {
+   3.868430178083535*^9, 3.868430185465061*^9}, {3.868430242100836*^9, 
+   3.868430261274766*^9}, {3.868430375044758*^9, 3.8684304154532967`*^9}, {
+   3.86843048926512*^9, 3.8684305945310497`*^9}, 3.868430664577525*^9, {
+   3.868430784444726*^9, 3.8684307846458282`*^9}, {3.8684342323742247`*^9, 
+   3.8684342803150387`*^9}, {3.868518455540604*^9, 
+   3.8685185270935907`*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
 2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{1306, 748},
-WindowMargins->{{Automatic, -108}, {16, Automatic}},
+WindowMargins->{{Automatic, 0}, {Automatic, 17}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -1435,7 +1445,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 67, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 81872, 1387, 5616, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 82486, 1397, 5645, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]
