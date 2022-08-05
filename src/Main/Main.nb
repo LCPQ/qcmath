@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     83758,       1445]
-NotebookOptionsPosition[     83247,       1427]
-NotebookOutlinePosition[     83670,       1444]
-CellTagsIndexPosition[     83627,       1441]
+NotebookDataLength[     84391,       1455]
+NotebookOptionsPosition[     83881,       1437]
+NotebookOutlinePosition[     84303,       1454]
+CellTagsIndexPosition[     84260,       1451]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -98,7 +98,7 @@ Cell[BoxData[
        "typeRegularization", ",", "DiagElt", ",", "\[Epsilon]p", ",", "conf", 
        ",", "weights", ",", "eG0W0ww", "\n", ",", "restricted", ",", 
        "unrestricted", ",", "mol", ",", "xyz", ",", "nAt", ",", "Znuc", ",", 
-       "elements"}], "}"}], ",", "\n", "\n", "\n", 
+       "elements", ",", "nbasis"}], "}"}], ",", "\n", "\n", "\n", 
      RowBox[{"(*", 
       RowBox[{
       "Get", " ", "the", " ", "molecule", " ", "file", " ", "with", " ", "a", 
@@ -209,8 +209,8 @@ Cell[BoxData[
       RowBox[{"RunProcess", "[", 
        RowBox[{"{", 
         RowBox[{
-        "\"\<./electron.sh\>\"", ",", "molecule", ",", "multiplicity"}], 
-        "}"}], "]"}], ";", " ", 
+        "\"\<./electron.sh\>\"", ",", "basis", ",", "molecule", ",", 
+         "multiplicity"}], "}"}], "]"}], ";", " ", 
       RowBox[{"(*", 
        RowBox[{
         RowBox[{
@@ -241,7 +241,8 @@ Cell[BoxData[
       RowBox[{"RunProcess", "[", 
        RowBox[{"{", 
         RowBox[{"\"\<./integrals.sh\>\"", ",", "basis"}], "}"}], "]"}], ";", 
-      "\n", "\n", 
+      "\n", 
+      RowBox[{"Print", "[", "basis", "]"}], ";", "\n", 
       RowBox[{"(*", 
        RowBox[{
        "Read", " ", "the", " ", "basis", " ", "and", " ", "return", " ", 
@@ -250,6 +251,10 @@ Cell[BoxData[
       RowBox[{
       "NotebookEvaluate", "[", 
        "\"\<~/Work/qcmath/src/utils/read_basis.nb\>\"", "]"}], ";", "\n", 
+      RowBox[{"nbasis", "=", 
+       RowBox[{"readBasis", "[", 
+        RowBox[{"nAt", ",", "xyz"}], "]"}]}], ";", "\n", 
+      RowBox[{"Print", "[", "nbasis", "]"}], ";", "\n", 
       RowBox[{"nocc", "=", 
        RowBox[{
         RowBox[{"(", 
@@ -1420,13 +1425,18 @@ Cell[BoxData[
    3.868430261274766*^9}, {3.868430375044758*^9, 3.8684304154532967`*^9}, {
    3.86843048926512*^9, 3.8684305945310497`*^9}, 3.868430664577525*^9, {
    3.868430784444726*^9, 3.8684307846458282`*^9}, {3.8684342323742247`*^9, 
-   3.8684342803150387`*^9}, {3.868518455540604*^9, 
-   3.8685185270935907`*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
-2b85bb5dd0be"]
+   3.8684342803150387`*^9}, {3.868518455540604*^9, 3.8685185270935907`*^9}, {
+   3.868519611602038*^9, 3.868519638949562*^9}, {3.868519719242358*^9, 
+   3.868519721406098*^9}, {3.868680136647325*^9, 3.8686801398463593`*^9}, {
+   3.868680517619722*^9, 3.868680520631188*^9}, {3.8686893379489613`*^9, 
+   3.8686893568379498`*^9}, {3.868695458770875*^9, 3.868695461522048*^9}, {
+   3.8686984083172417`*^9, 3.8686984097041616`*^9}},
+ CellLabel->
+  "In[1001]:=",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{1306, 748},
-WindowMargins->{{Automatic, 0}, {Automatic, 17}},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -1445,7 +1455,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 67, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 82486, 1397, 5645, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 83120, 1407, 5703, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]
