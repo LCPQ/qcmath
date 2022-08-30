@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     86242,       1500]
-NotebookOptionsPosition[     85732,       1482]
-NotebookOutlinePosition[     86154,       1499]
-CellTagsIndexPosition[     86111,       1496]
+NotebookDataLength[     85443,       1478]
+NotebookOptionsPosition[     84933,       1460]
+NotebookOutlinePosition[     85355,       1477]
+CellTagsIndexPosition[     85312,       1474]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -246,8 +246,7 @@ Cell[BoxData[
       RowBox[{"RunProcess", "[", 
        RowBox[{"{", 
         RowBox[{"\"\<./integrals.sh\>\"", ",", "basis"}], "}"}], "]"}], ";", 
-      "\n", 
-      RowBox[{"Print", "[", "basis", "]"}], ";", "\n", 
+      "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{
        "Read", " ", "the", " ", "basis", " ", "and", " ", "return", " ", 
@@ -258,8 +257,7 @@ Cell[BoxData[
        "\"\<~/Work/qcmath/src/utils/read_basis.nb\>\"", "]"}], ";", "\n", 
       RowBox[{"nbasis", "=", 
        RowBox[{"readBasis", "[", 
-        RowBox[{"nAt", ",", "xyz"}], "]"}]}], ";", "\n", 
-      RowBox[{"Print", "[", "nbasis", "]"}], ";", "\n", 
+        RowBox[{"nAt", ",", "xyz"}], "]"}]}], ";", "\n", "\n", 
       RowBox[{"nocc", "=", 
        RowBox[{
         RowBox[{"(", 
@@ -653,27 +651,6 @@ Cell[BoxData[
         RowBox[{"{", 
          RowBox[{"i", ",", 
           RowBox[{"Length", "[", "methods", "]"}]}], "}"}]}], "]"}], ";", 
-      "\n", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{"If", "[", 
-         RowBox[{
-          RowBox[{
-           RowBox[{
-           "methods", "\[LeftDoubleBracket]", "\"\<RHF\>\"", 
-            "\[RightDoubleBracket]"}], "\[Equal]", "True"}], ",", 
-          RowBox[{
-           RowBox[{"methodRHF", "=", "True"}], ";", 
-           RowBox[{"restricted", "=", "True"}]}]}], "]"}], ";", "\n", 
-        RowBox[{"If", "[", 
-         RowBox[{
-          RowBox[{
-           RowBox[{
-           "methods", "\[LeftDoubleBracket]", "\"\<UHF\>\"", 
-            "\[RightDoubleBracket]"}], "\[Equal]", "True"}], ",", 
-          RowBox[{
-           RowBox[{"methodUHF", "=", "True"}], ";", 
-           RowBox[{"unrestricted", "=", "True"}]}]}], "]"}], ";"}], "*)"}], 
       "\n", "\n", 
       RowBox[{"DIISex", "=", "False"}], ";", "\n", 
       RowBox[{"singlet", "=", "True"}], ";", "\n", 
@@ -1475,8 +1452,9 @@ Cell[BoxData[
    3.870832453820715*^9}, {3.870833010410067*^9, 3.870833044572134*^9}, {
    3.87083432873943*^9, 3.870834360319821*^9}, {3.870835312182024*^9, 
    3.870835334914525*^9}, {3.870835394403729*^9, 3.8708354074554768`*^9}, {
-   3.870835617114109*^9, 
-   3.870835617535468*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
+   3.870835617114109*^9, 3.870835617535468*^9}, 3.870855082466139*^9, {
+   3.870859135799367*^9, 
+   3.870859154931733*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
 2b85bb5dd0be"]
 }, Open  ]]
 },
@@ -1500,7 +1478,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 67, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 84971, 1452, 5877, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 84172, 1430, 5819, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]

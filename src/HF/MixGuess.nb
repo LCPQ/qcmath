@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5364,        149]
-NotebookOptionsPosition[      4852,        131]
-NotebookOutlinePosition[      5279,        148]
-CellTagsIndexPosition[      5236,        145]
+NotebookDataLength[      6233,        168]
+NotebookOptionsPosition[      5722,        150]
+NotebookOutlinePosition[      6148,        167]
+CellTagsIndexPosition[      6105,        164]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -30,8 +30,8 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"Mix", "[", 
     RowBox[{
-    "n\[Alpha]_", ",", "n\[Beta]_", ",", "Ca_", ",", "Cb_", ",", 
-     "\[Theta]_"}], "]"}], ":=", 
+    "nbasis_", ",", "n\[Alpha]_", ",", "n\[Beta]_", ",", "Ca_", ",", "Cb_", 
+     ",", "\[Theta]_"}], "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -101,20 +101,33 @@ Cell[BoxData[
         RowBox[{";;", ",", 
          RowBox[{"n\[Beta]", "+", "1"}]}], "\[RightDoubleBracket]"}], "=", 
        "LUMOb"}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{
+        "To", " ", "avoid", " ", "any", " ", "problem", " ", "when", " ", 
+         "n\[Beta]"}], "=", "0"}], "*)"}], "\n", 
+      RowBox[{"Orbb", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{"0", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "nbasis"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", 
       RowBox[{"Orbb", "=", 
        RowBox[{
         RowBox[{"Take", "[", 
          RowBox[{
-          RowBox[{"newCb", "\[Transpose]"}], ",", "n\[Beta]"}], "]"}], 
-        "\[Transpose]"}]}], ";", "\n", "\n", 
-      RowBox[{"(*", 
+          RowBox[{"Orbb", "\[Transpose]"}], ",", "n\[Alpha]"}], "]"}], 
+        "\[Transpose]"}]}], ";", "\n", 
+      RowBox[{"If", "[", 
        RowBox[{
-        RowBox[{"Mixquantities", "=", 
-         RowBox[{"Association", "[", 
-          RowBox[{
-           RowBox[{"\"\<Orba\>\"", "\[Rule]", "Orba"}], ",", 
-           RowBox[{"\"\<Orbb\>\"", "\[Rule]", "Orbb"}]}], "]"}]}], ";"}], 
-       "*)"}], "\n", "\n", 
+        RowBox[{"n\[Beta]", "\[NotEqual]", "0"}], ",", 
+        RowBox[{"Orbb", "=", 
+         RowBox[{
+          RowBox[{"Take", "[", 
+           RowBox[{
+            RowBox[{"newCb", "\[Transpose]"}], ",", "n\[Beta]"}], "]"}], 
+          "\[Transpose]"}]}]}], "]"}], ";", "\n", "\n", 
       RowBox[{"Return", "[", 
        RowBox[{"{", 
         RowBox[{"Orba", ",", "Orbb"}], "}"}], "]"}]}]}], "]"}]}], 
@@ -125,13 +138,19 @@ Cell[BoxData[
    3.832824119062763*^9, 3.832824224033639*^9}, {3.832824316735371*^9, 
    3.832824328880739*^9}, {3.832824363140912*^9, 3.832824364256065*^9}, 
    3.832824438658744*^9, {3.83282501674193*^9, 3.832825018025172*^9}, {
-   3.832830033671015*^9, 3.832830048898601*^9}},
- CellLabel->"In[11]:=",ExpressionUUID->"6a2d7a58-5bef-429d-983a-fffb956b4089"]
-}, Closed]]
+   3.832830033671015*^9, 3.832830048898601*^9}, {3.870849136037161*^9, 
+   3.8708491419966183`*^9}, {3.87085002244991*^9, 3.8708500247520514`*^9}, {
+   3.870850540788075*^9, 3.870850544886355*^9}, {3.870853065052537*^9, 
+   3.870853065172001*^9}, {3.870854421086125*^9, 3.870854445673079*^9}, 
+   3.870854568460338*^9, {3.870856478183165*^9, 3.870856498954468*^9}, {
+   3.8708585737831583`*^9, 3.870858622982191*^9}, {3.870859078174385*^9, 
+   3.87085910108525*^9}},ExpressionUUID->"6a2d7a58-5bef-429d-983a-\
+fffb956b4089"]
+}, Open  ]]
 },
-WindowSize->{808, 686},
-WindowMargins->{{Automatic, 245}, {-177, Automatic}},
-Magnification:>1.25 Inherited,
+WindowSize->{1170, 739},
+WindowMargins->{{88, Automatic}, {-175, Automatic}},
+Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"42590c8f-26e7-449b-9d3f-7251ad94db75"
@@ -148,12 +167,10 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 160, 3, 56, "Subsubsection",ExpressionUUID->"21aa1384-aa1e-4bfc-b88c-8c7cecf4633b"],
-Cell[743, 27, 4093, 101, 714, "Code",ExpressionUUID->"6a2d7a58-5bef-429d-983a-fffb956b4089"]
-}, Closed]]
+Cell[580, 22, 160, 3, 67, "Subsubsection",ExpressionUUID->"21aa1384-aa1e-4bfc-b88c-8c7cecf4633b"],
+Cell[743, 27, 4963, 120, 891, "Code",ExpressionUUID->"6a2d7a58-5bef-429d-983a-fffb956b4089"]
+}, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
