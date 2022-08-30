@@ -1,0 +1,14 @@
+
+(library
+ (name mo)
+ (public_name qcaml.mo)
+ (synopsis 
+"Molecular orbitals"
+  )
+ (libraries
+  qcaml.simulation
+  )
+ 
+ 
+)
+

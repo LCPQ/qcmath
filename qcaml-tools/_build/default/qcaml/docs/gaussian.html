@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-10-19 Tue 16:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gaussian</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Anthony Scemama" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" title="Standard" href="qcaml.css" type="text/css" />
+
+<script type="text/javascript" src="org-info.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "index.html");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+// @license-end
+</script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">Gaussian</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org458f6db">1. Summary</a></li>
+<li><a href="#org000b493">2. Atomic shell</a>
+<ul>
+<li><a href="#orgd5a7f6d">2.1. Type</a></li>
+<li><a href="#org3d580ec">2.2. Access</a></li>
+<li><a href="#org2a3c76d">2.3. Creation</a></li>
+<li><a href="#orge3b7bbf">2.4. Printers</a></li>
+</ul>
+</li>
+<li><a href="#org403784b">3. Atomic shell pair couple</a>
+<ul>
+<li><a href="#orgd59f48c">3.1. Type</a></li>
+<li><a href="#org044c217">3.2. Access</a></li>
+<li><a href="#org6a9efbf">3.3. Creation</a></li>
+<li><a href="#orgcabf1a1">3.4. Printers</a></li>
+</ul>
+</li>
+<li><a href="#org6e4ac83">4. Atomic shell pair</a>
+<ul>
+<li><a href="#org9a03038">4.1. Type</a></li>
+<li><a href="#org9072da8">4.2. Access</a></li>
+<li><a href="#orgf7291bd">4.3. Creation</a></li>
+<li><a href="#orge4f55f1">4.4. Printers</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org458f6db" class="outline-2">
+<h2 id="org458f6db"><span class="section-number-2">1</span> Summary</h2>
+</div>
+
+<div id="outline-container-org000b493" class="outline-2">
+<h2 id="org000b493"><span class="section-number-2">2</span> Atomic shell</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Set of contracted Gaussians differing only by the powers of \(x\), \(y\) and \(z\), with a
+constant <code>Angular_momentum.t</code>, all centered on the same point.
+</p>
+
+<p>
+In other words, it is the set of all contracted shells sharing the same center.
+</p>
+
+\begin{align*}
+\chi_{n_x,n_y,n_z}(r) & = f(n_x,n_y,n_z) \sum_{j=1}^{n} \sum_{i=1}^{m} \mathcal{N}_{ij}\, d_{ij}\, g_{ij\,n_x,n_y,n_z}(r) \\
+        & = (x-X_A)^{n_x} (y-Y_A)^{n_y} (z-Z_A)^{n_z} f(n_x,n_y,n_z) \sum_{j=1}^{n} \sum_{i=1}^{m} \mathcal{N}_{ij}\, d_{ij}\, \exp \left( -\alpha_{ij} |r-R_A|^2 \right)
+\end{align*}
+
+<p>
+where:
+</p>
+
+<ul class="org-ul">
+<li>\(g_{ij\,n_x,n_y,n_z}(r)\) is the $i$-th <code>PrimitiveShell.t</code> of the $j$-th <code>Contracted_shell.t</code></li>
+<li>\(n_x + n_y + n_z = l\), the total angular momentum</li>
+<li>\(\alpha_{ij}\) are the exponents (tabulated) of the $j$-th <code>Contracted_shell.t</code></li>
+<li>\(d_{ij}\) are the contraction coefficients of the $j$-th <code>Contracted_shell.t</code></li>
+<li>\(\mathcal{N}_{ij}\) is the normalization coefficient of the $i$-th primitive shell
+(<code>PrimitiveShell.norm_coef</code>) of the $j$-th <code>Contracted_shell.t</code></li>
+<li>\(f(n_x,n_y,n_z)\) is a scaling factor adjusting the normalization coefficient for the
+particular powers of \(x,y,z\) (<code>PrimitiveShell.norm_coef_scale</code>)</li>
+</ul>
+</div>
+
+
+<div id="outline-container-orgd5a7f6d" class="outline-3">
+<h3 id="orgd5a7f6d"><span class="section-number-3">2.1</span> Type</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
+
+<span class="org-tuareg-font-lock-governing">open </span><span class="org-tuareg-font-lock-module">Common</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3d580ec" class="outline-3">
+<h3 id="org3d580ec"><span class="section-number-3">2.2</span> Access</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">ang_mom</span>           <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Angular_momentum.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">center</span>            <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Coordinate.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">coefficients</span>      <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float array array
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">contracted_shells</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Contracted_shell.</span>t array
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">exponents</span>         <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float array array
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">index</span>             <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">normalizations</span>    <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float array array
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">norm_scales</span>       <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float array
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">size_of_shell</span>     <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">size</span>              <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>ang_mom</code></td>
+<td class="org-left">Total angular momentum : \(l = n_x + n_y + n_z\).</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>center</code></td>
+<td class="org-left">Coordinate of the center \(\mathbf{A} = (X_A,Y_A,Z_A)\).</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>coefficients</code></td>
+<td class="org-left">Array of contraction coefficients \(d_{ij}\). The first index is the index of the contracted function, and the second index is the index of the primitive.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>contracted_shells:</code></td>
+<td class="org-left">Array of contracted gaussians</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>exponents</code></td>
+<td class="org-left">Array of exponents \(\alpha_{ij}\). The first index is the index of the contracted function, and the second index is the index of the primitive.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>index</code></td>
+<td class="org-left">Index in the basis set, represented as an array of contracted shells.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>normalizations</code></td>
+<td class="org-left">Normalization coefficients \(\mathcal{N}_{ij}\). The first index is the index of the contracted function, and the second index is the index of the primitive.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>norm_scales</code></td>
+<td class="org-left">Scaling factors \(f(n_x,n_y,n_z)\), given in the same order as <code>Angular_momentum.zkey_array ang_mom</code>.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>size</code></td>
+<td class="org-left">Number of contracted functions, \(n\) in the definition.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>size_of_shell</code></td>
+<td class="org-left">Number of contracted functions in the shell: length of <code>norm_coef_scale</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<pre class="example" id="org1efe2a1">
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2a3c76d" class="outline-3">
+<h3 id="org2a3c76d"><span class="section-number-3">2.3</span> Creation</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">make</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-label">?index</span><span class="org-tuareg-font-lock-operator">:</span>int <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Contracted_shell.</span>t array <span class="org-tuareg-font-lock-operator">-&gt;</span> t 
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">with_index</span>  <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>make</code></td>
+<td class="org-left">Creates a contracted shell from a list of coefficients and primitives.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>with_index</code></td>
+<td class="org-left">Returns a copy of the contracted shell with a modified index.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orge3b7bbf" class="outline-3">
+<h3 id="orge3b7bbf"><span class="section-number-3">2.4</span> Printers</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org403784b" class="outline-2">
+<h2 id="org403784b"><span class="section-number-2">3</span> Atomic shell pair couple</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+An atomic shell pair couple is the cartesian product between two sets of functions, one
+set over electron one and one set over electron two. Both sets are atomic shell
+pairs.
+</p>
+
+<p>
+These are usually called <i>shell quartets</i> in the literature, but we prefer to use
+<i>pair</i> for two functions with the same electron, and <i>couple</i> for two functions
+acting on different electrons, since they will be coupled by a two-electron operator.
+</p>
+</div>
+
+
+<div id="outline-container-orgd59f48c" class="outline-3">
+<h3 id="orgd59f48c"><span class="section-number-3">3.1</span> Type</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
+
+<span class="org-tuareg-font-lock-governing">open </span><span class="org-tuareg-font-lock-module">Common</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org044c217" class="outline-3">
+<h3 id="org044c217"><span class="section-number-3">3.2</span> Access</h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">ang_mom</span>                       <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Angular_momentum.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">atomic_shell_a</span>                <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">atomic_shell_b</span>                <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">atomic_shell_c</span>                <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">atomic_shell_d</span>                <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">atomic_shell_pair_p</span>           <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell_pair.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">atomic_shell_pair_q</span>           <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell_pair.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">contracted_shell_pair_couples</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Contracted_shell_pair_couple.</span>t list
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">monocentric</span>                   <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> bool
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">norm_scales</span>                   <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float array
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">zkey_array</span>                    <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Zkey.</span>t array
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>ang_mom</code></td>
+<td class="org-left">Total angular momentum of the shell pair couple: sum of the angular momenta of all the shells.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>atomic_shell_a</code></td>
+<td class="org-left">Returns the first atomic shell of the first shell pair.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>atomic_shell_b</code></td>
+<td class="org-left">Returns the second atomic shell of the first shell pair.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>atomic_shell_c</code></td>
+<td class="org-left">Returns the first atomic shell of the second shell pair.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>atomic_shell_d</code></td>
+<td class="org-left">Returns the second atomic shell of the second shell pair.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>atomic_shell_pair_p</code></td>
+<td class="org-left">Returns the first atomic shell pair that was used to build the shell pair.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>atomic_shell_pair_q</code></td>
+<td class="org-left">Returns the second atomic shell pair that was used to build the shell pair.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>contracted_shell_pair_couples</code></td>
+<td class="org-left">Returns the list of significant contracted shell pair couples.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>monocentric</code></td>
+<td class="org-left">True if all four atomic shells have the same center.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>norm_scales</code></td>
+<td class="org-left">Scaling factors of normalization coefficients inside the shell. The ordering is the same as <code>zkey_array</code>.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>zkey_array</code></td>
+<td class="org-left">Returns the array of <code>Zkey.t</code> relative to the four shells of the shell pair couple.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org6a9efbf" class="outline-3">
+<h3 id="org6a9efbf"><span class="section-number-3">3.3</span> Creation</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">make</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-label">?cutoff</span><span class="org-tuareg-font-lock-operator">:</span>float <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell_pair.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell_pair.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> t option
+</pre>
+</div>
+<p>
+Default cutoff is \(\epsilon\).
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>make</code></td>
+<td class="org-left">Creates an atomic shell pair couple using two atomic shell pairs.</td>
+</tr>
+</tbody>
+</table>
+
+<pre class="example" id="org406c3a5">
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgcabf1a1" class="outline-3">
+<h3 id="orgcabf1a1"><span class="section-number-3">3.4</span> Printers</h3>
+<div class="outline-text-3" id="text-3-4">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6e4ac83" class="outline-2">
+<h2 id="org6e4ac83"><span class="section-number-2">4</span> Atomic shell pair</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Data structure to represent pairs of atomic shells. The products of
+functions in the shell pair are one-electron functions.
+</p>
+
+<p>
+An atomic shell pair is an array of pairs of contracted shells.
+</p>
+</div>
+
+<div id="outline-container-org9a03038" class="outline-3">
+<h3 id="org9a03038"><span class="section-number-3">4.1</span> Type</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
+
+<span class="org-tuareg-font-lock-governing">open </span><span class="org-tuareg-font-lock-module">Common</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9072da8" class="outline-3">
+<h3 id="org9072da8"><span class="section-number-3">4.2</span> Access</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">atomic_shell_a</span>         <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">atomic_shell_b</span>         <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">contracted_shell_pairs</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Contracted_shell_pair.</span>t list
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">ang_mom</span>                <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Angular_momentum.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">monocentric</span>            <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> bool
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">norm_scales</span>            <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float array
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">a_minus_b</span>              <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Coordinate.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">a_minus_b_sq</span>           <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>atomic_shell_a</code></td>
+<td class="org-left">Returns the first  <code>Atomic_shell.t</code> which was used to build the atomic shell pair.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>atomic_shell_b</code></td>
+<td class="org-left">Returns the second <code>Atomic_shell.t</code> which was used to build the atomic shell pair.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>contracted_shell_pairs</code></td>
+<td class="org-left">Returns an array of <code>ContractedShellPair.t</code>, containing all the pairs of contracted functions used to build the atomic shell pair.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>norm_scales</code></td>
+<td class="org-left">norm<sub>coef</sub>.(i) / norm<sub>coef</sub>.(0)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ang_mom</code></td>
+<td class="org-left">Total angular Momentum</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>monocentric</code></td>
+<td class="org-left">If true, the two atomic shells have the same center.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a_minus_b</code></td>
+<td class="org-left">Returns \(A-B\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a_minus_b_sq</code></td>
+<td class="org-left">Returns \(\vert A-B \vert^2\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgf7291bd" class="outline-3">
+<h3 id="orgf7291bd"><span class="section-number-3">4.3</span> Creation</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">make</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-label">?cutoff</span><span class="org-tuareg-font-lock-operator">:</span>float <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> t option
+</pre>
+</div>
+
+<p>
+Creates an atomic shell pair from two atomic shells.
+</p>
+
+<p>
+The contracted shell pairs contains the only pairs of primitives for which
+the norm is greater than <code>cutoff</code>. 
+</p>
+
+<p>
+If all the contracted shell pairs are not significant, the function returns
+<code>None</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_atomic_shell_array</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-label">?cutoff</span><span class="org-tuareg-font-lock-operator">:</span>float <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Atomic_shell.</span>t array <span class="org-tuareg-font-lock-operator">-&gt;</span> t option array array
+</pre>
+</div>
+
+<p>
+Creates all possible atomic shell pairs from an array of atomic shells.
+If an atomic shell pair is not significant, sets the value to <code>None</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge4f55f1" class="outline-3">
+<h3 id="orge4f55f1"><span class="section-number-3">4.4</span> Printers</h3>
+<div class="outline-text-3" id="text-4-4">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Anthony Scemama</p>
+<p class="date">Created: 2021-10-19 Tue 16:20</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

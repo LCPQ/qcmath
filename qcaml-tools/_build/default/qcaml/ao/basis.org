@@ -1,0 +1,255 @@
+#+begin_src elisp tangle: no :results none :exports none
+(setq pwd (file-name-directory buffer-file-name))
+(setq name (file-name-nondirectory (substring buffer-file-name 0 -4)))
+(setq lib (concat pwd "lib/"))
+(setq testdir (concat pwd "test/"))
+(setq mli (concat lib name ".mli"))
+(setq ml  (concat lib name ".ml"))
+(setq test-ml  (concat testdir name ".ml"))
+(org-babel-tangle)
+#+end_src 
+
+* Basis
+  :PROPERTIES:
+  :header-args: :noweb yes :comments both
+  :END:
+
+  Data structure for Atomic Orbitals.
+  
+** Dimensions                                                     :noexport:
+
+   #+begin_src ocaml :tangle lib/ao_dim.mli :exports none
+type t
+   #+end_src
+
+** Polymorphic types
+
+   <<<~Basis.t~>>>
+   #+NAME: types
+   #+begin_src ocaml :tangle lib/basis_poly.mli
+type t =
+  | Unknown
+  | Gaussian of Basis_gaussian.t
+   #+end_src
+
+   #+begin_src ocaml :tangle lib/basis_poly.ml :exports none
+<<types>>
+   #+end_src
+
+** Types
+
+   <<<~Basis.t~>>>
+   #+begin_src ocaml :tangle (eval mli)
+type t
+type ao = Ao_dim.t 
+
+open Common
+open Particles
+open Operators
+open Linear_algebra
+   #+end_src
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+type t =
+  { ao_basis : Basis_poly.t  ;
+    cartesian : bool
+  }
+
+type ao = Ao_dim.t
+
+open Linear_algebra
+open Common             
+   #+end_src
+
+** Conversions
+
+   #+begin_src ocaml :tangle (eval mli)
+val of_nuclei_and_basis_filename :
+  ?kind:[> `Gaussian ] ->
+  ?operators:Operator.t list ->
+  ?cartesian:bool ->
+  nuclei:Nuclei.t ->
+  string ->
+  t
+   #+end_src
+
+   |--------------------------------+------------------------------------------------------------------------------------------------------------------------|
+   | ~of_nuclei_and_basis_filename~ | Creates the data structure for the atomic orbitals basis from a molecule ~Nuclei.t~ and the name of the basis-set file |
+   |--------------------------------+------------------------------------------------------------------------------------------------------------------------|
+
+   Defaults:
+   - ~kind~ : ~`Gaussian~
+   - ~operators~ : ~[]~
+   - ~cartesian~ : ~false~
+
+   Example:
+   #+begin_example
+let b = Ao.Basis.of_nuclei_and_basis_filename ~nuclei filename;;
+val b : Ao.Basis.t = Gaussian Basis, spherical, 15 AOs
+   #+end_example
+   
+   #+begin_src ocaml :tangle (eval ml) :exports none
+let of_nuclei_and_basis_filename ?(kind=`Gaussian) ?operators ?(cartesian=false)
+    ~nuclei filename =
+  match kind with
+  | `Gaussian ->
+      let basis =
+        Gaussian.Basis.of_nuclei_and_basis_filename  ~nuclei filename
+      in
+      let ao_basis = 
+        Basis_poly.Gaussian (Basis_gaussian.make ~basis ?operators ~cartesian nuclei )
+      in
+      { ao_basis ; cartesian }
+  | _ -> failwith "of_nuclei_and_basis_filename needs to be called with `Gaussian"
+   #+end_src
+
+   
+** Access
+
+   #+begin_src ocaml :tangle (eval mli)
+val size              : t -> int
+val ao_basis          : t -> Basis_poly.t
+val overlap           : t -> (ao,ao) Matrix.t
+val multipole         : t -> string -> (ao,ao) Matrix.t
+val ortho             : t -> (ao,'a) Matrix.t
+val eN_ints           : t -> (ao,ao) Matrix.t
+val kin_ints          : t -> (ao,ao) Matrix.t
+val ee_ints           : t -> ao Four_idx_storage.t
+val ee_lr_ints        : t -> ao Four_idx_storage.t
+val f12_ints          : t -> ao Four_idx_storage.t
+val f12_over_r12_ints : t -> ao Four_idx_storage.t
+val cartesian         : t -> bool
+val values            : t -> Coordinate.t -> ao Vector.t
+   #+end_src
+
+   |---------------------+--------------------------------------------------|
+   | ~size~              | Number of atomic orbitals in the AO basis set    |
+   | ~ao_basis~          | One-electron basis set                           |
+   | ~overlap~           | Overlap matrix                                   |
+   | ~multipole~         | Multipole matrices                               |
+   | ~ortho~             | Orthonormalization matrix of the overlap         |
+   | ~eN_ints~           | Electron-nucleus potential integrals             |
+   | ~kin_ints~          | Kinetic energy integrals                         |
+   | ~ee_ints~           | Electron-electron potential integrals            |
+   | ~ee_lr_ints~        | Electron-electron long-range potential integrals |
+   | ~f12_ints~          | Electron-electron potential integrals            |
+   | ~f12_over_r12_ints~ | Electron-electron potential integrals            |
+   | ~cartesian~         | If true, use cartesian Gaussians (6d, 10f, ...)  |
+   | ~values~            | Values of the AOs evaluated at a given point     |
+   |---------------------+--------------------------------------------------|
+
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+let not_implemented () =
+  Util.not_implemented "Only Gaussian is implemented"
+  
+let ao_basis t = t.ao_basis
+                    
+let size t = 
+  match t.ao_basis with
+  | Basis_poly.Gaussian b -> Basis_gaussian.size b
+  | _ -> not_implemented ()
+
+let overlap t =
+  begin
+    match t.ao_basis with
+    | Basis_poly.Gaussian b -> Basis_gaussian.overlap b
+    | _ -> not_implemented ()
+  end
+  |> Matrix.relabel
+       
+let multipole t =
+  begin
+    match t.ao_basis with
+    | Basis_poly.Gaussian b ->
+        let m = Basis_gaussian.multipole b in
+        fun s ->
+          Gaussian_integrals.Multipole.matrix m s
+          |> Matrix.relabel
+    | _ -> not_implemented ()
+  end
+       
+let ortho t =
+  begin
+    match t.ao_basis with
+    | Basis_poly.Gaussian b -> Basis_gaussian.ortho b
+    | _ -> not_implemented ()
+  end
+  |> Matrix.relabel
+       
+let eN_ints t =
+  begin
+    match t.ao_basis with
+    | Basis_poly.Gaussian b -> Basis_gaussian.eN_ints b
+    | _ -> not_implemented ()
+  end
+  |> Matrix.relabel
+       
+let kin_ints t =
+  begin
+    match t.ao_basis with
+    | Basis_poly.Gaussian b -> Basis_gaussian.kin_ints b
+    | _ -> not_implemented ()
+  end
+  |> Matrix.relabel
+       
+let ee_ints t =
+  begin
+    match t.ao_basis with
+    | Basis_poly.Gaussian b -> Basis_gaussian.ee_ints b
+    | _ -> not_implemented ()
+  end
+  |> Four_idx_storage.relabel
+       
+let ee_lr_ints t =
+  begin
+    match t.ao_basis with
+    | Basis_poly.Gaussian b -> Basis_gaussian.ee_lr_ints b
+    | _ -> not_implemented ()
+  end
+  |> Four_idx_storage.relabel
+       
+let f12_ints t =
+  begin
+    match t.ao_basis with
+    | Basis_poly.Gaussian b -> Basis_gaussian.f12_ints b
+    | _ -> not_implemented ()
+  end
+  |> Four_idx_storage.relabel
+       
+let f12_over_r12_ints t =
+  begin
+    match t.ao_basis with
+    | Basis_poly.Gaussian b -> Basis_gaussian.f12_over_r12_ints b
+    | _ -> not_implemented ()
+  end
+  |> Four_idx_storage.relabel
+       
+let cartesian t = t.cartesian
+                    
+
+let values t point =
+  begin
+    match t.ao_basis with
+    | Basis_poly.Gaussian b -> Basis_gaussian.values b point
+    | _ -> not_implemented ()
+  end
+  |> Vector.relabel
+       
+   #+end_src
+
+** Printers
+
+   #+begin_src ocaml :tangle (eval mli)
+val pp : Format.formatter -> t -> unit
+   #+end_src
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+let pp ppf t =
+  begin
+    match t.ao_basis with
+    | Basis_poly.Gaussian b -> Basis_gaussian.pp ppf b
+    | _ -> not_implemented ()
+  end
+   #+end_src
+

@@ -1,0 +1,13 @@
+
+(library
+ (name top)
+ (public_name qcaml.top)
+ (synopsis 
+"Installs pretty printers for top-level."
+  )
+ (modes byte)
+ (libraries
+  compiler-libs.toplevel 
+  qcaml
+ )
+)

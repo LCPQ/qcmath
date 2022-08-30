@@ -1,0 +1,99 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2715,         91]
+NotebookOptionsPosition[      2205,         73]
+NotebookOutlinePosition[      2631,         90]
+CellTagsIndexPosition[      2588,         87]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Parameters", "Subsubsection",
+ CellChangeTimes->{{3.8708327939020767`*^9, 
+  3.870832807978898*^9}},ExpressionUUID->"4f8fd34e-8d9c-43e6-9fd8-\
+a8578c4790ad"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"HaToeV", "=", "27.21138602"}], ";"}], "\n"}], "\n", 
+ RowBox[{
+  StyleBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Delta]", 
+      RowBox[{"l1_", ",", "l2_"}]], ":=", 
+     RowBox[{"KroneckerDelta", "[", 
+      RowBox[{"l1", ",", "l2"}], "]"}]}], ";"}],
+   InitializationCell->True], 
+  StyleBox["\n",
+   InitializationCell->True]}], "\n", 
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<MaTeX`\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SetOptions", "[", 
+    RowBox[{"MaTeX", ",", 
+     RowBox[{"\"\<Preamble\>\"", "\[Rule]", 
+      RowBox[{
+      "{", "\"\<\\\\usepackage{amssymb,amsmath,latexsym,amsfonts,amsthm,\
+mathpazo,xcolor,bm,mhchem,physics}\>\"", "}"}]}]}], "]"}], ";"}], 
+  "\n"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"SortEigensystem", "[", "eigsys_", "]"}], ":=", 
+    RowBox[{"Transpose", "[", 
+     RowBox[{"Sort", "[", 
+      RowBox[{"Transpose", "[", "eigsys", "]"}], "]"}], "]"}]}], ";"}], 
+  "\n"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"AntoBo", "=", "1.8897261255"}], ";"}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{"BoToAn", "=", "0.529177249"}], ";"}], "\n"}], "Code",
+ CellChangeTimes->{{3.87083283271751*^9, 3.8708328702537622`*^9}, {
+  3.8708331369498158`*^9, 3.8708331409312983`*^9}, {3.870833969233572*^9, 
+  3.870833980664678*^9}, {3.870834164606331*^9, 
+  3.870834191423266*^9}},ExpressionUUID->"7ad514de-1f9a-4cd6-ad52-\
+384b7fafbaa0"]
+}, Open  ]]
+},
+WindowSize->{808, 685},
+WindowMargins->{{288, Automatic}, {-143, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d0accd0b-a1c3-4fea-9592-d2208b2d95ba"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 163, 3, 67, "Subsubsection",ExpressionUUID->"4f8fd34e-8d9c-43e6-9fd8-a8578c4790ad"],
+Cell[746, 27, 1443, 43, 429, "Code",ExpressionUUID->"7ad514de-1f9a-4cd6-ad52-384b7fafbaa0"]
+}, Open  ]]
+}
+]
+*)
+

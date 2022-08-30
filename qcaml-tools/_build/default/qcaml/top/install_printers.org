@@ -1,0 +1,73 @@
+#+begin_src elisp tangle: no :results none :exports none
+(setq pwd (file-name-directory buffer-file-name))
+(setq name (file-name-nondirectory (substring buffer-file-name 0 -4)))
+(setq lib (concat pwd "lib/"))
+(setq testdir (concat pwd "test/"))
+(setq mli (concat lib name ".mli"))
+(setq ml  (concat lib name ".ml"))
+(setq test-ml  (concat testdir name ".ml"))
+(org-babel-tangle)
+#+end_src 
+
+
+* Intall printers                                                  :noexport:
+  :PROPERTIES:
+  :header-args: :noweb yes :comments both
+  :END:
+
+  Installs printers in the top-level environment.
+
+  All printers are fetched automatically.
+  
+  #+NAME: raw_printers
+  #+begin_src sh :results output raw :exports none
+grep "val pp " ../*/*.org \
+    | grep -v docs \
+    | cut -d ":" -f 1 \
+    | sed 's|^../||' \
+    | sed 's|.org||' \
+    | sed 's|/| |' \
+    | sed 's/[^ ]*/\u&/g' \
+    | sed 's| |.|' \
+    | grep -v Top.Install_printers
+  #+end_src
+
+  #+NAME: printers
+  #+begin_src python :results output raw :var p=raw_printers :exports none
+result = []
+for l in p.split():
+    dir, module = l.split('.')
+    if dir == module:
+        e = f'"{module}.pp" ;'
+    else:
+        e = f'"{dir}.{module}.pp" ;'
+    result.append(e)
+result = '\n'.join(result)
+print(result)
+  #+end_src
+
+  
+
+  #+begin_src ocaml :tangle (eval ml) :exports none
+let printers =
+  [
+    <<printers()>>
+  ]
+
+let eval_exn str =
+  let lexbuf = Lexing.from_string str in
+  let phrase = !Toploop.parse_toplevel_phrase lexbuf in
+  Toploop.execute_phrase false Format.err_formatter phrase
+
+
+let rec install_printers = function
+  | [] -> eval_exn "#require \"lacaml.top\";;"
+  | printer :: printers ->
+      let cmd = Printf.sprintf "#install_printer %s;;" printer in
+      eval_exn cmd && install_printers printers
+
+let () =
+  if not (install_printers printers) then
+    Format.eprintf "Problem installing QCaml-printers@."
+
+  #+end_src

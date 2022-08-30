@@ -1,0 +1,23 @@
+(** @canonical Mo.Basis *)
+module Basis = Mo__Basis
+
+(** @canonical Mo.Class *)
+module Class = Mo__Class
+
+(** @canonical Mo.Fock *)
+module Fock = Mo__Fock
+
+(** @canonical Mo.Frozen_core *)
+module Frozen_core = Mo__Frozen_core
+
+(** @canonical Mo.Guess *)
+module Guess = Mo__Guess
+
+(** @canonical Mo.Hartree_fock *)
+module Hartree_fock = Mo__Hartree_fock
+
+(** @canonical Mo.Localization *)
+module Localization = Mo__Localization
+
+(** @canonical Mo.Mo_dim *)
+module Mo_dim = Mo__Mo_dim

@@ -1,0 +1,22 @@
+(lang dune 1.10)
+(name qcmath-qcaml)
+(maintainers
+  "Anthony Scemama <scemama@irsamc.ups-tlse.fr>"
+)
+(authors
+  "Anthony Scemama <scemama@irsamc.ups-tlse.fr>"
+)
+(package
+  (name qcmath-qcaml)
+  (synopsis "qcmath tools using QCaml")
+  (depends
+    (ocaml (>= 4.10))
+    (dune  (>= 1.10))
+    qcaml
+  )
+)
+
+
+
+
+

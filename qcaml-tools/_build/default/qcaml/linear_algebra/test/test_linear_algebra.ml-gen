@@ -1,0 +1,2 @@
+(** @canonical Test_linear_algebra.Vector *)
+module Vector = Test_linear_algebra__Vector

@@ -1,0 +1,18 @@
+
+(library
+ (name ao)
+ (public_name qcaml.ao)
+ (synopsis 
+"Atomic basis set"
+  )
+ (libraries
+  qcaml.common
+  qcaml.particles
+  qcaml.gaussian
+  qcaml.gaussian_integrals
+  qcaml.operators
+  )
+   (modules_without_implementation ao_dim)
+ 
+)
+

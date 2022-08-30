@@ -1,0 +1,2 @@
+(** @canonical Test_gaussian.General_basis *)
+module General_basis = Test_gaussian__General_basis

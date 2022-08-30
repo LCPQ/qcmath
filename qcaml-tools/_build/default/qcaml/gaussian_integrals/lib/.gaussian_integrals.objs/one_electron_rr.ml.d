@@ -1,0 +1,1 @@
+qcaml/gaussian_integrals/lib/one_electron_rr.ml: Angular_momentum Array Charge Common Constants Contracted_shell Contracted_shell_pair Coordinate Element Gaussian List Particles Powers Primitive_shell Primitive_shell_pair Util Zkey Zmap

@@ -1,0 +1,1 @@
+qcaml/gaussian/lib/primitive_shell_pair_couple.mli: Angular_momentum Common Coordinate Primitive_shell Primitive_shell_pair Zkey

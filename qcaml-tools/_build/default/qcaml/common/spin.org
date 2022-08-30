@@ -1,0 +1,64 @@
+#+begin_src elisp tangle: no :results none :exports none
+(setq pwd (file-name-directory buffer-file-name))
+(setq name (file-name-nondirectory (substring buffer-file-name 0 -4)))
+(setq lib (concat pwd "lib/"))
+(setq testdir (concat pwd "test/"))
+(setq mli (concat lib name ".mli"))
+(setq ml  (concat lib name ".ml"))
+(setq test-ml  (concat testdir name ".ml"))
+(org-babel-tangle)
+#+end_src 
+
+* Spin
+  :PROPERTIES:
+  :header-args: :noweb yes :comments both
+  :END:
+
+  Electron spin
+  
+** Type
+
+   <<<~Spin.t~>>>
+   #+begin_src ocaml :tangle (eval mli)
+type t = Alfa | Beta
+   #+end_src
+
+   Note :
+   ~Alfa~ if written with an 'f' instead of 'ph' because it has the same number of
+   letters as ~Beta~, so the alignment of the code is nicer.
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+type t =  (* m_s *)
+  | Alfa (* {% $m_s = +1/2$ %} *)
+  | Beta (* {% $m_s = -1/2$ %} *)
+   #+end_src
+
+** Functions
+
+   #+begin_src ocaml :tangle (eval mli)
+val other : t -> t
+   #+end_src
+
+   Returns the opposite spin
+   
+   #+begin_src ocaml :tangle (eval ml) :exports none
+let other = function
+  | Alfa -> Beta
+  | Beta -> Alfa
+
+let to_string = function
+  | Alfa -> "Alpha"
+  | Beta -> "Beta "
+   #+end_src
+
+** Printers
+
+   #+begin_src ocaml :tangle (eval mli)
+val pp : Format.formatter -> t -> unit
+   #+end_src
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+let pp ppf t =
+  Format.fprintf ppf "@[%s@]" (to_string t)
+   #+end_src
+

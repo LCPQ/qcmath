@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17108,        375]
-NotebookOptionsPosition[     16730,        360]
-NotebookOutlinePosition[     17153,        377]
-CellTagsIndexPosition[     17110,        374]
+NotebookDataLength[     17137,        375]
+NotebookOptionsPosition[     16755,        360]
+NotebookOutlinePosition[     17182,        377]
+CellTagsIndexPosition[     17139,        374]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -44,7 +44,7 @@ Cell[BoxData[
       RowBox[{"ncart", "=", "3"}], ";", "\n", 
       RowBox[{"maxK", "=", "20"}], ";", "\n", 
       RowBox[{"maxL", "=", "7"}], ";", "\n", 
-      RowBox[{"maxShell", "=", "5"}], ";", "\n", "\n", 
+      RowBox[{"maxShell", "=", "512"}], ";", "\n", "\n", 
       RowBox[{"CenterShell", "=", 
        RowBox[{"Table", "[", 
         RowBox[{",", 
@@ -354,12 +354,12 @@ Cell[BoxData[
    3.868589207839695*^9}, 3.868589294601452*^9, {3.8686700788455753`*^9, 
    3.8686700845416203`*^9}, {3.8686800205268583`*^9, 3.868680023733163*^9}, {
    3.8686800920605516`*^9, 3.868680096183634*^9}, {3.8686801484974623`*^9, 
-   3.86868014924262*^9}, 3.8686984444944572`*^9},
- CellLabel->
-  "In[1000]:=",ExpressionUUID->"18e8c84c-b62b-4010-b299-e98275bf580f"]
+   3.86868014924262*^9}, 3.8686984444944572`*^9, {3.870836061108886*^9, 
+   3.870836061809844*^9}},ExpressionUUID->"18e8c84c-b62b-4010-b299-\
+e98275bf580f"]
 },
 WindowSize->{1254, 780},
-WindowMargins->{{70, Automatic}, {0, Automatic}},
+WindowMargins->{{Automatic, -148}, {-62, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -376,7 +376,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 16168, 338, 2431, "Code",ExpressionUUID->"18e8c84c-b62b-4010-b299-e98275bf580f"]
+Cell[558, 20, 16193, 338, 2431, "Code",ExpressionUUID->"18e8c84c-b62b-4010-b299-e98275bf580f"]
 }
 ]
 *)

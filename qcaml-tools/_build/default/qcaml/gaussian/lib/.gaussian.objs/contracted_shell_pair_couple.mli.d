@@ -1,0 +1,1 @@
+qcaml/gaussian/lib/contracted_shell_pair_couple.mli: Angular_momentum Common Contracted_shell Contracted_shell_pair Primitive_shell_pair_couple Zkey

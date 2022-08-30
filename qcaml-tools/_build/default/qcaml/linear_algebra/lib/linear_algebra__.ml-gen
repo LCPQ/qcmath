@@ -1,0 +1,20 @@
+(** @canonical Linear_algebra.Conventions *)
+module Conventions = Linear_algebra__Conventions
+
+(** @canonical Linear_algebra.Diis *)
+module Diis = Linear_algebra__Diis
+
+(** @canonical Linear_algebra.Four_idx_storage *)
+module Four_idx_storage = Linear_algebra__Four_idx_storage
+
+(** @canonical Linear_algebra.Matrix *)
+module Matrix = Linear_algebra__Matrix
+
+(** @canonical Linear_algebra.Orthonormalization *)
+module Orthonormalization = Linear_algebra__Orthonormalization
+
+(** @canonical Linear_algebra.Spherical_to_cartesian *)
+module Spherical_to_cartesian = Linear_algebra__Spherical_to_cartesian
+
+(** @canonical Linear_algebra.Vector *)
+module Vector = Linear_algebra__Vector

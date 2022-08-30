@@ -1,0 +1,5 @@
+(** @canonical Test_common.Bitstring *)
+module Bitstring = Test_common__Bitstring
+
+(** @canonical Test_common.Util *)
+module Util = Test_common__Util

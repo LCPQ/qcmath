@@ -1,0 +1,1 @@
+qcaml/gaussian_integrals/lib/two_electron_rr.ml: Angular_momentum Array Atomic_shell_pair Atomic_shell_pair_couple Common Constants Contracted_shell Contracted_shell_pair Contracted_shell_pair_couple Coordinate Gaussian List Powers Primitive_shell Primitive_shell_pair Primitive_shell_pair_couple Util Zero_m_parameters Zkey Zmap

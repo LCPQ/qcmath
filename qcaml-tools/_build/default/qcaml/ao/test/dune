@@ -1,0 +1,9 @@
+
+(library
+ (name test_ao)
+ (synopsis "Test for ao library")
+ (libraries
+  alcotest
+  qcaml.ao
+ )
+)

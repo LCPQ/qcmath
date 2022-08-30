@@ -1,0 +1,131 @@
+#+begin_src elisp tangle: no :results none :exports none
+(setq pwd (file-name-directory buffer-file-name))
+(setq name (file-name-nondirectory (substring buffer-file-name 0 -4)))
+(setq lib (concat pwd "lib/"))
+(setq testdir (concat pwd "test/"))
+(setq mli (concat lib name ".mli"))
+(setq ml  (concat lib name ".ml"))
+(setq test-ml  (concat testdir name ".ml"))
+(org-babel-tangle)
+#+end_src
+
+* Powers
+  :PROPERTIES:
+  :header-args: :noweb yes :comments both
+  :END:
+
+ Contains powers of $x$, $y$ and $z$ describing the polynomials in atomic basis sets.
+
+** Type
+
+   <<<~Powers.t~>>>
+   #+begin_src ocaml :tangle (eval mli)
+type t = private {
+  x   : int ;
+  y   : int ;
+  z   : int ;
+  tot : int ;
+}
+   #+end_src
+
+   ~tot~ always contains ~x+y+z~.
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+type t = {
+  x   : int ;
+  y   : int ;
+  z   : int ;
+  tot : int ;
+}
+   #+end_src
+
+** Conversions
+
+    #+begin_src ocaml :tangle (eval mli)
+val of_int_tuple : int * int * int -> t
+val to_int_tuple : t -> int * int * int
+    #+end_src
+
+   Example:
+    #+begin_example
+Powers.of_int_tuple (2,3,1);;
+- : Powers.t = x^2 + y^3 + z^1
+
+Powers.(to_int_tuple (of_int_tuple (2,3,1)));;
+- : int * int * int = (2, 3, 1)
+    #+end_example
+
+    #+begin_src ocaml :tangle (eval ml) :exports none
+let of_int_tuple t =
+  let result =
+    match t with
+    | (x,y,z) -> { x ; y ; z ; tot=x+y+z }
+  in
+  if result.x < 0 ||
+     result.y < 0 ||
+     result.z < 0 ||
+     result.tot < 0 then
+      invalid_arg (__FILE__^": of_int_tuple");
+  result
+
+
+let to_int_tuple { x ; y ; z ; _ } = (x,y,z)
+    #+end_src
+
+** Operations
+
+    #+begin_src ocaml :tangle (eval mli)
+val get  : Coordinate.axis -> t -> int
+val incr : Coordinate.axis -> t -> t
+val decr : Coordinate.axis -> t -> t
+    #+end_src
+
+| ~get~ | Returns the value of the power for $x$, $y$ or $z$
+| ~incr~ | Returns a new ~Powers.t~ with the power on the given axis incremented |
+| ~decr~ | Returns a new ~Powers.t~ with the power on the given axis decremented. As opposed to ~of_int_tuple~, the values may become negative|
+
+   Example:
+    #+begin_example
+Powers.get Coordinate.Y (Powers.of_int_tuple (2,3,1));;
+- : int = 3
+
+Powers.incr Coordinate.Y (Powers.of_int_tuple (2,3,1));;
+- : Powers.t = x^2 + y^4 + z^1
+
+Powers.decr Coordinate.Y (Powers.of_int_tuple (2,3,1));;
+- : Powers.t = x^2 + y^2 + z^1
+    #+end_example
+
+
+    #+begin_src ocaml :tangle (eval ml) :exports none
+let get coord t =
+  match coord with
+  | Coordinate.X -> t.x
+  | Coordinate.Y -> t.y
+  | Coordinate.Z -> t.z
+
+let incr coord t =
+  match coord with
+  | Coordinate.X -> let r = t.x+1 in { t with x = r ; tot = t.tot+1 }
+  | Coordinate.Y -> let r = t.y+1 in { t with y = r ; tot = t.tot+1 }
+  | Coordinate.Z -> let r = t.z+1 in { t with z = r ; tot = t.tot+1 }
+
+let decr coord t =
+  match coord with
+  | Coordinate.X -> let r = t.x-1 in { t with x = r ; tot = t.tot-1 }
+  | Coordinate.Y -> let r = t.y-1 in { t with y = r ; tot = t.tot-1 }
+  | Coordinate.Z -> let r = t.z-1 in { t with z = r ; tot = t.tot-1 }
+    #+end_src
+
+
+** Printers
+
+   #+begin_src ocaml :tangle (eval mli)
+val pp : Format.formatter -> t -> unit
+   #+end_src
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+let pp ppf t =
+  Format.fprintf ppf "@[x^%d + y^%d + z^%d@]" t.x t.y t.z
+   #+end_src
+

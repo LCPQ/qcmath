@@ -1,0 +1,9 @@
+
+(library
+ (name test_linear_algebra)
+ (synopsis "Test for linear_algebra library")
+ (libraries
+  alcotest
+  qcaml.linear_algebra
+ )
+)

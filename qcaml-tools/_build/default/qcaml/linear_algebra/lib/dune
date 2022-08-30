@@ -1,0 +1,15 @@
+
+(library
+ (name linear_algebra)
+ (public_name qcaml.linear_algebra)
+ (synopsis 
+"Linear algebra utilities of QCaml libraries."
+  )
+ (libraries
+  qcaml.common
+  lacaml
+  )
+ 
+ 
+)
+

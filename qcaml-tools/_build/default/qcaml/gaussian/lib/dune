@@ -1,0 +1,15 @@
+
+(library
+ (name gaussian)
+ (public_name qcaml.gaussian)
+ (synopsis 
+"Gaussian basis sets"
+  )
+ (libraries
+  qcaml.common
+  qcaml.particles
+  )
+ 
+ 
+)
+

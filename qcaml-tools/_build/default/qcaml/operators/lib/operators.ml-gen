@@ -1,0 +1,11 @@
+(** @canonical Operators.F12_operator *)
+module F12_operator = Operators__F12_operator
+
+(** @canonical Operators.Gaussian_operator *)
+module Gaussian_operator = Operators__Gaussian_operator
+
+(** @canonical Operators.Operator *)
+module Operator = Operators__Operator
+
+(** @canonical Operators.Rs_operator *)
+module Rs_operator = Operators__Rs_operator

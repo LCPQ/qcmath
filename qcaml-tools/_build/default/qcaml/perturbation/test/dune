@@ -1,0 +1,9 @@
+
+(library
+ (name test_perturbation)
+ (synopsis "Test for perturbation library")
+ (libraries
+  alcotest
+  qcaml.perturbation
+ )
+)

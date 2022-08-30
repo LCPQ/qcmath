@@ -1,0 +1,1 @@
+qcaml/ao/lib/basis_gaussian.ml: Array Bigarray Contracted_shell Electron_nucleus Eri Eri_long_range F12 Format Gaussian Gaussian_integrals Kinetic Lazy Linear_algebra Matrix Multipole Operator Operators Orthonormalization Overlap Screened_eri Vector

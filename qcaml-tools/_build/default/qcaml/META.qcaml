@@ -1,0 +1,128 @@
+description = "Main QCaml entry point"
+requires =
+"qcaml.ao
+ qcaml.common
+ qcaml.gaussian
+ qcaml.gaussian_integrals
+ qcaml.linear_algebra
+ qcaml.mo
+ qcaml.operators
+ qcaml.particles
+ qcaml.perturbation
+ qcaml.simulation"
+archive(byte) = "qcaml.cma"
+archive(native) = "qcaml.cmxa"
+plugin(byte) = "qcaml.cma"
+plugin(native) = "qcaml.cmxs"
+package "ao" (
+  directory = "ao"
+  description = "Atomic basis set"
+  requires =
+  "qcaml.common
+   qcaml.gaussian
+   qcaml.gaussian_integrals
+   qcaml.operators
+   qcaml.particles"
+  archive(byte) = "ao.cma"
+  archive(native) = "ao.cmxa"
+  plugin(byte) = "ao.cma"
+  plugin(native) = "ao.cmxs"
+)
+package "common" (
+  directory = "common"
+  description = "Utility functions used by all the other directories."
+  requires = "getopt str zarith"
+  archive(byte) = "common.cma"
+  archive(native) = "common.cmxa"
+  plugin(byte) = "common.cma"
+  plugin(native) = "common.cmxs"
+)
+package "gaussian" (
+  directory = "gaussian"
+  description = "Gaussian basis sets"
+  requires = "qcaml.common qcaml.particles"
+  archive(byte) = "gaussian.cma"
+  archive(native) = "gaussian.cmxa"
+  plugin(byte) = "gaussian.cma"
+  plugin(native) = "gaussian.cmxs"
+)
+package "gaussian_integrals" (
+  directory = "gaussian_integrals"
+  description = "Integrals on the Gaussian basis sets"
+  requires =
+  "qcaml.common qcaml.gaussian qcaml.linear_algebra qcaml.operators"
+  archive(byte) = "gaussian_integrals.cma"
+  archive(native) = "gaussian_integrals.cmxa"
+  plugin(byte) = "gaussian_integrals.cma"
+  plugin(native) = "gaussian_integrals.cmxs"
+)
+package "linear_algebra" (
+  directory = "linear_algebra"
+  description = "Linear algebra utilities of QCaml libraries."
+  requires = "lacaml qcaml.common"
+  archive(byte) = "linear_algebra.cma"
+  archive(native) = "linear_algebra.cmxa"
+  plugin(byte) = "linear_algebra.cma"
+  plugin(native) = "linear_algebra.cmxs"
+)
+package "mo" (
+  directory = "mo"
+  description = "Molecular orbitals"
+  requires = "qcaml.simulation"
+  archive(byte) = "mo.cma"
+  archive(native) = "mo.cmxa"
+  plugin(byte) = "mo.cma"
+  plugin(native) = "mo.cmxs"
+)
+package "operators" (
+  directory = "operators"
+  description = "Parameteried operators, such as F12 and range-separation"
+  requires = "qcaml.common"
+  archive(byte) = "operators.cma"
+  archive(native) = "operators.cmxa"
+  plugin(byte) = "operators.cma"
+  plugin(native) = "operators.cmxs"
+)
+package "particles" (
+  directory = "particles"
+  description = "Information relative to particles (electrons and nuclei)."
+  requires = "qcaml.common"
+  archive(byte) = "particles.cma"
+  archive(native) = "particles.cmxa"
+  plugin(byte) = "particles.cma"
+  plugin(native) = "particles.cmxs"
+)
+package "perturbation" (
+  directory = "perturbation"
+  description = "Perturbation theory"
+  requires = "qcaml.mo qcaml.simulation"
+  archive(byte) = "perturbation.cma"
+  archive(native) = "perturbation.cmxa"
+  plugin(byte) = "perturbation.cma"
+  plugin(native) = "perturbation.cmxs"
+)
+package "simulation" (
+  directory = "simulation"
+  description =
+  "Data describing a simulation (AOs, operators, nuclear coordinate,...)"
+  requires =
+  "qcaml.ao
+   qcaml.common
+   qcaml.gaussian
+   qcaml.gaussian_integrals
+   qcaml.operators
+   qcaml.particles"
+  archive(byte) = "simulation.cma"
+  archive(native) = "simulation.cmxa"
+  plugin(byte) = "simulation.cma"
+  plugin(native) = "simulation.cmxs"
+)
+package "top" (
+  directory = "top"
+  description = "Installs pretty printers for top-level."
+  requires = "compiler-libs.toplevel qcaml"
+  archive(byte) = "top.cma"
+  archive(native) = "top.cmxa"
+  plugin(byte) = "top.cma"
+  plugin(native) = "top.cmxs"
+)

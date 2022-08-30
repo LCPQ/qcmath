@@ -1,0 +1,2440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-10-19 Tue 16:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Common</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Anthony Scemama" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" title="Standard" href="qcaml.css" type="text/css" />
+
+<script type="text/javascript" src="org-info.js">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license-end
+</script>
+
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "4");
+org_html_manager.set("LINK_HOME", "index.html");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+// @license-end
+</script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href=""> UP </a>
+ |
+ <a accesskey="H" href="index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">Common</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgedf5700">1. Summary</a></li>
+<li><a href="#orgb8a3905">2. Angular Momentum</a>
+<ul>
+<li><a href="#org0ee2bef">2.1. Type</a></li>
+<li><a href="#org24bc3f5">2.2. Conversions</a></li>
+<li><a href="#orgdfd6a6d">2.3. Shell functions</a></li>
+<li><a href="#org732e9b4">2.4. Arithmetic</a></li>
+<li><a href="#orgf58d18a">2.5. Printers</a></li>
+<li><a href="#org5e3b69c">2.6. <span class="todo TODO">TODO</span> Tests</a></li>
+</ul>
+</li>
+<li><a href="#orgb7ecbc3">3. Bit string</a>
+<ul>
+<li><a href="#org69d3c95">3.1. Type</a></li>
+<li><a href="#org4683412">3.2. General implementation</a></li>
+<li><a href="#org463be42">3.3. Printers</a></li>
+</ul>
+</li>
+<li><a href="#orga3947f7">4. Charge</a>
+<ul>
+<li><a href="#orgb232a70">4.1. Type</a></li>
+<li><a href="#orgb64adc7">4.2. Conversions</a></li>
+<li><a href="#orge8890e4">4.3. Simple operations</a></li>
+<li><a href="#org21e9e3e">4.4. Printers</a></li>
+</ul>
+</li>
+<li><a href="#org13ac5ba">5. Command line</a>
+<ul>
+<li><a href="#org212dc36">5.1. Types</a></li>
+<li><a href="#org2968432">5.2. Mutable attributes</a></li>
+<li><a href="#org504294b">5.3. Query functions</a></li>
+<li><a href="#org926ddee">5.4. Specification</a></li>
+</ul>
+</li>
+<li><a href="#org4044f04">6. Constants</a>
+<ul>
+<li><a href="#org5d1133c">6.1. Thresholds</a></li>
+<li><a href="#orgb4b7a9f">6.2. Mathematical constants</a></li>
+<li><a href="#org9aa0497">6.3. Physical constants</a></li>
+</ul>
+</li>
+<li><a href="#orgc620494">7. Coordinate</a>
+<ul>
+<li><a href="#org2986db0">7.1. Type</a></li>
+<li><a href="#org929187d">7.2. Creation</a></li>
+<li><a href="#org0cc441f">7.3. Conversion</a></li>
+<li><a href="#org30865a7">7.4. Vector operations</a></li>
+<li><a href="#org3d6cbf7">7.5. Printers</a></li>
+</ul>
+</li>
+<li><a href="#org4b09347">8. Non-negative float</a>
+<ul>
+<li><a href="#org18667fd">8.1. Type</a></li>
+<li><a href="#orga4d551f">8.2. Conversions</a></li>
+</ul>
+</li>
+<li><a href="#org024933e">9. Powers</a>
+<ul>
+<li><a href="#org567caa4">9.1. Type</a></li>
+<li><a href="#org684cb9e">9.2. Conversions</a></li>
+<li><a href="#org10e6afe">9.3. Operations</a></li>
+<li><a href="#org85d7f3b">9.4. Printers</a></li>
+</ul>
+</li>
+<li><a href="#org0d5b3c0">10. QCaml</a></li>
+<li><a href="#org7807b38">11. Range</a>
+<ul>
+<li><a href="#org8c2f2f6">11.1. Type</a></li>
+<li><a href="#org77ffaad">11.2. Conversion</a></li>
+<li><a href="#orgf235731">11.3. Printers</a></li>
+</ul>
+</li>
+<li><a href="#org3a2288e">12. Spin</a>
+<ul>
+<li><a href="#org834d784">12.1. Type</a></li>
+<li><a href="#orge0d2417">12.2. Functions</a></li>
+<li><a href="#org5637a9a">12.3. Printers</a></li>
+</ul>
+</li>
+<li><a href="#org84ed70c">13. Util</a>
+<ul>
+<li><a href="#org462b347">13.1. External C functions</a>
+<ul>
+<li><a href="#org1d4dc47">13.1.1. Erf</a></li>
+<li><a href="#org58f6f00">13.1.2. Erfc</a></li>
+<li><a href="#org01a5783">13.1.3. Gamma</a></li>
+<li><a href="#orge1bfda8">13.1.4. Popcnt</a></li>
+<li><a href="#org70988c5">13.1.5. Trailz</a></li>
+<li><a href="#org35f579f">13.1.6. Leadz</a></li>
+<li><a href="#orgfac01cb">13.1.7. Test</a></li>
+</ul>
+</li>
+<li><a href="#orgc5d4a6a">13.2. General functions</a></li>
+<li><a href="#org0d0366f">13.3. Functions related to the Boys function</a></li>
+<li><a href="#org8a4706a">13.4. List functions</a></li>
+<li><a href="#orgaa5ced0">13.5. Array functions</a></li>
+<li><a href="#orgc8f50db">13.6. Stream functions</a></li>
+<li><a href="#orge269368">13.7. Printers</a></li>
+</ul>
+</li>
+<li><a href="#org2e52809">14. Zkey</a>
+<ul>
+<li><a href="#orgdce42d8">14.1. Types</a></li>
+<li><a href="#orgb702609">14.2. Conversions</a></li>
+<li><a href="#org6da6382">14.3. Functions for hash tables</a></li>
+<li><a href="#org0520349">14.4. Printers</a></li>
+</ul>
+</li>
+<li><a href="#orgb9b1399">15. Zmap</a>
+<ul>
+<li><a href="#orgebb4a75">15.1. Type</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgedf5700" class="outline-2">
+<h2 id="orgedf5700"><span class="section-number-2">1</span> Summary</h2>
+</div>
+
+<div id="outline-container-orgb8a3905" class="outline-2">
+<h2 id="orgb8a3905"><span class="section-number-2">2</span> Angular Momentum</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Azimuthal quantum number, repsesented as \( s,p,d,\dots \) .
+</p>
+</div>
+
+<div id="outline-container-org0ee2bef" class="outline-3">
+<h3 id="org0ee2bef"><span class="section-number-3">2.1</span> Type</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+<a id="org8793f68"><code>Angular_momentum.t</code></a>
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml" id="orgd526a88"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> <span class="org-tuareg-font-lock-operator">=</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">S</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">P</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">D</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">F</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">G</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">H</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">I</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">J</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">K</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">L</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">M</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">N</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">O</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Int</span> <span class="org-keyword">of</span> int
+
+<span class="org-keyword">exception</span> <span class="org-tuareg-font-lock-constructor">Angular_momentum_error</span> <span class="org-keyword">of</span> string
+
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">kind</span> <span class="org-tuareg-font-lock-operator">=</span>
+    <span class="org-tuareg-font-lock-constructor">Singlet</span> <span class="org-keyword">of</span> t
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Doublet</span> <span class="org-keyword">of</span> <span class="org-tuareg-font-lock-operator">(</span>t <span class="org-tuareg-font-lock-operator">*</span> t<span class="org-tuareg-font-lock-operator">)</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Triplet</span> <span class="org-keyword">of</span> <span class="org-tuareg-font-lock-operator">(</span>t <span class="org-tuareg-font-lock-operator">*</span> t <span class="org-tuareg-font-lock-operator">*</span> t<span class="org-tuareg-font-lock-operator">)</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Quartet</span> <span class="org-keyword">of</span> <span class="org-tuareg-font-lock-operator">(</span>t <span class="org-tuareg-font-lock-operator">*</span> t <span class="org-tuareg-font-lock-operator">*</span> t <span class="org-tuareg-font-lock-operator">*</span> t<span class="org-tuareg-font-lock-operator">)</span>
+
+</pre>
+</div>
+
+<p>
+An exception is raised when the <a href="#org8793f68"><code>Angular_momentum.t</code></a> element can't
+be created.
+</p>
+
+<p>
+The <code>kind</code> is used to build shells, shell doublets, triplets or
+quartets, use in the two-electron operators.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org24bc3f5" class="outline-3">
+<h3 id="org24bc3f5"><span class="section-number-3">2.2</span> Conversions</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_char</span> <span class="org-tuareg-font-lock-operator">:</span> char <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_char</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> char
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_int</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_int</span> <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_string</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> string
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>of_char</code></td>
+<td class="org-left">Returns an <a href="#org8793f68"><code>Angular_momentum.t</code></a> when a shell is given as  a character (case insensitive)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>to_char</code></td>
+<td class="org-left">Converts the angular momentum into a char</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>of_int</code></td>
+<td class="org-left">Returns a shell given an \(l\) value.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>to_int</code></td>
+<td class="org-left">Returns the \(l_{max}\) value of the shell</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>to_string</code></td>
+<td class="org-left">Converts the angular momentum into a string</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Example:
+</p>
+<pre class="example" id="orgbe4c26d">
+Angular_momentum.of_char 'p';;
+- : Angular_momentum.t = P
+
+Angular_momentum.(to_char P);;
+- : char = 'P'
+
+Angular_momentum.of_int 2;;
+- : Angular_momentum.t = D
+
+Angular_momentum.(to_int D);;
+- : int = 2
+
+Angular_momentum.(to_string D);;
+- : string = "D"
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgdfd6a6d" class="outline-3">
+<h3 id="orgdfd6a6d"><span class="section-number-3">2.3</span> Shell functions</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">n_functions</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">zkey_array</span>  <span class="org-tuareg-font-lock-operator">:</span> kind <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Zkey.</span>t array
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>n_functions</code></td>
+<td class="org-left">Returns the number of cartesian functions in a shell.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>zkey_array</code></td>
+<td class="org-left">Array of <a href="#org66144e4"><code>Zkey.t</code></a>, where each element is a a key associated with the the powers of \(x,y,z\).</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Example:
+</p>
+<pre class="example" id="org6b27868">
+Angular_momentum.(n_functions D) ;;
+- : int = 6
+
+Angular_momentum.( zkey_array (Doublet (P,S)) );;
+- : Zkey.t array =
+[|&lt; 01125899906842624 | 1, 0, 0, 0, 0, 0 &gt;;
+  &lt; 01099511627776 | 0, 1, 0, 0, 0, 0 &gt;;
+  &lt; 01073741824 | 0, 0, 1, 0, 0, 0 &gt;|]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org732e9b4" class="outline-3">
+<h3 id="org732e9b4"><span class="section-number-3">2.4</span> Arithmetic</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-tuareg-font-lock-operator">(</span> <span class="org-tuareg-font-lock-operator">+</span> <span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-tuareg-font-lock-operator">(</span> <span class="org-tuareg-font-lock-operator">-</span> <span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+</pre>
+</div>
+
+<p>
+Example:
+</p>
+<pre class="example" id="orgba5acc1">
+Angular_momentum.(D + P);;
+- : Angular_momentum.t = F
+
+Angular_momentum.(F - P);;
+- : Angular_momentum.t = D
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf58d18a" class="outline-3">
+<h3 id="orgf58d18a"><span class="section-number-3">2.5</span> Printers</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Printers can print as a string (default) or as an integer.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp</span>        <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp_string</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp_int</span>    <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5e3b69c" class="outline-3">
+<h3 id="org5e3b69c"><span class="section-number-3">2.6</span> <span class="todo TODO">TODO</span> Tests</h3>
+</div>
+</div>
+<div id="outline-container-orgb7ecbc3" class="outline-2">
+<h2 id="orgb7ecbc3"><span class="section-number-2">3</span> Bit string</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+We define here a data type  to handle bit strings efficiently.  When
+the bit string  contains less than 64 bits, it  is stored internally
+in a 63-bit  integer and uses bitwise instructions.   When more than
+63 bits are  required, the <code>zarith</code> library is used  to consider the
+bit string as a multi-precision integer.
+</p>
+</div>
+
+
+<div id="outline-container-org69d3c95" class="outline-3">
+<h3 id="org69d3c95"><span class="section-number-3">3.1</span> Type</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+<a id="org761f78f"><code>Bitstring.t</code></a>
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4683412" class="outline-3">
+<h3 id="org4683412"><span class="section-number-3">3.2</span> General implementation</h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_int</span> <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_z</span>   <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Z.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">zero</span>   <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">is_zero</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> bool
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">numbits</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">testbit</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> bool
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">neg</span>            <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">shift_left</span>     <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">shift_right</span>    <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">shift_left_one</span> <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">logor</span>  <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">logxor</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">logand</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">lognot</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">plus_one</span>  <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">minus_one</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">hamdist</span>        <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">trailing_zeros</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">popcount</span>       <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_list</span>      <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-label">?accu</span><span class="org-tuareg-font-lock-operator">:(</span>int list<span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int list
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">permutations</span> <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> t list
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>of_int</code></td>
+<td class="org-left">Creates a bit string from an <code>int</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>of_z</code></td>
+<td class="org-left">Creates a bit string from an <code>Z.t</code> multi-precision integer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>zero</code></td>
+<td class="org-left"><code>zero n</code> creates a zero bit string with <code>n</code> bits</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>is_zero</code></td>
+<td class="org-left">True if all the bits of the bit string are zero.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>numbits</code></td>
+<td class="org-left">Returns the number of bits used to represent the bit string</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>testbit</code></td>
+<td class="org-left"><code>testbit t n</code> is true if the <code>n</code>-th bit of the bit string <code>t</code> is set to <code>1</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>neg</code></td>
+<td class="org-left">Returns the negative of the integer interpretation of the bit string</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>shift_left</code></td>
+<td class="org-left"><code>shift_left t n</code> returns a new bit strings with all the bits shifted <code>n</code> positions to the left</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>shift_right</code></td>
+<td class="org-left"><code>shift_right t n</code> returns a new bit strings with all the bits shifted <code>n</code> positions to the right</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>shift_left_one</code></td>
+<td class="org-left"><code>shift_left_one size n</code> returns a new bit strings with the <code>n</code>-th bit set to one. It is equivalent as shifting <code>1</code> by <code>n</code> bits to the left, <code>size</code> is the total number of bits of the bit string</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>logor</code></td>
+<td class="org-left">Bitwise logical or</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>logxor</code></td>
+<td class="org-left">Bitwise logical exclusive or</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>logand</code></td>
+<td class="org-left">Bitwise logical and</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lognot</code></td>
+<td class="org-left">Bitwise logical negation</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>plus_one</code></td>
+<td class="org-left">Takes the integer representation of the bit string and adds one</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>minus_one</code></td>
+<td class="org-left">Takes the integer representation of the bit string and removes one</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>hamdist</code></td>
+<td class="org-left">Returns the Hamming distance, i.e. the number of bits differing between two bit strings</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>trailing_zeros</code></td>
+<td class="org-left">Returns the number of trailing zeros in the bit string</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>permutations</code></td>
+<td class="org-left"><code>permutations m n</code> generates the list of all possible <code>n</code>-bit strings with <code>m</code> bits set to <code>1</code>. Algorithm adapted from <a href="https://graphics.stanford.edu/~seander/bithacks.html#NextBitPermutation">Bit twiddling hacks</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>popcount</code></td>
+<td class="org-left">Returns the number of bits set to one in the bit string</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>to_list</code></td>
+<td class="org-left">Converts a bit string into a list of integers indicating the positions where the bits are set to <code>1</code>. The first value for the position is not <code>0</code> but <code>1</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Example:
+</p>
+<pre class="example" id="org88352be">
+Bitstring.of_int 15;;
+- : Bitstring.t =
+++++------------------------------------------------------------
+</pre>
+
+<p>
+Example:
+</p>
+<pre class="example" id="orgd9c4c20">
+Bitstring.(shift_left (of_int 15) 2);;
+- : Bitstring.t =
+--++++----------------------------------------------------------
+
+Bitstring.(shift_right (of_int 15) 2);;
+- : Bitstring.t =
+++--------------------------------------------------------------
+
+Bitstring.shift_left_one 32 4;;
+- : Bitstring.t =
+----+-----------------------------------------------------------
+
+Bitstring.(testbit (of_int 15) 3);;
+- : bool = true
+
+Bitstring.(testbit (of_int 15) 4);;
+- : bool = false
+</pre>
+
+<p>
+Example:
+</p>
+<pre class="example" id="orgda6d150">
+Bitstring.(logor (of_int 15) (of_int 73));;
+- : Bitstring.t =
+++++--+---------------------------------------------------------
+
+Bitstring.(logand (of_int 15) (of_int 10));;
+- : Bitstring.t =
+-+-+------------------------------------------------------------
+
+Bitstring.(logxor (of_int 15) (of_int 73));;
+- : Bitstring.t =
+-++---+---------------------------------------------------------
+</pre>
+
+
+<p>
+Example:
+</p>
+<pre class="example" id="org444802c">
+Bitstring.(plus_one (of_int 15));;
+- : Bitstring.t =
+----+-----------------------------------------------------------
+   
+Bitstring.(minus_one (of_int 15));;
+- : Bitstring.t =
+-+++------------------------------------------------------------
+</pre>
+
+
+<p>
+Example:
+</p>
+<pre class="example" id="org7b69190">
+Bitstring.(trailing_zeros (of_int 12));;
+- : int = 2
+
+Bitstring.(hamdist (of_int 15) (of_int 73));;
+- : int = 3
+
+Bitstring.(popcount (of_int 15));;
+- : int = 4
+</pre>
+
+<p>
+Example:
+</p>
+<pre class="example" id="org4bca05f">
+Bitstring.(to_list (of_int 45));;
+- : int list = [1; 3; 4; 6]
+</pre>
+
+<p>
+Example:
+</p>
+<pre class="example" id="orgce89af2">
+   Bitstring.permutations 2 4;;
+- : Bitstring.t list =
+[++--------------------------------------------------------------;
+ +-+-------------------------------------------------------------;
+ -++-------------------------------------------------------------;
+ +--+------------------------------------------------------------;
+ -+-+------------------------------------------------------------;
+ --++------------------------------------------------------------]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org463be42" class="outline-3">
+<h3 id="org463be42"><span class="section-number-3">3.3</span> Printers</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga3947f7" class="outline-2">
+<h2 id="orga3947f7"><span class="section-number-2">4</span> Charge</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+
+<div id="outline-container-orgb232a70" class="outline-3">
+<h3 id="orgb232a70"><span class="section-number-3">4.1</span> Type</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+<a id="org22824e2"><code>Charge.t</code></a>
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
+</pre>
+</div>
+
+<p>
+This type should be used for all charges in the program (electrons, nuclei,&#x2026;).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb64adc7" class="outline-3">
+<h3 id="orgb64adc7"><span class="section-number-3">4.2</span> Conversions</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_float</span> <span class="org-tuareg-font-lock-operator">:</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_float</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_int</span>   <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_int</span>   <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_string</span><span class="org-tuareg-font-lock-operator">:</span> string <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_string</span><span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> string 
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge8890e4" class="outline-3">
+<h3 id="orge8890e4"><span class="section-number-3">4.3</span> Simple operations</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-tuareg-font-lock-operator">(</span> <span class="org-tuareg-font-lock-operator">+</span> <span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-tuareg-font-lock-operator">(</span> <span class="org-tuareg-font-lock-operator">-</span> <span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-tuareg-font-lock-operator">(</span> <span class="org-tuareg-font-lock-operator">*</span> <span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-tuareg-font-lock-operator">(</span> <span class="org-tuareg-font-lock-operator">/</span> <span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> t 
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">is_null</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> bool
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org21e9e3e" class="outline-3">
+<h3 id="org21e9e3e"><span class="section-number-3">4.4</span> Printers</h3>
+<div class="outline-text-3" id="text-4-4">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org13ac5ba" class="outline-2">
+<h2 id="org13ac5ba"><span class="section-number-2">5</span> Command line</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+This module is a wrapper around the <code>Getopt</code> library and helps to
+define command-line arguments.
+</p>
+
+<p>
+Here is an example of how to use this module.
+First, define the specification:
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-tuareg-font-lock-governing">open </span><span class="org-tuareg-font-lock-module">Command_line</span> <span class="org-tuareg-font-lock-governing">in</span>
+<span class="org-tuareg-font-lock-governing">begin</span>
+  set_header_doc <span class="org-tuareg-font-lock-operator">(</span><span class="org-tuareg-font-lock-module">Sys.</span>argv.<span class="org-tuareg-font-lock-operator">(</span>0<span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">^</span> <span class="org-string">" - One-line description"</span><span class="org-tuareg-font-lock-operator">);</span>
+  set_description_doc <span class="org-string">"Long description of the command."</span><span class="org-tuareg-font-lock-operator">;</span>
+  set_specs
+    <span class="org-tuareg-font-lock-operator">[</span> <span class="org-tuareg-font-lock-operator">{</span> short<span class="org-tuareg-font-lock-operator">=</span><span class="org-string">'c'</span><span class="org-tuareg-font-lock-operator">;</span> long<span class="org-tuareg-font-lock-operator">=</span><span class="org-string">"check"</span><span class="org-tuareg-font-lock-operator">;</span> opt<span class="org-tuareg-font-lock-operator">=</span><span class="org-tuareg-font-lock-constructor">Optional</span><span class="org-tuareg-font-lock-operator">;</span>
+        doc<span class="org-tuareg-font-lock-operator">=</span><span class="org-string">"Checks the input data"</span><span class="org-tuareg-font-lock-operator">;</span>
+        arg<span class="org-tuareg-font-lock-operator">=</span><span class="org-tuareg-font-lock-constructor">Without_arg</span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator">};</span>
+
+      <span class="org-tuareg-font-lock-operator">{</span> short<span class="org-tuareg-font-lock-operator">=</span><span class="org-string">'b'</span> <span class="org-tuareg-font-lock-operator">;</span> long<span class="org-tuareg-font-lock-operator">=</span><span class="org-string">"basis"</span> <span class="org-tuareg-font-lock-operator">;</span> opt<span class="org-tuareg-font-lock-operator">=</span><span class="org-tuareg-font-lock-constructor">Mandatory</span><span class="org-tuareg-font-lock-operator">;</span>
+        arg<span class="org-tuareg-font-lock-operator">=</span><span class="org-tuareg-font-lock-constructor">With_arg</span> <span class="org-string">"&lt;string&gt;"</span><span class="org-tuareg-font-lock-operator">;</span>
+        doc<span class="org-tuareg-font-lock-operator">=</span><span class="org-string">"Name of the file containing the basis set"</span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator">}</span> <span class="org-tuareg-font-lock-operator">;</span>
+
+      <span class="org-tuareg-font-lock-operator">{</span> short<span class="org-tuareg-font-lock-operator">=</span><span class="org-string">'m'</span> <span class="org-tuareg-font-lock-operator">;</span> long<span class="org-tuareg-font-lock-operator">=</span><span class="org-string">"multiplicity"</span> <span class="org-tuareg-font-lock-operator">;</span> opt<span class="org-tuareg-font-lock-operator">=</span><span class="org-tuareg-font-lock-constructor">Optional</span><span class="org-tuareg-font-lock-operator">;</span>
+        arg<span class="org-tuareg-font-lock-operator">=</span><span class="org-tuareg-font-lock-constructor">With_arg</span> <span class="org-string">"&lt;int&gt;"</span><span class="org-tuareg-font-lock-operator">;</span>
+        doc<span class="org-tuareg-font-lock-operator">=</span><span class="org-string">"Spin multiplicity (2S+1). Default is singlet"</span><span class="org-tuareg-font-lock-operator">;</span> <span class="org-tuareg-font-lock-operator">}</span> <span class="org-tuareg-font-lock-operator">;</span>
+    <span class="org-tuareg-font-lock-operator">]</span>
+<span class="org-tuareg-font-lock-governing">end</span><span class="org-tuareg-font-lock-operator">;</span>
+</pre>
+</div>
+
+<p>
+Then, define what to do with the arguments:
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">c</span> <span class="org-tuareg-font-lock-operator">=</span>
+  <span class="org-tuareg-font-lock-module">Command_line.</span>get_bool <span class="org-string">"check"</span>
+<span class="org-tuareg-font-lock-governing">in</span>
+
+<span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">basis</span> <span class="org-tuareg-font-lock-operator">=</span>
+  <span class="org-keyword">match</span> <span class="org-tuareg-font-lock-module">Command_line.</span>get <span class="org-string">"basis"</span> <span class="org-keyword">with</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Some</span> x <span class="org-tuareg-font-lock-operator">-&gt;</span> x
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">None</span> <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-keyword">assert</span> <span class="org-constant">false</span>
+<span class="org-tuareg-font-lock-governing">in</span>
+
+<span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">multiplicity</span> <span class="org-tuareg-font-lock-operator">=</span>
+  <span class="org-keyword">match</span> <span class="org-tuareg-font-lock-module">Command_line.</span>get <span class="org-string">"multiplicity"</span> <span class="org-keyword">with</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">None</span> <span class="org-tuareg-font-lock-operator">-&gt;</span> 1
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Some</span> n <span class="org-tuareg-font-lock-operator">-&gt;</span> int_of_string n
+<span class="org-tuareg-font-lock-governing">in</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org212dc36" class="outline-3">
+<h3 id="org212dc36"><span class="section-number-3">5.1</span> Types</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+<pre class="src src-ocaml" id="orge8bd03a"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">short_opt</span>     <span class="org-tuareg-font-lock-operator">=</span> char
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">long_opt</span>      <span class="org-tuareg-font-lock-operator">=</span> string
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">optional</span>      <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-constructor">Mandatory</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Optional</span>
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">documentation</span> <span class="org-tuareg-font-lock-operator">=</span> string
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">argument</span>      <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">With_arg</span> <span class="org-keyword">of</span> string
+                     <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Without_arg</span>
+                     <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">With_opt_arg</span> <span class="org-keyword">of</span> string
+
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">description</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-operator">{</span>
+  short<span class="org-tuareg-font-lock-operator">:</span> short_opt <span class="org-tuareg-font-lock-operator">;</span>
+  long <span class="org-tuareg-font-lock-operator">:</span> long_opt  <span class="org-tuareg-font-lock-operator">;</span>
+  opt  <span class="org-tuareg-font-lock-operator">:</span> optional  <span class="org-tuareg-font-lock-operator">;</span>
+  doc  <span class="org-tuareg-font-lock-operator">:</span> documentation <span class="org-tuareg-font-lock-operator">;</span>
+  arg  <span class="org-tuareg-font-lock-operator">:</span> argument <span class="org-tuareg-font-lock-operator">;</span>
+<span class="org-tuareg-font-lock-operator">}</span>
+
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><a id="org43dcf4b">Short option</a>: in the command line, a dash with a single character
+(ex: <code>ls -l</code>)</li>
+<li><a id="org047c24c">Long option</a>: in the command line, two dashes with a word
+(ex: <code>ls --directory</code>)</li>
+<li>Command-line options can be <code>Mandatory</code> or <code>Optional</code></li>
+<li>Documentation of the option is used in the help function</li>
+<li>Some options require an argument (<code>ls --ignore="*.ml"</code> ), some
+don't (<code>ls -l</code>) and for some arguments the argument is optional
+(<code>git --log[=&lt;n&gt;]</code>)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2968432" class="outline-3">
+<h3 id="org2968432"><span class="section-number-3">5.2</span> Mutable attributes</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+All the options are stored in the hash table <code>dict</code> where the key
+is the <a href="#org047c24c">long option</a> and the value is a value of type <code>description</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">set_header_doc</span> <span class="org-tuareg-font-lock-operator">:</span> string <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">set_description_doc</span> <span class="org-tuareg-font-lock-operator">:</span> string <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">set_footer_doc</span> <span class="org-tuareg-font-lock-operator">:</span> string <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+
+<p>
+Functions to set the header, footer and main description of the
+documentation provided by the <code>help</code> function:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">anonymous</span> <span class="org-tuareg-font-lock-operator">:</span> long_opt <span class="org-tuareg-font-lock-operator">-&gt;</span> optional <span class="org-tuareg-font-lock-operator">-&gt;</span> documentation <span class="org-tuareg-font-lock-operator">-&gt;</span> description
+</pre>
+</div>
+
+<p>
+Function to create an anonymous argument.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org504294b" class="outline-3">
+<h3 id="org504294b"><span class="section-number-3">5.3</span> Query functions</h3>
+<div class="outline-text-3" id="text-5-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">get</span>       <span class="org-tuareg-font-lock-operator">:</span> long_opt <span class="org-tuareg-font-lock-operator">-&gt;</span> string option
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">get_bool</span>  <span class="org-tuareg-font-lock-operator">:</span> long_opt <span class="org-tuareg-font-lock-operator">-&gt;</span> bool
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">anon_args</span> <span class="org-tuareg-font-lock-operator">:</span> unit <span class="org-tuareg-font-lock-operator">-&gt;</span> string list
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>get</code></td>
+<td class="org-left">Returns the argument associated with a <a href="#org047c24c">long option</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>get_bool</code></td>
+<td class="org-left">True if the <code>Optional</code> argument is present in the command-line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>anon_args</code></td>
+<td class="org-left">Returns the list of anonymous arguments</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org926ddee" class="outline-3">
+<h3 id="org926ddee"><span class="section-number-3">5.4</span> Specification</h3>
+<div class="outline-text-3" id="text-5-4">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">set_specs</span> <span class="org-tuareg-font-lock-operator">:</span> description list <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+
+<p>
+Sets the specifications of the current program from a list of
+<code>descrption</code> variables.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4044f04" class="outline-2">
+<h2 id="org4044f04"><span class="section-number-2">6</span> Constants</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+All constants used in the program.
+</p>
+</div>
+
+<div id="outline-container-org5d1133c" class="outline-3">
+<h3 id="org5d1133c"><span class="section-number-3">6.1</span> Thresholds</h3>
+<div class="outline-text-3" id="text-6-1">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">epsilon</span>          <span class="org-tuareg-font-lock-operator">:</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">integrals_cutoff</span> <span class="org-tuareg-font-lock-operator">:</span> float
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>epsilon</code></td>
+<td class="org-left">Value below which a float is considered null. Default is &epsilon; = 2.10<sup>-15</sup></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>integrals_cutoff</code></td>
+<td class="org-left">Cutoff value for integrals. Default is &epsilon;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgb4b7a9f" class="outline-3">
+<h3 id="orgb4b7a9f"><span class="section-number-3">6.2</span> Mathematical constants</h3>
+<div class="outline-text-3" id="text-6-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pi</span>             <span class="org-tuareg-font-lock-operator">:</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">two_pi</span>         <span class="org-tuareg-font-lock-operator">:</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">sq_pi</span>          <span class="org-tuareg-font-lock-operator">:</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">sq_pi_over_two</span> <span class="org-tuareg-font-lock-operator">:</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pi_inv</span>         <span class="org-tuareg-font-lock-operator">:</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">two_over_sq_pi</span> <span class="org-tuareg-font-lock-operator">:</span> float
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>pi</code></td>
+<td class="org-left">\(\pi = 3.141~592~653~589~793~12\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>two_pi</code></td>
+<td class="org-left">\(2 \pi\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sq_pi</code></td>
+<td class="org-left">\(\sqrt{\pi}\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sq_pi_over_two</code></td>
+<td class="org-left">\(\sqrt{\pi} / 2\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>pi_inv</code></td>
+<td class="org-left">\(1 / \pi\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>two_over_sq_pi</code></td>
+<td class="org-left">\(2 / \sqrt{\pi}\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org9aa0497" class="outline-3">
+<h3 id="org9aa0497"><span class="section-number-3">6.3</span> Physical constants</h3>
+<div class="outline-text-3" id="text-6-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">a0</span>       <span class="org-tuareg-font-lock-operator">:</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">a0_inv</span>   <span class="org-tuareg-font-lock-operator">:</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">ha_to_ev</span> <span class="org-tuareg-font-lock-operator">:</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">ev_to_ha</span> <span class="org-tuareg-font-lock-operator">:</span> float
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>a0</code></td>
+<td class="org-left">Bohr's radius : \(a_0 = 0.529~177~210~67(23)\) angstrom</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a0_inv</code></td>
+<td class="org-left">\(1 / a_0\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ha_to_ev</code></td>
+<td class="org-left">Hartree to eV conversion factor : \(27.211~386~02(17)\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ev_to_ha</code></td>
+<td class="org-left">eV to Hartree conversion factor : 1 / <code>ha_to_ev</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc620494" class="outline-2">
+<h2 id="orgc620494"><span class="section-number-2">7</span> Coordinate</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Coordinates in 3D space.
+</p>
+
+<p>
+All operations on points are done in atomic units. Therefore, 
+all coordinates are given in bohr and manipulated with this
+module.
+</p>
+</div>
+
+<div id="outline-container-org2986db0" class="outline-3">
+<h3 id="org2986db0"><span class="section-number-3">7.1</span> Type</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+<a id="orgd97e63a"><code>Coordinate.t</code></a>
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml" id="org2c292b9"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">bohr</span> 
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">angstrom</span> 
+
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">xyz</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-operator">{</span>
+  x <span class="org-tuareg-font-lock-operator">:</span> float <span class="org-tuareg-font-lock-operator">;</span>
+  y <span class="org-tuareg-font-lock-operator">:</span> float <span class="org-tuareg-font-lock-operator">;</span>
+  z <span class="org-tuareg-font-lock-operator">:</span> float <span class="org-tuareg-font-lock-operator">;</span>
+<span class="org-tuareg-font-lock-operator">}</span>
+
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">'a point</span> <span class="org-tuareg-font-lock-operator">=</span> xyz
+
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> <span class="org-tuareg-font-lock-operator">=</span> bohr point
+
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">axis</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-constructor">X</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Y</span> <span class="org-tuareg-font-lock-operator">|</span> Z
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org929187d" class="outline-3">
+<h3 id="org929187d"><span class="section-number-3">7.2</span> Creation</h3>
+<div class="outline-text-3" id="text-7-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">make</span>          <span class="org-tuareg-font-lock-operator">:</span> 'a point <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">make_angstrom</span> <span class="org-tuareg-font-lock-operator">:</span> 'a point <span class="org-tuareg-font-lock-operator">-&gt;</span> angstrom point
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">zero</span>          <span class="org-tuareg-font-lock-operator">:</span> bohr point
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>make</code></td>
+<td class="org-left">Creates a point in atomic units</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>make_angstrom</code></td>
+<td class="org-left">Creates a point in angstrom</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>zero</code></td>
+<td class="org-left">\((0., 0., 0.)\)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org0cc441f" class="outline-3">
+<h3 id="org0cc441f"><span class="section-number-3">7.3</span> Conversion</h3>
+<div class="outline-text-3" id="text-7-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">bohr_to_angstrom</span> <span class="org-tuareg-font-lock-operator">:</span> bohr point <span class="org-tuareg-font-lock-operator">-&gt;</span> angstrom point
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">angstrom_to_bohr</span> <span class="org-tuareg-font-lock-operator">:</span> angstrom point <span class="org-tuareg-font-lock-operator">-&gt;</span> bohr point
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>bohr_to_angstrom</code></td>
+<td class="org-left">Converts a point in bohr to angstrom</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>angstrom_to_bohr</code></td>
+<td class="org-left">Converts a point in angstrom to bohr</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org30865a7" class="outline-3">
+<h3 id="org30865a7"><span class="section-number-3">7.4</span> Vector operations</h3>
+<div class="outline-text-3" id="text-7-4">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">neg</span>    <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">get</span>    <span class="org-tuareg-font-lock-operator">:</span> axis <span class="org-tuareg-font-lock-operator">-&gt;</span> bohr point <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">dot</span>    <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">norm</span>   <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-tuareg-font-lock-operator">(</span> <span class="org-tuareg-font-lock-operator">|</span>. <span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">:</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-tuareg-font-lock-operator">(</span> <span class="org-tuareg-font-lock-operator">|+</span> <span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-tuareg-font-lock-operator">(</span> <span class="org-tuareg-font-lock-operator">|-</span> <span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>neg</code></td>
+<td class="org-left">Negative of a point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>get</code></td>
+<td class="org-left">Extracts the projection of the coordinate on an axis</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>dot</code></td>
+<td class="org-left">Dot product</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>norm</code></td>
+<td class="org-left">\(\ell{^2}\) norm of the vector</td>
+</tr>
+
+<tr>
+<td class="org-left">$&vert; .$</td>
+<td class="org-left">Scales the vector by a constant</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\vert +\)</td>
+<td class="org-left">Adds two vectors</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\vert -\)</td>
+<td class="org-left">Subtracts two vectors</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Example:
+</p>
+<pre class="example" id="org7e5c4f6">
+Coordinate.neg { x=1. ; y=2. ; z=3. } ;;
+- : Coordinate.t =  -1.0000  -2.0000  -3.0000
+
+Coordinate.(get Y { x=1. ; y=2. ; z=3. }) ;;
+- : float = 2.
+
+Coordinate.(
+  2. |. { x=1. ; y=2. ; z=3. }
+) ;;
+- : Coordinate.t =   2.0000   4.0000   6.0000
+
+Coordinate.(
+  { x=1. ; y=2. ; z=3. } |+ { x=2. ; y=3. ; z=1. } 
+);;
+- : Coordinate.t =   3.0000   5.0000   4.0000
+
+Coordinate.(
+  { x=1. ; y=2. ; z=3. } |- { x=2. ; y=3. ; z=1. } 
+);;
+- : Coordinate.t =  -1.0000  -1.0000   2.0000
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org3d6cbf7" class="outline-3">
+<h3 id="org3d6cbf7"><span class="section-number-3">7.5</span> Printers</h3>
+<div class="outline-text-3" id="text-7-5">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp_bohr</span><span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp_angstrom</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+
+<p>
+Coordinates can be printed in bohr or angstrom.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4b09347" class="outline-2">
+<h2 id="org4b09347"><span class="section-number-2">8</span> Non-negative float</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+
+<div id="outline-container-org18667fd" class="outline-3">
+<h3 id="org18667fd"><span class="section-number-3">8.1</span> Type</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+&lt;<a id="orgbbbd2b2"></a>
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-keyword">private</span> float
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga4d551f" class="outline-3">
+<h3 id="orga4d551f"><span class="section-number-3">8.2</span> Conversions</h3>
+<div class="outline-text-3" id="text-8-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_float</span>        <span class="org-tuareg-font-lock-operator">:</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">unsafe_of_float</span> <span class="org-tuareg-font-lock-operator">:</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_float</span>        <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_string</span>       <span class="org-tuareg-font-lock-operator">:</span> string <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_string</span>       <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> string
+</pre>
+</div>
+
+<p>
+The <code>of_float</code> function checks that the float is non-negative.
+The unsafe variant doesn't do this check.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org024933e" class="outline-2">
+<h2 id="org024933e"><span class="section-number-2">9</span> Powers</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Contains powers of \(x\), \(y\) and \(z\) describing the polynomials in atomic basis sets.
+</p>
+</div>
+
+<div id="outline-container-org567caa4" class="outline-3">
+<h3 id="org567caa4"><span class="section-number-3">9.1</span> Type</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+<a id="orgd0c655a"><code>Powers.t</code></a>
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-keyword">private</span> <span class="org-tuareg-font-lock-operator">{</span>
+  x   <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">;</span>
+  y   <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">;</span>
+  z   <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">;</span>
+  tot <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">;</span>
+<span class="org-tuareg-font-lock-operator">}</span>
+</pre>
+</div>
+
+<p>
+<code>tot</code> always contains <code>x+y+z</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org684cb9e" class="outline-3">
+<h3 id="org684cb9e"><span class="section-number-3">9.2</span> Conversions</h3>
+<div class="outline-text-3" id="text-9-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_int_tuple</span> <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">*</span> int <span class="org-tuareg-font-lock-operator">*</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_int_tuple</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">*</span> int <span class="org-tuareg-font-lock-operator">*</span> int
+</pre>
+</div>
+
+<p>
+Example:
+</p>
+<pre class="example" id="orgc981d6d">
+Powers.of_int_tuple (2,3,1);;
+- : Powers.t = x^2 + y^3 + z^1
+
+Powers.(to_int_tuple (of_int_tuple (2,3,1)));;
+- : int * int * int = (2, 3, 1)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org10e6afe" class="outline-3">
+<h3 id="org10e6afe"><span class="section-number-3">9.3</span> Operations</h3>
+<div class="outline-text-3" id="text-9-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">get</span>  <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Coordinate.</span>axis <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">incr</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Coordinate.</span>axis <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">decr</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Coordinate.</span>axis <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>get</code></td>
+<td class="org-left">Returns the value of the power for \(x\), \(y\) or \(z\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>incr</code></td>
+<td class="org-left">Returns a new <a href="#orgd0c655a"><code>Powers.t</code></a> with the power on the given axis incremented</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>decr</code></td>
+<td class="org-left">Returns a new <a href="#orgd0c655a"><code>Powers.t</code></a> with the power on the given axis decremented. As opposed to <code>of_int_tuple</code>, the values may become negative</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Example:
+</p>
+<pre class="example" id="orge26816e">
+Powers.get Coordinate.Y (Powers.of_int_tuple (2,3,1));;
+- : int = 3
+
+Powers.incr Coordinate.Y (Powers.of_int_tuple (2,3,1));;
+- : Powers.t = x^2 + y^4 + z^1
+
+Powers.decr Coordinate.Y (Powers.of_int_tuple (2,3,1));;
+- : Powers.t = x^2 + y^2 + z^1
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-org85d7f3b" class="outline-3">
+<h3 id="org85d7f3b"><span class="section-number-3">9.4</span> Printers</h3>
+<div class="outline-text-3" id="text-9-4">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0d5b3c0" class="outline-2">
+<h2 id="org0d5b3c0"><span class="section-number-2">10</span> QCaml</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+QCaml-specific parameters
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">root</span> <span class="org-tuareg-font-lock-operator">:</span> string
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">name</span> <span class="org-tuareg-font-lock-operator">:</span> string
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>root</code></td>
+<td class="org-left">Path to the QCaml source directory</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>name</code></td>
+<td class="org-left"><code>"QCaml"</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org7807b38" class="outline-2">
+<h2 id="org7807b38"><span class="section-number-2">11</span> Range</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+A range is a sorted list of integers in an interval.
+</p>
+
+<ul class="org-ul">
+<li><code>"[a-b]"</code> : range between a and b (included)</li>
+<li><code>"[a]"</code>   : the list with only one integer a</li>
+<li><code>"a"</code>     : equivalent to "[a]"</li>
+<li><code>"[36-53,72-107,126-131]"</code> represents the list of integers
+[ 37 ; 37 ; 38 ; &#x2026; ; 52 ; 53 ; 72 ; 73 ; &#x2026; ; 106 ; 107 ; 126 ; 127 ; &#x2026; ; 130 ; 131 ].</li>
+</ul>
+</div>
+
+<div id="outline-container-org8c2f2f6" class="outline-3">
+<h3 id="org8c2f2f6"><span class="section-number-3">11.1</span> Type</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+<a id="orgf842b8b"><code>Range.t</code></a>
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org77ffaad" class="outline-3">
+<h3 id="org77ffaad"><span class="section-number-3">11.2</span> Conversion</h3>
+<div class="outline-text-3" id="text-11-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_string</span>   <span class="org-tuareg-font-lock-operator">:</span> string <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_string</span>   <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> string
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_int_list</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int list
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf235731" class="outline-3">
+<h3 id="orgf235731"><span class="section-number-3">11.3</span> Printers</h3>
+<div class="outline-text-3" id="text-11-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3a2288e" class="outline-2">
+<h2 id="org3a2288e"><span class="section-number-2">12</span> Spin</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+Electron spin
+</p>
+</div>
+
+<div id="outline-container-org834d784" class="outline-3">
+<h3 id="org834d784"><span class="section-number-3">12.1</span> Type</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+<a id="org93ebf63"><code>Spin.t</code></a>
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-constructor">Alfa</span> <span class="org-tuareg-font-lock-operator">|</span> Beta
+</pre>
+</div>
+
+<p>
+Note :
+<code>Alfa</code> if written with an 'f' instead of 'ph' because it has the same number of
+letters as <code>Beta</code>, so the alignment of the code is nicer.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge0d2417" class="outline-3">
+<h3 id="orge0d2417"><span class="section-number-3">12.2</span> Functions</h3>
+<div class="outline-text-3" id="text-12-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">other</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+</pre>
+</div>
+
+<p>
+Returns the opposite spin
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5637a9a" class="outline-3">
+<h3 id="org5637a9a"><span class="section-number-3">12.3</span> Printers</h3>
+<div class="outline-text-3" id="text-12-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org84ed70c" class="outline-2">
+<h2 id="org84ed70c"><span class="section-number-2">13</span> Util</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+Utility functions.
+</p>
+</div>
+
+
+<div id="outline-container-org462b347" class="outline-3">
+<h3 id="org462b347"><span class="section-number-3">13.1</span> External C functions</h3>
+<div class="outline-text-3" id="text-13-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>erf_float</code></td>
+<td class="org-left">Error function <code>erf</code> from <code>libm</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>erfc_float</code></td>
+<td class="org-left">Complementary error function <code>erfc</code> from <code>libm</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gamma_float</code></td>
+<td class="org-left">Gamma function <code>gamma</code> from <code>libm</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>popcnt</code></td>
+<td class="org-left"><code>popcnt</code> instruction</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>trailz</code></td>
+<td class="org-left"><code>ctz</code> instruction</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>leadz</code></td>
+<td class="org-left"><code>bsf</code> instruction</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org1d4dc47" class="outline-4">
+<h4 id="org1d4dc47"><span class="section-number-4">13.1.1</span> Erf</h4>
+<div class="outline-text-4" id="text-13-1-1">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">external</span> <span class="org-function-name">erf_float</span> <span class="org-tuareg-font-lock-operator">:</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+  <span class="org-tuareg-font-lock-operator">=</span> <span class="org-string">"erf_float_bytecode"</span> <span class="org-string">"erf_float"</span> <span class="org-tuareg-font-lock-attribute">[@@unboxed]</span> <span class="org-tuareg-font-lock-attribute">[@@noalloc]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org58f6f00" class="outline-4">
+<h4 id="org58f6f00"><span class="section-number-4">13.1.2</span> Erfc</h4>
+<div class="outline-text-4" id="text-13-1-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">external</span> <span class="org-function-name">erfc_float</span> <span class="org-tuareg-font-lock-operator">:</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+  <span class="org-tuareg-font-lock-operator">=</span> <span class="org-string">"erfc_float_bytecode"</span> <span class="org-string">"erfc_float"</span> <span class="org-tuareg-font-lock-attribute">[@@unboxed]</span> <span class="org-tuareg-font-lock-attribute">[@@noalloc]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org01a5783" class="outline-4">
+<h4 id="org01a5783"><span class="section-number-4">13.1.3</span> Gamma</h4>
+<div class="outline-text-4" id="text-13-1-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">external</span> <span class="org-function-name">gamma_float</span> <span class="org-tuareg-font-lock-operator">:</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+  <span class="org-tuareg-font-lock-operator">=</span> <span class="org-string">"gamma_float_bytecode"</span> <span class="org-string">"gamma_float"</span> <span class="org-tuareg-font-lock-attribute">[@@unboxed]</span> <span class="org-tuareg-font-lock-attribute">[@@noalloc]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge1bfda8" class="outline-4">
+<h4 id="orge1bfda8"><span class="section-number-4">13.1.4</span> Popcnt</h4>
+<div class="outline-text-4" id="text-13-1-4">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">popcnt</span> <span class="org-tuareg-font-lock-operator">:</span> int64 <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org70988c5" class="outline-4">
+<h4 id="org70988c5"><span class="section-number-4">13.1.5</span> Trailz</h4>
+<div class="outline-text-4" id="text-13-1-5">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">trailz</span> <span class="org-tuareg-font-lock-operator">:</span> int64 <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org35f579f" class="outline-4">
+<h4 id="org35f579f"><span class="section-number-4">13.1.6</span> Leadz</h4>
+<div class="outline-text-4" id="text-13-1-6">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">leadz</span> <span class="org-tuareg-font-lock-operator">:</span> int64 <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfac01cb" class="outline-4">
+<h4 id="orgfac01cb"><span class="section-number-4">13.1.7</span> Test</h4>
+</div>
+</div>
+
+<div id="outline-container-orgc5d4a6a" class="outline-3">
+<h3 id="orgc5d4a6a"><span class="section-number-3">13.2</span> General functions</h3>
+<div class="outline-text-3" id="text-13-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">fact</span> <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+<span class="org-comment-delimiter">(* </span><span class="org-comment">@raise Invalid_argument for negative arguments or arguments &gt;100. </span><span class="org-comment-delimiter">*)</span>
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">binom</span>       <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">binom_float</span> <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">chop</span>              <span class="org-tuareg-font-lock-operator">:</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-operator">(</span>unit <span class="org-tuareg-font-lock-operator">-&gt;</span> float<span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pow</span>               <span class="org-tuareg-font-lock-operator">:</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">float_of_int_fast</span> <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_some</span> <span class="org-tuareg-font-lock-operator">:</span> 'a option <span class="org-tuareg-font-lock-operator">-&gt;</span> 'a
+
+<span class="org-keyword">exception</span> <span class="org-tuareg-font-lock-constructor">Not_implemented</span> <span class="org-keyword">of</span> string
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">not_implemented</span> <span class="org-tuareg-font-lock-operator">:</span> string <span class="org-tuareg-font-lock-operator">-&gt;</span> 'a
+<span class="org-comment-delimiter">(* </span><span class="org-comment">@raise Not_implemented. </span><span class="org-comment-delimiter">*)</span>
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>fact</code></td>
+<td class="org-left">Factorial function.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>binom</code></td>
+<td class="org-left">Binomial coefficient. <code>binom n k</code> = \(C_n^k\)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>binom_float</code></td>
+<td class="org-left">float variant of <code>binom</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>pow</code></td>
+<td class="org-left">Fast implementation of the power function for small integer powers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>chop</code></td>
+<td class="org-left">In <code>chop a f</code>, evaluate <code>f</code> only if the absolute value of <code>a</code> is larger than <code>Constants.epsilon</code>, and return <code>a *. f ()</code>.</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>float_of_int_fast</code></td>
+<td class="org-left">Faster implementation of float<sub>of</sub><sub>int</sub> for small positive ints</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>not_implemented</code></td>
+<td class="org-left">Fails if some functionality is not implemented</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>of_some</code></td>
+<td class="org-left">Extracts the value of an option</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org0d0366f" class="outline-3">
+<h3 id="org0d0366f"><span class="section-number-3">13.3</span> Functions related to the Boys function</h3>
+<div class="outline-text-3" id="text-13-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">incomplete_gamma</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-label">alpha</span><span class="org-tuareg-font-lock-operator">:</span>float <span class="org-tuareg-font-lock-operator">-&gt;</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+<span class="org-comment-delimiter">(* </span><span class="org-comment">@raise Failure when the calculation doesn't converge. </span><span class="org-comment-delimiter">*)</span>
+</pre>
+</div>
+
+<p>
+The lower <a href="https://en.wikipedia.org/wiki/Incomplete_gamma_function">Incomplete Gamma function</a> is implemented :
+\[
+   \gamma(\alpha,x)  =  \int_0^x e^{-t}  t^{\alpha-1} dt
+   \]
+</p>
+
+<p>
+p: \(\frac{1}{\Gamma(\alpha)} \int_0^x e^{-t} t^{\alpha-1} dt\)
+</p>
+
+<p>
+q: \(\frac{1}{\Gamma(\alpha)} \int_x^\infty e^{-t} t^{\alpha-1} dt\)
+</p>
+
+<p>
+Reference : Haruhiko Okumura: C-gengo niyoru saishin algorithm jiten
+(New Algorithm handbook in C language) (Gijyutsu hyouron sha,
+Tokyo, 1991) p.227 [in Japanese] 
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">boys_function</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-label">maxm</span><span class="org-tuareg-font-lock-operator">:</span>int <span class="org-tuareg-font-lock-operator">-&gt;</span> float <span class="org-tuareg-font-lock-operator">-&gt;</span> float array
+</pre>
+</div>
+
+<p>
+The <a href="https://link.springer.com/article/10.1007/s10910-005-9023-3">Generalized Boys function</a> is implemented, 
+<code>maxm</code> is the maximum total angular momentum.
+</p>
+
+<p>
+\[
+   F_m(x) = \frac{\gamma(m+1/2,x)}{2x^{m+1/2}}
+   \]
+where \(\gamma\) is the incomplete gamma function.
+</p>
+
+<ul class="org-ul">
+<li>\(F_0(0.) = 1\)</li>
+<li>\(F_0(t) = \frac{\sqrt{\pi}}{2\sqrt{t}} \text{erf} ( \sqrt{t} )\)</li>
+<li>\(F_m(0.) = \frac{1}{2m+1}\)</li>
+<li>\(F_m(t)  = \frac{\gamma{m+1/2,t}}{2t^{m+1/2}}\)</li>
+<li>\(F_m(t)  = \frac{ 2t\, F_{m+1}(t) + e^{-t} }{2m+1}\)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8a4706a" class="outline-3">
+<h3 id="org8a4706a"><span class="section-number-3">13.4</span> List functions</h3>
+<div class="outline-text-3" id="text-13-4">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">list_some</span>  <span class="org-tuareg-font-lock-operator">:</span> 'a option list <span class="org-tuareg-font-lock-operator">-&gt;</span> 'a list
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">list_range</span> <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int list
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">list_pack</span>  <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> 'a list <span class="org-tuareg-font-lock-operator">-&gt;</span> 'a list list
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>list_some</code></td>
+<td class="org-left">Filters out all <code>None</code> elements of the list, and returns the elements without the <code>Some</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>list_range</code></td>
+<td class="org-left">Creates a list of consecutive integers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>list_pack</code></td>
+<td class="org-left"><code>list_pack n l</code> Creates a list of <code>n</code>-elements lists</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgaa5ced0" class="outline-3">
+<h3 id="orgaa5ced0"><span class="section-number-3">13.5</span> Array functions</h3>
+<div class="outline-text-3" id="text-13-5">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">array_range</span>   <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int array
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">array_sum</span>     <span class="org-tuareg-font-lock-operator">:</span> float array <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">array_product</span> <span class="org-tuareg-font-lock-operator">:</span> float array <span class="org-tuareg-font-lock-operator">-&gt;</span> float
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>array_range</code></td>
+<td class="org-left">Creates an array of consecutive integers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>array_sum</code></td>
+<td class="org-left">Returns the sum of all the elements of the array</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>array_product</code></td>
+<td class="org-left">Returns the product of all the elements of the array</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgc8f50db" class="outline-3">
+<h3 id="orgc8f50db"><span class="section-number-3">13.6</span> Stream functions</h3>
+<div class="outline-text-3" id="text-13-6">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">stream_range</span>   <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-module">Stream.</span>t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">stream_to_list</span> <span class="org-tuareg-font-lock-operator">:</span> 'a <span class="org-tuareg-font-lock-module">Stream.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> 'a list
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">stream_fold</span>    <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-operator">(</span>'a <span class="org-tuareg-font-lock-operator">-&gt;</span> 'b <span class="org-tuareg-font-lock-operator">-&gt;</span> 'a<span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">-&gt;</span> 'a <span class="org-tuareg-font-lock-operator">-&gt;</span> 'b <span class="org-tuareg-font-lock-module">Stream.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> 'a
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>stream_range</code></td>
+<td class="org-left">Creates a stream returning consecutive integers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>stream_to_list</code></td>
+<td class="org-left">Read a stream and put items in a list</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>stream_fold</code></td>
+<td class="org-left">Apply a fold to the elements of the stream</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orge269368" class="outline-3">
+<h3 id="orge269368"><span class="section-number-3">13.7</span> Printers</h3>
+<div class="outline-text-3" id="text-13-7">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp_float_array_size</span>   <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> float array <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp_float_array</span>        <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> float array <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp_float_2darray_size</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> float array array <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp_float_2darray</span>      <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> float array array <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp_bitstring</span>          <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Z.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>pp_float_array</code></td>
+<td class="org-left">Printer for float arrays</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>pp_float_array_size</code></td>
+<td class="org-left">Printer for float arrays with size</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>pp_float_2darray</code></td>
+<td class="org-left">Printer for matrices</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>pp_float_2darray_size</code></td>
+<td class="org-left">Printer for matrices with size</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>pp_bitstring</code></td>
+<td class="org-left">Printer for bit strings (used by <code>Bitstring</code> module)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Example:
+</p>
+<pre class="example" id="orgd64a936">
+pp_float_array_size:
+[ 6:   1.000000   1.732051   1.732051   1.000000   1.732051   1.000000 ]
+
+pp_float_array: 
+[    1.000000   1.732051   1.732051   1.000000   1.732051   1.000000 ]
+
+pp_float_2darray_size
+[
+  2:[ 6:  1.000000   1.732051   1.732051   1.000000   1.732051   1.000000 ]
+    [ 4:  1.000000   2.000000   3.000000   4.000000 ] ]
+
+pp_float_2darray:
+[ [   1.000000   1.732051   1.732051   1.000000   1.732051   1.000000 ]
+  [   1.000000   2.000000   3.000000   4.000000 ] ]
+
+pp_bitstring 14:
++++++------+--
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2e52809" class="outline-2">
+<h2 id="org2e52809"><span class="section-number-2">14</span> Zkey</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+Encodes the powers of x, y, z in a compact form, suitable for being
+used as keys in a hash table.
+</p>
+
+<p>
+Internally, the <a href="#org66144e4"><code>Zkey.t</code></a> is made of two integers, <code>left</code> and <code>right</code>.
+The small integers x, y and z are stored compactly in this 126-bits
+space:
+</p>
+
+<p>
+Example:
+</p>
+<pre class="example" id="org6d6d6d9">
+                                Left                                                                Right
+ 3 [--------------------------------------------------------------]       [------------------|---------------|---------------|---------------]
+                                                                                                     x               y               z        
+
+ 6 [--------------------------------------------------------------]       [---|----------|----------|----------|----------|----------|---------]
+                                                                                   x1         y1         z1         x2         y2         z2        
+
+ 9 [---------------------------------|----------|----------|---------]    [---|----------|----------|----------|----------|----------|---------]
+                                          x1         y1         z1                 x2         y2         z2         x3         y3         z3        
+
+12 [---|----------|----------|----------|----------|----------|---------] [---|----------|----------|----------|----------|----------|---------]
+            x1         y1         z1         x2         y2         z2              x3         y3         z3         x4         y4         z4
+</pre>
+
+<p>
+The values of x,y,z should be positive and should not exceed 32767 for
+<code>kind=3</code>. For all other kinds kinds the values should not exceed 1023.
+</p>
+</div>
+
+<div id="outline-container-orgdce42d8" class="outline-3">
+<h3 id="orgdce42d8"><span class="section-number-3">14.1</span> Types</h3>
+<div class="outline-text-3" id="text-14-1">
+<p>
+<a id="org66144e4"><code>Zkey.t</code></a>
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> 
+
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">kind</span> <span class="org-tuareg-font-lock-operator">=</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Three</span>  <span class="org-keyword">of</span>  <span class="org-tuareg-font-lock-module">Powers.</span>t
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Four</span>   <span class="org-keyword">of</span> <span class="org-tuareg-font-lock-operator">(</span>int <span class="org-tuareg-font-lock-operator">*</span> int <span class="org-tuareg-font-lock-operator">*</span> int <span class="org-tuareg-font-lock-operator">*</span> int<span class="org-tuareg-font-lock-operator">)</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Six</span>    <span class="org-keyword">of</span> <span class="org-tuareg-font-lock-operator">(</span><span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">*</span> <span class="org-tuareg-font-lock-module">Powers.</span>t<span class="org-tuareg-font-lock-operator">)</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Nine</span>   <span class="org-keyword">of</span> <span class="org-tuareg-font-lock-operator">(</span><span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">*</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">*</span> <span class="org-tuareg-font-lock-module">Powers.</span>t<span class="org-tuareg-font-lock-operator">)</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">Twelve</span> <span class="org-keyword">of</span> <span class="org-tuareg-font-lock-operator">(</span><span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">*</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">*</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">*</span> <span class="org-tuareg-font-lock-module">Powers.</span>t<span class="org-tuareg-font-lock-operator">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb702609" class="outline-3">
+<h3 id="orgb702609"><span class="section-number-3">14.2</span> Conversions</h3>
+<div class="outline-text-3" id="text-14-2">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_powers_three</span>  <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_powers_six</span>    <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_powers_nine</span>   <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_powers_twelve</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> <span class="org-tuareg-font-lock-module">Powers.</span>t <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_powers</span>        <span class="org-tuareg-font-lock-operator">:</span> kind <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_int_array</span>     <span class="org-tuareg-font-lock-operator">:</span> int array <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">of_int_four</span>      <span class="org-tuareg-font-lock-operator">:</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> int <span class="org-tuareg-font-lock-operator">-&gt;</span> t
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_int_array</span>     <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int array
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_powers</span>        <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> kind
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">to_string</span>        <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> string
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>of_powers_three</code></td>
+<td class="org-left">Create from a <a href="#orgd0c655a"><code>Powers.t</code></a></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>of_powers_six</code></td>
+<td class="org-left">Create from two <a href="#orgd0c655a"><code>Powers.t</code></a></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>of_powers_nine</code></td>
+<td class="org-left">Create from three <a href="#orgd0c655a"><code>Powers.t</code></a></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>of_powers_twelve</code></td>
+<td class="org-left">Create from four <a href="#orgd0c655a"><code>Powers.t</code></a></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>of_powers</code></td>
+<td class="org-left">Create using the <code>kind</code> type</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>of_int_array</code></td>
+<td class="org-left">Convert from an <code>int</code> array</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>of_int_four</code></td>
+<td class="org-left">Create from four <code>ints</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>to_int_array</code></td>
+<td class="org-left">Convert to an <code>int</code> array</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>to_powers</code></td>
+<td class="org-left">Convert to an <a href="#orgd0c655a"><code>Powers.t</code></a> array</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>to_string</code></td>
+<td class="org-left">Pretty printing</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org6da6382" class="outline-3">
+<h3 id="org6da6382"><span class="section-number-3">14.3</span> Functions for hash tables</h3>
+<div class="outline-text-3" id="text-14-3">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">hash</span>    <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">equal</span>   <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> bool
+<span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">compare</span> <span class="org-tuareg-font-lock-operator">:</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> int
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>hash</code></td>
+<td class="org-left">Associates a nonnegative integer to any Zkey</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>equal</code></td>
+<td class="org-left">The equal function. True if two Zkeys are equal</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>compare</code></td>
+<td class="org-left">Comparison function, used for sorting</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org0520349" class="outline-3">
+<h3 id="org0520349"><span class="section-number-3">14.4</span> Printers</h3>
+<div class="outline-text-3" id="text-14-4">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">pp</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-module">Format.</span>formatter <span class="org-tuareg-font-lock-operator">-&gt;</span> t <span class="org-tuareg-font-lock-operator">-&gt;</span> unit
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb9b1399" class="outline-2">
+<h2 id="orgb9b1399"><span class="section-number-2">15</span> Zmap</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+A hash table where the keys are <code>Zkey</code>
+</p>
+</div>
+
+<div id="outline-container-orgebb4a75" class="outline-3">
+<h3 id="orgebb4a75"><span class="section-number-3">15.1</span> Type</h3>
+<div class="outline-text-3" id="text-15-1">
+<p>
+<a id="org6e6c735"><code>Zmap.t</code></a>
+</p>
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">include</span> <span class="org-tuareg-font-lock-governing">module type of</span> <span class="org-tuareg-font-lock-module">Hashtbl.Make</span><span class="org-tuareg-font-lock-operator">(</span><span class="org-tuareg-font-lock-constructor">Zkey</span><span class="org-tuareg-font-lock-operator">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Anthony Scemama</p>
+<p class="date">Created: 2021-10-19 Tue 16:20</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

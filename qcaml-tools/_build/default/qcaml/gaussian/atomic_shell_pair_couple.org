@@ -1,0 +1,168 @@
+#+begin_src elisp tangle: no :results none :exports none
+(setq pwd (file-name-directory buffer-file-name))
+(setq name (file-name-nondirectory (substring buffer-file-name 0 -4)))
+(setq lib (concat pwd "lib/"))
+(setq testdir (concat pwd "test/"))
+(setq mli (concat lib name ".mli"))
+(setq ml  (concat lib name ".ml"))
+(setq test-ml  (concat testdir name ".ml"))
+(org-babel-tangle)
+#+end_src 
+
+* Atomic shell pair couple
+  :PROPERTIES:
+  :header-args: :noweb yes :comments both
+  :END:
+
+An atomic shell pair couple is the cartesian product between two sets of functions, one
+set over electron one and one set over electron two. Both sets are atomic shell
+pairs.
+
+These are usually called /shell quartets/ in the literature, but we prefer to use
+/pair/ for two functions with the same electron, and /couple/ for two functions
+acting on different electrons, since they will be coupled by a two-electron operator.
+
+
+** Type
+
+   #+begin_src ocaml :tangle (eval mli)
+type t
+
+open Common
+   #+end_src
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+open Common
+
+type t = 
+{
+  contracted_shell_pair_couples : Contracted_shell_pair_couple.t list ;
+  atomic_shell_pair_p: Atomic_shell_pair.t ;
+  atomic_shell_pair_q: Atomic_shell_pair.t ;
+  atomic_shell_a     : Atomic_shell.t ;
+  atomic_shell_b     : Atomic_shell.t ;
+  atomic_shell_c     : Atomic_shell.t ;
+  atomic_shell_d     : Atomic_shell.t ;
+  ang_mom            : Angular_momentum.t ;
+}
+
+module Am   = Angular_momentum
+module Co   = Coordinate
+module As   = Atomic_shell
+module Asp  = Atomic_shell_pair
+module Cspc = Contracted_shell_pair_couple
+   #+end_src
+
+** Access
+
+   #+begin_src ocaml :tangle (eval mli)
+val ang_mom                       : t -> Angular_momentum.t
+val atomic_shell_a                : t -> Atomic_shell.t
+val atomic_shell_b                : t -> Atomic_shell.t
+val atomic_shell_c                : t -> Atomic_shell.t
+val atomic_shell_d                : t -> Atomic_shell.t
+val atomic_shell_pair_p           : t -> Atomic_shell_pair.t
+val atomic_shell_pair_q           : t -> Atomic_shell_pair.t
+val contracted_shell_pair_couples : t -> Contracted_shell_pair_couple.t list
+val monocentric                   : t -> bool
+val norm_scales                   : t -> float array
+val zkey_array                    : t -> Zkey.t array
+   #+end_src
+ 
+ | ~ang_mom~                       | Total angular momentum of the shell pair couple: sum of the angular momenta of all the shells.            |
+ | ~atomic_shell_a~                | Returns the first atomic shell of the first shell pair.                                                   |
+ | ~atomic_shell_b~                | Returns the second atomic shell of the first shell pair.                                                  |
+ | ~atomic_shell_c~                | Returns the first atomic shell of the second shell pair.                                                  |
+ | ~atomic_shell_d~                | Returns the second atomic shell of the second shell pair.                                                 |
+ | ~atomic_shell_pair_p~           | Returns the first atomic shell pair that was used to build the shell pair.                                |
+ | ~atomic_shell_pair_q~           | Returns the second atomic shell pair that was used to build the shell pair.                               |
+ | ~contracted_shell_pair_couples~ | Returns the list of significant contracted shell pair couples.                                            |
+ | ~monocentric~                   | True if all four atomic shells have the same center.                                                      |
+ | ~norm_scales~                   | Scaling factors of normalization coefficients inside the shell. The ordering is the same as ~zkey_array~. |
+ | ~zkey_array~                    | Returns the array of ~Zkey.t~ relative to the four shells of the shell pair couple.                       |
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+let contracted_shell_pair_couples t = t.contracted_shell_pair_couples
+
+let monocentric t =
+  Asp.monocentric t.atomic_shell_pair_p && Asp.monocentric t.atomic_shell_pair_q &&
+    As.center (Asp.atomic_shell_a t.atomic_shell_pair_p) = As.center (Asp.atomic_shell_a t.atomic_shell_pair_q)
+
+
+let ang_mom t = t.ang_mom
+
+let atomic_shell_pair_p t = t.atomic_shell_pair_p
+let atomic_shell_pair_q t = t.atomic_shell_pair_q
+
+let atomic_shell_a t = t.atomic_shell_a
+let atomic_shell_b t = t.atomic_shell_b
+let atomic_shell_c t = t.atomic_shell_c
+let atomic_shell_d t = t.atomic_shell_d
+
+
+let zkey_array t =
+  match t.contracted_shell_pair_couples with
+  | f::_ -> Cspc.zkey_array f
+  |  _ -> invalid_arg "AtomicShellPairCouple.zkey_array"
+
+let norm_scales t = 
+  match t.contracted_shell_pair_couples with
+  | f::_ -> Cspc.norm_scales f
+  |  _ -> invalid_arg "AtomicShellPairCouple.norm_scales"
+   #+end_src
+
+** Creation
+
+   #+begin_src ocaml :tangle (eval mli)
+val make : ?cutoff:float -> Atomic_shell_pair.t -> Atomic_shell_pair.t -> t option
+   #+end_src
+   Default cutoff is $\epsilon$.
+
+   | ~make~ | Creates an atomic shell pair couple using two atomic shell pairs. |
+
+   #+begin_example
+
+   #+end_example
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+let make ?(cutoff=Constants.epsilon) atomic_shell_pair_p atomic_shell_pair_q = 
+  let ang_mom =
+    Am.(Asp.ang_mom atomic_shell_pair_p + Asp.ang_mom atomic_shell_pair_q)
+  in
+  let atomic_shell_a = Asp.atomic_shell_a atomic_shell_pair_p
+  and atomic_shell_b = Asp.atomic_shell_b atomic_shell_pair_p
+  and atomic_shell_c = Asp.atomic_shell_a atomic_shell_pair_q
+  and atomic_shell_d = Asp.atomic_shell_b atomic_shell_pair_q
+  in
+  let contracted_shell_pair_couples =
+    List.concat_map (fun ap_ab -> 
+      List.map (fun ap_cd -> 
+        Cspc.make ~cutoff ap_ab ap_cd
+      ) (Asp.contracted_shell_pairs atomic_shell_pair_q)
+    ) (Asp.contracted_shell_pairs atomic_shell_pair_p)
+    |> Util.list_some
+  in
+  match contracted_shell_pair_couples with
+  | [] -> None 
+  | _  -> Some  { atomic_shell_pair_p ; atomic_shell_pair_q ; ang_mom ;
+                  atomic_shell_a ; atomic_shell_b ; atomic_shell_c ; atomic_shell_d ;
+                  contracted_shell_pair_couples ;
+                }
+   #+end_src
+
+
+** Printers
+
+   #+begin_src ocaml :tangle (eval mli)
+val pp : Format.formatter -> t -> unit
+   #+end_src
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+let pp ppf t =
+  Format.fprintf ppf "[(%d,%d),(%d,%d)]"
+    (Atomic_shell.index t.atomic_shell_a)
+    (Atomic_shell.index t.atomic_shell_b)
+    (Atomic_shell.index t.atomic_shell_c)
+    (Atomic_shell.index t.atomic_shell_d)
+   #+end_src
+

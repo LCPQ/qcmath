@@ -1,0 +1,4 @@
+lib: [
+  "_build/install/default/lib/qcmath-qcaml/META"
+  "_build/install/default/lib/qcmath-qcaml/dune-package"
+]

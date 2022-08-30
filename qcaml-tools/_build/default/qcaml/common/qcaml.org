@@ -1,0 +1,44 @@
+#+begin_src elisp tangle: no :results none :exports none
+(setq pwd (file-name-directory buffer-file-name))
+(setq name (file-name-nondirectory (substring buffer-file-name 0 -4)))
+(setq lib (concat pwd "lib/"))
+(setq testdir (concat pwd "test/"))
+(setq mli (concat lib name ".mli"))
+(setq ml  (concat lib name ".ml"))
+(setq test-ml  (concat testdir name ".ml"))
+(org-babel-tangle)
+#+end_src 
+
+* QCaml
+  :PROPERTIES:
+  :header-args: :noweb yes :comments both
+  :END:
+
+  QCaml-specific parameters
+  
+  #+begin_src ocaml :tangle (eval mli)
+val root : string
+val name : string
+  #+end_src
+
+  | ~root~ | Path to the QCaml source directory |
+  | ~name~ | ~"QCaml"~                          |
+
+  #+begin_src ocaml :tangle (eval ml) :exports none
+let name = "QCaml"
+
+let root =
+  let rec chop = function
+    | [] -> []
+    | x :: _ as l when x = name -> l
+    | _ :: rest -> chop rest
+  in
+  String.split_on_char Filename.dir_sep.[0] (Sys.getcwd ())
+  |> List.rev
+  |> chop
+  |> List.rev
+  |> String.concat Filename.dir_sep
+
+
+  #+end_src
+

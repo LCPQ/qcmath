@@ -1,0 +1,19 @@
+
+(library
+ (name simulation)
+ (public_name qcaml.simulation)
+ (synopsis 
+"Data describing a simulation (AOs, operators, nuclear coordinate,...)"
+  )
+ (libraries
+  qcaml.common
+  qcaml.particles
+  qcaml.gaussian
+  qcaml.gaussian_integrals
+  qcaml.operators
+  qcaml.ao
+  )
+ 
+ 
+)
+

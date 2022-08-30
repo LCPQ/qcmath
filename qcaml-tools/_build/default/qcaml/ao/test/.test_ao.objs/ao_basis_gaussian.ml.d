@@ -1,0 +1,1 @@
+qcaml/ao/test/ao_basis_gaussian.ml: Alcotest Ao Basis Bigarray Common Eri Eri_long_range Filename Gaussian Gaussian_integrals Linear_algebra List Matrix Nuclei Operator Operators Particles Printf Vector

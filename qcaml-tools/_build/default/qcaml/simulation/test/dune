@@ -1,0 +1,9 @@
+
+(library
+ (name test_simulation)
+ (synopsis "Test for simulation library")
+ (libraries
+  alcotest
+  qcaml.simulation
+ )
+)

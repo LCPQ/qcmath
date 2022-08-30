@@ -1,0 +1,36 @@
+(lang dune 1.10)
+(name qcaml)
+
+(generate_opam_files true)
+
+(source (uri "git+https://gitlab.com/scemama/qcaml.git"))
+(bug_reports "https://gitlab.com/scemama/qcaml/issues")
+(homepage "https://gitlab.com/scemama/qcaml")
+(documentation "https://gitlab.com/scemama/qcaml")
+
+(license "LGPL-2.1+ with OCaml linking exception")
+
+(maintainers
+  "Anthony Scemama <scemama@irsamc.ups-tlse.fr>"
+)
+
+(authors
+  "Anthony Scemama <scemama@irsamc.ups-tlse.fr>"
+)
+
+(package
+  (name qcaml)
+  (synopsis "QCaml - Quantum chemistry with OCaml")
+  (description "\
+QCaml provides a programming framewrok work wave function methods
+in quantum chemistry.")
+  (depends
+    (ocaml (>= 4.10))
+    (dune  (>= 1.10))
+    lacaml
+    getopt
+    zarith
+    alcotest
+  )
+)
+

@@ -1,0 +1,9 @@
+
+(library
+ (name test_gaussian)
+ (synopsis "Test for gaussian library")
+ (libraries
+  alcotest
+  qcaml.gaussian
+ )
+)

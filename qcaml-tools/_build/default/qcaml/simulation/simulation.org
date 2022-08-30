@@ -1,0 +1,131 @@
+#+begin_src elisp tangle: no :results none :exports none
+(setq pwd (file-name-directory buffer-file-name))
+(setq name (file-name-nondirectory (substring buffer-file-name 0 -4)))
+(setq lib (concat pwd "lib/"))
+(setq testdir (concat pwd "test/"))
+(setq mli (concat lib name ".mli"))
+(setq ml  (concat lib name ".ml"))
+(setq test-ml  (concat testdir name ".ml"))
+(org-babel-tangle)
+#+end_src 
+
+* Simulation
+  :PROPERTIES:
+  :header-args: :noweb yes :comments both
+  :END:
+
+  Contains the state of the simulation.
+  
+  #+NAME: open
+  #+begin_src ocaml :tangle (eval mli)
+open Common
+open Particles
+open Operators
+  #+end_src
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+<<open>>
+   #+end_src
+
+** Type
+
+   #+NAME: types
+   #+begin_src ocaml :tangle (eval mli)
+type t
+   #+end_src
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+type t = {
+  charge            : Charge.t;
+  electrons         : Electrons.t;
+  nuclei            : Nuclei.t;
+  ao_basis          : Ao.Basis.t;
+  operators         : Operator.t list;
+}
+   #+end_src
+
+** Access
+
+   #+begin_src ocaml :tangle (eval mli)
+val nuclei            : t -> Nuclei.t
+val charge            : t -> Charge.t
+val electrons         : t -> Electrons.t
+val ao_basis          : t -> Ao.Basis.t
+val nuclear_repulsion : t -> float
+val operators         : t -> Operator.t list
+   #+end_src
+
+ | ~nuclei~            | Nuclear coordinates used in the smiulation           |
+ | ~charge~            | Total charge (electrons + nuclei)                    |
+ | ~electrons~         | Electrons used in the simulation                     |
+ | ~ao_basis~          | Atomic basis set                                     |
+ | ~nuclear_repulsion~ | Nuclear repulsion energy                             |
+ | ~operators~         | List of extra operators (range-separation, f12, etc) |
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+let nuclei            t = t.nuclei
+let charge            t = t.charge
+let electrons         t = t.electrons
+let ao_basis          t = t.ao_basis
+let nuclear_repulsion t = Nuclei.repulsion @@ nuclei t
+let operators         t = t.operators
+   #+end_src
+
+** Creation
+
+   #+begin_src ocaml :tangle (eval mli)
+val make : ?multiplicity:int -> ?charge:int -> 
+  ?operators:Operator.t list-> nuclei:Nuclei.t ->
+  Ao.Basis.t -> t
+   #+end_src
+
+   Defaults:
+   - multiplicity : ~1~
+   - charge : ~0~
+   - operators : ~[]~
+     
+   #+begin_src ocaml :tangle (eval ml) :exports none
+let make
+    ?(multiplicity=1)
+    ?(charge=0)
+    ?(operators=[])
+    ~nuclei
+    ao_basis
+  =
+
+  (* Tune Garbage Collector *)
+  let gc = Gc.get () in
+  Gc.set { gc with space_overhead = 1000  };
+
+  let electrons =
+    Electrons.of_atoms ~multiplicity ~charge nuclei
+  in
+
+  let charge = 
+    Charge.(Nuclei.charge nuclei + Electrons.charge electrons)
+  in
+
+  { charge ; nuclei ; electrons ; ao_basis ; operators}
+   #+end_src
+
+** Printers
+
+   #+begin_src ocaml :tangle (eval mli)
+val pp : Format.formatter -> t -> unit
+   #+end_src
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+let pp ppf t =
+  let formula = Nuclei.formula t.nuclei in
+  let n_aos = Ao.Basis.size t.ao_basis in
+  let n_ops = List.length t.operators in
+  Format.fprintf ppf "@[@[%s@], @[%a@], @[%d AOs@], @[%d operators@]@]"
+    formula  Electrons.pp t.electrons n_aos n_ops
+   #+end_src
+
+   #+RESULTS:
+   : Line 2, characters 16-30:
+   : 2 |   let formula = Nuclei.formula t.nuclei in
+   :                     ^^^^^^^^^^^^^^
+   : Error: Unbound module Nuclei
+

@@ -1,0 +1,1 @@
+qcaml/gaussian_integrals/lib/multipole.ml: Angular_momentum Array Basis Bigarray Common Constants Contracted_shell Contracted_shell_pair Coordinate Gaussian Linear_algebra List Matrix Overlap_primitives Powers Primitive_shell_pair Printf Util Zkey Zmap

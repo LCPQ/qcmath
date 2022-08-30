@@ -1,0 +1,14 @@
+
+(library
+ (name operators)
+ (public_name qcaml.operators)
+ (synopsis 
+"Parameteried operators, such as F12 and range-separation"
+  )
+ (libraries
+  qcaml.common
+  )
+ 
+ 
+)
+

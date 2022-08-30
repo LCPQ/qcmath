@@ -1,0 +1,27 @@
+#+begin_src elisp tangle: no :results none :exports none
+(setq pwd (file-name-directory buffer-file-name))
+(setq name (file-name-nondirectory (substring buffer-file-name 0 -4)))
+(setq lib (concat pwd "lib/"))
+(setq testdir (concat pwd "test/"))
+(setq mli (concat lib name ".mli"))
+(setq ml  (concat lib name ".ml"))
+(setq test-ml  (concat testdir name ".ml"))
+(org-babel-tangle)
+#+end_src 
+
+* Atomic mass
+  :PROPERTIES:
+  :header-args: :noweb yes :comments both
+  :END:
+
+  Atomic mass, a non-negative float.
+
+   #+NAME: types
+   #+begin_src ocaml :tangle (eval mli)
+include module type of Common.Non_negative_float
+   #+end_src
+
+   #+begin_src ocaml :tangle (eval ml) :exports none
+include Common.Non_negative_float
+   #+end_src
+
