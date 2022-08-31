@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     30621,        571]
-NotebookOptionsPosition[     30110,        553]
-NotebookOutlinePosition[     30534,        570]
-CellTagsIndexPosition[     30491,        567]
+NotebookDataLength[     29884,        549]
+NotebookOptionsPosition[     29374,        531]
+NotebookOutlinePosition[     29797,        548]
+CellTagsIndexPosition[     29754,        545]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -32,25 +32,19 @@ Cell[BoxData[
    RowBox[{"RHF", "[", 
     RowBox[{
     "nbasis_", ",", "Nelc_", ",", "S_", ",", "T_", ",", "V_", ",", "U_", ",", 
-     "X_", ",", "DIISex_"}], "]"}], ":=", 
+     "X_", ",", "DIISex_", ",", "maxSCF_", ",", "thresh_"}], "]"}], ":=", 
    RowBox[{"Module", "[", "\n", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
-      "maxSCF", ",", "thresh", ",", "conv", ",", "nSCF", ",", "FDIIS", ",", 
-       "eDIIS", ",", "Cp", ",", "C", ",", "P", ",", "J", ",", "K", ",", "\n", 
-       "OAIntegrals", ",", "\[Epsilon]", ",", "F", ",", "ET", ",", "EV", ",", 
-       "EJ", ",", "EK", ",", "EHF", ",", "Etot", ",", "OMIntegrals", ",", 
-       "\n", "Hcore", ",", "Pold", ",", "Orb", ",", "RHFquantities", ",", 
-       "FOM", ",", "UJ", ",", "UK", ",", "Vx"}], "}"}], ",", "\n", "\n", 
-     RowBox[{"(*", 
-      RowBox[{"Parameters", " ", "for", " ", "SCF"}], "*)"}], "\n", 
+      "conv", ",", "nSCF", ",", "FDIIS", ",", "eDIIS", ",", "Cp", ",", "C", 
+       ",", "P", ",", "J", ",", "K", ",", "\n", "OAIntegrals", ",", 
+       "\[Epsilon]", ",", "F", ",", "ET", ",", "EV", ",", "EJ", ",", "EK", 
+       ",", "EHF", ",", "Etot", ",", "\n", "OMIntegrals", ",", "Hcore", ",", 
+       "Orb", ",", "FOM", ",", "RHFquantities", ",", "\n", "UJ", ",", "UK", 
+       ",", "Vx"}], "}"}], ",", "\n", "\n", 
      RowBox[{
       RowBox[{
-       RowBox[{"maxSCF", " ", "=", " ", "1024"}], ";", " ", 
-       RowBox[{"thresh", " ", "=", " ", 
-        SuperscriptBox["10", 
-         RowBox[{"-", "7"}]]}], ";", "\n", "\n", 
        RowBox[{"Hcore", " ", "=", " ", 
         RowBox[{"T", " ", "+", " ", "V"}]}], ";", "\n", 
        RowBox[{"OAIntegrals", " ", "=", " ", "U"}], ";", "\n", "\n", 
@@ -129,31 +123,10 @@ Cell[BoxData[
            RowBox[{"Build", " ", "exchange", " ", "matrix"}], "*)"}], "\n", 
           RowBox[{"K", " ", "=", " ", 
            RowBox[{"UK", ".", 
-            RowBox[{"Flatten", "[", "P", "]"}]}]}], ";", "\n", "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{"P", "=", 
-             RowBox[{"Table", "[", 
-              RowBox[{
-               RowBox[{"2", 
-                RowBox[{
-                 UnderoverscriptBox["\[Sum]", 
-                  RowBox[{"a", "=", "1"}], 
-                  RowBox[{"Nelc", "/", "2"}]], 
-                 RowBox[{
-                  RowBox[{"Cmat", "\[LeftDoubleBracket]", 
-                   RowBox[{"\[Mu]", ",", "a"}], "\[RightDoubleBracket]"}], 
-                  RowBox[{"Cmat", "\[LeftDoubleBracket]", 
-                   RowBox[{"\[Nu]", ",", "a"}], 
-                   "\[RightDoubleBracket]"}]}]}]}], ",", 
-               RowBox[{"{", 
-                RowBox[{"\[Mu]", ",", "nOA"}], "}"}], ",", 
-               RowBox[{"{", 
-                RowBox[{"\[Nu]", ",", "nOA"}], "}"}]}], "]"}]}], ";"}], 
-           "*)"}], " ", "\n", " ", 
+            RowBox[{"Flatten", "[", "P", "]"}]}]}], ";", "\n", " ", "\n", 
           RowBox[{"F", " ", "=", " ", 
            RowBox[{"Hcore", " ", "+", " ", "J", " ", "-", " ", 
-            RowBox[{"0.5", "K"}]}]}], ";", "\n", " ", "\n", " ", 
+            RowBox[{"0.5", "K"}]}]}], ";", "\n", " ", "\n", 
           RowBox[{"conv", "=", 
            RowBox[{"Max", "[", 
             RowBox[{"Abs", "[", 
@@ -219,23 +192,23 @@ Cell[BoxData[
              RowBox[{"Break", "[", "]"}]}]}], "]"}], ";"}]}], "\n", "]"}], 
        ";"}], "\n", ";", "\n", "\n", 
       RowBox[{"(*", 
-       RowBox[{"Kinetic", " ", "enegy"}], "*)"}], " ", 
+       RowBox[{"Kinetic", " ", "energy"}], "*)"}], " ", 
       RowBox[{"ET", "=", 
        RowBox[{"Tr", "[", 
-        RowBox[{"P", ".", "T"}], "]"}]}], ";", " ", 
+        RowBox[{"P", ".", "T"}], "]"}]}], ";", " ", "\n", 
       RowBox[{"(*", 
        RowBox[{"Nuclear", " ", "energy"}], "*)"}], " ", 
       RowBox[{"EV", "=", 
        RowBox[{"Tr", "[", 
-        RowBox[{"P", ".", "V"}], "]"}]}], ";", " ", 
+        RowBox[{"P", ".", "V"}], "]"}]}], ";", " ", "\n", 
       RowBox[{"(*", 
        RowBox[{"Coulomb", " ", "energy"}], "*)"}], " ", 
       RowBox[{"EJ", "=", " ", 
        RowBox[{"0.5", 
         RowBox[{"Tr", "[", 
-         RowBox[{"P", ".", "J"}], "]"}]}]}], ";", " ", 
+         RowBox[{"P", ".", "J"}], "]"}]}]}], ";", " ", "\n", 
       RowBox[{"(*", 
-       RowBox[{"Exchange", " ", "energy"}], "*)"}], " ", 
+       RowBox[{"Exchange", " ", "energy"}], "*)"}], 
       RowBox[{"EK", "=", " ", 
        RowBox[{
         RowBox[{"-", "0.25"}], 
@@ -255,7 +228,7 @@ Cell[BoxData[
            RowBox[{"C", "\[Transpose]"}], ".", "OAIntegrals", ".", "C"}], ",", 
           RowBox[{"{", 
            RowBox[{"2", ",", "1", ",", "4", ",", "3"}], "}"}]}], "]"}], ".", 
-        "C"}]}], ";", "\n", "\n", "\n", 
+        "C"}]}], ";", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"MO", " ", "energies"}], "*)"}], "\n", 
       RowBox[{"FOM", "=", 
@@ -263,7 +236,7 @@ Cell[BoxData[
         RowBox[{"C", "\[Transpose]"}], ".", "F", ".", "C"}]}], ";", "\n", 
       "\n", 
       RowBox[{"(*", 
-       RowBox[{"RHF", " ", "enegy"}], "*)"}], "\n", 
+       RowBox[{"RHF", " ", "energy"}], "*)"}], "\n", 
       RowBox[{"EHF", "=", " ", 
        RowBox[{
        "ET", "+", " ", "EV", " ", "+", " ", "EJ", " ", "+", " ", "EK"}]}], 
@@ -288,16 +261,17 @@ Cell[BoxData[
          ",", 
          RowBox[{"{", 
           RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
-      RowBox[{"RHFquantities", "=", 
+      RowBox[{"RHFquantities", " ", "=", " ", 
        RowBox[{"Association", "[", 
         RowBox[{
          RowBox[{"\"\<EHF\>\"", "\[Rule]", "EHF"}], ",", 
          RowBox[{"\"\<OAIntegrals\>\"", "->", "OAIntegrals"}], ",", 
-         RowBox[{"\"\<OMIntegrals\>\"", "\[Rule]", "OMIntegrals"}], ",", 
+         RowBox[{"\"\<OMIntegrals\>\"", "\[Rule]", "OMIntegrals"}], ",", "\n",
+          "                            ", 
          RowBox[{"\"\<\[Epsilon]\>\"", "\[Rule]", "\[Epsilon]"}], ",", 
          RowBox[{"\"\<J\>\"", "\[Rule]", "J"}], ",", 
          RowBox[{"\"\<K\>\"", "\[Rule]", "K"}], ",", 
-         RowBox[{"\"\<FOM\>\"", "\[Rule]", "FOM"}], ",", "\n", 
+         RowBox[{"\"\<FOM\>\"", "\[Rule]", "FOM"}], ",", 
          RowBox[{"\"\<C\>\"", "\[Rule]", "C"}], ",", 
          RowBox[{"\"\<P\>\"", "\[Rule]", "P"}], ",", 
          RowBox[{"\"\<Hcore\>\"", "\[Rule]", "Hcore"}], ",", 
@@ -546,13 +520,17 @@ Cell[BoxData[
    3.858048753568812*^9}, 3.858048799535009*^9, 3.8580490162082863`*^9, 
    3.863838263600893*^9, 3.86426730207653*^9, {3.864267416787684*^9, 
    3.864267426745413*^9}, {3.8708344199556503`*^9, 3.870834488026629*^9}, {
-   3.870834588824769*^9, 3.870834596708351*^9}, 
-   3.870835425858581*^9},ExpressionUUID->"7baad11d-374a-4683-890b-\
-d85c2ff96c2b"]
+   3.870834588824769*^9, 3.870834596708351*^9}, 3.870835425858581*^9, {
+   3.870919203300242*^9, 3.870919254631688*^9}, 3.8709193025545683`*^9, {
+   3.870919334271575*^9, 3.870919448173986*^9}, {3.8709219678865232`*^9, 
+   3.870922003549965*^9}, {3.870922397871871*^9, 3.870922405132707*^9}, {
+   3.870922507537796*^9, 3.870922537426674*^9}, 3.870922621431477*^9, {
+   3.870922730149427*^9, 3.870922850232954*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
 }, Open  ]]
 },
-WindowSize->{1189, 674},
-WindowMargins->{{83, Automatic}, {Automatic, 43}},
+WindowSize->{1357, 696},
+WindowMargins->{{Automatic, 0}, {Automatic, 21}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -571,7 +549,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 203, 4, 67, "Subsubsection",ExpressionUUID->"6bb91d66-5bf2-45dd-86dd-d2dd89a20c17"],
-Cell[786, 28, 29308, 522, 2085, "Code",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
+Cell[786, 28, 28572, 500, 2029, "Code",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
 }, Open  ]]
 }
 ]

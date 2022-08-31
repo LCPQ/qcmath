@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      2715,         91]
-NotebookOptionsPosition[      2205,         73]
-NotebookOutlinePosition[      2631,         90]
-CellTagsIndexPosition[      2588,         87]
+NotebookDataLength[      4129,        118]
+NotebookOptionsPosition[      3622,        100]
+NotebookOutlinePosition[      4045,        117]
+CellTagsIndexPosition[      4002,        114]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -27,20 +27,6 @@ a8578c4790ad"],
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{
-   RowBox[{"HaToeV", "=", "27.21138602"}], ";"}], "\n"}], "\n", 
- RowBox[{
-  StyleBox[
-   RowBox[{
-    RowBox[{
-     SubscriptBox["\[Delta]", 
-      RowBox[{"l1_", ",", "l2_"}]], ":=", 
-     RowBox[{"KroneckerDelta", "[", 
-      RowBox[{"l1", ",", "l2"}], "]"}]}], ";"}],
-   InitializationCell->True], 
-  StyleBox["\n",
-   InitializationCell->True]}], "\n", 
- RowBox[{
   RowBox[{"Needs", "[", "\"\<MaTeX`\>\"", "]"}], ";"}], "\n", 
  RowBox[{
   RowBox[{
@@ -52,6 +38,17 @@ Cell[BoxData[{
 mathpazo,xcolor,bm,mhchem,physics}\>\"", "}"}]}]}], "]"}], ";"}], 
   "\n"}], "\n", 
  RowBox[{
+  StyleBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Delta]", 
+      RowBox[{"l1_", ",", "l2_"}]], " ", ":=", " ", 
+     RowBox[{"KroneckerDelta", "[", 
+      RowBox[{"l1", ",", "l2"}], "]"}]}], ";"}],
+   InitializationCell->True], 
+  StyleBox["\n",
+   InitializationCell->True]}], "\n", 
+ RowBox[{
   RowBox[{
    RowBox[{
     RowBox[{"SortEigensystem", "[", "eigsys_", "]"}], ":=", 
@@ -61,18 +58,48 @@ mathpazo,xcolor,bm,mhchem,physics}\>\"", "}"}]}]}], "]"}], ";"}],
   "\n"}], "\n", 
  RowBox[{
   RowBox[{
-   RowBox[{"AntoBo", "=", "1.8897261255"}], ";"}], "\n"}], "\n", 
- RowBox[{
-  RowBox[{"BoToAn", "=", "0.529177249"}], ";"}], "\n"}], "Code",
+   RowBox[{"Parameters", "[", "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "HaToeV", ",", "AntoBo", ",", "BoToAn", ",", "HFmaxSCF", ",", 
+       "HFthresh", ",", "\n", "ParametersQuantities"}], "}"}], ",", "\n", 
+     "\n", "\n", 
+     RowBox[{
+      RowBox[{"HaToeV", " ", "=", " ", "27.21138602"}], ";", "\n", 
+      RowBox[{"AntoBo", " ", "=", " ", "1.8897261255"}], ";", "\n", 
+      RowBox[{"BoToAn", " ", "=", " ", "0.529177249"}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Parameters", " ", "for", " ", "HF", " ", "SCF"}], "*)"}], 
+      "\n", 
+      RowBox[{"HFmaxSCF", " ", "=", " ", "1024"}], ";", "\n", 
+      RowBox[{"HFthresh", " ", "=", " ", 
+       SuperscriptBox["10", 
+        RowBox[{"-", "7"}]]}], ";", "\n", "\n", 
+      RowBox[{"ParametersQuantities", " ", "=", " ", 
+       RowBox[{"Association", "[", 
+        RowBox[{
+         RowBox[{"\"\<HaToeV\>\"", "\[Rule]", "HaToeV"}], ",", 
+         RowBox[{"\"\<AntoBo\>\"", "\[Rule]", "AntoBo"}], ",", 
+         RowBox[{"\"\<BoToAn\>\"", "\[Rule]", "BoToAn"}], ",", "\n", 
+         "                                   ", 
+         RowBox[{"\"\<HFmaxSCF\>\"", "\[Rule]", "HFmaxSCF"}], ",", 
+         RowBox[{"\"\<HFthresh\>\"", "\[Rule]", "HFthresh"}]}], "]"}]}], ";", 
+      "\n", "\n", 
+      RowBox[{"Return", "[", "ParametersQuantities", "]"}], ";"}]}], "]"}]}], 
+  ";"}]}], "Code",
  CellChangeTimes->{{3.87083283271751*^9, 3.8708328702537622`*^9}, {
   3.8708331369498158`*^9, 3.8708331409312983`*^9}, {3.870833969233572*^9, 
-  3.870833980664678*^9}, {3.870834164606331*^9, 
-  3.870834191423266*^9}},ExpressionUUID->"7ad514de-1f9a-4cd6-ad52-\
-384b7fafbaa0"]
+  3.870833980664678*^9}, {3.870834164606331*^9, 3.870834191423266*^9}, {
+  3.870919247782793*^9, 3.870919329608705*^9}, {3.870923186605011*^9, 
+  3.870923227168562*^9}, {3.870923313464658*^9, 3.870923475742201*^9}, {
+  3.8709244542806187`*^9, 3.870924515033934*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"7ad514de-1f9a-4cd6-ad52-384b7fafbaa0"]
 }, Open  ]]
 },
-WindowSize->{808, 685},
-WindowMargins->{{288, Automatic}, {-143, Automatic}},
+WindowSize->{1109, 685},
+WindowMargins->{{64, Automatic}, {0, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -91,7 +118,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 163, 3, 67, "Subsubsection",ExpressionUUID->"4f8fd34e-8d9c-43e6-9fd8-a8578c4790ad"],
-Cell[746, 27, 1443, 43, 429, "Code",ExpressionUUID->"7ad514de-1f9a-4cd6-ad52-384b7fafbaa0"]
+Cell[746, 27, 2860, 70, 753, "Code",ExpressionUUID->"7ad514de-1f9a-4cd6-ad52-384b7fafbaa0"]
 }, Open  ]]
 }
 ]

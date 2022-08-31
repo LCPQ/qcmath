@@ -1,0 +1,207 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7450,        199]
+NotebookOptionsPosition[      6938,        181]
+NotebookOutlinePosition[      7364,        198]
+CellTagsIndexPosition[      7321,        195]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Read Molecule", "Subsubsection",
+ CellChangeTimes->{{3.870923927736854*^9, 
+  3.870923934937948*^9}},ExpressionUUID->"64551826-4a57-432a-9e6b-\
+c97747ebd9a5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"readMolecule", "[", 
+    RowBox[{"molecule_", ",", "AntoBo_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "mol", ",", "xyz", ",", "nAt", ",", "elements", ",", "Znuc", ",", 
+       "sfile", ",", "\n", "Enuc", ",", "readMoleculeQuantities"}], "}"}], 
+     ",", "\n", "\n", 
+     RowBox[{"(*", 
+      RowBox[{
+      "Get", " ", "the", " ", "molecule", " ", "file", " ", "with", " ", "a", 
+       " ", "list", " ", "of", " ", 
+       RowBox[{"atom", "'"}], "s", " ", "symbols"}], "*)"}], "\n", 
+     RowBox[{
+      RowBox[{"mol", "=", 
+       RowBox[{"Import", "[", 
+        RowBox[{
+         RowBox[{
+         "\"\<~/Work/qcmath/mol/\>\"", "<>", "molecule", "<>", 
+          "\"\<.xyz\>\""}], ",", "\"\<VertexTypes\>\""}], "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Get", " ", "the", " ", "geometry"}], "*)"}], "\n", 
+      RowBox[{"xyz", "=", 
+       RowBox[{"Import", "[", 
+        RowBox[{
+         RowBox[{
+         "\"\<~/Work/qcmath/mol/\>\"", "<>", "molecule", "<>", 
+          "\"\<.xyz\>\""}], ",", "\"\<VertexCoordinates\>\""}], "]"}]}], ";", 
+      "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Number", " ", "of", " ", "atoms"}], "*)"}], "\n", 
+      RowBox[{"nAt", "=", 
+       RowBox[{"Length", "[", "mol", "]"}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+       "List", " ", "of", " ", "atoms", " ", "and", " ", "their", " ", 
+        "atomic", " ", "numbers"}], "*)"}], "\n", 
+      RowBox[{"elements", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{
+         RowBox[{"\"\<H\>\"", "\[Rule]", "1"}], ",", 
+         RowBox[{"\"\<He\>\"", "\[Rule]", "2"}], ",", 
+         RowBox[{"\"\<Li\>\"", "\[Rule]", "3"}], ",", 
+         RowBox[{"\"\<Be\>\"", "\[Rule]", "4"}], ",", 
+         RowBox[{"\"\<B\>\"", "\[Rule]", "5"}], ",", 
+         RowBox[{"\"\<C\>\"", "\[Rule]", "6"}], ",", 
+         RowBox[{"\"\<N\>\"", "\[Rule]", "7"}], ",", "\[IndentingNewLine]", 
+         "                     ", 
+         RowBox[{"\"\<O\>\"", "\[Rule]", "8"}], ",", 
+         RowBox[{"\"\<F\>\"", "\[Rule]", "9"}], ",", " ", 
+         RowBox[{"\"\<Ne\>\"", "\[Rule]", "10"}]}], "]"}]}], ";", "\n", "\n", 
+      
+      RowBox[{"(*", 
+       RowBox[{
+       "Attribute", " ", "the", " ", "right", " ", "atomic", " ", "number", 
+        " ", "to", " ", "the", " ", "atoms"}], "*)"}], "\n", 
+      RowBox[{"Znuc", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{"0", ",", 
+         RowBox[{"{", 
+          RowBox[{"N", ",", 
+           RowBox[{"Length", "[", "mol", "]"}]}], "}"}]}], "]"}]}], ";", "\n", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+         "Znuc", "\[LeftDoubleBracket]", "N", "\[RightDoubleBracket]"}], "=", 
+         
+         RowBox[{"Replace", "[", 
+          RowBox[{
+           RowBox[{
+           "mol", "\[LeftDoubleBracket]", "N", "\[RightDoubleBracket]"}], ",",
+            "elements"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"N", ",", 
+          RowBox[{"Length", "[", "mol", "]"}]}], "}"}]}], "]"}], ";", "\n", 
+      "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Definition", " ", "of", " ", "the", " ", 
+        RowBox[{"atom", "/", "molecule"}], " ", "geometry", " ", "in", " ", 
+        "the", " ", 
+        RowBox[{"mol", ".", "xyz"}], " ", "file"}], "*)"}], "\n", 
+      RowBox[{"SetDirectory", "[", "\"\<~/Work/qcmath/mol\>\"", "]"}], ";", 
+      "\n", "\n", 
+      RowBox[{"sfile", "=", 
+       RowBox[{"OpenWrite", "[", 
+        RowBox[{"\"\<mol.xyz\>\"", ",", 
+         RowBox[{"FormatType", "\[Rule]", "StandardForm"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Write", "[", 
+       RowBox[{"sfile", ",", "nAt"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Write", "[", 
+       RowBox[{"sfile", ",", "\"\<\>\""}], "]"}], ";", "\n", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{"Write", "[", 
+         RowBox[{"sfile", ",", 
+          RowBox[{
+          "mol", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+          "\"\< \>\"", ",", 
+          RowBox[{"Row", "[", 
+           RowBox[{
+            RowBox[{"xyz", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", ";;"}], "\[RightDoubleBracket]"}], ",", 
+            "\"\< \>\""}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "nAt"}], "}"}]}], "]"}], ";", "\n", 
+      RowBox[{"Close", "[", "sfile", "]"}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"nuclear", " ", "energy"}], "*)"}], "\n", 
+      RowBox[{"Enuc", "=", 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"c", "=", "1"}], "nAt"], 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"d", "=", 
+           RowBox[{"c", "+", "1"}]}], "nAt"], 
+         FractionBox[
+          RowBox[{
+           RowBox[{
+           "Znuc", "\[LeftDoubleBracket]", "c", "\[RightDoubleBracket]"}], 
+           " ", 
+           RowBox[{
+           "Znuc", "\[LeftDoubleBracket]", "d", "\[RightDoubleBracket]"}]}], 
+          RowBox[{
+           RowBox[{"Norm", "[", 
+            RowBox[{
+             RowBox[{
+             "xyz", "\[LeftDoubleBracket]", "c", "\[RightDoubleBracket]"}], 
+             "-", 
+             RowBox[{
+             "xyz", "\[LeftDoubleBracket]", "d", "\[RightDoubleBracket]"}]}], 
+            "]"}], "*", "AntoBo"}]]}]}]}], ";", "\n", "\n", 
+      RowBox[{"readMoleculeQuantities", " ", "=", " ", 
+       RowBox[{"Association", "[", 
+        RowBox[{
+         RowBox[{"\"\<mol\>\"", "\[Rule]", "mol"}], ",", 
+         RowBox[{"\"\<xyz\>\"", "\[Rule]", "xyz"}], ",", 
+         RowBox[{"\"\<nAt\>\"", "\[Rule]", "nAt"}], ",", 
+         RowBox[{"\"\<Enuc\>\"", "->", "Enuc"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"Return", "[", "readMoleculeQuantities", "]"}], ";"}]}], 
+    "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.870923952795032*^9, 3.87092404456674*^9}, {
+   3.870924116728286*^9, 3.870924183132867*^9}, 3.870924647673381*^9, {
+   3.8709247561390944`*^9, 3.870924784169641*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
+}, Open  ]]
+},
+WindowSize->{1062, 683},
+WindowMargins->{{Automatic, 159}, {-28, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"dda6dca9-2bb7-4979-8f14-e42f8a65dbd1"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 164, 3, 67, "Subsubsection",ExpressionUUID->"64551826-4a57-432a-9e6b-c97747ebd9a5"],
+Cell[747, 27, 6175, 151, 1157, "Code",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
+}, Open  ]]
+}
+]
+*)
+

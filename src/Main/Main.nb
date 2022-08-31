@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     85443,       1478]
-NotebookOptionsPosition[     84933,       1460]
-NotebookOutlinePosition[     85355,       1477]
-CellTagsIndexPosition[     85312,       1474]
+NotebookDataLength[     69157,       1107]
+NotebookOptionsPosition[     68645,       1089]
+NotebookOutlinePosition[     69069,       1106]
+CellTagsIndexPosition[     69026,       1103]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -40,27 +40,27 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"{", 
       RowBox[{
-      "info", ",", "nocc", ",", "nvac", ",", "nS", ",", "n\[Alpha]", ",", 
-       "n\[Beta]", ",", "Nelc", ",", "Enuc", ",", "TabInt", ",", "nInt", ",", 
-       "S", ",", "T", ",", "V", ",", "U", ",", "X", ",", "EHF", ",", "EUHF", 
-       ",", "UHFquantities", ",", "RHFquantities", "\n", ",", "C", ",", 
-       "OMIntegrals", ",", "RPAquantities", ",", "\[Epsilon]", ",", "XplusY", 
-       ",", "\[CapitalOmega]RPA", ",", "ERPA", ",", "qsGWquantities", ",", 
-       "EcGM", ",", "EqsGW", ",", "URPAquantities", ",", "OMIntegralsaa", 
-       "\n", ",", "OMIntegralsab", ",", "OMIntegralsba", ",", "OMIntegralsbb",
-        ",", "Ca", ",", "Cb", ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", 
-       "EURPA", ",", "qsUGWquantities", ",", "EqsUGW", ",", "EcMP2", ",", 
-       "EMP2", ",", "EcUMP2", "\n", ",", "EUMP2", ",", "RPAxquantities", ",", 
-       "ERPAx", ",", "qsGF2quantities", ",", "EqsGF2", ",", 
-       "qsUGF2quantities", ",", "EqsUGF2", ",", "URPAxquantities", ",", 
-       "EURPAx", "\n", ",", "qsGquantities", ",", "EqsG", ",", 
-       "qsUGquantities", ",", "EqsUG", ",", "TDA", ",", "TDAW", ",", 
-       "singlet", ",", "triplet", ",", "spinconserved", ",", "spinflip", ",", 
-       "ppRPAquantities", "\n", ",", "EppRPA", ",", "LR", ",", "LRquantities",
-        ",", "ULRquantities", ",", "BSE", ",", "BSEquantities", ",", "EBSE", 
-       ",", "qsGWOMIntegrals", ",", "qsGW\[Epsilon]", ",", "W", ",", 
-       "Mainquantities", "\n", ",", "UBSEquantities", ",", "EUBSE", ",", "W1",
-        ",", "W2", ",", "qsGWOMIntegralsaa", ",", "qsGWOMIntegralsab", ",", 
+      "nocc", ",", "nvac", ",", "nS", ",", "n\[Alpha]", ",", "n\[Beta]", ",", 
+       "Nelc", ",", "Enuc", ",", "S", ",", "T", ",", "V", ",", "U", ",", "X", 
+       ",", "EHF", ",", "EUHF", ",", "UHFquantities", ",", "RHFquantities", 
+       "\n", ",", "C", ",", "OMIntegrals", ",", "RPAquantities", ",", 
+       "\[Epsilon]", ",", "XplusY", ",", "\[CapitalOmega]RPA", ",", "ERPA", 
+       ",", "qsGWquantities", ",", "EcGM", ",", "EqsGW", ",", 
+       "URPAquantities", ",", "OMIntegralsaa", "\n", ",", "OMIntegralsab", 
+       ",", "OMIntegralsba", ",", "OMIntegralsbb", ",", "Ca", ",", "Cb", ",", 
+       "\[Epsilon]a", ",", "\[Epsilon]b", ",", "EURPA", ",", 
+       "qsUGWquantities", ",", "EqsUGW", ",", "EcMP2", ",", "EMP2", ",", 
+       "EcUMP2", "\n", ",", "EUMP2", ",", "RPAxquantities", ",", "ERPAx", ",",
+        "qsGF2quantities", ",", "EqsGF2", ",", "qsUGF2quantities", ",", 
+       "EqsUGF2", ",", "URPAxquantities", ",", "EURPAx", "\n", ",", 
+       "qsGquantities", ",", "EqsG", ",", "qsUGquantities", ",", "EqsUG", ",",
+        "TDA", ",", "TDAW", ",", "singlet", ",", "triplet", ",", 
+       "spinconserved", ",", "spinflip", ",", "ppRPAquantities", "\n", ",", 
+       "EppRPA", ",", "LR", ",", "LRquantities", ",", "ULRquantities", ",", 
+       "BSE", ",", "BSEquantities", ",", "EBSE", ",", "qsGWOMIntegrals", ",", 
+       "qsGW\[Epsilon]", ",", "W", ",", "Mainquantities", "\n", ",", 
+       "UBSEquantities", ",", "EUBSE", ",", "W1", ",", "W2", ",", 
+       "qsGWOMIntegralsaa", ",", "qsGWOMIntegralsab", ",", 
        "qsGWOMIntegralsba", ",", "qsGWOMIntegralsbb", "\n", ",", 
        "qsGW\[Epsilon]a", ",", "qsGW\[Epsilon]b", ",", "methodRHF", ",", 
        "methodUHF", ",", "methodMP2", ",", "methodRPA", ",", "methodRPAx", 
@@ -98,113 +98,47 @@ Cell[BoxData[
        "typeRegularization", ",", "DiagElt", ",", "\[Epsilon]p", ",", "conf", 
        ",", "weights", ",", "eG0W0ww", "\n", ",", "restricted", ",", 
        "unrestricted", ",", "mol", ",", "xyz", ",", "nAt", ",", "Znuc", ",", 
-       "elements", ",", "nbasis"}], "}"}], ",", "\n", "\n", 
+       "elements", ",", "nbasis", ",", "HFmaxSCF", ",", "HFthresh", ",", 
+       "IntegralsQuantities", "\n", ",", "ParametersQuantities", ",", 
+       "MoleculeQuantities", ",", "HaToeV", ",", "AntoBo"}], "}"}], ",", "\n",
+      "\n", 
      RowBox[{"(*", 
       RowBox[{"Get", " ", "the", " ", "parameters"}], "*)"}], "\n", 
      RowBox[{
       RowBox[{
       "NotebookEvaluate", "[", "\"\<~/Work/qcmath/Parameters.nb\>\"", "]"}], 
-      ";", "\n", "\n", 
+      ";", "\n", 
+      RowBox[{"ParametersQuantities", "=", 
+       RowBox[{"Parameters", "[", "]"}]}], ";", "\n", 
+      RowBox[{"HaToeV", "=", 
+       RowBox[{"ParametersQuantities", "[", "\"\<HaToeV\>\"", "]"}]}], ";", 
+      "\n", 
+      RowBox[{"AntoBo", "=", 
+       RowBox[{"ParametersQuantities", "[", "\"\<AntoBo\>\"", "]"}]}], ";", 
+      "\n", "\n", 
+      RowBox[{"HFmaxSCF", "=", 
+       RowBox[{"ParametersQuantities", "[", "\"\<HFmaxSCF\>\"", "]"}]}], ";", 
+      "\n", 
+      RowBox[{"HFthresh", "=", 
+       RowBox[{"ParametersQuantities", "[", "\"\<HFthresh\>\"", "]"}]}], ";", 
+      "\n", "\n", 
       RowBox[{"(*", 
-       RowBox[{
-       "Get", " ", "the", " ", "molecule", " ", "file", " ", "with", " ", "a",
-         " ", "list", " ", "of", " ", 
-        RowBox[{"atom", "'"}], "s", " ", "symbols"}], "*)"}], "\n", 
+       RowBox[{"Read", " ", "molecule"}], "*)"}], "\n", 
+      RowBox[{
+      "NotebookEvaluate", "[", 
+       "\"\<~/Work/qcmath/src/utils/read_molecule.nb\>\"", "]"}], ";", "\n", 
+      RowBox[{"MoleculeQuantities", "=", 
+       RowBox[{"readMolecule", "[", 
+        RowBox[{"molecule", ",", "AntoBo"}], "]"}]}], ";", "\n", 
       RowBox[{"mol", "=", 
-       RowBox[{"Import", "[", 
-        RowBox[{
-         RowBox[{
-         "\"\<~/Work/qcmath/mol/\>\"", "<>", "molecule", "<>", 
-          "\"\<.xyz\>\""}], ",", "\"\<VertexTypes\>\""}], "]"}]}], ";", "\n", 
-      "\n", 
-      RowBox[{"(*", 
-       RowBox[{"Get", " ", "the", " ", "geometry"}], "*)"}], "\n", 
+       RowBox[{"MoleculeQuantities", "[", "\"\<mol\>\"", "]"}]}], ";", "\n", 
       RowBox[{"xyz", "=", 
-       RowBox[{"Import", "[", 
-        RowBox[{
-         RowBox[{
-         "\"\<~/Work/qcmath/mol/\>\"", "<>", "molecule", "<>", 
-          "\"\<.xyz\>\""}], ",", "\"\<VertexCoordinates\>\""}], "]"}]}], ";", 
-      "\n", "\n", 
-      RowBox[{"(*", 
-       RowBox[{"Number", " ", "of", " ", "atoms"}], "*)"}], "\n", 
+       RowBox[{"MoleculeQuantities", "[", "\"\<xyz\>\"", "]"}]}], ";", "\n", 
       RowBox[{"nAt", "=", 
-       RowBox[{"Length", "[", "mol", "]"}]}], ";", "\n", "\n", 
-      RowBox[{"(*", 
-       RowBox[{
-       "List", " ", "of", " ", "atoms", " ", "and", " ", "their", " ", 
-        "atomic", " ", "numbers"}], "*)"}], "\n", 
-      RowBox[{"elements", "=", 
-       RowBox[{"Association", "[", 
-        RowBox[{
-         RowBox[{"\"\<H\>\"", "\[Rule]", "1"}], ",", 
-         RowBox[{"\"\<He\>\"", "\[Rule]", "2"}], ",", 
-         RowBox[{"\"\<Li\>\"", "\[Rule]", "3"}], ",", 
-         RowBox[{"\"\<Be\>\"", "\[Rule]", "4"}], ",", 
-         RowBox[{"\"\<B\>\"", "\[Rule]", "5"}], ",", 
-         RowBox[{"\"\<C\>\"", "\[Rule]", "6"}], ",", 
-         RowBox[{"\"\<N\>\"", "\[Rule]", "7"}], ",", "\[IndentingNewLine]", 
-         "                     ", 
-         RowBox[{"\"\<O\>\"", "\[Rule]", "8"}], ",", 
-         RowBox[{"\"\<F\>\"", "\[Rule]", "9"}], ",", " ", 
-         RowBox[{"\"\<Ne\>\"", "\[Rule]", "10"}]}], "]"}]}], ";", "\n", "\n", 
-      
-      RowBox[{"(*", 
-       RowBox[{
-       "Attribute", " ", "the", " ", "right", " ", "atomic", " ", "number", 
-        " ", "to", " ", "the", " ", "atoms"}], "*)"}], "\n", 
-      RowBox[{"Znuc", "=", 
-       RowBox[{"Table", "[", 
-        RowBox[{"0", ",", 
-         RowBox[{"{", 
-          RowBox[{"N", ",", 
-           RowBox[{"Length", "[", "mol", "]"}]}], "}"}]}], "]"}]}], ";", "\n", 
-      RowBox[{"Do", "[", 
-       RowBox[{
-        RowBox[{
-         RowBox[{
-         "Znuc", "\[LeftDoubleBracket]", "N", "\[RightDoubleBracket]"}], "=", 
-         
-         RowBox[{"Replace", "[", 
-          RowBox[{
-           RowBox[{
-           "mol", "\[LeftDoubleBracket]", "N", "\[RightDoubleBracket]"}], ",",
-            "elements"}], "]"}]}], ",", 
-        RowBox[{"{", 
-         RowBox[{"N", ",", 
-          RowBox[{"Length", "[", "mol", "]"}]}], "}"}]}], "]"}], ";", "\n", 
+       RowBox[{"MoleculeQuantities", "[", "\"\<nAt\>\"", "]"}]}], ";", "\n", 
+      RowBox[{"Enuc", "=", 
+       RowBox[{"MoleculeQuantities", "[", "\"\<Enuc\>\"", "]"}]}], ";", "\n", 
       "\n", 
-      RowBox[{"(*", 
-       RowBox[{"Definition", " ", "of", " ", "the", " ", 
-        RowBox[{"atom", "/", "molecule"}], " ", "geometry", " ", "in", " ", 
-        "the", " ", 
-        RowBox[{"mol", ".", "xyz"}], " ", "file"}], "*)"}], "\n", 
-      RowBox[{"SetDirectory", "[", "\"\<~/Work/qcmath/mol\>\"", "]"}], ";", 
-      "\n", "\n", 
-      RowBox[{"sfile", "=", 
-       RowBox[{"OpenWrite", "[", 
-        RowBox[{"\"\<mol.xyz\>\"", ",", 
-         RowBox[{"FormatType", "\[Rule]", "StandardForm"}]}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"Write", "[", 
-       RowBox[{"sfile", ",", "nAt"}], "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"Write", "[", 
-       RowBox[{"sfile", ",", "\"\<\>\""}], "]"}], ";", "\n", 
-      RowBox[{"Do", "[", 
-       RowBox[{
-        RowBox[{"Write", "[", 
-         RowBox[{"sfile", ",", 
-          RowBox[{
-          "mol", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
-          "\"\< \>\"", ",", 
-          RowBox[{"Row", "[", 
-           RowBox[{
-            RowBox[{"xyz", "\[LeftDoubleBracket]", 
-             RowBox[{"i", ",", ";;"}], "\[RightDoubleBracket]"}], ",", 
-            "\"\< \>\""}], "]"}]}], "]"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"i", ",", "nAt"}], "}"}]}], "]"}], ";", "\n", 
-      RowBox[{"Close", "[", "sfile", "]"}], ";", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{
        "Computation", " ", "of", " ", "the", " ", "number", " ", "of", " ", 
@@ -248,6 +182,23 @@ Cell[BoxData[
         RowBox[{"\"\<./integrals.sh\>\"", ",", "basis"}], "}"}], "]"}], ";", 
       "\n", "\n", 
       RowBox[{"(*", 
+       RowBox[{"Read", " ", "integrals"}], "*)"}], "\n", 
+      RowBox[{
+      "NotebookEvaluate", "[", 
+       "\"\<~/Work/qcmath/src/utils/read_integrals.nb\>\"", "]"}], ";", "\n", 
+      
+      RowBox[{"IntegralsQuantities", "=", 
+       RowBox[{"readIntegrals", "[", "]"}]}], ";", "\n", 
+      RowBox[{"S", "=", 
+       RowBox[{"IntegralsQuantities", "[", "\"\<S\>\"", "]"}]}], ";", "\n", 
+      RowBox[{"T", "=", 
+       RowBox[{"IntegralsQuantities", "[", "\"\<T\>\"", "]"}]}], ";", "\n", 
+      RowBox[{"V", "=", 
+       RowBox[{"IntegralsQuantities", "[", "\"\<V\>\"", "]"}]}], ";", "\n", 
+      RowBox[{"U", "=", 
+       RowBox[{"IntegralsQuantities", "[", "\"\<U\>\"", "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"(*", 
        RowBox[{
        "Read", " ", "the", " ", "basis", " ", "and", " ", "return", " ", 
         "the", " ", "number", " ", "of", " ", "basis", " ", "functions"}], 
@@ -268,361 +219,23 @@ Cell[BoxData[
       RowBox[{"nS", "=", 
        RowBox[{"nocc", "*", "nvac"}]}], ";", " ", 
       RowBox[{"Nelc", "=", 
-       RowBox[{"n\[Alpha]", "+", "n\[Beta]"}]}], ";", "\n", "\n", 
-      RowBox[{"(*", 
-       RowBox[{"nuclear", " ", "energy"}], "*)"}], "\n", 
-      RowBox[{"Enuc", "=", 
-       RowBox[{
-        UnderoverscriptBox["\[Sum]", 
-         RowBox[{"c", "=", "1"}], "nAt"], 
-        RowBox[{
-         UnderoverscriptBox["\[Sum]", 
-          RowBox[{"d", "=", 
-           RowBox[{"c", "+", "1"}]}], "nAt"], 
-         FractionBox[
-          RowBox[{
-           RowBox[{
-           "Znuc", "\[LeftDoubleBracket]", "c", "\[RightDoubleBracket]"}], 
-           " ", 
-           RowBox[{
-           "Znuc", "\[LeftDoubleBracket]", "d", "\[RightDoubleBracket]"}]}], 
-          RowBox[{
-           RowBox[{"Norm", "[", 
-            RowBox[{
-             RowBox[{
-             "xyz", "\[LeftDoubleBracket]", "c", "\[RightDoubleBracket]"}], 
-             "-", 
-             RowBox[{
-             "xyz", "\[LeftDoubleBracket]", "d", "\[RightDoubleBracket]"}]}], 
-            "]"}], "*", "AntoBo"}]]}]}]}], ";", " ", "\n", "\n", 
-      RowBox[{"(*", 
-       RowBox[{"one", "-", 
-        RowBox[{"electron", " ", "integrals"}]}], "*)"}], "\n", 
-      RowBox[{"SetDirectory", "[", "\"\<~/Work/qcmath/int\>\"", "]"}], ";", 
-      "\n", 
-      RowBox[{"TabInt", "=", 
-       RowBox[{"ReadList", "[", 
-        RowBox[{"\"\<Ov.dat\>\"", ",", 
-         RowBox[{"{", 
-          RowBox[{"Number", ",", "Number", ",", "Real"}], "}"}]}], "]"}]}], 
-      ";", "\t", 
-      RowBox[{"nInt", "=", 
-       RowBox[{"Length", "[", "TabInt", "]"}]}], ";", "\n", 
-      RowBox[{"S", " ", "=", " ", 
-       RowBox[{"Normal", "[", 
-        RowBox[{"SparseArray", "[", "\[IndentingNewLine]", 
-         RowBox[{"Join", "[", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}]}], 
-          "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], "]"}]}],
-       ";", "\n", "\n", 
+       RowBox[{"n\[Alpha]", "+", "n\[Beta]"}]}], ";", " ", "\n", "\n", 
       RowBox[{"(*", "Orthogonalization", "*)"}], "\n", 
       RowBox[{"X", " ", "=", " ", 
        RowBox[{"MatrixPower", "[", 
         RowBox[{"S", ",", 
          RowBox[{"-", 
           FractionBox["1", "2"]}]}], "]"}]}], ";", "\n", "\n", 
-      RowBox[{"SetDirectory", "[", "\"\<~/Work/qcmath/int\>\"", "]"}], ";", 
-      "\n", 
-      RowBox[{"TabInt", "=", 
-       RowBox[{"ReadList", "[", 
-        RowBox[{"\"\<Kin.dat\>\"", ",", 
-         RowBox[{"{", 
-          RowBox[{"Number", ",", "Number", ",", "Real"}], "}"}]}], "]"}]}], 
-      ";", "\t", 
-      RowBox[{"nInt", "=", 
-       RowBox[{"Length", "[", "TabInt", "]"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"T", "=", 
-       RowBox[{"Normal", "[", 
-        RowBox[{"SparseArray", "[", "\[IndentingNewLine]", 
-         RowBox[{"Join", "[", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}]}], 
-          "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], "]"}]}],
-       ";", "\n", "\n", 
-      RowBox[{"SetDirectory", "[", "\"\<~/Work/qcmath/int\>\"", "]"}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"TabInt", "=", 
-       RowBox[{"ReadList", "[", 
-        RowBox[{"\"\<Nuc.dat\>\"", ",", 
-         RowBox[{"{", 
-          RowBox[{"Number", ",", "Number", ",", "Real"}], "}"}]}], "]"}]}], 
-      ";", "\t", 
-      RowBox[{"nInt", "=", 
-       RowBox[{"Length", "[", "TabInt", "]"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"V", "=", 
-       RowBox[{"Normal", "[", 
-        RowBox[{"SparseArray", "[", "\[IndentingNewLine]", 
-         RowBox[{"Join", "[", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}]}], 
-          "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], "]"}]}],
-       ";", "\n", "\n", 
-      RowBox[{"(*", 
-       RowBox[{"two", "-", 
-        RowBox[{"electron", " ", "integrals"}]}], "*)"}], "\n", 
-      RowBox[{"SetDirectory", "[", "\"\<~/Work/qcmath/int\>\"", "]"}], ";", 
-      "\n", 
-      RowBox[{"TabInt", "=", 
-       RowBox[{"ReadList", "[", 
-        RowBox[{"\"\<ERI.dat\>\"", ",", 
-         RowBox[{"{", 
-          RowBox[{
-          "Number", ",", "Number", ",", "Number", ",", "Number", ",", 
-           "Real"}], "}"}]}], "]"}]}], ";", "\t", 
-      RowBox[{"nInt", "=", 
-       RowBox[{"Length", "[", "TabInt", "]"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"U", "=", " ", 
-       RowBox[{"Normal", "[", 
-        RowBox[{"SparseArray", "[", "\[IndentingNewLine]", 
-         RowBox[{"Join", "[", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "4"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "4"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "4"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "4"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "4"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "4"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "4"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "4"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "2"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-                 RowBox[{"k", ",", "1"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "\[Rule]", 
-              RowBox[{"TabInt", "\[LeftDoubleBracket]", 
-               RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}]}], 
-          "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], "]"}]}],
-       ";", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"restricted", " ", "or", " ", "unrestricted"}], "*)"}], "\n", 
       RowBox[{"restricted", "=", "False"}], ";", "\n", 
       RowBox[{"unrestricted", "=", "False"}], ";", "\n", "\n", 
       RowBox[{"(*", "methods", "*)"}], "\n", 
-      RowBox[{"methodRHF", "=", "False"}], ";", "\n", "\n", 
+      RowBox[{"methodRHF", "=", "False"}], ";", "\n", 
+      RowBox[{"methodUHF", "=", "False"}], ";", "\n", "\n", 
       RowBox[{"(*", 
-       RowBox[{"Definition", " ", "the", " ", "desired", " ", "methods"}], 
-       "*)"}], "\n", 
+       RowBox[{"Define", " ", "the", " ", "desired", " ", "methods"}], "*)"}],
+       "\n", 
       RowBox[{"Do", "[", 
        RowBox[{
         RowBox[{
@@ -683,7 +296,8 @@ Cell[BoxData[
              RowBox[{"RHF", "[", 
               RowBox[{
               "nbasis", ",", "Nelc", ",", "S", ",", "T", ",", "V", ",", "U", 
-               ",", "X", ",", "DIISex"}], "]"}]}], ";", "\n", "\n", 
+               ",", "X", ",", "DIISex", ",", "HFmaxSCF", ",", "HFthresh"}], 
+              "]"}]}], ";", "\n", "\n", 
             RowBox[{"EHF", "=", 
              RowBox[{
               RowBox[{"RHFquantities", "[", "\"\<EHF\>\"", "]"}], "+", 
@@ -723,8 +337,8 @@ Cell[BoxData[
              RowBox[{"UHF", "[", 
               RowBox[{
               "nbasis", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "S", ",", "T",
-                ",", "V", ",", "U", ",", "X", ",", "DIISex"}], "]"}]}], ";", 
-            "\n", 
+                ",", "V", ",", "U", ",", "X", ",", "DIISex", ",", "HFmaxSCF", 
+               ",", "HFthresh"}], "]"}]}], ";", "\n", 
             RowBox[{"EUHF", "=", 
              RowBox[{
               RowBox[{"UHFquantities", "[", "\"\<EUHF\>\"", "]"}], "+", 
@@ -794,7 +408,7 @@ Cell[BoxData[
          RowBox[{"Mainquantities", "=", 
           RowBox[{"Association", "[", 
            RowBox[{"\"\<EUHF\>\"", "\[Rule]", "EUHF"}], "]"}]}], ";"}]}], 
-       "\n", "]"}], ";", "\n", "\n", "\n", 
+       "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"Return", "[", "Mainquantities", "]"}], ";"}]}], "]"}]}], 
   ";"}]], "Code",
  CellChangeTimes->{{3.832392667445559*^9, 3.832392719268615*^9}, {
@@ -1453,13 +1067,28 @@ Cell[BoxData[
    3.87083432873943*^9, 3.870834360319821*^9}, {3.870835312182024*^9, 
    3.870835334914525*^9}, {3.870835394403729*^9, 3.8708354074554768`*^9}, {
    3.870835617114109*^9, 3.870835617535468*^9}, 3.870855082466139*^9, {
-   3.870859135799367*^9, 
-   3.870859154931733*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
+   3.870859135799367*^9, 3.870859154931733*^9}, {3.87091948651653*^9, 
+   3.870919554107238*^9}, {3.870919717515161*^9, 3.870919740258129*^9}, {
+   3.8709208634244137`*^9, 3.8709208831743298`*^9}, 3.870921084014051*^9, {
+   3.870921207146903*^9, 3.870921251053657*^9}, {3.870921309593631*^9, 
+   3.870921315665883*^9}, {3.87092139048853*^9, 3.870921393722834*^9}, {
+   3.870921432113821*^9, 3.8709214382008142`*^9}, {3.870921539197013*^9, 
+   3.870921559936246*^9}, {3.870921659030555*^9, 3.8709217575075903`*^9}, {
+   3.870921814726961*^9, 3.870921814854308*^9}, {3.8709231485454597`*^9, 
+   3.8709231552123547`*^9}, {3.8709234887166023`*^9, 
+   3.8709235481898518`*^9}, {3.870923584892523*^9, 3.870923592310956*^9}, {
+   3.870923677410598*^9, 3.87092367952845*^9}, {3.870923790223967*^9, 
+   3.8709239140305758`*^9}, {3.870924002816193*^9, 3.8709240220224333`*^9}, {
+   3.8709240577315598`*^9, 3.870924075115254*^9}, 3.870924227247929*^9, {
+   3.870924434364142*^9, 3.870924436769184*^9}, {3.870924607219133*^9, 
+   3.870924638189291*^9}, {3.87092470827356*^9, 3.870924750503652*^9}, {
+   3.870924795874349*^9, 3.870924804787095*^9}, 
+   3.8709248509895773`*^9},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
 2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{1306, 748},
-WindowMargins->{{Automatic, 0}, {0, Automatic}},
+WindowMargins->{{17, Automatic}, {-2, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -1478,7 +1107,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 67, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 84172, 1430, 5819, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 67884, 1059, 4324, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]

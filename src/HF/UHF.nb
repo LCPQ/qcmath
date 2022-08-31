@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     42844,        779]
-NotebookOptionsPosition[     42238,        760]
-NotebookOutlinePosition[     42665,        777]
-CellTagsIndexPosition[     42622,        774]
+NotebookDataLength[     42435,        771]
+NotebookOptionsPosition[     41832,        752]
+NotebookOutlinePosition[     42256,        769]
+CellTagsIndexPosition[     42213,        766]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -40,34 +40,25 @@ Cell[BoxData[
    RowBox[{"UHF", "[", 
     RowBox[{
     "nbasis_", ",", "n\[Alpha]_", ",", "n\[Beta]_", ",", "S_", ",", "T_", ",",
-      "V_", ",", "U_", ",", "X_", ",", "DIISex_"}], "]"}], ":=", 
+      "V_", ",", "U_", ",", "X_", ",", "DIISex_", ",", "maxSCF_", ",", 
+     "thresh_"}], "]"}], ":=", 
    RowBox[{"Module", "[", "\n", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
-      "UHFquantities", ",", "maxSCF", ",", "thresh", ",", "OAIntegrals", ",", 
-       "Ja", ",", "Jb", ",", "Jt", ",", "Ka", ",", "Kb", ",", "\[Epsilon]", 
-       ",", "\n", "Cp", ",", "C", ",", "Ca", ",", "Cb", ",", "haa", ",", 
+      "UHFquantities", ",", "OAIntegrals", ",", "Ja", ",", "Jb", ",", "Jt", 
+       ",", "Ka", ",", "Kb", ",", "Ca", ",", "Cb", ",", "\n", "haa", ",", 
        "hbb", ",", "OMIntegralsaa", ",", "OMIntegralsab", ",", 
        "OMIntegralsba", ",", "\n", "OMIntegralsbb", ",", "Pa", ",", "Pb", ",",
         "Pt", ",", "Ps", ",", "conv", ",", "nSCF", ",", "Fa", ",", "Fb", ",", 
-       "ETa", ",", "ETb", ",", "EVa", ",", "EVb", ",", "EKa", ",", "\n", 
+       "ETa", ",", "ETb", ",", "\n", "EVa", ",", "EVb", ",", "EKa", ",", 
        "EKb", ",", "EJa", ",", "EJb", ",", "EJab", ",", "EUHF", ",", "EtotU", 
-       ",", "Hcore", ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", "Orba", ",",
-        "Orbb", ",", "Cpa", ",", "Cpb", ",", "Polda", ",", "\n", "Poldb", ",",
-        "Ptold", ",", "\[Theta]", ",", "FaOA", ",", "FbOA", ",", "FaOM", ",", 
-       "FbOM", ",", "HOMO", ",", "LUMO", ",", "HOMOa", ",", "HOMOb", ",", 
-       "LUMOa", ",", "LUMOb", ",", "\n", "C1", ",", "C2", ",", 
-       "Mixquantities", ",", "FDIISa", ",", "FDIISb", ",", "eDIISa", ",", 
-       "eDIISb", ",", "UJ", ",", "UK", ",", "Vxa", ",", "Vxb"}], "}"}], ",", 
-     "\n", "\n", 
-     RowBox[{"(*", 
-      RowBox[{"Parameters", " ", "for", " ", "SCF"}], "*)"}], "\n", 
+       ",", "Hcore", ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", "\n", 
+       "Orba", ",", "Orbb", ",", "Cpa", ",", "Cpb", ",", "\[Theta]", ",", 
+       "Mixquantities", ",", "FDIISa", ",", "FDIISb", ",", "\n", "eDIISa", 
+       ",", "eDIISb", ",", "UJ", ",", "UK", ",", "Vxa", ",", "Vxb"}], "}"}], 
+     ",", "\n", "\n", 
      RowBox[{
-      RowBox[{"maxSCF", " ", "=", " ", "20"}], ";", " ", 
-      RowBox[{"thresh", " ", "=", " ", 
-       SuperscriptBox["10", 
-        RowBox[{"-", "7"}]]}], ";", " ", "\n", "\n", 
       RowBox[{"Hcore", " ", "=", " ", 
        RowBox[{"T", " ", "+", " ", "V"}]}], ";", "\n", 
       RowBox[{"OAIntegrals", " ", "=", " ", "U"}], ";", "\n", "\n", 
@@ -385,24 +376,22 @@ Cell[BoxData[
          ",", 
          RowBox[{"{", 
           RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
-      RowBox[{"UHFquantities", "=", 
+      RowBox[{"UHFquantities", " ", "=", " ", 
        RowBox[{"Association", "[", 
         RowBox[{
          RowBox[{"\"\<EUHF\>\"", "\[Rule]", "EUHF"}], ",", " ", 
          RowBox[{"\"\<Ca\>\"", "\[Rule]", "Ca"}], ",", " ", 
          RowBox[{"\"\<Cb\>\"", "\[Rule]", "Cb"}], ",", 
-         RowBox[{"\"\<OAIntegrals\>\"", "->", "OAIntegrals"}], ",", 
+         RowBox[{"\"\<OAIntegrals\>\"", "->", "OAIntegrals"}], ",", "\n", 
+         "                            ", 
          RowBox[{"\"\<\[Epsilon]a\>\"", "\[Rule]", "\[Epsilon]a"}], ",", 
          RowBox[{"\"\<\[Epsilon]b\>\"", "\[Rule]", "\[Epsilon]b"}], ",", 
-         RowBox[{"\"\<FaOA\>\"", "->", "FaOA"}], ",", 
-         RowBox[{"\"\<FbOA\>\"", "->", "FbOA"}], ",", 
          RowBox[{"\"\<Ja\>\"", "\[Rule]", "Ja"}], ",", 
          RowBox[{"\"\<Jb\>\"", "\[Rule]", "Jb"}], ",", 
          RowBox[{"\"\<Ka\>\"", "\[Rule]", "Ka"}], ",", 
          RowBox[{"\"\<Kb\>\"", "\[Rule]", "Kb"}], ",", 
-         RowBox[{"\"\<FaOM\>\"", "->", "FaOM"}], ",", "\n", 
-         RowBox[{"\"\<FbOM\>\"", "->", "FbOM"}], ",", 
-         RowBox[{"\"\<Pa\>\"", "\[Rule]", "Pa"}], ",", 
+         RowBox[{"\"\<Pa\>\"", "\[Rule]", "Pa"}], ",", "\n", 
+         "                            ", 
          RowBox[{"\"\<Pb\>\"", "\[Rule]", "Pb"}], ",", 
          RowBox[{"\"\<Pt\>\"", "\[Rule]", "Pt"}], ",", 
          RowBox[{"\"\<Vxa\>\"", "\[Rule]", "Vxa"}], ",", 
@@ -753,13 +742,16 @@ Cell[BoxData[
    3.870858315117215*^9}, {3.870858486675385*^9, 3.870858548658636*^9}, {
    3.87085859596638*^9, 3.870858598108872*^9}, {3.870858657104191*^9, 
    3.870858658141124*^9}, {3.870858967317985*^9, 3.8708589707850533`*^9}, {
-   3.870859115084854*^9, 
-   3.870859126630224*^9}},ExpressionUUID->"aadf9bb5-e439-4aeb-a8e6-\
+   3.870859115084854*^9, 3.870859126630224*^9}, {3.87091975365105*^9, 
+   3.870919775870502*^9}, {3.870919833003336*^9, 3.870919943487362*^9}, {
+   3.8709199790963287`*^9, 3.870919983295994*^9}, {3.8709200156553307`*^9, 
+   3.870920035717698*^9}, {3.87092006883535*^9, 
+   3.8709201030637836`*^9}},ExpressionUUID->"aadf9bb5-e439-4aeb-a8e6-\
 729cf852cd63"]
 }, Open  ]]
 },
-WindowSize->{1139, 681},
-WindowMargins->{{Automatic, -116}, {-30, Automatic}},
+WindowSize->{1251, 696},
+WindowMargins->{{Automatic, 39}, {26, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -779,7 +771,7 @@ Notebook[{
 Cell[558, 20, 276, 6, 46, "Input",ExpressionUUID->"b9b1a05a-7808-4713-ab6e-07ac176bb062"],
 Cell[CellGroupData[{
 Cell[859, 30, 204, 4, 67, "Subsubsection",ExpressionUUID->"950eaf33-657b-4f2e-aa9f-78b04a5c4d16"],
-Cell[1066, 36, 41156, 721, 3061, "Code",ExpressionUUID->"aadf9bb5-e439-4aeb-a8e6-729cf852cd63"]
+Cell[1066, 36, 40750, 713, 3003, "Code",ExpressionUUID->"aadf9bb5-e439-4aeb-a8e6-729cf852cd63"]
 }, Open  ]]
 }
 ]
