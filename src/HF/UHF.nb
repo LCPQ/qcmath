@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     42435,        771]
-NotebookOptionsPosition[     41832,        752]
-NotebookOutlinePosition[     42256,        769]
-CellTagsIndexPosition[     42213,        766]
+NotebookDataLength[     43266,        783]
+NotebookOptionsPosition[     42663,        764]
+NotebookOutlinePosition[     43087,        781]
+CellTagsIndexPosition[     43044,        778]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -56,8 +56,9 @@ Cell[BoxData[
        ",", "Hcore", ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", "\n", 
        "Orba", ",", "Orbb", ",", "Cpa", ",", "Cpb", ",", "\[Theta]", ",", 
        "Mixquantities", ",", "FDIISa", ",", "FDIISb", ",", "\n", "eDIISa", 
-       ",", "eDIISb", ",", "UJ", ",", "UK", ",", "Vxa", ",", "Vxb"}], "}"}], 
-     ",", "\n", "\n", 
+       ",", "eDIISb", ",", "UJ", ",", "UK", ",", "Vxa", ",", "Vxb", ",", 
+       "\[Epsilon]", ",", "C", ",", "Cp", ",", "Orb", ",", "P"}], "}"}], ",", 
+     "\n", "\n", 
      RowBox[{
       RowBox[{"Hcore", " ", "=", " ", 
        RowBox[{"T", " ", "+", " ", "V"}]}], ";", "\n", 
@@ -88,19 +89,23 @@ Cell[BoxData[
         RowBox[{
         "To", " ", "avoid", " ", "any", " ", "problem", " ", "when", " ", 
          "n\[Beta]"}], "=", "0"}], "*)"}], "\n", 
-      RowBox[{"Orbb", "=", 
-       RowBox[{"Table", "[", 
-        RowBox[{"0", ",", 
-         RowBox[{"{", 
-          RowBox[{"i", ",", "nbasis"}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"j", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", 
-      RowBox[{"Orbb", "=", 
+      RowBox[{"If", "[", 
        RowBox[{
-        RowBox[{"Take", "[", 
-         RowBox[{
-          RowBox[{"Orbb", "\[Transpose]"}], ",", "n\[Alpha]"}], "]"}], 
-        "\[Transpose]"}]}], ";", "\n", "\n", 
+        RowBox[{"n\[Beta]", "\[Equal]", "0"}], ",", 
+        RowBox[{
+         RowBox[{"Orbb", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{"0", ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "nbasis"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", 
+         RowBox[{"Orbb", "=", 
+          RowBox[{
+           RowBox[{"Take", "[", 
+            RowBox[{
+             RowBox[{"Orbb", "\[Transpose]"}], ",", "n\[Alpha]"}], "]"}], 
+           "\[Transpose]"}]}], ";"}]}], "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"SCF", " ", "loop"}], "*)"}], "\n", 
       RowBox[{"conv", " ", "=", " ", "1"}], ";", " ", 
@@ -745,9 +750,16 @@ Cell[BoxData[
    3.870859115084854*^9, 3.870859126630224*^9}, {3.87091975365105*^9, 
    3.870919775870502*^9}, {3.870919833003336*^9, 3.870919943487362*^9}, {
    3.8709199790963287`*^9, 3.870919983295994*^9}, {3.8709200156553307`*^9, 
-   3.870920035717698*^9}, {3.87092006883535*^9, 
-   3.8709201030637836`*^9}},ExpressionUUID->"aadf9bb5-e439-4aeb-a8e6-\
-729cf852cd63"]
+   3.870920035717698*^9}, {3.87092006883535*^9, 3.8709201030637836`*^9}, {
+   3.870934226315489*^9, 3.870934247798369*^9}, {3.870934286518322*^9, 
+   3.870934325956245*^9}, {3.870934494690041*^9, 3.870934515181834*^9}, {
+   3.8709346770654173`*^9, 3.870934732013453*^9}, {3.870934931402769*^9, 
+   3.87093493309641*^9}, {3.8709351392663193`*^9, 3.870935154144973*^9}, {
+   3.870935269146188*^9, 3.870935270245965*^9}, {3.870935318785029*^9, 
+   3.87093533229359*^9}, {3.870935546320738*^9, 3.8709355499976473`*^9}, {
+   3.8709360558788567`*^9, 3.8709360584698544`*^9}, {3.8709362819957743`*^9, 
+   3.870936284936702*^9}, 3.870936416501506*^9},
+ CellLabel->"In[51]:=",ExpressionUUID->"aadf9bb5-e439-4aeb-a8e6-729cf852cd63"]
 }, Open  ]]
 },
 WindowSize->{1251, 696},
@@ -771,7 +783,7 @@ Notebook[{
 Cell[558, 20, 276, 6, 46, "Input",ExpressionUUID->"b9b1a05a-7808-4713-ab6e-07ac176bb062"],
 Cell[CellGroupData[{
 Cell[859, 30, 204, 4, 67, "Subsubsection",ExpressionUUID->"950eaf33-657b-4f2e-aa9f-78b04a5c4d16"],
-Cell[1066, 36, 40750, 713, 3003, "Code",ExpressionUUID->"aadf9bb5-e439-4aeb-a8e6-729cf852cd63"]
+Cell[1066, 36, 41581, 725, 3032, "Code",ExpressionUUID->"aadf9bb5-e439-4aeb-a8e6-729cf852cd63"]
 }, Open  ]]
 }
 ]

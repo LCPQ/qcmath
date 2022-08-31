@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     69157,       1107]
-NotebookOptionsPosition[     68645,       1089]
-NotebookOutlinePosition[     69069,       1106]
-CellTagsIndexPosition[     69026,       1103]
+NotebookDataLength[     69604,       1113]
+NotebookOptionsPosition[     69094,       1095]
+NotebookOutlinePosition[     69516,       1112]
+CellTagsIndexPosition[     69473,       1109]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -34,8 +34,8 @@ Cell[BoxData[
      "Nelc_", ",", "nbasis_", ",", "nAt_", ",", "Znuc_", ",", "xyz_", ","}], 
      "*)"}], 
     RowBox[{
-    "molecule_", ",", "multiplicity_", ",", "basis_", ",", "methods_"}], 
-    "]"}], ":=", "\n", "\n", 
+    "molecule_", ",", "basis_", ",", "methods_", ",", "multiplicity_", ",", 
+     "charge_"}], "]"}], ":=", "\n", "\n", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -149,7 +149,7 @@ Cell[BoxData[
        RowBox[{"{", 
         RowBox[{
         "\"\<./electron.sh\>\"", ",", "basis", ",", "molecule", ",", 
-         "multiplicity"}], "}"}], "]"}], ";", " ", 
+         "multiplicity", ",", "charge"}], "}"}], "]"}], ";", " ", 
       RowBox[{"(*", 
        RowBox[{
         RowBox[{
@@ -407,8 +407,10 @@ Cell[BoxData[
               ".", "Cb"}]}], ";"}]}], "\n", "]"}], ";", "\n", "\n", 
          RowBox[{"Mainquantities", "=", 
           RowBox[{"Association", "[", 
-           RowBox[{"\"\<EUHF\>\"", "\[Rule]", "EUHF"}], "]"}]}], ";"}]}], 
-       "\n", "]"}], ";", "\n", "\n", 
+           RowBox[{"\"\<EUHF\>\"", "\[Rule]", 
+            RowBox[{"SetAccuracy", "[", 
+             RowBox[{"EUHF", ",", "7"}], "]"}]}], "]"}]}], ";"}]}], "\n", 
+       "]"}], ";", "\n", "\n", 
       RowBox[{"Return", "[", "Mainquantities", "]"}], ";"}]}], "]"}]}], 
   ";"}]], "Code",
  CellChangeTimes->{{3.832392667445559*^9, 3.832392719268615*^9}, {
@@ -1082,13 +1084,17 @@ Cell[BoxData[
    3.8709240577315598`*^9, 3.870924075115254*^9}, 3.870924227247929*^9, {
    3.870924434364142*^9, 3.870924436769184*^9}, {3.870924607219133*^9, 
    3.870924638189291*^9}, {3.87092470827356*^9, 3.870924750503652*^9}, {
-   3.870924795874349*^9, 3.870924804787095*^9}, 
-   3.8709248509895773`*^9},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
-2b85bb5dd0be"]
+   3.870924795874349*^9, 3.870924804787095*^9}, 3.8709248509895773`*^9, {
+   3.870932879863165*^9, 3.870932888943973*^9}, {3.870933243414382*^9, 
+   3.870933244854776*^9}, {3.870934013692246*^9, 3.87093405532892*^9}, {
+   3.870934091826694*^9, 3.87093409290069*^9}, {3.870934156500876*^9, 
+   3.870934167086831*^9}, {3.870936315191739*^9, 3.87093633222796*^9}, 
+   3.8709363791663523`*^9},
+ CellLabel->"In[49]:=",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{1306, 748},
-WindowMargins->{{17, Automatic}, {-2, Automatic}},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -1107,7 +1113,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 67, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 67884, 1059, 4324, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 68333, 1065, 4324, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]
