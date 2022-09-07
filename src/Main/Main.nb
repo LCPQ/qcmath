@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     69604,       1113]
-NotebookOptionsPosition[     69094,       1095]
-NotebookOutlinePosition[     69516,       1112]
-CellTagsIndexPosition[     69473,       1109]
+NotebookDataLength[     76756,       1253]
+NotebookOptionsPosition[     76246,       1235]
+NotebookOutlinePosition[     76668,       1252]
+CellTagsIndexPosition[     76625,       1249]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -29,79 +29,85 @@ Cell[BoxData[
  RowBox[{
   RowBox[{
    RowBox[{"qcmath", "[", 
-    RowBox[{"(*", 
-     RowBox[{
-     "Nelc_", ",", "nbasis_", ",", "nAt_", ",", "Znuc_", ",", "xyz_", ","}], 
-     "*)"}], 
     RowBox[{
     "molecule_", ",", "basis_", ",", "methods_", ",", "multiplicity_", ",", 
      "charge_"}], "]"}], ":=", "\n", "\n", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
+      RowBox[{"(*", "info", "*)"}], 
       RowBox[{
-      "nocc", ",", "nvac", ",", "nS", ",", "n\[Alpha]", ",", "n\[Beta]", ",", 
-       "Nelc", ",", "Enuc", ",", "S", ",", "T", ",", "V", ",", "U", ",", "X", 
-       ",", "EHF", ",", "EUHF", ",", "UHFquantities", ",", "RHFquantities", 
-       "\n", ",", "C", ",", "OMIntegrals", ",", "RPAquantities", ",", 
-       "\[Epsilon]", ",", "XplusY", ",", "\[CapitalOmega]RPA", ",", "ERPA", 
-       ",", "qsGWquantities", ",", "EcGM", ",", "EqsGW", ",", 
-       "URPAquantities", ",", "OMIntegralsaa", "\n", ",", "OMIntegralsab", 
-       ",", "OMIntegralsba", ",", "OMIntegralsbb", ",", "Ca", ",", "Cb", ",", 
-       "\[Epsilon]a", ",", "\[Epsilon]b", ",", "EURPA", ",", 
-       "qsUGWquantities", ",", "EqsUGW", ",", "EcMP2", ",", "EMP2", ",", 
-       "EcUMP2", "\n", ",", "EUMP2", ",", "RPAxquantities", ",", "ERPAx", ",",
-        "qsGF2quantities", ",", "EqsGF2", ",", "qsUGF2quantities", ",", 
-       "EqsUGF2", ",", "URPAxquantities", ",", "EURPAx", "\n", ",", 
-       "qsGquantities", ",", "EqsG", ",", "qsUGquantities", ",", "EqsUG", ",",
-        "TDA", ",", "TDAW", ",", "singlet", ",", "triplet", ",", 
-       "spinconserved", ",", "spinflip", ",", "ppRPAquantities", "\n", ",", 
-       "EppRPA", ",", "LR", ",", "LRquantities", ",", "ULRquantities", ",", 
-       "BSE", ",", "BSEquantities", ",", "EBSE", ",", "qsGWOMIntegrals", ",", 
-       "qsGW\[Epsilon]", ",", "W", ",", "Mainquantities", "\n", ",", 
-       "UBSEquantities", ",", "EUBSE", ",", "W1", ",", "W2", ",", 
-       "qsGWOMIntegralsaa", ",", "qsGWOMIntegralsab", ",", 
-       "qsGWOMIntegralsba", ",", "qsGWOMIntegralsbb", "\n", ",", 
-       "qsGW\[Epsilon]a", ",", "qsGW\[Epsilon]b", ",", "methodRHF", ",", 
-       "methodUHF", ",", "methodMP2", ",", "methodRPA", ",", "methodRPAx", 
-       ",", "methodppRPA", ",", "methodGW", ",", "methodGF2", ",", 
-       "methodBSE", ",", "methodGT", "\n", ",", "qsGTquantities", ",", 
-       "EqsGT", ",", "methodG0W0", ",", "G0W0quantities", ",", "P", ",", "K", 
-       ",", "Vxc", ",", "RPAG0W0", ",", "GMG0W0", ",", "eG0W0", ",", 
-       "methodevGW", ",", "evGWquantities", "\n", ",", "RPAevGW", ",", 
-       "GMevGW", ",", "UG0W0quantities", ",", "RPAUG0W0", ",", "GMUG0W0", ",",
-        "eG0W0a", ",", "eG0W0b", ",", "Vxca", ",", "Vxcb", ",", "Ka", ",", 
-       "Kb", ",", "evUGWquantities", ",", "RPAevUGW", "\n", ",", "GMevUGW", 
-       ",", "methodG0F2", ",", "G0F2quantities", ",", "EG0F2", ",", 
-       "UG0F2quantities", ",", "EUG0F2", ",", "methodevGF2", ",", 
-       "evGF2quantities", ",", "EevGF2", "\n", ",", "evUGF2quantities", ",", 
-       "EevUGF2", ",", "methodG0T0", ",", "G0T0quantities", ",", "EG0T0", ",",
-        "eG0T0", ",", "methodevGT", ",", "evGTquantities", ",", "EevGT", ",", 
-       "atoms", "\n", ",", "i", ",", "sfile", ",", "FFGWquantities", ",", 
-       "FFeGW", ",", "Z", ",", "\[CapitalSigma]cG0W0", ",", 
+      "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "n\[Alpha]", ",", 
+       "n\[Beta]", ",", "Nelc", ",", "ERI", ",", "\n", 
+       RowBox[{"(*", "energies", "*)"}], "Enuc", ",", "EHF", ",", "EUHF", ",",
+        "ERPA", ",", "EURPA", ",", "ERPAx", ",", "EcGM", ",", "EqsGW", ",", 
+       "\n", "            ", "EqsUGW", ",", "EcMP2", ",", "EMP2", ",", 
+       "EcUMP2", ",", "EUMP2", ",", "EqpRPA", ",", "EcrRPA", ",", "\n", 
+       "            ", "EqsGF2", ",", "EqsUGF2", ",", "EBSE", ",", "EG0F2", 
+       ",", "EUG0F2", ",", "EURPAx", ",", "EqsG", ",", "EqsUG", ",", "\n", 
+       "            ", "EevGF2", ",", "EevUGF2", ",", "EG0T0", ",", "eG0T0", 
+       ",", "EevGT", ",", "EqsGT", ",", "EUG0T0", ",", "EevUGT", ",", "\n", 
+       "            ", "EqsUGT", ",", "EppRPA", ",", "EG0W0", ",", "\n", 
+       "            ", "\n", 
+       RowBox[{"(*", "quantities", "*)"}], "UHFquantities", ",", 
+       "RHFquantities", ",", "qsGWquantities", ",", "URPAquantities", ",", 
+       "\n", "              ", "qsUGWquantities", ",", "RPAxquantities", ",", 
+       "qsGF2quantities", ",", "qsUGF2quantities", ",", "\n", 
+       "              ", "qsGquantities", ",", "qsUGquantities", ",", 
+       "URPAxquantities", ",", "LRquantities", ",", "ULRquantities", ",", 
+       "\n", "              ", "RPAquantities", ",", "UBSEquantities", ",", 
+       "BSEquantities", ",", "UG0W0quantities", ",", "G0W0quantities", ",", 
+       "\n", "              ", "evGWquantities", ",", "IntegralsQuantities", 
+       ",", "ParametersQuantities", ",", "MoleculeQuantities", ",", "\n", 
+       "              ", "Mainquantities", ",", "qsGTquantities", ",", 
+       "soRPAquantities", ",", "G0T0quantities", ",", "ppURPAquantities", ",",
+        "\n", "              ", "ppRPAquantities", ",", "UG0F2quantities", 
+       ",", "\[Omega]G0W0quantities", ",", "FFG0W0quantities", ",", 
+       "G0F2quantities", ",", "\n", "              ", "evGF2quantities", ",", 
+       "qpRPAquantities", ",", "crRPAquantities", ",", "evGTquantities", ",", 
+       "evUGTquantities", ",", "\n", "              ", "evUGF2quantities", 
+       ",", "FFGWquantities", ",", "UG0T0quantities", ",", 
+       "\[Omega]GWquantities", ",", "CCSDquantities", ",", "\n", 
+       "              ", "qsUGTquantities", ",", "evUGWquantities", ",", "\n",
+        "              ", "\n", " ", 
+       RowBox[{"(*", "methods", "*)"}], "methodRHF", ",", "methodUHF", ",", 
+       "methodMP2", ",", "methodRPA", ",", "methodRPAx", ",", "\n", 
+       "            ", "methodppRPA", ",", "methodGW", ",", "methodGF2", ",", 
+       "methodBSE", ",", "methodGT", ",", "\n", "            ", "methodG0W0", 
+       ",", "methodG0T0", ",", "methodevGW", ",", "methodsoRPA", ",", 
+       "methodqpRPA", ",", "\n", "            ", "methodcrRPA", ",", 
+       "methodunfG0W0", ",", "methodunfGW", ",", "methodwG0W0", ",", 
+       "methodevGT", ",", "\n", "            ", "methodG0F2", ",", 
+       "methodevGF2", ",", "methodwGW", ",", "methodCCSD", ",", "       ", 
+       "\n", "            ", "\n", "S", ",", "T", ",", "V", ",", "U", ",", 
+       "X", ",", "\n", ",", "C", ",", "\[Epsilon]", ",", "XplusY", ",", 
+       "\[CapitalOmega]RPA", ",", "OMIntegralsaa", "\n", ",", "OMIntegralsab",
+        ",", "OMIntegralsba", ",", "OMIntegralsbb", ",", "Ca", ",", "Cb", ",",
+        "\[Epsilon]a", ",", "\[Epsilon]b", ",", "TDA", ",", "TDAW", ",", 
+       "singlet", ",", "triplet", ",", "spinconserved", ",", "spinflip", ",", 
+       "LR", ",", "BSE", ",", "qsGWOMIntegrals", ",", "qsGW\[Epsilon]", ",", 
+       "W", ",", "EUBSE", ",", "W1", ",", "W2", ",", "qsGWOMIntegralsaa", ",",
+        "qsGWOMIntegralsab", ",", "qsGWOMIntegralsba", ",", 
+       "qsGWOMIntegralsbb", "\n", ",", "qsGW\[Epsilon]a", ",", 
+       "qsGW\[Epsilon]b", "\n", ",", "P", ",", "K", ",", "Vxc", ",", 
+       "RPAG0W0", ",", "GMG0W0", ",", "eG0W0", ",", "RPAevGW", ",", "GMevGW", 
+       ",", "RPAUG0W0", ",", "GMUG0W0", ",", "eG0W0a", ",", "eG0W0b", ",", 
+       "Vxca", ",", "Vxcb", ",", "Ka", ",", "Kb", ",", "RPAevUGW", "\n", ",", 
+       "GMevUGW", ",", "atoms", "\n", ",", "i", ",", "sfile", ",", "FFeGW", 
+       ",", "Z", ",", "\[CapitalSigma]cG0W0", ",", 
        "\[CapitalSigma]c\[Omega]G0W0", ",", "Re\[CapitalSigma]c", ",", 
        "Im\[CapitalSigma]c", ",", "\[Epsilon]evGW", ",", 
        "\[CapitalSigma]c\[Omega]", ",", "eGT", ",", "ZG0T0", ",", 
        "\[CapitalSigma]cG0T0", ",", "ZevGT", ",", "\[CapitalSigma]cevGT", ",",
-        "Im\[CapitalSigma]c\[Omega]", "\n", ",", "methodqpRPA", ",", 
-       "methodcrRPA", ",", "qpRPAquantities", ",", "crRPAquantities", ",", 
-       "EqpRPA", ",", "EcrRPA", ",", "\[Eta]", ",", "DIISex", ",", 
-       "methodCCSD", ",", "CCSDquantities", "\n", ",", "ECCSD", ",", 
-       "Regularized", ",", "\[CapitalSigma]qsGW", ",", "ppURPAquantities", 
-       ",", "EppURPA", ",", "Im\[CapitalSigma]c\[Omega]evGW", ",", 
-       "UG0T0quantities", ",", "EUG0T0", ",", "evUGTquantities", ",", 
-       "EevUGT", "\n", ",", "qsUGTquantities", ",", "EqsUGT", ",", "\[Kappa]",
-        ",", "methodwG0W0", ",", "eG0W0w", ",", "\[Omega]G0W0quantities", ",",
-        "methodunfG0W0", ",", "methodunfGW", ",", "FFG0W0quantities", "\n", 
-       ",", "FFeG0W0", ",", "ZunfG0W0", ",", "methodwGW", ",", 
-       "\[Omega]GWquantities", ",", "eGWw", ",", "ZG0W0w", ",", 
-       "typeRegularization", ",", "DiagElt", ",", "\[Epsilon]p", ",", "conf", 
-       ",", "weights", ",", "eG0W0ww", "\n", ",", "restricted", ",", 
+        "Im\[CapitalSigma]c\[Omega]", "\n", ",", "\[Eta]", ",", "DIISex", ",",
+        "ECCSD", ",", "Regularized", ",", "\[CapitalSigma]qsGW", ",", 
+       "EppURPA", ",", "Im\[CapitalSigma]c\[Omega]evGW", ",", "\[Kappa]", ",",
+        "eG0W0w", ",", "FFeG0W0", ",", "ZunfG0W0", ",", "eGWw", ",", "ZG0W0w",
+        ",", "typeRegularization", ",", "DiagElt", ",", "\[Epsilon]p", ",", 
+       "conf", ",", "weights", ",", "eG0W0ww", "\n", ",", "restricted", ",", 
        "unrestricted", ",", "mol", ",", "xyz", ",", "nAt", ",", "Znuc", ",", 
-       "elements", ",", "nbasis", ",", "HFmaxSCF", ",", "HFthresh", ",", 
-       "IntegralsQuantities", "\n", ",", "ParametersQuantities", ",", 
-       "MoleculeQuantities", ",", "HaToeV", ",", "AntoBo"}], "}"}], ",", "\n",
-      "\n", 
+       "elements", ",", "HFmaxSCF", ",", "HFthresh", ",", "HaToeV", ",", 
+       "AntoBo"}], "}"}], ",", "\n", "\n", 
      RowBox[{"(*", 
       RowBox[{"Get", " ", "the", " ", "parameters"}], "*)"}], "\n", 
      RowBox[{
@@ -206,18 +212,18 @@ Cell[BoxData[
       RowBox[{
       "NotebookEvaluate", "[", 
        "\"\<~/Work/qcmath/src/utils/read_basis.nb\>\"", "]"}], ";", "\n", 
-      RowBox[{"nbasis", "=", 
+      RowBox[{"nBas", "=", 
        RowBox[{"readBasis", "[", 
         RowBox[{"nAt", ",", "xyz"}], "]"}]}], ";", "\n", "\n", 
-      RowBox[{"nocc", "=", 
+      RowBox[{"nO", "=", 
        RowBox[{
         RowBox[{"(", 
          RowBox[{"n\[Alpha]", "+", "n\[Beta]"}], ")"}], "/", "2"}]}], ";", 
       " ", 
-      RowBox[{"nvac", "=", 
-       RowBox[{"nbasis", "-", "nocc"}]}], ";", " ", 
+      RowBox[{"nV", "=", 
+       RowBox[{"nBas", "-", "nO"}]}], ";", " ", 
       RowBox[{"nS", "=", 
-       RowBox[{"nocc", "*", "nvac"}]}], ";", " ", 
+       RowBox[{"nO", "*", "nV"}]}], ";", " ", 
       RowBox[{"Nelc", "=", 
        RowBox[{"n\[Alpha]", "+", "n\[Beta]"}]}], ";", " ", "\n", "\n", 
       RowBox[{"(*", "Orthogonalization", "*)"}], "\n", 
@@ -232,7 +238,30 @@ Cell[BoxData[
       RowBox[{"unrestricted", "=", "False"}], ";", "\n", "\n", 
       RowBox[{"(*", "methods", "*)"}], "\n", 
       RowBox[{"methodRHF", "=", "False"}], ";", "\n", 
-      RowBox[{"methodUHF", "=", "False"}], ";", "\n", "\n", 
+      RowBox[{"methodUHF", "=", "False"}], ";", "\n", 
+      RowBox[{"methodMP2", "=", "False"}], ";", "\n", 
+      RowBox[{"methodRPA", "=", "False"}], ";", "\n", 
+      RowBox[{"methodRPAx", "=", "False"}], ";", "\n", 
+      RowBox[{"methodsoRPA", "=", "False"}], ";", "\n", 
+      RowBox[{"methodG0W0", "=", "False"}], ";", "\n", "\n", 
+      RowBox[{"(*", "options", "*)"}], "\n", 
+      RowBox[{"DIISex", "=", "False"}], ";", "\n", 
+      RowBox[{"singlet", "=", "True"}], ";", "\n", 
+      RowBox[{"triplet", "=", "True"}], ";", "\n", 
+      RowBox[{"TDA", "=", "False"}], ";", "\n", 
+      RowBox[{"TDAW", "=", "False"}], ";", "\n", 
+      RowBox[{"spinconserved", "=", "True"}], ";", "\n", 
+      RowBox[{"spinflip", "=", "False"}], ";", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"\[Eta]", "=", "0.00367493"}], ";"}], "*)"}], "\n", 
+      RowBox[{"Regularized", "=", "False"}], ";", "\n", 
+      RowBox[{"typeRegularization", "=", "\"\<evangelista\>\""}], ";", "\n", 
+      RowBox[{"\[Eta]", "=", "0.0"}], ";", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"\[Eta]", "=", "0.0367493"}], ";"}], "*)"}], "\n", 
+      RowBox[{"\[Kappa]", "=", "0.0"}], ";", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"Define", " ", "the", " ", "desired", " ", "methods"}], "*)"}],
        "\n", 
@@ -259,31 +288,49 @@ Cell[BoxData[
              "==", "\"\<UHF\>\""}], ",", 
            RowBox[{
             RowBox[{"methodUHF", "=", "True"}], ";", 
-            RowBox[{"unrestricted", "=", "True"}]}]}], "]"}], ";"}], "\n", 
-        ",", 
+            RowBox[{"unrestricted", "=", "True"}]}]}], "]"}], ";", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+            "methods", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+             "\[Equal]", "\"\<MP2\>\""}], ",", 
+           RowBox[{"methodMP2", "=", "True"}]}], "]"}], ";", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+            "methods", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+             "\[Equal]", "\"\<RPA\>\""}], ",", 
+           RowBox[{"methodRPA", "=", "True"}]}], "]"}], ";", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+            "methods", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+             "\[Equal]", "\"\<RPAx\>\""}], ",", 
+           RowBox[{"methodRPAx", "=", "True"}]}], "]"}], ";", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+            "methods", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+             "\[Equal]", "\"\<soRPA\>\""}], ",", 
+           RowBox[{"methodsoRPA", "=", "True"}]}], "]"}], ";", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+            "methods", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+             "\[Equal]", "\"\<G0W0\>\""}], ",", 
+           RowBox[{"methodG0W0", "=", "True"}]}], "]"}], ";"}], "\n", ",", 
         RowBox[{"{", 
          RowBox[{"i", ",", 
           RowBox[{"Length", "[", "methods", "]"}]}], "}"}]}], "]"}], ";", 
       "\n", "\n", 
-      RowBox[{"DIISex", "=", "False"}], ";", "\n", 
-      RowBox[{"singlet", "=", "True"}], ";", "\n", 
-      RowBox[{"triplet", "=", "True"}], ";", "\n", 
-      RowBox[{"TDA", "=", "True"}], ";", "\n", 
-      RowBox[{"TDAW", "=", "True"}], ";", "\n", 
-      RowBox[{"spinconserved", "=", "True"}], ";", "\n", 
-      RowBox[{"spinflip", "=", "True"}], ";", "\n", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{"\[Eta]", "=", "0.00367493"}], ";"}], "*)"}], "\n", 
-      RowBox[{"Regularized", "=", "False"}], ";", "\n", 
-      RowBox[{"typeRegularization", "=", "\"\<evangelista\>\""}], ";", "\n", 
-      RowBox[{"\[Eta]", "=", "0.0"}], ";", "\n", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{"\[Eta]", "=", "0.0367493"}], ";"}], "*)"}], "\n", 
-      RowBox[{"\[Kappa]", "=", "0.0"}], ";", "\n", "\n", 
       RowBox[{"If", "[", 
        RowBox[{"restricted", ",", "\n", "\n", 
+        RowBox[{"(*", "RHF", "*)"}], "\n", 
         RowBox[{
          RowBox[{"If", "[", 
           RowBox[{"methodRHF", ",", "\n", 
@@ -291,18 +338,17 @@ Cell[BoxData[
             RowBox[{
             "NotebookEvaluate", "[", "\"\<~/Work/qcmath/src/HF/RHF.nb\>\"", 
              "]"}], ";", "\n", "\n", 
-            RowBox[{"(*", "HF", "*)"}], "\n", 
             RowBox[{"RHFquantities", "=", 
              RowBox[{"RHF", "[", 
               RowBox[{
-              "nbasis", ",", "Nelc", ",", "S", ",", "T", ",", "V", ",", "U", 
+              "nBas", ",", "Nelc", ",", "S", ",", "T", ",", "V", ",", "U", 
                ",", "X", ",", "DIISex", ",", "HFmaxSCF", ",", "HFthresh"}], 
               "]"}]}], ";", "\n", "\n", 
             RowBox[{"EHF", "=", 
              RowBox[{
               RowBox[{"RHFquantities", "[", "\"\<EHF\>\"", "]"}], "+", 
               "Enuc"}]}], ";", "\n", 
-            RowBox[{"OMIntegrals", "=", 
+            RowBox[{"ERI", "=", 
              RowBox[{"RHFquantities", "[", "\"\<OMIntegrals\>\"", "]"}]}], 
             ";", "\n", 
             RowBox[{"\[Epsilon]", "=", 
@@ -319,10 +365,85 @@ Cell[BoxData[
             RowBox[{"eG0W0", "=", "\[Epsilon]"}], ";", "\n", 
             RowBox[{"eG0T0", "=", "\[Epsilon]"}], ";"}]}], "\n", "]"}], ";", 
          "\n", "\n", 
+         RowBox[{"(*", "RPA", "*)"}], "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{"methodRPA", ",", "\n", 
+           RowBox[{
+            RowBox[{
+            "NotebookEvaluate", "[", "\"\<~/Work/qcmath/src/RPA/RPA.nb\>\"", 
+             "]"}], ";", "\n", "\n", 
+            RowBox[{"RPAquantities", "=", 
+             RowBox[{"RPA", "[", 
+              RowBox[{
+              "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI", 
+               ",", "TDA", ",", 
+               RowBox[{"(*", 
+                RowBox[{"BSE", ",", "W", ","}], "*)"}], "singlet", ",", 
+               "triplet"}], "]"}]}], ";", "\n", "\n", 
+            RowBox[{"ERPA", "=", 
+             RowBox[{"EHF", "+", 
+              RowBox[{"RPAquantities", "[", "\"\<EcRPA\>\"", "]"}]}]}], 
+            ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+         RowBox[{"(*", "soRPA", "*)"}], "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{"methodsoRPA", ",", "\n", 
+           RowBox[{
+            RowBox[{
+            "NotebookEvaluate", "[", "\"\<~/Work/qcmath/src/RPA/soRPA.nb\>\"",
+              "]"}], ";", "\n", "\n", 
+            RowBox[{"soRPAquantities", "=", 
+             RowBox[{"soRPA", "[", 
+              RowBox[{
+              "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI", 
+               ",", "TDA"}], "]"}]}], ";", "\n", 
+            RowBox[{"ERPA", "=", 
+             RowBox[{"EHF", "+", 
+              RowBox[{"soRPAquantities", "[", "\"\<EcRPA\>\"", "]"}]}]}], 
+            ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+         RowBox[{"(*", "RPAx", "*)"}], "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{"methodRPAx", ",", "\n", 
+           RowBox[{
+            RowBox[{
+            "NotebookEvaluate", "[", "\"\<~/Work/qcmath/src/RPA/RPA_x.nb\>\"",
+              "]"}], ";", "\n", "\n", 
+            RowBox[{"RPAxquantities", "=", 
+             RowBox[{"RPAx", "[", 
+              RowBox[{
+              "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI", 
+               ",", "TDA", ",", 
+               RowBox[{"(*", 
+                RowBox[{"BSE", ",", "W", ","}], "*)"}], "singlet", ",", 
+               "triplet"}], "]"}]}], ";", "\n", 
+            RowBox[{"ERPAx", "=", 
+             RowBox[{"EHF", "+", 
+              RowBox[{"RPAxquantities", "[", "\"\<EcRPAx\>\"", "]"}]}]}], 
+            ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+         RowBox[{"(*", "G0W0", "*)"}], "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{"methodG0W0", ",", "\n", 
+           RowBox[{
+            RowBox[{
+            "NotebookEvaluate", "[", "\"\<~/Work/qcmath/src/GW/G0W0.nb\>\"", 
+             "]"}], ";", "\n", "\n", 
+            RowBox[{"G0W0quantities", "=", 
+             RowBox[{"G0W0", "[", 
+              RowBox[{
+              "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "\[Epsilon]", ",",
+                "ERI", ",", "S", ",", "T", ",", "V", ",", "U", ",", "X", ",", 
+               "C", ",", "\n", "                    ", "P", ",", "K", ",", 
+               "Vxc", ",", "TDA", ",", "BSE", ",", "W", ",", "TDAW", ",", 
+               "singlet", ",", "\n", "                    ", "triplet", ",", 
+               "\[Eta]", ",", "Regularized", ",", "\[Kappa]"}], "]"}]}], 
+            ";"}]}], "\n", "]"}], ";", "\n", "\n", 
          RowBox[{"Mainquantities", "=", 
           RowBox[{"Association", "[", 
-           RowBox[{"\"\<EHF\>\"", "\[Rule]", "EHF"}], "]"}]}], ";"}]}], "\n", 
-       "]"}], ";", "\n", "\n", "\n", 
+           RowBox[{
+            RowBox[{"\"\<EHF\>\"", "\[Rule]", "EHF"}], ",", 
+            RowBox[{"\"\<ERPA\>\"", "\[Rule]", "ERPA"}], ",", 
+            RowBox[{"\"\<ERPAx\>\"", "\[Rule]", "ERPAx"}], ",", 
+            RowBox[{"\"\<EG0W0\>\"", "\[Rule]", "EG0W0"}]}], "]"}]}], ";"}]}],
+        "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"If", "[", 
        RowBox[{"unrestricted", ",", "\n", "\n", 
         RowBox[{
@@ -336,8 +457,8 @@ Cell[BoxData[
             RowBox[{"UHFquantities", "=", 
              RowBox[{"UHF", "[", 
               RowBox[{
-              "nbasis", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "S", ",", "T",
-                ",", "V", ",", "U", ",", "X", ",", "DIISex", ",", "HFmaxSCF", 
+              "nBas", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "S", ",", "T", 
+               ",", "V", ",", "U", ",", "X", ",", "DIISex", ",", "HFmaxSCF", 
                ",", "HFthresh"}], "]"}]}], ";", "\n", 
             RowBox[{"EUHF", "=", 
              RowBox[{
@@ -1089,8 +1210,27 @@ Cell[BoxData[
    3.870933244854776*^9}, {3.870934013692246*^9, 3.87093405532892*^9}, {
    3.870934091826694*^9, 3.87093409290069*^9}, {3.870934156500876*^9, 
    3.870934167086831*^9}, {3.870936315191739*^9, 3.87093633222796*^9}, 
-   3.8709363791663523`*^9},
- CellLabel->"In[49]:=",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+   3.8709363791663523`*^9, {3.871523830624958*^9, 3.8715238765133667`*^9}, {
+   3.871524044734623*^9, 3.871524051744068*^9}, {3.8715240877480288`*^9, 
+   3.871524261334696*^9}, {3.8715243164536877`*^9, 3.871524336842082*^9}, 
+   3.871525595554716*^9, {3.871525642503593*^9, 3.871525746954563*^9}, {
+   3.871525781940708*^9, 3.871525894630877*^9}, {3.8715267106843233`*^9, 
+   3.871526711086673*^9}, {3.87152676623706*^9, 3.8715267670124197`*^9}, {
+   3.8715269549283*^9, 3.871526956430264*^9}, {3.871527032560281*^9, 
+   3.871527032696149*^9}, {3.871527066018445*^9, 3.871527152618785*^9}, {
+   3.871527357669112*^9, 3.871527357825251*^9}, {3.87152869258514*^9, 
+   3.871528692751013*^9}, {3.87152885643159*^9, 3.8715288620657387`*^9}, {
+   3.8715298042988853`*^9, 3.871529845206932*^9}, {3.871529890833707*^9, 
+   3.871529998228842*^9}, {3.871530365597031*^9, 3.871530549165801*^9}, {
+   3.8715307692670603`*^9, 3.871530796621626*^9}, {3.871530836122554*^9, 
+   3.8715308368856573`*^9}, {3.871531024718903*^9, 3.871531040685377*^9}, {
+   3.8715312293206453`*^9, 3.871531436898991*^9}, {3.871531929779714*^9, 
+   3.8715319545893383`*^9}, {3.87153199154237*^9, 3.871532072395874*^9}, {
+   3.8715322936660233`*^9, 3.87153234144794*^9}, {3.871532406193791*^9, 
+   3.871532656027419*^9}, {3.871532691087977*^9, 3.871533199110787*^9}, {
+   3.871533250221757*^9, 3.871533253504408*^9}, {3.8715336795895*^9, 
+   3.871533686424382*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
+2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{1306, 748},
@@ -1113,7 +1253,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 67, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 68333, 1065, 4324, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 75485, 1205, 6006, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     29884,        549]
-NotebookOptionsPosition[     29374,        531]
-NotebookOutlinePosition[     29797,        548]
-CellTagsIndexPosition[     29754,        545]
+NotebookDataLength[     29905,        550]
+NotebookOptionsPosition[     29395,        532]
+NotebookOutlinePosition[     29818,        549]
+CellTagsIndexPosition[     29775,        546]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -31,7 +31,7 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"RHF", "[", 
     RowBox[{
-    "nbasis_", ",", "Nelc_", ",", "S_", ",", "T_", ",", "V_", ",", "U_", ",", 
+    "nBas_", ",", "Nelc_", ",", "S_", ",", "T_", ",", "V_", ",", "U_", ",", 
      "X_", ",", "DIISex_", ",", "maxSCF_", ",", "thresh_"}], "]"}], ":=", 
    RowBox[{"Module", "[", "\n", 
     RowBox[{
@@ -246,10 +246,10 @@ Cell[BoxData[
         RowBox[{
          RowBox[{
           UnderoverscriptBox["\[Sum]", 
-           RowBox[{"\[Mu]", "=", "1"}], "nbasis"], 
+           RowBox[{"\[Mu]", "=", "1"}], "nBas"], 
           RowBox[{
            UnderoverscriptBox["\[Sum]", 
-            RowBox[{"\[Nu]", "=", "1"}], "nbasis"], 
+            RowBox[{"\[Nu]", "=", "1"}], "nBas"], 
            RowBox[{
             RowBox[{"C", "\[LeftDoubleBracket]", 
              RowBox[{"\[Mu]", ",", "p"}], "\[RightDoubleBracket]"}], "*", 
@@ -260,7 +260,7 @@ Cell[BoxData[
              RowBox[{"\[Nu]", ",", "p"}], "\[RightDoubleBracket]"}]}]}]}], 
          ",", 
          RowBox[{"{", 
-          RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+          RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
       RowBox[{"RHFquantities", " ", "=", " ", 
        RowBox[{"Association", "[", 
         RowBox[{
@@ -525,8 +525,9 @@ Cell[BoxData[
    3.870919334271575*^9, 3.870919448173986*^9}, {3.8709219678865232`*^9, 
    3.870922003549965*^9}, {3.870922397871871*^9, 3.870922405132707*^9}, {
    3.870922507537796*^9, 3.870922537426674*^9}, 3.870922621431477*^9, {
-   3.870922730149427*^9, 3.870922850232954*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
+   3.870922730149427*^9, 3.870922850232954*^9}, {3.871531478323944*^9, 
+   3.871531498031728*^9}},ExpressionUUID->"7baad11d-374a-4683-890b-\
+d85c2ff96c2b"]
 }, Open  ]]
 },
 WindowSize->{1357, 696},
@@ -549,7 +550,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 203, 4, 67, "Subsubsection",ExpressionUUID->"6bb91d66-5bf2-45dd-86dd-d2dd89a20c17"],
-Cell[786, 28, 28572, 500, 2029, "Code",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
+Cell[786, 28, 28593, 501, 2027, "Code",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
 }, Open  ]]
 }
 ]

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     16024,        385]
-NotebookOptionsPosition[     15645,        370]
-NotebookOutlinePosition[     16070,        387]
-CellTagsIndexPosition[     16027,        384]
+NotebookDataLength[     16040,        387]
+NotebookOptionsPosition[     15661,        372]
+NotebookOutlinePosition[     16086,        389]
+CellTagsIndexPosition[     16043,        386]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,9 +23,9 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"RegularizedSelfEnergyGWdiag", "[", 
     RowBox[{
-    "nbasis_", ",", "nocc_", ",", "nvac_", ",", "nS_", ",", "\[Epsilon]_", 
-     ",", "sIntegrals_", ",", "\[CapitalOmega]_", ",", "\[Kappa]_"}], "]"}], ":=",
-    "\n", 
+    "nBas_", ",", "nO_", ",", "nV_", ",", "nS_", ",", "\[Epsilon]_", ",", 
+     "sERI_", ",", "\[CapitalOmega]_", ",", "\[Kappa]_"}], "]"}], ":=", "\n", 
+   
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -44,7 +44,7 @@ Cell[BoxData[
          RowBox[{
           RowBox[{
            UnderoverscriptBox["\[Sum]", 
-            RowBox[{"i", "=", "1"}], "nocc"], 
+            RowBox[{"i", "=", "1"}], "nO"], 
            RowBox[{
             UnderoverscriptBox["\[Sum]", 
              RowBox[{"jb", "=", "1"}], "nS"], 
@@ -52,7 +52,7 @@ Cell[BoxData[
              FractionBox[
               RowBox[{"2", 
                SuperscriptBox[
-                RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+                RowBox[{"sERI", "\[LeftDoubleBracket]", 
                  RowBox[{"p", ",", "i", ",", "jb"}], 
                  "\[RightDoubleBracket]"}], "2"]}], 
               RowBox[{"\[Omega]", "-", 
@@ -83,7 +83,7 @@ Cell[BoxData[
           RowBox[{
            UnderoverscriptBox["\[Sum]", 
             RowBox[{"a", "=", 
-             RowBox[{"nocc", "+", "1"}]}], "nbasis"], 
+             RowBox[{"nO", "+", "1"}]}], "nBas"], 
            RowBox[{
             UnderoverscriptBox["\[Sum]", 
              RowBox[{"jb", "=", "1"}], "nS"], 
@@ -91,7 +91,7 @@ Cell[BoxData[
              FractionBox[
               RowBox[{"2", 
                SuperscriptBox[
-                RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+                RowBox[{"sERI", "\[LeftDoubleBracket]", 
                  RowBox[{"p", ",", "a", ",", "jb"}], 
                  "\[RightDoubleBracket]"}], "2"]}], 
               RowBox[{"\[Omega]", "-", 
@@ -119,7 +119,7 @@ Cell[BoxData[
                     "\[RightDoubleBracket]"}]}], ")"}], "]"}], "2"]}], 
                   SuperscriptBox["\[Kappa]", "2"]]}]]}], ")"}]}]}]}]}], ",", 
          RowBox[{"{", 
-          RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+          RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"Renormalization", " ", "factor"}], "*)"}], "\n", 
       RowBox[{"Z", "=", 
@@ -128,7 +128,7 @@ Cell[BoxData[
          RowBox[{
           RowBox[{
            UnderoverscriptBox["\[Sum]", 
-            RowBox[{"i", "=", "1"}], "nocc"], 
+            RowBox[{"i", "=", "1"}], "nO"], 
            RowBox[{
             UnderoverscriptBox["\[Sum]", 
              RowBox[{"jb", "=", "1"}], "nS"], 
@@ -136,7 +136,7 @@ Cell[BoxData[
              RowBox[{
               RowBox[{"-", "2"}], 
               SuperscriptBox[
-               RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+               RowBox[{"sERI", "\[LeftDoubleBracket]", 
                 RowBox[{"x", ",", "i", ",", "jb"}], "\[RightDoubleBracket]"}],
                 "2"], "*", 
               RowBox[{"(", 
@@ -207,7 +207,7 @@ Cell[BoxData[
           RowBox[{
            UnderoverscriptBox["\[Sum]", 
             RowBox[{"a", "=", 
-             RowBox[{"nocc", "+", "1"}]}], "nbasis"], 
+             RowBox[{"nO", "+", "1"}]}], "nBas"], 
            RowBox[{
             UnderoverscriptBox["\[Sum]", 
              RowBox[{"jb", "=", "1"}], "nS"], 
@@ -215,7 +215,7 @@ Cell[BoxData[
              RowBox[{
               RowBox[{"-", "2"}], 
               SuperscriptBox[
-               RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+               RowBox[{"sERI", "\[LeftDoubleBracket]", 
                 RowBox[{"x", ",", "a", ",", "jb"}], "\[RightDoubleBracket]"}],
                 "2"], "*", 
               RowBox[{"(", 
@@ -284,18 +284,18 @@ Cell[BoxData[
                  "\[CapitalOmega]", "\[LeftDoubleBracket]", "jb", 
                   "\[RightDoubleBracket]"}]}], ")"}]]}], ")"}]}]}]}], ",", 
          RowBox[{"{", 
-          RowBox[{"x", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+          RowBox[{"x", ",", "nBas"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"GM", " ", "correlation", " ", "energy"}], "*)"}], "\n", 
       RowBox[{"EcGM", "=", 
        RowBox[{"-", 
         RowBox[{
          UnderoverscriptBox["\[Sum]", 
-          RowBox[{"i", "=", "1"}], "nocc"], 
+          RowBox[{"i", "=", "1"}], "nO"], 
          RowBox[{
           UnderoverscriptBox["\[Sum]", 
            RowBox[{"a", "=", 
-            RowBox[{"nocc", "+", "1"}]}], "nbasis"], 
+            RowBox[{"nO", "+", "1"}]}], "nBas"], 
           RowBox[{
            UnderoverscriptBox["\[Sum]", 
             RowBox[{"jb", "=", "1"}], "nS"], 
@@ -303,7 +303,7 @@ Cell[BoxData[
             FractionBox[
              RowBox[{"4", 
               SuperscriptBox[
-               RowBox[{"sIntegrals", "\[LeftDoubleBracket]", 
+               RowBox[{"sERI", "\[LeftDoubleBracket]", 
                 RowBox[{"a", ",", "i", ",", "jb"}], "\[RightDoubleBracket]"}],
                 "2"]}], 
              RowBox[{
@@ -365,8 +365,10 @@ Cell[BoxData[
    3.854527148779868*^9, 3.854527222571085*^9}, 3.85452730317868*^9, {
    3.854527638487383*^9, 3.854527640317684*^9}, {3.8545276855026503`*^9, 
    3.854527744462591*^9}, {3.8545281551521587`*^9, 3.8545281670659933`*^9}, {
-   3.854528202330264*^9, 3.8545282041390743`*^9}},
- CellLabel->"In[27]:=",ExpressionUUID->"f7712045-19df-44ea-a09c-a8a1333b1b7d"]
+   3.854528202330264*^9, 3.8545282041390743`*^9}, {3.871533435793161*^9, 
+   3.8715335012389097`*^9}, {3.871533537578178*^9, 
+   3.871533541879055*^9}},ExpressionUUID->"f7712045-19df-44ea-a09c-\
+a8a1333b1b7d"]
 },
 WindowSize->{1149, 680},
 WindowMargins->{{84, Automatic}, {36, Automatic}},
@@ -386,10 +388,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 15083, 348, 744, "Code",ExpressionUUID->"f7712045-19df-44ea-a09c-a8a1333b1b7d"]
+Cell[558, 20, 15099, 350, 744, "Code",ExpressionUUID->"f7712045-19df-44ea-a09c-a8a1333b1b7d"]
 }
 ]
 *)
-
-(* End of internal cache information *)
 

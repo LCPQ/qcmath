@@ -1,0 +1,149 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5216,        141]
+NotebookOptionsPosition[      4837,        126]
+NotebookOutlinePosition[      5263,        143]
+CellTagsIndexPosition[      5220,        140]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"soRPA", "[", 
+    RowBox[{
+    "nBas_", ",", "nO_", ",", "nV_", ",", "\[Epsilon]_", ",", "ERI_", ",", 
+     "TDA_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "ispin", ",", "linearquantities", ",", "dRPA", ",", "soRPAquantities", 
+       ",", "\n", "EcRPA", ",", "nBas2", ",", "nO2", ",", "nV2", ",", 
+       "so\[Epsilon]", ",", "soERI"}], "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{
+      "NotebookEvaluate", "[", 
+       "\"\<~/Work/qcmath/src/LR/linear_Response.nb\>\"", "]"}], ";", "\n", 
+      "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Define", " ", "the", " ", "spaces"}], "*)"}], "\n", 
+      RowBox[{"nBas2", "=", 
+       RowBox[{"2", "nBas"}]}], ";", "\n", 
+      RowBox[{"nO2", "=", 
+       RowBox[{"2", "nO"}]}], ";", "\n", 
+      RowBox[{"nV2", "=", 
+       RowBox[{"2", "nV"}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Spatial", " ", "to", " ", "spin", " ", "orbitals"}], "*)"}], 
+      "\n", 
+      RowBox[{"so\[Epsilon]", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"\[Epsilon]", "\[LeftDoubleBracket]", 
+          RowBox[{"\[LeftFloor]", 
+           FractionBox[
+            RowBox[{"p", "+", "1"}], "2"], "\[RightFloor]"}], 
+          "\[RightDoubleBracket]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nBas2"}], "}"}]}], "]"}]}], ";", "\n", 
+      RowBox[{"soERI", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["\[Delta]", 
+           RowBox[{
+            RowBox[{"Mod", "[", 
+             RowBox[{"p", ",", "2"}], "]"}], ",", 
+            RowBox[{"Mod", "[", 
+             RowBox[{"r", ",", "2"}], "]"}]}]], 
+          SubscriptBox["\[Delta]", 
+           RowBox[{
+            RowBox[{"Mod", "[", 
+             RowBox[{"s", ",", "2"}], "]"}], ",", 
+            RowBox[{"Mod", "[", 
+             RowBox[{"q", ",", "2"}], "]"}]}]], 
+          RowBox[{"ERI", "\[LeftDoubleBracket]", 
+           RowBox[{
+            RowBox[{"\[LeftFloor]", 
+             FractionBox[
+              RowBox[{"p", "+", "1"}], "2"], "\[RightFloor]"}], ",", 
+            RowBox[{"\[LeftFloor]", 
+             FractionBox[
+              RowBox[{"q", "+", "1"}], "2"], "\[RightFloor]"}], ",", 
+            RowBox[{"\[LeftFloor]", 
+             FractionBox[
+              RowBox[{"r", "+", "1"}], "2"], "\[RightFloor]"}], ",", 
+            RowBox[{"\[LeftFloor]", 
+             FractionBox[
+              RowBox[{"s", "+", "1"}], "2"], "\[RightFloor]"}]}], 
+           "\[RightDoubleBracket]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"q", ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"r", ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"s", ",", "nBas2"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"dRPA", "=", "True"}], ";", "\n", "\n", 
+      RowBox[{"ispin", "=", "4"}], ";", "\n", "\n", 
+      RowBox[{"linearquantities", "=", 
+       RowBox[{"LinearResponse", "[", 
+        RowBox[{
+        "nBas2", ",", "nO2", ",", "nV2", ",", "so\[Epsilon]", ",", "soERI", 
+         ",", "TDA", ",", "ispin", ",", "dRPA"}], "]"}]}], ";", "\n", 
+      RowBox[{"EcRPA", "=", 
+       RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"soRPAquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{"\"\<EcRPA\>\"", "\[Rule]", "EcRPA"}], "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"Return", "[", "soRPAquantities", "]"}]}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.871527175200679*^9, 3.871527184486805*^9}, {
+  3.871527399322761*^9, 3.871527399502145*^9}, {3.871527478798307*^9, 
+  3.871527660871771*^9}, {3.871527774142271*^9, 3.871527782366477*^9}, {
+  3.8715278374881067`*^9, 3.871527900650567*^9}, {3.8715279536855164`*^9, 
+  3.871527993715713*^9}, {3.871528066976287*^9, 3.871528139219674*^9}, {
+  3.87152863115504*^9, 3.8715286697559977`*^9}, {3.871528973559092*^9, 
+  3.871528980814897*^9}, {3.871529254960026*^9, 3.871529257737072*^9}, {
+  3.871531829200574*^9, 
+  3.871531851483241*^9}},ExpressionUUID->"0d4e7083-23db-4609-8ba6-\
+6976bf383c03"]
+},
+WindowSize->{1004, 685},
+WindowMargins->{{Automatic, 56}, {-28, Automatic}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"566f5b7e-2345-48b7-92d4-bce9da0a9bbd"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4275, 104, 700, "Code",ExpressionUUID->"0d4e7083-23db-4609-8ba6-6976bf383c03"]
+}
+]
+*)
+

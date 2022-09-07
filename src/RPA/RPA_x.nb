@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      3864,        102]
-NotebookOptionsPosition[      3488,         87]
-NotebookOutlinePosition[      3912,        104]
-CellTagsIndexPosition[      3869,        101]
+NotebookDataLength[      4366,        115]
+NotebookOptionsPosition[      3990,        100]
+NotebookOutlinePosition[      4414,        117]
+CellTagsIndexPosition[      4371,        114]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,9 +23,11 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"RPAx", "[", 
     RowBox[{
-    "nbasis_", ",", "nocc_", ",", "nvac_", ",", "\[Epsilon]_", ",", 
-     "OMIntegrals_", ",", "TDA_", ",", "BSE_", ",", "W_", ",", "singlet_", 
-     ",", "triplet_"}], "]"}], ":=", 
+    "nBas_", ",", "nO_", ",", "nV_", ",", "\[Epsilon]_", ",", "ERI_", ",", 
+     "TDA_", ",", 
+     RowBox[{"(*", 
+      RowBox[{"BSE_", ",", "W_", ","}], "*)"}], "singlet_", ",", "triplet_"}],
+     "]"}], ":=", 
    RowBox[{"Module", "[", "\n", 
     RowBox[{
      RowBox[{"{", 
@@ -34,6 +36,10 @@ Cell[BoxData[
        ",", "dRPA", ",", "RPAxquantities", ",", "EcRPAx"}], "}"}], ",", "\n", 
      "\n", 
      RowBox[{
+      RowBox[{
+      "NotebookEvaluate", "[", 
+       "\"\<~/Work/qcmath/src/LR/linear_Response.nb\>\"", "]"}], ";", "\n", 
+      "\n", 
       RowBox[{"Ecsinglet", "=", "0"}], ";", "\n", 
       RowBox[{"Ectriplet", "=", "0"}], ";", "\n", "\n", 
       RowBox[{"dRPA", "=", "False"}], ";", "\n", "\n", 
@@ -44,9 +50,11 @@ Cell[BoxData[
          RowBox[{"linearquantities", "=", 
           RowBox[{"LinearResponse", "[", 
            RowBox[{
-           "nbasis", ",", "nocc", ",", "nvac", ",", "\[Epsilon]", ",", 
-            "OMIntegrals", ",", "TDA", ",", "BSE", ",", "W", ",", "ispin", 
-            ",", "dRPA"}], "]"}]}], ";", "\n", "\n", 
+           "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI", ",", 
+            "TDA", ",", 
+            RowBox[{"(*", 
+             RowBox[{"BSE", ",", "W", ","}], "*)"}], "ispin", ",", "dRPA"}], 
+           "]"}]}], ";", "\n", "\n", 
          RowBox[{"Ecsinglet", "=", 
           RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";", "\n", 
          RowBox[{"Ecsinglet", "=", 
@@ -59,9 +67,11 @@ Cell[BoxData[
          RowBox[{"linearquantities", "=", 
           RowBox[{"LinearResponse", "[", 
            RowBox[{
-           "nbasis", ",", "nocc", ",", "nvac", ",", "\[Epsilon]", ",", 
-            "OMIntegrals", ",", "TDA", ",", "BSE", ",", "W", ",", "ispin", 
-            ",", "dRPA"}], "]"}]}], ";", "\n", "\n", 
+           "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI", ",", 
+            "TDA", ",", 
+            RowBox[{"(*", 
+             RowBox[{"BSE", ",", "W", ","}], "*)"}], "ispin", ",", "dRPA"}], 
+           "]"}]}], ";", "\n", "\n", 
          RowBox[{"Ectriplet", "=", 
           RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";", "\n", 
          RowBox[{"Ectriplet", "=", 
@@ -81,12 +91,15 @@ Cell[BoxData[
    3.841308524150217*^9}, {3.846819966469096*^9, 3.8468199722887783`*^9}, {
    3.8468202748920517`*^9, 3.846820317546153*^9}, {3.846820381481173*^9, 
    3.846820400786178*^9}, {3.846821842010838*^9, 3.84682186650874*^9}, {
-   3.864292025922748*^9, 
-   3.864292029276567*^9}},ExpressionUUID->"1133c4df-ae52-4067-a778-\
+   3.864292025922748*^9, 3.864292029276567*^9}, {3.8715305634168367`*^9, 
+   3.87153057253538*^9}, {3.8715307395914717`*^9, 3.8715307406078367`*^9}, {
+   3.871531107857209*^9, 3.871531120704143*^9}, {3.871531179453753*^9, 
+   3.871531182887952*^9}, {3.871531786289707*^9, 
+   3.871531810181065*^9}},ExpressionUUID->"1133c4df-ae52-4067-a778-\
 7a7ede62bd54"]
 },
 WindowSize->{1177, 691},
-WindowMargins->{{52, Automatic}, {0, Automatic}},
+WindowMargins->{{Automatic, 46}, {0, Automatic}},
 Magnification:>1.25 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -103,10 +116,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 2926, 65, 714, "Code",ExpressionUUID->"1133c4df-ae52-4067-a778-7a7ede62bd54"]
+Cell[558, 20, 3428, 78, 762, "Code",ExpressionUUID->"1133c4df-ae52-4067-a778-7a7ede62bd54"]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
