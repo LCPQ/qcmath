@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     28485,        642]
-NotebookOptionsPosition[     28103,        627]
-NotebookOutlinePosition[     28530,        644]
-CellTagsIndexPosition[     28487,        641]
+NotebookDataLength[     28631,        644]
+NotebookOptionsPosition[     28249,        629]
+NotebookOutlinePosition[     28676,        646]
+CellTagsIndexPosition[     28633,        643]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -480,7 +480,7 @@ Cell[BoxData[
              RowBox[{"i", ",", "1", ",", 
               RowBox[{"Length", "[", "\[CapitalOmega]", "]"}]}], "}"}]}], 
            "]"}], "-", 
-          RowBox[{"Tr", "[", "A", "]"}]}], ")"}]}]}], ";", "\n", "\n", "\n", 
+          RowBox[{"Tr", "[", "A", "]"}]}], ")"}]}]}], ";", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"Screened", " ", "integrals"}], "*)"}], "\n", 
       RowBox[{"sERI", "=", " ", 
@@ -498,7 +498,7 @@ Cell[BoxData[
                 RowBox[{"p", ",", "j", ",", "q", ",", "b"}], 
                 "\[RightDoubleBracket]"}], 
                RowBox[{"XplusY", "\[LeftDoubleBracket]", 
-                RowBox[{"jb", ",", "ia"}], "\[RightDoubleBracket]"}]}]}], 
+                RowBox[{"ia", ",", "jb"}], "\[RightDoubleBracket]"}]}]}], 
              ")"}], ",", 
             RowBox[{"{", 
              RowBox[{"j", ",", "nO"}], "}"}], ",", 
@@ -622,7 +622,9 @@ Cell[BoxData[
    3.8715284652127333`*^9, 3.8715285984080143`*^9, {3.8715297214763517`*^9, 
    3.8715297220671587`*^9}, {3.871531540363833*^9, 3.871531687432578*^9}, {
    3.8715338898970222`*^9, 3.87153389713334*^9}, {3.871533931214602*^9, 
-   3.8715339951921253`*^9}},ExpressionUUID->"4b79b27a-5930-4429-b503-\
+   3.8715339951921253`*^9}, {3.871538466955957*^9, 3.8715384760742683`*^9}, {
+   3.8715385290582113`*^9, 3.8715385294245358`*^9}, {3.871539816312656*^9, 
+   3.871539818558784*^9}},ExpressionUUID->"4b79b27a-5930-4429-b503-\
 91ef63ec2096"]
 },
 WindowSize->{1128, 685},
@@ -643,7 +645,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 27541, 605, 1736, "Code",ExpressionUUID->"4b79b27a-5930-4429-b503-91ef63ec2096"]
+Cell[558, 20, 27687, 607, 1712, "Code",ExpressionUUID->"4b79b27a-5930-4429-b503-91ef63ec2096"]
 }
 ]
 *)
