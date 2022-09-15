@@ -10,24 +10,16 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     43266,        783]
-NotebookOptionsPosition[     42663,        764]
-NotebookOutlinePosition[     43087,        781]
-CellTagsIndexPosition[     43044,        778]
+NotebookDataLength[     43452,        787]
+NotebookOptionsPosition[     42941,        769]
+NotebookOutlinePosition[     43365,        786]
+CellTagsIndexPosition[     43322,        783]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-  "NotebookEvaluate", "[", "\"\<~/Work/qcmath/src/HF/MixGuess.nb\>\"", "]"}], 
-  ";"}]], "Input",
- CellChangeTimes->{{3.863838460627685*^9, 3.863838499927144*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"b9b1a05a-7808-4713-ab6e-07ac176bb062"],
 
 Cell[CellGroupData[{
-
 Cell["UHF", "Subsubsection",
  CellChangeTimes->{{3.8275722398259163`*^9, 3.82757224710165*^9}, {
   3.835431784346463*^9, 
@@ -41,25 +33,35 @@ Cell[BoxData[
     RowBox[{
     "nbasis_", ",", "n\[Alpha]_", ",", "n\[Beta]_", ",", "S_", ",", "T_", ",",
       "V_", ",", "U_", ",", "X_", ",", "DIISex_", ",", "maxSCF_", ",", 
-     "thresh_"}], "]"}], ":=", 
+     "thresh_", ",", 
+     RowBox[{"verbose_", ":", "0"}]}], "]"}], ":=", 
    RowBox[{"Module", "[", "\n", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
       "UHFquantities", ",", "OAIntegrals", ",", "Ja", ",", "Jb", ",", "Jt", 
        ",", "Ka", ",", "Kb", ",", "Ca", ",", "Cb", ",", "\n", "haa", ",", 
-       "hbb", ",", "OMIntegralsaa", ",", "OMIntegralsab", ",", 
-       "OMIntegralsba", ",", "\n", "OMIntegralsbb", ",", "Pa", ",", "Pb", ",",
-        "Pt", ",", "Ps", ",", "conv", ",", "nSCF", ",", "Fa", ",", "Fb", ",", 
-       "ETa", ",", "ETb", ",", "\n", "EVa", ",", "EVb", ",", "EKa", ",", 
-       "EKb", ",", "EJa", ",", "EJb", ",", "EJab", ",", "EUHF", ",", "EtotU", 
-       ",", "Hcore", ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", "\n", 
-       "Orba", ",", "Orbb", ",", "Cpa", ",", "Cpb", ",", "\[Theta]", ",", 
-       "Mixquantities", ",", "FDIISa", ",", "FDIISb", ",", "\n", "eDIISa", 
-       ",", "eDIISb", ",", "UJ", ",", "UK", ",", "Vxa", ",", "Vxb", ",", 
-       "\[Epsilon]", ",", "C", ",", "Cp", ",", "Orb", ",", "P"}], "}"}], ",", 
-     "\n", "\n", 
+       "hbb", ",", "Pa", ",", "Pb", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"total", " ", "density", " ", "matrix"}], "*)"}], "Pt", ",", 
+       "Ps", ",", "\n", 
+       RowBox[{"(*", "convergence", "*)"}], "conv", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"number", " ", "of", " ", "SCF", " ", "steps"}], "*)"}], 
+       "nSCF", ",", "Fa", ",", "Fb", ",", "ETa", ",", "ETb", ",", "\n", "EVa",
+        ",", "EVb", ",", "EKa", ",", "EKb", ",", "EJa", ",", "EJb", ",", 
+       "EJab", ",", "EUHF", ",", "EtotU", ",", "Hcore", ",", "\[Epsilon]a", 
+       ",", "\[Epsilon]b", ",", "\n", "Orba", ",", "Orbb", ",", "Cpa", ",", 
+       "Cpb", ",", "\[Theta]", ",", "Mixquantities", ",", "FDIISa", ",", 
+       "FDIISb", ",", "\n", "eDIISa", ",", "eDIISb", ",", "UJ", ",", "UK", 
+       ",", "Vxa", ",", "Vxb", ",", "\[Epsilon]", ",", "C", ",", "Cp", ",", 
+       "Orb", ",", "P", ",", "path"}], "}"}], ",", "\n", "\n", 
      RowBox[{
+      RowBox[{"path", "=", 
+       RowBox[{"Directory", "[", "]"}]}], ";", "\n", "\n", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"path", "<>", "\"\</src/HF/MixGuess.nb\>\""}], "]"}], ";", 
+      "\n", "\n", 
       RowBox[{"Hcore", " ", "=", " ", 
        RowBox[{"T", " ", "+", " ", "V"}]}], ";", "\n", 
       RowBox[{"OAIntegrals", " ", "=", " ", "U"}], ";", "\n", "\n", 
@@ -334,7 +336,7 @@ Cell[BoxData[
         RowBox[{"Tr", "[", 
          RowBox[{"Pb", ".", "Kb"}], "]"}]}]}], ";", "\n", "\n", 
       RowBox[{"(*", 
-       RowBox[{"UHF", " ", "enegy"}], "*)"}], "\n", 
+       RowBox[{"UHF", " ", "energy"}], "*)"}], "\n", 
       RowBox[{"EUHF", "=", " ", 
        RowBox[{
        "ETa", " ", "+", " ", "ETb", " ", "+", " ", "EVa", " ", "+", " ", 
@@ -758,8 +760,11 @@ Cell[BoxData[
    3.870935269146188*^9, 3.870935270245965*^9}, {3.870935318785029*^9, 
    3.87093533229359*^9}, {3.870935546320738*^9, 3.8709355499976473`*^9}, {
    3.8709360558788567`*^9, 3.8709360584698544`*^9}, {3.8709362819957743`*^9, 
-   3.870936284936702*^9}, 3.870936416501506*^9},
- CellLabel->"In[51]:=",ExpressionUUID->"aadf9bb5-e439-4aeb-a8e6-729cf852cd63"]
+   3.870936284936702*^9}, 3.870936416501506*^9, {3.8722401793943872`*^9, 
+   3.872240223440803*^9}, {3.872240278424636*^9, 3.872240354161749*^9}, {
+   3.872240472417795*^9, 
+   3.872240501852764*^9}},ExpressionUUID->"aadf9bb5-e439-4aeb-a8e6-\
+729cf852cd63"]
 }, Open  ]]
 },
 WindowSize->{1251, 696},
@@ -780,10 +785,9 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 276, 6, 46, "Input",ExpressionUUID->"b9b1a05a-7808-4713-ab6e-07ac176bb062"],
 Cell[CellGroupData[{
-Cell[859, 30, 204, 4, 67, "Subsubsection",ExpressionUUID->"950eaf33-657b-4f2e-aa9f-78b04a5c4d16"],
-Cell[1066, 36, 41581, 725, 3032, "Code",ExpressionUUID->"aadf9bb5-e439-4aeb-a8e6-729cf852cd63"]
+Cell[580, 22, 204, 4, 67, "Subsubsection",ExpressionUUID->"950eaf33-657b-4f2e-aa9f-78b04a5c4d16"],
+Cell[787, 28, 42138, 738, 3206, "Code",ExpressionUUID->"aadf9bb5-e439-4aeb-a8e6-729cf852cd63"]
 }, Open  ]]
 }
 ]

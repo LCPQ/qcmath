@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17063,        383]
-NotebookOptionsPosition[     16552,        365]
-NotebookOutlinePosition[     16976,        382]
-CellTagsIndexPosition[     16933,        379]
+NotebookDataLength[     17025,        382]
+NotebookOptionsPosition[     16514,        364]
+NotebookOutlinePosition[     16938,        381]
+CellTagsIndexPosition[     16895,        378]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -36,13 +36,11 @@ Cell[BoxData[
       "TabInt", ",", "S", ",", "nInt", ",", "T", ",", "V", ",", "U", ",", 
        "IntegralsQuantities"}], "}"}], ",", "\n", "\n", 
      RowBox[{"(*", 
-      RowBox[{"Overlap", " ", "integrals"}], "*)"}], "\n", 
+      RowBox[{"Overlap", " ", "integrals"}], "*)"}], "\n", "\n", 
      RowBox[{
-      RowBox[{"SetDirectory", "[", "\"\<~/Work/qcmath/int\>\"", "]"}], ";", 
-      "\n", 
       RowBox[{"TabInt", "=", 
        RowBox[{"ReadList", "[", 
-        RowBox[{"\"\<Ov.dat\>\"", ",", 
+        RowBox[{"\"\<int/Ov.dat\>\"", ",", 
          RowBox[{"{", 
           RowBox[{"Number", ",", "Number", ",", "Real"}], "}"}]}], "]"}]}], 
       ";", "\t", 
@@ -88,7 +86,7 @@ Cell[BoxData[
        RowBox[{"Kinetic", " ", "integrals"}], "*)"}], "\n", 
       RowBox[{"TabInt", "=", 
        RowBox[{"ReadList", "[", 
-        RowBox[{"\"\<Kin.dat\>\"", ",", 
+        RowBox[{"\"\<int/Kin.dat\>\"", ",", 
          RowBox[{"{", 
           RowBox[{"Number", ",", "Number", ",", "Real"}], "}"}]}], "]"}]}], 
       ";", "\t", 
@@ -134,7 +132,7 @@ Cell[BoxData[
        RowBox[{"Nuclear", " ", "integrals"}], "*)"}], "\n", 
       RowBox[{"TabInt", "=", 
        RowBox[{"ReadList", "[", 
-        RowBox[{"\"\<Nuc.dat\>\"", ",", 
+        RowBox[{"\"\<int/Nuc.dat\>\"", ",", 
          RowBox[{"{", 
           RowBox[{"Number", ",", "Number", ",", "Real"}], "}"}]}], "]"}]}], 
       ";", "\t", 
@@ -180,7 +178,7 @@ Cell[BoxData[
        RowBox[{"Two", " ", "electron", " ", "integrals"}], "*)"}], "\n", 
       RowBox[{"TabInt", "=", 
        RowBox[{"ReadList", "[", 
-        RowBox[{"\"\<ERI.dat\>\"", ",", 
+        RowBox[{"\"\<int/ERI.dat\>\"", ",", 
          RowBox[{"{", 
           RowBox[{
           "Number", ",", "Number", ",", "Number", ",", "Number", ",", 
@@ -359,8 +357,9 @@ Cell[BoxData[
   3.870921243971706*^9}, {3.870921274235401*^9, 3.870921331371106*^9}, {
   3.870921573691011*^9, 3.870921646560219*^9}, {3.8709216967900047`*^9, 
   3.870921699174135*^9}, {3.870921817889847*^9, 3.870921818006131*^9}, {
-  3.870921916105691*^9, 3.870921931808125*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"d78a4103-8871-4add-a45a-932b14cd479b"]
+  3.870921916105691*^9, 3.870921931808125*^9}, {3.8722308150609694`*^9, 
+  3.872230891394719*^9}},ExpressionUUID->"d78a4103-8871-4add-a45a-\
+932b14cd479b"]
 }, Open  ]]
 },
 WindowSize->{1105, 689},
@@ -383,7 +382,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 188, 3, 67, "Subsubsection",ExpressionUUID->"0eba79e1-8236-44ce-9685-2191df7a240c"],
-Cell[771, 27, 15765, 335, 1471, "Code",ExpressionUUID->"d78a4103-8871-4add-a45a-932b14cd479b"]
+Cell[771, 27, 15727, 334, 1471, "Code",ExpressionUUID->"d78a4103-8871-4add-a45a-932b14cd479b"]
 }, Open  ]]
 }
 ]

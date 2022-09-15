@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5216,        141]
-NotebookOptionsPosition[      4837,        126]
-NotebookOutlinePosition[      5263,        143]
-CellTagsIndexPosition[      5220,        140]
+NotebookDataLength[      4215,        110]
+NotebookOptionsPosition[      3837,         95]
+NotebookOutlinePosition[      4263,        112]
+CellTagsIndexPosition[      4220,        109]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -31,12 +31,20 @@ Cell[BoxData[
       RowBox[{
       "ispin", ",", "linearquantities", ",", "dRPA", ",", "soRPAquantities", 
        ",", "\n", "EcRPA", ",", "nBas2", ",", "nO2", ",", "nV2", ",", 
-       "so\[Epsilon]", ",", "soERI"}], "}"}], ",", "\n", "\n", 
+       "so\[Epsilon]", ",", "soERI", ",", "path"}], "}"}], ",", "\n", "\n", 
      RowBox[{
-      RowBox[{
-      "NotebookEvaluate", "[", 
-       "\"\<~/Work/qcmath/src/LR/linear_Response.nb\>\"", "]"}], ";", "\n", 
-      "\n", 
+      RowBox[{"path", "=", 
+       RowBox[{"Directory", "[", "]"}]}], ";", "\n", "\n", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"path", "<>", "\"\</src/LR/linear_Response.nb\>\""}], "]"}], 
+      ";", "\n", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"path", "<>", "\"\<src/utils/spatial_to_spin_ERI.nb\>\""}], 
+       "]"}], ";", "\n", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{
+       "path", "<>", "\"\<src/utils/spatial_to_spin_MO_energy.nb\>\""}], 
+       "]"}], ";", "\n", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"Define", " ", "the", " ", "spaces"}], "*)"}], "\n", 
       RowBox[{"nBas2", "=", 
@@ -49,54 +57,13 @@ Cell[BoxData[
        RowBox[{"Spatial", " ", "to", " ", "spin", " ", "orbitals"}], "*)"}], 
       "\n", 
       RowBox[{"so\[Epsilon]", "=", 
-       RowBox[{"Table", "[", 
-        RowBox[{
-         RowBox[{"\[Epsilon]", "\[LeftDoubleBracket]", 
-          RowBox[{"\[LeftFloor]", 
-           FractionBox[
-            RowBox[{"p", "+", "1"}], "2"], "\[RightFloor]"}], 
-          "\[RightDoubleBracket]"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"p", ",", "nBas2"}], "}"}]}], "]"}]}], ";", "\n", 
+       RowBox[{"SpatialToSpinMOEnergy", "[", 
+        RowBox[{"nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]"}], "]"}]}], 
+      ";", "\n", 
       RowBox[{"soERI", "=", 
-       RowBox[{"Table", "[", 
-        RowBox[{
-         RowBox[{
-          SubscriptBox["\[Delta]", 
-           RowBox[{
-            RowBox[{"Mod", "[", 
-             RowBox[{"p", ",", "2"}], "]"}], ",", 
-            RowBox[{"Mod", "[", 
-             RowBox[{"r", ",", "2"}], "]"}]}]], 
-          SubscriptBox["\[Delta]", 
-           RowBox[{
-            RowBox[{"Mod", "[", 
-             RowBox[{"s", ",", "2"}], "]"}], ",", 
-            RowBox[{"Mod", "[", 
-             RowBox[{"q", ",", "2"}], "]"}]}]], 
-          RowBox[{"ERI", "\[LeftDoubleBracket]", 
-           RowBox[{
-            RowBox[{"\[LeftFloor]", 
-             FractionBox[
-              RowBox[{"p", "+", "1"}], "2"], "\[RightFloor]"}], ",", 
-            RowBox[{"\[LeftFloor]", 
-             FractionBox[
-              RowBox[{"q", "+", "1"}], "2"], "\[RightFloor]"}], ",", 
-            RowBox[{"\[LeftFloor]", 
-             FractionBox[
-              RowBox[{"r", "+", "1"}], "2"], "\[RightFloor]"}], ",", 
-            RowBox[{"\[LeftFloor]", 
-             FractionBox[
-              RowBox[{"s", "+", "1"}], "2"], "\[RightFloor]"}]}], 
-           "\[RightDoubleBracket]"}]}], ",", 
-         RowBox[{"{", 
-          RowBox[{"p", ",", "nBas2"}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"q", ",", "nBas2"}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"r", ",", "nBas2"}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"s", ",", "nBas2"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+       RowBox[{"SpatialToSpinERI", "[", 
+        RowBox[{"nBas", ",", "nO", ",", "nV", ",", "ERI"}], "]"}]}], ";", 
+      "\n", "\n", "\n", 
       RowBox[{"dRPA", "=", "True"}], ";", "\n", "\n", 
       RowBox[{"ispin", "=", "4"}], ";", "\n", "\n", 
       RowBox[{"linearquantities", "=", 
@@ -120,12 +87,14 @@ Cell[BoxData[
   3.871527993715713*^9}, {3.871528066976287*^9, 3.871528139219674*^9}, {
   3.87152863115504*^9, 3.8715286697559977`*^9}, {3.871528973559092*^9, 
   3.871528980814897*^9}, {3.871529254960026*^9, 3.871529257737072*^9}, {
-  3.871531829200574*^9, 
-  3.871531851483241*^9}},ExpressionUUID->"0d4e7083-23db-4609-8ba6-\
+  3.871531829200574*^9, 3.871531851483241*^9}, {3.872237452220243*^9, 
+  3.8722374754261007`*^9}, {3.872237560906636*^9, 3.872237665866242*^9}, {
+  3.872237940045577*^9, 
+  3.872237956366733*^9}},ExpressionUUID->"0d4e7083-23db-4609-8ba6-\
 6976bf383c03"]
 },
 WindowSize->{1004, 685},
-WindowMargins->{{Automatic, 56}, {-28, Automatic}},
+WindowMargins->{{Automatic, 184}, {-2, Automatic}},
 Magnification:>1.25 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -142,7 +111,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 4275, 104, 700, "Code",ExpressionUUID->"0d4e7083-23db-4609-8ba6-6976bf383c03"]
+Cell[558, 20, 3275, 73, 786, "Code",ExpressionUUID->"0d4e7083-23db-4609-8ba6-6976bf383c03"]
 }
 ]
 *)

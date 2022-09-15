@@ -1,0 +1,76 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2065,         66]
+NotebookOptionsPosition[      1687,         51]
+NotebookOutlinePosition[      2113,         68]
+CellTagsIndexPosition[      2070,         65]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"restrictedAOtoMO", "[", 
+    RowBox[{"U_", ",", "C_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"(*", 
+       RowBox[{
+       "two", " ", "electron", " ", "integrals", " ", "in", " ", "MO", " ", 
+        "basis"}], "*)"}], "ERI", "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"ERI", "=", 
+       RowBox[{
+        RowBox[{"C", "\[Transpose]"}], ".", 
+        RowBox[{"Transpose", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"C", "\[Transpose]"}], ".", "U", ".", "C"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "1", ",", "4", ",", "3"}], "}"}]}], "]"}], ".", 
+        "C"}]}], ";", "\n", "\n", 
+      RowBox[{"Return", "[", "ERI", "]"}]}]}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.8722385980769873`*^9, 3.872238621625237*^9}, {
+  3.872238685422578*^9, 3.8722387019542*^9}, {3.87223873792556*^9, 
+  3.872238808574894*^9}, {3.872239048813551*^9, 3.872239049741654*^9}, {
+  3.872239223864221*^9, 
+  3.872239275359497*^9}},ExpressionUUID->"90a7dc44-08e4-4b1f-b9fa-\
+f6dd18811369"]
+},
+WindowSize->{808, 686},
+WindowMargins->{{155, Automatic}, {-206, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"434c31a8-5c5c-4a0b-b0fd-03133b8cdfd2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1125, 29, 224, "Code",ExpressionUUID->"90a7dc44-08e4-4b1f-b9fa-f6dd18811369"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

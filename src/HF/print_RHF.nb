@@ -1,0 +1,138 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5069,        130]
+NotebookOptionsPosition[      4692,        115]
+NotebookOutlinePosition[      5117,        132]
+CellTagsIndexPosition[      5074,        129]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"PrintRHF", "[", 
+    RowBox[{
+    "Nelc_", ",", "nBas_", ",", "nSCF_", ",", "conv_", ",", "Enuc_", ",", 
+     "ERHF_", ",", "\[Epsilon]_", ",", "ET_", ",", "EV_", ",", "EJ_", ",", 
+     "EK_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"(*", 
+       RowBox[{"Table", " ", "of", " ", "outputs"}], "*)"}], "TabRHF", "}"}], 
+     ",", "\[IndentingNewLine]", "\n", 
+     RowBox[{
+      RowBox[{"TabRHF", "=", 
+       RowBox[{"TableForm", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"{", 
+           RowBox[{"Nelc", ",", "nBas", ",", "nSCF", ",", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{"conv", ",", 
+              RowBox[{"{", 
+               RowBox[{"6", ",", "3"}], "}"}]}], "]"}], ",", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{
+              RowBox[{"Enuc", "+", "ERHF"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"9", ",", "6"}], "}"}]}], "]"}], ",", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{"Enuc", ",", 
+              RowBox[{"{", 
+               RowBox[{"9", ",", "6"}], "}"}]}], "]"}], ",", "\n", 
+            "                   ", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{"ERHF", ",", 
+              RowBox[{"{", 
+               RowBox[{"9", ",", "6"}], "}"}]}], "]"}], ",", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{"ET", ",", 
+              RowBox[{"{", 
+               RowBox[{"9", ",", "6"}], "}"}]}], "]"}], ",", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{"EV", ",", 
+              RowBox[{"{", 
+               RowBox[{"9", ",", "6"}], "}"}]}], "]"}], ",", "\n", 
+            "                   ", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{"EJ", ",", 
+              RowBox[{"{", 
+               RowBox[{"9", ",", "6"}], "}"}]}], "]"}], ",", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{"EK", ",", 
+              RowBox[{"{", 
+               RowBox[{"9", ",", "6"}], "}"}]}], "]"}], ",", 
+            RowBox[{"\[Epsilon]", "//", "MatrixForm"}]}], 
+           RowBox[{"(*", 
+            StyleBox[
+             RowBox[{",", 
+              RowBox[{"NumberForm", "[", 
+               RowBox[{"Gap", ",", 
+                RowBox[{"{", 
+                 RowBox[{"6", ",", "3"}], "}"}]}], "]"}]}], "Code"], "*)"}], 
+           "}"}], "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"TableHeadings", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"None", ",", 
+            RowBox[{"{", 
+             RowBox[{
+             "\"\<\!\(\*SubscriptBox[\(N\), \(elc\)]\)\>\"", ",", 
+              "\"\<\!\(\*SubscriptBox[\(N\), \(Basis\)]\)\>\"", ",", 
+              "\"\<\!\(\*SubscriptBox[\(N\), \(SCF\)]\)\>\"", ",", 
+              "\"\<Conv\>\"", ",", 
+              "\"\<\!\(\*SubscriptBox[\(E\), \(0\)]\)\>\"", ",", 
+              "\"\<\!\(\*SubscriptBox[\(E\), \(Nuc\)]\)\>\"", ",", 
+              "\"\<\!\(\*SubscriptBox[\(E\), \(HF\)]\)\>\"", ",", 
+              "\"\<\!\(\*SubscriptBox[\(T\), \(HF\)]\)\>\"", ",", 
+              "\"\<\!\(\*SubscriptBox[\(V\), \(HF\)]\)\>\"", ",", 
+              "\"\<\!\(\*SubscriptBox[\(J\), \(HF\)]\)\>\"", ",", 
+              "\"\<\!\(\*SubscriptBox[\(K\), \(HF\)]\)\>\"", ",", 
+              "\"\<MO energies\>\""}], "}"}]}], "}"}]}], ",", 
+         RowBox[{"TableDirections", "\[Rule]", "Row"}], "\n", ",", 
+         RowBox[{"TableAlignments", "\[Rule]", "Center"}]}], "]"}]}], ";", 
+      "\n", "\n", 
+      RowBox[{"Return", "[", "TabRHF", "]"}]}]}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.872222589749259*^9, 3.872222631771521*^9}, {
+   3.8722226713747797`*^9, 3.872222762524487*^9}, {3.872224457842867*^9, 
+   3.8722245923124247`*^9}, {3.8722246330379753`*^9, 3.872224652616666*^9}, {
+   3.872224751483123*^9, 3.872224751641008*^9}, {3.872231057629168*^9, 
+   3.872231061895296*^9}, {3.872231099238899*^9, 3.872231145511643*^9}, 
+   3.872234901862627*^9, {3.8722349384329157`*^9, 
+   3.872234943313195*^9}},ExpressionUUID->"b20f09a6-a82f-449c-aacb-\
+fc12bd77467d"]
+},
+WindowSize->{1171, 698},
+WindowMargins->{{98, Automatic}, {-79, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d0145ec5-0b4b-4df2-94a2-43b14bd080ea"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4130, 93, 340, "Code",ExpressionUUID->"b20f09a6-a82f-449c-aacb-fc12bd77467d"]
+}
+]
+*)
+

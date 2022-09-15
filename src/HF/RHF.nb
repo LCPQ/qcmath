@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     29905,        550]
-NotebookOptionsPosition[     29395,        532]
-NotebookOutlinePosition[     29818,        549]
-CellTagsIndexPosition[     29775,        546]
+NotebookDataLength[     35732,        665]
+NotebookOptionsPosition[     35128,        646]
+NotebookOutlinePosition[     35551,        663]
+CellTagsIndexPosition[     35508,        660]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -31,18 +31,92 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"RHF", "[", 
     RowBox[{
-    "nBas_", ",", "Nelc_", ",", "S_", ",", "T_", ",", "V_", ",", "U_", ",", 
-     "X_", ",", "DIISex_", ",", "maxSCF_", ",", "thresh_"}], "]"}], ":=", 
+    "nBas_", ",", "Nelc_", ",", "Enuc_", ",", "S_", ",", "T_", ",", "V_", ",",
+      "U_", ",", "X_", ",", "DIISex_", ",", "maxSCF_", ",", "thresh_", ",", 
+     RowBox[{"verbose_", ":", "0"}]}], 
+    RowBox[{"(*", 
+     RowBox[{"Default", "=", 
+      RowBox[{"0", " ", 
+       RowBox[{"(", "False", ")"}]}]}], "*)"}], "]"}], ":=", 
    RowBox[{"Module", "[", "\n", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{
-      "conv", ",", "nSCF", ",", "FDIIS", ",", "eDIIS", ",", "Cp", ",", "C", 
-       ",", "P", ",", "J", ",", "K", ",", "\n", "OAIntegrals", ",", 
-       "\[Epsilon]", ",", "F", ",", "ET", ",", "EV", ",", "EJ", ",", "EK", 
-       ",", "EHF", ",", "Etot", ",", "\n", "OMIntegrals", ",", "Hcore", ",", 
-       "Orb", ",", "FOM", ",", "RHFquantities", ",", "\n", "UJ", ",", "UK", 
-       ",", "Vx"}], "}"}], ",", "\n", "\n", 
+      RowBox[{"(*", "convergence", "*)"}], "                              ", 
+      RowBox[{"conv", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"number", " ", "of", " ", "SCF", " ", "step"}], "*)"}], 
+       "                        ", "nSCF", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"extrapolated", " ", "Fock", " ", "matrix"}], "*)"}], 
+       "                  ", "FDIIS", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"extrapolated", " ", "orbital", " ", "energies"}], "*)"}], 
+       "             ", "eDIIS", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"orbital", " ", "coefficients", " ", "matrix"}], "*)"}], 
+       "               ", "Cp", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{
+        "orthogonalized", " ", "orbital", " ", "coefficients", " ", 
+         "matrix"}], "*)"}], "C", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"density", " ", "matrix"}], "*)"}], 
+       "                            ", "P", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"Coulomb", " ", "matrix"}], "*)"}], 
+       "                            ", "J", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"exchange", " ", "matrix"}], "*)"}], 
+       "                           ", "K", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"AO", " ", "integrals"}], "*)"}], 
+       "                              ", "OAIntegrals", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"orbital", " ", "energies"}], "*)"}], 
+       "                          ", "\[Epsilon]", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"Fock", " ", "matrix"}], "*)"}], 
+       "                               ", "F", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"kinetic", " ", "energy"}], "*)"}], 
+       "                            ", "ET", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"nuclear", " ", "repulsion", " ", "energy"}], "*)"}], 
+       "                  ", "EV", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"Hartree", " ", "energy"}], "*)"}], 
+       "                            ", "EJ", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"exchange", " ", "energy"}], "*)"}], 
+       "                           ", "EK", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"electronic", " ", "energy"}], "*)"}], 
+       "                         ", "EHF", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"molecular", " ", "orbitals"}], "*)"}], 
+       "                        ", "ERI", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"core", " ", "Hamiltonian"}], "*)"}], 
+       "                          ", "Hcore", ",", "Orb", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"MO", " ", "Fock", " ", "matrix"}], "*)"}], 
+       "                            ", "FOM", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"Dictionary", " ", "for", " ", "RHF", " ", "outputs"}], 
+        "*)"}], "                ", "RHFquantities", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"Coulomb", " ", "integrals"}], "*)"}], 
+       "                         ", "UJ", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"exchange", " ", "integrals"}], "*)"}], 
+       "                        ", "UK", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"exchange", " ", "potential"}], "*)"}], 
+       "                        ", "Vx", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"path", " ", "for", " ", "Notebook", " ", "evaluation"}], 
+        "*)"}], "              ", "path", ",", "TabRHF"}], "}"}], ",", "\n", 
+     "\n", 
      RowBox[{
       RowBox[{
        RowBox[{"Hcore", " ", "=", " ", 
@@ -190,36 +264,28 @@ Cell[BoxData[
                RowBox[{"\"\<Convergence failed for RHF!\>\"", ",", "Red"}], 
                "]"}], "]"}], ";", 
              RowBox[{"Break", "[", "]"}]}]}], "]"}], ";"}]}], "\n", "]"}], 
-       ";"}], "\n", ";", "\n", "\n", 
-      RowBox[{"(*", 
-       RowBox[{"Kinetic", " ", "energy"}], "*)"}], " ", 
+       ";"}], "\n", ";", "\n", "\n", " ", 
       RowBox[{"ET", "=", 
        RowBox[{"Tr", "[", 
-        RowBox[{"P", ".", "T"}], "]"}]}], ";", " ", "\n", 
-      RowBox[{"(*", 
-       RowBox[{"Nuclear", " ", "energy"}], "*)"}], " ", 
+        RowBox[{"P", ".", "T"}], "]"}]}], ";", " ", "\n", " ", 
       RowBox[{"EV", "=", 
        RowBox[{"Tr", "[", 
-        RowBox[{"P", ".", "V"}], "]"}]}], ";", " ", "\n", 
-      RowBox[{"(*", 
-       RowBox[{"Coulomb", " ", "energy"}], "*)"}], " ", 
+        RowBox[{"P", ".", "V"}], "]"}]}], ";", " ", "\n", " ", 
       RowBox[{"EJ", "=", " ", 
        RowBox[{"0.5", 
         RowBox[{"Tr", "[", 
-         RowBox[{"P", ".", "J"}], "]"}]}]}], ";", " ", "\n", 
-      RowBox[{"(*", 
-       RowBox[{"Exchange", " ", "energy"}], "*)"}], 
+         RowBox[{"P", ".", "J"}], "]"}]}]}], ";", " ", "\n", " ", 
       RowBox[{"EK", "=", " ", 
        RowBox[{
         RowBox[{"-", "0.25"}], 
         RowBox[{"Tr", "[", 
-         RowBox[{"P", ".", "K"}], "]"}]}]}], ";", "\n", "\n", 
+         RowBox[{"P", ".", "K"}], "]"}]}]}], ";", "\n", "\[IndentingNewLine]", 
       RowBox[{"(*", 
        RowBox[{"Two", "-", 
         RowBox[{
         "electrons", " ", "integrals", " ", "in", " ", "MO", " ", "basis"}]}],
-        "*)"}], "\[IndentingNewLine]", 
-      RowBox[{"OMIntegrals", "=", 
+        "*)"}], "\n", 
+      RowBox[{"ERI", "=", 
        RowBox[{
         RowBox[{"C", "\[Transpose]"}], ".", 
         RowBox[{"Transpose", "[", 
@@ -261,13 +327,32 @@ Cell[BoxData[
          ",", 
          RowBox[{"{", 
           RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Print", " ", "results"}], "*)"}], "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"verbose", "\[Equal]", "1"}], ",", "\n", 
+        RowBox[{
+         RowBox[{"path", "=", 
+          RowBox[{"Directory", "[", "]"}]}], ";", "\n", 
+         RowBox[{"NotebookEvaluate", "[", 
+          RowBox[{"path", "<>", "\"\</src/HF/print_RHF.nb\>\""}], "]"}], ";", 
+         "\n", 
+         RowBox[{"TabRHF", "=", 
+          RowBox[{"PrintRHF", "[", 
+           RowBox[{
+           "Nelc", ",", "nBas", ",", "nSCF", ",", "conv", ",", "Enuc", ",", 
+            "EHF", ",", "\[Epsilon]", ",", "ET", ",", "EV", ",", "EJ", ",", 
+            "EK"}], "]"}]}], ";", "\n", 
+         RowBox[{"Print", "[", "TabRHF", "]"}], ";"}]}], "\n", "]"}], ";", 
+      "\n", "\n", 
       RowBox[{"RHFquantities", " ", "=", " ", 
        RowBox[{"Association", "[", 
         RowBox[{
          RowBox[{"\"\<EHF\>\"", "\[Rule]", "EHF"}], ",", 
          RowBox[{"\"\<OAIntegrals\>\"", "->", "OAIntegrals"}], ",", 
-         RowBox[{"\"\<OMIntegrals\>\"", "\[Rule]", "OMIntegrals"}], ",", "\n",
-          "                            ", 
+         RowBox[{"\"\<ERI\>\"", "\[Rule]", "ERI"}], ",", "\n", 
+         "                            ", 
          RowBox[{"\"\<\[Epsilon]\>\"", "\[Rule]", "\[Epsilon]"}], ",", 
          RowBox[{"\"\<J\>\"", "\[Rule]", "J"}], ",", 
          RowBox[{"\"\<K\>\"", "\[Rule]", "K"}], ",", 
@@ -283,8 +368,8 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"nSCF", "\[Equal]", "maxSCF"}], ",", 
         RowBox[{"Return", "[", "]"}], ",", 
-        RowBox[{"Return", "[", "RHFquantities", "]"}]}], "]"}], ";"}]}], 
-    "\[IndentingNewLine]", "\n", "]"}]}], ";"}]], "Code",
+        RowBox[{"Return", "[", "RHFquantities", "]"}]}], "]"}], ";"}]}], "\n",
+     "\[IndentingNewLine]", "]"}]}], ";"}]], "Code",
  CellChangeTimes->{{3.8266970744738293`*^9, 3.8266971151220827`*^9}, {
    3.8266971538985577`*^9, 3.82669729702279*^9}, {3.82669733806277*^9, 
    3.826697418355043*^9}, {3.826697518700407*^9, 3.826697846200325*^9}, {
@@ -526,12 +611,41 @@ Cell[BoxData[
    3.870922003549965*^9}, {3.870922397871871*^9, 3.870922405132707*^9}, {
    3.870922507537796*^9, 3.870922537426674*^9}, 3.870922621431477*^9, {
    3.870922730149427*^9, 3.870922850232954*^9}, {3.871531478323944*^9, 
-   3.871531498031728*^9}},ExpressionUUID->"7baad11d-374a-4683-890b-\
+   3.871531498031728*^9}, {3.872216288058144*^9, 3.8722163727335157`*^9}, {
+   3.872216418074998*^9, 3.8722166192943974`*^9}, {3.87221665841323*^9, 
+   3.8722170155767193`*^9}, {3.8722170507959213`*^9, 3.872217059792141*^9}, {
+   3.872217109826318*^9, 3.872217139284808*^9}, {3.872217995563406*^9, 
+   3.872218011638172*^9}, {3.872218072198077*^9, 3.872218073197262*^9}, {
+   3.872218125274629*^9, 3.872218134702828*^9}, {3.87221839913768*^9, 
+   3.8722184818770514`*^9}, {3.8722185319461517`*^9, 
+   3.8722185432694273`*^9}, {3.8722187926637993`*^9, 
+   3.8722188310894613`*^9}, {3.872218866319124*^9, 3.8722188722139177`*^9}, {
+   3.872219032143412*^9, 3.872219061357479*^9}, {3.87221916234564*^9, 
+   3.872219170419195*^9}, {3.872222422130892*^9, 3.87222247549128*^9}, {
+   3.872224681837666*^9, 3.87222468242649*^9}, {3.872230124232411*^9, 
+   3.872230215854499*^9}, 3.8722306335959682`*^9, {3.872230718427559*^9, 
+   3.872230742577448*^9}, {3.872230904284378*^9, 3.872230914830783*^9}, {
+   3.87223095700622*^9, 3.872231021588592*^9}, {3.872231732964551*^9, 
+   3.8722317580745907`*^9}, {3.872231801559754*^9, 3.872231818294629*^9}, {
+   3.87223187599256*^9, 3.872231897894155*^9}, 3.872231931138219*^9, 
+   3.872232229981421*^9, {3.87223235198988*^9, 3.872232356639432*^9}, {
+   3.872232607798051*^9, 3.872232625395041*^9}, {3.8722332493787727`*^9, 
+   3.872233250884954*^9}, {3.8722333249014177`*^9, 3.872233332614603*^9}, {
+   3.872233951325811*^9, 3.872233955927593*^9}, {3.872233987736059*^9, 
+   3.872234009411623*^9}, 3.872234169736114*^9, {3.872234219902131*^9, 
+   3.8722342201549683`*^9}, {3.872234423479727*^9, 3.8722344368136463`*^9}, {
+   3.872234546590507*^9, 3.872234550910572*^9}, 3.8722348532256107`*^9, {
+   3.8722349717376223`*^9, 3.872235037591769*^9}, {3.872235116255569*^9, 
+   3.872235122412608*^9}, {3.872235364177882*^9, 3.872235448639485*^9}, {
+   3.87223575315562*^9, 3.872235778236537*^9}, {3.872236011683052*^9, 
+   3.872236035448352*^9}},ExpressionUUID->"7baad11d-374a-4683-890b-\
 d85c2ff96c2b"]
-}, Open  ]]
+}, Open  ]],
+
+Cell["", "Title",ExpressionUUID->"c2a79656-86b7-49cb-abfa-04aee6242f40"]
 },
 WindowSize->{1357, 696},
-WindowMargins->{{Automatic, 0}, {Automatic, 21}},
+WindowMargins->{{3, Automatic}, {Automatic, 34}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -550,8 +664,9 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 203, 4, 67, "Subsubsection",ExpressionUUID->"6bb91d66-5bf2-45dd-86dd-d2dd89a20c17"],
-Cell[786, 28, 28593, 501, 2027, "Code",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
-}, Open  ]]
+Cell[786, 28, 34251, 613, 2868, "Code",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
+}, Open  ]],
+Cell[35052, 644, 72, 0, 146, "Title",ExpressionUUID->"c2a79656-86b7-49cb-abfa-04aee6242f40"]
 }
 ]
 *)

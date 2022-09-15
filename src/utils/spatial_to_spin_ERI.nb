@@ -1,0 +1,118 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3707,        108]
+NotebookOptionsPosition[      3332,         93]
+NotebookOutlinePosition[      3755,        110]
+CellTagsIndexPosition[      3712,        107]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SpatialToSpinERI", "[", 
+    RowBox[{"nBas_", ",", "nO_", ",", "nV_", ",", "ERI_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"(*", 
+       RowBox[{"nBas", " ", "in", " ", "spin", " ", "orbitals"}], "*)"}], 
+      RowBox[{"nBas2", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"nO", " ", "in", " ", "spin", " ", "orbitals"}], "*)"}], 
+       "   ", "nO2", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"nV", " ", "in", " ", "spin", " ", "orbitals"}], "*)"}], 
+       "   ", "nV2", ",", "\n", 
+       RowBox[{"(*", 
+        RowBox[{"ERI", " ", "in", " ", "spin", " ", "orbitals"}], "*)"}], 
+       "  ", "soERI"}], "}"}], ",", "\n", "\n", 
+     RowBox[{"(*", 
+      RowBox[{"Define", " ", "the", " ", "spaces"}], "*)"}], "\n", 
+     RowBox[{
+      RowBox[{"nBas2", "=", 
+       RowBox[{"2", "nBas"}]}], ";", "\n", 
+      RowBox[{"nO2", "=", 
+       RowBox[{"2", "nO"}]}], ";", "\n", 
+      RowBox[{"nV2", "=", 
+       RowBox[{"2", "nV"}]}], ";", "\n", "\n", 
+      RowBox[{"soERI", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["\[Delta]", 
+           RowBox[{
+            RowBox[{"Mod", "[", 
+             RowBox[{"p", ",", "2"}], "]"}], ",", 
+            RowBox[{"Mod", "[", 
+             RowBox[{"r", ",", "2"}], "]"}]}]], 
+          SubscriptBox["\[Delta]", 
+           RowBox[{
+            RowBox[{"Mod", "[", 
+             RowBox[{"s", ",", "2"}], "]"}], ",", 
+            RowBox[{"Mod", "[", 
+             RowBox[{"q", ",", "2"}], "]"}]}]], 
+          RowBox[{"ERI", "\[LeftDoubleBracket]", 
+           RowBox[{
+            RowBox[{"\[LeftFloor]", 
+             FractionBox[
+              RowBox[{"p", "+", "1"}], "2"], "\[RightFloor]"}], ",", 
+            RowBox[{"\[LeftFloor]", 
+             FractionBox[
+              RowBox[{"q", "+", "1"}], "2"], "\[RightFloor]"}], ",", 
+            RowBox[{"\[LeftFloor]", 
+             FractionBox[
+              RowBox[{"r", "+", "1"}], "2"], "\[RightFloor]"}], ",", 
+            RowBox[{"\[LeftFloor]", 
+             FractionBox[
+              RowBox[{"s", "+", "1"}], "2"], "\[RightFloor]"}]}], 
+           "\[RightDoubleBracket]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"q", ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"r", ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"s", ",", "nBas2"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"Return", "[", "soERI", "]"}]}]}], "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.872237226447082*^9, 
+  3.872237438833448*^9}},ExpressionUUID->"7a939880-7ac4-4cfc-a985-\
+bcfd6cfe7211"]
+},
+WindowSize->{1342, 654},
+WindowMargins->{{4, Automatic}, {Automatic, 36}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d76544ab-ddff-4af9-821a-651cbd21d9f2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2770, 71, 498, "Code",ExpressionUUID->"7a939880-7ac4-4cfc-a985-bcfd6cfe7211"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

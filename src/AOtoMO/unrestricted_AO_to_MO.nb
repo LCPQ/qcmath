@@ -1,0 +1,113 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3477,        103]
+NotebookOptionsPosition[      3099,         88]
+NotebookOutlinePosition[      3525,        105]
+CellTagsIndexPosition[      3482,        102]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"unrestrictedAOtoMO", "[", 
+    RowBox[{"U_", ",", "Ca_", ",", "Cb_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "ERIaa", ",", "ERIab", ",", "ERIba", ",", "ERIbb", ",", 
+       "ERIquantities"}], "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"ERIaa", "=", 
+       RowBox[{
+        RowBox[{"Ca", "\[Transpose]"}], ".", 
+        RowBox[{"Transpose", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Ca", "\[Transpose]"}], ".", "U", ".", "Ca"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "1", ",", "4", ",", "3"}], "}"}]}], "]"}], ".", 
+        "Ca"}]}], ";", "\n", 
+      RowBox[{"ERIab", "=", 
+       RowBox[{
+        RowBox[{"Ca", "\[Transpose]"}], ".", 
+        RowBox[{"Transpose", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Cb", "\[Transpose]"}], ".", "U", ".", "Ca"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "1", ",", "4", ",", "3"}], "}"}]}], "]"}], ".", 
+        "Cb"}]}], ";", "\n", 
+      RowBox[{"ERIba", "=", 
+       RowBox[{
+        RowBox[{"Cb", "\[Transpose]"}], ".", 
+        RowBox[{"Transpose", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Ca", "\[Transpose]"}], ".", "U", ".", "Cb"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "1", ",", "4", ",", "3"}], "}"}]}], "]"}], ".", 
+        "Ca"}]}], ";", "\n", 
+      RowBox[{"ERIbb", "=", 
+       RowBox[{
+        RowBox[{"Cb", "\[Transpose]"}], ".", 
+        RowBox[{"Transpose", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Cb", "\[Transpose]"}], ".", "U", ".", "Cb"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "1", ",", "4", ",", "3"}], "}"}]}], "]"}], ".", 
+        "Cb"}]}], ";", "\n", "\n", 
+      RowBox[{"ERIquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{
+         RowBox[{"\"\<ERIaa\>\"", "\[Rule]", "ERIaa"}], ",", 
+         RowBox[{"\"\<ERIab\>\"", "\[Rule]", "ERIab"}], ",", "\n", 
+         "                          ", 
+         RowBox[{"\"\<ERIba\>\"", "\[Rule]", "ERIba"}], ",", 
+         RowBox[{"\"\<ERIbb\>\"", "\[Rule]", "ERIbb"}]}], "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"Return", "[", "ERIquantities", "]"}]}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.872239335106471*^9, 3.872239368998926*^9}, {
+  3.8722394115234947`*^9, 3.872239414730497*^9}, {3.8722394620222816`*^9, 
+  3.872239636611367*^9}},ExpressionUUID->"ff6f6969-0da6-4bec-b487-\
+f4e4e8e43b8c"]
+},
+WindowSize->{808, 686},
+WindowMargins->{{217, Automatic}, {-237, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"60b251df-cc96-436f-a92b-8534387eaa69"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2537, 66, 398, "Code",ExpressionUUID->"ff6f6969-0da6-4bec-b487-f4e4e8e43b8c"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
