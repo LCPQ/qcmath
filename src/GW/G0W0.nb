@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17649,        354]
-NotebookOptionsPosition[     17270,        339]
-NotebookOutlinePosition[     17694,        356]
-CellTagsIndexPosition[     17651,        353]
+NotebookDataLength[     18385,        363]
+NotebookOptionsPosition[     18006,        348]
+NotebookOutlinePosition[     18430,        365]
+CellTagsIndexPosition[     18387,        362]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -42,16 +42,12 @@ Cell[BoxData[
        "Re\[CapitalSigma]c", ",", "Im\[CapitalSigma]c", ",", 
        "Im\[CapitalSigma]c\[Omega]", ",", "lin"}], "}"}], ",", "\n", "\n", 
      RowBox[{
-      RowBox[{
-      "NotebookEvaluate", "[", "\"\<src/LR/linear_Response.nb\>\"", "]"}], 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"path", "<>", "\"\</src/LR/linear_Response.nb\>\""}], "]"}], 
       ";", "\n", 
-      RowBox[{
-      "NotebookEvaluate", "[", "\"\<src/GW/self_energy_diag.nb\>\"", "]"}], 
-      ";", "\n", 
-      RowBox[{
-      "NotebookEvaluate", "[", 
-       "\"\<src/GW/regularized_self_energy_diag.nb\>\"", "]"}], ";", "\n", 
-      "\n", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"path", "<>", "\"\</src/GW/self_energy_diag.nb\>\""}], "]"}], 
+      ";", "\n", "\n", 
       RowBox[{"dRPA", "=", "True"}], ";", "\n", 
       RowBox[{"ispin", "=", "1"}], ";", "\n", "\n", 
       RowBox[{"linearquantities", "=", 
@@ -106,6 +102,10 @@ Cell[BoxData[
       RowBox[{"If", "[", 
        RowBox[{"Regularized", ",", "\n", 
         RowBox[{
+         RowBox[{"NotebookEvaluate", "[", 
+          RowBox[{
+          "path", "<>", "\"\</src/GW/regularized_self_energy_diag.nb\>\""}], 
+          "]"}], ";", "\n", 
          RowBox[{"SelfEnergyquantities", "=", 
           RowBox[{"RegularizedSelfEnergyGWdiag", "[", 
            RowBox[{
@@ -334,7 +334,16 @@ Cell[BoxData[
    3.8715400244678173`*^9, 3.871540059040473*^9}, {3.871540095533708*^9, 
    3.871540100154214*^9}, {3.8715401564046288`*^9, 3.8715401780520887`*^9}, {
    3.871540213650402*^9, 3.871540322875372*^9}, {3.872229730420277*^9, 
-   3.872229742018908*^9}},ExpressionUUID->"c46d7b7c-94de-4ef5-a2b1-\
+   3.872229742018908*^9}, {3.8723030529492817`*^9, 3.8723030962052097`*^9}, {
+   3.872303403108922*^9, 3.8723034032743187`*^9}, {3.872303445910103*^9, 
+   3.8723034503466663`*^9}, {3.872305050008165*^9, 3.872305070301931*^9}, {
+   3.872305186405097*^9, 3.872305192608077*^9}, {3.872305292259851*^9, 
+   3.872305298553608*^9}, {3.8723054363633747`*^9, 3.872305443490972*^9}, {
+   3.8723056373682747`*^9, 3.872305643570787*^9}, {3.872306139399797*^9, 
+   3.872306143048414*^9}, {3.872308041223648*^9, 3.872308046231634*^9}, {
+   3.87230850167978*^9, 3.8723085053985662`*^9}, {3.872308864729868*^9, 
+   3.872308867453609*^9}, 3.872308991400136*^9, 
+   3.872309172490193*^9},ExpressionUUID->"c46d7b7c-94de-4ef5-a2b1-\
 dfbbcc5e453e"]
 },
 WindowSize->{1289, 668},
@@ -355,7 +364,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 16708, 317, 1933, "Code",ExpressionUUID->"c46d7b7c-94de-4ef5-a2b1-dfbbcc5e453e"]
+Cell[558, 20, 17444, 326, 1933, "Code",ExpressionUUID->"c46d7b7c-94de-4ef5-a2b1-dfbbcc5e453e"]
 }
 ]
 *)

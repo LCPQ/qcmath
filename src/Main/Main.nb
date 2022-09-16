@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     85607,       1421]
-NotebookOptionsPosition[     85052,       1402]
-NotebookOutlinePosition[     85519,       1420]
-CellTagsIndexPosition[     85476,       1417]
+NotebookDataLength[     86670,       1438]
+NotebookOptionsPosition[     86117,       1419]
+NotebookOutlinePosition[     86582,       1437]
+CellTagsIndexPosition[     86539,       1434]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -74,25 +74,25 @@ Cell[BoxData[
        ",", "FFGWquantities", ",", "UG0T0quantities", ",", 
        "\[Omega]GWquantities", ",", "CCSDquantities", ",", "\n", 
        "              ", "qsUGTquantities", ",", "evUGWquantities", ",", 
-       "ERIquantities", ",", "     ", "\n", "            ", "\n", "S", ",", 
-       "T", ",", "V", ",", "U", ",", "X", ",", "TabRHF", ",", "verbose", "\n",
-        ",", "C", ",", "\[Epsilon]", ",", "XplusY", ",", "\[CapitalOmega]RPA",
-        ",", "ERIaa", "\n", ",", "ERIab", ",", "ERIba", ",", "ERIbb", ",", 
-       "Ca", ",", "Cb", ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", "TDA", 
-       ",", "TDAW", ",", "singlet", ",", "triplet", ",", "spinconserved", ",",
-        "spinflip", ",", "LR", ",", "BSE", ",", "qsGWOMIntegrals", ",", 
-       "qsGW\[Epsilon]", ",", "W", ",", "EUBSE", ",", "W1", ",", "W2", ",", 
-       "qsGWOMIntegralsaa", ",", "qsGWOMIntegralsab", ",", 
-       "qsGWOMIntegralsba", ",", "qsGWOMIntegralsbb", "\n", ",", 
-       "qsGW\[Epsilon]a", ",", "qsGW\[Epsilon]b", "\n", ",", "P", ",", "K", 
-       ",", "Vxc", ",", "RPAG0W0", ",", "GMG0W0", ",", "eG0W0", ",", 
-       "RPAevGW", ",", "GMevGW", ",", "RPAUG0W0", ",", "GMUG0W0", ",", 
-       "eG0W0a", ",", "eG0W0b", ",", "Vxca", ",", "Vxcb", ",", "Ka", ",", 
-       "Kb", ",", "RPAevUGW", "\n", ",", "GMevUGW", "\n", ",", "i", ",", 
-       "sfile", ",", "FFeGW", ",", "Z", ",", "\[CapitalSigma]cG0W0", ",", 
-       "\[CapitalSigma]c\[Omega]G0W0", ",", "Re\[CapitalSigma]c", ",", 
-       "Im\[CapitalSigma]c", ",", "\[Epsilon]evGW", ",", 
-       "\[CapitalSigma]c\[Omega]", ",", "eGT", ",", "ZG0T0", ",", 
+       "ERIquantities", ",", "soG0W0quantities", ",", "   ", "\n", 
+       "            ", "\n", "S", ",", "T", ",", "V", ",", "U", ",", "X", ",",
+        "TabRHF", ",", "verbose", "\n", ",", "C", ",", "\[Epsilon]", ",", 
+       "XplusY", ",", "\[CapitalOmega]RPA", ",", "ERIaa", "\n", ",", "ERIab", 
+       ",", "ERIba", ",", "ERIbb", ",", "Ca", ",", "Cb", ",", "\[Epsilon]a", 
+       ",", "\[Epsilon]b", ",", "TDA", ",", "TDAW", ",", "singlet", ",", 
+       "triplet", ",", "spinconserved", ",", "spinflip", ",", "LR", ",", 
+       "BSE", ",", "qsGWOMIntegrals", ",", "qsGW\[Epsilon]", ",", "W", ",", 
+       "EUBSE", ",", "W1", ",", "W2", ",", "qsGWOMIntegralsaa", ",", 
+       "qsGWOMIntegralsab", ",", "qsGWOMIntegralsba", ",", 
+       "qsGWOMIntegralsbb", "\n", ",", "qsGW\[Epsilon]a", ",", 
+       "qsGW\[Epsilon]b", "\n", ",", "P", ",", "K", ",", "Vxc", ",", 
+       "RPAG0W0", ",", "GMG0W0", ",", "eG0W0", ",", "RPAevGW", ",", "GMevGW", 
+       ",", "RPAUG0W0", ",", "GMUG0W0", ",", "eG0W0a", ",", "eG0W0b", ",", 
+       "Vxca", ",", "Vxcb", ",", "Ka", ",", "Kb", ",", "RPAevUGW", "\n", ",", 
+       "GMevUGW", "\n", ",", "i", ",", "sfile", ",", "FFeGW", ",", "Z", ",", 
+       "\[CapitalSigma]cG0W0", ",", "\[CapitalSigma]c\[Omega]G0W0", ",", 
+       "Re\[CapitalSigma]c", ",", "Im\[CapitalSigma]c", ",", "\[Epsilon]evGW",
+        ",", "\[CapitalSigma]c\[Omega]", ",", "eGT", ",", "ZG0T0", ",", 
        "\[CapitalSigma]cG0T0", ",", "ZevGT", ",", "\[CapitalSigma]cevGT", ",",
         "Im\[CapitalSigma]c\[Omega]", "\n", ",", "\[Eta]", ",", "DIISex", ",",
         "ECCSD", ",", "Regularized", ",", "\[CapitalSigma]qsGW", ",", 
@@ -391,8 +391,8 @@ Cell[BoxData[
       RowBox[{"DIISex", "=", "False"}], ";", "\n", 
       RowBox[{"singlet", "=", "True"}], ";", "\n", 
       RowBox[{"triplet", "=", "True"}], ";", "\n", 
-      RowBox[{"TDA", "=", "False"}], ";", "\n", 
-      RowBox[{"TDAW", "=", "False"}], ";", "\n", 
+      RowBox[{"TDA", "=", "True"}], ";", "\n", 
+      RowBox[{"TDAW", "=", "True"}], ";", "\n", 
       RowBox[{"spinconserved", "=", "True"}], ";", "\n", 
       RowBox[{"spinflip", "=", "False"}], ";", "\n", 
       RowBox[{"(*", 
@@ -419,7 +419,7 @@ Cell[BoxData[
             RowBox[{"NotebookEvaluate", "[", 
              RowBox[{"path", "<>", "\"\</src/HF/RHF.nb\>\""}], "]"}], ";", 
             "\n", 
-            RowBox[{"Print", "[", 
+            RowBox[{"PrintTemporary", "[", 
              RowBox[{"Style", "[", 
               RowBox[{
               "\"\<RHF calculation...\>\"", ",", "Bold", ",", "Orange"}], 
@@ -510,7 +510,7 @@ Cell[BoxData[
             RowBox[{"NotebookEvaluate", "[", 
              RowBox[{"path", "<>", "\"\</src/RPA/RPA_x.nb\>\""}], "]"}], ";", 
             "\n", 
-            RowBox[{"Print", "[", 
+            RowBox[{"PrintTemporary", "[", 
              RowBox[{"Style", "[", 
               RowBox[{
               "\"\<RPAx calculation...\>\"", ",", "Bold", ",", "Orange"}], 
@@ -538,7 +538,7 @@ Cell[BoxData[
             RowBox[{"NotebookEvaluate", "[", 
              RowBox[{"path", "<>", "\"\</src/GW/G0W0.nb\>\""}], "]"}], ";", 
             "\n", 
-            RowBox[{"Print", "[", 
+            RowBox[{"PrintTemporary", "[", 
              RowBox[{"Style", "[", 
               RowBox[{
               "\"\<G0W0 calculation...\>\"", ",", "Bold", ",", "Orange"}], 
@@ -566,8 +566,22 @@ Cell[BoxData[
              "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", 
            RowBox[{
             RowBox[{"NotebookEvaluate", "[", 
-             RowBox[{"path", "<>", "\"\</src/GW/soG0W0.nb\>\""}], "]"}], 
-            ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+             RowBox[{"path", "<>", "\"\</src/GW/soG0W0.nb\>\""}], "]"}], ";", 
+            "\n", 
+            RowBox[{"PrintTemporary", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<soG0W0 calculation...\>\"", ",", "Bold", ",", "Orange"}], 
+              "]"}], "]"}], ";", "\n", "\n", 
+            RowBox[{"soG0W0quantities", "=", 
+             RowBox[{"soG0W0", "[", 
+              RowBox[{
+              "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "\[Epsilon]", ",",
+                "ERI", ",", "S", ",", "T", ",", "V", ",", "U", ",", "X", ",", 
+               "C", ",", "P", ",", "K", ",", "\n", "                        ",
+                "TDA", ",", "BSE", ",", "W", ",", "TDAW", ",", "singlet", ",",
+                "triplet", ",", "\[Eta]", ",", "Regularized", ",", 
+               "\[Kappa]"}], "]"}]}]}]}], "\n", "]"}], ";", "\n", "\n", 
          RowBox[{"Mainquantities", "=", 
           RowBox[{"Association", "[", 
            RowBox[{
@@ -589,7 +603,7 @@ Cell[BoxData[
             RowBox[{"NotebookEvaluate", "[", 
              RowBox[{"path", "<>", "\"\</src/HF/UHF.nb\>\""}], "]"}], ";", 
             "\n", 
-            RowBox[{"Print", "[", 
+            RowBox[{"PrintTemporary", "[", 
              RowBox[{"Style", "[", 
               RowBox[{
               "\"\<UHF calculation...\>\"", ",", "Bold", ",", "Orange"}], 
@@ -1395,13 +1409,16 @@ Cell[BoxData[
    3.8722367478332*^9, 3.8722367481414957`*^9}, 3.8722368893948393`*^9, 
    3.872238158890834*^9, {3.872238190530717*^9, 3.8722382121106157`*^9}, {
    3.87223941934842*^9, 3.872239421516076*^9}, {3.8722396743361473`*^9, 
-   3.8722397806123247`*^9}, {3.872239940802678*^9, 
-   3.872239977327441*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
+   3.8722397806123247`*^9}, {3.872239940802678*^9, 3.872239977327441*^9}, {
+   3.872303654724774*^9, 3.872303670701961*^9}, {3.87230453338404*^9, 
+   3.87230460953321*^9}, {3.8723080219755163`*^9, 3.8723080223923407`*^9}, {
+   3.8723080946807127`*^9, 3.872308095134197*^9}, {3.872310269378518*^9, 
+   3.872310273944125*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
 2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{1306, 748},
-WindowMargins->{{Automatic, -33}, {-166, Automatic}},
+WindowMargins->{{Automatic, 60}, {-61, Automatic}},
 TaggingRules->{"TryRealOnly" -> False},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
@@ -1421,7 +1438,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 67, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 84291, 1372, 7282, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 85356, 1389, 7398, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]
