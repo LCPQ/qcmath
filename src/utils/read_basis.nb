@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17137,        375]
-NotebookOptionsPosition[     16755,        360]
-NotebookOutlinePosition[     17182,        377]
-CellTagsIndexPosition[     17139,        374]
+NotebookDataLength[     17209,        377]
+NotebookOptionsPosition[     16827,        362]
+NotebookOutlinePosition[     17254,        379]
+CellTagsIndexPosition[     17211,        376]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -35,8 +35,9 @@ Cell[BoxData[
        ",", "maxL", ",", "shellTypeElts"}], "}"}], ",", "\n", "\n", 
      RowBox[{
       RowBox[{"file", "=", 
-       RowBox[{"OpenRead", "[", "\"\<~/Work/qcmath/input/basis\>\"", "]"}]}], 
-      ";", "\n", "\n", 
+       RowBox[{"OpenRead", "[", 
+        RowBox[{"path", "<>", "\"\</input/basis\>\""}], "]"}]}], ";", "\n", 
+      "\n", 
       RowBox[{"nBas", "=", "0"}], ";", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"Local", " ", "variables"}], "*)"}], "\n", 
@@ -355,7 +356,8 @@ Cell[BoxData[
    3.8686700845416203`*^9}, {3.8686800205268583`*^9, 3.868680023733163*^9}, {
    3.8686800920605516`*^9, 3.868680096183634*^9}, {3.8686801484974623`*^9, 
    3.86868014924262*^9}, 3.8686984444944572`*^9, {3.870836061108886*^9, 
-   3.870836061809844*^9}},ExpressionUUID->"18e8c84c-b62b-4010-b299-\
+   3.870836061809844*^9}, {3.8725793245472527`*^9, 
+   3.872579330800809*^9}},ExpressionUUID->"18e8c84c-b62b-4010-b299-\
 e98275bf580f"]
 },
 WindowSize->{1254, 780},
@@ -376,7 +378,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 16193, 338, 2431, "Code",ExpressionUUID->"18e8c84c-b62b-4010-b299-e98275bf580f"]
+Cell[558, 20, 16265, 340, 2431, "Code",ExpressionUUID->"18e8c84c-b62b-4010-b299-e98275bf580f"]
 }
 ]
 *)

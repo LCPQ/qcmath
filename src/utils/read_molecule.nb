@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7450,        199]
-NotebookOptionsPosition[      6938,        181]
-NotebookOutlinePosition[      7364,        198]
-CellTagsIndexPosition[      7321,        195]
+NotebookDataLength[      7434,        199]
+NotebookOptionsPosition[      6922,        181]
+NotebookOutlinePosition[      7348,        198]
+CellTagsIndexPosition[      7305,        195]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -47,7 +47,7 @@ Cell[BoxData[
        RowBox[{"Import", "[", 
         RowBox[{
          RowBox[{
-         "\"\<~/Work/qcmath/mol/\>\"", "<>", "molecule", "<>", 
+         "path", "<>", "\"\</mol/\>\"", "<>", "molecule", "<>", 
           "\"\<.xyz\>\""}], ",", "\"\<VertexTypes\>\""}], "]"}]}], ";", "\n", 
       "\n", 
       RowBox[{"(*", 
@@ -56,7 +56,7 @@ Cell[BoxData[
        RowBox[{"Import", "[", 
         RowBox[{
          RowBox[{
-         "\"\<~/Work/qcmath/mol/\>\"", "<>", "molecule", "<>", 
+         "path", "<>", "\"\</mol/\>\"", "<>", "molecule", "<>", 
           "\"\<.xyz\>\""}], ",", "\"\<VertexCoordinates\>\""}], "]"}]}], ";", 
       "\n", "\n", 
       RowBox[{"(*", 
@@ -111,12 +111,11 @@ Cell[BoxData[
        RowBox[{"Definition", " ", "of", " ", "the", " ", 
         RowBox[{"atom", "/", "molecule"}], " ", "geometry", " ", "in", " ", 
         "the", " ", 
-        RowBox[{"mol", ".", "xyz"}], " ", "file"}], "*)"}], "\n", 
-      RowBox[{"SetDirectory", "[", "\"\<~/Work/qcmath/mol\>\"", "]"}], ";", 
-      "\n", "\n", 
+        RowBox[{"mol", ".", "xyz"}], " ", "file"}], "*)"}], "\n", "\n", 
       RowBox[{"sfile", "=", 
        RowBox[{"OpenWrite", "[", 
-        RowBox[{"\"\<mol.xyz\>\"", ",", 
+        RowBox[{
+         RowBox[{"path", "<>", "\"\</mol/mol.xyz\>\""}], ",", 
          RowBox[{"FormatType", "\[Rule]", "StandardForm"}]}], "]"}]}], ";", 
       "\[IndentingNewLine]", 
       RowBox[{"Write", "[", 
@@ -175,8 +174,9 @@ Cell[BoxData[
     "]"}]}], ";"}]], "Code",
  CellChangeTimes->{{3.870923952795032*^9, 3.87092404456674*^9}, {
    3.870924116728286*^9, 3.870924183132867*^9}, 3.870924647673381*^9, {
-   3.8709247561390944`*^9, 3.870924784169641*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
+   3.8709247561390944`*^9, 3.870924784169641*^9}, {3.8725792217693377`*^9, 
+   3.8725793073083467`*^9}},ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-\
+fe234b213ff0"]
 }, Open  ]]
 },
 WindowSize->{1062, 683},
@@ -199,7 +199,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 164, 3, 67, "Subsubsection",ExpressionUUID->"64551826-4a57-432a-9e6b-c97747ebd9a5"],
-Cell[747, 27, 6175, 151, 1157, "Code",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
+Cell[747, 27, 6159, 151, 1128, "Code",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
 }, Open  ]]
 }
 ]
