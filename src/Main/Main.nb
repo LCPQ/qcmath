@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     86670,       1438]
-NotebookOptionsPosition[     86117,       1419]
-NotebookOutlinePosition[     86582,       1437]
-CellTagsIndexPosition[     86539,       1434]
+NotebookDataLength[     93416,       1567]
+NotebookOptionsPosition[     92866,       1548]
+NotebookOutlinePosition[     93328,       1566]
+CellTagsIndexPosition[     93285,       1563]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -30,12 +30,73 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"qcmath", "[", 
     RowBox[{"molecule_", ",", "basis_", ",", "methods_", ",", 
+     RowBox[{"options_", ":", "0"}], ",", 
      RowBox[{"multiplicity_", ":", "1"}], 
      RowBox[{"(*", 
       RowBox[{"Default", "=", "1"}], "*)"}], ",", 
      RowBox[{"charge_", ":", "0"}]}], 
     RowBox[{"(*", 
-     RowBox[{"Default", "=", "0"}], "*)"}], "]"}], ":=", "\n", "\n", 
+     RowBox[{"Default", "=", "0"}], "*)"}], "\n", "       ", 
+    RowBox[{"(*", 
+     RowBox[{"Association", "[", 
+      RowBox[{
+       RowBox[{"\"\<DIIS\>\"", "\[Rule]", 
+        RowBox[{"<|", 
+         RowBox[{
+          RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+          RowBox[{"\"\<Value\>\"", "\[Rule]", 
+           RowBox[{"{", "}"}]}]}], "|>"}]}], ",", 
+       RowBox[{"\"\<singlet\>\"", "\[Rule]", 
+        RowBox[{"<|", 
+         RowBox[{
+          RowBox[{"\"\<Do\>\"", "\[Rule]", "True"}], ",", 
+          RowBox[{"\"\<Value\>\"", "\[Rule]", 
+           RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+       "                            ", 
+       RowBox[{"\"\<triplet\>\"", "\[Rule]", 
+        RowBox[{"<|", 
+         RowBox[{
+          RowBox[{"\"\<Do\>\"", "\[Rule]", "True"}], ",", 
+          RowBox[{"\"\<Value\>\"", "\[Rule]", 
+           RowBox[{"{", "}"}]}]}], "|>"}]}], ",", 
+       RowBox[{"\"\<TDA\>\"", "\[Rule]", 
+        RowBox[{"<|", 
+         RowBox[{
+          RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+          RowBox[{"\"\<Value\>\"", "\[Rule]", 
+           RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+       "                            ", 
+       RowBox[{"\"\<TDAW\>\"", "\[Rule]", 
+        RowBox[{"<|", 
+         RowBox[{
+          RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+          RowBox[{"\"\<Value\>\"", "\[Rule]", 
+           RowBox[{"{", "}"}]}]}], "|>"}]}], ",", 
+       RowBox[{"\"\<spinconserved\>\"", "\[Rule]", 
+        RowBox[{"<|", 
+         RowBox[{
+          RowBox[{"\"\<Do\>\"", "\[Rule]", "True"}], ",", 
+          RowBox[{"\"\<Value\>\"", "\[Rule]", 
+           RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+       "                            ", 
+       RowBox[{"\"\<spinflip\>\"", "\[Rule]", 
+        RowBox[{"<|", 
+         RowBox[{
+          RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+          RowBox[{"\"\<Value\>\"", "\[Rule]", 
+           RowBox[{"{", "}"}]}]}], "|>"}]}], ",", 
+       RowBox[{"\"\<Regularized\>\"", "\[Rule]", 
+        RowBox[{"<|", 
+         RowBox[{
+          RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+          RowBox[{"\"\<Value\>\"", "\[Rule]", "0.0"}]}], "|>"}]}], ",", "\n", 
+       "                            ", 
+       RowBox[{"\"\<\[Eta]\>\"", "\[Rule]", 
+        RowBox[{"<|", 
+         RowBox[{
+          RowBox[{"\"\<Do\>\"", "\[Rule]", "True"}], ",", 
+          RowBox[{"\"\<Value\>\"", "\[Rule]", "0.0367493"}]}], "|>"}]}]}], 
+      "]"}], "*)"}], "]"}], ":=", "\n", "\n", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", "\n", 
@@ -43,7 +104,7 @@ Cell[BoxData[
       RowBox[{
       "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "n\[Alpha]", ",", 
        "n\[Beta]", ",", "Nelc", ",", "ERI", ",", "ToDoModules", ",", 
-       "UpdateToDo", ",", "path", ",", "\n", "\n", 
+       "ToDoOptions", ",", "\n", "\n", 
        RowBox[{"(*", "energies", "*)"}], "Enuc", ",", "EHF", ",", "EUHF", ",",
         "ERPA", ",", "EURPA", ",", "ERPAx", ",", "EcGM", ",", "EqsGW", ",", 
        "\n", "            ", "EqsUGW", ",", "EcMP2", ",", "EMP2", ",", 
@@ -101,8 +162,7 @@ Cell[BoxData[
         ",", "typeRegularization", ",", "DiagElt", ",", "\[Epsilon]p", ",", 
        "conf", ",", "weights", ",", "eG0W0ww", "\n", ",", "restricted", ",", 
        "unrestricted", ",", "mol", ",", "xyz", ",", "nAt", ",", "Znuc", ",", 
-       "elements", ",", "HFmaxSCF", ",", "HFthresh", ",", "HaToeV", ",", 
-       "AntoBo"}], "}"}], ",", "\n", "\n", 
+       "elements", ",", "HFmaxSCF", ",", "HFthresh"}], "}"}], ",", "\n", "\n", 
      RowBox[{"(*", 
       RowBox[{
       "Define", " ", "the", " ", "path", " ", "as", " ", "working", " ", 
@@ -118,13 +178,7 @@ Cell[BoxData[
        RowBox[{"path", "<>", "\"\</Parameters.nb\>\""}], "]"}], ";", "\n", 
       "\n", 
       RowBox[{"ParametersQuantities", "=", 
-       RowBox[{"Parameters", "[", "]"}]}], ";", "\n", 
-      RowBox[{"HaToeV", "=", 
-       RowBox[{"ParametersQuantities", "[", "\"\<HaToeV\>\"", "]"}]}], ";", 
-      "\n", 
-      RowBox[{"AntoBo", "=", 
-       RowBox[{"ParametersQuantities", "[", "\"\<AntoBo\>\"", "]"}]}], ";", 
-      "\n", "\n", 
+       RowBox[{"Parameters", "[", "]"}]}], ";", "\n", "\n", 
       RowBox[{"HFmaxSCF", "=", 
        RowBox[{"ParametersQuantities", "[", "\"\<HFmaxSCF\>\"", "]"}]}], ";", 
       "\n", 
@@ -155,9 +209,9 @@ Cell[BoxData[
       RowBox[{"(*", 
        RowBox[{
        "Computation", " ", "of", " ", "the", " ", "number", " ", "of", " ", 
-        "electrons"}], "*)"}], "\n", 
-      RowBox[{"PrintTemporary", "[", "\"\<Read molecule...\>\"", "]"}], ";", 
-      "\n", 
+        "electrons", " ", "by", " ", "Qcaml"}], "*)"}], "\n", 
+      RowBox[{"PrintTemporary", "[", "\"\<Number of electrons...\>\"", "]"}], 
+      ";", "\n", 
       RowBox[{"SetDirectory", "[", "path", "]"}], ";", "\n", 
       RowBox[{"RunProcess", "[", 
        RowBox[{"{", 
@@ -191,10 +245,10 @@ Cell[BoxData[
       RowBox[{"(*", 
        RowBox[{
        "Computation", " ", "of", " ", "the", " ", "integrals", " ", "by", " ",
-         "QuAcK"}], "*)"}], "\n", 
+         "Qcaml"}], "*)"}], "\n", 
       RowBox[{
       "PrintTemporary", "[", 
-       "\"\<Computation of the two-electron integrals by QuAcK...\>\"", "]"}],
+       "\"\<Computation of the two-electron integrals by Qcaml...\>\"", "]"}],
        ";", "\n", 
       RowBox[{"RunProcess", "[", 
        RowBox[{"{", 
@@ -222,85 +276,34 @@ Cell[BoxData[
        RowBox[{"IntegralsQuantities", "[", "\"\<U\>\"", "]"}]}], ";", "\n", 
       "\n", 
       RowBox[{"PrintTemporary", "[", "\"\<Done !\>\"", "]"}], ";", "\n", "\n", 
-      RowBox[{"(*", " ", 
-       RowBox[{
-       "ToDoModules", " ", "is", " ", "a", " ", "dictionnary", " ", "with", 
-        " ", "a", " ", "key", " ", "for", " ", "each", " ", 
-        RowBox[{"method", "."}]}], "*)"}], " ", "\n", 
       RowBox[{"(*", 
        RowBox[{
-       "At", " ", "each", " ", "key", " ", "is", " ", "attributed", " ", "a", 
-        " ", "dictionnary", " ", "with", " ", "the", " ", "following", " ", 
-        "informations"}], " ", "*)"}], "\n", 
-      RowBox[{"(*", " ", 
+       "Get", " ", "dictionary", " ", "of", " ", "methods", " ", "and", " ", 
+        "updating", " ", "ToDoModules"}], " ", "*)"}], "\n", 
+      RowBox[{"(*", 
        RowBox[{
-        RowBox[{
-        "Should", " ", "we", " ", "execute", " ", "this", " ", "module", " ", 
-         
-         RowBox[{"(", "\"\<Do\>\"", ")"}]}], ",", " ", 
-        RowBox[{
-        "the", " ", "dependencies", " ", "of", " ", "this", " ", "module", 
-         " ", 
-         RowBox[{"(", "\"\<Dependencies\>\"", ")"}]}]}], "*)"}], "\n", 
+        RowBox[{"NotebookEvaluate", "[", 
+         RowBox[{"path", "<>", "\"\</src/utils/update_methods.nb\>\""}], 
+         "]"}], ";"}], "*)"}], "\n", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"path", "<>", "\"\</src/utils/list_methods.nb\>\""}], "]"}], 
+      ";", "\n", 
       RowBox[{"ToDoModules", "=", 
-       RowBox[{"Association", "[", "\n", 
-        RowBox[{
-         RowBox[{"\"\<RHF\>\"", "\[Rule]", 
-          RowBox[{"<|", 
-           RowBox[{
-            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
-            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
-         RowBox[{"\"\<UHF\>\"", "\[Rule]", " ", 
-          RowBox[{"<|", 
-           RowBox[{
-            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
-            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
-         RowBox[{"\"\<RPA\>\"", "\[Rule]", 
-          RowBox[{"<|", 
-           RowBox[{
-            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
-            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
-         RowBox[{"\"\<soRPA\>\"", "\[Rule]", 
-          RowBox[{"<|", 
-           RowBox[{
-            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
-            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
-         RowBox[{"\"\<RPAx\>\"", "\[Rule]", 
-          RowBox[{"<|", 
-           RowBox[{
-            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
-            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
-         RowBox[{"\"\<G0W0\>\"", "\[Rule]", 
-          RowBox[{"<|", 
-           RowBox[{
-            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
-            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
-         RowBox[{"\"\<soG0W0\>\"", "\[Rule]", 
-          RowBox[{"<|", 
-           RowBox[{
-            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
-            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}]}], "\n", "]"}]}],
-       ";", "\n", "\n", 
+       RowBox[{"ListMethods", "[", "]"}]}], ";", " ", "\n", "\n", 
       RowBox[{"(*", " ", 
        RowBox[{
        "Recursive", " ", "function", " ", "to", " ", "update", " ", "the", 
         " ", "\"\<Do\>\"", " ", "keys"}], " ", "*)"}], "\n", 
       RowBox[{
-       RowBox[{"UpdateToDo", "[", "Method_", "]"}], ":=", 
-       RowBox[{"Module", "[", 
+       RowBox[{"UpdateMethods", "[", "Methods_", "]"}], ":=", 
+       RowBox[{"Module", "[", "\n", 
         RowBox[{
          RowBox[{"{", 
           RowBox[{"ToDoMethod", ",", "ListDependencies"}], "}"}], ",", "\n", 
+         "\n", 
          RowBox[{
           RowBox[{"ToDoMethod", "=", 
-           RowBox[{"ToDoModules", "[", "Method", "]"}]}], ";", "\n", 
+           RowBox[{"ToDoModules", "[", "Methods", "]"}]}], ";", "\n", 
           RowBox[{"ListDependencies", "=", 
            RowBox[{"ToDoMethod", "[", "\"\<Dependencies\>\"", "]"}]}], ";", 
           "\n", 
@@ -318,7 +321,7 @@ Cell[BoxData[
                RowBox[{"Do", "[", 
                 RowBox[{
                  RowBox[{
-                  RowBox[{"UpdateToDo", "[", 
+                  RowBox[{"UpdateMethods", "[", 
                    RowBox[{
                    "ListDependencies", "\[LeftDoubleBracket]", "i", 
                     "\[RightDoubleBracket]"}], "]"}], ";"}], "\n", "\t\t\t", 
@@ -330,19 +333,16 @@ Cell[BoxData[
                     "]"}]}], "}"}]}], "]"}]}], "]"}], ";", "\n", "\t", 
              RowBox[{
               RowBox[{
-               RowBox[{"ToDoModules", "[", "Method", "]"}], "[", "\"\<Do\>\"",
-                "]"}], "=", "True"}], ";"}]}], "\n", "\t", "]"}], ";"}]}], 
-        "\n", "]"}]}], ";", "\n", "\n", 
-      RowBox[{"(*", " ", 
-       RowBox[{
-       "Reading", " ", "ToDoList", " ", "and", " ", "updating", " ", 
-        "ToDoModules"}], " ", "*)"}], "\n", 
+               RowBox[{"ToDoModules", "[", "Methods", "]"}], "[", 
+               "\"\<Do\>\"", "]"}], "=", "True"}], ";"}]}], "\n", "\t", "]"}],
+           ";"}]}], "\t\t", "\n", "]"}]}], ";", "\n", "\n", 
       RowBox[{"Do", "[", 
        RowBox[{
-        RowBox[{"UpdateToDo", "[", 
-         RowBox[{
-         "methods", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
-         "]"}], "\n", ",", 
+        RowBox[{
+         RowBox[{"UpdateMethods", "[", 
+          RowBox[{
+          "methods", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+          "]"}], ";"}], "\n", ",", 
         RowBox[{"{", 
          RowBox[{"i", ",", 
           RowBox[{"Length", "[", "methods", "]"}]}], "}"}]}], "]"}], ";", 
@@ -387,24 +387,100 @@ Cell[BoxData[
         RowBox[{"S", ",", 
          RowBox[{"-", 
           FractionBox["1", "2"]}]}], "]"}]}], ";", "\n", "\n", 
-      RowBox[{"(*", "options", "*)"}], "\n", 
-      RowBox[{"DIISex", "=", "False"}], ";", "\n", 
-      RowBox[{"singlet", "=", "True"}], ";", "\n", 
-      RowBox[{"triplet", "=", "True"}], ";", "\n", 
-      RowBox[{"TDA", "=", "True"}], ";", "\n", 
-      RowBox[{"TDAW", "=", "True"}], ";", "\n", 
-      RowBox[{"spinconserved", "=", "True"}], ";", "\n", 
-      RowBox[{"spinflip", "=", "False"}], ";", "\n", 
-      RowBox[{"(*", 
+      RowBox[{"(*", " ", 
        RowBox[{
-        RowBox[{"\[Eta]", "=", "0.00367493"}], ";"}], "*)"}], "\n", 
-      RowBox[{"Regularized", "=", "False"}], ";", "\n", 
-      RowBox[{"typeRegularization", "=", "\"\<evangelista\>\""}], ";", "\n", 
-      RowBox[{"\[Eta]", "=", "0.0"}], ";", "\n", 
-      RowBox[{"(*", 
+       "Reading", " ", "dictionary", " ", "of", " ", "options", " ", "and", 
+        " ", "updating", " ", "ToDoOptions"}], " ", "*)"}], "\n", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"path", "<>", "\"\</src/utils/list_options.nb\>\""}], "]"}], 
+      ";", "\n", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"path", "<>", "\"\</src/utils/update_options.nb\>\""}], "]"}], 
+      ";", "\n", "\n", 
+      RowBox[{"ToDoOptions", "=", 
+       RowBox[{"ListOptions", "[", "]"}]}], ";", "\n", "\n", 
+      RowBox[{
+       RowBox[{"UpdateOptions", "[", "Options_", "]"}], ":=", 
+       RowBox[{"Module", "[", "\n", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"ToDo", ",", "ListValues"}], "}"}], ",", "\n", "\n", 
+         RowBox[{
+          RowBox[{"ToDo", "=", 
+           RowBox[{"ToDoOptions", "[", "Options", "]"}]}], ";", "\n", 
+          RowBox[{"ListValues", "=", 
+           RowBox[{"ToDo", "[", "\"\<Values\>\"", "]"}]}], ";", "\n", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"ToDo", "[", "\"\<Do\>\"", "]"}], "\[Equal]", "False"}], 
+            ",", "\n", "\t", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Length", "[", "ListValues", "]"}], ">", "0"}], ",", 
+               "\n", "\t\t", 
+               RowBox[{"Do", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"UpdateOptions", "[", 
+                   RowBox[{
+                   "ListValues", "\[LeftDoubleBracket]", "i", 
+                    "\[RightDoubleBracket]"}], "]"}], ";"}], "\n", "\t\t\t", 
+                 ",", 
+                 RowBox[{"{", 
+                  RowBox[{"i", ",", 
+                   RowBox[{"Length", "[", 
+                    RowBox[{"ToDo", "[", "\"\<Values\>\"", "]"}], "]"}]}], 
+                  "}"}]}], "]"}]}], "]"}], ";", "\n", "\t", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"ToDoOptions", "[", "Options", "]"}], "[", 
+               "\"\<Do\>\"", "]"}], "=", "True"}], ";"}]}], "\n", "\t", "]"}],
+           ";"}]}], "\t", "\n", "]"}]}], ";", "\n", "\n", 
+      RowBox[{"Do", "[", 
        RowBox[{
-        RowBox[{"\[Eta]", "=", "0.0367493"}], ";"}], "*)"}], "\n", 
-      RowBox[{"\[Kappa]", "=", "0.0"}], ";", "\n", "\n", 
+        RowBox[{"UpdateOptions", "[", 
+         RowBox[{
+         "options", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+         "]"}], "\n", ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{"Length", "[", "options", "]"}]}], "}"}]}], "]"}], ";", 
+      "\n", "\n", 
+      RowBox[{"DIISex", "=", 
+       RowBox[{
+        RowBox[{"ToDoOptions", "[", "\"\<DIIS\>\"", "]"}], "[", "\"\<Do\>\"", 
+        "]"}]}], ";", "\n", 
+      RowBox[{"singlet", "=", 
+       RowBox[{
+        RowBox[{"ToDoOptions", "[", "\"\<singlet\>\"", "]"}], "[", 
+        "\"\<Do\>\"", "]"}]}], ";", "\n", 
+      RowBox[{"triplet", "=", 
+       RowBox[{
+        RowBox[{"ToDoOptions", "[", "\"\<triplet\>\"", "]"}], "[", 
+        "\"\<Do\>\"", "]"}]}], ";", "\n", 
+      RowBox[{"TDA", "=", 
+       RowBox[{
+        RowBox[{"ToDoOptions", "[", "\"\<TDA\>\"", "]"}], "[", "\"\<Do\>\"", 
+        "]"}]}], ";", "\n", 
+      RowBox[{"TDAW", "=", 
+       RowBox[{
+        RowBox[{"ToDoOptions", "[", "\"\<TDAW\>\"", "]"}], "[", "\"\<Do\>\"", 
+        "]"}]}], ";", "\n", 
+      RowBox[{"Regularized", "=", 
+       RowBox[{
+        RowBox[{"ToDoOptions", "[", "\"\<Regularized\>\"", "]"}], "[", 
+        "\"\<Do\>\"", "]"}]}], ";", "\n", 
+      RowBox[{"\[Kappa]", "=", 
+       RowBox[{
+        RowBox[{"ToDoOptions", "[", "\"\<Regularized\>\"", "]"}], "[", 
+        "\"\<Value\>\"", "]"}]}], ";", "\n", 
+      RowBox[{"\[Eta]", "=", 
+       RowBox[{
+        RowBox[{"ToDoOptions", "[", "\"\<\[Eta]\>\"", "]"}], "[", 
+        "\"\<Value\>\"", "]"}]}], ";", "\n", "\n", 
       RowBox[{"If", "[", 
        RowBox[{"restricted", ",", "\n", 
         RowBox[{"(*", "RHF", "*)"}], "\n", 
@@ -449,8 +525,8 @@ Cell[BoxData[
             RowBox[{"Vxc", "=", 
              RowBox[{"RHFquantities", "[", "\"\<Vx\>\"", "]"}]}], ";", "\n", 
             RowBox[{"eG0W0", "=", "\[Epsilon]"}], ";", "\n", 
-            RowBox[{"eG0T0", "=", "\[Epsilon]"}], ";"}]}], "\n", "\n", "]"}], 
-         ";", "\n", "\n", 
+            RowBox[{"eG0T0", "=", "\[Epsilon]"}], ";"}]}], "\n", "]"}], ";", 
+         "\n", "\n", 
          RowBox[{"(*", "RPA", "*)"}], "\n", 
          RowBox[{"If", "[", 
           RowBox[{
@@ -1413,12 +1489,65 @@ Cell[BoxData[
    3.872303654724774*^9, 3.872303670701961*^9}, {3.87230453338404*^9, 
    3.87230460953321*^9}, {3.8723080219755163`*^9, 3.8723080223923407`*^9}, {
    3.8723080946807127`*^9, 3.872308095134197*^9}, {3.872310269378518*^9, 
-   3.872310273944125*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
-2b85bb5dd0be"]
+   3.872310273944125*^9}, {3.872588570662201*^9, 3.8725885767774563`*^9}, {
+   3.872588656857477*^9, 3.872588686531958*^9}, {3.872643840569869*^9, 
+   3.872643853496511*^9}, {3.8726440843127937`*^9, 3.87264409832823*^9}, {
+   3.872644411741251*^9, 3.872644532736166*^9}, 3.872644887390703*^9, {
+   3.8726451634843607`*^9, 3.872645165110755*^9}, {3.87264564906986*^9, 
+   3.872645732612858*^9}, {3.872645764054287*^9, 3.872645861353614*^9}, {
+   3.8726459069030457`*^9, 3.872645949534079*^9}, {3.872646257123719*^9, 
+   3.872646303284917*^9}, {3.872646339858734*^9, 3.872646361945368*^9}, {
+   3.872646531800983*^9, 3.872646553782823*^9}, {3.872646720881899*^9, 
+   3.872646731327835*^9}, {3.872646762436747*^9, 3.872646762590364*^9}, {
+   3.8726469226172743`*^9, 3.872646927168048*^9}, {3.872646962186578*^9, 
+   3.8726469824587727`*^9}, {3.8726471943694067`*^9, 3.872647197104207*^9}, {
+   3.872647532439787*^9, 3.8726475503958263`*^9}, {3.8726475815584097`*^9, 
+   3.872647646496132*^9}, {3.872647684194192*^9, 3.872647806005662*^9}, {
+   3.872648061174717*^9, 3.872648093943028*^9}, {3.8726481249167213`*^9, 
+   3.872648128297803*^9}, {3.872648533424568*^9, 3.872648539159157*^9}, {
+   3.8726487461557503`*^9, 3.872648750204145*^9}, {3.872650360595715*^9, 
+   3.8726503976119823`*^9}, {3.872650581667965*^9, 3.8726507741412697`*^9}, {
+   3.8726509701201077`*^9, 3.872651005531399*^9}, {3.872651103092853*^9, 
+   3.872651110728504*^9}, {3.872651145905592*^9, 3.8726511678423223`*^9}, {
+   3.87265120063024*^9, 3.872651230710347*^9}, {3.87265158417809*^9, 
+   3.8726515888682404`*^9}, {3.872651621286298*^9, 3.872651622827379*^9}, {
+   3.872651867523569*^9, 3.872651874000451*^9}, {3.872652054098214*^9, 
+   3.872652054635681*^9}, 3.8726521064676027`*^9, {3.8726522426243773`*^9, 
+   3.8726523622381907`*^9}, {3.872652450681069*^9, 3.872652466989295*^9}, {
+   3.872652513207713*^9, 3.8726525312973833`*^9}, {3.872652567002014*^9, 
+   3.872652671482773*^9}, {3.872652715996195*^9, 3.872652749719201*^9}, {
+   3.872652862275815*^9, 3.872652887095036*^9}, {3.872653080874331*^9, 
+   3.872653226163088*^9}, {3.872653438848173*^9, 3.872653441545535*^9}, {
+   3.872653477161289*^9, 3.8726535696298523`*^9}, {3.87265367081715*^9, 
+   3.872653683520005*^9}, {3.872653739971416*^9, 3.872653745217952*^9}, {
+   3.8726538988129873`*^9, 3.8726539020457067`*^9}, {3.872653945316012*^9, 
+   3.872653945459158*^9}, {3.8726542369378977`*^9, 3.8726542494881983`*^9}, 
+   3.8726548292522163`*^9, {3.872654930238503*^9, 3.872654951888856*^9}, {
+   3.8726550249419403`*^9, 3.872655028506794*^9}, {3.8726550794519873`*^9, 
+   3.872655109076647*^9}, {3.872655167381832*^9, 3.8726551753319893`*^9}, {
+   3.872655647183234*^9, 3.872655651435762*^9}, {3.8726556821358423`*^9, 
+   3.872655758333413*^9}, {3.872655795736054*^9, 3.87265587193587*^9}, {
+   3.872657080398883*^9, 3.8726570863644533`*^9}, {3.872657141625022*^9, 
+   3.8726572279664717`*^9}, {3.87265728492349*^9, 3.872657299428237*^9}, {
+   3.872657375648233*^9, 3.8726573805849333`*^9}, {3.872657414269538*^9, 
+   3.872657418550376*^9}, {3.872657574218479*^9, 3.8726575924059973`*^9}, {
+   3.872657624175975*^9, 3.872657630035221*^9}, {3.8726622727307568`*^9, 
+   3.872662280840623*^9}, {3.872662775810341*^9, 3.872662777137617*^9}, {
+   3.872663220125263*^9, 3.872663222971479*^9}, {3.872663361170336*^9, 
+   3.872663390748023*^9}, 3.872663429731151*^9, {3.872663460353222*^9, 
+   3.8726634639493837`*^9}, {3.872663699403158*^9, 3.872663702096508*^9}, {
+   3.872663912494169*^9, 3.872663914794764*^9}, {3.87266507987784*^9, 
+   3.872665100293762*^9}, {3.8726651461640253`*^9, 3.87266519874016*^9}, 
+   3.872665269563442*^9, {3.8726653717255898`*^9, 3.872665396496148*^9}, 
+   3.872665434301105*^9, {3.8726668266601763`*^9, 3.872666835245227*^9}, {
+   3.872666900004689*^9, 3.87266691354119*^9}, 3.872667008427786*^9, {
+   3.872667135791329*^9, 3.8726671364124126`*^9}, {3.872667168515435*^9, 
+   3.872667170688796*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{1306, 748},
-WindowMargins->{{Automatic, 60}, {-61, Automatic}},
+WindowMargins->{{Automatic, 0}, {1, Automatic}},
 TaggingRules->{"TryRealOnly" -> False},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
@@ -1438,7 +1567,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 67, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 85356, 1389, 7398, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 92105, 1518, 7717, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]
