@@ -1,0 +1,149 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5664,        141]
+NotebookOptionsPosition[      5287,        126]
+NotebookOutlinePosition[      5711,        143]
+CellTagsIndexPosition[      5668,        140]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ListMethods", "[", "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", "ToDoModules", "}"}], ",", "\n", "\n", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "ToDoModules", " ", "is", " ", "a", " ", "dictionnary", " ", "with", 
+       " ", "a", " ", "key", " ", "for", " ", "each", " ", 
+       RowBox[{"method", "."}]}], "*)"}], " ", "\n", 
+     RowBox[{"(*", 
+      RowBox[{
+      "At", " ", "each", " ", "key", " ", "is", " ", "attributed", " ", "a", 
+       " ", "dictionnary", " ", "with", " ", "the", " ", "following", " ", 
+       "informations"}], " ", "*)"}], "\n", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+       RowBox[{
+       "Should", " ", "we", " ", "execute", " ", "this", " ", "module", " ", 
+        RowBox[{"(", "\"\<Do\>\"", ")"}]}], ",", " ", 
+       RowBox[{
+       "the", " ", "dependencies", " ", "of", " ", "this", " ", "module", " ", 
+        RowBox[{"(", "\"\<Dependencies\>\"", ")"}]}]}], "*)"}], "\n", 
+     RowBox[{
+      RowBox[{"ToDoModules", "=", 
+       RowBox[{"Association", "[", "\n", 
+        RowBox[{
+         RowBox[{"\"\<RHF\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<UHF\>\"", "\[Rule]", " ", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<RPA\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<soRPA\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<RPAx\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<G0W0\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<soG0W0\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<ufG0W0\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<soUfG0W0\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<G0F2\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<soG0F2\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}]}], "\n", "]"}]}],
+       ";", "\n", "\n", 
+      RowBox[{"Return", "[", "ToDoModules", "]"}]}]}], "]"}]}], ";"}]], "Code",\
+
+ CellChangeTimes->{{3.872645075747286*^9, 3.872645245247631*^9}, 
+   3.872645473995775*^9, {3.872645563226039*^9, 3.872645585565771*^9}, {
+   3.8726456214937572`*^9, 3.872645638354844*^9}, {3.8727525409516*^9, 
+   3.872752551108118*^9}, 3.872752678942868*^9, {3.872835079118731*^9, 
+   3.872835086311194*^9}, {3.872844614228057*^9, 
+   3.872844638301817*^9}},ExpressionUUID->"2080cd3e-7f88-48b7-bee4-\
+a3de0810e066"]
+},
+WindowSize->{981, 706},
+WindowMargins->{{Automatic, 128}, {Automatic, 40}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"eb25125d-11ba-4855-81b8-7f0d8613f6d4"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4725, 104, 659, "Code",ExpressionUUID->"2080cd3e-7f88-48b7-bee4-a3de0810e066"]
+}
+]
+*)
+

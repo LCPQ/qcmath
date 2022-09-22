@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5069,        130]
-NotebookOptionsPosition[      4692,        115]
-NotebookOutlinePosition[      5117,        132]
-CellTagsIndexPosition[      5074,        129]
+NotebookDataLength[      5333,        135]
+NotebookOptionsPosition[      4956,        120]
+NotebookOutlinePosition[      5381,        137]
+CellTagsIndexPosition[      5338,        134]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,6 +33,10 @@ Cell[BoxData[
        RowBox[{"Table", " ", "of", " ", "outputs"}], "*)"}], "TabRHF", "}"}], 
      ",", "\[IndentingNewLine]", "\n", 
      RowBox[{
+      RowBox[{"Print", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<RHF outputs:\>\"", ",", "Bold", ",", "Red"}], "]"}], 
+       "]"}], ";", "\n", "\n", 
       RowBox[{"TabRHF", "=", 
        RowBox[{"TableForm", "[", 
         RowBox[{
@@ -109,8 +113,9 @@ Cell[BoxData[
    3.8722245923124247`*^9}, {3.8722246330379753`*^9, 3.872224652616666*^9}, {
    3.872224751483123*^9, 3.872224751641008*^9}, {3.872231057629168*^9, 
    3.872231061895296*^9}, {3.872231099238899*^9, 3.872231145511643*^9}, 
-   3.872234901862627*^9, {3.8722349384329157`*^9, 
-   3.872234943313195*^9}},ExpressionUUID->"b20f09a6-a82f-449c-aacb-\
+   3.872234901862627*^9, {3.8722349384329157`*^9, 3.872234943313195*^9}, {
+   3.87273111710248*^9, 3.8727311478446207`*^9}, {3.8727311817742157`*^9, 
+   3.87273119341136*^9}},ExpressionUUID->"b20f09a6-a82f-449c-aacb-\
 fc12bd77467d"]
 },
 WindowSize->{1171, 698},
@@ -131,7 +136,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 4130, 93, 340, "Code",ExpressionUUID->"b20f09a6-a82f-449c-aacb-fc12bd77467d"]
+Cell[558, 20, 4394, 98, 398, "Code",ExpressionUUID->"b20f09a6-a82f-449c-aacb-fc12bd77467d"]
 }
 ]
 *)

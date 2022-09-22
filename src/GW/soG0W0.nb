@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11076,        263]
-NotebookOptionsPosition[     10698,        248]
-NotebookOutlinePosition[     11121,        265]
-CellTagsIndexPosition[     11078,        262]
+NotebookDataLength[     13518,        317]
+NotebookOptionsPosition[     13140,        302]
+NotebookOutlinePosition[     13563,        319]
+CellTagsIndexPosition[     13520,        316]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -24,10 +24,14 @@ Cell[BoxData[
    RowBox[{"soG0W0", "[", 
     RowBox[{
     "nBas_", ",", "nO_", ",", "nV_", ",", "nS_", ",", "\[Epsilon]_", ",", 
-     "\n", "ERI_", ",", "S_", ",", "T_", ",", "V_", ",", "U_", ",", "X_", ",",
-      "C_", ",", "\n", "P_", ",", "K_", ",", "TDA_", ",", "BSE_", ",", "W_", 
-     ",", "TDAW_", ",", "\n", "singlet_", ",", "triplet_", ",", "\[Eta]_", 
-     ",", "Regularized_", ",", "\[Kappa]_"}], "]"}], ":=", "\n", "\n", 
+     "ERI_", ",", "X_", ",", "C_", ",", "K_", ",", "ENuc_", ",", "ERHF_", ",",
+      "TDA_", ",", "BSE_", ",", "\n", "       ", "W_", ",", "TDAW_", ",", 
+     "\[Eta]_", ",", "Regularized_", ",", "\[Kappa]_", ",", 
+     RowBox[{"verbose_", ":", "1"}]}], 
+    RowBox[{"(*", 
+     RowBox[{"Default", "=", 
+      RowBox[{"1", " ", 
+       RowBox[{"(", "True", ")"}]}]}], "*)"}], "]"}], ":=", "\n", "\n", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -41,7 +45,7 @@ Cell[BoxData[
        "Re\[CapitalSigma]c", ",", "Im\[CapitalSigma]c", ",", 
        "Im\[CapitalSigma]c\[Omega]", ",", "lin", ",", "nBas2", ",", "nO2", 
        ",", "nV2", ",", "nS2", ",", "so\[Epsilon]", ",", "soERI", ",", 
-       "soeG0W0"}], "}"}], ",", "\n", "\n", 
+       "soeG0W0", ",", "TabG0W0"}], "}"}], ",", "\n", "\n", 
      RowBox[{
       RowBox[{"NotebookEvaluate", "[", 
        RowBox[{"path", "<>", "\"\</src/LR/linear_Response.nb\>\""}], "]"}], 
@@ -112,7 +116,7 @@ Cell[BoxData[
           "path", "<>", "\"\</src/GW/regularized_self_energy_diag.nb\>\""}], 
           "]"}], ";", "\n", 
          RowBox[{"SelfEnergyquantities", "=", 
-          RowBox[{"RegularizedSelfEnergyGWdiag", "[", 
+          RowBox[{"soRegularizedSelfEnergyGWdiag", "[", 
            RowBox[{
            "nBas2", ",", "nO2", ",", "nV2", ",", "nS2", ",", "so\[Epsilon]", 
             ",", "sERI", ",", "\[CapitalOmega]", ",", "\[Kappa]"}], "]"}]}], 
@@ -166,7 +170,7 @@ Cell[BoxData[
       RowBox[{"(*", 
        RowBox[{"Linearized", " ", "Quasiparticle", " ", "equation"}], "*)"}], 
       "\n", 
-      RowBox[{"lin", "=", "True"}], ";", "\n", 
+      RowBox[{"lin", "=", "False"}], ";", "\n", 
       RowBox[{"If", "[", 
        RowBox[{"lin", ",", 
         RowBox[{"soeG0W0", "=", 
@@ -194,7 +198,27 @@ Cell[BoxData[
                   "\[RightDoubleBracket]"}]}], "}"}]}], "]"}], ",", 
              RowBox[{"{", 
               RowBox[{"p", ",", "nBas2"}], "}"}]}], "]"}]}]}], ";"}]}], "\n", 
-       "]"}], ";", "\n", "\n", 
+       
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"soeG0W0", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"\[Omega]", "/.", 
+             RowBox[{"NSolve", "[", 
+              RowBox[{
+               RowBox[{"\[Omega]", "\[Equal]", 
+                RowBox[{
+                 RowBox[{
+                 "so\[Epsilon]", "\[LeftDoubleBracket]", "p", 
+                  "\[RightDoubleBracket]"}], "+", 
+                 RowBox[{
+                 "\[CapitalSigma]c\[Omega]", "\[LeftDoubleBracket]", "p", 
+                  "\[RightDoubleBracket]"}]}]}], ",", "\[Omega]"}], "]"}]}], 
+            ",", 
+            RowBox[{"{", 
+             RowBox[{"p", ",", "nBas2"}], "}"}]}], "]"}]}], ";"}], "*)"}], 
+       "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"RPA", " ", "correlation", " ", "energy"}], "*)"}], "\n", 
       RowBox[{"linearquantities", "=", 
@@ -208,6 +232,27 @@ Cell[BoxData[
       RowBox[{"EcRPA", "=", 
        RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";", "\n", 
       "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Print", " ", "outputs"}], "*)"}], "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"verbose", "\[Equal]", "1"}], ",", "\n", 
+        RowBox[{
+         RowBox[{"NotebookEvaluate", "[", 
+          RowBox[{"path", "<>", "\"\</src/GW/print_G0W0.nb\>\""}], "]"}], ";",
+          "\n", 
+         RowBox[{"Print", "[", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<G0W0 outputs:\>\"", ",", "Bold", ",", "Red"}], "]"}], 
+          "]"}], ";", "\n", 
+         RowBox[{"TabG0W0", "=", 
+          RowBox[{"PrintG0W0", "[", 
+           RowBox[{
+           "nO2", ",", "so\[Epsilon]", ",", "\[CapitalSigma]c", ",", "Z", ",",
+             "soeG0W0", ",", "ENuc", ",", "ERHF", ",", "EcRPA", ",", "EcGM"}],
+            "]"}]}], ";", "\n", 
+         RowBox[{"Print", "[", "TabG0W0", "]"}], ";"}]}], "\n", "]"}], ";", 
+      "\n", "\n", 
       RowBox[{"soG0W0quantities", "=", "\n", 
        RowBox[{"Association", "[", 
         RowBox[{
@@ -242,8 +287,17 @@ Cell[BoxData[
    3.8723061254614973`*^9, 3.872306129760983*^9}, 3.8723080590359*^9, {
    3.8723084666552963`*^9, 3.872308489413369*^9}, {3.8723087813088017`*^9, 
    3.872308788441601*^9}, {3.872308833752603*^9, 3.872308845860911*^9}, 
-   3.8723089986442223`*^9, 
-   3.872309165137309*^9},ExpressionUUID->"8f24aa16-b83d-4d9f-9113-\
+   3.8723089986442223`*^9, 3.872309165137309*^9, {3.8727394420803633`*^9, 
+   3.872739469074233*^9}, {3.872739891943796*^9, 3.872739892617156*^9}, {
+   3.8727418815922127`*^9, 3.872741994389845*^9}, {3.872742282230216*^9, 
+   3.872742291838263*^9}, {3.872742442205216*^9, 3.8727424664112883`*^9}, {
+   3.872751177271284*^9, 3.87275118275002*^9}, {3.872835418412024*^9, 
+   3.8728354190832043`*^9}, {3.872835477340548*^9, 3.872835484992189*^9}, {
+   3.872835539930642*^9, 3.872835561748478*^9}, {3.8728356142286997`*^9, 
+   3.87283563685604*^9}, {3.872835696743266*^9, 3.8728357157164917`*^9}, 
+   3.872835785237009*^9, {3.8728359268572702`*^9, 3.872835938277602*^9}, 
+   3.872838974121212*^9, {3.872839689649723*^9, 
+   3.872839701408535*^9}},ExpressionUUID->"8f24aa16-b83d-4d9f-9113-\
 bd22d9a64c20"]
 },
 WindowSize->{1272, 679},
@@ -264,7 +318,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 10136, 226, 2207, "Code",ExpressionUUID->"8f24aa16-b83d-4d9f-9113-bd22d9a64c20"]
+Cell[558, 20, 12578, 280, 2410, "Code",ExpressionUUID->"8f24aa16-b83d-4d9f-9113-bd22d9a64c20"]
 }
 ]
 *)

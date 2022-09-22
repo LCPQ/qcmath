@@ -1,0 +1,122 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4354,        114]
+NotebookOptionsPosition[      3976,         99]
+NotebookOutlinePosition[      4402,        116]
+CellTagsIndexPosition[      4359,        113]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ListOptions", "[", "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", "ToDoOptions", "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"ToDoOptions", "=", 
+       RowBox[{"Association", "[", "\n", 
+        RowBox[{
+         RowBox[{"\"\<DIIS\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Value\>\"", "\[Rule]", 
+             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<singlet\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "True"}], ",", 
+            RowBox[{"\"\<Value\>\"", "\[Rule]", 
+             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<triplet\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "True"}], ",", 
+            RowBox[{"\"\<Value\>\"", "\[Rule]", 
+             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<TDA\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Value\>\"", "\[Rule]", 
+             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<TDAW\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Value\>\"", "\[Rule]", 
+             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<spinconserved\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "True"}], ",", 
+            RowBox[{"\"\<Value\>\"", "\[Rule]", 
+             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<spinflip\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Value\>\"", "\[Rule]", 
+             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<Regularized\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Value\>\"", "\[Rule]", "0.0"}]}], "|>"}]}], ",", 
+         "\n", 
+         RowBox[{"\"\<\[Eta]\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "True"}], ",", 
+            RowBox[{"\"\<Value\>\"", "\[Rule]", "0.0"}]}], 
+           RowBox[{"(*", "0.0367493", "*)"}], "|>"}]}]}], "\n", "]"}]}], ";", 
+      "\n", "\n", 
+      RowBox[{"Return", "[", "ToDoOptions", "]"}]}]}], "]"}]}], ";"}]], "Code",\
+
+ CellChangeTimes->{{3.87264907414251*^9, 3.8726490912431707`*^9}, {
+   3.87264971157689*^9, 3.8726497297277107`*^9}, {3.872649806121537*^9, 
+   3.8726498645123577`*^9}, {3.872649906275193*^9, 3.872649916881839*^9}, {
+   3.872649977637185*^9, 3.872650090905261*^9}, {3.872650124507594*^9, 
+   3.872650138080139*^9}, 3.87265183914506*^9, {3.872651901736244*^9, 
+   3.872651908846953*^9}, {3.8726519393811903`*^9, 3.872651953364435*^9}, {
+   3.8726521190373373`*^9, 3.87265211954292*^9}, {3.872653490737063*^9, 
+   3.8726534959387493`*^9}, {3.872653654391296*^9, 
+   3.872653658126162*^9}},ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-\
+be7c5a4f21c2"]
+},
+WindowSize->{808, 690},
+WindowMargins->{{Automatic, 135}, {-149, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"aa8a339c-d45e-4060-aad4-c833e97ad29b"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3414, 77, 514, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
+}
+]
+*)
+

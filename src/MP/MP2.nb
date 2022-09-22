@@ -3,132 +3,122 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 13.0' *)
+(* CreatedBy='Mathematica 12.1' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      4945,        141]
-NotebookOptionsPosition[      4568,        126]
-NotebookOutlinePosition[      4964,        142]
-CellTagsIndexPosition[      4921,        139]
+NotebookDataLength[      4529,        130]
+NotebookOptionsPosition[      4153,        115]
+NotebookOutlinePosition[      4577,        132]
+CellTagsIndexPosition[      4534,        129]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{"MP2", "[", 
+  RowBox[{"MP2", "[", 
+   RowBox[{"nBas_", ",", "nO_", ",", "ERI_", ",", "\[Epsilon]_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"Ed", ",", "Ex", ",", "EcMP2"}], "}"}], ",", "\n", "\n", 
+    RowBox[{"(*", 
+     RowBox[{"Second", "-", 
+      RowBox[{"order", " ", "ring", " ", "diagram"}]}], "*)"}], "\n", 
     RowBox[{
-    "O_", ",", "V_", ",", "K_", ",", "EHF_", ",", "\[Epsilon]_", ",", 
-     "ERI_"}], "]"}], ":=", 
-   RowBox[{"Module", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{"E2d", ",", "E2x", ",", "EcMP2"}], "}"}], ",", 
-     "\[IndentingNewLine]", 
-     RowBox[{
-      RowBox[{"E2d", "=", 
-       RowBox[{"2", 
+     RowBox[{"Ed", " ", "=", " ", 
+      RowBox[{
+       UnderoverscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "1"}], "nO"], 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"j", "=", "1"}], "nO"], 
         RowBox[{
          UnderoverscriptBox["\[Sum]", 
-          RowBox[{"i", "=", "1"}], "O"], 
+          RowBox[{"a", "=", 
+           RowBox[{"nO", "+", "1"}]}], "nBas"], 
          RowBox[{
           UnderoverscriptBox["\[Sum]", 
-           RowBox[{"j", "=", "1"}], "O"], 
-          RowBox[{
-           UnderoverscriptBox["\[Sum]", 
-            RowBox[{"a", "=", 
-             RowBox[{"O", "+", "1"}]}], "K"], 
+           RowBox[{"b", "=", 
+            RowBox[{"nO", "+", "1"}]}], "nBas"], 
+          FractionBox[
            RowBox[{
-            UnderoverscriptBox["\[Sum]", 
-             RowBox[{"b", "=", 
-              RowBox[{"O", "+", "1"}]}], "K"], 
-            FractionBox[
-             SuperscriptBox[
-              RowBox[{"ERI", "\[LeftDoubleBracket]", 
-               RowBox[{"i", ",", "j", ",", "a", ",", "b"}], 
-               "\[RightDoubleBracket]"}], "2"], 
-             RowBox[{
-              RowBox[{
-              "\[Epsilon]", "\[LeftDoubleBracket]", "i", 
-               "\[RightDoubleBracket]"}], "+", 
-              RowBox[{
-              "\[Epsilon]", "\[LeftDoubleBracket]", "j", 
-               "\[RightDoubleBracket]"}], "-", 
-              RowBox[{
-              "\[Epsilon]", "\[LeftDoubleBracket]", "a", 
-               "\[RightDoubleBracket]"}], "-", 
-              RowBox[{
-              "\[Epsilon]", "\[LeftDoubleBracket]", "b", 
-               "\[RightDoubleBracket]"}]}]]}]}]}]}]}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"E2x", "=", 
-       RowBox[{"-", 
-        RowBox[{
-         UnderoverscriptBox["\[Sum]", 
-          RowBox[{"i", "=", "1"}], "O"], 
-         RowBox[{
-          UnderoverscriptBox["\[Sum]", 
-           RowBox[{"j", "=", "1"}], "O"], 
-          RowBox[{
-           UnderoverscriptBox["\[Sum]", 
-            RowBox[{"a", "=", 
-             RowBox[{"O", "+", "1"}]}], "K"], 
+            RowBox[{"ERI", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "j", ",", "a", ",", "b"}], 
+             "\[RightDoubleBracket]"}], "*", 
+            RowBox[{"ERI", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "j", ",", "a", ",", "b"}], 
+             "\[RightDoubleBracket]"}]}], 
            RowBox[{
-            UnderoverscriptBox["\[Sum]", 
-             RowBox[{"b", "=", 
-              RowBox[{"O", "+", "1"}]}], "K"], 
-            FractionBox[
-             RowBox[{
-              RowBox[{"ERI", "\[LeftDoubleBracket]", 
-               RowBox[{"i", ",", "j", ",", "a", ",", "b"}], 
-               "\[RightDoubleBracket]"}], 
-              RowBox[{"ERI", "\[LeftDoubleBracket]", 
-               RowBox[{"i", ",", "j", ",", "b", ",", "a"}], 
-               "\[RightDoubleBracket]"}]}], 
-             RowBox[{
-              RowBox[{
-              "\[Epsilon]", "\[LeftDoubleBracket]", "i", 
-               "\[RightDoubleBracket]"}], "+", 
-              RowBox[{
-              "\[Epsilon]", "\[LeftDoubleBracket]", "j", 
-               "\[RightDoubleBracket]"}], "-", 
-              RowBox[{
-              "\[Epsilon]", "\[LeftDoubleBracket]", "a", 
-               "\[RightDoubleBracket]"}], "-", 
-              RowBox[{
-              "\[Epsilon]", "\[LeftDoubleBracket]", "b", 
-               "\[RightDoubleBracket]"}]}]]}]}]}]}]}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"EcMP2", "=", 
-       RowBox[{"E2d", "+", "E2x"}]}], ";", 
-      RowBox[{"Print", "[", 
-       RowBox[{"TableForm", "[", 
-        RowBox[{"{", 
-         RowBox[{"{", 
-          RowBox[{"\"\<\!\(\*SuperscriptBox[\(E\), \(MP2\)]\) = \>\"", ",", 
-           RowBox[{"SetPrecision", "[", 
             RowBox[{
-             RowBox[{"EHF", "+", "EcMP2"}], ",", "15"}], "]"}], ",", 
-           "\"\<\!\(\*SubsuperscriptBox[\(E\), \(c\), \(MP2\)]\) = \>\"", ",", 
-           RowBox[{"SetPrecision", "[", 
-            RowBox[{"EcMP2", ",", "9"}], "]"}]}], "}"}], "}"}], "]"}], "]"}], 
-      ";", "\[IndentingNewLine]", 
-      RowBox[{"Return", "[", 
-       RowBox[{"EHF", "+", "EcMP2"}], "]"}], ";"}]}], "\[IndentingNewLine]", 
-    "]"}]}], ";"}]], "Input",
- InitializationCell->True,
- CellLabel->"In[3]:=",ExpressionUUID->"c9a076eb-bf4f-49a7-a940-e883523bff4f"]
+            "\[Epsilon]", "\[LeftDoubleBracket]", "i", 
+             "\[RightDoubleBracket]"}], "+", 
+            RowBox[{
+            "\[Epsilon]", "\[LeftDoubleBracket]", "j", 
+             "\[RightDoubleBracket]"}], "-", 
+            RowBox[{
+            "\[Epsilon]", "\[LeftDoubleBracket]", "a", 
+             "\[RightDoubleBracket]"}], "-", 
+            RowBox[{
+            "\[Epsilon]", "\[LeftDoubleBracket]", "b", 
+             "\[RightDoubleBracket]"}]}]]}]}]}]}]}], ";", "\n", "\n", 
+     RowBox[{"(*", 
+      RowBox[{"Second", "-", 
+       RowBox[{"order", " ", "exchange", " ", "diagram"}]}], "*)"}], "\n", 
+     RowBox[{"Ex", " ", "=", " ", 
+      RowBox[{
+       UnderoverscriptBox["\[Sum]", 
+        RowBox[{"i", "=", "1"}], "nO"], 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"j", "=", "1"}], "nO"], 
+        RowBox[{
+         UnderoverscriptBox["\[Sum]", 
+          RowBox[{"a", "=", 
+           RowBox[{"nO", "+", "1"}]}], "nBas"], 
+         RowBox[{
+          UnderoverscriptBox["\[Sum]", 
+           RowBox[{"b", "=", 
+            RowBox[{"nO", "+", "1"}]}], "nBas"], 
+          FractionBox[
+           RowBox[{
+            RowBox[{"ERI", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "j", ",", "a", ",", "b"}], 
+             "\[RightDoubleBracket]"}], "*", 
+            RowBox[{"ERI", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "j", ",", "b", ",", "a"}], 
+             "\[RightDoubleBracket]"}]}], 
+           RowBox[{
+            RowBox[{
+            "\[Epsilon]", "\[LeftDoubleBracket]", "i", 
+             "\[RightDoubleBracket]"}], "+", 
+            RowBox[{
+            "\[Epsilon]", "\[LeftDoubleBracket]", "j", 
+             "\[RightDoubleBracket]"}], "-", 
+            RowBox[{
+            "\[Epsilon]", "\[LeftDoubleBracket]", "a", 
+             "\[RightDoubleBracket]"}], "-", 
+            RowBox[{
+            "\[Epsilon]", "\[LeftDoubleBracket]", "b", 
+             "\[RightDoubleBracket]"}]}]]}]}]}]}]}], ";", "\n", "\n", 
+     RowBox[{"EcMP2", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"2", "Ed"}], "-", "Ex"}]}], ";", "\n", "\n", 
+     RowBox[{"Return", "[", "EcMP2", "]"}]}]}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.87284343162961*^9, 
+  3.872843488592852*^9}},ExpressionUUID->"673e0324-64ef-4e55-ab0d-\
+e6bd7a549ecb"]
 },
-WindowSize->{808, 747},
-WindowMargins->{{12, Automatic}, {Automatic, 24}},
-FrontEndVersion->"13.0 for Mac OS X x86 (64-bit) (December 2, 2021)",
+WindowSize->{1004, 667},
+WindowMargins->{{12, Automatic}, {Automatic, 46}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
-ExpressionUUID->"75c27a22-dfcc-4c29-9ceb-8433c35e2028"
+ExpressionUUID->"655b202e-2bbc-4cd7-b5f6-71d49bbdb30b"
 ]
 (* End of Notebook Content *)
 
@@ -141,9 +131,10 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 4006, 104, 303, "Input",ExpressionUUID->"c9a076eb-bf4f-49a7-a940-e883523bff4f",
- InitializationCell->True]
+Cell[558, 20, 3591, 93, 483, "Code",ExpressionUUID->"673e0324-64ef-4e55-ab0d-e6bd7a549ecb"]
 }
 ]
 *)
+
+(* End of internal cache information *)
 

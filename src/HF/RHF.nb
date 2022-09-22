@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     35732,        665]
-NotebookOptionsPosition[     35128,        646]
-NotebookOutlinePosition[     35551,        663]
-CellTagsIndexPosition[     35508,        660]
+NotebookDataLength[     35833,        667]
+NotebookOptionsPosition[     35229,        648]
+NotebookOutlinePosition[     35652,        665]
+CellTagsIndexPosition[     35609,        662]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,11 +33,11 @@ Cell[BoxData[
     RowBox[{
     "nBas_", ",", "Nelc_", ",", "Enuc_", ",", "S_", ",", "T_", ",", "V_", ",",
       "U_", ",", "X_", ",", "DIISex_", ",", "maxSCF_", ",", "thresh_", ",", 
-     RowBox[{"verbose_", ":", "0"}]}], 
+     RowBox[{"verbose_", ":", "1"}]}], 
     RowBox[{"(*", 
      RowBox[{"Default", "=", 
-      RowBox[{"0", " ", 
-       RowBox[{"(", "False", ")"}]}]}], "*)"}], "]"}], ":=", 
+      RowBox[{"1", " ", 
+       RowBox[{"(", "True", ")"}]}]}], "*)"}], "]"}], ":=", 
    RowBox[{"Module", "[", "\n", 
     RowBox[{
      RowBox[{"{", 
@@ -638,7 +638,9 @@ Cell[BoxData[
    3.8722349717376223`*^9, 3.872235037591769*^9}, {3.872235116255569*^9, 
    3.872235122412608*^9}, {3.872235364177882*^9, 3.872235448639485*^9}, {
    3.87223575315562*^9, 3.872235778236537*^9}, {3.872236011683052*^9, 
-   3.872236035448352*^9}},ExpressionUUID->"7baad11d-374a-4683-890b-\
+   3.872236035448352*^9}, {3.872731055262548*^9, 3.8727310555138493`*^9}, {
+   3.872731592115067*^9, 
+   3.872731601259695*^9}},ExpressionUUID->"7baad11d-374a-4683-890b-\
 d85c2ff96c2b"]
 }, Open  ]],
 
@@ -664,9 +666,9 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 203, 4, 67, "Subsubsection",ExpressionUUID->"6bb91d66-5bf2-45dd-86dd-d2dd89a20c17"],
-Cell[786, 28, 34251, 613, 2868, "Code",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
+Cell[786, 28, 34352, 615, 2868, "Code",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
 }, Open  ]],
-Cell[35052, 644, 72, 0, 146, "Title",ExpressionUUID->"c2a79656-86b7-49cb-abfa-04aee6242f40"]
+Cell[35153, 646, 72, 0, 146, "Title",ExpressionUUID->"c2a79656-86b7-49cb-abfa-04aee6242f40"]
 }
 ]
 *)

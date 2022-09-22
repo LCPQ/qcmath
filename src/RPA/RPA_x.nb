@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      4366,        115]
-NotebookOptionsPosition[      3990,        100]
-NotebookOutlinePosition[      4414,        117]
-CellTagsIndexPosition[      4371,        114]
+NotebookDataLength[      6431,        159]
+NotebookOptionsPosition[      6053,        144]
+NotebookOutlinePosition[      6477,        161]
+CellTagsIndexPosition[      6434,        158]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -26,15 +26,20 @@ Cell[BoxData[
     "nBas_", ",", "nO_", ",", "nV_", ",", "\[Epsilon]_", ",", "ERI_", ",", 
      "TDA_", ",", 
      RowBox[{"(*", 
-      RowBox[{"BSE_", ",", "W_", ","}], "*)"}], "singlet_", ",", "triplet_"}],
-     "]"}], ":=", 
+      RowBox[{"BSE_", ",", "W_", ","}], "*)"}], "singlet_", ",", "triplet_", 
+     ",", 
+     RowBox[{"verbose_", ":", "1"}]}], 
+    RowBox[{"(*", 
+     RowBox[{"Default", "=", 
+      RowBox[{"1", " ", 
+       RowBox[{"(", "True", ")"}]}]}], "*)"}], "]"}], ":=", 
    RowBox[{"Module", "[", "\n", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
       "ispin", ",", "linearquantities", ",", "Ecsinglet", ",", "Ectriplet", 
-       ",", "dRPA", ",", "RPAxquantities", ",", "EcRPAx"}], "}"}], ",", "\n", 
-     "\n", 
+       ",", "dRPA", ",", "RPAxquantities", ",", "EcRPAx", ",", "\n", 
+       "\[CapitalOmega]", ",", "TabLR"}], "}"}], ",", "\n", "\n", 
      RowBox[{
       RowBox[{
       "NotebookEvaluate", "[", 
@@ -55,11 +60,30 @@ Cell[BoxData[
             RowBox[{"(*", 
              RowBox[{"BSE", ",", "W", ","}], "*)"}], "ispin", ",", "dRPA"}], 
            "]"}]}], ";", "\n", "\n", 
+         RowBox[{"\[CapitalOmega]", "=", 
+          RowBox[{"linearquantities", "[", "\"\<\[CapitalOmega]\>\"", "]"}]}],
+          ";", "\n", 
          RowBox[{"Ecsinglet", "=", 
           RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";", "\n", 
          RowBox[{"Ecsinglet", "=", 
-          RowBox[{"0.5", "Ecsinglet"}]}], ";"}]}], "\n", "]"}], ";", "\n", 
-      "\n", 
+          RowBox[{"0.5", "Ecsinglet"}]}], ";", "\n", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"verbose", "\[Equal]", "1"}], ",", "\n", 
+           RowBox[{
+            RowBox[{"NotebookEvaluate", "[", 
+             RowBox[{"path", "<>", "\"\</src/LR/print_excitation.nb\>\""}], 
+             "]"}], ";", "\n", 
+            RowBox[{"Print", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<RPAx outputs:\>\"", ",", "Bold", ",", "Red"}], 
+              "]"}], "]"}], ";", "\n", 
+            RowBox[{"TabLR", "=", 
+             RowBox[{"PrintExcitation", "[", 
+              RowBox[{"\"\<RPAx\>\"", ",", "ispin", ",", "\[CapitalOmega]"}], 
+              "]"}]}], ";", "\n", 
+            RowBox[{"Print", "[", "TabLR", "]"}], ";"}]}], "\n", "]"}], 
+         ";"}]}], "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"If", "[", 
        RowBox[{"triplet", ",", 
         RowBox[{
@@ -72,11 +96,30 @@ Cell[BoxData[
             RowBox[{"(*", 
              RowBox[{"BSE", ",", "W", ","}], "*)"}], "ispin", ",", "dRPA"}], 
            "]"}]}], ";", "\n", "\n", 
+         RowBox[{"\[CapitalOmega]", "=", 
+          RowBox[{"linearquantities", "[", "\"\<\[CapitalOmega]\>\"", "]"}]}],
+          ";", "\n", 
          RowBox[{"Ectriplet", "=", 
           RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";", "\n", 
          RowBox[{"Ectriplet", "=", 
-          RowBox[{"1.5", "Ectriplet"}]}], ";"}]}], "\n", "]"}], ";", "\n", 
-      "\n", 
+          RowBox[{"1.5", "Ectriplet"}]}], ";", "\n", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"verbose", "\[Equal]", "1"}], ",", "\n", 
+           RowBox[{
+            RowBox[{"NotebookEvaluate", "[", 
+             RowBox[{"path", "<>", "\"\</src/LR/print_excitation.nb\>\""}], 
+             "]"}], ";", "\n", 
+            RowBox[{"Print", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<RPAx outputs:\>\"", ",", "Bold", ",", "Red"}], 
+              "]"}], "]"}], ";", "\n", 
+            RowBox[{"TabLR", "=", 
+             RowBox[{"PrintExcitation", "[", 
+              RowBox[{"\"\<RPAx\>\"", ",", "ispin", ",", "\[CapitalOmega]"}], 
+              "]"}]}], ";", "\n", 
+            RowBox[{"Print", "[", "TabLR", "]"}], ";"}]}], "\n", "]"}], 
+         ";"}]}], "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"EcRPAx", "=", 
        RowBox[{"Ecsinglet", "+", "Ectriplet"}]}], ";", "\n", 
       RowBox[{"RPAxquantities", "=", 
@@ -94,8 +137,9 @@ Cell[BoxData[
    3.864292025922748*^9, 3.864292029276567*^9}, {3.8715305634168367`*^9, 
    3.87153057253538*^9}, {3.8715307395914717`*^9, 3.8715307406078367`*^9}, {
    3.871531107857209*^9, 3.871531120704143*^9}, {3.871531179453753*^9, 
-   3.871531182887952*^9}, {3.871531786289707*^9, 
-   3.871531810181065*^9}},ExpressionUUID->"1133c4df-ae52-4067-a778-\
+   3.871531182887952*^9}, {3.871531786289707*^9, 3.871531810181065*^9}, {
+   3.87273496919328*^9, 
+   3.872735082992372*^9}},ExpressionUUID->"1133c4df-ae52-4067-a778-\
 7a7ede62bd54"]
 },
 WindowSize->{1177, 691},
@@ -116,7 +160,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 3428, 78, 762, "Code",ExpressionUUID->"1133c4df-ae52-4067-a778-7a7ede62bd54"]
+Cell[558, 20, 5491, 122, 1170, "Code",ExpressionUUID->"1133c4df-ae52-4067-a778-7a7ede62bd54"]
 }
 ]
 *)

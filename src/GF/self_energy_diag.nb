@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11395,        277]
-NotebookOptionsPosition[     11047,        263]
-NotebookOutlinePosition[     11441,        279]
-CellTagsIndexPosition[     11398,        276]
+NotebookDataLength[     11537,        282]
+NotebookOptionsPosition[     11159,        267]
+NotebookOutlinePosition[     11583,        284]
+CellTagsIndexPosition[     11540,        281]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,42 +23,43 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"SelfEnergyGF2diag", "[", 
     RowBox[{
-    "nbasis_", ",", "nocc_", ",", "nvac_", ",", "nS_", ",", "\[Epsilon]HF_", 
-     ",", "\[Epsilon]GF2_", ",", "OMIntegrals_", ",", "\[Eta]_"}], "]"}], ":=",
-    "\n", 
+    "nBas_", ",", "nO_", ",", "nV_", ",", "\[Epsilon]HF_", ",", "ERI_", ",", 
+     "\[Eta]_"}], "]"}], ":=", "\n", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"\[CapitalSigma]c", ",", "Z", ",", "SelfEnergyquantities"}], 
-      "}"}], ",", "\n", 
+      RowBox[{"\[CapitalSigma]c", ",", "Z", ",", "quantities"}], "}"}], ",", 
+     "\n", 
      RowBox[{
       RowBox[{"\[CapitalSigma]c", "=", "0"}], ";", "\n", 
-      RowBox[{"Z", "=", "0"}], ";", "\n", "\n", "\n", 
+      RowBox[{"Z", "=", "0"}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Self", " ", "energy"}], "*)"}], "\n", 
       RowBox[{"\[CapitalSigma]c", "=", 
        RowBox[{"Table", "[", 
         RowBox[{
          RowBox[{
           UnderoverscriptBox["\[Sum]", 
-           RowBox[{"i", "=", "1"}], "nocc"], 
+           RowBox[{"i", "=", "1"}], "nO"], 
           RowBox[{
            UnderoverscriptBox["\[Sum]", 
-            RowBox[{"j", "=", "1"}], "nocc"], 
+            RowBox[{"j", "=", "1"}], "nO"], 
            RowBox[{
             UnderoverscriptBox["\[Sum]", 
              RowBox[{"a", "=", 
-              RowBox[{"nocc", "+", "1"}]}], "nbasis"], 
+              RowBox[{"nO", "+", "1"}]}], "nBas"], 
             FractionBox[
              RowBox[{
               RowBox[{"(", 
                RowBox[{
                 RowBox[{"2", "*", 
-                 RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                 RowBox[{"ERI", "\[LeftDoubleBracket]", 
                   RowBox[{"p", ",", "a", ",", "i", ",", "j"}], 
                   "\[RightDoubleBracket]"}]}], "-", 
-                RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                RowBox[{"ERI", "\[LeftDoubleBracket]", 
                  RowBox[{"p", ",", "a", ",", "j", ",", "i"}], 
                  "\[RightDoubleBracket]"}]}], ")"}], 
-              RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+              RowBox[{"ERI", "\[LeftDoubleBracket]", 
                RowBox[{"p", ",", "a", ",", "i", ",", "j"}], 
                "\[RightDoubleBracket]"}]}], 
              RowBox[{"\[Omega]", "+", 
@@ -73,34 +74,34 @@ Cell[BoxData[
                "\[RightDoubleBracket]"}], "-", 
               RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}], ",", 
          RowBox[{"{", 
-          RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", 
+          RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}]}], ";", "\n", 
       RowBox[{"\[CapitalSigma]c", "=", 
        RowBox[{"\[CapitalSigma]c", "+", 
         RowBox[{"Table", "[", 
          RowBox[{
           RowBox[{
            UnderoverscriptBox["\[Sum]", 
-            RowBox[{"i", "=", "1"}], "nocc"], 
+            RowBox[{"i", "=", "1"}], "nO"], 
            RowBox[{
             UnderoverscriptBox["\[Sum]", 
              RowBox[{"a", "=", 
-              RowBox[{"nocc", "+", "1"}]}], "nbasis"], 
+              RowBox[{"nO", "+", "1"}]}], "nBas"], 
             RowBox[{
              UnderoverscriptBox["\[Sum]", 
               RowBox[{"b", "=", 
-               RowBox[{"nocc", "+", "1"}]}], "nbasis"], 
+               RowBox[{"nO", "+", "1"}]}], "nBas"], 
              FractionBox[
               RowBox[{
                RowBox[{"(", 
                 RowBox[{
                  RowBox[{"2", "*", 
-                  RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                  RowBox[{"ERI", "\[LeftDoubleBracket]", 
                    RowBox[{"p", ",", "i", ",", "a", ",", "b"}], 
                    "\[RightDoubleBracket]"}]}], "-", 
-                 RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                 RowBox[{"ERI", "\[LeftDoubleBracket]", 
                   RowBox[{"p", ",", "i", ",", "b", ",", "a"}], 
                   "\[RightDoubleBracket]"}]}], ")"}], 
-               RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+               RowBox[{"ERI", "\[LeftDoubleBracket]", 
                 RowBox[{"p", ",", "i", ",", "a", ",", "b"}], 
                 "\[RightDoubleBracket]"}]}], 
               RowBox[{"\[Omega]", "+", 
@@ -115,33 +116,34 @@ Cell[BoxData[
                 "\[RightDoubleBracket]"}], "+", 
                RowBox[{"\[ImaginaryI]", "*", "\[Eta]"}]}]]}]}]}], ",", 
           RowBox[{"{", 
-           RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}]}], ";", "\n", "\n", 
-      
+           RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}]}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Renormalization", " ", "factor"}], "*)"}], "\n", 
       RowBox[{"Z", "=", 
        RowBox[{"Table", "[", 
         RowBox[{
          RowBox[{
           UnderoverscriptBox["\[Sum]", 
-           RowBox[{"i", "=", "1"}], "nocc"], 
+           RowBox[{"i", "=", "1"}], "nO"], 
           RowBox[{
            UnderoverscriptBox["\[Sum]", 
-            RowBox[{"j", "=", "1"}], "nocc"], 
+            RowBox[{"j", "=", "1"}], "nO"], 
            RowBox[{
             UnderoverscriptBox["\[Sum]", 
              RowBox[{"a", "=", 
-              RowBox[{"nocc", "+", "1"}]}], "nbasis"], 
+              RowBox[{"nO", "+", "1"}]}], "nBas"], 
             RowBox[{
              RowBox[{"-", 
               RowBox[{"(", 
                RowBox[{
                 RowBox[{"2", "*", 
-                 RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                 RowBox[{"ERI", "\[LeftDoubleBracket]", 
                   RowBox[{"p", ",", "a", ",", "i", ",", "j"}], 
                   "\[RightDoubleBracket]"}]}], "-", 
-                RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                RowBox[{"ERI", "\[LeftDoubleBracket]", 
                  RowBox[{"p", ",", "a", ",", "j", ",", "i"}], 
                  "\[RightDoubleBracket]"}]}], ")"}]}], 
-             RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+             RowBox[{"ERI", "\[LeftDoubleBracket]", 
               RowBox[{"p", ",", "a", ",", "i", ",", "j"}], 
               "\[RightDoubleBracket]"}], 
              FractionBox[
@@ -177,34 +179,34 @@ Cell[BoxData[
                  SuperscriptBox["\[Eta]", "2"]}], ")"}], "2"]]}]}]}]}], "\n", 
          ",", 
          RowBox[{"{", 
-          RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}], ";", "\n", 
+          RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}]}], ";", "\n", 
       RowBox[{"Z", "=", 
        RowBox[{"Z", "+", 
         RowBox[{"Table", "[", 
          RowBox[{
           RowBox[{
            UnderoverscriptBox["\[Sum]", 
-            RowBox[{"i", "=", "1"}], "nocc"], 
+            RowBox[{"i", "=", "1"}], "nO"], 
            RowBox[{
             UnderoverscriptBox["\[Sum]", 
              RowBox[{"a", "=", 
-              RowBox[{"nocc", "+", "1"}]}], "nbasis"], 
+              RowBox[{"nO", "+", "1"}]}], "nBas"], 
             RowBox[{
              UnderoverscriptBox["\[Sum]", 
               RowBox[{"b", "=", 
-               RowBox[{"nocc", "+", "1"}]}], "nbasis"], 
+               RowBox[{"nO", "+", "1"}]}], "nBas"], 
              RowBox[{
               RowBox[{"-", 
                RowBox[{"(", 
                 RowBox[{
                  RowBox[{"2", "*", 
-                  RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                  RowBox[{"ERI", "\[LeftDoubleBracket]", 
                    RowBox[{"p", ",", "i", ",", "a", ",", "b"}], 
                    "\[RightDoubleBracket]"}]}], "-", 
-                 RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+                 RowBox[{"ERI", "\[LeftDoubleBracket]", 
                   RowBox[{"p", ",", "i", ",", "b", ",", "a"}], 
                   "\[RightDoubleBracket]"}]}], ")"}]}], 
-              RowBox[{"OMIntegrals", "\[LeftDoubleBracket]", 
+              RowBox[{"ERI", "\[LeftDoubleBracket]", 
                RowBox[{"p", ",", "i", ",", "a", ",", "b"}], 
                "\[RightDoubleBracket]"}], 
               FractionBox[
@@ -240,16 +242,15 @@ Cell[BoxData[
                   SuperscriptBox["\[Eta]", "2"]}], ")"}], "2"]]}]}]}]}], "\n",
            ",", 
           RowBox[{"{", 
-           RowBox[{"p", ",", "nbasis"}], "}"}]}], "]"}]}]}], ";", "\n", "\n", 
-      
-      RowBox[{"SelfEnergyquantities", "=", 
+           RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}]}]}], ";", "\n", "\n", 
+      RowBox[{"quantities", "=", 
        RowBox[{"Association", "[", 
         RowBox[{
          RowBox[{"\"\<\[CapitalSigma]c\>\"", "\[Rule]", "\[CapitalSigma]c"}], 
          ",", 
          RowBox[{"\"\<Z\>\"", "\[Rule]", "Z"}]}], "]"}]}], ";", "\n", "\n", 
-      RowBox[{"Return", "[", "SelfEnergyquantities", "]"}]}]}], "]"}]}], 
-  ";"}]], "Code",
+      RowBox[{"Return", "[", "quantities", "]"}]}]}], "]"}]}], ";"}]], "Code",\
+
  CellChangeTimes->{{3.842326608192251*^9, 3.842326676396847*^9}, {
   3.842326721420011*^9, 3.84232678440704*^9}, {3.8423268252143717`*^9, 
   3.8423268698318157`*^9}, {3.8423282672784033`*^9, 3.842328313345055*^9}, {
@@ -258,11 +259,15 @@ Cell[BoxData[
   3.847855324869315*^9, 3.847855332840742*^9}, {3.84785539071138*^9, 
   3.8478555015616302`*^9}, {3.848718575975025*^9, 3.848718607885041*^9}, {
   3.851058561008601*^9, 3.8510585951747637`*^9}, {3.851058665141535*^9, 
-  3.8510586841939383`*^9}, {3.8510639026688766`*^9, 3.851063925061548*^9}},
- CellLabel->"In[40]:=",ExpressionUUID->"7639ce63-d391-425d-a9e3-a0dd697ca4c1"]
+  3.8510586841939383`*^9}, {3.8510639026688766`*^9, 3.851063925061548*^9}, {
+  3.872844982525178*^9, 3.872845123225198*^9}, {3.872845153247395*^9, 
+  3.8728451582360163`*^9}, {3.872845263350027*^9, 3.872845272220433*^9}, {
+  3.872845905174025*^9, 3.872845907007707*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"7639ce63-d391-425d-a9e3-a0dd697ca4c1"]
 },
-WindowSize->{808, 685},
-WindowMargins->{{188, Automatic}, {Automatic, 44}},
+WindowSize->{1337, 675},
+WindowMargins->{{Automatic, 47}, {Automatic, 46}},
+Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"03e54515-30bd-4fb3-944e-f1ade9eec51f"
@@ -278,10 +283,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 10485, 241, 520, "Code",ExpressionUUID->"7639ce63-d391-425d-a9e3-a0dd697ca4c1"]
+Cell[558, 20, 10597, 245, 792, "Code",ExpressionUUID->"7639ce63-d391-425d-a9e3-a0dd697ca4c1"]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
