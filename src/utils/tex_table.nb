@@ -1,0 +1,360 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13168,        352]
+NotebookOptionsPosition[     12563,        333]
+NotebookOutlinePosition[     12987,        350]
+CellTagsIndexPosition[     12944,        347]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"BeginPackage", "[", 
+    RowBox[{"\"\<TeXTableForm`\>\"", ",", "\"\<Global`\>\""}], "]"}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"TeXTableForm", ".", 
+    RowBox[{"m", "--"}]}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Mathematica", " ", "Version", " ", "2.0", ".1"}], "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Version", " ", "1.0", " ", "from", " ", "November", " ", "4", "th"}], 
+    ",", "1992"}], "*)"}], "\[IndentingNewLine]", "\n", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"author", ":", 
+     RowBox[{"Matthias", " ", "Schunter"}]}], ",", 
+    RowBox[{"Teichstr", ".", "1"}], ",", 
+    RowBox[{"D", "-", 
+     RowBox[{"29", " ", "Oldenburg"}]}]}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Bugs", " ", "and", " ", 
+    RowBox[{"suggestions", ":", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"schunter", "@", "informatik"}], ".", "uni"}], "-", 
+      RowBox[{"hildesheim", ".", "de"}]}]}]}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"The", " ", "Package", " ", "is", " ", "public"}], "-", 
+    RowBox[{"domain", "."}]}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "The", " ", "distribution", " ", "of", " ", "changed", " ", "versions", 
+    " ", "is", " ", "not", " ", "allowed", " ", "without", " ", 
+    "permission"}], "*)"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"TeXTableForm", "::", "usage"}], "=", 
+    "\"\<TeXTableForm[list,n] generates a body of a LaTeX-table\nwith n \
+columns. list may be nested up to level 2.\n\
+TeXTableForm[list,n,\\\"filename\\\"] writes the output to the according file\
+\>\""}], ";"}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"TableBegin", "::", "usage"}], "=", 
+    "\"\<TableBegin->\\\"string\\\" sets the string in the\ntable definition. \
+columns may be used to insert the number of big columns;\nwidth may be used \
+to insert the width of each column. Default is \nTableBegin -> \
+\\\"\\\\begin{tabular}{|*{columns}{*{width}{|l}|}|}\\\\n\\\" \>\""}], ";"}], 
+  "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"TableEnd", "::", "usage"}], "=", 
+    "\"\<TableEnd -> \\\"string\\\" sets the end of tabular string.\nDefault \
+is TableEnd -> \\\"\\\\end{tabular}\\\\n\\\"\>\""}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"`contents", "=", 
+    RowBox[{"{", "TeXTableForm", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Attributes", "[", "#", "]"}], "=", 
+       RowBox[{"{", "}"}]}], ")"}], "&"}], "/@", "`contents"}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Options", "[", "TeXTableForm", "]"}], "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+      "TableBegin", "\[Rule]", 
+       "\"\<\\\\begin{tabular}{|*{columns}{*{width}{|l}|}|}\\n\>\""}], ",", 
+      RowBox[{"TableEnd", "\[Rule]", "\"\<\\\\end{tabular}\\n\>\""}]}], 
+     "}"}]}], ";"}], "\n", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"Abbreviation", ":"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TTF", "=", "TeXTableForm"}], ";"}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Begin", "[", "\"\<`Private`\>\"", "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"TeXTableForm", "[", 
+     RowBox[{"inlist_List", ",", 
+      RowBox[{"columns_Integer", ":", "1"}], ",", 
+      RowBox[{"file_String", ":", "\"\<stdout\>\""}], ",", "opts___"}], "]"}],
+     ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"width", ",", "length", ",", 
+        RowBox[{"outstream", "=", "\"\<\>\""}], ",", "stringpad", ",", 
+        "elems", ",", "i", ",", "j"}], "}"}], ",", 
+      RowBox[{
+       RowBox[{"elems", "=", "inlist"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"width", "=", 
+        RowBox[{"Max", "[", 
+         RowBox[{
+          RowBox[{"Length", "/@", "elems"}], ",", "1"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"length", "=", 
+        RowBox[{"Ceiling", "[", 
+         RowBox[{
+          RowBox[{"Length", "[", "elems", "]"}], "/", "columns"}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"stringpad", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"\"\< \>\"", ",", 
+          RowBox[{"{", "width", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       
+       RowBox[{"elems", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Take", "[", 
+           RowBox[{
+            RowBox[{"Join", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{"(*", 
+                  RowBox[{"\"\<$\>\"", "<>"}], "*)"}], "#", 
+                 RowBox[{"(*", 
+                  RowBox[{"<>", "\"\<$\>\""}], "*)"}], ")"}], "&"}], "/@", 
+               RowBox[{"ToString", "/@", 
+                RowBox[{"TeXForm", "/@", 
+                 RowBox[{"Flatten", "[", 
+                  RowBox[{"{", "#", "}"}], "]"}]}]}]}], ",", "stringpad"}], 
+             "]"}], ",", "width"}], "]"}], "&"}], "/@", "elems"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"elems", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"elems", ",", 
+          RowBox[{"Table", "[", 
+           RowBox[{"stringpad", ",", 
+            RowBox[{"{", "length", "}"}]}], "]"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"outstream", "=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"file", "\[Equal]", "\"\<stdout\>\""}], ",", 
+          "\"\<stdout\>\"", ",", 
+          RowBox[{"OpenWrite", "[", "file", "]"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"WriteString", "[", 
+        RowBox[{"outstream", ",", 
+         RowBox[{"StringReplace", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"TableBegin", "/.", 
+             RowBox[{"{", "opts", "}"}]}], "/.", 
+            RowBox[{"Options", "[", "TeXTableForm", "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"\"\<columns\>\"", "\[Rule]", 
+              RowBox[{"ToString", "[", "columns", "]"}]}], ",", 
+             RowBox[{"\"\<width\>\"", "\[Rule]", 
+              RowBox[{"ToString", "[", "width", "]"}]}]}], "}"}]}], "]"}]}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "\[LessEqual]", "length"}], ",", 
+         RowBox[{"i", "++"}], ",", 
+         RowBox[{
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"j", "=", "0"}], ",", 
+            RowBox[{"j", "<", "columns"}], ",", 
+            RowBox[{"j", "++"}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"WriteString", "[", 
+                RowBox[{"outstream", ",", "#", ",", "\"\< & \>\""}], "]"}], 
+               "&"}], "/@", 
+              RowBox[{"Drop", "[", 
+               RowBox[{
+                RowBox[{"elems", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"i", "+", 
+                   RowBox[{"length", " ", "j"}]}], "]"}], "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"-", "1"}], "}"}]}], "]"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"j", "\[Equal]", 
+                RowBox[{"columns", "-", "1"}]}], ",", 
+               RowBox[{"WriteString", "[", 
+                RowBox[{"outstream", ",", 
+                 RowBox[{
+                  RowBox[{"elems", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"i", "+", 
+                    RowBox[{"length", " ", "j"}]}], "]"}], "]"}], "[", 
+                  RowBox[{"[", 
+                   RowBox[{"-", "1"}], "]"}], "]"}]}], "]"}], ",", 
+               RowBox[{"WriteString", "[", 
+                RowBox[{"outstream", ",", 
+                 RowBox[{
+                  RowBox[{"elems", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"i", "+", 
+                    RowBox[{"length", " ", "j"}]}], "]"}], "]"}], "[", 
+                  RowBox[{"[", 
+                   RowBox[{"-", "1"}], "]"}], "]"}], ",", "\"\< & \>\""}], 
+                "]"}]}], "]"}]}]}], "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"WriteString", "[", 
+           RowBox[{"outstream", ",", "\"\< \\\\\\\\\\n\>\""}], "]"}], ";"}]}],
+         "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"WriteString", "[", 
+        RowBox[{"outstream", ",", 
+         RowBox[{"StringReplace", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"TableEnd", "/.", 
+             RowBox[{"{", "opts", "}"}]}], "/.", 
+            RowBox[{"Options", "[", "TeXTableForm", "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"\"\<columns\>\"", "\[Rule]", 
+              RowBox[{"ToString", "[", "columns", "]"}]}], ",", 
+             RowBox[{"\"\<width\>\"", "\[Rule]", 
+              RowBox[{"ToString", "[", "width", "]"}]}]}], "}"}]}], "]"}]}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"file", "\[NotEqual]", "\"\<stdout\>\""}], ",", 
+         RowBox[{"Close", "[", "outstream", "]"}], ","}], "]"}]}]}], "]"}]}], 
+   ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"End", "[", "]"}], " ", 
+   RowBox[{"(*", "Private", "*)"}], ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Attributes", "[", "#", "]"}], "=", 
+      RowBox[{"{", 
+       RowBox[{"Protected", ",", "ReadProtected"}], "}"}]}], ")"}], "&"}], "/@",
+    "`contents"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"EndPackage", "[", "]"}], ";"}], "\n", 
+ RowBox[{"Null", ";"}]}], "Code",
+ CellChangeTimes->{
+  3.873360353043531*^9, {3.873360455461018*^9, 3.873360486846841*^9}, {
+   3.873360562772312*^9, 3.8733605633331203`*^9}, {3.873360649325974*^9, 
+   3.873360687098113*^9}, {3.87336073113244*^9, 3.873360734817103*^9}, {
+   3.873360804390826*^9, 3.8733608162266273`*^9}, {3.8733608545710993`*^9, 
+   3.8733608588905478`*^9}},
+ CellLabel->
+  "In[207]:=",ExpressionUUID->"a2ce8f98-3871-4b91-b06e-8b9f8283b9c6"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"t", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Sqrt", "[", "i", "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "22"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"TeXTableForm", "[", 
+   RowBox[{"t", ",", "3", ",", "\"\<tab2.tab\>\""}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Import", "[", "\"\<tab2.tab\>\"", "]"}]}], "Input",
+ CellLabel->
+  "In[221]:=",ExpressionUUID->"b22ff25b-7ac9-4e64-853a-928edc9f3159"],
+
+Cell[BoxData["\<\"\\\\begin{tabular}{|*{3}{*{2}{|l}|}|}\\n1 & 1 & 9 & 3 & 17 \
+& \\\\sqrt{17} \\\\\\\\\\n2 & \\\\sqrt{2} & 10 & \\\\sqrt{10} & 18 & 3 \
+\\\\sqrt{2} \\\\\\\\\\n3 & \\\\sqrt{3} & 11 & \\\\sqrt{11} & 19 & \
+\\\\sqrt{19} \\\\\\\\\\n4 & 2 & 12 & 2 \\\\sqrt{3} & 20 & 2 \\\\sqrt{5} \
+\\\\\\\\\\n5 & \\\\sqrt{5} & 13 & \\\\sqrt{13} & 21 & \\\\sqrt{21} \
+\\\\\\\\\\n6 & \\\\sqrt{6} & 14 & \\\\sqrt{14} & 22 & \\\\sqrt{22} \
+\\\\\\\\\\n7 & \\\\sqrt{7} & 15 & \\\\sqrt{15} &   &   \\\\\\\\\\n8 & 2 \
+\\\\sqrt{2} & 16 & 4 &   &   \\\\\\\\\\n\\\\end{tabular}\"\>"], "Output",
+ CellChangeTimes->{3.87336082170654*^9, 3.873360868587677*^9},
+ CellLabel->
+  "Out[223]=",ExpressionUUID->"dd0d62cc-fe76-4023-bddc-d2da4d2f0aa2"]
+}, Open  ]]
+},
+WindowSize->{1409, 739},
+WindowMargins->{{Automatic, -72}, {1, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d67dcfa1-6a9d-4e8a-b6d6-22349b2b22c7"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 10659, 277, 1732, "Code",ExpressionUUID->"a2ce8f98-3871-4b91-b06e-8b9f8283b9c6"],
+Cell[CellGroupData[{
+Cell[11242, 301, 577, 17, 109, "Input",ExpressionUUID->"b22ff25b-7ac9-4e64-853a-928edc9f3159"],
+Cell[11822, 320, 725, 10, 349, "Output",ExpressionUUID->"dd0d62cc-fe76-4023-bddc-d2da4d2f0aa2"]
+}, Open  ]]
+}
+]
+*)
+

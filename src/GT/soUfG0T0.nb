@@ -1,0 +1,382 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14341,        374]
+NotebookOptionsPosition[     13963,        359]
+NotebookOutlinePosition[     14386,        376]
+CellTagsIndexPosition[     14343,        373]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"soUfG0T0", "[", 
+    RowBox[{
+    "nBas_", ",", "nO_", ",", "nV_", ",", "\[Epsilon]HF_", ",", "ERI_"}], 
+    "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "so\[Epsilon]HF", ",", "soERI", ",", "nBas2", ",", "nO2", ",", "nV2", 
+       ",", "nOO", ",", "nVV", ",", "\n", "n2h1p", ",", "n2p1h", ",", "V2h1p",
+        ",", "V2p1h", ",", "C2h1p", ",", "C2p1h", ",", "\n", "f", ",", "H", 
+       ",", "eGT", ",", "cGT", ",", "IP", ",", "Z", ",", "nH", ",", 
+       "quantities"}], "}"}], ",", "\n", "\n", 
+     RowBox[{"(*", 
+      RowBox[{"Spatial", " ", "to", " ", "spin", " ", "orbitals"}], "*)"}], 
+     "\n", 
+     RowBox[{
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{
+       "path", "<>", "\"\</src/utils/spatial_to_spin_MO_energy.nb\>\""}], 
+       "]"}], ";", "\n", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"path", "<>", "\"\</src/utils/spatial_to_spin_ERI.nb\>\""}], 
+       "]"}], ";", "\n", "\n", 
+      RowBox[{"so\[Epsilon]HF", "=", 
+       RowBox[{"SpatialToSpinMOEnergy", "[", 
+        RowBox[{"nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]HF"}], "]"}]}], 
+      ";", "\n", 
+      RowBox[{"soERI", "=", 
+       RowBox[{"SpatialToSpinERI", "[", 
+        RowBox[{"nBas", ",", "nO", ",", "nV", ",", "ERI"}], "]"}]}], ";", 
+      "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+       "Define", " ", "the", " ", "spaces", " ", "for", " ", "spin", " ", 
+        "orbitals"}], "*)"}], "\n", 
+      RowBox[{"nBas2", "=", 
+       RowBox[{"2", "nBas"}]}], ";", "\n", 
+      RowBox[{"nO2", "=", 
+       RowBox[{"2", "nO"}]}], ";", "\n", 
+      RowBox[{"nV2", "=", 
+       RowBox[{"2", "nV"}]}], ";", "\n", "\n", 
+      RowBox[{"nOO", " ", "=", " ", 
+       RowBox[{"nO2", "*", "nO2"}]}], ";", "\n", 
+      RowBox[{"nVV", " ", "=", " ", 
+       RowBox[{"nV2", "*", "nV2"}]}], ";", "\n", "\n", 
+      RowBox[{"n2h1p", " ", "=", " ", 
+       RowBox[{"nOO", "*", "nV2"}]}], ";", "\n", 
+      RowBox[{"n2p1h", " ", "=", " ", 
+       RowBox[{"nVV", "*", "nO2"}]}], ";", "\n", "\n", 
+      RowBox[{"nH", "=", 
+       RowBox[{"1", "+", "n2h1p", "+", "n2p1h"}]}], ";", " ", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Anti", "-", 
+        RowBox[{"symmetrized", " ", "ERIs"}]}], "*)"}], "\n", 
+      RowBox[{"soERI", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"soERI", "\[LeftDoubleBracket]", 
+           RowBox[{"p", ",", "q", ",", "r", ",", "s"}], 
+           "\[RightDoubleBracket]"}], "-", 
+          RowBox[{"soERI", "\[LeftDoubleBracket]", 
+           RowBox[{"p", ",", "q", ",", "s", ",", "r"}], 
+           "\[RightDoubleBracket]"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"q", ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"r", ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"s", ",", "nBas2"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+       "Definition", " ", "of", " ", "the", " ", "different", " ", "blocks"}],
+        "*)"}], "\n", 
+      RowBox[{"f", " ", "=", " ", 
+       RowBox[{"DiagonalMatrix", "[", "so\[Epsilon]HF", "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"V2h1p", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"soERI", "\[LeftDoubleBracket]", 
+          RowBox[{"p", ",", "c", ",", "k", ",", "l"}], 
+          "\[RightDoubleBracket]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "nO2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"l", ",", "nO2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"c", ",", 
+           RowBox[{"nO2", "+", "1"}], ",", "nBas2"}], "}"}]}], "]"}]}], ";", 
+      "\n", 
+      RowBox[{"V2h1p", " ", "=", " ", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"V2h1p", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "1", "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"2", ",", "3", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";",
+       "\n", "\n", 
+      RowBox[{"V2p1h", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"soERI", "\[LeftDoubleBracket]", 
+          RowBox[{"p", ",", "k", ",", "d", ",", "c"}], 
+          "\[RightDoubleBracket]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "nO2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"c", ",", 
+           RowBox[{"nO2", "+", "1"}], ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"d", ",", 
+           RowBox[{"nO2", "+", "1"}], ",", "nBas2"}], "}"}]}], "]"}]}], ";", 
+      "\n", 
+      RowBox[{"V2p1h", " ", "=", " ", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"V2p1h", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "1", "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"2", ",", "3", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";",
+       "\n", "\n", 
+      RowBox[{"C2h1p", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"-", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                "so\[Epsilon]HF", "\[LeftDoubleBracket]", "i", 
+                 "\[RightDoubleBracket]"}], "+", 
+                RowBox[{
+                "so\[Epsilon]HF", "\[LeftDoubleBracket]", "j", 
+                 "\[RightDoubleBracket]"}], "-", 
+                RowBox[{
+                "so\[Epsilon]HF", "\[LeftDoubleBracket]", "a", 
+                 "\[RightDoubleBracket]"}]}], ")"}]}], 
+             SubscriptBox["\[Delta]", 
+              RowBox[{"i", ",", "k"}]], 
+             SubscriptBox["\[Delta]", 
+              RowBox[{"j", ",", "l"}]]}], "+", 
+            RowBox[{"soERI", "\[LeftDoubleBracket]", 
+             RowBox[{"i", ",", "j", ",", "k", ",", "l"}], 
+             "\[RightDoubleBracket]"}]}], ")"}], 
+          SubscriptBox["\[Delta]", 
+           RowBox[{"a", ",", "c"}]]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "nO2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"j", ",", "nO2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"a", ",", 
+           RowBox[{"nO2", "+", "1"}], ",", "nBas2"}], "}"}], ",", "\n", 
+         "                                                          ", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "nO2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"l", ",", "nO2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"c", ",", 
+           RowBox[{"nO2", "+", "1"}], ",", "nBas2"}], "}"}]}], "]"}]}], ";", 
+      "\n", 
+      RowBox[{"C2h1p", " ", "=", " ", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"C2h1p", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"4", ",", "5", ",", "6"}], "}"}]}], "}"}]}], "]"}]}], ";",
+       "\n", "\n", 
+      RowBox[{"C2p1h", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+               "so\[Epsilon]HF", "\[LeftDoubleBracket]", "a", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "so\[Epsilon]HF", "\[LeftDoubleBracket]", "b", 
+                "\[RightDoubleBracket]"}], "-", 
+               RowBox[{
+               "so\[Epsilon]HF", "\[LeftDoubleBracket]", "i", 
+                "\[RightDoubleBracket]"}]}], ")"}], 
+             SubscriptBox["\[Delta]", 
+              RowBox[{"a", ",", "c"}]], 
+             SubscriptBox["\[Delta]", 
+              RowBox[{"b", ",", "d"}]]}], "+", 
+            RowBox[{"soERI", "\[LeftDoubleBracket]", 
+             RowBox[{"a", ",", "b", ",", "c", ",", "d"}], 
+             "\[RightDoubleBracket]"}]}], ")"}], 
+          SubscriptBox["\[Delta]", 
+           RowBox[{"i", ",", "k"}]]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "nO2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"a", ",", 
+           RowBox[{"nO2", "+", "1"}], ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"b", ",", 
+           RowBox[{"nO2", "+", "1"}], ",", "nBas2"}], "}"}], ",", "\n", 
+         "                                                      ", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "nO2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"c", ",", 
+           RowBox[{"nO2", "+", "1"}], ",", "nBas2"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"d", ",", 
+           RowBox[{"nO2", "+", "1"}], ",", "nBas2"}], "}"}]}], "]"}]}], ";", 
+      "\n", 
+      RowBox[{"C2p1h", " ", "=", " ", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"C2p1h", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"4", ",", "5", ",", "6"}], "}"}]}], "}"}]}], "]"}]}], ";",
+       "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Loop", " ", "over", " ", "the", " ", "orbitals"}], "*)"}], 
+      "\n", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"H", "=", 
+          RowBox[{"ArrayFlatten", "[", 
+           RowBox[{"(", GridBox[{
+              {
+               RowBox[{"{", 
+                RowBox[{"{", 
+                 RowBox[{"f", "\[LeftDoubleBracket]", 
+                  RowBox[{"p", ",", "p"}], "\[RightDoubleBracket]"}], "}"}], 
+                "}"}], 
+               RowBox[{"{", 
+                RowBox[{"V2h1p", "\[LeftDoubleBracket]", 
+                 RowBox[{"p", ",", "All"}], "\[RightDoubleBracket]"}], "}"}], 
+               
+               RowBox[{"{", 
+                RowBox[{"V2p1h", "\[LeftDoubleBracket]", 
+                 RowBox[{"p", ",", "All"}], "\[RightDoubleBracket]"}], 
+                "}"}]},
+              {
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"(", "V2h1p", ")"}], "\[LeftDoubleBracket]", 
+                  RowBox[{"p", ",", "All"}], "\[RightDoubleBracket]"}], "}"}],
+                 "\[Transpose]"}], 
+               RowBox[{"-", "C2h1p"}], "0"},
+              {
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"(", "V2p1h", ")"}], "\[LeftDoubleBracket]", 
+                  RowBox[{"p", ",", "All"}], "\[RightDoubleBracket]"}], "}"}],
+                 "\[Transpose]"}], "0", "C2p1h"}
+             }], ")"}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"eGT", ",", "cGT"}], "}"}], "=", 
+          RowBox[{"SortEigensystem", "[", 
+           RowBox[{"Eigensystem", "[", "H", "]"}], "]"}]}], ";", " ", 
+         RowBox[{"cGT", "=", 
+          RowBox[{"cGT", "\[Transpose]"}]}], ";", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{"Print", "[", 
+            RowBox[{
+             RowBox[{"eGT", "*", "HaToeV"}], "//", "MatrixForm"}], "]"}], 
+           ";"}], "*)"}], "\n", "\n", 
+         RowBox[{"(*", 
+          RowBox[{"Choose", " ", "the", " ", "first", " ", "IP"}], "*)"}], 
+         "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"p", "\[Equal]", "nO"}], ",", 
+           RowBox[{"IP", "=", 
+            RowBox[{
+             RowBox[{"Max", "[", 
+              RowBox[{"Select", "[", 
+               RowBox[{"eGT", ",", 
+                RowBox[{
+                 RowBox[{"#", "<", "0"}], " ", "&"}]}], "]"}], "]"}], "*", 
+             "HaToeV"}]}]}], "]"}], ";", "\n", "\n", 
+         RowBox[{"Z", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"Chop", "[", 
+              RowBox[{
+               RowBox[{"cGT", "\[LeftDoubleBracket]", 
+                RowBox[{"1", ",", "s"}], "\[RightDoubleBracket]"}], ",", 
+               SuperscriptBox["10", 
+                RowBox[{"-", "16"}]]}], "]"}], "2"], ",", 
+            RowBox[{"{", 
+             RowBox[{"s", ",", "nH"}], "}"}]}], "]"}]}], ";"}], "\n", "\n", 
+        ",", 
+        RowBox[{"{", 
+         RowBox[{"p", ",", "nBas2"}], "}"}]}], "]"}], ";", "\n", "\n", 
+      RowBox[{"quantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{"\"\<IP\>\"", "\[Rule]", "IP"}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"Return", "[", "quantities", "]"}]}]}], "]"}]}], ";"}]], "Code",\
+
+ CellChangeTimes->{{3.8729130996597633`*^9, 3.8729131153065157`*^9}, {
+   3.872913288791389*^9, 3.872913313912463*^9}, {3.872913443514262*^9, 
+   3.8729134920785227`*^9}, {3.872913549502089*^9, 3.872913618947734*^9}, {
+   3.872913785167015*^9, 3.8729137875491133`*^9}, 3.8732720145343523`*^9, {
+   3.873272048250595*^9, 3.873272081792161*^9}, {3.873272248774169*^9, 
+   3.873272267334784*^9}, 3.873272446925803*^9, 3.873272516914564*^9, {
+   3.873272695686118*^9, 3.873272698106023*^9}, {3.873272747047452*^9, 
+   3.873272766105741*^9}, 3.8732728033207407`*^9},
+ CellLabel->"In[1]:=",ExpressionUUID->"de9d64ec-823a-4c0d-ae7d-5170081d8381"]
+},
+WindowSize->{1255, 684},
+WindowMargins->{{Automatic, 85}, {1, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9fd29084-ac05-4407-a45e-27ed0feb9b9c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 13401, 337, 1885, "Code",ExpressionUUID->"de9d64ec-823a-4c0d-ae7d-5170081d8381"]
+}
+]
+*)
+
