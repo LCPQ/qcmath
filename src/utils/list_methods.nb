@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5664,        141]
-NotebookOptionsPosition[      5287,        126]
-NotebookOutlinePosition[      5711,        143]
-CellTagsIndexPosition[      5668,        140]
+NotebookDataLength[      6717,        162]
+NotebookOptionsPosition[      6340,        147]
+NotebookOutlinePosition[      6764,        164]
+CellTagsIndexPosition[      6721,        161]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -112,6 +112,24 @@ Cell[BoxData[
            RowBox[{
             RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
             RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<soUfG0F2\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<soUfG0T0\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<G0T0\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
              RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}]}], "\n", "]"}]}],
        ";", "\n", "\n", 
       RowBox[{"Return", "[", "ToDoModules", "]"}]}]}], "]"}]}], ";"}]], "Code",\
@@ -120,8 +138,11 @@ Cell[BoxData[
    3.872645473995775*^9, {3.872645563226039*^9, 3.872645585565771*^9}, {
    3.8726456214937572`*^9, 3.872645638354844*^9}, {3.8727525409516*^9, 
    3.872752551108118*^9}, 3.872752678942868*^9, {3.872835079118731*^9, 
-   3.872835086311194*^9}, {3.872844614228057*^9, 
-   3.872844638301817*^9}},ExpressionUUID->"2080cd3e-7f88-48b7-bee4-\
+   3.872835086311194*^9}, {3.872844614228057*^9, 3.872844638301817*^9}, {
+   3.872909818689795*^9, 3.872909830078219*^9}, {3.8729136966511803`*^9, 
+   3.872913706372264*^9}, {3.8729158250403013`*^9, 3.87291582586467*^9}, {
+   3.872915872752756*^9, 
+   3.872915879704833*^9}},ExpressionUUID->"2080cd3e-7f88-48b7-bee4-\
 a3de0810e066"]
 },
 WindowSize->{981, 706},
@@ -142,7 +163,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 4725, 104, 659, "Code",ExpressionUUID->"2080cd3e-7f88-48b7-bee4-a3de0810e066"]
+Cell[558, 20, 5778, 125, 746, "Code",ExpressionUUID->"2080cd3e-7f88-48b7-bee4-a3de0810e066"]
 }
 ]
 *)

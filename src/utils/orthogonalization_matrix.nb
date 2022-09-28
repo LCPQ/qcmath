@@ -1,0 +1,63 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      1605,         55]
+NotebookOptionsPosition[      1230,         40]
+NotebookOutlinePosition[      1654,         57]
+CellTagsIndexPosition[      1611,         54]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Orthogonalization", "[", "S_", "]"}], ":=", "\n", "  ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "X", "}"}], ",", "\n", "\n", "    ", 
+     RowBox[{
+      RowBox[{"X", " ", "=", " ", 
+       RowBox[{"MatrixPower", "[", 
+        RowBox[{"S", ",", 
+         RowBox[{"-", 
+          FractionBox["1", "2"]}]}], "]"}]}], ";", "\n", "\n", "    ", 
+      RowBox[{"Return", "[", "X", "]"}]}]}], "\n", "  ", "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.873351681648528*^9, 3.8733517440325727`*^9}, {
+  3.873361630394472*^9, 
+  3.873361653981604*^9}},ExpressionUUID->"3f06acbb-8a65-4f2d-b37e-\
+aa581fb62f69"]
+},
+WindowSize->{808, 688},
+WindowMargins->{{Automatic, 38}, {-61, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"501dd4e8-4ebc-4c6e-84cb-46c53e1a7e8b"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 668, 18, 293, "Code",ExpressionUUID->"3f06acbb-8a65-4f2d-b37e-aa581fb62f69"]
+}
+]
+*)
+

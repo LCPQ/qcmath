@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7483,        200]
-NotebookOptionsPosition[      6971,        182]
-NotebookOutlinePosition[      7397,        199]
-CellTagsIndexPosition[      7354,        196]
+NotebookDataLength[      9082,        230]
+NotebookOptionsPosition[      8572,        212]
+NotebookOutlinePosition[      8996,        229]
+CellTagsIndexPosition[      8953,        226]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -28,20 +28,18 @@ c97747ebd9a5"],
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"readMolecule", "[", 
-    RowBox[{"molecule_", ",", "AntoBo_"}], "]"}], ":=", 
-   RowBox[{"Module", "[", "\n", 
+   RowBox[{"readMolecule", "[", "molecule_", "]"}], ":=", "\n", "  ", 
+   RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
       "mol", ",", "xyz", ",", "nAt", ",", "elements", ",", "Znuc", ",", 
-       "sfile", ",", "\n", "Enuc", ",", "readMoleculeQuantities"}], "}"}], 
-     ",", "\n", "\n", 
+       "sfile", ",", "Enuc", ",", "outputs"}], "}"}], ",", "\n", "\n", "    ", 
      RowBox[{"(*", 
       RowBox[{
       "Get", " ", "the", " ", "molecule", " ", "file", " ", "with", " ", "a", 
        " ", "list", " ", "of", " ", 
-       RowBox[{"atom", "'"}], "s", " ", "symbols"}], "*)"}], "\n", 
+       RowBox[{"atom", "'"}], "s", " ", "symbols"}], "*)"}], "\n", "    ", 
      RowBox[{
       RowBox[{"mol", "=", 
        RowBox[{"Import", "[", 
@@ -49,24 +47,36 @@ Cell[BoxData[
          RowBox[{
          "path", "<>", "\"\</mol/\>\"", "<>", "molecule", "<>", 
           "\"\<.xyz\>\""}], ",", "\"\<VertexTypes\>\""}], "]"}]}], ";", "\n", 
-      "\n", 
+      "    ", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"SameQ", "[", 
+          RowBox[{"mol", ",", "$Failed"}], "]"}], "\[Equal]", "True"}], ",", 
+        RowBox[{
+         RowBox[{"Print", "[", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<xyz file not found\>\"", ",", "Bold", ",", "Red"}], 
+           "]"}], "]"}], ";", 
+         RowBox[{"Abort", "[", "]"}]}]}], "]"}], ";", "\n", "    ", "\n", 
+      "    ", 
       RowBox[{"(*", 
-       RowBox[{"Get", " ", "the", " ", "geometry"}], "*)"}], "\n", 
+       RowBox[{"Get", " ", "the", " ", "geometry"}], "*)"}], "\n", "    ", 
       RowBox[{"xyz", "=", 
        RowBox[{"Import", "[", 
         RowBox[{
          RowBox[{
          "path", "<>", "\"\</mol/\>\"", "<>", "molecule", "<>", 
           "\"\<.xyz\>\""}], ",", "\"\<VertexCoordinates\>\""}], "]"}]}], ";", 
-      "\n", "\n", 
+      "\n", "\n", "    ", 
       RowBox[{"(*", 
-       RowBox[{"Number", " ", "of", " ", "atoms"}], "*)"}], "\n", 
+       RowBox[{"Number", " ", "of", " ", "atoms"}], "*)"}], "\n", "    ", 
       RowBox[{"nAt", "=", 
-       RowBox[{"Length", "[", "mol", "]"}]}], ";", "\n", "\n", 
+       RowBox[{"Length", "[", "mol", "]"}]}], ";", "\n", "\n", "    ", 
       RowBox[{"(*", 
        RowBox[{
        "List", " ", "of", " ", "atoms", " ", "and", " ", "their", " ", 
-        "atomic", " ", "numbers"}], "*)"}], "\n", 
+        "atomic", " ", "numbers"}], "*)"}], "\n", "    ", 
       RowBox[{"elements", "=", 
        RowBox[{"Association", "[", 
         RowBox[{
@@ -79,19 +89,29 @@ Cell[BoxData[
          RowBox[{"\"\<N\>\"", "\[Rule]", "7"}], ",", "\[IndentingNewLine]", 
          "                     ", 
          RowBox[{"\"\<O\>\"", "\[Rule]", "8"}], ",", 
-         RowBox[{"\"\<F\>\"", "\[Rule]", "9"}], ",", " ", 
-         RowBox[{"\"\<Ne\>\"", "\[Rule]", "10"}]}], "]"}]}], ";", "\n", "\n", 
-      
+         RowBox[{"\"\<F\>\"", "\[Rule]", "9"}], ",", 
+         RowBox[{"\"\<Ne\>\"", "\[Rule]", "10"}], ",", 
+         RowBox[{"\"\<Na\>\"", "\[Rule]", "11"}], ",", 
+         RowBox[{"\"\<Mg\>\"", "\[Rule]", "12"}], ",", 
+         RowBox[{"\"\<Al\>\"", "\[Rule]", "13"}], ",", "\n", 
+         "                     ", 
+         RowBox[{"\"\<Si\>\"", "\[Rule]", "14"}], ",", 
+         RowBox[{"\"\<P\>\"", "\[Rule]", "15"}], ",", 
+         RowBox[{"\"\<S\>\"", "\[Rule]", "16"}], ",", 
+         RowBox[{"\"\<Cl\>\"", "\[Rule]", "17"}], ",", 
+         RowBox[{"\"\<Ar\>\"", "\[Rule]", "18"}]}], "]"}]}], ";", "\n", "\n", 
+      "    ", 
       RowBox[{"(*", 
        RowBox[{
        "Attribute", " ", "the", " ", "right", " ", "atomic", " ", "number", 
-        " ", "to", " ", "the", " ", "atoms"}], "*)"}], "\n", 
+        " ", "to", " ", "the", " ", "atoms"}], "*)"}], "\n", "    ", 
       RowBox[{"Znuc", "=", 
        RowBox[{"Table", "[", 
         RowBox[{"0", ",", 
          RowBox[{"{", 
           RowBox[{"N", ",", 
-           RowBox[{"Length", "[", "mol", "]"}]}], "}"}]}], "]"}]}], ";", "\n", 
+           RowBox[{"Length", "[", "mol", "]"}]}], "}"}]}], "]"}]}], ";", "\n",
+       "    ", 
       RowBox[{"Do", "[", 
        RowBox[{
         RowBox[{
@@ -106,22 +126,24 @@ Cell[BoxData[
         RowBox[{"{", 
          RowBox[{"N", ",", 
           RowBox[{"Length", "[", "mol", "]"}]}], "}"}]}], "]"}], ";", "\n", 
-      "\n", 
+      "\n", "    ", 
       RowBox[{"(*", 
        RowBox[{"Definition", " ", "of", " ", "the", " ", 
         RowBox[{"atom", "/", "molecule"}], " ", "geometry", " ", "in", " ", 
         "the", " ", 
         RowBox[{"mol", ".", "xyz"}], " ", "file"}], "*)"}], "\n", "\n", 
+      "    ", 
       RowBox[{"sfile", "=", 
        RowBox[{"OpenWrite", "[", 
         RowBox[{
          RowBox[{"path", "<>", "\"\</mol/mol.xyz\>\""}], ",", 
          RowBox[{"FormatType", "\[Rule]", "StandardForm"}]}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "    ", 
       RowBox[{"Write", "[", 
        RowBox[{"sfile", ",", "nAt"}], "]"}], ";", "\[IndentingNewLine]", 
+      "    ", 
       RowBox[{"Write", "[", 
-       RowBox[{"sfile", ",", "\"\<\>\""}], "]"}], ";", "\n", 
+       RowBox[{"sfile", ",", "\"\<\>\""}], "]"}], ";", "\n", "    ", 
       RowBox[{"Do", "[", 
        RowBox[{
         RowBox[{"Write", "[", 
@@ -135,10 +157,10 @@ Cell[BoxData[
              RowBox[{"i", ",", ";;"}], "\[RightDoubleBracket]"}], ",", 
             "\"\< \>\""}], "]"}]}], "]"}], ",", 
         RowBox[{"{", 
-         RowBox[{"i", ",", "nAt"}], "}"}]}], "]"}], ";", "\n", 
-      RowBox[{"Close", "[", "sfile", "]"}], ";", "\n", "\n", 
+         RowBox[{"i", ",", "nAt"}], "}"}]}], "]"}], ";", "\n", "    ", 
+      RowBox[{"Close", "[", "sfile", "]"}], ";", "\n", "\n", "\n", "    ", 
       RowBox[{"(*", 
-       RowBox[{"nuclear", " ", "energy"}], "*)"}], "\n", 
+       RowBox[{"nuclear", " ", "energy"}], "*)"}], "\n", "    ", 
       RowBox[{"Enuc", "=", 
        RowBox[{
         UnderoverscriptBox["\[Sum]", 
@@ -162,26 +184,34 @@ Cell[BoxData[
              "-", 
              RowBox[{
              "xyz", "\[LeftDoubleBracket]", "d", "\[RightDoubleBracket]"}]}], 
-            "]"}], "*", "AntoBo"}]]}]}]}], ";", "\n", "\n", 
-      RowBox[{"readMoleculeQuantities", " ", "=", " ", 
+            "]"}], "*", "AntoBo"}]]}]}]}], ";", "\n", "\n", "    ", 
+      RowBox[{"outputs", " ", "=", " ", 
        RowBox[{"Association", "[", 
         RowBox[{
          RowBox[{"\"\<mol\>\"", "\[Rule]", "mol"}], ",", 
          RowBox[{"\"\<xyz\>\"", "\[Rule]", "xyz"}], ",", 
          RowBox[{"\"\<nAt\>\"", "\[Rule]", "nAt"}], ",", 
-         RowBox[{"\"\<Enuc\>\"", "->", "Enuc"}]}], "]"}]}], ";", "\n", "\n", 
-      RowBox[{"Return", "[", "readMoleculeQuantities", "]"}], ";"}]}], 
-    "]"}]}], ";"}]], "Code",
+         RowBox[{"\"\<Enuc\>\"", "\[Rule]", "Enuc"}]}], "]"}]}], ";", "\n", 
+      "\n", "    ", 
+      RowBox[{"Return", "[", "outputs", "]"}], ";"}]}], "\n", "  ", "]"}]}], 
+  ";"}]], "Code",
  CellChangeTimes->{{3.870923952795032*^9, 3.87092404456674*^9}, {
    3.870924116728286*^9, 3.870924183132867*^9}, 3.870924647673381*^9, {
    3.8709247561390944`*^9, 3.870924784169641*^9}, {3.8725792217693377`*^9, 
-   3.8725793073083467`*^9}, {3.872644322680965*^9, 
-   3.87264437729307*^9}},ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-\
+   3.8725793073083467`*^9}, {3.872644322680965*^9, 3.87264437729307*^9}, {
+   3.8733389053250103`*^9, 3.873338966456112*^9}, {3.87333949273532*^9, 
+   3.8733395808452187`*^9}, {3.873353034815892*^9, 3.873353068298704*^9}, {
+   3.873353128629107*^9, 3.873353274496448*^9}, {3.873353417915455*^9, 
+   3.873353423276082*^9}, {3.8733534778199244`*^9, 3.873353484884738*^9}, {
+   3.8733538135641727`*^9, 3.8733538180743113`*^9}, {3.873353894863184*^9, 
+   3.873353996419673*^9}, {3.87335402791756*^9, 3.873354030763523*^9}, {
+   3.873358883149034*^9, 3.87335888423907*^9}, {3.873358924101184*^9, 
+   3.873358928872265*^9}},ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-\
 fe234b213ff0"]
 }, Open  ]]
 },
-WindowSize->{1062, 683},
-WindowMargins->{{Automatic, 159}, {-28, Automatic}},
+WindowSize->{1281, 683},
+WindowMargins->{{48, Automatic}, {Automatic, 12}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -200,7 +230,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 164, 3, 67, "Subsubsection",ExpressionUUID->"64551826-4a57-432a-9e6b-c97747ebd9a5"],
-Cell[747, 27, 6208, 152, 1128, "Code",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
+Cell[747, 27, 7809, 182, 1213, "Code",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
 }, Open  ]]
 }
 ]

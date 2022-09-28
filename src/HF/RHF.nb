@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     35833,        667]
-NotebookOptionsPosition[     35229,        648]
-NotebookOutlinePosition[     35652,        665]
-CellTagsIndexPosition[     35609,        662]
+NotebookDataLength[     35774,        666]
+NotebookOptionsPosition[     35170,        647]
+NotebookOutlinePosition[     35593,        664]
+CellTagsIndexPosition[     35550,        661]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -103,7 +103,7 @@ Cell[BoxData[
        "                            ", "FOM", ",", "\n", 
        RowBox[{"(*", 
         RowBox[{"Dictionary", " ", "for", " ", "RHF", " ", "outputs"}], 
-        "*)"}], "                ", "RHFquantities", ",", "\n", 
+        "*)"}], "                ", "quantities", ",", "\n", 
        RowBox[{"(*", 
         RowBox[{"Coulomb", " ", "integrals"}], "*)"}], 
        "                         ", "UJ", ",", "\n", 
@@ -114,157 +114,154 @@ Cell[BoxData[
         RowBox[{"exchange", " ", "potential"}], "*)"}], 
        "                        ", "Vx", ",", "\n", 
        RowBox[{"(*", 
-        RowBox[{"path", " ", "for", " ", "Notebook", " ", "evaluation"}], 
-        "*)"}], "              ", "path", ",", "TabRHF"}], "}"}], ",", "\n", 
-     "\n", 
+        RowBox[{"Table", " ", "with", " ", "output", " ", "info"}], "*)"}], 
+       "                    ", "TabRHF"}], "}"}], ",", "\n", "\n", 
      RowBox[{
-      RowBox[{
-       RowBox[{"Hcore", " ", "=", " ", 
-        RowBox[{"T", " ", "+", " ", "V"}]}], ";", "\n", 
-       RowBox[{"OAIntegrals", " ", "=", " ", "U"}], ";", "\n", "\n", 
-       RowBox[{"UJ", " ", "=", " ", 
-        RowBox[{"Flatten", "[", 
-         RowBox[{"OAIntegrals", ",", 
-          RowBox[{"{", 
-           RowBox[{
-            RowBox[{"{", "1", "}"}], ",", 
-            RowBox[{"{", "3", "}"}], ",", 
-            RowBox[{"{", 
-             RowBox[{"2", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";", " ", 
-       RowBox[{"UK", " ", "=", " ", 
-        RowBox[{"Flatten", "[", 
-         RowBox[{"OAIntegrals", ",", 
-          RowBox[{"{", 
-           RowBox[{
-            RowBox[{"{", "1", "}"}], ",", 
-            RowBox[{"{", "4", "}"}], ",", 
-            RowBox[{"{", 
-             RowBox[{"2", ",", "3"}], "}"}]}], "}"}]}], "]"}]}], ";", "\n", 
-       "\n", 
-       RowBox[{"(*", 
-        RowBox[{
-        "The", " ", "Hcore", " ", "will", " ", "be", " ", "our", " ", "first",
-          " ", "guess", " ", "as", " ", "Fock", " ", "matrix"}], "*)"}], "\n", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"\[Epsilon]", ",", "Cp"}], "}"}], "=", " ", 
-        RowBox[{"Chop", "[", 
-         RowBox[{"SortEigensystem", "[", 
-          RowBox[{"Eigensystem", "[", 
-           RowBox[{
-            RowBox[{"X", "\[Transpose]"}], ".", "Hcore", ".", "X"}], "]"}], 
-          "]"}], "]"}]}], ";", "   ", 
-       RowBox[{"Cp", " ", "=", " ", 
-        RowBox[{"Cp", "\[Transpose]"}]}], ";", 
-       RowBox[{"(*", 
-        RowBox[{
-        "to", " ", "have", " ", "the", " ", "good", " ", "shape", " ", "in", 
-         " ", "Mathematica"}], "*)"}], "\n", 
-       RowBox[{"C", " ", "=", " ", 
-        RowBox[{"X", ".", "Cp"}]}], ";", "  ", 
-       RowBox[{"Orb", "=", 
-        RowBox[{
-         RowBox[{"Take", "[", 
+      RowBox[{"Hcore", " ", "=", " ", 
+       RowBox[{"T", " ", "+", " ", "V"}]}], ";", "\n", 
+      RowBox[{"OAIntegrals", " ", "=", " ", "U"}], ";", "\n", "\n", 
+      RowBox[{"UJ", " ", "=", " ", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"OAIntegrals", ",", 
+         RowBox[{"{", 
           RowBox[{
-           RowBox[{"C", "\[Transpose]"}], ",", 
-           RowBox[{"Nelc", "/", "2"}]}], "]"}], "\[Transpose]"}]}], ";", " ", 
-       
-       RowBox[{"P", " ", "=", " ", 
-        RowBox[{"2", " ", 
-         RowBox[{"Orb", ".", 
-          RowBox[{"Orb", "\[Transpose]"}]}]}]}], ";", " ", "\n", "\n", 
-       RowBox[{"(*", 
-        RowBox[{"SCF", " ", "loop"}], "*)"}], "\n", " ", 
-       RowBox[{"nSCF", " ", "=", " ", "0"}], ";", " ", 
-       RowBox[{"conv", "=", "1"}], ";", " ", 
-       RowBox[{"FDIIS", "=", 
-        RowBox[{"{", "}"}]}], ";", " ", 
-       RowBox[{"eDIIS", "=", 
-        RowBox[{"{", "}"}]}], ";", "\n", "\n", 
-       RowBox[{"While", "[", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"conv", " ", ">", " ", "thresh"}], " ", "\[And]", " ", 
-          RowBox[{"nSCF", " ", "<", " ", "maxSCF"}]}], ",", " ", 
-         RowBox[{
-          RowBox[{"nSCF", "++"}], ";", " ", "\n", "\n", 
-          RowBox[{"(*", 
-           RowBox[{"Build", " ", "Coulomb", " ", "matrix"}], "*)"}], "\n", 
-          RowBox[{"J", " ", "=", " ", 
-           RowBox[{"UJ", ".", 
-            RowBox[{"Flatten", "[", "P", "]"}]}]}], ";", "\n", "\n", 
-          RowBox[{"(*", 
-           RowBox[{"Build", " ", "exchange", " ", "matrix"}], "*)"}], "\n", 
-          RowBox[{"K", " ", "=", " ", 
-           RowBox[{"UK", ".", 
-            RowBox[{"Flatten", "[", "P", "]"}]}]}], ";", "\n", " ", "\n", 
-          RowBox[{"F", " ", "=", " ", 
-           RowBox[{"Hcore", " ", "+", " ", "J", " ", "-", " ", 
-            RowBox[{"0.5", "K"}]}]}], ";", "\n", " ", "\n", 
-          RowBox[{"conv", "=", 
-           RowBox[{"Max", "[", 
-            RowBox[{"Abs", "[", 
-             RowBox[{
-              RowBox[{"F", ".", "P", ".", "S"}], "-", 
-              RowBox[{"S", ".", "P", ".", "F"}]}], "]"}], "]"}]}], ";", "\n", 
-          " ", "\n", " ", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{"If", "[", 
-             RowBox[{"DIISex", ",", "\n", " ", 
-              RowBox[{
-               RowBox[{"FDIIS", "=", 
-                RowBox[{"Prepend", "[", 
-                 RowBox[{"FDIIS", ",", "F"}], "]"}]}], ";", "\t", 
-               RowBox[{"eDIIS", "=", 
-                RowBox[{"Prepend", "[", 
-                 RowBox[{"eDIIS", ",", 
-                  RowBox[{
-                   RowBox[{"F", ".", "P", ".", "S"}], "-", 
-                   RowBox[{"S", ".", "P", ".", "F"}]}]}], "]"}]}], ";", 
-               "\[IndentingNewLine]", 
-               RowBox[{"F", "=", 
-                RowBox[{"DIIS", "[", 
-                 RowBox[{"FDIIS", ",", "eDIIS"}], "]"}]}], ";"}]}], "\n", 
-             "]"}], ";"}], "*)"}], "\n", "\n", 
-          RowBox[{
+           RowBox[{"{", "1", "}"}], ",", 
+           RowBox[{"{", "3", "}"}], ",", 
            RowBox[{"{", 
-            RowBox[{"\[Epsilon]", ",", "Cp"}], "}"}], "=", " ", 
-           RowBox[{"Chop", "[", 
-            RowBox[{"SortEigensystem", "[", 
-             RowBox[{"Eigensystem", "[", 
-              RowBox[{
-               RowBox[{"X", "\[Transpose]"}], ".", "F", ".", "X"}], "]"}], 
-             "]"}], "]"}]}], ";", "   ", 
-          RowBox[{"Cp", " ", "=", " ", 
-           RowBox[{"Cp", "\[Transpose]"}]}], ";", " ", 
-          RowBox[{"(*", 
-           RowBox[{
-           "to", " ", "have", " ", "the", " ", "good", " ", "shape", " ", 
-            "in", " ", "Mathematica"}], "*)"}], "\n", "\n", 
-          RowBox[{"C", " ", "=", " ", 
-           RowBox[{"X", ".", "Cp"}]}], ";", "   ", 
-          RowBox[{"Orb", "=", 
-           RowBox[{
-            RowBox[{"Take", "[", 
-             RowBox[{
-              RowBox[{"C", "\[Transpose]"}], ",", 
-              RowBox[{"Nelc", "/", "2"}]}], "]"}], "\[Transpose]"}]}], ";", 
-          "\n", 
-          RowBox[{"P", " ", "=", " ", 
-           RowBox[{"2", " ", 
-            RowBox[{"Orb", ".", 
-             RowBox[{"Orb", "\[Transpose]"}]}]}]}], ";", "\n", "\n", 
-          RowBox[{"If", "[", 
-           RowBox[{
-            RowBox[{"nSCF", "\[Equal]", "maxSCF"}], ",", 
+            RowBox[{"2", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";", " ", 
+      RowBox[{"UK", " ", "=", " ", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"OAIntegrals", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "1", "}"}], ",", 
+           RowBox[{"{", "4", "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"2", ",", "3"}], "}"}]}], "}"}]}], "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+       "The", " ", "Hcore", " ", "will", " ", "be", " ", "our", " ", "first", 
+        " ", "guess", " ", "as", " ", "Fock", " ", "matrix"}], "*)"}], "\n", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"\[Epsilon]", ",", "Cp"}], "}"}], "=", " ", 
+       RowBox[{"Chop", "[", 
+        RowBox[{"SortEigensystem", "[", 
+         RowBox[{"Eigensystem", "[", 
+          RowBox[{
+           RowBox[{"X", "\[Transpose]"}], ".", "Hcore", ".", "X"}], "]"}], 
+         "]"}], "]"}]}], ";", "   ", 
+      RowBox[{"Cp", " ", "=", " ", 
+       RowBox[{"Cp", "\[Transpose]"}]}], ";", 
+      RowBox[{"(*", 
+       RowBox[{
+       "to", " ", "have", " ", "the", " ", "good", " ", "shape", " ", "in", 
+        " ", "Mathematica"}], "*)"}], "\n", 
+      RowBox[{"C", " ", "=", " ", 
+       RowBox[{"X", ".", "Cp"}]}], ";", "  ", 
+      RowBox[{"Orb", "=", 
+       RowBox[{
+        RowBox[{"Take", "[", 
+         RowBox[{
+          RowBox[{"C", "\[Transpose]"}], ",", 
+          RowBox[{"Nelc", "/", "2"}]}], "]"}], "\[Transpose]"}]}], ";", " ", 
+      RowBox[{"P", " ", "=", " ", 
+       RowBox[{"2", " ", 
+        RowBox[{"Orb", ".", 
+         RowBox[{"Orb", "\[Transpose]"}]}]}]}], ";", " ", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"SCF", " ", "loop"}], "*)"}], "\n", " ", 
+      RowBox[{"nSCF", " ", "=", " ", "0"}], ";", " ", 
+      RowBox[{"conv", "=", "1"}], ";", " ", 
+      RowBox[{"FDIIS", "=", 
+       RowBox[{"{", "}"}]}], ";", " ", 
+      RowBox[{"eDIIS", "=", 
+       RowBox[{"{", "}"}]}], ";", "\n", "\n", 
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"conv", " ", ">", " ", "thresh"}], " ", "\[And]", " ", 
+         RowBox[{"nSCF", " ", "<", " ", "maxSCF"}]}], ",", " ", 
+        RowBox[{
+         RowBox[{"nSCF", "++"}], ";", " ", "\n", "\n", 
+         RowBox[{"(*", 
+          RowBox[{"Build", " ", "Coulomb", " ", "matrix"}], "*)"}], "\n", 
+         RowBox[{"J", " ", "=", " ", 
+          RowBox[{"UJ", ".", 
+           RowBox[{"Flatten", "[", "P", "]"}]}]}], ";", "\n", "\n", 
+         RowBox[{"(*", 
+          RowBox[{"Build", " ", "exchange", " ", "matrix"}], "*)"}], "\n", 
+         RowBox[{"K", " ", "=", " ", 
+          RowBox[{"UK", ".", 
+           RowBox[{"Flatten", "[", "P", "]"}]}]}], ";", "\n", " ", "\n", 
+         RowBox[{"F", " ", "=", " ", 
+          RowBox[{"Hcore", " ", "+", " ", "J", " ", "-", " ", 
+           RowBox[{"0.5", "K"}]}]}], ";", "\n", " ", "\n", 
+         RowBox[{"conv", "=", 
+          RowBox[{"Max", "[", 
+           RowBox[{"Abs", "[", 
             RowBox[{
-             RowBox[{"Print", "[", 
-              RowBox[{"Style", "[", 
-               RowBox[{"\"\<Convergence failed for RHF!\>\"", ",", "Red"}], 
-               "]"}], "]"}], ";", 
-             RowBox[{"Break", "[", "]"}]}]}], "]"}], ";"}]}], "\n", "]"}], 
-       ";"}], "\n", ";", "\n", "\n", " ", 
+             RowBox[{"F", ".", "P", ".", "S"}], "-", 
+             RowBox[{"S", ".", "P", ".", "F"}]}], "]"}], "]"}]}], ";", "\n", 
+         " ", "\n", " ", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{"DIISex", ",", "\n", " ", 
+             RowBox[{
+              RowBox[{"FDIIS", "=", 
+               RowBox[{"Prepend", "[", 
+                RowBox[{"FDIIS", ",", "F"}], "]"}]}], ";", "\t", 
+              RowBox[{"eDIIS", "=", 
+               RowBox[{"Prepend", "[", 
+                RowBox[{"eDIIS", ",", 
+                 RowBox[{
+                  RowBox[{"F", ".", "P", ".", "S"}], "-", 
+                  RowBox[{"S", ".", "P", ".", "F"}]}]}], "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"F", "=", 
+               RowBox[{"DIIS", "[", 
+                RowBox[{"FDIIS", ",", "eDIIS"}], "]"}]}], ";"}]}], "\n", 
+            "]"}], ";"}], "*)"}], "\n", "\n", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"\[Epsilon]", ",", "Cp"}], "}"}], "=", " ", 
+          RowBox[{"Chop", "[", 
+           RowBox[{"SortEigensystem", "[", 
+            RowBox[{"Eigensystem", "[", 
+             RowBox[{
+              RowBox[{"X", "\[Transpose]"}], ".", "F", ".", "X"}], "]"}], 
+            "]"}], "]"}]}], ";", "   ", 
+         RowBox[{"Cp", " ", "=", " ", 
+          RowBox[{"Cp", "\[Transpose]"}]}], ";", " ", 
+         RowBox[{"(*", 
+          RowBox[{
+          "to", " ", "have", " ", "the", " ", "good", " ", "shape", " ", "in",
+            " ", "Mathematica"}], "*)"}], "\n", "\n", 
+         RowBox[{"C", " ", "=", " ", 
+          RowBox[{"X", ".", "Cp"}]}], ";", "   ", 
+         RowBox[{"Orb", "=", 
+          RowBox[{
+           RowBox[{"Take", "[", 
+            RowBox[{
+             RowBox[{"C", "\[Transpose]"}], ",", 
+             RowBox[{"Nelc", "/", "2"}]}], "]"}], "\[Transpose]"}]}], ";", 
+         "\n", 
+         RowBox[{"P", " ", "=", " ", 
+          RowBox[{"2", " ", 
+           RowBox[{"Orb", ".", 
+            RowBox[{"Orb", "\[Transpose]"}]}]}]}], ";", "\n", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"nSCF", "\[Equal]", "maxSCF"}], ",", 
+           RowBox[{
+            RowBox[{"Print", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<Convergence failed for RHF!\>\"", ",", "Red"}], 
+              "]"}], "]"}], ";", 
+            RowBox[{"Break", "[", "]"}]}]}], "]"}], ";"}]}], "\n", "]"}], ";",
+       "\n", "\n", " ", 
       RowBox[{"ET", "=", 
        RowBox[{"Tr", "[", 
         RowBox[{"P", ".", "T"}], "]"}]}], ";", " ", "\n", " ", 
@@ -346,11 +343,11 @@ Cell[BoxData[
             "EK"}], "]"}]}], ";", "\n", 
          RowBox[{"Print", "[", "TabRHF", "]"}], ";"}]}], "\n", "]"}], ";", 
       "\n", "\n", 
-      RowBox[{"RHFquantities", " ", "=", " ", 
+      RowBox[{"quantities", " ", "=", " ", 
        RowBox[{"Association", "[", 
         RowBox[{
          RowBox[{"\"\<EHF\>\"", "\[Rule]", "EHF"}], ",", 
-         RowBox[{"\"\<OAIntegrals\>\"", "->", "OAIntegrals"}], ",", 
+         RowBox[{"\"\<OAIntegrals\>\"", "\[Rule]", "OAIntegrals"}], ",", 
          RowBox[{"\"\<ERI\>\"", "\[Rule]", "ERI"}], ",", "\n", 
          "                            ", 
          RowBox[{"\"\<\[Epsilon]\>\"", "\[Rule]", "\[Epsilon]"}], ",", 
@@ -368,8 +365,8 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"nSCF", "\[Equal]", "maxSCF"}], ",", 
         RowBox[{"Return", "[", "]"}], ",", 
-        RowBox[{"Return", "[", "RHFquantities", "]"}]}], "]"}], ";"}]}], "\n",
-     "\[IndentingNewLine]", "]"}]}], ";"}]], "Code",
+        RowBox[{"Return", "[", "quantities", "]"}]}], "]"}], ";"}]}], "\n", 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Code",
  CellChangeTimes->{{3.8266970744738293`*^9, 3.8266971151220827`*^9}, {
    3.8266971538985577`*^9, 3.82669729702279*^9}, {3.82669733806277*^9, 
    3.826697418355043*^9}, {3.826697518700407*^9, 3.826697846200325*^9}, {
@@ -639,8 +636,10 @@ Cell[BoxData[
    3.872235122412608*^9}, {3.872235364177882*^9, 3.872235448639485*^9}, {
    3.87223575315562*^9, 3.872235778236537*^9}, {3.872236011683052*^9, 
    3.872236035448352*^9}, {3.872731055262548*^9, 3.8727310555138493`*^9}, {
-   3.872731592115067*^9, 
-   3.872731601259695*^9}},ExpressionUUID->"7baad11d-374a-4683-890b-\
+   3.872731592115067*^9, 3.872731601259695*^9}, {3.873339752773857*^9, 
+   3.873339760751892*^9}, {3.873351993925411*^9, 3.873352019180184*^9}, {
+   3.873352062271101*^9, 
+   3.873352082066454*^9}},ExpressionUUID->"7baad11d-374a-4683-890b-\
 d85c2ff96c2b"]
 }, Open  ]],
 
@@ -666,9 +665,9 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 203, 4, 67, "Subsubsection",ExpressionUUID->"6bb91d66-5bf2-45dd-86dd-d2dd89a20c17"],
-Cell[786, 28, 34352, 615, 2868, "Code",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
+Cell[786, 28, 34293, 614, 2839, "Code",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
 }, Open  ]],
-Cell[35153, 646, 72, 0, 146, "Title",ExpressionUUID->"c2a79656-86b7-49cb-abfa-04aee6242f40"]
+Cell[35094, 645, 72, 0, 146, "Title",ExpressionUUID->"c2a79656-86b7-49cb-abfa-04aee6242f40"]
 }
 ]
 *)

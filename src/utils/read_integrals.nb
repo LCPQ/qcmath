@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17265,        388]
-NotebookOptionsPosition[     16754,        370]
-NotebookOutlinePosition[     17178,        387]
-CellTagsIndexPosition[     17135,        384]
+NotebookDataLength[     18021,        396]
+NotebookOptionsPosition[     17512,        378]
+NotebookOutlinePosition[     17934,        395]
+CellTagsIndexPosition[     17891,        392]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -28,15 +28,15 @@ Cell["Read one and two electron integrals", "Subsubsection",
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"readIntegrals", "[", "]"}], ":=", 
-   RowBox[{"Module", "[", "\n", 
+   RowBox[{"readIntegrals", "[", "]"}], ":=", "\n", "  ", 
+   RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
       "TabInt", ",", "S", ",", "nInt", ",", "T", ",", "V", ",", "U", ",", 
-       "IntegralsQuantities"}], "}"}], ",", "\n", "\n", 
+       "IntegralsQuantities"}], "}"}], ",", "\n", "\n", "    ", 
      RowBox[{"(*", 
-      RowBox[{"Overlap", " ", "integrals"}], "*)"}], "\n", "\n", 
+      RowBox[{"Overlap", " ", "integrals"}], "*)"}], "\n", "\n", "    ", 
      RowBox[{
       RowBox[{"TabInt", "=", 
        RowBox[{"ReadList", "[", 
@@ -46,11 +46,11 @@ Cell[BoxData[
           RowBox[{"Number", ",", "Number", ",", "Real"}], "}"}]}], "]"}]}], 
       ";", "\t", 
       RowBox[{"nInt", "=", 
-       RowBox[{"Length", "[", "TabInt", "]"}]}], ";", "\n", 
+       RowBox[{"Length", "[", "TabInt", "]"}]}], ";", "\n", "    ", 
       RowBox[{"S", " ", "=", " ", 
-       RowBox[{"Normal", "[", 
-        RowBox[{"SparseArray", "[", "\[IndentingNewLine]", 
-         RowBox[{"Join", "[", "\[IndentingNewLine]", 
+       RowBox[{"Normal", "[", "\n", "          ", 
+        RowBox[{"SparseArray", "[", "\[IndentingNewLine]", "            ", 
+         RowBox[{"Join", "[", "\[IndentingNewLine]", "              ", 
           RowBox[{
            RowBox[{"Table", "[", 
             RowBox[{
@@ -66,7 +66,7 @@ Cell[BoxData[
                RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "              ", 
            RowBox[{"Table", "[", 
             RowBox[{
              RowBox[{
@@ -81,10 +81,10 @@ Cell[BoxData[
                RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}]}], 
-          "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], "]"}]}],
-       ";", "\n", "\n", 
+          "\[IndentingNewLine]", "            ", "]"}], "\n", "          ", 
+         "]"}], "\n", "        ", "]"}]}], ";", "\n", "\n", "    ", 
       RowBox[{"(*", 
-       RowBox[{"Kinetic", " ", "integrals"}], "*)"}], "\n", 
+       RowBox[{"Kinetic", " ", "integrals"}], "*)"}], "\n", "    ", 
       RowBox[{"TabInt", "=", 
        RowBox[{"ReadList", "[", 
         RowBox[{
@@ -94,10 +94,11 @@ Cell[BoxData[
       ";", "\t", 
       RowBox[{"nInt", "=", 
        RowBox[{"Length", "[", "TabInt", "]"}]}], ";", "\[IndentingNewLine]", 
+      "    ", 
       RowBox[{"T", "=", 
-       RowBox[{"Normal", "[", 
-        RowBox[{"SparseArray", "[", "\[IndentingNewLine]", 
-         RowBox[{"Join", "[", "\[IndentingNewLine]", 
+       RowBox[{"Normal", "[", "\n", "        ", 
+        RowBox[{"SparseArray", "[", "\[IndentingNewLine]", "          ", 
+         RowBox[{"Join", "[", "\[IndentingNewLine]", "            ", 
           RowBox[{
            RowBox[{"Table", "[", 
             RowBox[{
@@ -113,7 +114,7 @@ Cell[BoxData[
                RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "            ", 
            RowBox[{"Table", "[", 
             RowBox[{
              RowBox[{
@@ -128,10 +129,11 @@ Cell[BoxData[
                RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}]}], 
-          "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], "]"}]}],
-       ";", "\n", "\n", 
+          "\[IndentingNewLine]", "          ", "]"}], "\[IndentingNewLine]", 
+         "        ", "]"}], "\n", "      ", "]"}]}], ";", "\n", "\n", "    ", 
+      
       RowBox[{"(*", 
-       RowBox[{"Nuclear", " ", "integrals"}], "*)"}], "\n", 
+       RowBox[{"Nuclear", " ", "integrals"}], "*)"}], "\n", "    ", 
       RowBox[{"TabInt", "=", 
        RowBox[{"ReadList", "[", 
         RowBox[{
@@ -141,10 +143,11 @@ Cell[BoxData[
       ";", "\t", 
       RowBox[{"nInt", "=", 
        RowBox[{"Length", "[", "TabInt", "]"}]}], ";", "\[IndentingNewLine]", 
+      "    ", 
       RowBox[{"V", "=", 
-       RowBox[{"Normal", "[", 
-        RowBox[{"SparseArray", "[", "\[IndentingNewLine]", 
-         RowBox[{"Join", "[", "\[IndentingNewLine]", 
+       RowBox[{"Normal", "[", "\n", "        ", 
+        RowBox[{"SparseArray", "[", "\[IndentingNewLine]", "          ", 
+         RowBox[{"Join", "[", "\[IndentingNewLine]", "            ", 
           RowBox[{
            RowBox[{"Table", "[", 
             RowBox[{
@@ -160,7 +163,7 @@ Cell[BoxData[
                RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "            ", 
            RowBox[{"Table", "[", 
             RowBox[{
              RowBox[{
@@ -175,10 +178,12 @@ Cell[BoxData[
                RowBox[{"k", ",", "3"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}]}], 
-          "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], "]"}]}],
-       ";", "\n", "\n", 
+          "\[IndentingNewLine]", "          ", "]"}], "\[IndentingNewLine]", 
+         "        ", "]"}], "\n", "      ", "]"}]}], ";", "\n", "\n", "    ", 
+      
       RowBox[{"(*", 
        RowBox[{"Two", " ", "electron", " ", "integrals"}], "*)"}], "\n", 
+      "    ", 
       RowBox[{"TabInt", "=", 
        RowBox[{"ReadList", "[", 
         RowBox[{
@@ -189,10 +194,11 @@ Cell[BoxData[
            "Real"}], "}"}]}], "]"}]}], ";", "\t", 
       RowBox[{"nInt", "=", 
        RowBox[{"Length", "[", "TabInt", "]"}]}], ";", "\[IndentingNewLine]", 
+      "    ", 
       RowBox[{"U", "=", 
-       RowBox[{"Normal", "[", 
-        RowBox[{"SparseArray", "[", "\[IndentingNewLine]", 
-         RowBox[{"Join", "[", "\[IndentingNewLine]", 
+       RowBox[{"Normal", "[", "\n", "        ", 
+        RowBox[{"SparseArray", "[", "\[IndentingNewLine]", "          ", 
+         RowBox[{"Join", "[", "\[IndentingNewLine]", "            ", 
           RowBox[{
            RowBox[{"Table", "[", 
             RowBox[{
@@ -212,7 +218,7 @@ Cell[BoxData[
                RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "            ", 
            RowBox[{"Table", "[", 
             RowBox[{
              RowBox[{
@@ -231,7 +237,7 @@ Cell[BoxData[
                RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "            ", 
            RowBox[{"Table", "[", 
             RowBox[{
              RowBox[{
@@ -250,7 +256,7 @@ Cell[BoxData[
                RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "            ", 
            RowBox[{"Table", "[", 
             RowBox[{
              RowBox[{
@@ -269,7 +275,7 @@ Cell[BoxData[
                RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "            ", 
            RowBox[{"Table", "[", 
             RowBox[{
              RowBox[{
@@ -288,7 +294,7 @@ Cell[BoxData[
                RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "            ", 
            RowBox[{"Table", "[", 
             RowBox[{
              RowBox[{
@@ -307,7 +313,7 @@ Cell[BoxData[
                RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "            ", 
            RowBox[{"Table", "[", 
             RowBox[{
              RowBox[{
@@ -326,7 +332,7 @@ Cell[BoxData[
                RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "            ", 
            RowBox[{"Table", "[", 
             RowBox[{
              RowBox[{
@@ -345,8 +351,9 @@ Cell[BoxData[
                RowBox[{"k", ",", "5"}], "\[RightDoubleBracket]"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"k", ",", "nInt"}], "}"}]}], "]"}]}], 
-          "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], "]"}]}],
-       ";", "\n", "\n", 
+          "\[IndentingNewLine]", "          ", "]"}], "\[IndentingNewLine]", 
+         "        ", "]"}], "\n", "      ", "]"}]}], ";", "\n", "\n", "    ", 
+      
       RowBox[{"IntegralsQuantities", " ", "=", " ", 
        RowBox[{"Association", "[", 
         RowBox[{
@@ -354,8 +361,9 @@ Cell[BoxData[
          RowBox[{"\"\<T\>\"", "\[Rule]", "T"}], ",", 
          RowBox[{"\"\<V\>\"", "\[Rule]", "V"}], ",", 
          RowBox[{"\"\<U\>\"", "\[Rule]", "U"}]}], "]"}]}], ";", "\n", "\n", 
-      RowBox[{"Return", "[", "IntegralsQuantities", "]"}], ";"}]}], "]"}]}], 
-  ";"}]], "Code",
+      "    ", 
+      RowBox[{"Return", "[", "IntegralsQuantities", "]"}]}]}], "\n", "  ", 
+    "]"}]}], ";"}]], "Code",
  CellChangeTimes->{{3.870921034086739*^9, 3.870921054341518*^9}, {
   3.870921086456772*^9, 3.8709211321500883`*^9}, {3.87092117988412*^9, 
   3.870921243971706*^9}, {3.870921274235401*^9, 3.870921331371106*^9}, {
@@ -363,13 +371,13 @@ Cell[BoxData[
   3.870921699174135*^9}, {3.870921817889847*^9, 3.870921818006131*^9}, {
   3.870921916105691*^9, 3.870921931808125*^9}, {3.8722308150609694`*^9, 
   3.872230891394719*^9}, {3.872579361664041*^9, 3.8725793798941793`*^9}, {
-  3.872588277915544*^9, 
-  3.872588284235921*^9}},ExpressionUUID->"d78a4103-8871-4add-a45a-\
+  3.872588277915544*^9, 3.872588284235921*^9}, {3.873361687532243*^9, 
+  3.873362123003607*^9}},ExpressionUUID->"d78a4103-8871-4add-a45a-\
 932b14cd479b"]
 }, Open  ]]
 },
-WindowSize->{1105, 689},
-WindowMargins->{{Automatic, 24}, {Automatic, 13}},
+WindowSize->{1319, 689},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -388,7 +396,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 188, 3, 67, "Subsubsection",ExpressionUUID->"0eba79e1-8236-44ce-9685-2191df7a240c"],
-Cell[771, 27, 15967, 340, 1471, "Code",ExpressionUUID->"d78a4103-8871-4add-a45a-932b14cd479b"]
+Cell[771, 27, 16725, 348, 1732, "Code",ExpressionUUID->"d78a4103-8871-4add-a45a-932b14cd479b"]
 }, Open  ]]
 }
 ]

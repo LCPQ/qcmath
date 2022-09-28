@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17278,        377]
-NotebookOptionsPosition[     16896,        362]
-NotebookOutlinePosition[     17323,        379]
-CellTagsIndexPosition[     17280,        376]
+NotebookDataLength[     19048,        412]
+NotebookOptionsPosition[     18670,        397]
+NotebookOutlinePosition[     19093,        414]
+CellTagsIndexPosition[     19050,        411]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -22,54 +22,70 @@ Cell[BoxData[
  RowBox[{
   RowBox[{
    RowBox[{"readBasis", "[", 
-    RowBox[{"nAt_", ",", "xyz_"}], "]"}], ":=", 
-   RowBox[{"Module", "[", "\n", 
+    RowBox[{"nAt_", ",", "xyz_"}], "]"}], ":=", "\n", "  ", 
+   RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
       "file", ",", "iNuc", ",", "nShAt", ",", "nShell", ",", "ncart", ",", 
-       "CenterShell", ",", "maxShell", ",", "line1", ",", "\n", "line2", ",", 
-       "shelltype", ",", "KShell", ",", "line3", ",", "ExpShell", ",", 
-       "DShell", ",", "kk", ",", "\n", "minExponent", ",", "TotAngMomShell", 
-       ",", "maxExponent", ",", "maxAngMom", ",", "nBas", ",", "\n", "maxK", 
-       ",", "maxL", ",", "shellTypeElts"}], "}"}], ",", "\n", "\n", 
+       "CenterShell", ",", "maxShell", ",", "line1", ",", "\n", "          ", 
+       "line2", ",", "shelltype", ",", "KShell", ",", "line3", ",", 
+       "ExpShell", ",", "DShell", ",", "kk", ",", "\n", "          ", 
+       "minExponent", ",", "TotAngMomShell", ",", "maxExponent", ",", 
+       "maxAngMom", ",", "nBas", ",", "\n", "          ", "maxK", ",", "maxL",
+        ",", "shellTypeElts"}], "}"}], ",", "\n", "\n", "    ", 
      RowBox[{
       RowBox[{"file", "=", 
        RowBox[{"OpenRead", "[", 
         RowBox[{"path", "<>", "\"\</input/basis\>\""}], "]"}]}], ";", "\n", 
-      "\n", 
-      RowBox[{"nBas", "=", "0"}], ";", "\n", "\n", 
+      "    ", 
+      RowBox[{"If", "[", "\n", "      ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"SameQ", "[", 
+          RowBox[{"file", ",", "$Failed"}], "]"}], "\[Equal]", "True"}], ",", 
+        
+        RowBox[{
+         RowBox[{"Print", "[", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<basis file not found\>\"", ",", "Bold", ",", "Red"}], 
+           "]"}], "]"}], ";", "\n", "      ", 
+         RowBox[{"Off", "[", 
+          RowBox[{"OpenRead", "::", "noopen"}], "]"}], ";", "\n", "      ", 
+         RowBox[{"Abort", "[", "]"}], ";"}]}], "\n", "    ", "]"}], ";", "\n",
+       "    ", "\n", "    ", 
+      RowBox[{"nBas", "=", "0"}], ";", "\n", "\n", "    ", 
       RowBox[{"(*", 
-       RowBox[{"Local", " ", "variables"}], "*)"}], "\n", 
-      RowBox[{"nShell", "=", "0"}], ";", "\n", 
-      RowBox[{"ncart", "=", "3"}], ";", "\n", 
-      RowBox[{"maxK", "=", "20"}], ";", "\n", 
-      RowBox[{"maxL", "=", "7"}], ";", "\n", 
-      RowBox[{"maxShell", "=", "512"}], ";", "\n", "\n", 
+       RowBox[{"Local", " ", "variables"}], "*)"}], "\n", "    ", 
+      RowBox[{"nShell", "=", "0"}], ";", "\n", "    ", 
+      RowBox[{"ncart", "=", "3"}], ";", "\n", "    ", 
+      RowBox[{"maxK", "=", "20"}], ";", "\n", "    ", 
+      RowBox[{"maxL", "=", "7"}], ";", "\n", "    ", 
+      RowBox[{"maxShell", "=", "512"}], ";", "\n", "\n", "    ", 
       RowBox[{"CenterShell", "=", 
        RowBox[{"Table", "[", 
         RowBox[{",", 
          RowBox[{"{", 
           RowBox[{"i", ",", "maxShell"}], "}"}], ",", 
          RowBox[{"{", 
-          RowBox[{"j", ",", "ncart"}], "}"}]}], "]"}]}], ";", "\n", 
+          RowBox[{"j", ",", "ncart"}], "}"}]}], "]"}]}], ";", "\n", "    ", 
       RowBox[{"TotAngMomShell", "=", 
        RowBox[{"Table", "[", 
         RowBox[{",", 
          RowBox[{"{", 
-          RowBox[{"i", ",", "maxShell"}], "}"}]}], "]"}]}], ";", "\n", 
+          RowBox[{"i", ",", "maxShell"}], "}"}]}], "]"}]}], ";", "\n", "    ", 
       RowBox[{"KShell", "=", 
        RowBox[{"Table", "[", 
         RowBox[{",", 
          RowBox[{"{", 
-          RowBox[{"i", ",", "maxShell"}], "}"}]}], "]"}]}], ";", "\n", 
+          RowBox[{"i", ",", "maxShell"}], "}"}]}], "]"}]}], ";", "\n", "    ", 
       RowBox[{"DShell", "=", 
        RowBox[{"Table", "[", 
         RowBox[{",", 
          RowBox[{"{", 
           RowBox[{"i", ",", "maxShell"}], "}"}], ",", 
          RowBox[{"{", 
-          RowBox[{"j", ",", "maxK"}], "}"}]}], "]"}]}], ";", "\n", 
+          RowBox[{"j", ",", "maxK"}], "}"}]}], "]"}]}], ";", "\n", "    ", 
       RowBox[{"ExpShell", "=", 
        RowBox[{"Table", "[", 
         RowBox[{",", 
@@ -77,11 +93,12 @@ Cell[BoxData[
           RowBox[{"i", ",", "maxShell"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"j", ",", "maxK"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      "    ", 
       RowBox[{"maxAngMom", "=", 
        RowBox[{"Table", "[", 
         RowBox[{"0", ",", 
          RowBox[{"{", 
-          RowBox[{"i", ",", "nAt"}], "}"}]}], "]"}]}], ";", "\n", 
+          RowBox[{"i", ",", "nAt"}], "}"}]}], "]"}]}], ";", "\n", "    ", 
       RowBox[{"minExponent", "=", 
        RowBox[{"Table", "[", 
         RowBox[{"0", ",", 
@@ -89,60 +106,67 @@ Cell[BoxData[
           RowBox[{"i", ",", "nAt"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"j", ",", 
-           RowBox[{"maxL", "+", "1"}]}], "}"}]}], "]"}]}], ";", "\n", 
+           RowBox[{"maxL", "+", "1"}]}], "}"}]}], "]"}]}], ";", "\n", "    ", 
+      
       RowBox[{"maxExponent", "=", 
        RowBox[{"Table", "[", 
         RowBox[{"0", ",", 
          RowBox[{"{", 
           RowBox[{"i", ",", "nAt"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      "    ", 
       RowBox[{"(*", 
-       RowBox[{"Loop", " ", "over", " ", "atoms"}], "*)"}], "\n", 
-      RowBox[{"Do", "[", "\n", 
+       RowBox[{"Loop", " ", "over", " ", "atoms"}], "*)"}], "\n", "    ", 
+      RowBox[{"Do", "[", "\n", "      ", 
        RowBox[{
         RowBox[{
          RowBox[{"line1", "=", 
           RowBox[{"ToExpression", "@", 
            RowBox[{"StringSplit", "[", 
             RowBox[{"ReadLine", "[", "file", "]"}], "]"}]}]}], ";", "\n", 
+         "      ", 
          RowBox[{"iNuc", "=", 
           RowBox[{
           "line1", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
-         ";", "\n", 
+         ";", "\n", "      ", 
          RowBox[{"nShAt", "=", 
           RowBox[{
           "line1", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}], 
-         ";", "\n", "\n", 
+         ";", "\n", "\n", "      ", 
          RowBox[{"(*", 
           RowBox[{"Loop", " ", "over", " ", "shells"}], "*)"}], "\n", 
-         RowBox[{"Do", "[", "\n", 
+         "      ", 
+         RowBox[{"Do", "[", "\n", "        ", 
           RowBox[{
            RowBox[{
             RowBox[{"nShell", "=", 
-             RowBox[{"nShell", "+", "1"}]}], ";", "\n", "\n", 
+             RowBox[{"nShell", "+", "1"}]}], ";", "\n", "\n", "        ", 
             RowBox[{"(*", 
-             RowBox[{"Basis", " ", "function", " ", "centers"}], "*)"}], "\n", 
-            RowBox[{"Do", "[", "\n", 
+             RowBox[{"Basis", " ", "function", " ", "centers"}], "*)"}], "\n",
+             "        ", 
+            RowBox[{"Do", "[", "\n", "          ", 
              RowBox[{
               RowBox[{
-               RowBox[{
-                RowBox[{"CenterShell", "\[LeftDoubleBracket]", 
-                 RowBox[{"nShell", ",", "k"}], "\[RightDoubleBracket]"}], "=", 
-                RowBox[{"xyz", "\[LeftDoubleBracket]", 
-                 RowBox[{"iNuc", ",", "k"}], "\[RightDoubleBracket]"}]}], 
-               ";"}], "\n", ",", 
+               RowBox[{"CenterShell", "\[LeftDoubleBracket]", 
+                RowBox[{"nShell", ",", "k"}], "\[RightDoubleBracket]"}], "=", 
+               
+               RowBox[{"xyz", "\[LeftDoubleBracket]", 
+                RowBox[{"iNuc", ",", "k"}], "\[RightDoubleBracket]"}]}], ",", 
+              
               RowBox[{"{", 
-               RowBox[{"k", ",", "ncart"}], "}"}]}], "]"}], ";", "\n", "\n", 
+               RowBox[{"k", ",", "ncart"}], "}"}]}], "\n", "        ", "]"}], 
+            ";", "\n", "\n", "        ", 
             RowBox[{"(*", 
              RowBox[{
              "Shell", " ", "type", " ", "and", " ", "contraction", " ", 
-              "degree"}], "*)"}], "\n", 
+              "degree"}], "*)"}], "\n", "        ", 
             RowBox[{"line1", "=", 
              RowBox[{"StringSplit", "[", 
               RowBox[{"ReadLine", "[", "file", "]"}], "]"}]}], ";", "\n", 
+            "        ", 
             RowBox[{"shelltype", "=", 
              RowBox[{
              "line1", "\[LeftDoubleBracket]", "1", 
-              "\[RightDoubleBracket]"}]}], ";", "\n", 
+              "\[RightDoubleBracket]"}]}], ";", "\n", "        ", 
             RowBox[{
              RowBox[{
              "KShell", "\[LeftDoubleBracket]", "nShell", 
@@ -150,7 +174,7 @@ Cell[BoxData[
              RowBox[{"ToExpression", "@", 
               RowBox[{
               "line1", "\[LeftDoubleBracket]", "2", 
-               "\[RightDoubleBracket]"}]}]}], ";", "\n", "\n", 
+               "\[RightDoubleBracket]"}]}]}], ";", "\n", "\n", "        ", 
             RowBox[{"shellTypeElts", "=", 
              RowBox[{"Association", "[", 
               RowBox[{
@@ -162,35 +186,36 @@ Cell[BoxData[
                RowBox[{"\"\<H\>\"", "\[Rule]", "5"}], ",", 
                RowBox[{"\"\<I\>\"", "\[Rule]", "6"}], ",", 
                RowBox[{"\"\<J\>\"", "\[Rule]", "7"}]}], "]"}]}], ";", "\n", 
-            "\n", 
+            "\n", "        ", 
             RowBox[{
              RowBox[{
              "TotAngMomShell", "\[LeftDoubleBracket]", "nShell", 
               "\[RightDoubleBracket]"}], "=", 
              RowBox[{"Replace", "[", 
               RowBox[{"shelltype", ",", "shellTypeElts"}], "]"}]}], ";", "\n",
-             "\n", 
+             "\n", "        ", 
             RowBox[{"(*", 
              RowBox[{
              "Read", " ", "exponents", " ", "and", " ", "contraction", " ", 
-              "coefficients"}], "*)"}], "\n", 
-            RowBox[{"Do", "[", "\n", "\n", 
+              "coefficients"}], "*)"}], "\n", "        ", 
+            RowBox[{"Do", "[", "\n", "          ", 
              RowBox[{
               RowBox[{
                RowBox[{"line1", "=", 
                 RowBox[{"StringSplit", "[", 
                  RowBox[{"ReadLine", "[", "file", "]"}], "]"}]}], ";", "\n", 
+               "          ", 
                RowBox[{"kk", "=", 
                 RowBox[{
                 "line1", "\[LeftDoubleBracket]", "1", 
-                 "\[RightDoubleBracket]"}]}], ";", "\n", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "          ", 
                RowBox[{
                 RowBox[{"ExpShell", "\[LeftDoubleBracket]", 
                  RowBox[{"nShell", ",", "k"}], "\[RightDoubleBracket]"}], "=", 
                 RowBox[{"StringToStream", "@", 
                  RowBox[{
                  "line1", "\[LeftDoubleBracket]", "2", 
-                  "\[RightDoubleBracket]"}]}]}], ";", "\n", 
+                  "\[RightDoubleBracket]"}]}]}], ";", "\n", "          ", 
                RowBox[{
                 RowBox[{"ExpShell", "\[LeftDoubleBracket]", 
                  RowBox[{"nShell", ",", "k"}], "\[RightDoubleBracket]"}], "=", 
@@ -198,14 +223,14 @@ Cell[BoxData[
                  RowBox[{
                   RowBox[{"ExpShell", "\[LeftDoubleBracket]", 
                    RowBox[{"nShell", ",", "k"}], "\[RightDoubleBracket]"}], 
-                  ",", "Number"}], "]"}]}], ";", "\n", 
+                  ",", "Number"}], "]"}]}], ";", "\n", "          ", 
                RowBox[{
                 RowBox[{"DShell", "\[LeftDoubleBracket]", 
                  RowBox[{"nShell", ",", "k"}], "\[RightDoubleBracket]"}], "=", 
                 RowBox[{"StringToStream", "@", 
                  RowBox[{
                  "line1", "\[LeftDoubleBracket]", "3", 
-                  "\[RightDoubleBracket]"}]}]}], ";", "\n", 
+                  "\[RightDoubleBracket]"}]}]}], ";", "\n", "          ", 
                RowBox[{
                 RowBox[{"DShell", "\[LeftDoubleBracket]", 
                  RowBox[{"nShell", ",", "k"}], "\[RightDoubleBracket]"}], "=", 
@@ -213,12 +238,13 @@ Cell[BoxData[
                  RowBox[{
                   RowBox[{"DShell", "\[LeftDoubleBracket]", 
                    RowBox[{"nShell", ",", "k"}], "\[RightDoubleBracket]"}], 
-                  ",", "Number"}], "]"}]}], ";"}], "\n", "\n", ",", 
+                  ",", "Number"}], "]"}]}]}], ",", 
               RowBox[{"{", 
                RowBox[{"k", ",", 
                 RowBox[{
                 "KShell", "\[LeftDoubleBracket]", "nShell", 
-                 "\[RightDoubleBracket]"}]}], "}"}]}], "]"}], ";", "\n", "\n", 
+                 "\[RightDoubleBracket]"}]}], "}"}]}], "\n", "        ", 
+             "]"}], ";", "\n", "\n", "        ", 
             RowBox[{
              RowBox[{"minExponent", "\[LeftDoubleBracket]", 
               RowBox[{"iNuc", ",", 
@@ -235,7 +261,7 @@ Cell[BoxData[
                   RowBox[{
                   "TotAngMomShell", "\[LeftDoubleBracket]", "nShell", 
                    "\[RightDoubleBracket]"}], "+", "1"}]}], 
-                "\[RightDoubleBracket]"}], ",", "\n", 
+                "\[RightDoubleBracket]"}], ",", "\n", "        ", 
                RowBox[{"Min", "[", 
                 RowBox[{"ExpShell", "\[LeftDoubleBracket]", 
                  RowBox[{"nShell", ",", 
@@ -243,7 +269,7 @@ Cell[BoxData[
                    RowBox[{
                    "KShell", "\[LeftDoubleBracket]", "nShell", 
                     "\[RightDoubleBracket]"}]}]}], "\[RightDoubleBracket]"}], 
-                "]"}]}], "]"}]}], ";", "\n", "\n", 
+                "]"}]}], "]"}]}], ";", "\n", "\n", "        ", 
             RowBox[{
              RowBox[{
              "maxExponent", "\[LeftDoubleBracket]", "iNuc", 
@@ -259,6 +285,7 @@ Cell[BoxData[
                   RowBox[{"ExpShell", "\[LeftDoubleBracket]", 
                    RowBox[{"nShell", ",", ";;"}], "\[RightDoubleBracket]"}], 
                   ",", "Null"}], "]"}], "]"}]}], "]"}]}], ";", "\n", 
+            "        ", 
             RowBox[{
              RowBox[{
              "maxAngMom", "\[LeftDoubleBracket]", "iNuc", 
@@ -270,38 +297,38 @@ Cell[BoxData[
                 "\[RightDoubleBracket]"}], ",", 
                RowBox[{
                "TotAngMomShell", "\[LeftDoubleBracket]", "nShell", 
-                "\[RightDoubleBracket]"}]}], "]"}]}], ";"}], "\n", "\n", ",", 
-           
+                "\[RightDoubleBracket]"}]}], "]"}]}]}], ",", 
            RowBox[{"{", 
-            RowBox[{"j", ",", "nShAt"}], "}"}]}], "]"}], ";"}], "\n", "\n", 
-        ",", 
+            RowBox[{"j", ",", "nShAt"}], "}"}]}], "\n", "      ", "]"}], 
+         ";"}], "\n", "      ", ",", 
         RowBox[{"{", 
-         RowBox[{"i", ",", "nAt"}], "}"}]}], "]"}], ";", "\n", "\n", 
-      RowBox[{"Close", "[", "file", "]"}], ";", "\n", "\n", 
-      RowBox[{"Do", "[", "\n", 
+         RowBox[{"i", ",", "nAt"}], "}"}]}], "\n", "    ", "]"}], ";", "\n", 
+      "\n", "    ", 
+      RowBox[{"Close", "[", "file", "]"}], ";", "\n", "\n", "    ", 
+      RowBox[{"Do", "[", "\n", "      ", 
        RowBox[{
-        RowBox[{
-         RowBox[{"nBas", "=", 
-          RowBox[{"nBas", "+", 
-           RowBox[{
-            FractionBox["1", "2"], 
-            RowBox[{"(", 
+        RowBox[{"nBas", "=", 
+         RowBox[{"nBas", "+", 
+          RowBox[{
+           FractionBox["1", "2"], 
+           RowBox[{"(", 
+            RowBox[{
              RowBox[{
               RowBox[{
-               RowBox[{
-               "TotAngMomShell", "\[LeftDoubleBracket]", "iShell", 
-                "\[RightDoubleBracket]"}], "*", 
-               RowBox[{
-               "TotAngMomShell", "\[LeftDoubleBracket]", "iShell", 
-                "\[RightDoubleBracket]"}]}], "+", 
-              RowBox[{"3", "*", 
-               RowBox[{
-               "TotAngMomShell", "\[LeftDoubleBracket]", "iShell", 
-                "\[RightDoubleBracket]"}]}], "+", "2"}], ")"}]}]}]}], ";"}], 
-        "\n", ",", 
+              "TotAngMomShell", "\[LeftDoubleBracket]", "iShell", 
+               "\[RightDoubleBracket]"}], "*", 
+              RowBox[{
+              "TotAngMomShell", "\[LeftDoubleBracket]", "iShell", 
+               "\[RightDoubleBracket]"}]}], "+", 
+             RowBox[{"3", "*", 
+              RowBox[{
+              "TotAngMomShell", "\[LeftDoubleBracket]", "iShell", 
+               "\[RightDoubleBracket]"}]}], "+", "2"}], ")"}]}]}]}], ",", 
         RowBox[{"{", 
-         RowBox[{"iShell", ",", "nShell"}], "}"}]}], "]"}], ";", "\n", "\n", 
-      RowBox[{"Return", "[", "nBas", "]"}]}]}], "]"}]}], ";"}]], "Code",
+         RowBox[{"iShell", ",", "nShell"}], "}"}]}], "\n", "    ", "]"}], ";",
+       "\n", "\n", "    ", 
+      RowBox[{"Return", "[", "nBas", "]"}]}]}], "\n", "  ", "]"}]}], 
+  ";"}]], "Code",
  CellChangeTimes->{
   3.8684315261470757`*^9, {3.868432102360114*^9, 3.868432144632848*^9}, {
    3.8684328672708073`*^9, 3.868432872635079*^9}, {3.868432904635594*^9, 
@@ -357,11 +384,19 @@ Cell[BoxData[
    3.8686800920605516`*^9, 3.868680096183634*^9}, {3.8686801484974623`*^9, 
    3.86868014924262*^9}, 3.8686984444944572`*^9, {3.870836061108886*^9, 
    3.870836061809844*^9}, {3.8725793245472527`*^9, 3.872579330800809*^9}, {
-   3.8726445902216043`*^9, 3.872644616826877*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"18e8c84c-b62b-4010-b299-e98275bf580f"]
+   3.8726445902216043`*^9, 3.872644616826877*^9}, {3.873356589843958*^9, 
+   3.873356674614045*^9}, {3.8733567876213503`*^9, 3.873357054189932*^9}, {
+   3.87335710079326*^9, 3.8733571010718613`*^9}, {3.873357164853326*^9, 
+   3.873357243656289*^9}, {3.873357347317916*^9, 3.873357363069175*^9}, {
+   3.873357430425765*^9, 3.87335743138833*^9}, {3.873357562926835*^9, 
+   3.873357583958983*^9}, {3.8733577666310673`*^9, 3.873357776380588*^9}, {
+   3.873357893233232*^9, 3.873357915233755*^9}, 3.873357957153833*^9, {
+   3.873358650983552*^9, 
+   3.87335868158375*^9}},ExpressionUUID->"18e8c84c-b62b-4010-b299-\
+e98275bf580f"]
 },
-WindowSize->{1254, 780},
-WindowMargins->{{Automatic, -148}, {-62, Automatic}},
+WindowSize->{1392, 763},
+WindowMargins->{{Automatic, 10}, {1, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -378,7 +413,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 16334, 340, 2431, "Code",ExpressionUUID->"18e8c84c-b62b-4010-b299-e98275bf580f"]
+Cell[558, 20, 18108, 375, 2516, "Code",ExpressionUUID->"18e8c84c-b62b-4010-b299-e98275bf580f"]
 }
 ]
 *)
