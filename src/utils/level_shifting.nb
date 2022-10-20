@@ -1,0 +1,90 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2983,         82]
+NotebookOptionsPosition[      2606,         67]
+NotebookOutlinePosition[      3031,         84]
+CellTagsIndexPosition[      2988,         81]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"levelShifting", "[", 
+    RowBox[{
+    "levelShift_", ",", "nBas_", ",", "nO_", ",", "S_", ",", "C_", ",", 
+     "F_"}], "]"}], ":=", "\n", "  ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"FMO", ",", "Sc", ",", "FAO"}], "}"}], ",", "\n", "   ", "\n", 
+     "    ", 
+     RowBox[{
+      RowBox[{"FMO", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"C", "\[Transpose]"}], ".", "F", ".", "C"}]}], ";", "\n", 
+      "    ", "\n", "    ", 
+      RowBox[{"Do", "[", "\n", "    ", "\n", "      ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"FMO", "\[LeftDoubleBracket]", 
+          RowBox[{"a", ",", "a"}], "\[RightDoubleBracket]"}], " ", "=", " ", 
+         RowBox[{
+          RowBox[{"FMO", "\[LeftDoubleBracket]", 
+           RowBox[{"a", ",", "a"}], "\[RightDoubleBracket]"}], " ", "+", " ", 
+          "levelShift"}]}], "\n", "     ", "\n", "      ", ",", 
+        RowBox[{"{", 
+         RowBox[{"a", ",", 
+          RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", "     ", 
+       "\n", "    ", "]"}], ";", "\n", "   ", "\n", "    ", 
+      RowBox[{"Sc", " ", "=", " ", 
+       RowBox[{"S", ".", "C"}]}], ";", "\n", "    ", 
+      RowBox[{"FAO", " ", "=", " ", 
+       RowBox[{"Sc", ".", "FMO", ".", 
+        RowBox[{"Sc", "\[Transpose]"}]}]}], ";", "\n", "   ", "\n", "    ", 
+      RowBox[{"Return", "[", "FAO", "]"}], ";"}]}], "\n", "    ", "\n", "  ", 
+    "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.873863822167068*^9, 3.8738641732859077`*^9}, {
+  3.873864486162746*^9, 3.87386450289961*^9}, {3.873864715292577*^9, 
+  3.873864730514859*^9}, {3.87386477659766*^9, 3.873864784249566*^9}, {
+  3.873864923998386*^9, 3.873864956601901*^9}, {3.87386503983794*^9, 
+  3.8738650477115383`*^9}, {3.873865082148427*^9, 3.8738651112567377`*^9}, {
+  3.873865163527174*^9, 3.873865209121435*^9}, {3.873865372674253*^9, 
+  3.873865378791501*^9}, {3.873894727630628*^9, 
+  3.8738947507289867`*^9}},ExpressionUUID->"21fc2f6a-aa6a-46bc-b4e4-\
+4f93dca9d440"]
+},
+WindowSize->{1388, 747},
+WindowMargins->{{Automatic, -217}, {7, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"dea7a880-c05a-41de-a06b-d1708170a93e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2044, 45, 601, "Code",ExpressionUUID->"21fc2f6a-aa6a-46bc-b4e4-4f93dca9d440"]
+}
+]
+*)
+

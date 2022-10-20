@@ -1,0 +1,127 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4509,        119]
+NotebookOptionsPosition[      4133,        104]
+NotebookOutlinePosition[      4557,        121]
+CellTagsIndexPosition[      4514,        118]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"exctractSelfEnergy", "[", 
+    RowBox[{
+    "nBas_", ",", "\[CapitalSigma]_", ",", "Zfactor_", ",", "\[Epsilon]_"}], 
+    "]"}], ":=", "\n", "  ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\[CapitalSigma]c", ",", "Z", ",", "Im\[CapitalSigma]c\[Omega]", ",", 
+       "\[CapitalSigma]c\[Omega]", ",", "Im\[CapitalSigma]c", ",", 
+       "outputs"}], "}"}], ",", "\n", "  ", "\n", "    ", 
+     RowBox[{
+      RowBox[{"\[CapitalSigma]c", " ", "=", " ", "\[CapitalSigma]"}], ";", 
+      "\n", "    ", 
+      RowBox[{"Z", " ", "=", " ", "Zfactor"}], ";", "\n", "    ", "\n", 
+      "    ", 
+      RowBox[{
+      "Im\[CapitalSigma]c\[Omega]", " ", "=", " ", "\[CapitalSigma]c"}], ";", 
+      "\n", "    ", 
+      RowBox[{"\[CapitalSigma]c\[Omega]", " ", "=", " ", 
+       RowBox[{"Re", "[", "\[CapitalSigma]c", "]"}]}], ";", "\n", "    ", 
+      RowBox[{"\[CapitalSigma]c", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+          "\[CapitalSigma]c", "\[LeftDoubleBracket]", "p", 
+           "\[RightDoubleBracket]"}], "/.", 
+          RowBox[{"\[Omega]", "\[Rule]", 
+           RowBox[{
+           "\[Epsilon]", "\[LeftDoubleBracket]", "p", 
+            "\[RightDoubleBracket]"}]}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}]}], ";", "\n", "    ", 
+      RowBox[{"Im\[CapitalSigma]c", " ", "=", " ", "\[CapitalSigma]c"}], ";", 
+      "\n", "    ", 
+      RowBox[{"\[CapitalSigma]c", " ", "=", " ", 
+       RowBox[{"Re", "[", "\[CapitalSigma]c", "]"}]}], ";", "\n", "    ", 
+      "\n", "    ", 
+      RowBox[{"Z", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Z", "\[LeftDoubleBracket]", "p", "\[RightDoubleBracket]"}],
+           "/.", 
+          RowBox[{"\[Omega]", "\[Rule]", 
+           RowBox[{
+           "\[Epsilon]", "\[LeftDoubleBracket]", "p", 
+            "\[RightDoubleBracket]"}]}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}]}], ";", "\n", "    ", 
+      RowBox[{"Z", " ", "=", " ", 
+       RowBox[{"Re", "[", "Z", "]"}]}], ";", " ", "\n", "    ", 
+      RowBox[{"Z", " ", "=", " ", 
+       FractionBox["1", 
+        RowBox[{"1", "-", "Z"}]]}], ";", "\n", "    ", "\n", "    ", 
+      RowBox[{"outputs", " ", "=", " ", 
+       RowBox[{"Association", "[", 
+        RowBox[{
+         RowBox[{"\"\<\[CapitalSigma]c\>\"", "\[Rule]", "\[CapitalSigma]c"}], 
+         ",", 
+         RowBox[{"\"\<Z\>\"", "\[Rule]", "Z"}], ",", 
+         RowBox[{
+         "\"\<Im\[CapitalSigma]c\[Omega]\>\"", "\[Rule]", 
+          "Im\[CapitalSigma]c\[Omega]"}], ",", 
+         RowBox[{
+         "\"\<\[CapitalSigma]c\[Omega]\>\"", "\[Rule]", 
+          "\[CapitalSigma]c\[Omega]"}], ",", 
+         RowBox[{
+         "\"\<Im\[CapitalSigma]c\>\"", "\[Rule]", "Im\[CapitalSigma]c"}]}], 
+        "]"}]}], ";", "\n", "  ", "\n", "    ", 
+      RowBox[{"Return", "[", "outputs", "]"}]}]}], "\n", "  ", "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.873526410439865*^9, 3.873526414078299*^9}, {
+  3.873526468976069*^9, 3.873526524861288*^9}, {3.8735265568292437`*^9, 
+  3.8735266390754223`*^9}, {3.873526786592876*^9, 3.873526794092902*^9}, {
+  3.873526870527504*^9, 3.873526996579995*^9}, {3.873527029809361*^9, 
+  3.873527150951659*^9}, {3.873527209240535*^9, 3.8735272119804897`*^9}, {
+  3.873527555575047*^9, 3.873527584265174*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"105a6759-49c6-4a98-a130-8f74eee34058"]
+},
+WindowSize->{998, 705},
+WindowMargins->{{Automatic, -94}, {-2, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"8198349b-b8f7-477f-833b-769083d91f8f"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3571, 82, 670, "Code",ExpressionUUID->"105a6759-49c6-4a98-a130-8f74eee34058"]
+}
+]
+*)
+

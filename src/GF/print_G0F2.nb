@@ -1,0 +1,146 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5542,        138]
+NotebookOptionsPosition[      5165,        123]
+NotebookOutlinePosition[      5589,        140]
+CellTagsIndexPosition[      5546,        137]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"PrintG0F2", "[", 
+    RowBox[{
+    "nO_", ",", "\[Epsilon]HF_", ",", "SigC_", ",", "Z_", ",", 
+     "\[Epsilon]GF2_", ",", "ENuc_", ",", "ERHF_", ",", "EcMP2_"}], "]"}], ":=",
+    "\n", "  ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"HOMO", ",", "LUMO", ",", "Gap", ",", "TabG0F2"}], "}"}], ",", 
+     "\n", "  ", "\n", "    ", 
+     RowBox[{
+      RowBox[{"HOMO", " ", "=", " ", "nO"}], ";", "\n", "    ", 
+      RowBox[{"LUMO", " ", "=", " ", 
+       RowBox[{"HOMO", " ", "+", " ", "1"}]}], ";", "\n", "    ", 
+      RowBox[{"Gap", " ", "=", " ", 
+       RowBox[{
+        RowBox[{
+        "\[Epsilon]GF2", "\[LeftDoubleBracket]", "LUMO", 
+         "\[RightDoubleBracket]"}], " ", "-", " ", 
+        RowBox[{
+        "\[Epsilon]GF2", "\[LeftDoubleBracket]", "HOMO", 
+         "\[RightDoubleBracket]"}]}]}], ";", "\n", "    ", "\n", "    ", 
+      RowBox[{"TabG0F2", " ", "=", " ", 
+       RowBox[{"TableForm", "[", "\n", "                ", 
+        RowBox[{
+         RowBox[{"{", "\n", "                  ", 
+          RowBox[{"{", "\n", "                    ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"\[Epsilon]HF", "*", "HaToeV"}], "//", "MatrixForm"}], 
+            ",", 
+            RowBox[{
+             RowBox[{"SigC", "*", "HaToeV"}], "//", "MatrixForm"}], ",", 
+            RowBox[{"Z", "//", "MatrixForm"}], ",", "\n", 
+            "                    ", 
+            RowBox[{
+             RowBox[{"\[Epsilon]GF2", "*", "HaToeV"}], "//", "MatrixForm"}], 
+            ",", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+               "\[Epsilon]GF2", "\[LeftDoubleBracket]", "HOMO", 
+                "\[RightDoubleBracket]"}], "*", "HaToeV"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"9", ",", "6"}], "}"}]}], "]"}], ",", "\n", 
+            "                    ", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+               "\[Epsilon]GF2", "\[LeftDoubleBracket]", "LUMO", 
+                "\[RightDoubleBracket]"}], "*", "HaToeV"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"9", ",", "6"}], "}"}]}], "]"}], ",", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{
+              RowBox[{"Gap", "*", "HaToeV"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"9", ",", "6"}], "}"}]}], "]"}], ",", "\n", 
+            "                    ", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{
+              RowBox[{"ENuc", "+", "ERHF", "+", "EcMP2"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"9", ",", "6"}], "}"}]}], "]"}], ",", 
+            RowBox[{"NumberForm", "[", 
+             RowBox[{"EcMP2", ",", 
+              RowBox[{"{", 
+               RowBox[{"9", ",", "6"}], "}"}]}], "]"}]}], "\n", 
+           "                  ", "}"}], "\n", "                ", "}"}], ",", 
+         "\n", "                    ", "\[IndentingNewLine]", 
+         "                ", 
+         RowBox[{"TableHeadings", "\[Rule]", "\n", "                  ", 
+          RowBox[{"{", "\n", "                    ", 
+           RowBox[{"None", ",", "\n", "                      ", 
+            RowBox[{"{", "\n", "                        ", 
+             RowBox[{
+             "\"\<\!\(\*SubscriptBox[\(\[Epsilon]\), \(HF\)]\) (eV)\>\"", 
+              ",", "\"\<\!\(\*SubscriptBox[\(\[CapitalSigma]\), \(c\)]\) (eV)\
+\>\"", ",", "\"\<Z\>\"", ",", 
+              "\"\<\!\(\*SubscriptBox[\(\[Epsilon]\), \(QP\)]\) (eV)\>\"", 
+              ",", "\"\<G0F2 HOMO energy (eV)\>\"", ",", "\n", 
+              "                        ", "\"\<G0F2 LUMO energy (eV)\>\"", 
+              ",", "\"\<Gap HOMO-LUMO energy (eV)\>\"", ",", "\n", 
+              "                        ", 
+              "\"\<G0F2@MP2 total energy (au)\>\"", ",", 
+              "\"\<MP2 correlation energy (au)\>\""}], "\n", 
+             "                      ", "}"}]}], "\n", "                  ", 
+           "}"}]}], ",", "\n", "                  ", 
+         RowBox[{"TableDirections", "\[Rule]", "Row"}], ",", 
+         RowBox[{"TableAlignments", "\[Rule]", "Center"}]}], "\n", 
+        "              ", "]"}]}], ";", "\n", "    ", "\n", "    ", 
+      RowBox[{"Return", "[", "TabG0F2", "]"}], ";"}]}], "\n", "  ", "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.873514903460437*^9, 3.873514937827791*^9}, {
+  3.873514971863632*^9, 
+  3.87351515025931*^9}},ExpressionUUID->"1cf1ed59-df1a-4bf3-977b-\
+27459b5582af"]
+},
+WindowSize->{1321, 689},
+WindowMargins->{{Automatic, 0}, {-24, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"db835ba9-d75d-4fb6-bc99-d63f079a6d59"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 4603, 101, 974, "Code",ExpressionUUID->"1cf1ed59-df1a-4bf3-977b-27459b5582af"]
+}
+]
+*)
+

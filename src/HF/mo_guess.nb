@@ -1,0 +1,177 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7019,        169]
+NotebookOptionsPosition[      6642,        154]
+NotebookOutlinePosition[      7065,        171]
+CellTagsIndexPosition[      7022,        168]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MOguess", "[", 
+    RowBox[{
+    "nBas_", ",", "Nelc_", ",", "guessType_", ",", "X_", ",", "S_", ",", 
+     "Hc_"}], "]"}], ":=", "\n", "  ", 
+   RowBox[{"Module", "[", "\n", "    ", 
+    RowBox[{
+     RowBox[{"{", "\n", "      ", 
+      RowBox[{
+      "e", ",", "Cp", ",", "C", ",", "Orb", ",", "P", ",", "\n", "      ", 
+       "F", ",", "a"}], "\n", "    ", "}"}], ",", "\n", "    ", "\n", "    ", 
+     
+     RowBox[{
+      RowBox[{"F", " ", "=", " ", 
+       RowBox[{"Table", "[", 
+        RowBox[{"0", ",", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nBas"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"q", ",", "nBas"}], "}"}]}], "]"}]}], ";", "\n", " ", "\n", 
+      "    ", 
+      RowBox[{"Which", "[", "\n", "      ", 
+       RowBox[{
+        RowBox[{"guessType", "\[Equal]", "1"}], ",", " ", 
+        RowBox[{"(*", 
+         RowBox[{"core", " ", "Hamiltonian"}], "*)"}], "\n", "      ", "\n", 
+        "      ", 
+        RowBox[{"F", " ", "=", " ", "Hc"}], ",", "\n", "      ", "\n", 
+        "      ", 
+        RowBox[{"guessType", "\[Equal]", "2"}], ",", " ", 
+        RowBox[{"(*", 
+         RowBox[{"H\[UDoubleDot]ckel", " ", "Hamiltonian"}], "*)"}], "\n", 
+        "      ", "\n", "      ", 
+        RowBox[{
+         RowBox[{"a", " ", "=", " ", "1.75"}], ";", " ", 
+         RowBox[{"(*", 
+          RowBox[{"extended", " ", "H\[UDoubleDot]ckel", " ", "parameter"}], 
+          "*)"}], "\n", "      ", "\n", "      ", 
+         RowBox[{"Do", "[", "\n", "        ", "\n", "        ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"F", "\[LeftDoubleBracket]", 
+              RowBox[{"\[Mu]", ",", "\[Mu]"}], "\[RightDoubleBracket]"}], " ",
+              "=", " ", 
+             RowBox[{"Hc", "\[LeftDoubleBracket]", 
+              RowBox[{"\[Mu]", ",", "\[Mu]"}], "\[RightDoubleBracket]"}]}], 
+            ";", "\n", "         ", "\n", "        ", 
+            RowBox[{"Do", "[", "\n", "        ", "\n", "          ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"F", "\[LeftDoubleBracket]", 
+                 RowBox[{"\[Mu]", ",", "\[Nu]"}], "\[RightDoubleBracket]"}], 
+                " ", "=", " ", 
+                RowBox[{"0.5", "*", "a", "*", 
+                 RowBox[{"S", "\[LeftDoubleBracket]", 
+                  RowBox[{"\[Mu]", ",", "\[Nu]"}], "\[RightDoubleBracket]"}], 
+                 "*", 
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"Hc", "\[LeftDoubleBracket]", 
+                    RowBox[{"\[Mu]", ",", "\[Mu]"}], 
+                    "\[RightDoubleBracket]"}], " ", "+", " ", 
+                   RowBox[{"Hc", "\[LeftDoubleBracket]", 
+                    RowBox[{"\[Nu]", ",", "\[Nu]"}], 
+                    "\[RightDoubleBracket]"}]}], ")"}]}]}], ";", "\n", 
+               "          ", "\n", "          ", 
+               RowBox[{
+                RowBox[{"F", "\[LeftDoubleBracket]", 
+                 RowBox[{"\[Nu]", ",", "\[Mu]"}], "\[RightDoubleBracket]"}], 
+                " ", "=", " ", 
+                RowBox[{"F", "\[LeftDoubleBracket]", 
+                 RowBox[{"\[Mu]", ",", "\[Nu]"}], "\[RightDoubleBracket]"}]}],
+                ";"}], "\n", "          ", "\n", "          ", ",", 
+              RowBox[{"{", 
+               RowBox[{"\[Nu]", ",", 
+                RowBox[{"\[Mu]", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+             "        ", "]"}], ";"}], "\n", "         ", "\n", "        ", 
+           ",", 
+           RowBox[{"{", 
+            RowBox[{"\[Mu]", ",", "nBas"}], "}"}]}], "\n", "        ", "\n", 
+          "      ", "]"}], ";"}]}], "\n", "\n", "    ", "]"}], ";", "\n", 
+      "      ", "\n", "    ", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"e", ",", "Cp"}], "}"}], " ", "=", " ", 
+       RowBox[{"Chop", "[", 
+        RowBox[{"SortEigensystem", "[", 
+         RowBox[{"Eigensystem", "[", 
+          RowBox[{
+           RowBox[{"X", "\[Transpose]"}], ".", "F", ".", "X"}], "]"}], "]"}], 
+        "]"}]}], ";", " ", 
+      RowBox[{"Cp", " ", "=", " ", 
+       RowBox[{"Cp", "\[Transpose]"}]}], ";", 
+      RowBox[{"(*", 
+       RowBox[{
+       "to", " ", "have", " ", "the", " ", "good", " ", "shape", " ", "in", 
+        " ", "Mathematica"}], "*)"}], "\n", "    ", "\n", "    ", 
+      RowBox[{"C", " ", "=", " ", 
+       RowBox[{"X", ".", "Cp"}]}], ";", "  ", 
+      RowBox[{"Orb", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"Take", "[", 
+         RowBox[{
+          RowBox[{"C", "\[Transpose]"}], ",", 
+          RowBox[{"Nelc", "/", "2"}]}], "]"}], "\[Transpose]"}]}], ";", "  ", 
+      "\n", "    ", "\n", "    ", 
+      RowBox[{"P", " ", "=", " ", 
+       RowBox[{"2", " ", 
+        RowBox[{"Orb", ".", 
+         RowBox[{"Orb", "\[Transpose]"}]}]}]}], ";", "\n", "    ", "\n", 
+      "    ", 
+      RowBox[{"Return", "[", 
+       RowBox[{"{", 
+        RowBox[{"C", ",", "P"}], "}"}], "]"}]}]}], "\n", "    ", "\n", "  ", 
+    "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.873859689660119*^9, 3.8738597975240593`*^9}, {
+   3.873859837431015*^9, 3.873859870423205*^9}, 3.8738604486302357`*^9, 
+   3.8738604935905933`*^9, {3.873860576131905*^9, 3.873860586722067*^9}, {
+   3.8738606666351213`*^9, 3.87386066778448*^9}, {3.873860704198279*^9, 
+   3.8738607273226013`*^9}, {3.873860770726646*^9, 3.8738608574657383`*^9}, {
+   3.873860922413316*^9, 3.873861334892439*^9}, {3.873861378023971*^9, 
+   3.873861402816402*^9}, {3.873861604388587*^9, 3.873861604728887*^9}, {
+   3.873861778997531*^9, 3.873861811255363*^9}, {3.873861862975231*^9, 
+   3.873861868003132*^9}, {3.87386194442489*^9, 3.873862043663065*^9}, {
+   3.873862096483328*^9, 3.873862135451799*^9}, 3.873862167787784*^9, {
+   3.8738622264639883`*^9, 3.873862256676508*^9}, {3.873862363195436*^9, 
+   3.873862375551581*^9}, {3.8738624481394033`*^9, 3.873862501304661*^9}, 
+   3.8738625576256533`*^9, {3.873864872606841*^9, 3.873864875220598*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"482ecdcf-1730-4692-a62d-aa681c50aaa2"]
+},
+WindowSize->{1350, 762},
+WindowMargins->{{Automatic, 17}, {1, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"0f1bc935-7c7f-4706-bebb-b1e3f3deaf4e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 6080, 132, 1384, "Code",ExpressionUUID->"482ecdcf-1730-4692-a62d-aa681c50aaa2"]
+}
+]
+*)
+
