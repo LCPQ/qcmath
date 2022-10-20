@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6454,        178]
-NotebookOptionsPosition[      6075,        163]
-NotebookOutlinePosition[      6501,        180]
-CellTagsIndexPosition[      6458,        177]
+NotebookDataLength[      6545,        178]
+NotebookOptionsPosition[      6169,        163]
+NotebookOutlinePosition[      6592,        180]
+CellTagsIndexPosition[      6549,        177]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -157,12 +157,12 @@ Cell[BoxData[
               RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}], 
          ";"}]}], "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"Return", "[", "A", "]"}]}]}], "]"}]}], ";"}]], "Code",
- CellChangeTimes->{{3.8727317681319304`*^9, 
-  3.872731959796709*^9}},ExpressionUUID->"59603eae-5807-4c51-85eb-\
-fefab09dfeb3"]
+ CellChangeTimes->{{3.8727317681319304`*^9, 3.872731959796709*^9}, {
+   3.8739433160086117`*^9, 3.8739433774841022`*^9}, 3.873944865332333*^9},
+ CellLabel->"In[1]:=",ExpressionUUID->"59603eae-5807-4c51-85eb-fefab09dfeb3"]
 },
-WindowSize->{808, 685},
-WindowMargins->{{Automatic, 281}, {-376, Automatic}},
+WindowSize->{1166, 737},
+WindowMargins->{{Automatic, 37}, {0, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -179,10 +179,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 5513, 141, 546, "Code",ExpressionUUID->"59603eae-5807-4c51-85eb-fefab09dfeb3"]
+Cell[558, 20, 5607, 141, 546, "Code",ExpressionUUID->"59603eae-5807-4c51-85eb-fefab09dfeb3"]
 }
 ]
 *)
-
-(* End of internal cache information *)
 

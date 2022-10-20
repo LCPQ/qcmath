@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9082,        230]
-NotebookOptionsPosition[      8572,        212]
-NotebookOutlinePosition[      8996,        229]
-CellTagsIndexPosition[      8953,        226]
+NotebookDataLength[      9172,        231]
+NotebookOptionsPosition[      8658,        213]
+NotebookOutlinePosition[      9086,        230]
+CellTagsIndexPosition[      9043,        227]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -78,7 +78,7 @@ Cell[BoxData[
        "List", " ", "of", " ", "atoms", " ", "and", " ", "their", " ", 
         "atomic", " ", "numbers"}], "*)"}], "\n", "    ", 
       RowBox[{"elements", "=", 
-       RowBox[{"Association", "[", 
+       RowBox[{"Association", "[", "\n", "               ", 
         RowBox[{
          RowBox[{"\"\<H\>\"", "\[Rule]", "1"}], ",", 
          RowBox[{"\"\<He\>\"", "\[Rule]", "2"}], ",", 
@@ -87,20 +87,20 @@ Cell[BoxData[
          RowBox[{"\"\<B\>\"", "\[Rule]", "5"}], ",", 
          RowBox[{"\"\<C\>\"", "\[Rule]", "6"}], ",", 
          RowBox[{"\"\<N\>\"", "\[Rule]", "7"}], ",", "\[IndentingNewLine]", 
-         "                     ", 
+         "               ", 
          RowBox[{"\"\<O\>\"", "\[Rule]", "8"}], ",", 
          RowBox[{"\"\<F\>\"", "\[Rule]", "9"}], ",", 
          RowBox[{"\"\<Ne\>\"", "\[Rule]", "10"}], ",", 
          RowBox[{"\"\<Na\>\"", "\[Rule]", "11"}], ",", 
          RowBox[{"\"\<Mg\>\"", "\[Rule]", "12"}], ",", 
          RowBox[{"\"\<Al\>\"", "\[Rule]", "13"}], ",", "\n", 
-         "                     ", 
+         "               ", 
          RowBox[{"\"\<Si\>\"", "\[Rule]", "14"}], ",", 
          RowBox[{"\"\<P\>\"", "\[Rule]", "15"}], ",", 
          RowBox[{"\"\<S\>\"", "\[Rule]", "16"}], ",", 
          RowBox[{"\"\<Cl\>\"", "\[Rule]", "17"}], ",", 
-         RowBox[{"\"\<Ar\>\"", "\[Rule]", "18"}]}], "]"}]}], ";", "\n", "\n", 
-      "    ", 
+         RowBox[{"\"\<Ar\>\"", "\[Rule]", "18"}]}], "\n", "             ", 
+        "]"}]}], ";", "\n", "\n", "    ", 
       RowBox[{"(*", 
        RowBox[{
        "Attribute", " ", "the", " ", "right", " ", "atomic", " ", "number", 
@@ -206,12 +206,13 @@ Cell[BoxData[
    3.8733538135641727`*^9, 3.8733538180743113`*^9}, {3.873353894863184*^9, 
    3.873353996419673*^9}, {3.87335402791756*^9, 3.873354030763523*^9}, {
    3.873358883149034*^9, 3.87335888423907*^9}, {3.873358924101184*^9, 
-   3.873358928872265*^9}},ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-\
+   3.873358928872265*^9}, {3.8734493408754*^9, 
+   3.873449362311419*^9}},ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-\
 fe234b213ff0"]
 }, Open  ]]
 },
 WindowSize->{1281, 683},
-WindowMargins->{{48, Automatic}, {Automatic, 12}},
+WindowMargins->{{Automatic, -128}, {-123, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -230,7 +231,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 164, 3, 67, "Subsubsection",ExpressionUUID->"64551826-4a57-432a-9e6b-c97747ebd9a5"],
-Cell[747, 27, 7809, 182, 1213, "Code",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
+Cell[747, 27, 7895, 183, 1271, "Code",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
 }, Open  ]]
 }
 ]

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     13805,        366]
-NotebookOptionsPosition[     13425,        351]
-NotebookOutlinePosition[     13850,        368]
-CellTagsIndexPosition[     13807,        365]
+NotebookDataLength[     13704,        361]
+NotebookOptionsPosition[     13324,        346]
+NotebookOutlinePosition[     13749,        363]
+CellTagsIndexPosition[     13706,        360]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -298,19 +298,13 @@ Cell[BoxData[
           RowBox[{"SortEigensystem", "[", 
            RowBox[{"Eigensystem", "[", "H", "]"}], "]"}]}], ";", " ", 
          RowBox[{"cGF2", "=", 
-          RowBox[{"cGF2", "\[Transpose]"}]}], ";", 
-         RowBox[{"(*", 
-          RowBox[{
-           RowBox[{"Print", "[", 
-            RowBox[{
-             RowBox[{"eGF2", "*", "HaToeV"}], "//", "MatrixForm"}], "]"}], 
-           ";"}], "*)"}], "\n", "\n", 
+          RowBox[{"cGF2", "\[Transpose]"}]}], ";", "\n", "\n", 
          RowBox[{"(*", 
           RowBox[{"Choose", " ", "the", " ", "first", " ", "IP"}], "*)"}], 
          "\n", 
          RowBox[{"If", "[", 
           RowBox[{
-           RowBox[{"p", "\[Equal]", "nO"}], ",", 
+           RowBox[{"p", "\[Equal]", "nO2"}], ",", 
            RowBox[{"IP", "=", 
             RowBox[{
              RowBox[{"Max", "[", 
@@ -345,12 +339,13 @@ Cell[BoxData[
   3.872908189306943*^9, 3.8729083613775682`*^9}, {3.872908406150218*^9, 
   3.8729084515242243`*^9}, {3.872908523108532*^9, 3.872908523464312*^9}, {
   3.872908661901142*^9, 3.872908671983045*^9}, {3.872910443349173*^9, 
-  3.872910457406251*^9}, {3.8729110790725803`*^9, 
-  3.872911094217252*^9}},ExpressionUUID->"69f1e387-848e-4eb5-842f-\
+  3.872910457406251*^9}, {3.8729110790725803`*^9, 3.872911094217252*^9}, {
+  3.8751623876707497`*^9, 3.875162395601878*^9}, {3.875162616474774*^9, 
+  3.8751626301825037`*^9}},ExpressionUUID->"69f1e387-848e-4eb5-842f-\
 82b00ebc64f0"]
 },
 WindowSize->{1254, 719},
-WindowMargins->{{87, Automatic}, {-31, Automatic}},
+WindowMargins->{{Automatic, -22}, {-9, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -367,7 +362,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 12863, 329, 1951, "Code",ExpressionUUID->"69f1e387-848e-4eb5-842f-82b00ebc64f0"]
+Cell[558, 20, 12762, 324, 1951, "Code",ExpressionUUID->"69f1e387-848e-4eb5-842f-82b00ebc64f0"]
 }
 ]
 *)

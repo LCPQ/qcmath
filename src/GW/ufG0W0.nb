@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19827,        451]
-NotebookOptionsPosition[     19446,        436]
-NotebookOutlinePosition[     19872,        453]
-CellTagsIndexPosition[     19829,        450]
+NotebookDataLength[     21356,        470]
+NotebookOptionsPosition[     20979,        455]
+NotebookOutlinePosition[     21401,        472]
+CellTagsIndexPosition[     21358,        469]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -24,46 +24,44 @@ Cell[BoxData[
    RowBox[{"ufG0W0", "[", 
     RowBox[{
     "nBas_", ",", "nO_", ",", "nV_", ",", "ERI_", ",", "\[Epsilon]_", ",", 
-     RowBox[{"verbose_", ":", "1"}]}], 
-    RowBox[{"(*", 
-     RowBox[{"Default", "=", 
-      RowBox[{"1", " ", 
-       RowBox[{"(", "True", ")"}]}]}], "*)"}], "]"}], ":=", " ", 
-   RowBox[{"Module", "[", "\n", 
+     "verbose_"}], "]"}], ":=", "\n", "  ", 
+   RowBox[{"Module", "[", 
     RowBox[{
-     RowBox[{"{", 
+     RowBox[{"{", "\n", "           ", 
       RowBox[{
       "V2h1p", ",", "V2p1h", ",", "C2h1p", ",", "C2p1h", ",", "H", ",", "O", 
        ",", "f", ",", "nOO", ",", "nVV", ",", "eigenvalues", ",", 
-       "eigenvectors", ",", "\n", "quantities", ",", "nS", ",", "n2h1p", ",", 
-       "n2p1h", ",", "Z", ",", "eGW", ",", "cGW", ",", "nH", ",", "DiagElt", 
-       ",", "cutoff", ",", "klc", ",", "kcd", ",", "\n", "conf1", ",", 
-       "weights1", ",", "conf2", ",", "weights2"}], "}"}], ",", "\n", "\n", 
+       "eigenvectors", ",", "\n", "           ", "outputs", ",", "nS", ",", 
+       "n2h1p", ",", "n2p1h", ",", "Z", ",", "eGW", ",", "cGW", ",", "nH", 
+       ",", "DiagElt", ",", "cutoff", ",", "klc", ",", "kcd", ",", "\n", 
+       "           ", "conf1", ",", "weights1", ",", "conf2", ",", "weights2",
+        ",", "IP"}], "\n", "         ", "}"}], ",", "\n", "\n", "    ", 
      RowBox[{
-      RowBox[{"cutoff", "=", "0.0"}], ";", "\n", "\n", 
+      RowBox[{"cutoff", " ", "=", " ", "0.0"}], ";", "\n", "\n", "    ", 
       RowBox[{"nOO", " ", "=", " ", 
-       RowBox[{"nO", "*", "nO"}]}], ";", "\n", 
+       RowBox[{"nO", "*", "nO"}]}], ";", "\n", "    ", 
       RowBox[{"nVV", " ", "=", " ", 
-       RowBox[{"nV", "*", "nV"}]}], ";", "\n", "\n", 
+       RowBox[{"nV", "*", "nV"}]}], ";", "\n", "\n", "    ", 
       RowBox[{"nS", " ", "=", " ", 
-       RowBox[{"nO", "*", "nV"}]}], ";", "\n", 
+       RowBox[{"nO", "*", "nV"}]}], ";", "\n", "    ", 
       RowBox[{"n2h1p", " ", "=", " ", 
-       RowBox[{"nOO", "*", "nV"}]}], ";", "\n", 
+       RowBox[{"nOO", "*", "nV"}]}], ";", "\n", "    ", 
       RowBox[{"n2p1h", " ", "=", " ", 
-       RowBox[{"nVV", "*", "nO"}]}], ";", "\n", "\n", 
-      RowBox[{"nH", "=", 
-       RowBox[{"1", "+", "n2h1p", "+", "n2p1h"}]}], ";", " ", "\n", "\n", 
+       RowBox[{"nVV", "*", "nO"}]}], ";", "\n", "\n", "    ", 
+      RowBox[{"nH", " ", "=", " ", 
+       RowBox[{"1", " ", "+", " ", "n2h1p", " ", "+", " ", "n2p1h"}]}], ";", 
+      " ", "\n", "\n", "    ", 
       RowBox[{"f", " ", "=", " ", 
        RowBox[{"DiagonalMatrix", "[", "\[Epsilon]", "]"}]}], ";", "\n", "\n", 
-      
+      "    ", 
       RowBox[{"V2h1p", " ", "=", " ", 
-       RowBox[{"Table", "[", 
+       RowBox[{"Table", "[", "\n", "              ", 
         RowBox[{
          RowBox[{
           SqrtBox["2"], 
           RowBox[{"ERI", "\[LeftDoubleBracket]", 
            RowBox[{"p", ",", "c", ",", "k", ",", "l"}], 
-           "\[RightDoubleBracket]"}]}], ",", 
+           "\[RightDoubleBracket]"}]}], "\n", "              ", ",", 
          RowBox[{"{", 
           RowBox[{"p", ",", "nBas"}], "}"}], ",", 
          RowBox[{"{", 
@@ -72,8 +70,8 @@ Cell[BoxData[
           RowBox[{"l", ",", "nO"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"c", ",", 
-           RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}], ";", 
-      "\n", 
+           RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+        "            ", "]"}]}], ";", "\n", "            ", "\n", "    ", 
       RowBox[{"V2h1p", " ", "=", " ", 
        RowBox[{"Flatten", "[", 
         RowBox[{"V2h1p", ",", 
@@ -82,15 +80,15 @@ Cell[BoxData[
            RowBox[{"{", "1", "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"2", ",", "3", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";",
-       "\n", "\n", 
+       "\n", "\n", "    ", 
       RowBox[{"V2p1h", " ", "=", " ", 
-       RowBox[{"Table", "[", 
+       RowBox[{"Table", "[", "\n", "              ", 
         RowBox[{
          RowBox[{
           SqrtBox["2"], 
           RowBox[{"ERI", "\[LeftDoubleBracket]", 
            RowBox[{"p", ",", "k", ",", "d", ",", "c"}], 
-           "\[RightDoubleBracket]"}]}], ",", 
+           "\[RightDoubleBracket]"}]}], "\n", "              ", ",", 
          RowBox[{"{", 
           RowBox[{"p", ",", "nBas"}], "}"}], ",", 
          RowBox[{"{", 
@@ -100,8 +98,8 @@ Cell[BoxData[
            RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"d", ",", 
-           RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}], ";", 
-      "\n", 
+           RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+        "            ", "]"}]}], ";", "\n", "            ", "\n", "    ", 
       RowBox[{"V2p1h", " ", "=", " ", 
        RowBox[{"Flatten", "[", 
         RowBox[{"V2p1h", ",", 
@@ -110,9 +108,9 @@ Cell[BoxData[
            RowBox[{"{", "1", "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"2", ",", "3", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";",
-       "\n", "\n", 
+       "\n", "\n", "    ", 
       RowBox[{"C2h1p", " ", "=", " ", 
-       RowBox[{"Table", "[", 
+       RowBox[{"Table", "[", "\n", "              ", 
         RowBox[{
          RowBox[{
           RowBox[{"(", 
@@ -138,23 +136,22 @@ Cell[BoxData[
               RowBox[{"j", ",", "c", ",", "a", ",", "l"}], 
               "\[RightDoubleBracket]"}]}]}], ")"}], 
           SubscriptBox["\[Delta]", 
-           RowBox[{"i", ",", "k"}]]}], ",", 
+           RowBox[{"i", ",", "k"}]]}], "\n", "              ", ",", 
          RowBox[{"{", 
           RowBox[{"i", ",", "nO"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"j", ",", "nO"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"a", ",", 
-           RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", "\n", 
-         "                                                          ", 
+           RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"k", ",", "nO"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"l", ",", "nO"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"c", ",", 
-           RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}], ";", 
-      "\n", 
+           RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+        "            ", "]"}]}], ";", "\n", "            ", "\n", "    ", 
       RowBox[{"C2h1p", " ", "=", " ", 
        RowBox[{"Flatten", "[", 
         RowBox[{"C2h1p", ",", 
@@ -164,9 +161,9 @@ Cell[BoxData[
             RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"4", ",", "5", ",", "6"}], "}"}]}], "}"}]}], "]"}]}], ";",
-       "\n", "\n", 
+       "\n", "\n", "    ", 
       RowBox[{"C2p1h", " ", "=", " ", 
-       RowBox[{"Table", "[", 
+       RowBox[{"Table", "[", "\n", "              ", 
         RowBox[{
          RowBox[{
           RowBox[{"(", 
@@ -192,7 +189,7 @@ Cell[BoxData[
               RowBox[{"a", ",", "k", ",", "i", ",", "c"}], 
               "\[RightDoubleBracket]"}]}]}], ")"}], 
           SubscriptBox["\[Delta]", 
-           RowBox[{"b", ",", "d"}]]}], ",", 
+           RowBox[{"b", ",", "d"}]]}], "\n", "              ", ",", 
          RowBox[{"{", 
           RowBox[{"i", ",", "nO"}], "}"}], ",", 
          RowBox[{"{", 
@@ -200,8 +197,7 @@ Cell[BoxData[
            RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"b", ",", 
-           RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", "\n", 
-         "                                                          ", 
+           RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"k", ",", "nO"}], "}"}], ",", 
          RowBox[{"{", 
@@ -209,8 +205,8 @@ Cell[BoxData[
            RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"d", ",", 
-           RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}], ";", 
-      "\n", 
+           RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+        "            ", "]"}]}], ";", "\n", "            ", "\n", "    ", 
       RowBox[{"C2p1h", " ", "=", " ", 
        RowBox[{"Flatten", "[", 
         RowBox[{"C2p1h", ",", 
@@ -220,26 +216,27 @@ Cell[BoxData[
             RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
            RowBox[{"{", 
             RowBox[{"4", ",", "5", ",", "6"}], "}"}]}], "}"}]}], "]"}]}], ";",
-       "\n", "\n", 
-      RowBox[{"(*", "\"\<Allocate the tables\>\"", "*)"}], "\n", 
+       "\n", "\n", "    ", 
+      RowBox[{"(*", "\"\<Allocate the tables\>\"", "*)"}], "\n", "    ", 
       RowBox[{"eigenvalues", "=", 
        RowBox[{"Table", "[", 
         RowBox[{"0", ",", 
          RowBox[{"{", 
-          RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}]}], ";", "\n", 
+          RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}]}], ";", "\n", "    ", 
       RowBox[{"eigenvectors", "=", 
        RowBox[{"Table", "[", 
         RowBox[{"0", ",", 
          RowBox[{"{", 
           RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+      "    ", 
       RowBox[{"(*", 
        RowBox[{"Loop", " ", "over", " ", "the", " ", "orbitals"}], "*)"}], 
-      "\n", 
-      RowBox[{"Table", "[", 
+      "\n", "    ", 
+      RowBox[{"Table", "[", "\n", "      ", 
        RowBox[{
         RowBox[{
          RowBox[{"H", "=", 
-          RowBox[{"ArrayFlatten", "[", 
+          RowBox[{"ArrayFlatten", "[", "\n", "        ", 
            RowBox[{"(", GridBox[{
               {
                RowBox[{"{", 
@@ -269,10 +266,11 @@ Cell[BoxData[
                   RowBox[{"(", "V2p1h", ")"}], "\[LeftDoubleBracket]", 
                   RowBox[{"p", ",", "All"}], "\[RightDoubleBracket]"}], "}"}],
                  "\[Transpose]"}], "0", "C2p1h"}
-             }], ")"}], "]"}]}], ";", "\n", "\n", 
+             }], ")"}], "\n", "        ", "]"}]}], ";", "\n", "\n", "      ", 
+         
          RowBox[{
           RowBox[{"{", 
-           RowBox[{"eGW", ",", "cGW"}], "}"}], "=", 
+           RowBox[{"eGW", ",", "cGW"}], "}"}], " ", "=", " ", 
           RowBox[{"SortEigensystem", "[", 
            RowBox[{"Eigensystem", "[", "H", "]"}], "]"}]}], ";", " ", 
          RowBox[{"cGW", "=", 
@@ -282,12 +280,13 @@ Cell[BoxData[
            RowBox[{"Print", "[", 
             RowBox[{
              RowBox[{"eGW", "*", "HaToeV"}], "//", "MatrixForm"}], "]"}], 
-           ";"}], "*)"}], "\n", "\n", 
+           ";"}], "*)"}], "\n", "\n", "      ", 
          RowBox[{
           RowBox[{
           "eigenvalues", "\[LeftDoubleBracket]", "p", 
-           "\[RightDoubleBracket]"}], "=", "eGW"}], ";", "\n", "\n", 
-         RowBox[{"Z", "=", 
+           "\[RightDoubleBracket]"}], " ", "=", " ", "eGW"}], ";", "\n", "\n",
+          "      ", 
+         RowBox[{"Z", " ", "=", " ", 
           RowBox[{"Table", "[", 
            RowBox[{
             SuperscriptBox[
@@ -302,30 +301,47 @@ Cell[BoxData[
          RowBox[{
           RowBox[{
           "eigenvectors", "\[LeftDoubleBracket]", "p", 
-           "\[RightDoubleBracket]"}], "=", 
-          RowBox[{"Chop", "[", "Z", "]"}]}], ";", "\n", "\n", 
+           "\[RightDoubleBracket]"}], " ", "=", " ", 
+          RowBox[{"Chop", "[", "Z", "]"}]}], ";", "\n", "      ", "\n", 
+         "      ", 
+         RowBox[{"(*", 
+          RowBox[{"Choose", " ", "the", " ", "first", " ", "IP"}], "*)"}], 
+         "\n", "      ", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"p", "\[Equal]", "nO"}], ",", 
+           RowBox[{"IP", "=", 
+            RowBox[{
+             RowBox[{"Max", "[", 
+              RowBox[{"Select", "[", 
+               RowBox[{"eGW", ",", 
+                RowBox[{
+                 RowBox[{"#", "<", "0"}], " ", "&"}]}], "]"}], "]"}], "*", 
+             "HaToeV"}]}]}], "]"}], ";", "\n", "\n", "      ", 
          RowBox[{"(*", 
           RowBox[{
           "Stock", " ", "configurations", " ", "and", " ", "their", " ", 
            "corresponding", " ", "coeffs", " ", "and", " ", "weights"}], 
-          "*)"}], "\n", 
+          "*)"}], "\n", "      ", 
          RowBox[{"If", "[", 
           RowBox[{
-           RowBox[{"verbose", "\[Equal]", "1"}], ",", "\n", 
+           RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", "        ", 
            RowBox[{
             RowBox[{"NotebookEvaluate", "[", 
              RowBox[{"path", "<>", "\"\</src/GW/print_ufG0W0.nb\>\""}], "]"}],
-             ";", "\n", 
+             ";", "\n", "        ", 
             RowBox[{"DiagElt", "=", 
              RowBox[{"PrintUfG0W0", "[", 
               RowBox[{
               "nBas", ",", "nO", ",", "nH", ",", "n2h1p", ",", "cGW", ",", 
-               "Z", ",", "p"}], "]"}]}], ";"}]}], "\n", "]"}], ";"}], "\n", 
-        "\n", ",", 
+               "Z", ",", "p"}], "]"}]}], ";"}]}], "\n", "      ", "]"}]}], 
+        "\n", "      ", ",", 
         RowBox[{"{", 
-         RowBox[{"p", ",", "nBas"}], "}"}]}], "]"}], ";", "\n", "\n", 
-      RowBox[{"quantities", "=", 
+         RowBox[{"p", ",", "nBas"}], "}"}]}], "\n", "    ", "]"}], ";", "\n", 
+      "\n", "    ", 
+      RowBox[{"outputs", " ", "=", " ", 
        RowBox[{"Association", "[", 
+        RowBox[{"\"\<IP\>\"", "\[Rule]", "IP"}], 
         RowBox[{"(*", 
          RowBox[{
           RowBox[{"\"\<eigenvalues\>\"", "\[Rule]", 
@@ -352,8 +368,7 @@ Cell[BoxData[
            RowBox[{
            "weights1", "\[LeftDoubleBracket]", "4", 
             "\[RightDoubleBracket]"}]}]}], "*)"}], "]"}]}], ";", "\n", "\n", 
-      RowBox[{"Return", "[", "quantities", "]"}]}]}], "]"}]}], ";"}]], "Code",\
-
+      RowBox[{"Return", "[", "outputs", "]"}]}]}], "]"}]}], ";"}]], "Code",
  CellChangeTimes->{{3.872751224724947*^9, 3.872751240607019*^9}, {
    3.872751283890923*^9, 3.8727516445990677`*^9}, {3.8727517020318527`*^9, 
    3.8727517034859343`*^9}, {3.872751936221127*^9, 3.872751948016103*^9}, {
@@ -430,12 +445,16 @@ Cell[BoxData[
    3.872833850241459*^9, 3.872833850539364*^9}, {3.872833987605785*^9, 
    3.872834139538228*^9}, {3.872836239072597*^9, 3.8728362506963863`*^9}, 
    3.872838873815095*^9, {3.872841951487562*^9, 3.872841968643991*^9}, 
-   3.872842293054728*^9, {3.872842573047641*^9, 
-   3.872842588859248*^9}},ExpressionUUID->"cfb1ff81-e9be-4223-8fdd-\
+   3.872842293054728*^9, {3.872842573047641*^9, 3.872842588859248*^9}, {
+   3.873433876580655*^9, 3.8734341744776278`*^9}, {3.873434257471273*^9, 
+   3.873434503355953*^9}, {3.873434535856324*^9, 3.8734345640719137`*^9}, {
+   3.873434594467758*^9, 3.873434598717264*^9}, {3.875149674469496*^9, 
+   3.8751496828783197`*^9}, {3.875160458737507*^9, 
+   3.875160461018241*^9}},ExpressionUUID->"cfb1ff81-e9be-4223-8fdd-\
 456304e30599"]
 },
 WindowSize->{1205, 721},
-WindowMargins->{{Automatic, 75}, {-174, Automatic}},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -452,7 +471,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 18884, 414, 1816, "Code",ExpressionUUID->"cfb1ff81-e9be-4223-8fdd-456304e30599"]
+Cell[558, 20, 20417, 433, 2508, "Code",ExpressionUUID->"cfb1ff81-e9be-4223-8fdd-456304e30599"]
 }
 ]
 *)

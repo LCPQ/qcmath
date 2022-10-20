@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      2868,         87]
-NotebookOptionsPosition[      2490,         72]
-NotebookOutlinePosition[      2916,         89]
-CellTagsIndexPosition[      2873,         86]
+NotebookDataLength[      3057,         89]
+NotebookOptionsPosition[      2682,         74]
+NotebookOutlinePosition[      3105,         91]
+CellTagsIndexPosition[      3062,         88]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -22,36 +22,38 @@ Cell[BoxData[
  RowBox[{
   RowBox[{
    RowBox[{"SpatialToSpinMOEnergy", "[", 
-    RowBox[{"nBas_", ",", "nO_", ",", "nV_", ",", "\[Epsilon]_"}], "]"}], ":=", 
-   RowBox[{"Module", "[", "\n", 
+    RowBox[{"nBas_", ",", "nO_", ",", "nV_", ",", "\[Epsilon]_"}], "]"}], ":=",
+    "\n", "  ", 
+   RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{"(*", 
        RowBox[{"nBas", " ", "in", " ", "spin", " ", "orbitals"}], "*)"}], 
       "      ", 
-      RowBox[{"nBas2", ",", "\n", 
+      RowBox[{"nBas2", ",", "\n", "          ", 
        RowBox[{"(*", 
         RowBox[{"nO", " ", "in", " ", "spin", " ", "orbitals"}], "*)"}], 
-       "         ", "nO2", ",", "\n", 
+       "         ", "nO2", ",", "\n", "          ", 
        RowBox[{"(*", 
         RowBox[{"nV", " ", "in", " ", "spin", " ", "orbitals"}], "*)"}], 
-       "         ", "nV2", ",", "\n", 
+       "         ", "nV2", ",", "\n", "          ", 
        RowBox[{"(*", 
         RowBox[{
         "MO", " ", "energies", " ", "in", " ", "spin", " ", "orbitals"}], 
-        "*)"}], "so\[Epsilon]"}], "}"}], ",", "\n", "\n", "\n", 
+        "*)"}], "so\[Epsilon]"}], "\n", "          ", "}"}], ",", "\n", "\n", 
+     "\n", "    ", 
      RowBox[{"(*", 
-      RowBox[{"Define", " ", "the", " ", "spaces"}], "*)"}], "\n", 
+      RowBox[{"Define", " ", "the", " ", "spaces"}], "*)"}], "\n", "    ", 
      RowBox[{
       RowBox[{"nBas2", "=", 
-       RowBox[{"2", "nBas"}]}], ";", "\n", 
+       RowBox[{"2", "nBas"}]}], ";", "\n", "    ", 
       RowBox[{"nO2", "=", 
-       RowBox[{"2", "nO"}]}], ";", "\n", 
+       RowBox[{"2", "nO"}]}], ";", "\n", "    ", 
       RowBox[{"nV2", "=", 
-       RowBox[{"2", "nV"}]}], ";", "\n", "\n", 
+       RowBox[{"2", "nV"}]}], ";", "\n", "\n", "    ", 
       RowBox[{"(*", 
        RowBox[{"Spatial", " ", "to", " ", "spin", " ", "orbitals"}], "*)"}], 
-      "\n", 
+      "\n", "    ", 
       RowBox[{"so\[Epsilon]", "=", 
        RowBox[{"Table", "[", 
         RowBox[{
@@ -62,16 +64,16 @@ Cell[BoxData[
           "\[RightDoubleBracket]"}], ",", 
          RowBox[{"{", 
           RowBox[{"p", ",", "nBas2"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
-      "\n", 
-      RowBox[{"Return", "[", "so\[Epsilon]", "]"}]}]}], "]"}]}], 
+      "\n", "    ", 
+      RowBox[{"Return", "[", "so\[Epsilon]", "]"}]}]}], "\n", "  ", "]"}]}], 
   ";"}]], "Code",
  CellChangeTimes->{{3.8722376832682657`*^9, 3.872237716598089*^9}, {
-  3.8722377806496162`*^9, 
-  3.872237900530211*^9}},ExpressionUUID->"40e71e9e-a072-40ee-988d-\
+  3.8722377806496162`*^9, 3.872237900530211*^9}, {3.873423093799396*^9, 
+  3.873423167881665*^9}},ExpressionUUID->"40e71e9e-a072-40ee-988d-\
 075ed3f9f0c5"]
 },
-WindowSize->{808, 686},
-WindowMargins->{{276, Automatic}, {-314, Automatic}},
+WindowSize->{1329, 687},
+WindowMargins->{{Automatic, 0}, {Automatic, 16}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -88,10 +90,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 1928, 50, 585, "Code",ExpressionUUID->"40e71e9e-a072-40ee-988d-075ed3f9f0c5"]
+Cell[558, 20, 2120, 52, 641, "Code",ExpressionUUID->"40e71e9e-a072-40ee-988d-075ed3f9f0c5"]
 }
 ]
 *)
-
-(* End of internal cache information *)
 

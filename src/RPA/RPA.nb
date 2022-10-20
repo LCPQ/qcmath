@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6642,        160]
-NotebookOptionsPosition[      6263,        145]
-NotebookOutlinePosition[      6688,        162]
-CellTagsIndexPosition[      6645,        159]
+NotebookDataLength[      6683,        161]
+NotebookOptionsPosition[      6300,        146]
+NotebookOutlinePosition[      6729,        163]
+CellTagsIndexPosition[      6686,        160]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -67,7 +67,7 @@ Cell[BoxData[
          "\n", 
          RowBox[{"If", "[", 
           RowBox[{
-           RowBox[{"verbose", "\[Equal]", "1"}], ",", "\n", 
+           RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", 
            RowBox[{
             RowBox[{"NotebookEvaluate", "[", 
              RowBox[{"path", "<>", "\"\</src/LR/print_excitation.nb\>\""}], 
@@ -102,7 +102,7 @@ Cell[BoxData[
          "\n", 
          RowBox[{"If", "[", 
           RowBox[{
-           RowBox[{"verbose", "\[Equal]", "1"}], ",", "\n", 
+           RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", 
            RowBox[{
             RowBox[{"NotebookEvaluate", "[", 
              RowBox[{"path", "<>", "\"\</src/LR/print_excitation.nb\>\""}], 
@@ -140,11 +140,12 @@ Cell[BoxData[
    3.871526648544387*^9, 3.871526671773904*^9}, {3.871531736972464*^9, 
    3.871531771376383*^9}, {3.872734611468972*^9, 3.872734747111397*^9}, {
    3.872734795470027*^9, 3.872734803958784*^9}, {3.8727348461274443`*^9, 
-   3.872734894903832*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"efb756d3-aae8-491f-b48f-7ab34c9c3d6b"]
+   3.872734894903832*^9}, {3.873894382688464*^9, 
+   3.8738943919714003`*^9}},ExpressionUUID->"efb756d3-aae8-491f-b48f-\
+7ab34c9c3d6b"]
 },
 WindowSize->{1053, 686},
-WindowMargins->{{Automatic, 188}, {1, Automatic}},
+WindowMargins->{{Automatic, -151}, {-209, Automatic}},
 Magnification:>1.25 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -161,7 +162,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 5701, 123, 1146, "Code",ExpressionUUID->"efb756d3-aae8-491f-b48f-7ab34c9c3d6b"]
+Cell[558, 20, 5738, 124, 1146, "Code",ExpressionUUID->"efb756d3-aae8-491f-b48f-7ab34c9c3d6b"]
 }
 ]
 *)

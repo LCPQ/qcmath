@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10728,        261]
-NotebookOptionsPosition[     10351,        246]
-NotebookOutlinePosition[     10774,        263]
-CellTagsIndexPosition[     10731,        260]
+NotebookDataLength[     13683,        296]
+NotebookOptionsPosition[     13305,        281]
+NotebookOutlinePosition[     13728,        298]
+CellTagsIndexPosition[     13685,        295]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -24,39 +24,39 @@ Cell[BoxData[
    RowBox[{"PrintUfG0W0", "[", 
     RowBox[{
     "nBas_", ",", "nO_", ",", "nH_", ",", "n2h1p_", ",", "cGW_", ",", "Z_", 
-     ",", "p_"}], "]"}], ":=", 
-   RowBox[{"Module", "[", "\n", 
+     ",", "p_"}], "]"}], ":=", "\n", "  ", 
+   RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
       "cutoff", ",", "klc", ",", "kcd", ",", "conf1", ",", "weights1", ",", 
-       "conf2", ",", "weights2"}], "}"}], ",", "\n", "\n", 
+       "conf2", ",", "weights2"}], "}"}], ",", "\n", "\n", "    ", 
      RowBox[{
-      RowBox[{"cutoff", "=", "0.0"}], ";", "\n", "\n", 
+      RowBox[{"cutoff", "=", "0.0"}], ";", "\n", "\n", "    ", 
       RowBox[{"(*", 
        RowBox[{"\"\<Allocate\>\"", " ", "the", " ", "tables"}], "*)"}], "\n", 
-      
+      "    ", 
       RowBox[{"conf1", "=", 
        RowBox[{"Table", "[", 
         RowBox[{"0", ",", 
          RowBox[{"{", 
           RowBox[{"q", ",", "nBas"}], "}"}], ",", 
          RowBox[{"{", 
-          RowBox[{"s", ",", "nH"}], "}"}]}], "]"}]}], ";", "\n", 
+          RowBox[{"s", ",", "nH"}], "}"}]}], "]"}]}], ";", "\n", "    ", 
       RowBox[{"weights1", "=", 
        RowBox[{"Table", "[", 
         RowBox[{"0", ",", 
          RowBox[{"{", 
           RowBox[{"q", ",", "nBas"}], "}"}], ",", 
          RowBox[{"{", 
-          RowBox[{"s", ",", "nH"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+          RowBox[{"s", ",", "nH"}], "}"}]}], "]"}]}], ";", "\n", "\n", "    ", 
       RowBox[{"conf2", "=", 
        RowBox[{"Table", "[", 
         RowBox[{"0", ",", 
          RowBox[{"{", 
           RowBox[{"q", ",", "nBas"}], "}"}], ",", 
          RowBox[{"{", 
-          RowBox[{"s", ",", "nH"}], "}"}]}], "]"}]}], ";", "\n", 
+          RowBox[{"s", ",", "nH"}], "}"}]}], "]"}]}], ";", "\n", "    ", 
       RowBox[{"weights2", "=", 
        RowBox[{"Table", "[", 
         RowBox[{"0", ",", 
@@ -64,61 +64,71 @@ Cell[BoxData[
           RowBox[{"q", ",", "nBas"}], "}"}], ",", 
          RowBox[{"{", 
           RowBox[{"s", ",", "nH"}], "}"}]}], "]"}]}], ";", "\n", "\n", "\n", 
-      RowBox[{"Do", "[", 
+      "    ", 
+      RowBox[{"Do", "[", "\n", "      ", 
        RowBox[{
-        RowBox[{
-         RowBox[{"If", "[", 
+        RowBox[{"If", "[", 
+         RowBox[{
           RowBox[{
            RowBox[{
-            RowBox[{
-            "Z", "\[LeftDoubleBracket]", "s", "\[RightDoubleBracket]"}], ">", 
-            "cutoff"}], ",", "\n", 
+           "Z", "\[LeftDoubleBracket]", "s", "\[RightDoubleBracket]"}], ">", 
+           "cutoff"}], ",", "\n", "        ", 
+          RowBox[{
+           RowBox[{"klc", "=", "0"}], ";", "\n", "        ", 
            RowBox[{
-            RowBox[{"klc", "=", "0"}], ";", "\n", 
-            RowBox[{
-             RowBox[{"conf1", "\[LeftDoubleBracket]", 
-              RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], "=", 
-             RowBox[{"Flatten", "[", 
-              RowBox[{"Table", "[", 
+            RowBox[{"conf1", "\[LeftDoubleBracket]", 
+             RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], "=", 
+            RowBox[{"Flatten", "[", "\n", "                     ", 
+             RowBox[{"Table", "[", "\n", "                       ", 
+              RowBox[{
                RowBox[{
-                RowBox[{
-                 RowBox[{"klc", "=", "0"}], ";", 
-                 RowBox[{"Table", "[", 
-                  RowBox[{
-                   RowBox[{"Table", "[", 
+                RowBox[{"klc", "=", "0"}], ";", "\n", 
+                "                       ", 
+                RowBox[{"Table", "[", "\n", "                         ", 
+                 RowBox[{
+                  RowBox[{"Table", "[", "\n", "                           ", 
+                   RowBox[{
+                    RowBox[{"{", "\n", "                             ", 
                     RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"klc", "++"}], ";", 
+                    RowBox[{"klc", "++"}], ";", "\n", 
+                    "                             ", 
                     RowBox[{"StringForm", "[", 
                     RowBox[{
                     "\"\<(`1`,`2`)--> (`3`) \>\"", ",", "k", ",", "l", ",", 
-                    "c"}], "]"}]}], "}"}], ",", "\n", 
-                    "                                           ", 
+                    "c"}], "]"}]}], "\n", "                           ", 
+                    "}"}], ",", "\n", "                           ", 
                     RowBox[{"{", 
                     RowBox[{"c", ",", 
-                    RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}], 
-                   ",", 
-                   RowBox[{"{", 
-                    RowBox[{"l", ",", "nO"}], "}"}]}], "]"}]}], ",", 
-                RowBox[{"{", 
-                 RowBox[{"k", ",", "nO"}], "}"}]}], "]"}], "]"}]}], ";", "\n",
-             "                                           ", "\n", 
-            RowBox[{
-             RowBox[{"weights1", "\[LeftDoubleBracket]", 
-              RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], "=", 
-             RowBox[{"Flatten", "[", 
-              RowBox[{"Table", "[", 
+                    RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+                   "                         ", "]"}], ",", "\n", 
+                  "                         ", 
+                  RowBox[{"{", 
+                   RowBox[{"l", ",", "nO"}], "}"}]}], "\n", 
+                 "                       ", "]"}]}], ",", "\n", 
+               "                       ", 
+               RowBox[{"{", 
+                RowBox[{"k", ",", "nO"}], "}"}]}], "\n", 
+              "                     ", "]"}], "\n", "                   ", 
+             "]"}]}], ";", "\n", 
+           "                                           ", "\n", "        ", 
+           RowBox[{
+            RowBox[{"weights1", "\[LeftDoubleBracket]", 
+             RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], "=", 
+            RowBox[{"Flatten", "[", "\n", "                        ", 
+             RowBox[{"Table", "[", "\n", "                          ", 
+              RowBox[{
                RowBox[{
-                RowBox[{
-                 RowBox[{"klc", "=", "0"}], ";", 
-                 RowBox[{"Table", "[", 
+                RowBox[{"klc", "=", "0"}], ";", "\n", 
+                "                          ", 
+                RowBox[{"Table", "[", "\n", "                            ", 
+                 RowBox[{
                   RowBox[{
-                   RowBox[{"Table", "[", 
+                  "Table", "[", "\n", "                              ", 
+                   RowBox[{
+                    RowBox[{"{", "\n", "                                ", 
                     RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"klc", "++"}], ";", 
+                    RowBox[{"klc", "++"}], ";", "\n", 
+                    "                                ", 
                     SuperscriptBox[
                     RowBox[{"Chop", "[", 
                     RowBox[{
@@ -127,63 +137,77 @@ Cell[BoxData[
                     RowBox[{"1", "+", "klc"}], ",", "s"}], 
                     "\[RightDoubleBracket]"}], ",", 
                     SuperscriptBox["10", 
-                    RowBox[{"-", "16"}]]}], "]"}], "2"]}], "}"}], ",", "\n", 
-                    "                                              ", 
+                    RowBox[{"-", "16"}]]}], "]"}], "2"]}], "\n", 
+                    "                              ", "}"}], ",", "\n", 
+                    "                              ", 
                     RowBox[{"{", 
                     RowBox[{"c", ",", 
-                    RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}], 
-                   ",", 
-                   RowBox[{"{", 
-                    RowBox[{"l", ",", "nO"}], "}"}]}], "]"}]}], ",", 
-                RowBox[{"{", 
-                 RowBox[{"k", ",", "nO"}], "}"}]}], "]"}], "]"}]}], ";", "\n",
-             "\n", 
-            RowBox[{
-             RowBox[{"conf2", "\[LeftDoubleBracket]", 
-              RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], "=", 
-             RowBox[{"Flatten", "[", 
-              RowBox[{"Table", "[", 
+                    RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+                   "                            ", "]"}], ",", "\n", 
+                  "                            ", 
+                  RowBox[{"{", 
+                   RowBox[{"l", ",", "nO"}], "}"}]}], "\n", 
+                 "                          ", "]"}]}], ",", "\n", 
+               "                          ", 
+               RowBox[{"{", 
+                RowBox[{"k", ",", "nO"}], "}"}]}], "\n", 
+              "                        ", "]"}], "\n", 
+             "                      ", "]"}]}], ";", "\n", "\n", "        ", 
+           RowBox[{
+            RowBox[{"conf2", "\[LeftDoubleBracket]", 
+             RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], "=", 
+            RowBox[{"Flatten", "[", "\n", "                     ", 
+             RowBox[{"Table", "[", "\n", "                       ", 
+              RowBox[{
                RowBox[{
-                RowBox[{
-                 RowBox[{"kcd", "=", "0"}], ";", 
-                 RowBox[{"Table", "[", 
-                  RowBox[{
-                   RowBox[{"Table", "[", 
+                RowBox[{"kcd", "=", "0"}], ";", "\n", 
+                "                       ", 
+                RowBox[{"Table", "[", "\n", "                         ", 
+                 RowBox[{
+                  RowBox[{"Table", "[", "\n", "                           ", 
+                   RowBox[{
+                    RowBox[{"{", "\n", "                             ", 
                     RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"kcd", "++"}], ";", 
+                    RowBox[{"kcd", "++"}], ";", "\n", 
+                    "                             ", 
                     RowBox[{"StringForm", "[", 
                     RowBox[{
                     "\"\<(`1`)--> (`2`,`3`) \>\"", ",", "k", ",", "c", ",", 
-                    "d"}], "]"}]}], "}"}], ",", "\n", 
-                    "                                           ", 
+                    "d"}], "]"}]}], "\n", "                           ", 
+                    "}"}], ",", "\n", "                           ", 
                     RowBox[{"{", 
                     RowBox[{"d", ",", 
-                    RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}], 
-                   ",", 
-                   RowBox[{"{", 
-                    RowBox[{"c", ",", 
-                    RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}],
-                 ",", 
-                RowBox[{"{", 
-                 RowBox[{"k", ",", "nO"}], "}"}]}], "]"}], "]"}]}], ";", "\n",
-             "                                           ", "\n", 
-            RowBox[{
-             RowBox[{"weights2", "\[LeftDoubleBracket]", 
-              RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], "=", 
-             RowBox[{"Flatten", "[", 
-              RowBox[{"Table", "[", 
+                    RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+                   "                         ", "]"}], ",", "\n", 
+                  "                         ", 
+                  RowBox[{"{", 
+                   RowBox[{"c", ",", 
+                    RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+                 "                       ", "]"}]}], ",", "\n", 
+               "                       ", 
+               RowBox[{"{", 
+                RowBox[{"k", ",", "nO"}], "}"}]}], "\n", 
+              "                     ", "]"}], "\n", "                   ", 
+             "]"}]}], ";", "\n", 
+           "                                           ", "\n", "        ", 
+           RowBox[{
+            RowBox[{"weights2", "\[LeftDoubleBracket]", 
+             RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], "=", 
+            RowBox[{"Flatten", "[", "\n", "                        ", 
+             RowBox[{"Table", "[", "\n", "                          ", 
+              RowBox[{
                RowBox[{
-                RowBox[{
-                 RowBox[{"kcd", "=", "0"}], ";", 
-                 RowBox[{"Table", "[", 
+                RowBox[{"kcd", "=", "0"}], ";", "\n", 
+                "                          ", 
+                RowBox[{"Table", "[", "\n", "                            ", 
+                 RowBox[{
                   RowBox[{
-                   RowBox[{"Table", "[", 
+                  "Table", "[", "\n", "                              ", 
+                   RowBox[{
+                    RowBox[{"{", "\n", "                                ", 
                     RowBox[{
-                    RowBox[{"{", 
-                    RowBox[{
-                    RowBox[{"kcd", "++"}], ";", 
+                    RowBox[{"kcd", "++"}], ";", "\n", 
+                    "                                ", 
                     SuperscriptBox[
                     RowBox[{"Chop", "[", 
                     RowBox[{
@@ -192,46 +216,54 @@ Cell[BoxData[
                     RowBox[{"1", "+", "n2h1p", "+", "kcd"}], ",", "s"}], 
                     "\[RightDoubleBracket]"}], ",", 
                     SuperscriptBox["10", 
-                    RowBox[{"-", "16"}]]}], "]"}], "2"]}], "}"}], ",", 
+                    RowBox[{"-", "16"}]]}], "]"}], "2"]}], "\n", 
+                    "                              ", "}"}], ",", "\n", 
+                    "                              ", 
                     RowBox[{"{", 
                     RowBox[{"d", ",", 
-                    RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}], 
-                   ",", "\n", "                                        ", 
-                   RowBox[{"{", 
-                    RowBox[{"c", ",", 
-                    RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}],
-                 ",", 
-                RowBox[{"{", 
-                 RowBox[{"k", ",", "nO"}], "}"}]}], "]"}], "]"}]}], ";", "\n",
-             "\n", "\n", 
-            RowBox[{
-             RowBox[{"conf1", "\[LeftDoubleBracket]", 
-              RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], "=", 
-             RowBox[{"Flatten", "[", 
+                    RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+                   "                            ", "]"}], ",", "\n", 
+                  "                            ", 
+                  RowBox[{"{", 
+                   RowBox[{"c", ",", 
+                    RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+                 "                          ", "]"}]}], ",", "\n", 
+               "                          ", 
+               RowBox[{"{", 
+                RowBox[{"k", ",", "nO"}], "}"}]}], "\n", 
+              "                        ", "]"}], "\n", 
+             "                      ", "]"}]}], ";", "\n", "\n", "\n", 
+           "        ", 
+           RowBox[{
+            RowBox[{"conf1", "\[LeftDoubleBracket]", 
+             RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], "=", 
+            RowBox[{"Flatten", "[", "\n", "                     ", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"conf1", "\[LeftDoubleBracket]", 
+                RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], ",", 
+               RowBox[{"conf2", "\[LeftDoubleBracket]", 
+                RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}]}], "}"}], 
+             "\n", "                   ", "]"}]}], ";", "\n", "        ", 
+           RowBox[{
+            RowBox[{"weights1", "\[LeftDoubleBracket]", 
+             RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], "=", 
+            RowBox[{"Chop", "[", "\n", "                        ", 
+             RowBox[{"Flatten", "[", "\n", "                          ", 
               RowBox[{"{", 
                RowBox[{
-                RowBox[{"conf1", "\[LeftDoubleBracket]", 
+                RowBox[{"weights1", "\[LeftDoubleBracket]", 
                  RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], ",", 
-                RowBox[{"conf2", "\[LeftDoubleBracket]", 
+                RowBox[{"weights2", "\[LeftDoubleBracket]", 
                  RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}]}], "}"}], 
-              "]"}]}], ";", "\n", 
-            RowBox[{
-             RowBox[{"weights1", "\[LeftDoubleBracket]", 
-              RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], "=", 
-             RowBox[{"Chop", "[", 
-              RowBox[{"Flatten", "[", 
-               RowBox[{"{", 
-                RowBox[{
-                 RowBox[{"weights1", "\[LeftDoubleBracket]", 
-                  RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}], ",", 
-                 RowBox[{"weights2", "\[LeftDoubleBracket]", 
-                  RowBox[{"p", ",", "s"}], "\[RightDoubleBracket]"}]}], "}"}],
-                "]"}], "]"}]}], ";"}]}], "\n", "\n", "]"}], ";"}], "\n", ",", 
-        
+              "\n", "                        ", "]"}], "\n", 
+             "                      ", "]"}]}], ";"}]}], "\n", "\n", "      ",
+          "]"}], ",", "\n", "      ", 
         RowBox[{"{", 
-         RowBox[{"s", ",", "1", ",", "nH"}], "}"}]}], "]"}], ";", " ", "\n", 
-      "\n", 
-      RowBox[{"Return", "[", "conf1", "]"}]}]}], "]"}]}], ";"}]], "Code",
+         RowBox[{"s", ",", "1", ",", "nH"}], "}"}]}], "\n", "    ", "]"}], 
+      ";", " ", "\n", "\n", "    ", 
+      RowBox[{"Return", "[", "conf1", "]"}], ";"}]}], "\n", "  ", "]"}]}], 
+  ";"}]], "Code",
  CellChangeTimes->{{3.8728278976692743`*^9, 3.872827945686698*^9}, {
    3.87282797925308*^9, 3.872828171915694*^9}, {3.872828410127392*^9, 
    3.872828419098867*^9}, {3.872828636614889*^9, 3.872828642299983*^9}, {
@@ -241,8 +273,11 @@ Cell[BoxData[
    3.8728293386653223`*^9}, {3.872829389262597*^9, 3.872829423325893*^9}, {
    3.872829501242942*^9, 3.872829559699107*^9}, {3.872829604388769*^9, 
    3.8728296576391087`*^9}, {3.8728331308914413`*^9, 3.872833134159004*^9}, 
-   3.8728336831372757`*^9},
- CellLabel->"In[1]:=",ExpressionUUID->"c3d1fa2c-fe7a-4e58-935a-36e72c79202d"]
+   3.8728336831372757`*^9, {3.87342511388759*^9, 3.873425281177552*^9}, {
+   3.8734253532175207`*^9, 3.873425661098372*^9}, {3.8734256934628963`*^9, 
+   3.873425998657014*^9}, 
+   3.875160689231316*^9},ExpressionUUID->"c3d1fa2c-fe7a-4e58-935a-\
+36e72c79202d"]
 },
 WindowSize->{1242, 726},
 WindowMargins->{{76, Automatic}, {1, Automatic}},
@@ -262,7 +297,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 9789, 224, 1093, "Code",ExpressionUUID->"c3d1fa2c-fe7a-4e58-935a-36e72c79202d"]
+Cell[558, 20, 12743, 259, 3035, "Code",ExpressionUUID->"c3d1fa2c-fe7a-4e58-935a-36e72c79202d"]
 }
 ]
 *)

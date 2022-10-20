@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6717,        162]
-NotebookOptionsPosition[      6340,        147]
-NotebookOutlinePosition[      6764,        164]
-CellTagsIndexPosition[      6721,        161]
+NotebookDataLength[      5989,        145]
+NotebookOptionsPosition[      5612,        130]
+NotebookOutlinePosition[      6036,        147]
+CellTagsIndexPosition[      5993,        144]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -58,7 +58,7 @@ Cell[BoxData[
            RowBox[{
             RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
             RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", 
+             RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", "\n", 
          RowBox[{"\"\<RPA\>\"", "\[Rule]", 
           RowBox[{"<|", 
            RowBox[{
@@ -76,14 +76,8 @@ Cell[BoxData[
            RowBox[{
             RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
             RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", "\n", 
          RowBox[{"\"\<G0W0\>\"", "\[Rule]", 
-          RowBox[{"<|", 
-           RowBox[{
-            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
-            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
-         RowBox[{"\"\<soG0W0\>\"", "\[Rule]", 
           RowBox[{"<|", 
            RowBox[{
             RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
@@ -94,44 +88,32 @@ Cell[BoxData[
            RowBox[{
             RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
             RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
-         RowBox[{"\"\<soUfG0W0\>\"", "\[Rule]", 
-          RowBox[{"<|", 
-           RowBox[{
-            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
-            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", "\n", 
          RowBox[{"\"\<G0F2\>\"", "\[Rule]", 
           RowBox[{"<|", 
            RowBox[{
             RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
             RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
              RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
-         RowBox[{"\"\<soG0F2\>\"", "\[Rule]", 
+         RowBox[{"\"\<ufG0F2\>\"", "\[Rule]", 
           RowBox[{"<|", 
            RowBox[{
             RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
             RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
-         RowBox[{"\"\<soUfG0F2\>\"", "\[Rule]", 
-          RowBox[{"<|", 
-           RowBox[{
-            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
-            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
-         RowBox[{"\"\<soUfG0T0\>\"", "\[Rule]", 
-          RowBox[{"<|", 
-           RowBox[{
-            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
-            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", "\n", 
          RowBox[{"\"\<G0T0\>\"", "\[Rule]", 
           RowBox[{"<|", 
            RowBox[{
             RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
             RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
-             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}]}], "\n", "]"}]}],
-       ";", "\n", "\n", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<ufG0T0\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}]}], "\n", "\n", 
+        "]"}]}], ";", "\n", "\n", 
       RowBox[{"Return", "[", "ToDoModules", "]"}]}]}], "]"}]}], ";"}]], "Code",\
 
  CellChangeTimes->{{3.872645075747286*^9, 3.872645245247631*^9}, 
@@ -141,8 +123,9 @@ Cell[BoxData[
    3.872835086311194*^9}, {3.872844614228057*^9, 3.872844638301817*^9}, {
    3.872909818689795*^9, 3.872909830078219*^9}, {3.8729136966511803`*^9, 
    3.872913706372264*^9}, {3.8729158250403013`*^9, 3.87291582586467*^9}, {
-   3.872915872752756*^9, 
-   3.872915879704833*^9}},ExpressionUUID->"2080cd3e-7f88-48b7-bee4-\
+   3.872915872752756*^9, 3.872915879704833*^9}, {3.875157824915531*^9, 
+   3.875157842902246*^9}, {3.875236880807357*^9, 
+   3.8752369338184347`*^9}},ExpressionUUID->"2080cd3e-7f88-48b7-bee4-\
 a3de0810e066"]
 },
 WindowSize->{981, 706},
@@ -163,7 +146,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 5778, 125, 746, "Code",ExpressionUUID->"2080cd3e-7f88-48b7-bee4-a3de0810e066"]
+Cell[558, 20, 5050, 108, 804, "Code",ExpressionUUID->"2080cd3e-7f88-48b7-bee4-a3de0810e066"]
 }
 ]
 *)

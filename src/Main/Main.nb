@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    103963,       1756]
-NotebookOptionsPosition[    103412,       1737]
-NotebookOutlinePosition[    103874,       1755]
-CellTagsIndexPosition[    103831,       1752]
+NotebookDataLength[    126981,       2185]
+NotebookOptionsPosition[    126428,       2166]
+NotebookOutlinePosition[    126891,       2184]
+CellTagsIndexPosition[    126848,       2181]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -29,8 +29,10 @@ Cell[BoxData[
  RowBox[{
   RowBox[{
    RowBox[{"qcmath", "[", 
-    RowBox[{"molecule_", ",", "basis_", ",", "methods_", ",", 
-     RowBox[{"options_", ":", "0"}], ",", 
+    RowBox[{"molecule_", ",", "basis_", ",", "methods_", 
+     RowBox[{"(*", 
+      RowBox[{",", 
+       RowBox[{"options_", ":", "0"}]}], "*)"}], ",", 
      RowBox[{"multiplicity_", ":", "1"}], 
      RowBox[{"(*", 
       RowBox[{"Default", "=", "1"}], "*)"}], ",", 
@@ -55,6 +57,10 @@ Cell[BoxData[
        ",", "EevGT", ",", "EqsGT", ",", "EUG0T0", ",", "EevUGT", ",", "\n", 
        "            ", "EqsUGT", ",", "EppRPA", ",", "EG0W0", ",", "\n", 
        "            ", "\n", 
+       RowBox[{"(*", "timing", "*)"}], " ", "time", ",", "\n", "\n", 
+       RowBox[{"(*", "options", "*)"}], "option", ",", "maxSCF", ",", 
+       "thresh", ",", "lin", ",", "spinorbital", ",", "guessType", ",", 
+       "levelShift", ",", "\n", "            ", "\n", 
        RowBox[{"(*", "outputs", "*)"}], "IntegralsQuantities", ",", 
        "ParametersQuantities", ",", "MoleculeQuantities", ",", "\n", 
        "            ", "\n", "S", ",", "T", ",", "V", ",", "U", ",", "X", ",",
@@ -62,11 +68,11 @@ Cell[BoxData[
        ",", "\[Epsilon]", ",", "XplusY", ",", "\[CapitalOmega]RPA", ",", 
        "ERIaa", "\n", ",", "ERIab", ",", "ERIba", ",", "ERIbb", ",", "Ca", 
        ",", "Cb", ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", "TDA", ",", 
-       "TDAW", ",", "singlet", ",", "triplet", ",", "spinconserved", ",", 
-       "spinflip", ",", "LR", ",", "BSE", ",", "qsGWOMIntegrals", ",", 
-       "qsGW\[Epsilon]", ",", "W", ",", "EUBSE", ",", "W1", ",", "W2", ",", 
-       "qsGWOMIntegralsaa", ",", "qsGWOMIntegralsab", ",", 
-       "qsGWOMIntegralsba", ",", "qsGWOMIntegralsbb", "\n", ",", 
+       "TDAW", ",", "TDAT", ",", "singlet", ",", "triplet", ",", 
+       "spinconserved", ",", "spinflip", ",", "LR", ",", "BSE", ",", 
+       "qsGWOMIntegrals", ",", "qsGW\[Epsilon]", ",", "W", ",", "EUBSE", ",", 
+       "W1", ",", "W2", ",", "qsGWOMIntegralsaa", ",", "qsGWOMIntegralsab", 
+       ",", "qsGWOMIntegralsba", ",", "qsGWOMIntegralsbb", "\n", ",", 
        "qsGW\[Epsilon]a", ",", "qsGW\[Epsilon]b", "\n", ",", "P", ",", "K", 
        ",", "Vxc", ",", "RPAG0W0", ",", "GMG0W0", ",", "eG0W0", ",", 
        "RPAevGW", ",", "GMevGW", ",", "RPAUG0W0", ",", "GMUG0W0", ",", 
@@ -330,93 +336,123 @@ Cell[BoxData[
          RowBox[{"path", "<>", "\"\</src/utils/update_options.nb\>\""}], 
          "]"}], ";"}], "*)"}], "\n", "\n", 
       RowBox[{"ToDoOptions", "=", 
-       RowBox[{"ListOptions", "[", "]"}]}], ";", "\n", "\n", 
-      RowBox[{
-       RowBox[{"UpdateOptions", "[", "Options_", "]"}], ":=", 
-       RowBox[{"Module", "[", "\n", 
+       RowBox[{"ListOptions", "[", "]"}]}], ";", " ", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
         RowBox[{
-         RowBox[{"{", 
-          RowBox[{"ToDo", ",", "ListValues"}], "}"}], ",", "\n", "\n", 
-         RowBox[{
-          RowBox[{"ToDo", "=", 
-           RowBox[{"ToDoOptions", "[", "Options", "]"}]}], ";", "\n", 
-          RowBox[{"ListValues", "=", 
-           RowBox[{"ToDo", "[", "\"\<Values\>\"", "]"}]}], ";", "\n", 
-          RowBox[{"If", "[", 
+         RowBox[{"UpdateOptions", "[", "Options_", "]"}], ":=", 
+         RowBox[{"Module", "[", "\n", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"ToDo", ",", "ListValues"}], "}"}], ",", "\n", "\n", 
            RowBox[{
-            RowBox[{
-             RowBox[{"ToDo", "[", "\"\<Do\>\"", "]"}], "\[Equal]", "False"}], 
-            ",", "\n", "\t", 
-            RowBox[{
-             RowBox[{"If", "[", 
-              RowBox[{
-               RowBox[{
-                RowBox[{"Length", "[", "ListValues", "]"}], ">", "0"}], ",", 
-               "\n", "\t\t", 
-               RowBox[{"Do", "[", 
-                RowBox[{
-                 RowBox[{
-                  RowBox[{"UpdateOptions", "[", 
-                   RowBox[{
-                   "ListValues", "\[LeftDoubleBracket]", "i", 
-                    "\[RightDoubleBracket]"}], "]"}], ";"}], "\n", "\t\t\t", 
-                 ",", 
-                 RowBox[{"{", 
-                  RowBox[{"i", ",", 
-                   RowBox[{"Length", "[", 
-                    RowBox[{"ToDo", "[", "\"\<Values\>\"", "]"}], "]"}]}], 
-                  "}"}]}], "]"}]}], "]"}], ";", "\n", "\t", 
+            RowBox[{"ToDo", "=", 
+             RowBox[{"ToDoOptions", "[", "Options", "]"}]}], ";", "\n", 
+            RowBox[{"ListValues", "=", 
+             RowBox[{"ToDo", "[", "\"\<Values\>\"", "]"}]}], ";", "\n", 
+            RowBox[{"If", "[", 
              RowBox[{
               RowBox[{
-               RowBox[{"ToDoOptions", "[", "Options", "]"}], "[", 
-               "\"\<Do\>\"", "]"}], "=", "True"}], ";"}]}], "\n", "\t", "]"}],
-           ";"}]}], "\t", "\n", "]"}]}], ";", "\n", "\n", 
-      RowBox[{"Do", "[", 
-       RowBox[{
-        RowBox[{"UpdateOptions", "[", 
+               RowBox[{"ToDo", "[", "\"\<Do\>\"", "]"}], "\[Equal]", 
+               "False"}], ",", "\n", "\t", 
+              RowBox[{
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Length", "[", "ListValues", "]"}], ">", "0"}], ",",
+                  "\n", "\t\t", 
+                 RowBox[{"Do", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"UpdateOptions", "[", 
+                    RowBox[{
+                    "ListValues", "\[LeftDoubleBracket]", "i", 
+                    "\[RightDoubleBracket]"}], "]"}], ";"}], "\n", "\t\t\t", 
+                   ",", 
+                   RowBox[{"{", 
+                    RowBox[{"i", ",", 
+                    RowBox[{"Length", "[", 
+                    RowBox[{"ToDo", "[", "\"\<Values\>\"", "]"}], "]"}]}], 
+                    "}"}]}], "]"}]}], "]"}], ";", "\n", "\t", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"ToDoOptions", "[", "Options", "]"}], "[", 
+                 "\"\<Do\>\"", "]"}], "=", "True"}], ";"}]}], "\n", "\t", 
+             "]"}], ";"}]}], "\t", "\n", "]"}]}], ";", "\n", "\n", 
+        RowBox[{"Do", "[", 
          RowBox[{
-         "options", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
-         "]"}], "\n", "   ", ",", 
-        RowBox[{"{", 
-         RowBox[{"i", ",", 
-          RowBox[{"Length", "[", "options", "]"}]}], "}"}]}], "]"}], ";", 
-      "\n", "\n", 
+          RowBox[{"UpdateOptions", "[", 
+           RowBox[{
+           "options", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+           "]"}], "\n", "   ", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", 
+            RowBox[{"Length", "[", "options", "]"}]}], "}"}]}], "]"}], ";", 
+        "\n", "\n", 
+        RowBox[{"verbose", "=", 
+         RowBox[{
+          RowBox[{"ToDoOptions", "[", "\"\<verbose\>\"", "]"}], "[", 
+          "\"\<Value\>\"", "]"}]}], ";", "\n", 
+        RowBox[{"DIISex", "=", 
+         RowBox[{
+          RowBox[{"ToDoOptions", "[", "\"\<DIIS\>\"", "]"}], "[", 
+          "\"\<Do\>\"", "]"}]}], ";", "\n", 
+        RowBox[{"singlet", "=", 
+         RowBox[{
+          RowBox[{"ToDoOptions", "[", "\"\<singlet\>\"", "]"}], "[", 
+          "\"\<Do\>\"", "]"}]}], ";", "\n", 
+        RowBox[{"triplet", "=", 
+         RowBox[{
+          RowBox[{"ToDoOptions", "[", "\"\<triplet\>\"", "]"}], "[", 
+          "\"\<Do\>\"", "]"}]}], ";", "\n", 
+        RowBox[{"TDA", "=", 
+         RowBox[{
+          RowBox[{"ToDoOptions", "[", "\"\<TDA\>\"", "]"}], "[", "\"\<Do\>\"",
+           "]"}]}], ";", "\n", 
+        RowBox[{"TDAW", "=", 
+         RowBox[{
+          RowBox[{"ToDoOptions", "[", "\"\<TDAW\>\"", "]"}], "[", 
+          "\"\<Do\>\"", "]"}]}], ";", "\n", 
+        RowBox[{"Regularized", "=", 
+         RowBox[{
+          RowBox[{"ToDoOptions", "[", "\"\<Regularized\>\"", "]"}], "[", 
+          "\"\<Do\>\"", "]"}]}], ";", "\n", 
+        RowBox[{"\[Kappa]", "=", 
+         RowBox[{
+          RowBox[{"ToDoOptions", "[", "\"\<Regularized\>\"", "]"}], "[", 
+          "\"\<Value\>\"", "]"}]}], ";", "\n", 
+        RowBox[{"\[Eta]", "=", 
+         RowBox[{
+          RowBox[{"ToDoOptions", "[", "\"\<\[Eta]\>\"", "]"}], "[", 
+          "\"\<Value\>\"", "]"}]}], ";"}], "\n", "*)"}], "\n", "\n", 
+      RowBox[{"option", "=", 
+       RowBox[{
+       "ToDoOptions", "\[LeftDoubleBracket]", "\"\<outputs\>\"", 
+        "\[RightDoubleBracket]"}]}], ";", "\n", 
       RowBox[{"verbose", "=", 
        RowBox[{
-        RowBox[{"ToDoOptions", "[", "\"\<verbose\>\"", "]"}], "[", 
-        "\"\<Value\>\"", "]"}]}], ";", "\n", 
-      RowBox[{"DIISex", "=", 
+       "option", "\[LeftDoubleBracket]", "\"\<verbose\>\"", 
+        "\[RightDoubleBracket]"}]}], ";", "\n", "\n", 
+      RowBox[{"option", "=", 
        RowBox[{
-        RowBox[{"ToDoOptions", "[", "\"\<DIIS\>\"", "]"}], "[", "\"\<Do\>\"", 
-        "]"}]}], ";", "\n", 
-      RowBox[{"singlet", "=", 
-       RowBox[{
-        RowBox[{"ToDoOptions", "[", "\"\<singlet\>\"", "]"}], "[", 
-        "\"\<Do\>\"", "]"}]}], ";", "\n", 
-      RowBox[{"triplet", "=", 
-       RowBox[{
-        RowBox[{"ToDoOptions", "[", "\"\<triplet\>\"", "]"}], "[", 
-        "\"\<Do\>\"", "]"}]}], ";", "\n", 
+       "ToDoOptions", "\[LeftDoubleBracket]", "\"\<spin\>\"", 
+        "\[RightDoubleBracket]"}]}], ";", "\n", 
       RowBox[{"TDA", "=", 
        RowBox[{
-        RowBox[{"ToDoOptions", "[", "\"\<TDA\>\"", "]"}], "[", "\"\<Do\>\"", 
-        "]"}]}], ";", "\n", 
-      RowBox[{"TDAW", "=", 
+       "option", "\[LeftDoubleBracket]", "\"\<TDA\>\"", 
+        "\[RightDoubleBracket]"}]}], ";", "\n", 
+      RowBox[{"singlet", "=", 
        RowBox[{
-        RowBox[{"ToDoOptions", "[", "\"\<TDAW\>\"", "]"}], "[", "\"\<Do\>\"", 
-        "]"}]}], ";", "\n", 
-      RowBox[{"Regularized", "=", 
+       "option", "\[LeftDoubleBracket]", "\"\<singlet\>\"", 
+        "\[RightDoubleBracket]"}]}], ";", "\n", 
+      RowBox[{"triplet", "=", 
        RowBox[{
-        RowBox[{"ToDoOptions", "[", "\"\<Regularized\>\"", "]"}], "[", 
-        "\"\<Do\>\"", "]"}]}], ";", "\n", 
-      RowBox[{"\[Kappa]", "=", 
+       "option", "\[LeftDoubleBracket]", "\"\<triplet\>\"", 
+        "\[RightDoubleBracket]"}]}], ";", "\n", 
+      RowBox[{"spinorbital", " ", "=", " ", 
        RowBox[{
-        RowBox[{"ToDoOptions", "[", "\"\<Regularized\>\"", "]"}], "[", 
-        "\"\<Value\>\"", "]"}]}], ";", "\n", 
-      RowBox[{"\[Eta]", "=", 
-       RowBox[{
-        RowBox[{"ToDoOptions", "[", "\"\<\[Eta]\>\"", "]"}], "[", 
-        "\"\<Value\>\"", "]"}]}], ";", "\n", "\n", 
+       "option", "\[LeftDoubleBracket]", "\"\<spinorbital\>\"", 
+        "\[RightDoubleBracket]"}]}], ";", "\n", "\n", 
       RowBox[{"If", "[", 
        RowBox[{"restricted", ",", "\n", "     ", 
         RowBox[{"(*", "RHF", "*)"}], "\n", "  ", 
@@ -435,13 +471,44 @@ Cell[BoxData[
              RowBox[{"Style", "[", 
               RowBox[{
               "\"\<RHF calculation...\>\"", ",", "Bold", ",", "Orange"}], 
-              "]"}], "]"}], ";", "\n", "\n", "    ", 
-            RowBox[{"outputs", "=", 
-             RowBox[{"RHF", "[", 
-              RowBox[{
-              "nBas", ",", "Nelc", ",", "Enuc", ",", "S", ",", "T", ",", "V", 
-               ",", "U", ",", "X", ",", "DIISex", ",", "HFmaxSCF", ",", 
-               "HFthresh", ",", "verbose"}], "]"}]}], ";", "\n", "\n", "    ", 
+              "]"}], "]"}], ";", "\n", "    ", 
+            RowBox[{"option", "=", 
+             RowBox[{
+             "ToDoOptions", "\[LeftDoubleBracket]", "\"\<HF\>\"", 
+              "\[RightDoubleBracket]"}]}], ";", "\n", "    ", 
+            RowBox[{"maxSCF", "=", 
+             RowBox[{
+             "option", "\[LeftDoubleBracket]", "\"\<maxSCF\>\"", 
+              "\[RightDoubleBracket]"}]}], ";", "\n", "    ", 
+            RowBox[{"thresh", "=", 
+             RowBox[{
+             "option", "\[LeftDoubleBracket]", "\"\<thresh\>\"", 
+              "\[RightDoubleBracket]"}]}], ";", "\n", "    ", 
+            RowBox[{"guessType", "=", 
+             RowBox[{
+             "option", "\[LeftDoubleBracket]", "\"\<guess_type\>\"", 
+              "\[RightDoubleBracket]"}]}], ";", "\n", "    ", 
+            RowBox[{"levelShift", "=", 
+             RowBox[{
+             "option", "\[LeftDoubleBracket]", "\"\<level_shift\>\"", 
+              "\[RightDoubleBracket]"}]}], ";", "\n", "    ", "\n", "    ", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+             RowBox[{"Timing", "[", 
+              RowBox[{"RHF", "[", 
+               RowBox[{
+               "nBas", ",", "nO", ",", "Nelc", ",", "Enuc", ",", "S", ",", 
+                "T", ",", "V", ",", "U", ",", "X", ",", "DIISex", ",", 
+                "maxSCF", ",", "thresh", ",", "guessType", ",", "levelShift", 
+                ",", "verbose"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", 
+            "    ", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"verbose", "\[Equal]", "True"}], ",", 
+              RowBox[{"Print", "[", 
+               RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}]}], "]"}], 
+            ";", "\n", "\n", "    ", 
             RowBox[{"ERHF", "=", 
              RowBox[{
               RowBox[{"outputs", "[", "\"\<EHF\>\"", "]"}], "+", "Enuc"}]}], 
@@ -479,55 +546,85 @@ Cell[BoxData[
             RowBox[{"SameQ", "[", 
              RowBox[{
               RowBox[{"Head", "[", "ERI", "]"}], ",", "List"}], "]"}], 
-            "\[Equal]", "True"}], ",", "\n", "\n", "       ", 
-           RowBox[{"(*", "RPA", "*)"}], "\n", "    ", 
+            "\[Equal]", "True"}], ",", "\n", "  ", "\n", "  ", 
+           RowBox[{"(*", 
+            RowBox[{"RPA", " ", "calculation"}], "*)"}], "\n", "  ", 
            RowBox[{
             RowBox[{"If", "[", 
              RowBox[{
               RowBox[{
                RowBox[{
                 RowBox[{"ToDoModules", "[", "\"\<RPA\>\"", "]"}], "[", 
-                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", 
-              "      ", 
+                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "    ", 
+              "\n", "    ", 
               RowBox[{
-               RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/RPA/RPA.nb\>\""}], "]"}], ";",
-                "\n", "      ", 
                RowBox[{"PrintTemporary", "[", 
                 RowBox[{"Style", "[", 
                  RowBox[{
                  "\"\<RPA calculation...\>\"", ",", "Bold", ",", "Orange"}], 
-                 "]"}], "]"}], ";", "\n", "\n", "      ", 
-               RowBox[{"outputs", "=", 
-                RowBox[{"RPA", "[", 
+                 "]"}], "]"}], ";", "\n", "    ", "\n", "    ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"spinorbital", "\[Equal]", "True"}], ",", "\n", "  ",
+                  "\n", "      ", 
                  RowBox[{
-                 "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI", 
-                  ",", "TDA", ",", "singlet", ",", "triplet"}], "]"}]}], ";", 
-               "\n", "\n", "      ", 
-               RowBox[{"ERPA", "=", 
-                RowBox[{"ERHF", "+", 
-                 RowBox[{"outputs", "[", "\"\<EcRPA\>\"", "]"}]}]}], ";"}]}], 
-             "\n", "       ", "]"}], ";", "\n", "\n", 
-            RowBox[{"(*", "soRPA", "*)"}], "\n", 
-            RowBox[{"If", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{
-                RowBox[{"ToDoModules", "[", "\"\<soRPA\>\"", "]"}], "[", 
-                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", 
-              RowBox[{
-               RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/RPA/soRPA.nb\>\""}], "]"}], 
-               ";", "\n", "\n", 
-               RowBox[{"outputs", "=", 
-                RowBox[{"soRPA", "[", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", 
+                    "        ", 
+                    RowBox[{
+                    RowBox[{
+                    "Print", "[", 
+                    "\"\<Further calculation in spin orbitals !\>\"", "]"}], 
+                    ";"}]}], "\n", "      ", "]"}], ";", "\n", "    ", "\n", 
+                  "      ", 
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/RPA/soRPA.nb\>\""}], "]"}],
+                   ";", "\n", "\n", "      ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"soRPA", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", 
+                    "ERI", ",", "TDA"}], "]"}], "]"}]}], ";", "\n", "      ", 
+                  "\n", "      ", 
+                  RowBox[{"ERPA", "=", 
+                   RowBox[{"ERHF", "+", 
+                    RowBox[{"outputs", "[", "\"\<EcRPA\>\"", "]"}]}]}], ";"}],
+                  "\n", "  ", "\n", "      ", ",", 
+                 RowBox[{"(*", "else", "*)"}], "\n", "\n", "      ", 
                  RowBox[{
-                 "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI", 
-                  ",", "TDA"}], "]"}]}], ";", "\n", 
-               RowBox[{"ERPA", "=", 
-                RowBox[{"ERHF", "+", 
-                 RowBox[{"outputs", "[", "\"\<EcRPA\>\"", "]"}]}]}], ";"}]}], 
-             "\n", "]"}], ";", "\n", "\n", 
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/RPA/RPA.nb\>\""}], "]"}], 
+                  ";", "\n", "      ", "\n", "      ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"RPA", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", 
+                    "ERI", ",", "TDA", ",", "singlet", ",", "triplet"}], 
+                    "]"}], "]"}]}], ";", "\n", "      ", "\n", "      ", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{"verbose", "\[Equal]", "True"}], ",", 
+                    RowBox[{"Print", "[", 
+                    RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}]}], 
+                   "]"}], ";", "\n", "\n", "      ", 
+                  RowBox[{"ERPA", "=", 
+                   RowBox[{"ERHF", "+", 
+                    RowBox[{"outputs", "[", "\"\<EcRPA\>\"", "]"}]}]}], 
+                  ";"}]}], "\n", "    ", "]"}], ";", "\n", "\n", "    ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"verbose", "\[Equal]", "True"}], ",", 
+                 RowBox[{"Print", "[", 
+                  RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}]}], 
+                "]"}], ";"}]}], "\n", "\n", "  ", "]"}], ";", "\n", "\n", 
+            "\n", 
             RowBox[{"(*", "RPAx", "*)"}], "\n", 
             RowBox[{"If", "[", 
              RowBox[{
@@ -544,11 +641,17 @@ Cell[BoxData[
                  RowBox[{
                  "\"\<RPAx calculation...\>\"", ",", "Bold", ",", "Orange"}], 
                  "]"}], "]"}], ";", "\n", "\n", 
-               RowBox[{"outputs", "=", 
-                RowBox[{"RPAx", "[", 
-                 RowBox[{
-                 "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI", 
-                  ",", "TDA", ",", "singlet", ",", "triplet"}], "]"}]}], ";", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                RowBox[{"Timing", "[", 
+                 RowBox[{"RPAx", "[", 
+                  RowBox[{
+                  "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI",
+                    ",", "TDA", ",", "singlet", ",", "triplet"}], "]"}], 
+                 "]"}]}], ";", "\n", 
+               RowBox[{"Print", "[", 
+                RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}], ";", 
                "\n", 
                RowBox[{"ERPAx", "=", 
                 RowBox[{"ERHF", "+", 
@@ -560,236 +663,504 @@ Cell[BoxData[
               RowBox[{
                RowBox[{
                 RowBox[{"ToDoModules", "[", "\"\<G0F2\>\"", "]"}], "[", 
-                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", 
+                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "\n", 
+              "  ", 
               RowBox[{
-               RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/GF/G0F2.nb\>\""}], "]"}], ";",
-                "\n", 
+               RowBox[{"option", " ", "=", " ", 
+                RowBox[{
+                "ToDoOptions", "\[LeftDoubleBracket]", "\"\<GF\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"\[Eta]", " ", "=", " ", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<\[Eta]\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"Regularized", " ", "=", " ", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<Regularized\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"\[Kappa]", " ", "=", " ", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<\[Kappa]\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"lin", " ", "=", " ", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<lin\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", "\n", "  ", 
                RowBox[{"PrintTemporary", "[", 
                 RowBox[{"Style", "[", 
                  RowBox[{
                  "\"\<G0F2 calculation...\>\"", ",", "Bold", ",", "Orange"}], 
-                 "]"}], "]"}], ";", "\n", "\n", 
-               RowBox[{"outputs", "=", 
-                RowBox[{"G0F2", "[", 
+                 "]"}], "]"}], ";", "\n", "  ", "\n", "  ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"spinorbital", "\[Equal]", "True"}], ",", "\n", "\n",
+                  "    ", 
                  RowBox[{
-                 "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "\[Epsilon]", 
-                  ",", "ERI", ",", "\[Eta]", ",", "Regularized", ",", 
-                  "\[Kappa]"}], "]"}]}], ";", "\n", 
-               RowBox[{"EG0F2", "=", 
-                RowBox[{"ERHF", "+", 
-                 RowBox[{"outputs", "[", "\"\<EcMP2\>\"", "]"}]}]}], ";"}]}], 
-             "\n", "]"}], ";", "\n", "\n", 
-            RowBox[{"(*", "soG0F2", "*)"}], "\n", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", 
+                    "      ", 
+                    RowBox[{
+                    "Print", "[", 
+                    "\"\<Further calculation in spin orbitals !\>\"", "]"}]}],
+                    "\n", "    ", "]"}], ";", "\n", "\n", "    ", 
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/GF/soG0F2.nb\>\""}], "]"}],
+                   ";", "\n", "\n", "    ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"soG0F2", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", 
+                    "ERI", ",", "Enuc", ",", "ERHF", ",", "\[Eta]", ",", 
+                    "Regularized", ",", "\[Kappa]", ",", "verbose", ",", 
+                    "lin"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", "    ", 
+                  
+                  RowBox[{"IP", " ", "=", " ", 
+                   RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";"}], "\n",
+                  "  ", "\n", "    ", ",", 
+                 RowBox[{"(*", "else", "*)"}], "\n", " ", "\n", "    ", 
+                 RowBox[{
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/GF/G0F2.nb\>\""}], "]"}], 
+                  ";", "\n", "\n", "    ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], " ", "=", " ", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"G0F2", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", 
+                    "ERI", ",", "C", ",", "K", ",", "Vxc", ",", "Enuc", ",", 
+                    "ERHF", ",", "\[Eta]", ",", "Regularized", ",", 
+                    "\[Kappa]", ",", "verbose", ",", "lin"}], "]"}], "]"}]}], 
+                  ";", "\n", "\n", "    ", 
+                  RowBox[{"EG0F2", " ", "=", " ", 
+                   RowBox[{"ERHF", " ", "+", " ", 
+                    RowBox[{"outputs", "[", "\"\<EcMP2\>\"", "]"}]}]}], ";", 
+                  "\n", "    ", "\n", "    ", 
+                  RowBox[{"IP", " ", "=", " ", 
+                   RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";"}]}], 
+                "\n", "  ", "]"}], ";", "\n", "  ", "\n", "  ", 
+               RowBox[{"If", "[", 
+                RowBox[{"verbose", ",", 
+                 RowBox[{"Print", "[", 
+                  RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}]}], 
+                "]"}], ";"}]}], "\n", "  ", "\n", "]"}], ";", "\n", "\n", 
+            "\n", 
+            RowBox[{"(*", "ufG0F2", "*)"}], "\n", 
             RowBox[{"If", "[", 
              RowBox[{
               RowBox[{
                RowBox[{
-                RowBox[{"ToDoModules", "[", "\"\<soG0F2\>\"", "]"}], "[", 
-                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", 
+                RowBox[{"ToDoModules", "[", "\"\<ufG0F2\>\"", "]"}], "[", 
+                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "\n", 
+              "  ", 
               RowBox[{
-               RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/GF/soG0F2.nb\>\""}], "]"}], 
-               ";", "\n", 
                RowBox[{"PrintTemporary", "[", 
                 RowBox[{"Style", "[", 
                  RowBox[{
-                 "\"\<soG0F2 calculation...\>\"", ",", "Bold", ",", 
-                  "Orange"}], "]"}], "]"}], ";", "\n", "\n", 
-               RowBox[{"outputs", "=", 
-                RowBox[{"soG0F2", "[", 
+                 "\"\<ufG0F2 calculation...\>\"", ",", "Bold", ",", 
+                  "Orange"}], "]"}], "]"}], ";", "\n", "  ", "\n", "  ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"spinorbital", "\[Equal]", "True"}], ",", "\n", "  ",
+                  "\n", "    ", 
                  RowBox[{
-                 "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "\[Epsilon]", 
-                  ",", "ERI", ",", "\[Eta]", ",", "Regularized", ",", 
-                  "\[Kappa]"}], "]"}]}], ";"}]}], "\n", "\n", "]"}], ";", 
-            "\n", "\n", 
-            RowBox[{"(*", "soUfG0F2", "*)"}], "\n", 
-            RowBox[{"If", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{
-                RowBox[{"ToDoModules", "[", "\"\<soUfG0F2\>\"", "]"}], "[", 
-                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", 
-              RowBox[{
-               RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/GF/soUfG0F2.nb\>\""}], "]"}], 
-               ";", "\n", 
-               RowBox[{"PrintTemporary", "[", 
-                RowBox[{"Style", "[", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", 
+                    "      ", 
+                    RowBox[{
+                    "Print", "[", 
+                    "\"\<Further calculation in spin orbitals !\>\"", "]"}]}],
+                    "\n", "    ", "]"}], ";", "\n", "    ", "\n", "    ", 
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/GF/soUfG0F2.nb\>\""}], 
+                   "]"}], ";", "\n", "    ", "\n", "    ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"soUfG0F2", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", 
+                    "ERI"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", "    ", 
+                  
+                  RowBox[{"IP", " ", "=", " ", 
+                   RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";"}], "\n",
+                  "    ", "\n", "    ", ",", 
+                 RowBox[{"(*", "else", "*)"}], "\n", "    ", "\n", "    ", 
                  RowBox[{
-                 "\"\<soUfG0F2 calculation...\>\"", ",", "Bold", ",", 
-                  "Orange"}], "]"}], "]"}], ";", "\n", "\n", 
-               RowBox[{"outputs", "=", 
-                RowBox[{"soUfG0F2", "[", 
-                 RowBox[{
-                 "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", 
-                  "ERI"}], "]"}]}], ";", "\n", 
-               RowBox[{"IP", "=", 
-                RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";"}]}], "\n", 
-             "]"}], ";", "\n", "\n", 
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/GF/ufG0F2.nb\>\""}], "]"}],
+                   ";", "\n", "\n", "    ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"ufG0F2", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", 
+                    "ERI"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", "    ", 
+                  
+                  RowBox[{"IP", "=", 
+                   RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";"}]}], 
+                "\n", "  ", "]"}], ";", "\n", "    ", "\n", "  ", 
+               RowBox[{"If", "[", 
+                RowBox[{"verbose", ",", 
+                 RowBox[{"Print", "[", 
+                  RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}]}], 
+                "]"}], ";"}]}], "\n", "\n", "]"}], ";", "\n", "\n", 
             RowBox[{"(*", "G0W0", "*)"}], "\n", 
             RowBox[{"If", "[", 
              RowBox[{
               RowBox[{
                RowBox[{
                 RowBox[{"ToDoModules", "[", "\"\<G0W0\>\"", "]"}], "[", 
-                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", 
+                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "\n", 
+              "  ", 
               RowBox[{
-               RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/GW/G0W0.nb\>\""}], "]"}], ";",
-                "\n", 
+               RowBox[{"option", "=", 
+                RowBox[{
+                "ToDoOptions", "\[LeftDoubleBracket]", "\"\<GW\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"\[Eta]", "=", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<\[Eta]\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"Regularized", "=", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<Regularized\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"\[Kappa]", "=", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<\[Kappa]\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"TDAW", "=", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<TDAW\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"lin", "=", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<lin\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "\n", "  ", 
                RowBox[{"PrintTemporary", "[", 
                 RowBox[{"Style", "[", 
                  RowBox[{
                  "\"\<G0W0 calculation...\>\"", ",", "Bold", ",", "Orange"}], 
-                 "]"}], "]"}], ";", "\n", "\n", 
-               RowBox[{"outputs", "=", 
-                RowBox[{"G0W0", "[", 
+                 "]"}], "]"}], ";", "\n", "\n", "  ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"spinorbital", "\[Equal]", "True"}], ",", "\n", "  ",
+                  "\n", "    ", 
                  RowBox[{
-                 "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "\[Epsilon]", 
-                  ",", "ERI", ",", "X", ",", "C", ",", "K", ",", "Vxc", ",", 
-                  "Enuc", ",", "ERHF", ",", "TDA", ",", "BSE", ",", "W", ",", 
-                  "TDAW", ",", "\[Eta]", ",", "Regularized", ",", 
-                  "\[Kappa]"}], "]"}]}], ";", "           ", "\n", 
-               RowBox[{"EG0W0", "=", 
-                RowBox[{"ERHF", "+", 
-                 RowBox[{"outputs", "[", "\"\<EcGM\>\"", "]"}]}]}], ";"}]}], 
-             "                ", "\n", "]"}], ";", "\n", "\n", 
-            RowBox[{"(*", "soG0W0", "*)"}], "\n", 
-            RowBox[{"If", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{
-                RowBox[{"ToDoModules", "[", "\"\<soG0W0\>\"", "]"}], "[", 
-                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", 
-              RowBox[{
-               RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/GW/soG0W0.nb\>\""}], "]"}], 
-               ";", "\n", 
-               RowBox[{"PrintTemporary", "[", 
-                RowBox[{"Style", "[", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", 
+                    "      ", 
+                    RowBox[{
+                    "Print", "[", 
+                    "\"\<Further calculation in spin orbitals !\>\"", "]"}]}],
+                    "\n", "    ", "]"}], ";", "\n", "    ", "\n", "    ", 
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/GW/soG0W0.nb\>\""}], "]"}],
+                   ";", "\n", "\n", "    ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"soG0W0", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "nS", ",", 
+                    "\[Epsilon]", ",", "ERI", ",", "Enuc", ",", "ERHF", ",", 
+                    "\n", "                                 ", "TDA", ",", 
+                    "BSE", ",", "W", ",", "TDAW", ",", "\[Eta]", ",", 
+                    "Regularized", ",", "\[Kappa]", ",", "verbose", ",", 
+                    "lin"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", "    ", 
+                  
+                  RowBox[{"IP", " ", "=", " ", 
+                   RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";"}], "\n",
+                  "\n", "    ", ",", 
+                 RowBox[{"(*", "else", "*)"}], "\n", "    ", "\n", "    ", 
                  RowBox[{
-                 "\"\<soG0W0 calculation...\>\"", ",", "Bold", ",", 
-                  "Orange"}], "]"}], "]"}], ";", "\n", "\n", 
-               RowBox[{"outputs", "=", 
-                RowBox[{"soG0W0", "[", 
-                 RowBox[{
-                 "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "\[Epsilon]", 
-                  ",", "ERI", ",", "X", ",", "C", ",", "K", ",", "Enuc", ",", 
-                  "ERHF", ",", "TDA", ",", "BSE", ",", "W", ",", "TDAW", ",", 
-                  "\[Eta]", ",", "Regularized", ",", "\[Kappa]"}], "]"}]}], 
-               ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/GW/G0W0.nb\>\""}], "]"}], 
+                  ";", "\n", "\n", "    ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"G0W0", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "nS", ",", 
+                    "\[Epsilon]", ",", "ERI", ",", "X", ",", "C", ",", "K", 
+                    ",", "Vxc", ",", "Enuc", ",", "ERHF", ",", "\n", 
+                    "                           ", "TDA", ",", "BSE", ",", 
+                    "W", ",", "TDAW", ",", "\[Eta]", ",", "Regularized", ",", 
+                    "\[Kappa]", ",", "verbose", ",", "lin"}], "]"}], "]"}]}], 
+                  ";", "  ", "\n", "    ", "\n", "    ", 
+                  RowBox[{"EG0W0", "=", 
+                   RowBox[{"ERHF", "+", 
+                    RowBox[{"outputs", "[", "\"\<EcGM\>\"", "]"}]}]}], ";", 
+                  " ", "\n", "    ", 
+                  RowBox[{"IP", "=", 
+                   RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";"}]}], 
+                "       ", "\n", "  ", "]"}], ";", "\n", "  ", "\n", "  ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"verbose", "\[Equal]", "True"}], ",", 
+                 RowBox[{"Print", "[", 
+                  RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}]}], 
+                "]"}], ";"}]}], "\n", "  ", "\n", "]"}], ";", "\n", "\n", 
             RowBox[{"(*", "ufG0W0", "*)"}], "\n", 
             RowBox[{"If", "[", 
              RowBox[{
               RowBox[{
                RowBox[{
                 RowBox[{"ToDoModules", "[", "\"\<ufG0W0\>\"", "]"}], "[", 
-                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", 
+                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "\n", 
+              "  ", 
               RowBox[{
-               RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/GW/ufG0W0.nb\>\""}], "]"}], 
-               ";", "\n", 
                RowBox[{"PrintTemporary", "[", 
                 RowBox[{"Style", "[", 
                  RowBox[{
                  "\"\<ufG0W0 calculation...\>\"", ",", "Bold", ",", 
-                  "Orange"}], "]"}], "]"}], ";", "\n", "\n", 
-               RowBox[{"ufG0W0", "[", 
+                  "Orange"}], "]"}], "]"}], ";", "\n", "\n", "  ", 
+               RowBox[{"If", "[", 
                 RowBox[{
-                "nBas", ",", "nO", ",", "nV", ",", "ERI", ",", "\[Epsilon]"}],
-                 "]"}], ";"}]}], "\n", "\n", "]"}], ";", "\n", "\n", 
-            RowBox[{"(*", "soUfG0W0", "*)"}], "\n", 
-            RowBox[{"If", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{
-                RowBox[{"ToDoModules", "[", "\"\<soUfG0W0\>\"", "]"}], "[", 
-                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", 
-              RowBox[{
-               RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/GW/soUfG0W0.nb\>\""}], "]"}], 
-               ";", "\n", 
-               RowBox[{"PrintTemporary", "[", 
-                RowBox[{"Style", "[", 
+                 RowBox[{"spinorbital", "\[Equal]", "True"}], ",", "\n", 
+                 "    ", "\n", "    ", 
                  RowBox[{
-                 "\"\<soUfG0W0 calculation...\>\"", ",", "Bold", ",", 
-                  "Orange"}], "]"}], "]"}], ";", "\n", "\n", 
-               RowBox[{"outputs", "=", 
-                RowBox[{"soUfG0W0", "[", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", 
+                    "      ", 
+                    RowBox[{
+                    "Print", "[", 
+                    "\"\<Further calculation in spin orbitals !\>\"", "]"}]}],
+                    "\n", "    ", "]"}], ";", "\n", "    ", "\n", "    ", 
+                  "\n", "    ", 
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/GW/soUfG0W0.nb\>\""}], 
+                   "]"}], ";", "\n", "\n", "    ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"soUfG0W0", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "ERI", ",", 
+                    "\[Epsilon]", ",", "verbose"}], "]"}], "]"}]}], ";", "\n",
+                   "    ", "\n", "    ", 
+                  RowBox[{"IP", "=", 
+                   RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";"}], "\n",
+                  "    ", "\n", "    ", ",", 
+                 RowBox[{"(*", "else", "*)"}], "\n", "    ", "\n", "    ", 
                  RowBox[{
-                 "nBas", ",", "nO", ",", "nV", ",", "ERI", ",", "\[Epsilon]", 
-                  ",", "verbose"}], "]"}]}], ";", "\n", 
-               RowBox[{"IP", "=", 
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/GW/ufG0W0.nb\>\""}], "]"}],
+                   ";", "\n", "    ", "\n", "    ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"ufG0W0", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "ERI", ",", 
+                    "\[Epsilon]", ",", "verbose"}], "]"}], "]"}]}], ";", "\n",
+                   "    ", "\n", "    ", 
+                  RowBox[{"IP", "=", 
+                   RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";"}]}], 
+                "\n", "  ", "\n", "  ", "]"}], ";", "\n", "  ", "\n", "  ", 
+               RowBox[{"If", "[", 
                 RowBox[{
-                "outputs", "\[LeftDoubleBracket]", "\"\<IP\>\"", 
-                 "\[RightDoubleBracket]"}]}], ";"}]}], "\n", "\n", "]"}], ";",
-             "\n", "\n", 
+                 RowBox[{"verbose", "\[Equal]", "True"}], ",", 
+                 RowBox[{"Print", "[", 
+                  RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}]}], 
+                "]"}], ";"}]}], "\n", "\n", "]"}], ";", "\n", "\n", 
             RowBox[{"(*", "G0T0", "*)"}], "\n", 
             RowBox[{"If", "[", 
              RowBox[{
               RowBox[{
                RowBox[{
                 RowBox[{"ToDoModules", "[", "\"\<G0T0\>\"", "]"}], "[", 
-                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", 
+                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "\n", 
+              "  ", 
               RowBox[{
-               RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/GT/G0T0.nb\>\""}], "]"}], ";",
-                "\n", 
+               RowBox[{"option", " ", "=", " ", 
+                RowBox[{
+                "ToDoOptions", "\[LeftDoubleBracket]", "\"\<GT\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"\[Eta]", " ", "=", " ", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<\[Eta]\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"Regularized", " ", "=", " ", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<Regularized\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"\[Kappa]", " ", "=", " ", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<\[Kappa]\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"TDAT", " ", "=", " ", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<TDAT\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "  ", 
+               RowBox[{"lin", "=", 
+                RowBox[{
+                "option", "\[LeftDoubleBracket]", "\"\<lin\>\"", 
+                 "\[RightDoubleBracket]"}]}], ";", "\n", "\n", "  ", 
                RowBox[{"PrintTemporary", "[", 
                 RowBox[{"Style", "[", 
                  RowBox[{
                  "\"\<G0T0 calculation...\>\"", ",", "Bold", ",", "Orange"}], 
-                 "]"}], "]"}], ";", "\n", "\n", 
-               RowBox[{"outputs", "=", 
-                RowBox[{"G0T0", "[", 
+                 "]"}], "]"}], ";", "\n", "  ", "\n", "  ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"spinorbital", "\[Equal]", "True"}], ",", "\n", "  ",
+                  "\n", "    ", 
                  RowBox[{
-                 "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "\[Epsilon]", 
-                  ",", "ERI", ",", "X", ",", "C", ",", "K", ",", "Vxc", ",", 
-                  "TDA", ",", "BSE", ",", "W", ",", "TDAW", ",", "\[Eta]", 
-                  ",", "Regularized", ",", "\[Kappa]"}], "]"}]}], ";"}]}], 
-             "\n", "]"}], ";", "\n", "\n", 
-            RowBox[{"(*", "soUfG0T0", "*)"}], "\n", 
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", 
+                    "      ", 
+                    RowBox[{
+                    "Print", "[", 
+                    "\"\<Further calculation in spin orbitals !\>\"", "]"}]}],
+                    "\n", "    ", "]"}], ";", "\n", "    ", "\n", "    ", 
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/GT/soG0T0.nb\>\""}], "]"}],
+                   ";", "\n", "    ", "\n", "    ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"soG0T0", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", 
+                    "ERI", ",", "Enuc", ",", "ERHF", ",", "TDAT", ",", 
+                    "\[Eta]", ",", "Regularized", ",", "\[Kappa]", ",", 
+                    "verbose", ",", "lin"}], "]"}], "]"}]}], ";", "\n", "   ",
+                   "\n", "    ", 
+                  RowBox[{"IP", " ", "=", " ", 
+                   RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";"}], "\n",
+                  "    ", "\n", "    ", ",", 
+                 RowBox[{"(*", "else", "*)"}], "\n", "    ", "\n", "    ", 
+                 RowBox[{
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/GT/G0T0.nb\>\""}], "]"}], 
+                  ";", " ", "\n", "\n", "    ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"G0T0", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", 
+                    "ERI", ",", "X", ",", "C", ",", "K", ",", "Vxc", ",", 
+                    "Enuc", ",", "ERHF", ",", "TDAT", ",", "\[Eta]", ",", 
+                    "\n", "                               ", "Regularized", 
+                    ",", "\[Kappa]", ",", "verbose", ",", "lin"}], "]"}], 
+                    "]"}]}], ";", "\n", "                               ", 
+                  "\n", "    ", 
+                  RowBox[{"IP", " ", "=", " ", 
+                   RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";"}]}], 
+                "\n", "\n", "  ", "]"}], ";", "\n", "  ", "\n", "  ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"verbose", "\[Equal]", "True"}], ",", 
+                 RowBox[{"Print", "[", 
+                  RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}]}], 
+                "]"}], ";"}]}], "\n", "  ", "\n", "]"}], ";", "\n", "\n", 
+            RowBox[{"(*", "ufG0T0", "*)"}], "\n", 
             RowBox[{"If", "[", 
              RowBox[{
               RowBox[{
                RowBox[{
-                RowBox[{"ToDoModules", "[", "\"\<soUfG0T0\>\"", "]"}], "[", 
-                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", 
+                RowBox[{"ToDoModules", "[", "\"\<ufG0T0\>\"", "]"}], "[", 
+                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "  ", 
+              "\n", "  ", 
               RowBox[{
-               RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/GT/soUfG0T0.nb\>\""}], "]"}], 
-               ";", "\n", 
                RowBox[{"PrintTemporary", "[", 
                 RowBox[{"Style", "[", 
                  RowBox[{
-                 "\"\<soUfG0T0 calculation...\>\"", ",", "Bold", ",", 
-                  "Orange"}], "]"}], "]"}], ";", "\n", "\n", 
-               RowBox[{"outputs", "=", 
-                RowBox[{"soUfG0T0", "[", 
-                 RowBox[{
-                 "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", 
-                  "ERI"}], "]"}]}], ";", "\n", 
-               RowBox[{"IP", "=", 
+                 "\"\<ufG0T0 calculation...\>\"", ",", "Bold", ",", 
+                  "Orange"}], "]"}], "]"}], ";", "\n", "  ", "\n", "  ", 
+               RowBox[{"If", "[", 
                 RowBox[{
-                "outputs", "\[LeftDoubleBracket]", "\"\<IP\>\"", 
-                 "\[RightDoubleBracket]"}]}], ";"}]}], "\n", "\n", "]"}], 
-            ";"}], "\n", ",", 
+                 RowBox[{"spinorbital", "\[Equal]", "True"}], ",", "\n", "  ",
+                  "\n", "    ", 
+                 RowBox[{
+                  RowBox[{"If", "[", 
+                   RowBox[{
+                    RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", 
+                    "      ", 
+                    RowBox[{
+                    "Print", "[", 
+                    "\"\<Further calculation in spin orbitals !\>\"", "]"}]}],
+                    "\n", "    ", "]"}], ";", "\n", "  ", "\n", "    ", 
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/GT/soUfG0T0.nb\>\""}], 
+                   "]"}], ";", "\n", "\n", "    ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"soUfG0T0", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", 
+                    "ERI"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", "    ", 
+                  
+                  RowBox[{"IP", "=", 
+                   RowBox[{
+                   "outputs", "\[LeftDoubleBracket]", "\"\<IP\>\"", 
+                    "\[RightDoubleBracket]"}]}], ";"}], "\n", "    ", "\n", 
+                 "    ", ",", 
+                 RowBox[{"(*", "else", "*)"}], "\n", "    ", "\n", "    ", 
+                 RowBox[{
+                  RowBox[{"NotebookEvaluate", "[", 
+                   RowBox[{"path", "<>", "\"\</src/GT/ufG0T0.nb\>\""}], "]"}],
+                   ";", "\n", "    ", "\n", "    ", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                   RowBox[{"Timing", "[", 
+                    RowBox[{"ufG0T0", "[", 
+                    RowBox[{
+                    "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", 
+                    "ERI"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", "    ", 
+                  
+                  RowBox[{"IP", "=", 
+                   RowBox[{
+                   "outputs", "\[LeftDoubleBracket]", "\"\<IP\>\"", 
+                    "\[RightDoubleBracket]"}]}], ";"}]}], "\n", "\n", "  ", 
+                "]"}], ";", "\n", "\n", "  ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"verbose", "\[Equal]", "True"}], ",", 
+                 RowBox[{"Print", "[", 
+                  RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}]}], 
+                "]"}], ";"}]}], "\n", "\n", "]"}], ";"}], "\n", "\n", ",", 
            RowBox[{
             RowBox[{"Print", "[", 
              RowBox[{"Style", "[", 
               RowBox[{
               "\"\<No further calculation...\>\"", ",", "Bold", ",", "Red"}], 
-              "]"}], "]"}], ";"}]}], "\n", "]"}], ";", "\n", 
+              "]"}], "]"}], ";"}]}], "\n", "\n", "]"}], ";", "\n", "\n", 
          RowBox[{"outputs", "=", 
           RowBox[{"Association", "[", 
            RowBox[{
+            RowBox[{"\"\<molecule\>\"", "\[Rule]", "molecule"}], ",", 
             RowBox[{"\"\<ERHF\>\"", "\[Rule]", "ERHF"}], ",", 
             RowBox[{"\"\<ERPA\>\"", "\[Rule]", "ERPA"}], ",", 
             RowBox[{"\"\<ERPAx\>\"", "\[Rule]", "ERPAx"}], ",", 
             RowBox[{"\"\<EG0W0\>\"", "\[Rule]", "EG0W0"}], ",", 
             RowBox[{"\"\<IP\>\"", "\[Rule]", "IP"}]}], "]"}]}], ";"}]}], "\n",
-        "]"}], ";", "\n", "\n", 
+        "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"If", "[", 
        RowBox[{"unrestricted", ",", "\n", 
         RowBox[{
@@ -809,12 +1180,17 @@ Cell[BoxData[
               "\"\<UHF calculation...\>\"", ",", "Bold", ",", "Orange"}], 
               "]"}], "]"}], ";", "\n", "\n", 
             RowBox[{"(*", "UHF", "*)"}], "\n", 
-            RowBox[{"outputs", "=", 
-             RowBox[{"UHF", "[", 
-              RowBox[{
-              "nBas", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "S", ",", "T", 
-               ",", "V", ",", "U", ",", "X", ",", "DIISex", ",", "HFmaxSCF", 
-               ",", "HFthresh"}], "]"}]}], ";", "\n", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+             RowBox[{"Timing", "[", 
+              RowBox[{"UHF", "[", 
+               RowBox[{
+               "nBas", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "S", ",", "T", 
+                ",", "V", ",", "U", ",", "X", ",", "DIISex", ",", "HFmaxSCF", 
+                ",", "HFthresh"}], "]"}], "]"}]}], ";", "\n", 
+            RowBox[{"Print", "[", 
+             RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}], ";", "\n", 
             RowBox[{"EUHF", "=", 
              RowBox[{
               RowBox[{"outputs", "[", "\"\<EUHF\>\"", "]"}], "+", "Enuc"}]}], 
@@ -1731,12 +2107,65 @@ Cell[BoxData[
    3.873358135635305*^9}, {3.87335824721214*^9, 3.8733583133584023`*^9}, {
    3.873358347067267*^9, 3.8733583649743834`*^9}, {3.8733585192556143`*^9, 
    3.873358544122656*^9}, 3.873358590053018*^9, {3.873358948965815*^9, 
-   3.87335894908409*^9}, {3.873359075118544*^9, 3.87335907521084*^9}},
+   3.87335894908409*^9}, {3.873359075118544*^9, 3.87335907521084*^9}, {
+   3.873426377515594*^9, 3.873426393124837*^9}, {3.8734265514317093`*^9, 
+   3.8734265596283484`*^9}, {3.873433770166026*^9, 3.8734337847743607`*^9}, {
+   3.873438752203339*^9, 3.8734387542718277`*^9}, {3.873438787801591*^9, 
+   3.873438789161755*^9}, {3.8734415935973673`*^9, 3.8734416037915163`*^9}, {
+   3.873446291992482*^9, 3.87344630635464*^9}, {3.873446412189672*^9, 
+   3.8734468310316896`*^9}, {3.873509897514337*^9, 3.8735099120627937`*^9}, {
+   3.873509965768667*^9, 3.873510085059929*^9}, {3.873510471438364*^9, 
+   3.873510479217609*^9}, {3.873510514880501*^9, 3.873510517850091*^9}, {
+   3.873510734139739*^9, 3.873510853577763*^9}, {3.873511063805838*^9, 
+   3.873511068017909*^9}, 3.873511135607535*^9, {3.873511360544156*^9, 
+   3.873511484170713*^9}, {3.873511517900524*^9, 3.873511583125567*^9}, {
+   3.8735117959059134`*^9, 3.873511818878224*^9}, {3.873511858208853*^9, 
+   3.873511870683073*^9}, {3.8735120020358*^9, 3.873512089178019*^9}, {
+   3.8735121858822317`*^9, 3.87351233161936*^9}, {3.873515276668557*^9, 
+   3.873515323414041*^9}, {3.873515626073976*^9, 3.8735156264092627`*^9}, {
+   3.87351565680072*^9, 3.873515670633842*^9}, {3.87351583382652*^9, 
+   3.8735158457483053`*^9}, 3.8735158869500237`*^9, {3.873515962070506*^9, 
+   3.873515963411476*^9}, {3.873516007378937*^9, 3.873516084275086*^9}, {
+   3.873516199482156*^9, 3.873516205418694*^9}, {3.8735162573458138`*^9, 
+   3.873516306594233*^9}, {3.873517036134284*^9, 3.873517040635067*^9}, {
+   3.873517610673038*^9, 3.873517619553762*^9}, {3.873517771102869*^9, 
+   3.873517783129891*^9}, {3.8735179417443523`*^9, 3.873518253286133*^9}, {
+   3.873518295788694*^9, 3.8735183203859787`*^9}, {3.8735183637801123`*^9, 
+   3.873518387132341*^9}, {3.873518422189124*^9, 3.8735186450667143`*^9}, {
+   3.873518776479682*^9, 3.873518903468519*^9}, {3.873518937325078*^9, 
+   3.87351918092782*^9}, {3.8735192830357*^9, 3.8735193403761253`*^9}, {
+   3.873519386627801*^9, 3.8735193922065077`*^9}, {3.873519423683008*^9, 
+   3.873519802513995*^9}, {3.873519833358388*^9, 3.873519887750024*^9}, {
+   3.873526290995946*^9, 3.8735263033326273`*^9}, {3.873527746464078*^9, 
+   3.8735277469865913`*^9}, {3.873537746290201*^9, 3.8735377830441837`*^9}, {
+   3.8735378784736853`*^9, 3.873537878862926*^9}, {3.873538233821714*^9, 
+   3.873538234452078*^9}, {3.8735385553311462`*^9, 3.873538565397738*^9}, {
+   3.873538609010503*^9, 3.873538609962339*^9}, {3.873768619185416*^9, 
+   3.873768729504332*^9}, {3.873768967174512*^9, 3.873769045821121*^9}, {
+   3.873769080230145*^9, 3.873769081724424*^9}, {3.873769414806135*^9, 
+   3.873769422395434*^9}, {3.873769907221819*^9, 3.873769913531466*^9}, {
+   3.873771053485449*^9, 3.87377116718328*^9}, {3.8737712167913647`*^9, 
+   3.873771235463263*^9}, {3.873772547082794*^9, 3.8737725472399693`*^9}, {
+   3.873773853672566*^9, 3.8737738584761868`*^9}, {3.873777474818047*^9, 
+   3.87377747602343*^9}, 3.8738559860608883`*^9, {3.8738560593204308`*^9, 
+   3.873856077528866*^9}, {3.87385683340022*^9, 3.87385688163103*^9}, {
+   3.873861482242578*^9, 3.8738615511004753`*^9}, {3.873864594716217*^9, 
+   3.873864618135828*^9}, {3.873864655600966*^9, 3.873864656576858*^9}, {
+   3.873865303699665*^9, 3.8738653048486433`*^9}, {3.87394735662614*^9, 
+   3.87394735876693*^9}, 3.873947409091495*^9, {3.875148745039275*^9, 
+   3.875149103201329*^9}, {3.8751565279078293`*^9, 3.875156742370038*^9}, {
+   3.875156783549141*^9, 3.875156788879333*^9}, {3.875156829664769*^9, 
+   3.875156833250186*^9}, {3.875157719942401*^9, 3.875157720856982*^9}, {
+   3.8751577610240917`*^9, 3.875157761912224*^9}, {3.875158839134965*^9, 
+   3.875158839229375*^9}, {3.8751604967030697`*^9, 3.8751605166345997`*^9}, {
+   3.875161929241044*^9, 3.875161935437826*^9}, 3.8752009650679207`*^9, {
+   3.875235461269557*^9, 3.875235625946786*^9}, {3.875236734622829*^9, 
+   3.8752367436827507`*^9}},
  CellLabel->"In[1]:=",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{1306, 748},
-WindowMargins->{{Automatic, 0}, {1, Automatic}},
+WindowMargins->{{Automatic, 39}, {0, Automatic}},
 TaggingRules->{"TryRealOnly" -> False},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
@@ -1756,7 +2185,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 67, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 102651, 1707, 9127, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 125667, 2136, 14115, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14341,        374]
-NotebookOptionsPosition[     13963,        359]
-NotebookOutlinePosition[     14386,        376]
-CellTagsIndexPosition[     14343,        373]
+NotebookDataLength[     14343,        374]
+NotebookOptionsPosition[     13965,        359]
+NotebookOutlinePosition[     14388,        376]
+CellTagsIndexPosition[     14345,        373]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -318,7 +318,7 @@ Cell[BoxData[
          "\n", 
          RowBox[{"If", "[", 
           RowBox[{
-           RowBox[{"p", "\[Equal]", "nO"}], ",", 
+           RowBox[{"p", "\[Equal]", "nO2"}], ",", 
            RowBox[{"IP", "=", 
             RowBox[{
              RowBox[{"Max", "[", 
@@ -354,8 +354,8 @@ Cell[BoxData[
    3.873272048250595*^9, 3.873272081792161*^9}, {3.873272248774169*^9, 
    3.873272267334784*^9}, 3.873272446925803*^9, 3.873272516914564*^9, {
    3.873272695686118*^9, 3.873272698106023*^9}, {3.873272747047452*^9, 
-   3.873272766105741*^9}, 3.8732728033207407`*^9},
- CellLabel->"In[1]:=",ExpressionUUID->"de9d64ec-823a-4c0d-ae7d-5170081d8381"]
+   3.873272766105741*^9}, 3.8732728033207407`*^9, 
+   3.8752352746623*^9},ExpressionUUID->"de9d64ec-823a-4c0d-ae7d-5170081d8381"]
 },
 WindowSize->{1255, 684},
 WindowMargins->{{Automatic, 85}, {1, Automatic}},
@@ -375,7 +375,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 13401, 337, 1885, "Code",ExpressionUUID->"de9d64ec-823a-4c0d-ae7d-5170081d8381"]
+Cell[558, 20, 13403, 337, 1885, "Code",ExpressionUUID->"de9d64ec-823a-4c0d-ae7d-5170081d8381"]
 }
 ]
 *)
