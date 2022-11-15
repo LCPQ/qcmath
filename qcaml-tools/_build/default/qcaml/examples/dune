@@ -1,8 +1,0 @@
-(executables
-  (names
-        ex_integrals
-        ex_hartree_fock
-        ex_localization
-)
-(libraries qcaml))
-

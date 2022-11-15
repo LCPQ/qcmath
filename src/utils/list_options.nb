@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15594,        288]
-NotebookOptionsPosition[     15216,        273]
-NotebookOutlinePosition[     15639,        290]
-CellTagsIndexPosition[     15596,        287]
+NotebookDataLength[     16329,        299]
+NotebookOptionsPosition[     15952,        284]
+NotebookOutlinePosition[     16374,        301]
+CellTagsIndexPosition[     16331,        298]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -58,7 +58,7 @@ Cell[BoxData[
             RowBox[{"\"\<spinconserved\>\"", "\[Rule]", "True"}], ",", 
             RowBox[{"\"\<spinflip\>\"", "\[Rule]", "True"}], ",", "\n", 
             "                             ", 
-            RowBox[{"\"\<spinorbital\>\"", "\[Rule]", "False"}]}], "|>"}]}], 
+            RowBox[{"\"\<spinorbital\>\"", "\[Rule]", "True"}]}], "|>"}]}], 
          ",", "\n", "                             ", "\n", 
          "                    ", 
          RowBox[{"\"\<GF\>\"", "\[Rule]", 
@@ -73,7 +73,7 @@ Cell[BoxData[
             RowBox[{"\"\<lin\>\"", "\[Rule]", "False"}], ",", 
             RowBox[{"\"\<\[Eta]\>\"", "\[Rule]", "0.0"}], ",", 
             RowBox[{"\"\<Regularized\>\"", "\[Rule]", "False"}], ",", 
-            RowBox[{"\"\<\[Kappa]\>\"", "\[Rule]", "0.0"}]}], "|>"}]}], ",", 
+            RowBox[{"\"\<\[Kappa]\>\"", "\[Rule]", "1.0"}]}], "|>"}]}], ",", 
          "\n", "                    ", "\n", "                    ", 
          RowBox[{"\"\<GW\>\"", "\[Rule]", 
           RowBox[{"<|", 
@@ -268,13 +268,24 @@ Cell[BoxData[
    3.8752402975556507`*^9}, {3.875240396469294*^9, 3.8752404087050657`*^9}, {
    3.875240576704205*^9, 3.875240578407166*^9}, {3.8752407163048286`*^9, 
    3.875240716711729*^9}, {3.875241092144606*^9, 3.875241092558415*^9}, {
-   3.875241395669354*^9, 3.875241396304834*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
+   3.875241395669354*^9, 3.875241396304834*^9}, {3.8756074214010057`*^9, 
+   3.8756074420919333`*^9}, {3.8756707416421757`*^9, 3.875670742081502*^9}, {
+   3.875671115988967*^9, 3.875671116472712*^9}, {3.875672553492539*^9, 
+   3.875672585977296*^9}, {3.8763128445480337`*^9, 3.8763128451765842`*^9}, {
+   3.876312903333481*^9, 3.876312903995336*^9}, {3.8763864431255007`*^9, 
+   3.8763864436053753`*^9}, {3.876390139465301*^9, 3.876390140103541*^9}, {
+   3.876391030117401*^9, 3.876391030579269*^9}, {3.876994622625592*^9, 
+   3.876994623111697*^9}, {3.8769953109591503`*^9, 3.876995312305069*^9}, {
+   3.8769955537496862`*^9, 3.876995554531002*^9}, {3.8770584397387543`*^9, 
+   3.877058440356059*^9}, {3.877065715163548*^9, 3.877065715558302*^9}, {
+   3.8770747306465683`*^9, 
+   3.8770747312228947`*^9}},ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-\
+be7c5a4f21c2"]
 },
-WindowSize->{1511, 726},
-WindowMargins->{{9, Automatic}, {22, Automatic}},
+WindowSize->{932.25, 762.},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
 Magnification:>1.5 Inherited,
-FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"aa8a339c-d45e-4060-aad4-c833e97ad29b"
 ]
@@ -289,7 +300,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 14654, 251, 1134, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
+Cell[558, 20, 15390, 262, 1165, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
 }
 ]
 *)

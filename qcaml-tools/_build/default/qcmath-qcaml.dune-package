@@ -1,2 +1,4 @@
-(lang dune 2.7)
+(lang dune 3.4)
 (name qcmath-qcaml)
+(sections (lib .))
+(files (lib (META dune-package)))

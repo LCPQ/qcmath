@@ -1,5 +1,0 @@
-(** @canonical Test_particles.Electrons *)
-module Electrons = Test_particles__Electrons
-
-(** @canonical Test_particles.Nuclei *)
-module Nuclei = Test_particles__Nuclei

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14088,        301]
-NotebookOptionsPosition[     13707,        286]
-NotebookOutlinePosition[     14133,        303]
-CellTagsIndexPosition[     14090,        300]
+NotebookDataLength[     14264,        304]
+NotebookOptionsPosition[     13883,        289]
+NotebookOutlinePosition[     14309,        306]
+CellTagsIndexPosition[     14266,        303]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -220,14 +220,14 @@ Cell[BoxData[
             "\[Epsilon]G0F2", ",", "ENuc", ",", "ERHF", ",", "EcMP2"}], 
            "]"}]}], ";", "\n", "      ", 
          RowBox[{"Print", "[", "TabG0F2", "]"}], ";"}]}], "\n", "    ", "]"}],
-       ";", "\n", "\n", "    ", 
+       ";", "\n", "    ", 
       RowBox[{"outputs", " ", "=", " ", 
        RowBox[{"Association", "[", 
         RowBox[{
          RowBox[{"\"\<EcMP2\>\"", "\[Rule]", "EcMP2"}], ",", 
          RowBox[{"\"\<\[Epsilon]G0F2\>\"", "\[Rule]", "\[Epsilon]G0F2"}], ",", 
-         RowBox[{"\"\<IP\>\"", "\[Rule]", "IP"}]}], "]"}]}], ";", "\n", "\n", 
-      "    ", 
+         RowBox[{"\"\<IP\>\"", "\[Rule]", "IP"}]}], "]"}]}], ";", "\n", "\t", 
+      "\n", "    ", 
       RowBox[{"Return", "[", "outputs", "]"}]}]}], "\n", "  ", "]"}]}], 
   ";"}]], "Code",
  CellChangeTimes->{{3.8420876295757647`*^9, 3.842087659754704*^9}, {
@@ -281,13 +281,16 @@ Cell[BoxData[
    3.8735206720005007`*^9}, {3.87352089830616*^9, 3.873520900693193*^9}, {
    3.873537351395546*^9, 3.873537376513668*^9}, {3.873537425334525*^9, 
    3.873537490207411*^9}, {3.8751609984579477`*^9, 3.875161020085726*^9}, 
-   3.875161134827619*^9},ExpressionUUID->"66b75e44-7fca-472b-a797-\
+   3.875161134827619*^9, {3.876366238497965*^9, 3.8763662461961412`*^9}, {
+   3.8763662803230553`*^9, 3.876366281843916*^9}, {3.876366604834877*^9, 
+   3.876366612447446*^9}, 
+   3.876367996366219*^9},ExpressionUUID->"66b75e44-7fca-472b-a797-\
 b8ce2c44c8ba"]
 },
-WindowSize->{1193, 650},
-WindowMargins->{{Automatic, -67}, {-44, Automatic}},
+WindowSize->{932.25, 1032.},
+WindowMargins->{{55.5, Automatic}, {0, Automatic}},
 Magnification:>1.5 Inherited,
-FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"94f79a86-77f9-4e19-9732-0be130340b6a"
 ]
@@ -302,7 +305,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 13145, 264, 2228, "Code",ExpressionUUID->"66b75e44-7fca-472b-a797-b8ce2c44c8ba"]
+Cell[558, 20, 13321, 267, 2295, "Code",ExpressionUUID->"66b75e44-7fca-472b-a797-b8ce2c44c8ba"]
 }
 ]
 *)

@@ -1,9 +1,0 @@
-
-(library
- (name test_particles)
- (synopsis "Test for particles library")
- (libraries
-  alcotest
-  qcaml.particles
- )
-)

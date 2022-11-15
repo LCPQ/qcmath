@@ -1,9 +1,0 @@
-
-(library
- (name test_mo)
- (synopsis "Test for mo library")
- (libraries
-  alcotest
-  qcaml.mo
- )
-)

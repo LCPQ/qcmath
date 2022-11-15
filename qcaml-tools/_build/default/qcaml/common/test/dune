@@ -1,9 +1,0 @@
-
-(library
- (name test_common)
- (synopsis "Test for common library")
- (libraries
-  alcotest
-  qcaml.common
- )
-)

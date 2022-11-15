@@ -1,4 +1,4 @@
 #!/bin/bash
 
-./qcaml-tools/qcmath_input -b basis/$1 -x mol/$2.xyz -m $3 -c $4
+./qcaml-tools/qcmath_input -b basis/$1 -x mol/mol.xyz -m $2 -c $3
 

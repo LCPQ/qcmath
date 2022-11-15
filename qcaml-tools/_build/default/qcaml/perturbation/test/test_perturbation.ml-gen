@@ -1,2 +1,0 @@
-(** @canonical Test_perturbation.Mp2 *)
-module Mp2 = Test_perturbation__Mp2

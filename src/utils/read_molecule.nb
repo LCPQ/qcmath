@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9172,        231]
-NotebookOptionsPosition[      8658,        213]
-NotebookOutlinePosition[      9086,        230]
-CellTagsIndexPosition[      9043,        227]
+NotebookDataLength[     10199,        253]
+NotebookOptionsPosition[      9691,        235]
+NotebookOutlinePosition[     10113,        252]
+CellTagsIndexPosition[     10070,        249]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -34,41 +34,60 @@ Cell[BoxData[
      RowBox[{"{", 
       RowBox[{
       "mol", ",", "xyz", ",", "nAt", ",", "elements", ",", "Znuc", ",", 
-       "sfile", ",", "Enuc", ",", "outputs"}], "}"}], ",", "\n", "\n", "    ", 
-     RowBox[{"(*", 
-      RowBox[{
-      "Get", " ", "the", " ", "molecule", " ", "file", " ", "with", " ", "a", 
-       " ", "list", " ", "of", " ", 
-       RowBox[{"atom", "'"}], "s", " ", "symbols"}], "*)"}], "\n", "    ", 
+       "sfile", ",", "Enuc", ",", "outputs"}], "}"}], ",", "\n", "\n", "\t", 
      RowBox[{
-      RowBox[{"mol", "=", 
-       RowBox[{"Import", "[", 
-        RowBox[{
-         RowBox[{
-         "path", "<>", "\"\</mol/\>\"", "<>", "molecule", "<>", 
-          "\"\<.xyz\>\""}], ",", "\"\<VertexTypes\>\""}], "]"}]}], ";", "\n", 
-      "    ", 
       RowBox[{"If", "[", 
        RowBox[{
-        RowBox[{
-         RowBox[{"SameQ", "[", 
-          RowBox[{"mol", ",", "$Failed"}], "]"}], "\[Equal]", "True"}], ",", 
-        RowBox[{
-         RowBox[{"Print", "[", 
-          RowBox[{"Style", "[", 
-           RowBox[{"\"\<xyz file not found\>\"", ",", "Bold", ",", "Red"}], 
-           "]"}], "]"}], ";", 
-         RowBox[{"Abort", "[", "]"}]}]}], "]"}], ";", "\n", "    ", "\n", 
-      "    ", 
-      RowBox[{"(*", 
-       RowBox[{"Get", " ", "the", " ", "geometry"}], "*)"}], "\n", "    ", 
-      RowBox[{"xyz", "=", 
-       RowBox[{"Import", "[", 
-        RowBox[{
+        RowBox[{"StringQ", "[", "molecule", "]"}], ",", "\n", "\t", "\n", 
+        "    ", 
+        RowBox[{"(*", 
          RowBox[{
-         "path", "<>", "\"\</mol/\>\"", "<>", "molecule", "<>", 
-          "\"\<.xyz\>\""}], ",", "\"\<VertexCoordinates\>\""}], "]"}]}], ";", 
-      "\n", "\n", "    ", 
+         "Get", " ", "the", " ", "molecule", " ", "file", " ", "with", " ", 
+          "a", " ", "list", " ", "of", " ", 
+          RowBox[{"atom", "'"}], "s", " ", "symbols"}], "*)"}], "\n", "    ", 
+        
+        RowBox[{
+         RowBox[{"mol", "=", 
+          RowBox[{"Import", "[", 
+           RowBox[{
+            RowBox[{
+            "path", "<>", "\"\</mol/\>\"", "<>", "molecule", "<>", 
+             "\"\<.xyz\>\""}], ",", "\"\<VertexTypes\>\""}], "]"}]}], ";", 
+         "\n", "    ", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"SameQ", "[", 
+             RowBox[{"mol", ",", "$Failed"}], "]"}], "\[Equal]", "True"}], 
+           ",", 
+           RowBox[{
+            RowBox[{"Print", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{"\"\<xyz file not found\>\"", ",", "Bold", ",", "Red"}],
+               "]"}], "]"}], ";", 
+            RowBox[{"Abort", "[", "]"}]}]}], "]"}], ";", "\n", "    ", "\n", 
+         "    ", 
+         RowBox[{"(*", 
+          RowBox[{"Get", " ", "the", " ", "geometry"}], "*)"}], "\n", "    ", 
+         
+         RowBox[{"xyz", "=", 
+          RowBox[{"Import", "[", 
+           RowBox[{
+            RowBox[{
+            "path", "<>", "\"\</mol/\>\"", "<>", "molecule", "<>", 
+             "\"\<.xyz\>\""}], ",", "\"\<VertexCoordinates\>\""}], "]"}]}], 
+         ";"}], "\n", "\t", ",", " ", "\n", "\t", 
+        RowBox[{
+         RowBox[{"mol", "=", 
+          RowBox[{"molecule", "[", 
+           RowBox[{"[", 
+            RowBox[{";;", ",", "1"}], "]"}], "]"}]}], ";", "\n", "\t", 
+         RowBox[{"xyz", "=", 
+          RowBox[{"molecule", "[", 
+           RowBox[{"[", 
+            RowBox[{";;", ",", 
+             RowBox[{"2", ";;"}]}], "]"}], "]"}]}], ";"}]}], "\t ", "\n", 
+       "\t  ", "]"}], ";", "\n", "\n", "    ", 
       RowBox[{"(*", 
        RowBox[{"Number", " ", "of", " ", "atoms"}], "*)"}], "\n", "    ", 
       RowBox[{"nAt", "=", 
@@ -206,15 +225,18 @@ Cell[BoxData[
    3.8733538135641727`*^9, 3.8733538180743113`*^9}, {3.873353894863184*^9, 
    3.873353996419673*^9}, {3.87335402791756*^9, 3.873354030763523*^9}, {
    3.873358883149034*^9, 3.87335888423907*^9}, {3.873358924101184*^9, 
-   3.873358928872265*^9}, {3.8734493408754*^9, 
-   3.873449362311419*^9}},ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-\
-fe234b213ff0"]
+   3.873358928872265*^9}, {3.8734493408754*^9, 3.873449362311419*^9}, {
+   3.875945101562223*^9, 3.8759451949517517`*^9}, {3.875945300700132*^9, 
+   3.875945359893648*^9}, {3.875945422714819*^9, 3.87594544829253*^9}, {
+   3.875945494838678*^9, 3.875945525057722*^9}, {3.875945575969743*^9, 
+   3.875945578160509*^9}, {3.875946133386404*^9, 3.8759461395818996`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
 }, Open  ]]
 },
-WindowSize->{1281, 683},
-WindowMargins->{{Automatic, -128}, {-123, Automatic}},
+WindowSize->{692.25, 762.},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
 Magnification:>1.5 Inherited,
-FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"dda6dca9-2bb7-4979-8f14-e42f8a65dbd1"
 ]
@@ -230,8 +252,8 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 164, 3, 67, "Subsubsection",ExpressionUUID->"64551826-4a57-432a-9e6b-c97747ebd9a5"],
-Cell[747, 27, 7895, 183, 1271, "Code",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
+Cell[580, 22, 164, 3, 68, "Subsubsection",ExpressionUUID->"64551826-4a57-432a-9e6b-c97747ebd9a5"],
+Cell[747, 27, 8928, 205, 1488, "Code",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
 }, Open  ]]
 }
 ]

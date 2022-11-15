@@ -1,9 +1,0 @@
-
-(library
- (name test_operators)
- (synopsis "Test for operators library")
- (libraries
-  alcotest
-  qcaml.operators
- )
-)

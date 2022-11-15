@@ -1,5 +1,0 @@
-(** @canonical Test_ao.Ao_basis *)
-module Ao_basis = Test_ao__Ao_basis
-
-(** @canonical Test_ao.Ao_basis_gaussian *)
-module Ao_basis_gaussian = Test_ao__Ao_basis_gaussian

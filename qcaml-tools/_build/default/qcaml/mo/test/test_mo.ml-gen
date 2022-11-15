@@ -1,5 +1,0 @@
-(** @canonical Test_mo.Guess *)
-module Guess = Test_mo__Guess
-
-(** @canonical Test_mo.Hf *)
-module Hf = Test_mo__Hf
