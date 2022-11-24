@@ -39,4 +39,9 @@ All the IO are performed with [TREXIO](https://github.com/TREX-CoE/trexio).
 
 To be written...
 
+# Coding and contributing to qcmath
+
+Due to its modular structure it should be easy to implement your own new method in qcmath.
+There is a module_example.nb notebook in the utils folder that explains how to add a module to the code as well as describing the coding convention. 
+
 

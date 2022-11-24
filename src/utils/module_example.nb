@@ -1,0 +1,178 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6093,        170]
+NotebookOptionsPosition[      4776,        139]
+NotebookOutlinePosition[      5169,        155]
+CellTagsIndexPosition[      5126,        152]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Module example", "Chapter",
+ CellChangeTimes->{{3.878264507582574*^9, 
+  3.878264510568832*^9}},ExpressionUUID->"de726db4-92ae-422e-bb18-\
+c8f04d4dbfe3"],
+
+Cell["\<\
+Each new method in qcmath should be implemented in its own module.
+Then this module is called in the main notebook along its dependencies if \
+needed.
+To add a module you should first open the utils/list_methods.nb notebook and \
+add your method (and its dependencies) in the list.
+Then add a call to you method in the main notebook as\
+\>", "Text",
+ CellChangeTimes->{{3.8782645420561533`*^9, 3.8782646411775217`*^9}, {
+  3.878264712882963*^9, 3.878264714738963*^9}, {3.878264767281973*^9, 
+  3.8782648126192904`*^9}, {3.878264904251996*^9, 
+  3.878264946480859*^9}},ExpressionUUID->"634b733e-b8cf-4d3b-ad7a-\
+9d4d1d2f36f3"],
+
+Cell[BoxData[
+ RowBox[{"  ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"ToDoModules", "[", "\"\<NameNewMethod\>\"", "]"}], "[", 
+        "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "    ", 
+      RowBox[{
+       RowBox[{"NotebookEvaluate", "[", 
+        RowBox[{"path", "<>", "\"\</src/new_method.nb\>\""}], "]"}], ";", 
+       "\[IndentingNewLine]", "\n", "    ", 
+       RowBox[{"PrintTemporary", "[", 
+        RowBox[{"Style", "[", 
+         RowBox[{
+         "\"\<New method calculation...\>\"", ",", "Bold", ",", "Orange"}], 
+         "]"}], "]"}], ";", "\n", "    ", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"time", ",", "outputsNewMethod"}], "}"}], "=", 
+        RowBox[{"Timing", "[", 
+         RowBox[{"NewMethod", "[", 
+          RowBox[{"arguments", ",", "options"}], "]"}], "]"}]}], ";", "\t", 
+       "\n", "\t", "\n", "    ", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"verbose", "\[Equal]", "True"}], ",", " ", 
+         RowBox[{"Print", "[", 
+          RowBox[{
+          "\"\<CPU time for new method calculation= \>\"", ",", "time"}], 
+          "]"}]}], "]"}], ";"}]}], "\n", "     ", "]"}], ";"}], 
+   "\n"}]}]], "Input",
+ CellChangeTimes->{{3.878264951258456*^9, 3.878265039915688*^9}, {
+  3.878265070885612*^9, 
+  3.8782650741192904`*^9}},ExpressionUUID->"ba36fd76-a4b2-49ee-9fda-\
+926e2a48cec9"],
+
+Cell["\<\
+Then you need to create your own notebook new_method.nb and code your new \
+quantum chemistry method inside!
+If needed you can add default options in the notebook main/default_options.nb
+Remember that qcmath is not meant to be highly performant but rather to take \
+advantage of the possibility offered by mathematica to write a quantum \
+chemistry code with human-readable formula.
+The convention in qcmath is that the structure of a method module should be \
+the following\
+\>", "Text",
+ CellChangeTimes->{{3.87826504699459*^9, 3.878265184464679*^9}, {
+  3.8782653988205957`*^9, 
+  3.8782654804803658`*^9}},ExpressionUUID->"06efef6c-6e0d-4a80-be7e-\
+d2f058eafe1e"],
+
+Cell[CellGroupData[{
+
+Cell["New method", "Section",
+ CellChangeTimes->{{3.878265188540536*^9, 
+  3.878265191222728*^9}},ExpressionUUID->"a6a76f47-0d70-41e0-a662-\
+2fb5ae06e9ea"],
+
+Cell["\<\
+A module that reads the input and the options, then call either the spin or \
+spatial orb module, and finally return the associated output.\
+\>", "Text",
+ CellChangeTimes->{{3.878265204729205*^9, 
+  3.878265245574705*^9}},ExpressionUUID->"ea261d55-c187-4e10-bcbf-\
+844a6f0591dd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Spin orb", "Section",
+ CellChangeTimes->{{3.878265193218052*^9, 3.878265194362122*^9}, {
+  3.8782652820999537`*^9, 
+  3.8782652827533207`*^9}},ExpressionUUID->"f33afad6-4c17-422f-b282-\
+11d700608359"],
+
+Cell["Implementation in spin orbital", "Text",
+ CellChangeTimes->{{3.878265249619151*^9, 
+  3.878265272427298*^9}},ExpressionUUID->"11de5dd1-b0a1-45a2-af25-\
+7680b09c17ef"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Spatial orb", "Section",
+ CellChangeTimes->{{3.878265199013692*^9, 
+  3.878265200863765*^9}},ExpressionUUID->"b3675979-5b80-4a92-b6eb-\
+d8b095161e91"],
+
+Cell["Implementation in spatial orbital", "Text",
+ CellChangeTimes->{{3.878265262489023*^9, 
+  3.878265269904377*^9}},ExpressionUUID->"ac061e30-1dff-4c88-b4aa-\
+0df4cc19eaab"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1864.5, 1032.},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
+FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"4f760051-a0d8-4cb0-952f-2fcd83128f48"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 159, 3, 69, "Chapter",ExpressionUUID->"de726db4-92ae-422e-bb18-c8f04d4dbfe3"],
+Cell[742, 27, 635, 12, 104, "Text",ExpressionUUID->"634b733e-b8cf-4d3b-ad7a-9d4d1d2f36f3"],
+Cell[1380, 41, 1428, 37, 206, "Input",ExpressionUUID->"ba36fd76-a4b2-49ee-9fda-926e2a48cec9"],
+Cell[2811, 80, 676, 13, 104, "Text",ExpressionUUID->"06efef6c-6e0d-4a80-be7e-d2f058eafe1e"],
+Cell[CellGroupData[{
+Cell[3512, 97, 155, 3, 68, "Section",ExpressionUUID->"a6a76f47-0d70-41e0-a662-2fb5ae06e9ea"],
+Cell[3670, 102, 289, 6, 35, "Text",ExpressionUUID->"ea261d55-c187-4e10-bcbf-844a6f0591dd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3996, 113, 206, 4, 68, "Section",ExpressionUUID->"f33afad6-4c17-422f-b282-11d700608359"],
+Cell[4205, 119, 172, 3, 35, "Text",ExpressionUUID->"11de5dd1-b0a1-45a2-af25-7680b09c17ef"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4414, 127, 156, 3, 68, "Section",ExpressionUUID->"b3675979-5b80-4a92-b6eb-d8b095161e91"],
+Cell[4573, 132, 175, 3, 35, "Text",ExpressionUUID->"ac061e30-1dff-4c88-b4aa-0df4cc19eaab"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
