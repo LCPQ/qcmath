@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6141,        148]
-NotebookOptionsPosition[      5766,        133]
-NotebookOutlinePosition[      6160,        149]
-CellTagsIndexPosition[      6117,        146]
+NotebookDataLength[      6420,        157]
+NotebookOptionsPosition[      6044,        142]
+NotebookOutlinePosition[      6439,        158]
+CellTagsIndexPosition[      6396,        155]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -22,8 +22,9 @@ Cell[BoxData[
  RowBox[{
   RowBox[{
    RowBox[{"DIIS", "[", 
-    RowBox[{"\[ScriptCapitalE]_", ",", "\[CapitalDelta]\[ScriptCapitalE]_"}], 
-    "]"}], ":=", 
+    RowBox[{
+    "\[ScriptCapitalE]_", ",", "\[CapitalDelta]\[ScriptCapitalE]_", ",", 
+     "l_"}], "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -31,10 +32,9 @@ Cell[BoxData[
       "maxDIIS", ",", "nDIIS", ",", "B", ",", "X", ",", "w", ",", 
        "\[Epsilon]"}], "}"}], ",", "\[IndentingNewLine]", 
      RowBox[{
-      RowBox[{"maxDIIS", "=", "5"}], ";", "\[IndentingNewLine]", 
       RowBox[{"nDIIS", "=", 
        RowBox[{"Min", "[", 
-        RowBox[{"maxDIIS", ",", 
+        RowBox[{"l", ",", 
          RowBox[{"Length", "[", "\[CapitalDelta]\[ScriptCapitalE]", "]"}]}], 
         "]"}]}], ";", "\[IndentingNewLine]", 
       RowBox[{"B", "=", 
@@ -91,7 +91,16 @@ Cell[BoxData[
       "\[IndentingNewLine]", 
       RowBox[{"w", "=", 
        RowBox[{"LinearSolve", "[", 
-        RowBox[{"B", ",", "X"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Rationalize", "[", 
+          RowBox[{"B", ",", 
+           SuperscriptBox["10", 
+            RowBox[{"-", "16"}]]}], "]"}], ",", 
+         RowBox[{"Rationalize", "[", 
+          RowBox[{"X", ",", 
+           SuperscriptBox["10", 
+            RowBox[{"-", "16"}]]}], "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
       RowBox[{"\[Epsilon]", "=", 
        RowBox[{
         UnderoverscriptBox["\[Sum]", 
@@ -127,13 +136,13 @@ Cell[BoxData[
    3.74774007832507*^9}, 3.7477401233119507`*^9, {3.816972608131172*^9, 
    3.8169726142601357`*^9}, {3.822393759934609*^9, 3.822393783806608*^9}, {
    3.822393946748745*^9, 3.822393962676474*^9}, 3.822581393521159*^9, {
-   3.864140340816597*^9, 
-   3.8641403530457087`*^9}},ExpressionUUID->"a20ff7e9-002c-4e86-98d0-\
+   3.864140340816597*^9, 3.8641403530457087`*^9}, {3.8780329369666357`*^9, 
+   3.878032962649424*^9}},ExpressionUUID->"a20ff7e9-002c-4e86-98d0-\
 9d2558f747ed"]
 },
-WindowSize->{808, 747},
-WindowMargins->{{4, Automatic}, {Automatic, 4}},
-FrontEndVersion->"13.0 for Mac OS X ARM (64-bit) (December 2, 2021)",
+WindowSize->{808.5, 747.},
+WindowMargins->{{55.5, Automatic}, {Automatic, 48}},
+FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"de004666-6fa7-44c7-b5fd-1d0b2e5d7d96"
 ]
@@ -148,7 +157,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 5204, 111, 407, "Input",ExpressionUUID->"a20ff7e9-002c-4e86-98d0-9d2558f747ed",
+Cell[558, 20, 5482, 120, 379, "Input",ExpressionUUID->"a20ff7e9-002c-4e86-98d0-9d2558f747ed",
  InitializationCell->True]
 }
 ]
