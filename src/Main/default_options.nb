@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     11404,        197]
-NotebookOptionsPosition[     11027,        182]
-NotebookOutlinePosition[     11450,        199]
-CellTagsIndexPosition[     11407,        196]
+NotebookDataLength[     11510,        200]
+NotebookOptionsPosition[     11133,        185]
+NotebookOutlinePosition[     11556,        202]
+CellTagsIndexPosition[     11513,        199]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -69,8 +69,10 @@ Cell[BoxData[
          RowBox[{"\"\<Renormalized\>\"", "\[Rule]", "False"}], ",", "\n", 
          "\t", 
          RowBox[{"\"\<TDA_GW\>\"", "\[Rule]", "False"}], ",", "\n", "\t", 
-         RowBox[{"\"\<qs_static_form\>\"", "->", "\"\<Sym\>\""}]}], "\n", 
-        "\t", "|>"}]}], ";", "\n", "  ", "\n", "    ", "\n", "    ", 
+         RowBox[{"\"\<qs_static_form\>\"", "->", "\"\<Sym\>\""}], ",", "\n", 
+         "\t", 
+         RowBox[{"\"\<BSE\>\"", "->", "False"}]}], "\n", "\t", "|>"}]}], ";", 
+      "\n", "  ", "\n", "    ", "\n", "    ", 
       RowBox[{"Return", "[", "options", "]"}]}]}], "\n", "  ", "]"}]}], 
   ";"}]], "Code",
  CellChangeTimes->{{3.87264907414251*^9, 3.8726490912431707`*^9}, {
@@ -177,8 +179,9 @@ Cell[BoxData[
    3.8769955537496862`*^9, 3.876995554531002*^9}, {3.8770584397387543`*^9, 
    3.877058440356059*^9}, {3.877065715163548*^9, 3.877065715558302*^9}, {
    3.8770747306465683`*^9, 3.8770747312228947`*^9}, {3.8781882749839697`*^9, 
-   3.878188359488728*^9}, 3.8781885050276403`*^9},
- CellLabel->"In[1]:=",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
+   3.878188359488728*^9}, 3.8781885050276403`*^9, {3.8783610435793056`*^9, 
+   3.878361059193779*^9}},ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-\
+be7c5a4f21c2"]
 },
 WindowSize->{932.25, 1032.},
 WindowMargins->{{Automatic, 0}, {0, Automatic}},
@@ -198,7 +201,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 10465, 160, 961, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
+Cell[558, 20, 10571, 163, 990, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
 }
 ]
 *)

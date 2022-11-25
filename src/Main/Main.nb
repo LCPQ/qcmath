@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    115838,       1982]
-NotebookOptionsPosition[    115317,       1964]
-NotebookOutlinePosition[    115749,       1981]
-CellTagsIndexPosition[    115706,       1978]
+NotebookDataLength[    118909,       2051]
+NotebookOptionsPosition[    118387,       2033]
+NotebookOutlinePosition[    118820,       2050]
+CellTagsIndexPosition[    118777,       2047]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -45,7 +45,7 @@ Cell[BoxData[
       RowBox[{
       "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "n\[Alpha]", ",", 
        "n\[Beta]", ",", "Nelc", ",", "ERI", ",", "ToDoModules", ",", 
-       "ToDoOptions", ",", "\n", "\n", 
+       "options", ",", "\n", "\n", 
        RowBox[{"(*", "energies", "*)"}], "Enuc", ",", "ERHF", ",", "EUHF", 
        ",", "ERPA", ",", "EURPA", ",", "ERPAx", ",", "EcGM", ",", "EqsGW", 
        ",", "\n", "            ", "EqsUGW", ",", "EcMP2", ",", "EMP2", ",", 
@@ -97,180 +97,176 @@ Cell[BoxData[
        RowBox[{
         RowBox[{
          RowBox[{
+         "PrintTemporary", "[", "\"\<Get the parameters...\>\"", "]"}], ";", 
+         " ", "\n", 
+         RowBox[{"NotebookEvaluate", "[", 
+          RowBox[{"path", "<>", "\"\</Parameters.nb\>\""}], "]"}], ";", "\n", 
+         "\n", 
+         RowBox[{"ParametersQuantities", "=", 
+          RowBox[{"Parameters", "[", "]"}]}], ";", "\n", 
+         RowBox[{"HFmaxSCF", "=", 
+          RowBox[{"ParametersQuantities", "[", "\"\<HFmaxSCF\>\"", "]"}]}], 
+         ";", "\n", 
+         RowBox[{"HFthresh", "=", 
+          RowBox[{"ParametersQuantities", "[", "\"\<HFthresh\>\"", "]"}]}], 
+         ";", "\n", 
+         RowBox[{"PrintTemporary", "[", "\"\<Done !\>\"", "]"}], ";", "\n", 
+         "\n", 
+         RowBox[{"(*", 
+          RowBox[{"Read", " ", "molecule"}], "*)"}], "\n", 
+         RowBox[{"PrintTemporary", "[", "\"\<Read molecule...\>\"", "]"}], 
+         ";", "\n", 
+         RowBox[{"NotebookEvaluate", "[", 
+          RowBox[{"path", "<>", "\"\</src/utils/read_molecule.nb\>\""}], 
+          "]"}], ";", "\n", 
+         RowBox[{"MoleculeQuantities", "=", 
+          RowBox[{"readMolecule", "[", "molecule", "]"}]}], ";", "\n", 
+         RowBox[{"mol", "=", 
+          RowBox[{"MoleculeQuantities", "[", "\"\<mol\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"xyz", "=", 
+          RowBox[{"MoleculeQuantities", "[", "\"\<xyz\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"nAt", "=", 
+          RowBox[{"MoleculeQuantities", "[", "\"\<nAt\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"Enuc", "=", 
+          RowBox[{"MoleculeQuantities", "[", "\"\<Enuc\>\"", "]"}]}], ";", 
+         "\n", 
+         RowBox[{"PrintTemporary", "[", "\"\<Done !\>\"", "]"}], ";", "\n", 
+         "\n", 
+         RowBox[{"(*", 
           RowBox[{
-          "PrintTemporary", "[", "\"\<Get the parameters...\>\"", "]"}], ";", 
-          " ", "\n", 
-          RowBox[{"NotebookEvaluate", "[", 
-           RowBox[{"path", "<>", "\"\</Parameters.nb\>\""}], "]"}], ";", "\n",
-           "\n", 
-          RowBox[{"ParametersQuantities", "=", 
-           RowBox[{"Parameters", "[", "]"}]}], ";", "\n", 
-          RowBox[{"HFmaxSCF", "=", 
-           RowBox[{"ParametersQuantities", "[", "\"\<HFmaxSCF\>\"", "]"}]}], 
-          ";", "\n", 
-          RowBox[{"HFthresh", "=", 
-           RowBox[{"ParametersQuantities", "[", "\"\<HFthresh\>\"", "]"}]}], 
-          ";", "\n", 
-          RowBox[{"PrintTemporary", "[", "\"\<Done !\>\"", "]"}], ";", "\n", 
-          "\n", 
-          RowBox[{"(*", 
-           RowBox[{"Read", " ", "molecule"}], "*)"}], "\n", 
-          RowBox[{"PrintTemporary", "[", "\"\<Read molecule...\>\"", "]"}], 
-          ";", "\n", 
-          RowBox[{"NotebookEvaluate", "[", 
-           RowBox[{"path", "<>", "\"\</src/utils/read_molecule.nb\>\""}], 
-           "]"}], ";", "\n", 
-          RowBox[{"MoleculeQuantities", "=", 
-           RowBox[{"readMolecule", "[", "molecule", "]"}]}], ";", "\n", 
-          RowBox[{"mol", "=", 
-           RowBox[{"MoleculeQuantities", "[", "\"\<mol\>\"", "]"}]}], ";", 
-          "\n", 
-          RowBox[{"xyz", "=", 
-           RowBox[{"MoleculeQuantities", "[", "\"\<xyz\>\"", "]"}]}], ";", 
-          "\n", 
-          RowBox[{"nAt", "=", 
-           RowBox[{"MoleculeQuantities", "[", "\"\<nAt\>\"", "]"}]}], ";", 
-          "\n", 
-          RowBox[{"Enuc", "=", 
-           RowBox[{"MoleculeQuantities", "[", "\"\<Enuc\>\"", "]"}]}], ";", 
-          "\n", 
-          RowBox[{"PrintTemporary", "[", "\"\<Done !\>\"", "]"}], ";", "\n", 
-          "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-           "Computation", " ", "of", " ", "the", " ", "number", " ", "of", 
-            " ", "electrons", " ", "by", " ", "Qcaml"}], "*)"}], "\n", 
-          RowBox[{"If", "[", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"SameQ", "[", 
-              RowBox[{
-               RowBox[{"OpenRead", "[", 
-                RowBox[{"path", "<>", "\"\</input/basis\>\""}], "]"}], ",", 
-               "$Failed"}], "]"}], "\[Equal]", "False"}], ",", "\n", "\t", 
-            RowBox[{
-             RowBox[{"DeleteFile", "[", 
-              RowBox[{"path", "<>", "\"\</input/basis\>\""}], "]"}], ";", 
-             "\n", "\t", 
-             RowBox[{"Off", "[", 
-              RowBox[{"OpenRead", "::", "noopen"}], "]"}], ";"}]}], "\n", 
-           "  ", "]"}], ";", "\n", 
+          "Computation", " ", "of", " ", "the", " ", "number", " ", "of", " ",
+            "electrons", " ", "by", " ", "Qcaml"}], "*)"}], "\n", 
+         RowBox[{"If", "[", 
           RowBox[{
-          "PrintTemporary", "[", "\"\<Number of electrons...\>\"", "]"}], ";",
-           "\n", 
-          RowBox[{"RunProcess", "[", 
-           RowBox[{"{", 
-            RowBox[{
-            "\"\<./electron.sh\>\"", ",", "basis", ",", "multiplicity", ",", 
-             "charge"}], "}"}], "]"}], ";", " ", 
-          RowBox[{"(*", 
            RowBox[{
-            RowBox[{
-             RowBox[{"for", " ", "closed"}], "-", 
-             RowBox[{"shell", " ", "multiplicity"}]}], "=", "1"}], "*)"}], 
-          "\n", 
-          RowBox[{"n\[Alpha]", "=", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"Import", "[", 
-              RowBox[{"\"\<input/molecule\>\"", ",", "\"\<Table\>\""}], "]"}],
-              "[", 
-             RowBox[{"[", 
-              RowBox[{"All", ",", "2"}], "]"}], "]"}], "\[LeftDoubleBracket]",
-             "2", "\[RightDoubleBracket]"}]}], ";", "\n", 
-          RowBox[{"n\[Beta]", "=", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"Import", "[", 
-              RowBox[{"\"\<input/molecule\>\"", ",", "\"\<Table\>\""}], "]"}],
-              "[", 
-             RowBox[{"[", 
-              RowBox[{"All", ",", "3"}], "]"}], "]"}], "\[LeftDoubleBracket]",
-             "2", "\[RightDoubleBracket]"}]}], ";", "\n", 
-          RowBox[{"PrintTemporary", "[", "\"\<Done !\>\"", "]"}], ";", "\n", 
-          "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-           "Computation", " ", "of", " ", "the", " ", "integrals", " ", "by", 
-            " ", "Qcaml"}], "*)"}], "\n", 
-          RowBox[{
-          "PrintTemporary", "[", 
-           "\"\<Computation of the two-electron integrals by Qcaml...\>\"", 
-           "]"}], ";", "\n", 
-          RowBox[{"RunProcess", "[", 
-           RowBox[{"{", 
-            RowBox[{"\"\<./integrals.sh\>\"", ",", "basis"}], "}"}], "]"}], 
-          ";", "\n", 
-          RowBox[{"PrintTemporary", "[", "\"\<Done !\>\"", "]"}], ";", "\n", 
-          "\n", 
-          RowBox[{"(*", 
-           RowBox[{"Read", " ", "integrals"}], "*)"}], "\n", 
-          RowBox[{
-          "PrintTemporary", "[", "\"\<Reading two-electron integrals...\>\"", 
-           "]"}], ";", "\n", 
-          RowBox[{"NotebookEvaluate", "[", 
-           RowBox[{"path", "<>", "\"\</src/utils/read_integrals.nb\>\""}], 
-           "]"}], ";", "\n", 
-          RowBox[{"IntegralsQuantities", "=", 
-           RowBox[{"readIntegrals", "[", "]"}]}], ";", "\n", 
-          RowBox[{"S", "=", 
-           RowBox[{"IntegralsQuantities", "[", "\"\<S\>\"", "]"}]}], ";", 
-          "\n", 
-          RowBox[{"T", "=", 
-           RowBox[{"IntegralsQuantities", "[", "\"\<T\>\"", "]"}]}], ";", 
-          "\n", 
-          RowBox[{"V", "=", 
-           RowBox[{"IntegralsQuantities", "[", "\"\<V\>\"", "]"}]}], ";", 
-          "\n", 
-          RowBox[{"U", "=", 
-           RowBox[{"IntegralsQuantities", "[", "\"\<U\>\"", "]"}]}], ";", 
-          "\n", "\n", 
-          RowBox[{"PrintTemporary", "[", "\"\<Done !\>\"", "]"}], ";", "\n", 
-          "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-           "Get", " ", "dictionary", " ", "of", " ", "methods", " ", "and", 
-            " ", "updating", " ", "ToDoModules"}], " ", "*)"}], "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{"NotebookEvaluate", "[", 
-             RowBox[{"path", "<>", "\"\</src/utils/update_methods.nb\>\""}], 
-             "]"}], ";"}], "*)"}], "\n", 
-          RowBox[{"NotebookEvaluate", "[", 
-           RowBox[{"path", "<>", "\"\</src/utils/list_methods.nb\>\""}], 
-           "]"}], ";", "\n", 
-          RowBox[{"ToDoModules", "=", 
-           RowBox[{"ListMethods", "[", "]"}]}], ";", " ", "\n", "\n", 
-          RowBox[{"(*", " ", 
-           RowBox[{
-           "Recursive", " ", "function", " ", "to", " ", "update", " ", "the",
-             " ", "\"\<Do\>\"", " ", "keys"}], " ", "*)"}], "\n", 
-          RowBox[{
-           RowBox[{"UpdateMethods", "[", "Methods_", "]"}], ":=", 
-           RowBox[{"Module", "[", 
-            RowBox[{
-             RowBox[{"{", 
-              RowBox[{"ToDoMethod", ",", "ListDependencies"}], "}"}], ",", 
-             "\n", "\n", 
+            RowBox[{"SameQ", "[", 
              RowBox[{
-              RowBox[{"ToDoMethod", "=", 
-               RowBox[{"ToDoModules", "[", "Methods", "]"}]}], ";", "\n", 
-              RowBox[{"ListDependencies", "=", 
-               RowBox[{"ToDoMethod", "[", "\"\<Dependencies\>\"", "]"}]}], 
-              ";", "\n", 
-              RowBox[{"If", "[", 
+              RowBox[{"OpenRead", "[", 
+               RowBox[{"path", "<>", "\"\</input/basis\>\""}], "]"}], ",", 
+              "$Failed"}], "]"}], "\[Equal]", "False"}], ",", "\n", "\t", 
+           RowBox[{
+            RowBox[{"DeleteFile", "[", 
+             RowBox[{"path", "<>", "\"\</input/basis\>\""}], "]"}], ";", "\n",
+             "\t", 
+            RowBox[{"Off", "[", 
+             RowBox[{"OpenRead", "::", "noopen"}], "]"}], ";"}]}], "\n", "  ",
+           "]"}], ";", "\n", 
+         RowBox[{
+         "PrintTemporary", "[", "\"\<Number of electrons...\>\"", "]"}], ";", 
+         "\n", 
+         RowBox[{"RunProcess", "[", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<./electron.sh\>\"", ",", "basis", ",", "multiplicity", ",", 
+            "charge"}], "}"}], "]"}], ";", " ", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"for", " ", "closed"}], "-", 
+            RowBox[{"shell", " ", "multiplicity"}]}], "=", "1"}], "*)"}], 
+         "\n", 
+         RowBox[{"n\[Alpha]", "=", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Import", "[", 
+             RowBox[{"\"\<input/molecule\>\"", ",", "\"\<Table\>\""}], "]"}], 
+            "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "2"}], "]"}], "]"}], "\[LeftDoubleBracket]", 
+           "2", "\[RightDoubleBracket]"}]}], ";", "\n", 
+         RowBox[{"n\[Beta]", "=", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Import", "[", 
+             RowBox[{"\"\<input/molecule\>\"", ",", "\"\<Table\>\""}], "]"}], 
+            "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "3"}], "]"}], "]"}], "\[LeftDoubleBracket]", 
+           "2", "\[RightDoubleBracket]"}]}], ";", "\n", 
+         RowBox[{"PrintTemporary", "[", "\"\<Done !\>\"", "]"}], ";", "\n", 
+         "\n", 
+         RowBox[{"(*", 
+          RowBox[{
+          "Computation", " ", "of", " ", "the", " ", "integrals", " ", "by", 
+           " ", "Qcaml"}], "*)"}], "\n", 
+         RowBox[{
+         "PrintTemporary", "[", 
+          "\"\<Computation of the two-electron integrals by Qcaml...\>\"", 
+          "]"}], ";", "\n", 
+         RowBox[{"RunProcess", "[", 
+          RowBox[{"{", 
+           RowBox[{"\"\<./integrals.sh\>\"", ",", "basis"}], "}"}], "]"}], 
+         ";", "\n", 
+         RowBox[{"PrintTemporary", "[", "\"\<Done !\>\"", "]"}], ";", "\n", 
+         "\n", 
+         RowBox[{"(*", 
+          RowBox[{"Read", " ", "integrals"}], "*)"}], "\n", 
+         RowBox[{
+         "PrintTemporary", "[", "\"\<Reading two-electron integrals...\>\"", 
+          "]"}], ";", "\n", 
+         RowBox[{"NotebookEvaluate", "[", 
+          RowBox[{"path", "<>", "\"\</src/utils/read_integrals.nb\>\""}], 
+          "]"}], ";", "\n", 
+         RowBox[{"IntegralsQuantities", "=", 
+          RowBox[{"readIntegrals", "[", "]"}]}], ";", "\n", 
+         RowBox[{"S", "=", 
+          RowBox[{"IntegralsQuantities", "[", "\"\<S\>\"", "]"}]}], ";", "\n", 
+         RowBox[{"T", "=", 
+          RowBox[{"IntegralsQuantities", "[", "\"\<T\>\"", "]"}]}], ";", "\n", 
+         RowBox[{"V", "=", 
+          RowBox[{"IntegralsQuantities", "[", "\"\<V\>\"", "]"}]}], ";", "\n", 
+         RowBox[{"U", "=", 
+          RowBox[{"IntegralsQuantities", "[", "\"\<U\>\"", "]"}]}], ";", "\n",
+          "\n", 
+         RowBox[{"PrintTemporary", "[", "\"\<Done !\>\"", "]"}], ";", "\n", 
+         "\n", 
+         RowBox[{"(*", 
+          RowBox[{
+          "Get", " ", "dictionary", " ", "of", " ", "methods", " ", "and", 
+           " ", "updating", " ", "ToDoModules"}], " ", "*)"}], "\n", 
+         RowBox[{"(*", 
+          RowBox[{
+           RowBox[{"NotebookEvaluate", "[", 
+            RowBox[{"path", "<>", "\"\</src/utils/update_methods.nb\>\""}], 
+            "]"}], ";"}], "*)"}], "\n", 
+         RowBox[{"NotebookEvaluate", "[", 
+          RowBox[{"path", "<>", "\"\</src/utils/list_methods.nb\>\""}], "]"}],
+          ";", "\n", 
+         RowBox[{"ToDoModules", "=", 
+          RowBox[{"ListMethods", "[", "]"}]}], ";", " ", "\n", "\n", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "Recursive", " ", "function", " ", "to", " ", "update", " ", "the", 
+           " ", "\"\<Do\>\"", " ", "keys"}], " ", "*)"}], "\n", 
+         RowBox[{
+          RowBox[{"UpdateMethods", "[", "Methods_", "]"}], ":=", 
+          RowBox[{"Module", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"ToDoMethod", ",", "ListDependencies"}], "}"}], ",", 
+            "\n", "\n", 
+            RowBox[{
+             RowBox[{"ToDoMethod", "=", 
+              RowBox[{"ToDoModules", "[", "Methods", "]"}]}], ";", "\n", 
+             RowBox[{"ListDependencies", "=", 
+              RowBox[{"ToDoMethod", "[", "\"\<Dependencies\>\"", "]"}]}], ";",
+              "\n", 
+             RowBox[{"If", "[", 
+              RowBox[{
                RowBox[{
-                RowBox[{
-                 RowBox[{"ToDoMethod", "[", "\"\<Do\>\"", "]"}], "\[Equal]", 
-                 "False"}], ",", "\n", "\t", 
-                RowBox[{
-                 RowBox[{"If", "[", 
+                RowBox[{"ToDoMethod", "[", "\"\<Do\>\"", "]"}], "\[Equal]", 
+                "False"}], ",", "\n", "\t", 
+               RowBox[{
+                RowBox[{"If", "[", 
+                 RowBox[{
                   RowBox[{
+                   RowBox[{"Length", "[", "ListDependencies", "]"}], ">", 
+                   "0"}], ",", "\n", "\t\t", 
+                  RowBox[{"Do", "[", 
                    RowBox[{
-                    RowBox[{"Length", "[", "ListDependencies", "]"}], ">", 
-                    "0"}], ",", "\n", "\t\t", 
-                   RowBox[{"Do", "[", 
-                    RowBox[{
                     RowBox[{
                     RowBox[{"UpdateMethods", "[", 
                     RowBox[{
@@ -282,115 +278,105 @@ Cell[BoxData[
                     RowBox[{"Length", "[", 
                     RowBox[{"ToDoMethod", "[", "\"\<Dependencies\>\"", "]"}], 
                     "]"}]}], "}"}]}], "]"}]}], "]"}], ";", "\n", "\t", 
+                RowBox[{
                  RowBox[{
-                  RowBox[{
-                   RowBox[{"ToDoModules", "[", "Methods", "]"}], "[", 
-                   "\"\<Do\>\"", "]"}], "=", "True"}], ";"}]}], "\n", "\t", 
-               "]"}], ";"}]}], "\t\t", "\n", "]"}]}], ";", "\n", "\n", 
-          RowBox[{"Do", "[", 
+                  RowBox[{"ToDoModules", "[", "Methods", "]"}], "[", 
+                  "\"\<Do\>\"", "]"}], "=", "True"}], ";"}]}], "\n", "\t", 
+              "]"}], ";"}]}], "\t\t", "\n", "]"}]}], ";", "\n", "\n", 
+         RowBox[{"Do", "[", 
+          RowBox[{
            RowBox[{
-            RowBox[{
-             RowBox[{"UpdateMethods", "[", 
-              RowBox[{
-              "methods", "\[LeftDoubleBracket]", "i", 
-               "\[RightDoubleBracket]"}], "]"}], ";"}], "\n", "   ", ",", 
-            RowBox[{"{", 
-             RowBox[{"i", ",", 
-              RowBox[{"Length", "[", "methods", "]"}]}], "}"}]}], "]"}], ";", 
-          "\n", "\n", 
-          RowBox[{"(*", 
-           RowBox[{"restricted", " ", "or", " ", "unrestricted"}], "*)"}], 
-          "\n", 
-          RowBox[{"restricted", "=", "True"}], ";", "\n", 
-          RowBox[{"unrestricted", "=", "False"}], ";", "\n", "\n", 
-          RowBox[{"If", "[", 
+            RowBox[{"UpdateMethods", "[", 
+             RowBox[{
+             "methods", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}], "]"}], ";"}], "\n", "   ", ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", 
+             RowBox[{"Length", "[", "methods", "]"}]}], "}"}]}], "]"}], ";", 
+         "\n", "\n", 
+         RowBox[{"(*", 
+          RowBox[{"restricted", " ", "or", " ", "unrestricted"}], "*)"}], 
+         "\n", 
+         RowBox[{"restricted", "=", "True"}], ";", "\n", 
+         RowBox[{"unrestricted", "=", "False"}], ";", "\n", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
            RowBox[{
-            RowBox[{
-             RowBox[{"ToDoModules", "[", "\"\<UHF\>\"", "]"}], "[", 
-             "\"\<Do\>\"", "]"}], ",", 
-            RowBox[{
-             RowBox[{"unrestricted", "=", "True"}], ";", 
-             RowBox[{"restricted", "=", "False"}]}]}], "]"}], ";", "\n", "\n", 
-          RowBox[{"(*", 
+            RowBox[{"ToDoModules", "[", "\"\<UHF\>\"", "]"}], "[", 
+            "\"\<Do\>\"", "]"}], ",", 
            RowBox[{
-           "Read", " ", "the", " ", "basis", " ", "and", " ", "return", " ", 
-            "the", " ", "number", " ", "of", " ", "basis", " ", "functions"}],
-            "*)"}], "\n", 
-          RowBox[{"NotebookEvaluate", "[", 
-           RowBox[{"path", "<>", "\"\</src/utils/read_basis.nb\>\""}], "]"}], 
-          ";", "\n", 
-          RowBox[{"nBas", "=", 
-           RowBox[{"readBasis", "[", 
-            RowBox[{"nAt", ",", "xyz"}], "]"}]}], ";", "\n", 
-          RowBox[{"nO", "=", 
+            RowBox[{"unrestricted", "=", "True"}], ";", 
+            RowBox[{"restricted", "=", "False"}]}]}], "]"}], ";", "\n", "\n", 
+         
+         RowBox[{"(*", 
+          RowBox[{
+          "Read", " ", "the", " ", "basis", " ", "and", " ", "return", " ", 
+           "the", " ", "number", " ", "of", " ", "basis", " ", "functions"}], 
+          "*)"}], "\n", 
+         RowBox[{"NotebookEvaluate", "[", 
+          RowBox[{"path", "<>", "\"\</src/utils/read_basis.nb\>\""}], "]"}], 
+         ";", "\n", 
+         RowBox[{"nBas", "=", 
+          RowBox[{"readBasis", "[", 
+           RowBox[{"nAt", ",", "xyz"}], "]"}]}], ";", "\n", 
+         RowBox[{"nO", "=", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"n\[Alpha]", "+", "n\[Beta]"}], ")"}], "/", "2"}]}], ";", 
+         " ", 
+         RowBox[{"nV", "=", 
+          RowBox[{"nBas", "-", "nO"}]}], ";", " ", 
+         RowBox[{"nS", "=", 
+          RowBox[{"nO", "*", "nV"}]}], ";", " ", 
+         RowBox[{"Nelc", "=", 
+          RowBox[{"n\[Alpha]", "+", "n\[Beta]"}]}], ";", " ", "\n", "\n", 
+         RowBox[{"(*", 
+          RowBox[{"Orthogonalization", " ", "matrix"}], "*)"}], "\n", 
+         RowBox[{"NotebookEvaluate", "[", 
+          RowBox[{
+          "path", "<>", "\"\</src/utils/orthogonalization_matrix.nb\>\""}], 
+          "]"}], ";", "\n", 
+         RowBox[{"X", "=", 
+          RowBox[{"Orthogonalization", "[", "S", "]"}]}], ";", "\n", "\n", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "The", " ", "following", " ", "association", " ", "object", " ", 
+           "defines", " ", "all", " ", "the", " ", "default", " ", 
+           "parameters", " ", "and", " ", 
+           RowBox[{"options", ".", " ", "Some"}], " ", "of", " ", "them", " ",
+            "can", " ", "be", " ", "changed", " ", "using", "\n", " ", "the", 
+           " ", "optionsinput", " ", 
            RowBox[{
             RowBox[{"(", 
-             RowBox[{"n\[Alpha]", "+", "n\[Beta]"}], ")"}], "/", "2"}]}], ";",
-           " ", 
-          RowBox[{"nV", "=", 
-           RowBox[{"nBas", "-", "nO"}]}], ";", " ", 
-          RowBox[{"nS", "=", 
-           RowBox[{"nO", "*", "nV"}]}], ";", " ", 
-          RowBox[{"Nelc", "=", 
-           RowBox[{"n\[Alpha]", "+", "n\[Beta]"}]}], ";", " ", "\n", "\n", 
-          RowBox[{"(*", 
-           RowBox[{"Orthogonalization", " ", "matrix"}], "*)"}], "\n", 
-          RowBox[{"NotebookEvaluate", "[", 
+             RowBox[{"see", " ", "below"}], ")"}], "."}]}], "*)"}], "\n", 
+         RowBox[{"NotebookEvaluate", "[", 
+          RowBox[{"path", "<>", "\"\</src/Main/default_options.nb\>\""}], 
+          "]"}], ";", "\n", 
+         RowBox[{"options", " ", "=", " ", 
+          RowBox[{"ListOptions", "[", "]"}]}], ";", "\n", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
            RowBox[{
-           "path", "<>", "\"\</src/utils/orthogonalization_matrix.nb\>\""}], 
-           "]"}], ";", "\n", 
-          RowBox[{"X", "=", 
-           RowBox[{"Orthogonalization", "[", "S", "]"}]}], ";", "\n", "\n", 
-          RowBox[{"(*", " ", 
-           RowBox[{
-           "The", " ", "following", " ", "association", " ", "object", " ", 
-            "defines", " ", "all", " ", "the", " ", "default", " ", 
-            "parameters", " ", "and", " ", 
-            RowBox[{"options", ".", " ", "Some"}], " ", "of", " ", "them", 
-            " ", "can", " ", "be", " ", "changed", " ", "using", "\n", " ", 
-            "the", " ", "optionsinput", " ", 
+            RowBox[{"Length", "@", "optionsinput"}], "!=", "0"}], ",", "\n", 
+           "\t", 
+           RowBox[{"Do", "[", 
             RowBox[{
-             RowBox[{"(", 
-              RowBox[{"see", " ", "below"}], ")"}], "."}]}], "*)"}], "\n", 
-          RowBox[{"NotebookEvaluate", "[", 
-           RowBox[{"path", "<>", "\"\</src/Main/default_options.nb\>\""}], 
-           "]"}], ";", "\n", 
-          RowBox[{"options", " ", "=", " ", 
-           RowBox[{"ListOptions", "[", "]"}]}], ";", "\n", "\n", 
-          RowBox[{"If", "[", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"Length", "@", "optionsinput"}], "!=", "0"}], ",", "\n", 
-            "\t", 
-            RowBox[{"Do", "[", 
              RowBox[{
-              RowBox[{
-               RowBox[{"options", "[", 
-                RowBox[{"optionsinput", "[", 
-                 RowBox[{"[", 
-                  RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], "=", 
+              RowBox[{"options", "[", 
                RowBox[{"optionsinput", "[", 
                 RowBox[{"[", 
-                 RowBox[{"i", ",", "2"}], "]"}], "]"}]}], ",", 
-              RowBox[{"{", 
-               RowBox[{"i", ",", 
-                RowBox[{"Length", "[", "optionsinput", "]"}]}], "}"}]}], 
-             "]"}]}], "\n", "  ", "]"}], ";", "\n", "\n", 
-          RowBox[{"(*", 
-           RowBox[{
-            RowBox[{"option", "=", 
-             RowBox[{
-             "ToDoOptions", "\[LeftDoubleBracket]", "\"\<outputs\>\"", 
-              "\[RightDoubleBracket]"}]}], ";"}], "*)"}], "\n", 
-          RowBox[{"verbose", "=", 
-           RowBox[{
-           "options", "\[LeftDoubleBracket]", "\"\<verbose\>\"", 
-            "\[RightDoubleBracket]"}]}], ";"}], "\n", "\n", 
-         RowBox[{"(*", 
-          RowBox[{"option", "=", 
-           RowBox[{
-           "ToDoOptions", "\[LeftDoubleBracket]", "\"\<spin\>\"", 
-            "\[RightDoubleBracket]"}]}], "*)"}], ";"}], "\n", 
+                 RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], "=", 
+              RowBox[{"optionsinput", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "2"}], "]"}], "]"}]}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", 
+               RowBox[{"Length", "[", "optionsinput", "]"}]}], "}"}]}], 
+            "]"}]}], "\n", "  ", "]"}], ";", "\n", "\n", 
+         RowBox[{"verbose", "=", 
+          RowBox[{
+          "options", "\[LeftDoubleBracket]", "\"\<verbose\>\"", 
+           "\[RightDoubleBracket]"}]}], ";"}], "\n", "\n", 
         RowBox[{"(*", 
          RowBox[{"TDA", "=", 
           RowBox[{
@@ -413,7 +399,19 @@ Cell[BoxData[
       RowBox[{"If", "[", 
        RowBox[{"restricted", ",", "\n", "\t", 
         StyleBox[
-         RowBox[{"(*", " ", "RHF", " ", "*)"}],
+         RowBox[{"(*", " ", 
+          RowBox[{"RHF", " ", 
+           StyleBox["READY",
+            FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
+           StyleBox[" ",
+            FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
+           StyleBox["TO",
+            FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
+           StyleBox[" ",
+            FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
+           StyleBox[
+            RowBox[{"USE", "!!"}],
+            FontColor->RGBColor[0., 0.6666666666666666, 0.]]}], " ", "*)"}],
          FontSize->18], "\n", "\t", 
         RowBox[{
          RowBox[{"If", "[", 
@@ -483,7 +481,19 @@ Cell[BoxData[
               RowBox[{"Head", "[", "ERI", "]"}], ",", "List"}], "]"}], 
             "\[Equal]", "True"}], ",", "\n", "  ", "\n", "\t", 
            StyleBox[
-            RowBox[{"(*", " ", "MP2", " ", "*)"}],
+            RowBox[{"(*", " ", 
+             RowBox[{"MP2", " ", 
+              StyleBox["READY",
+               FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
+              StyleBox[" ",
+               FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
+              StyleBox["TO",
+               FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
+              StyleBox[" ",
+               FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
+              StyleBox[
+               RowBox[{"USE", "!!"}],
+               FontColor->RGBColor[0., 0.6666666666666666, 0.]]}], " ", "*)"}],
             FontSize->18], "\n", "    ", 
            RowBox[{
             RowBox[{"If", "[", 
@@ -761,13 +771,18 @@ Cell[BoxData[
             StyleBox[
              RowBox[{"(*", " ", 
               RowBox[{"G0W0", " ", 
-               StyleBox["NOT",
-                FontColor->RGBColor[1, 0, 0]], 
+               StyleBox["READY",
+                FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
                StyleBox[" ",
-                FontColor->RGBColor[1, 0, 0]], 
+                FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
+               StyleBox["TO",
+                FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
+               StyleBox[" ",
+                FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
                StyleBox[
-                RowBox[{"WORKING", "!!"}],
-                FontColor->RGBColor[1, 0, 0]]}], " ", "*)"}],
+                RowBox[{"USE", "!!"}],
+                FontColor->RGBColor[0., 0.6666666666666666, 0.]]}], " ", 
+              "*)"}],
              FontSize->18], "\n", "    ", 
             RowBox[{"If", "[", 
              RowBox[{
@@ -791,15 +806,63 @@ Cell[BoxData[
                 RowBox[{"Timing", "[", 
                  RowBox[{"G0W0", "[", 
                   RowBox[{
-                  "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI",
-                    ",", "TDA", ",", "singlet", ",", "triplet"}], "]"}], 
-                 "]"}]}], ";", "\n", "    ", "\n", "        ", 
+                  "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "\[Epsilon]", 
+                   ",", "ERI", ",", "Enuc", ",", "ERHF", ",", "TDA", ",", 
+                   "options", ",", "verbose"}], "]"}], "]"}]}], ";", "\n", 
+               "    ", "\n", "        ", 
                RowBox[{"If", "[", 
                 RowBox[{
                  RowBox[{"verbose", "\[Equal]", "True"}], ",", 
                  RowBox[{"Print", "[", 
                   RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}]}], 
-                "]"}], ";"}]}], "\n", "    ", "]"}], ";", "\n", "\n", "\t", 
+                "]"}], ";"}]}], "\n", "    ", "]"}], ";", "\n", "    ", "\n", 
+            "    ", 
+            StyleBox[
+             RowBox[{"(*", " ", 
+              RowBox[{"qsG0W0", " ", 
+               StyleBox["NOT",
+                FontColor->RGBColor[1, 0, 0]], 
+               StyleBox[" ",
+                FontColor->RGBColor[1, 0, 0]], 
+               StyleBox[
+                RowBox[{"WORKING", "!!"}],
+                FontColor->RGBColor[1, 0, 0]]}], " ", "*)"}],
+             FontSize->18], "\n", "\t", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"ToDoModules", "[", "\"\<qsG0W0\>\"", "]"}], "[", 
+                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "\t\t", 
+              
+              RowBox[{
+               RowBox[{"NotebookEvaluate", "[", 
+                RowBox[{"path", "<>", "\"\</src/GF/qsG0W0.nb\>\""}], "]"}], 
+               ";", "\n", "        ", 
+               RowBox[{"PrintTemporary", "[", 
+                RowBox[{"Style", "[", 
+                 RowBox[{
+                 "\"\<qsG0W0 calculation...\>\"", ",", "Bold", ",", 
+                  "Orange"}], "]"}], "]"}], ";", "\n", "    ", "\n", 
+               "        ", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                RowBox[{"Timing", "[", 
+                 RowBox[{"qsG0W0", "[", 
+                  RowBox[{
+                  "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI",
+                    ",", "Enuc", ",", "ERHF", ",", "options", ",", 
+                   "verbose"}], "]"}], "]"}]}], ";", "\t", "\n", "\t", "\n", 
+               "        ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"verbose", "\[Equal]", "True"}], ",", 
+                 RowBox[{"Print", "[", 
+                  RowBox[{
+                  "\"\<CPU time for qsG0W0 calculation= \>\"", ",", "time"}], 
+                  "]"}]}], "]"}], ";"}]}], "\n", "\t", "]"}], ";", "\n", "\n",
+             "\t", 
             StyleBox[
              RowBox[{"(*", " ", 
               RowBox[{"unfold", " ", "G0W0", " ", 
@@ -1958,11 +2021,17 @@ Cell[BoxData[
    3.877669610353445*^9, 3.877669610563908*^9}, {3.878266741836331*^9, 
    3.878266804102344*^9}, {3.8782668350491667`*^9, 3.878266835281124*^9}, {
    3.8783559326352253`*^9, 3.878356065313739*^9}, {3.8783561145748053`*^9, 
-   3.878356275747122*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
+   3.878356275747122*^9}, {3.878359116213192*^9, 3.878359121653882*^9}, {
+   3.878359483324173*^9, 3.878359483533101*^9}, {3.878360785434738*^9, 
+   3.8783607890758457`*^9}, {3.8783608981292267`*^9, 3.878360982057432*^9}, 
+   3.8783610132614107`*^9, {3.878361094621777*^9, 3.878361096941815*^9}, 
+   3.87836146428586*^9, {3.8783615112436047`*^9, 3.8783615293298893`*^9}, {
+   3.8783615651834517`*^9, 3.878361567782881*^9}, {3.878361643217346*^9, 
+   3.878361663514174*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
 2b85bb5dd0be"]
 }, Open  ]]
 },
-WindowSize->{1384.5, 762.},
+WindowSize->{933.75, 1032.},
 WindowMargins->{{Automatic, 0}, {0, Automatic}},
 TaggingRules->{"TryRealOnly" -> False},
 FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
@@ -1982,7 +2051,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 45, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 114556, 1934, 6174, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 117626, 2003, 6349, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]

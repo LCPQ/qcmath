@@ -3,24 +3,17 @@
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
 
-(* CreatedBy='Mathematica 12.1' *)
+(* CreatedBy='Mathematica 13.1' *)
 
 (*CacheID: 234*)
 (* Internal cache information:
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-<<<<<<< HEAD
-NotebookDataLength[     35713,        747]
-NotebookOptionsPosition[     35335,        732]
-NotebookOutlinePosition[     35758,        749]
-CellTagsIndexPosition[     35715,        746]
-=======
-NotebookDataLength[     26056,        512]
-NotebookOptionsPosition[     25677,        497]
-NotebookOutlinePosition[     26101,        514]
-CellTagsIndexPosition[     26058,        511]
->>>>>>> 90ead87f37a43b97ae14bcac0f86dd9e3ad287af
+NotebookDataLength[     26017,        510]
+NotebookOptionsPosition[     25632,        495]
+NotebookOutlinePosition[     26062,        512]
+CellTagsIndexPosition[     26019,        509]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -47,7 +40,7 @@ Cell[BoxData[
       RowBox[{"\[Delta]RPA", "=", "0"}], ";", "\n", "\n", 
       RowBox[{"If", "[", 
        RowBox[{
-        RowBox[{"dRPA", "\[Equal]", "True"}], ",", 
+        RowBox[{"dRPA", "==", "True"}], ",", 
         RowBox[{"\[Delta]RPA", "=", "1"}]}], "]"}], ";", "\n", "\n", 
       RowBox[{"NotebookEvaluate", "[", 
        RowBox[{"path", "<>", "\"\</src/LR/linear_response_A.nb\>\""}], "]"}], 
@@ -267,9 +260,8 @@ Cell[BoxData[
          RowBox[{
           RowBox[{"Sum", "[", 
            RowBox[{
-            RowBox[{
-            "\[CapitalOmega]", "\[LeftDoubleBracket]", "i", 
-             "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"\[CapitalOmega]", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", 
             RowBox[{"{", 
              RowBox[{"i", ",", "1", ",", 
               RowBox[{"Length", "[", "\[CapitalOmega]", "]"}]}], "}"}]}], 
@@ -291,9 +283,9 @@ Cell[BoxData[
                RowBox[{"ERI", "\[LeftDoubleBracket]", 
                 RowBox[{"p", ",", "j", ",", "q", ",", "b"}], 
                 "\[RightDoubleBracket]"}], 
-               RowBox[{"XpY", "\[LeftDoubleBracket]", 
-                RowBox[{"jb", ",", "ia"}], "\[RightDoubleBracket]"}]}]}], 
-             ")"}], ",", 
+               RowBox[{"XpY", "[", 
+                RowBox[{"[", 
+                 RowBox[{"jb", ",", "ia"}], "]"}], "]"}]}]}], ")"}], ",", 
             RowBox[{"{", 
              RowBox[{"j", ",", "nO"}], "}"}], ",", 
             RowBox[{"{", 
@@ -309,13 +301,11 @@ Cell[BoxData[
       RowBox[{"LRquantities", "=", 
        RowBox[{"Association", "[", 
         RowBox[{
-         RowBox[{"\"\<Ec\>\"", "\[Rule]", "Ec"}], ",", 
-         RowBox[{"\"\<XpY\>\"", "\[Rule]", "XpY"}], ",", 
-         RowBox[{"\"\<XmY\>\"", "\[Rule]", "XmY"}], ",", 
-         RowBox[{"\"\<\[CapitalOmega]\>\"", "\[Rule]", "\[CapitalOmega]"}], 
-         ",", 
-         RowBox[{"\"\<sERI\>\"", "\[Rule]", "sERI"}]}], "]"}]}], ";", "\n", 
-      "\n", 
+         RowBox[{"\"\<Ec\>\"", "->", "Ec"}], ",", 
+         RowBox[{"\"\<XpY\>\"", "->", "XpY"}], ",", 
+         RowBox[{"\"\<XmY\>\"", "->", "XmY"}], ",", 
+         RowBox[{"\"\<\[CapitalOmega]\>\"", "->", "\[CapitalOmega]"}], ",", 
+         RowBox[{"\"\<sERI\>\"", "->", "sERI"}]}], "]"}]}], ";", "\n", "\n", 
       RowBox[{"Return", "[", "LRquantities", "]"}]}]}], "]"}]}], 
   ";"}]], "Code",
  CellChangeTimes->{{3.834742835282414*^9, 3.834742855292416*^9}, {
@@ -491,16 +481,6 @@ Cell[BoxData[
    3.874996181161688*^9, 3.8749961819339037`*^9}, {3.874996236756531*^9, 
    3.8749962757853117`*^9}, {3.8749963246705227`*^9, 3.87499636420385*^9}, 
    3.874996408570273*^9, {3.8752009057925453`*^9, 3.875200911770371*^9}, 
-<<<<<<< HEAD
-   3.8752010908853188`*^9, {3.875201217463863*^9, 3.875201222430586*^9}, {
-   3.8780102663463993`*^9, 3.8780102691974993`*^9}, {3.878010304491749*^9, 
-   3.8780103083621407`*^9}, 
-   3.8780103659283867`*^9},ExpressionUUID->"4b79b27a-5930-4429-b503-\
-91ef63ec2096"]
-},
-WindowSize->{932.25, 1032.},
-WindowMargins->{{Automatic, 0}, {0, Automatic}},
-=======
    3.8752010908853188`*^9, {3.875201217463863*^9, 3.875201222430586*^9}, 
    3.876889396737701*^9, {3.8768904932130747`*^9, 3.8768904943383083`*^9}, {
    3.8769049378945293`*^9, 3.8769049674363728`*^9}, {3.87690565260688*^9, 
@@ -509,12 +489,12 @@ WindowMargins->{{Automatic, 0}, {0, Automatic}},
    3.8769109432871532`*^9}, {3.877420635575883*^9, 3.877420638639414*^9}, 
    3.877421398615355*^9, {3.8774260640027847`*^9, 3.877426089915411*^9}, {
    3.877426681048398*^9, 3.8774266834564047`*^9}, {3.877426762271006*^9, 
-   3.877426769475445*^9}},ExpressionUUID->"4b79b27a-5930-4429-b503-\
+   3.877426769475445*^9}, {3.878361268511293*^9, 
+   3.878361294159507*^9}},ExpressionUUID->"4b79b27a-5930-4429-b503-\
 91ef63ec2096"]
 },
-WindowSize->{1193, 785},
-WindowMargins->{{119, Automatic}, {Automatic, 1}},
->>>>>>> 90ead87f37a43b97ae14bcac0f86dd9e3ad287af
+WindowSize->{1193.25, 785.25},
+WindowMargins->{{118.5, Automatic}, {Automatic, 48}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
 StyleDefinitions->"Default.nb",
@@ -531,12 +511,10 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-<<<<<<< HEAD
-Cell[558, 20, 34773, 710, 3167, "Code",ExpressionUUID->"4b79b27a-5930-4429-b503-91ef63ec2096"]
-=======
-Cell[558, 20, 25115, 475, 2840, "Code",ExpressionUUID->"4b79b27a-5930-4429-b503-91ef63ec2096"]
->>>>>>> 90ead87f37a43b97ae14bcac0f86dd9e3ad287af
+Cell[558, 20, 25070, 473, 2851, "Code",ExpressionUUID->"4b79b27a-5930-4429-b503-91ef63ec2096"]
 }
 ]
 *)
+
+(* End of internal cache information *)
 
