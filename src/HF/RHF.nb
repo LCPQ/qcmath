@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     48496,        930]
-NotebookOptionsPosition[     47892,        911]
-NotebookOutlinePosition[     48315,        928]
-CellTagsIndexPosition[     48272,        925]
+NotebookDataLength[     50038,        960]
+NotebookOptionsPosition[     49431,        941]
+NotebookOutlinePosition[     49857,        958]
+CellTagsIndexPosition[     49814,        955]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -32,8 +32,7 @@ Cell[BoxData[
    RowBox[{"RHF", "[", 
     RowBox[{
     "nBas_", ",", "nO_", ",", "Nelc_", ",", "Enuc_", ",", "S_", ",", "T_", 
-     ",", "V_", ",", "U_", ",", "X_", ",", "DIISex_", ",", "maxSCF_", ",", 
-     "thresh_", ",", "guessType_", ",", "levelShift_", ",", "verbose_"}], 
+     ",", "V_", ",", "U_", ",", "X_", ",", "options_", ",", "verbose_"}], 
     "]"}], ":=", 
    RowBox[{"Module", "[", "\n", 
     RowBox[{
@@ -115,6 +114,31 @@ Cell[BoxData[
        "                    ", "TabRHF", ",", "scr", ",", "ERIMO", ",", 
        "ortho"}], "}"}], ",", "\n", "\n", 
      RowBox[{
+      RowBox[{"maxSCF", "=", 
+       RowBox[{
+       "options", "\[LeftDoubleBracket]", "\"\<max_SCF\>\"", 
+        "\[RightDoubleBracket]"}]}], ";", "\n", 
+      RowBox[{"thresh", "=", 
+       RowBox[{
+       "options", "\[LeftDoubleBracket]", "\"\<thresh_HF\>\"", 
+        "\[RightDoubleBracket]"}]}], ";", "\n", 
+      RowBox[{"guessType", "=", 
+       RowBox[{
+       "options", "\[LeftDoubleBracket]", "\"\<guess_type\>\"", 
+        "\[RightDoubleBracket]"}]}], ";", "\n", 
+      RowBox[{"levelShift", "=", 
+       RowBox[{
+       "options", "\[LeftDoubleBracket]", "\"\<level_shift\>\"", 
+        "\[RightDoubleBracket]"}]}], ";", "\n", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"path", "<>", "\"\</src/utils/DIIS.nb\>\""}], "]"}], ";", "\n", 
+      RowBox[{"DIISEx", "=", 
+       RowBox[{"options", "[", 
+        RowBox[{"[", "\"\<DIIS\>\"", "]"}], "]"}]}], ";", " ", "\n", 
+      RowBox[{"nDIIS", "=", 
+       RowBox[{"options", "[", 
+        RowBox[{"[", "\"\<n_DIIS\>\"", "]"}], "]"}]}], ";", "\n", "\n", "\n", 
+      
       RowBox[{"Hcore", " ", "=", " ", 
        RowBox[{"T", " ", "+", " ", "V"}]}], ";", "\n", 
       RowBox[{"OAIntegrals", " ", "=", " ", "U"}], ";", "\n", "\n", 
@@ -174,7 +198,7 @@ Cell[BoxData[
           RowBox[{"Build", " ", "exchange", " ", "matrix"}], "*)"}], "\n", 
          RowBox[{"K", " ", "=", " ", 
           RowBox[{"UK", ".", 
-           RowBox[{"Flatten", "[", "P", "]"}]}]}], ";", "\n", " ", "\n", 
+           RowBox[{"Flatten", "[", "P", "]"}]}]}], ";", "\n", "\n", 
          RowBox[{"F", " ", "=", " ", 
           RowBox[{"Hcore", " ", "+", " ", "J", " ", "-", " ", 
            RowBox[{"0.5", "K"}]}]}], ";", "\n", " ", "\n", 
@@ -184,26 +208,24 @@ Cell[BoxData[
             RowBox[{
              RowBox[{"F", ".", "P", ".", "S"}], "-", 
              RowBox[{"S", ".", "P", ".", "F"}]}], "]"}], "]"}]}], ";", "\n", 
-         " ", "\n", " ", 
-         RowBox[{"(*", 
-          RowBox[{
-           RowBox[{"If", "[", 
-            RowBox[{"DIISex", ",", "\n", " ", 
-             RowBox[{
-              RowBox[{"FDIIS", "=", 
-               RowBox[{"Prepend", "[", 
-                RowBox[{"FDIIS", ",", "F"}], "]"}]}], ";", "\t", 
-              RowBox[{"eDIIS", "=", 
-               RowBox[{"Prepend", "[", 
-                RowBox[{"eDIIS", ",", 
-                 RowBox[{
-                  RowBox[{"F", ".", "P", ".", "S"}], "-", 
-                  RowBox[{"S", ".", "P", ".", "F"}]}]}], "]"}]}], ";", 
-              "\[IndentingNewLine]", 
-              RowBox[{"F", "=", 
-               RowBox[{"DIIS", "[", 
-                RowBox[{"FDIIS", ",", "eDIIS"}], "]"}]}], ";"}]}], "\n", 
-            "]"}], ";"}], "*)"}], "\n", "\n", 
+         " ", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{"DIISEx", ",", "\n", 
+           RowBox[{
+            RowBox[{"FDIIS", "=", 
+             RowBox[{"Prepend", "[", 
+              RowBox[{"FDIIS", ",", "F"}], "]"}]}], ";", "\t", 
+            RowBox[{"eDIIS", "=", 
+             RowBox[{"Prepend", "[", 
+              RowBox[{"eDIIS", ",", 
+               RowBox[{
+                RowBox[{"F", ".", "P", ".", "S"}], "-", 
+                RowBox[{"S", ".", "P", ".", "F"}]}]}], "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"F", "=", 
+             RowBox[{"DIIS", "[", 
+              RowBox[{"FDIIS", ",", "eDIIS", ",", "nDIIS"}], "]"}]}], ";"}]}],
+           "\n", "]"}], ";", "\n", "\n", 
          RowBox[{"If", "[", 
           RowBox[{
            RowBox[{
@@ -300,13 +322,12 @@ Cell[BoxData[
           RowBox[{
            RowBox[{
             RowBox[{"C", "\[Transpose]"}], ".", "S", ".", "C"}], "//", 
-           "Chop"}], "//", "MatrixForm"}], "]"}], ";"}], "*)"}], 
-      "\[IndentingNewLine]", 
+           "Chop"}], "//", "MatrixForm"}], "]"}], ";"}], "*)"}], "\n", 
       RowBox[{"(*", 
        RowBox[{"Two", "-", 
         RowBox[{
         "electrons", " ", "integrals", " ", "in", " ", "MO", " ", "basis"}]}],
-        "*)"}], "\n", 
+        "*)"}], "\[IndentingNewLine]", 
       RowBox[{"ERI", "=", 
        RowBox[{
         RowBox[{"C", "\[Transpose]"}], ".", 
@@ -563,6 +584,7 @@ Cell[BoxData[
        RowBox[{"Association", "[", 
         RowBox[{
          RowBox[{"\"\<EHF\>\"", "\[Rule]", "EHF"}], ",", 
+         RowBox[{"\"\<ENuc\>\"", "->", "Enuc"}], ",", 
          RowBox[{"\"\<OAIntegrals\>\"", "\[Rule]", "OAIntegrals"}], ",", 
          RowBox[{"\"\<ERI\>\"", "\[Rule]", "ERI"}], ",", "\n", 
          "                            ", 
@@ -581,8 +603,8 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"nSCF", "\[Equal]", "maxSCF"}], ",", 
         RowBox[{"Return", "[", "]"}], ",", 
-        RowBox[{"Return", "[", "quantities", "]"}]}], "]"}], ";"}]}], "\n", 
-    "\[IndentingNewLine]", "]"}]}], ";"}]], "Code",
+        RowBox[{"Return", "[", "quantities", "]"}]}], "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "\n", "]"}]}], ";"}]], "Code",
  CellChangeTimes->{{3.8266970744738293`*^9, 3.8266971151220827`*^9}, {
    3.8266971538985577`*^9, 3.82669729702279*^9}, {3.82669733806277*^9, 
    3.826697418355043*^9}, {3.826697518700407*^9, 3.826697846200325*^9}, {
@@ -903,14 +925,22 @@ Cell[BoxData[
    3.8739456878410673`*^9, 3.873945690324246*^9}, {3.873946520771844*^9, 
    3.873946541919895*^9}, {3.873947389979331*^9, 3.8739473900846024`*^9}, {
    3.873947607413793*^9, 3.873947617809216*^9}, 3.873947973042487*^9, 
-   3.8739648050020027`*^9},ExpressionUUID->"7baad11d-374a-4683-890b-\
-d85c2ff96c2b"]
+   3.8739648050020027`*^9, {3.877601174868783*^9, 3.8776012029420137`*^9}, {
+   3.877601243303361*^9, 3.877601245645789*^9}, {3.877601699682543*^9, 
+   3.877601714997216*^9}, {3.877601782372593*^9, 3.877601821509383*^9}, {
+   3.877668609062914*^9, 3.8776686205913677`*^9}, {3.87803251635445*^9, 
+   3.878032529235339*^9}, {3.87803258182098*^9, 3.878032585754347*^9}, {
+   3.878032627603567*^9, 3.8780326809038057`*^9}, {3.878032817503545*^9, 
+   3.878032827923397*^9}, {3.8780328785065823`*^9, 3.878032882738741*^9}, {
+   3.878033002656273*^9, 3.8780330130088453`*^9}, {3.878033044911915*^9, 
+   3.87803304514884*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
 }, Open  ]],
 
 Cell["", "Title",ExpressionUUID->"c2a79656-86b7-49cb-abfa-04aee6242f40"]
 },
-WindowSize->{1864.5, 1032.},
-WindowMargins->{{Automatic, 0}, {0, Automatic}},
+WindowSize->{932.25, 1032.},
+WindowMargins->{{55.5, Automatic}, {0, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
 StyleDefinitions->"Default.nb",
@@ -929,9 +959,9 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 203, 4, 68, "Subsubsection",ExpressionUUID->"6bb91d66-5bf2-45dd-86dd-d2dd89a20c17"],
-Cell[786, 28, 47015, 878, 3923, "Code",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
+Cell[786, 28, 48554, 908, 4180, "Code",ExpressionUUID->"7baad11d-374a-4683-890b-d85c2ff96c2b"]
 }, Open  ]],
-Cell[47816, 909, 72, 0, 146, "Title",ExpressionUUID->"c2a79656-86b7-49cb-abfa-04aee6242f40"]
+Cell[49355, 939, 72, 0, 146, "Title",ExpressionUUID->"c2a79656-86b7-49cb-abfa-04aee6242f40"]
 }
 ]
 *)

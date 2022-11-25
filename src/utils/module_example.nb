@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6093,        170]
+NotebookDataLength[      6098,        170]
 NotebookOptionsPosition[      4776,        139]
-NotebookOutlinePosition[      5169,        155]
-CellTagsIndexPosition[      5126,        152]
+NotebookOutlinePosition[      5174,        155]
+CellTagsIndexPosition[      5131,        152]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -137,8 +137,8 @@ Cell["Implementation in spatial orbital", "Text",
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1864.5, 1032.},
-WindowMargins->{{Automatic, 0}, {0, Automatic}},
+WindowSize->{720., 782.25},
+WindowMargins->{{147, Automatic}, {-1080, Automatic}},
 FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"4f760051-a0d8-4cb0-952f-2fcd83128f48"
@@ -156,12 +156,12 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 159, 3, 69, "Chapter",ExpressionUUID->"de726db4-92ae-422e-bb18-c8f04d4dbfe3"],
-Cell[742, 27, 635, 12, 104, "Text",ExpressionUUID->"634b733e-b8cf-4d3b-ad7a-9d4d1d2f36f3"],
+Cell[742, 27, 635, 12, 127, "Text",ExpressionUUID->"634b733e-b8cf-4d3b-ad7a-9d4d1d2f36f3"],
 Cell[1380, 41, 1428, 37, 206, "Input",ExpressionUUID->"ba36fd76-a4b2-49ee-9fda-926e2a48cec9"],
-Cell[2811, 80, 676, 13, 104, "Text",ExpressionUUID->"06efef6c-6e0d-4a80-be7e-d2f058eafe1e"],
+Cell[2811, 80, 676, 13, 173, "Text",ExpressionUUID->"06efef6c-6e0d-4a80-be7e-d2f058eafe1e"],
 Cell[CellGroupData[{
 Cell[3512, 97, 155, 3, 68, "Section",ExpressionUUID->"a6a76f47-0d70-41e0-a662-2fb5ae06e9ea"],
-Cell[3670, 102, 289, 6, 35, "Text",ExpressionUUID->"ea261d55-c187-4e10-bcbf-844a6f0591dd"]
+Cell[3670, 102, 289, 6, 58, "Text",ExpressionUUID->"ea261d55-c187-4e10-bcbf-844a6f0591dd"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[3996, 113, 206, 4, 68, "Section",ExpressionUUID->"f33afad6-4c17-422f-b282-11d700608359"],

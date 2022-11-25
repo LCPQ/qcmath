@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     35606,        744]
-NotebookOptionsPosition[     35222,        729]
-NotebookOutlinePosition[     35651,        746]
-CellTagsIndexPosition[     35608,        743]
+NotebookDataLength[     35713,        747]
+NotebookOptionsPosition[     35335,        732]
+NotebookOutlinePosition[     35758,        749]
+CellTagsIndexPosition[     35715,        746]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -724,11 +724,14 @@ Cell[BoxData[
    3.874996181161688*^9, 3.8749961819339037`*^9}, {3.874996236756531*^9, 
    3.8749962757853117`*^9}, {3.8749963246705227`*^9, 3.87499636420385*^9}, 
    3.874996408570273*^9, {3.8752009057925453`*^9, 3.875200911770371*^9}, 
-   3.8752010908853188`*^9, {3.875201217463863*^9, 3.875201222430586*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"4b79b27a-5930-4429-b503-91ef63ec2096"]
+   3.8752010908853188`*^9, {3.875201217463863*^9, 3.875201222430586*^9}, {
+   3.8780102663463993`*^9, 3.8780102691974993`*^9}, {3.878010304491749*^9, 
+   3.8780103083621407`*^9}, 
+   3.8780103659283867`*^9},ExpressionUUID->"4b79b27a-5930-4429-b503-\
+91ef63ec2096"]
 },
-WindowSize->{1193.25, 785.25},
-WindowMargins->{{Automatic, 53.25}, {0, Automatic}},
+WindowSize->{932.25, 1032.},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
 StyleDefinitions->"Default.nb",
@@ -745,7 +748,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 34660, 707, 3167, "Code",ExpressionUUID->"4b79b27a-5930-4429-b503-91ef63ec2096"]
+Cell[558, 20, 34773, 710, 3167, "Code",ExpressionUUID->"4b79b27a-5930-4429-b503-91ef63ec2096"]
 }
 ]
 *)
