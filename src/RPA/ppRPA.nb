@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      5145,        127]
-NotebookOptionsPosition[      4799,        113]
-NotebookOutlinePosition[      5193,        129]
-CellTagsIndexPosition[      5150,        126]
+NotebookDataLength[      5567,        135]
+NotebookOptionsPosition[      5191,        120]
+NotebookOutlinePosition[      5614,        137]
+CellTagsIndexPosition[      5571,        134]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -23,75 +23,79 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"ppRPA", "[", 
     RowBox[{
-    "nbasis_", ",", "nocc_", ",", "nvac_", ",", "OMIntegrals_", ",", 
-     "\[Epsilon]_", ",", "singlet_", ",", "triplet_"}], "]"}], ":=", 
+    "nBas_", ",", "nO_", ",", "nV_", ",", "ERI_", ",", "\[Epsilon]_", ",", 
+     "singlet_", ",", "triplet_"}], "]"}], ":=", "\n", "\n", "  ", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
       "ispin", ",", "nOO", ",", "nVV", ",", "linearppquantities", ",", 
        "Ecsinglet", ",", "Ectriplet", ",", "ppRPAquantities", ",", 
-       "EcppRPA"}], "}"}], ",", "\n", "\n", 
+       "EcppRPA"}], "}"}], ",", "\n", "\n", "    ", 
      RowBox[{
-      RowBox[{"Ecsinglet", "=", "0"}], ";", "\n", 
-      RowBox[{"Ectriplet", "=", "0"}], ";", "\n", "\n", 
+      RowBox[{"Ecsinglet", "=", "0"}], ";", "\n", "    ", 
+      RowBox[{"Ectriplet", "=", "0"}], ";", "\n", "\n", "    ", 
       RowBox[{"If", "[", 
-       RowBox[{"singlet", ",", 
+       RowBox[{"singlet", ",", "\n", "    ", "\n", "      ", 
         RowBox[{
-         RowBox[{"ispin", "=", "1"}], ";", "\n", 
+         RowBox[{"ispin", "=", "1"}], ";", "\n", "      ", 
          RowBox[{"nOO", " ", "=", " ", 
-          RowBox[{"nocc", "*", 
+          RowBox[{"nO", "*", 
            RowBox[{
             RowBox[{"(", 
-             RowBox[{"nocc", "+", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+             RowBox[{"nO", "+", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+         "      ", 
          RowBox[{"nVV", " ", "=", " ", 
-          RowBox[{"nvac", "*", 
+          RowBox[{"nV", "*", 
            RowBox[{
             RowBox[{"(", 
-             RowBox[{"nvac", "+", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
-         "\n", 
+             RowBox[{"nV", "+", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", "\n",
+          "      ", 
          RowBox[{"linearppquantities", "=", 
           RowBox[{"linearpp", "[", 
            RowBox[{
-           "nbasis", ",", "nocc", ",", "nvac", ",", "nOO", ",", "nVV", ",", 
-            "OMIntegrals", ",", "\[Epsilon]", ",", "ispin"}], "]"}]}], ";", 
-         "\n", "\n", 
+           "nBas", ",", "nO", ",", "nV", ",", "nOO", ",", "nVV", ",", "ERI", 
+            ",", "\[Epsilon]", ",", "ispin"}], "]"}]}], ";", "\n", "\n", 
+         "      ", 
          RowBox[{"Ecsinglet", "=", 
           RowBox[{"linearppquantities", "[", "\"\<EcppRPA\>\"", "]"}]}], 
-         ";"}]}], "\n", "]"}], ";", "\n", "\n", "\n", 
+         ";"}]}], "\n", "      ", "\n", "    ", "]"}], ";", "\n", "\n", "\n", 
+      "    ", 
       RowBox[{"If", "[", 
-       RowBox[{"triplet", ",", 
+       RowBox[{"triplet", ",", "\n", "    ", "\n", "      ", 
         RowBox[{
-         RowBox[{"ispin", "=", "2"}], ";", "\n", 
+         RowBox[{"ispin", "=", "2"}], ";", "\n", "      ", 
          RowBox[{"nOO", " ", "=", " ", 
-          RowBox[{"nocc", "*", 
+          RowBox[{"nO", "*", 
            RowBox[{
             RowBox[{"(", 
-             RowBox[{"nocc", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+             RowBox[{"nO", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
+         "      ", 
          RowBox[{"nVV", " ", "=", " ", 
-          RowBox[{"nvac", "*", 
+          RowBox[{"nV", "*", 
            RowBox[{
             RowBox[{"(", 
-             RowBox[{"nvac", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", 
-         "\n", 
+             RowBox[{"nV", "-", "1"}], ")"}], "/", "2"}]}]}], ";", "\n", "\n",
+          "      ", 
          RowBox[{"linearppquantities", "=", 
           RowBox[{"linearpp", "[", 
            RowBox[{
-           "nbasis", ",", "nocc", ",", "nvac", ",", "nOO", ",", "nVV", ",", 
-            "OMIntegrals", ",", "\[Epsilon]", ",", "ispin"}], "]"}]}], ";", 
-         "\n", "\n", 
+           "nBas", ",", "nO", ",", "nV", ",", "nOO", ",", "nVV", ",", "ERI", 
+            ",", "\[Epsilon]", ",", "ispin"}], "]"}]}], ";", "\n", "\n", 
+         "      ", 
          RowBox[{"Ectriplet", "=", 
           RowBox[{"3", 
            RowBox[{"linearppquantities", "[", "\"\<EcppRPA\>\"", "]"}]}]}], 
-         ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+         ";"}]}], "\n", "      ", "\n", "    ", "]"}], ";", "\n", "\n", 
+      "    ", 
       RowBox[{"EcppRPA", "=", 
-       RowBox[{"Ecsinglet", "+", "Ectriplet"}]}], ";", "\n", "\n", 
+       RowBox[{"Ecsinglet", "+", "Ectriplet"}]}], ";", "\n", "\n", "    ", 
       RowBox[{"ppRPAquantities", "=", 
        RowBox[{"Association", "[", 
         RowBox[{"\"\<EcppRPA\>\"", "\[Rule]", "EcppRPA"}], "]"}]}], ";", "\n",
-       "\n", 
-      RowBox[{"Return", "[", "ppRPAquantities", "]"}]}]}], "]"}]}], 
-  ";"}]], "Code",
+       "\n", "    ", 
+      RowBox[{"Return", "[", "ppRPAquantities", "]"}], ";"}]}], "\n", "\n", 
+    "  ", "]"}]}], ";"}]], "Code",
  CellChangeTimes->{{3.841288105085162*^9, 3.841288107577567*^9}, {
    3.841288202674526*^9, 3.841288235973645*^9}, {3.841288400451676*^9, 
    3.841288403064838*^9}, {3.841288434658662*^9, 3.841288693284761*^9}, {
@@ -108,11 +112,15 @@ Cell[BoxData[
    3.841891026518997*^9, 3.841891038628545*^9}, {3.841891156162434*^9, 
    3.8418911600250463`*^9}, {3.8425852773490887`*^9, 3.842585295399976*^9}, 
    3.8425866842566*^9, {3.842586721696726*^9, 3.842586727701538*^9}, {
-   3.8502070386300917`*^9, 3.850207043374653*^9}, 3.850222637099334*^9},
- CellLabel->"In[53]:=",ExpressionUUID->"21982a73-7fa2-4cda-985a-1405f69604b2"]
+   3.8502070386300917`*^9, 3.850207043374653*^9}, 3.850222637099334*^9, {
+   3.878203786084958*^9, 3.87820379978484*^9}, {3.8782038757508907`*^9, 
+   3.878203877919654*^9}, {3.8782634800990887`*^9, 
+   3.8782636269681*^9}},ExpressionUUID->"21982a73-7fa2-4cda-985a-\
+1405f69604b2"]
 },
-WindowSize->{808, 685},
-WindowMargins->{{292, Automatic}, {Automatic, 24}},
+WindowSize->{1121, 673},
+WindowMargins->{{Automatic, 9}, {50, Automatic}},
+Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"0e75b7ad-ebae-4d73-bf01-305c1afce0cf"
@@ -128,10 +136,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 4237, 91, 585, "Code",ExpressionUUID->"21982a73-7fa2-4cda-985a-1405f69604b2"]
+Cell[558, 20, 4629, 98, 1181, "Code",ExpressionUUID->"21982a73-7fa2-4cda-985a-1405f69604b2"]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
