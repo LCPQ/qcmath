@@ -1,42 +1,32 @@
 (** @canonical Gaussian.Atomic_shell *)
 module Atomic_shell = Gaussian__Atomic_shell
 
-
 (** @canonical Gaussian.Atomic_shell_pair *)
 module Atomic_shell_pair = Gaussian__Atomic_shell_pair
-
 
 (** @canonical Gaussian.Atomic_shell_pair_couple *)
 module Atomic_shell_pair_couple = Gaussian__Atomic_shell_pair_couple
 
-
 (** @canonical Gaussian.Basis *)
 module Basis = Gaussian__Basis
-
 
 (** @canonical Gaussian.Contracted_shell *)
 module Contracted_shell = Gaussian__Contracted_shell
 
-
 (** @canonical Gaussian.Contracted_shell_pair *)
 module Contracted_shell_pair = Gaussian__Contracted_shell_pair
-
 
 (** @canonical Gaussian.Contracted_shell_pair_couple *)
 module Contracted_shell_pair_couple = Gaussian__Contracted_shell_pair_couple
 
-
 (** @canonical Gaussian.General_basis *)
 module General_basis = Gaussian__General_basis
-
 
 (** @canonical Gaussian.Primitive_shell *)
 module Primitive_shell = Gaussian__Primitive_shell
 
-
 (** @canonical Gaussian.Primitive_shell_pair *)
 module Primitive_shell_pair = Gaussian__Primitive_shell_pair
-
 
 (** @canonical Gaussian.Primitive_shell_pair_couple *)
 module Primitive_shell_pair_couple = Gaussian__Primitive_shell_pair_couple

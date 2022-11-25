@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    118909,       2051]
-NotebookOptionsPosition[    118387,       2033]
-NotebookOutlinePosition[    118820,       2050]
-CellTagsIndexPosition[    118777,       2047]
+NotebookDataLength[    118967,       2051]
+NotebookOptionsPosition[    118442,       2033]
+NotebookOutlinePosition[    118878,       2050]
+CellTagsIndexPosition[    118835,       2047]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -807,9 +807,9 @@ Cell[BoxData[
                  RowBox[{"G0W0", "[", 
                   RowBox[{
                   "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "\[Epsilon]", 
-                   ",", "ERI", ",", "Enuc", ",", "ERHF", ",", "TDA", ",", 
-                   "options", ",", "verbose"}], "]"}], "]"}]}], ";", "\n", 
-               "    ", "\n", "        ", 
+                   ",", "ERI", ",", "Enuc", ",", "ERHF", ",", "options", ",", 
+                   "verbose"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", 
+               "        ", 
                RowBox[{"If", "[", 
                 RowBox[{
                  RowBox[{"verbose", "\[Equal]", "True"}], ",", 
@@ -2027,14 +2027,14 @@ Cell[BoxData[
    3.8783610132614107`*^9, {3.878361094621777*^9, 3.878361096941815*^9}, 
    3.87836146428586*^9, {3.8783615112436047`*^9, 3.8783615293298893`*^9}, {
    3.8783615651834517`*^9, 3.878361567782881*^9}, {3.878361643217346*^9, 
-   3.878361663514174*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
-2b85bb5dd0be"]
+   3.878361663514174*^9}, {3.878378484865642*^9, 3.878378485250649*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{933.75, 1032.},
 WindowMargins->{{Automatic, 0}, {0, Automatic}},
 TaggingRules->{"TryRealOnly" -> False},
-FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"45975483-b222-4bbd-a1ba-1aef2816c3d6"
 ]
@@ -2051,7 +2051,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 45, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 117626, 2003, 6349, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 117681, 2003, 5916, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]

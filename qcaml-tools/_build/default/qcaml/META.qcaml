@@ -122,7 +122,7 @@ package "top" (
   description = "Installs pretty printers for top-level."
   requires = "compiler-libs.toplevel qcaml"
   archive(byte) = "top.cma"
-  archive(native) = ""
+  archive(native) = "top.cmxa"
   plugin(byte) = "top.cma"
-  plugin(native) = ""
+  plugin(native) = "top.cmxs"
 )
