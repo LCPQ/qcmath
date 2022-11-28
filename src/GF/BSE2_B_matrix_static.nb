@@ -1,0 +1,660 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     30111,        652]
+NotebookOptionsPosition[     29729,        637]
+NotebookOutlinePosition[     30156,        654]
+CellTagsIndexPosition[     30113,        651]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"BSE2BmatrixStatic", "[", 
+    RowBox[{
+    "nBas_", ",", "nO_", ",", "eGF2_", ",", "ERI_", ",", "ispin_", ",", 
+     "\[Eta]_"}], "]"}], ":=", "\n", "\n", "  ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "Bstat", "}"}], ",", "\n", "\n", "    ", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"ispin", "\[Equal]", "1"}], ",", 
+        RowBox[{"(*", 
+         RowBox[{"singlet", " ", "manifold"}], "*)"}], "\n", "      ", "\n", 
+        "      ", 
+        RowBox[{"(*", 
+         RowBox[{"1", "st", " ", "and", " ", "2", "nd", " ", "terms"}], 
+         "*)"}], "\n", "      ", 
+        RowBox[{
+         RowBox[{"Bstat", " ", "=", "\n", "       ", "\n", "        ", 
+          RowBox[{"Table", "[", "\n", "      ", "\n", "          ", 
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{
+              UnderoverscriptBox["\[Sum]", 
+               RowBox[{"k", "=", "1"}], "nO"], 
+              RowBox[{
+               UnderoverscriptBox["\[Sum]", 
+                RowBox[{"c", "=", 
+                 RowBox[{"nO", "+", "1"}]}], "nBas"], 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"2", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "k", ",", "i", ",", "c"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "c", ",", "j", ",", "k"}], 
+                    "\[RightDoubleBracket]"}]}], " ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "k", ",", "i", ",", "c"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "c", ",", "k", ",", "j"}], 
+                    "\[RightDoubleBracket]"}]}], "\n", "          ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "k", ",", "c", ",", "i"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "c", ",", "j", ",", "k"}], 
+                    "\[RightDoubleBracket]"}]}], " ", "+", " ", 
+                    RowBox[{"2", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "k", ",", "c", ",", "i"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "c", ",", "k", ",", "j"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], "\n", "          ", 
+                  "*", 
+                  FractionBox[
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "k", 
+                    "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "c", 
+                    "\[RightDoubleBracket]"}]}], ")"}], 
+                   RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "k", 
+                    "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "c", 
+                    "\[RightDoubleBracket]"}]}], ")"}], ")"}], "2"], "+", 
+                    SuperscriptBox["\[Eta]", "2"]}]]}], "\n", "          ", 
+                 "\n", "          ", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"2", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "c", ",", "i", ",", "k"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "k", ",", "j", ",", "c"}], 
+                    "\[RightDoubleBracket]"}]}], " ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "c", ",", "i", ",", "k"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "k", ",", "c", ",", "j"}], 
+                    "\[RightDoubleBracket]"}]}], "\n", "          ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "c", ",", "k", ",", "i"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "k", ",", "j", ",", "c"}], 
+                    "\[RightDoubleBracket]"}]}], " ", "+", " ", 
+                    RowBox[{"2", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "c", ",", "k", ",", "i"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "k", ",", "c", ",", "j"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], "\n", "          ", 
+                  "*", 
+                  FractionBox[
+                   RowBox[{"-", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "c", 
+                    "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "k", 
+                    "\[RightDoubleBracket]"}]}], ")"}]}], 
+                   RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"-", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "c", 
+                    "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "k", 
+                    "\[RightDoubleBracket]"}]}], ")"}]}], ")"}], "2"], "+", 
+                    SuperscriptBox["\[Eta]", "2"]}]]}]}], ")"}]}]}]}], "\n", 
+            "          ", "\n", "          ", ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "nO"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", 
+              RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "nO"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"b", ",", 
+              RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+           "        ", "\n", "        ", "]"}]}], ";", "\n", "      ", "\n", 
+         "      ", 
+         RowBox[{"(*", 
+          RowBox[{"3", "rd", " ", "term"}], "*)"}], "\n", "      ", 
+         RowBox[{"Bstat", " ", "=", " ", 
+          RowBox[{"Bstat", " ", "+", "\n", "       ", "\n", "        ", 
+           RowBox[{"Table", "[", "\n", "      ", "\n", "          ", 
+            RowBox[{
+             RowBox[{"0.5", "*", 
+              RowBox[{
+               UnderoverscriptBox["\[Sum]", 
+                RowBox[{"c", "=", 
+                 RowBox[{"nO", "+", "1"}]}], "nBas"], 
+               RowBox[{
+                UnderoverscriptBox["\[Sum]", 
+                 RowBox[{"d", "=", 
+                  RowBox[{"nO", "+", "1"}]}], "nBas"], 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"2", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"c", ",", "d", ",", "i", ",", "j"}], 
+                    "\[RightDoubleBracket]"}]}], " ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"c", ",", "d", ",", "j", ",", "i"}], 
+                    "\[RightDoubleBracket]"}]}], "\n", "          ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "d", ",", "c"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"c", ",", "d", ",", "i", ",", "j"}], 
+                    "\[RightDoubleBracket]"}]}], " ", "+", " ", 
+                    RowBox[{"2", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "d", ",", "c"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"c", ",", "d", ",", "j", ",", "i"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], "\n", "          ", 
+                  "*", 
+                  FractionBox[
+                   RowBox[{"-", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "c", 
+                    "\[RightDoubleBracket]"}], "+", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "d", 
+                    "\[RightDoubleBracket]"}]}], ")"}]}], 
+                   RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"-", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "c", 
+                    "\[RightDoubleBracket]"}], "+", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "d", 
+                    "\[RightDoubleBracket]"}]}], ")"}]}], ")"}], "2"], "+", 
+                    SuperscriptBox["\[Eta]", "2"]}]]}], ")"}]}]}]}], "\n", 
+             "        ", "\n", "          ", ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "nO"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"a", ",", 
+               RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", "nO"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"b", ",", 
+               RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+            "        ", "\n", "        ", "]"}]}]}], ";", "\n", "        ", 
+         "\n", "      ", 
+         RowBox[{"(*", 
+          RowBox[{"4", "th", " ", "term"}], "*)"}], "   ", "\n", "      ", 
+         RowBox[{"Bstat", " ", "=", " ", "\n", "      ", "\n", "        ", 
+          RowBox[{"Bstat", " ", "-", "\n", "        ", "\n", "        ", 
+           RowBox[{"Table", "[", "\n", "      ", "\n", "          ", 
+            RowBox[{
+             RowBox[{"0.5", "*", 
+              RowBox[{
+               UnderoverscriptBox["\[Sum]", 
+                RowBox[{"k", "=", "1"}], "nO"], 
+               RowBox[{
+                UnderoverscriptBox["\[Sum]", 
+                 RowBox[{"l", "=", "1"}], "nO"], 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"2", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "k", ",", "l"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"k", ",", "l", ",", "i", ",", "j"}], 
+                    "\[RightDoubleBracket]"}]}], " ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "k", ",", "l"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"k", ",", "l", ",", "j", ",", "i"}], 
+                    "\[RightDoubleBracket]"}]}], "\n", "          ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "l", ",", "k"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"k", ",", "l", ",", "i", ",", "j"}], 
+                    "\[RightDoubleBracket]"}]}], " ", "+", " ", 
+                    RowBox[{"2", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "l", ",", "k"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"k", ",", "l", ",", "j", ",", "i"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], "\n", "          ", 
+                  "*", 
+                  FractionBox[
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "k", 
+                    "\[RightDoubleBracket]"}], "+", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "l", 
+                    "\[RightDoubleBracket]"}]}], ")"}], 
+                   RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "k", 
+                    "\[RightDoubleBracket]"}], "+", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "l", 
+                    "\[RightDoubleBracket]"}]}], ")"}], ")"}], "2"], "+", 
+                    SuperscriptBox["\[Eta]", "2"]}]]}], ")"}]}]}]}], "\n", 
+             "        ", "\n", "          ", ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "nO"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"a", ",", 
+               RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", "nO"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"b", ",", 
+               RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+            "        ", "\n", "        ", "]"}]}]}], ";"}]}], "\n", 
+       "        ", "\n", "           ", "\n", "    ", "]"}], ";", "\n", "\n", 
+      "\n", "    ", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"ispin", "\[Equal]", "2"}], ",", 
+        RowBox[{"(*", 
+         RowBox[{"triplet", " ", "manifold"}], "*)"}], "\n", "           ", 
+        RowBox[{"(*", 
+         RowBox[{"1", "st", " ", "and", " ", "2", "nd", " ", "terms"}], 
+         "*)"}], "\n", "      ", 
+        RowBox[{
+         RowBox[{"Bstat", " ", "=", "\n", "       ", "\n", "        ", 
+          RowBox[{"Table", "[", "\n", "      ", "\n", "          ", 
+           RowBox[{
+            RowBox[{"-", 
+             RowBox[{
+              UnderoverscriptBox["\[Sum]", 
+               RowBox[{"k", "=", "1"}], "nO"], 
+              RowBox[{
+               UnderoverscriptBox["\[Sum]", 
+                RowBox[{"c", "=", 
+                 RowBox[{"nO", "+", "1"}]}], "nBas"], 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"2", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "k", ",", "i", ",", "c"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "c", ",", "j", ",", "k"}], 
+                    "\[RightDoubleBracket]"}]}], " ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "k", ",", "i", ",", "c"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "c", ",", "k", ",", "j"}], 
+                    "\[RightDoubleBracket]"}]}], "\n", "          ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "k", ",", "c", ",", "i"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "c", ",", "j", ",", "k"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], "\n", "          ", 
+                  "*", 
+                  FractionBox[
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "k", 
+                    "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "c", 
+                    "\[RightDoubleBracket]"}]}], ")"}], 
+                   RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "k", 
+                    "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "c", 
+                    "\[RightDoubleBracket]"}]}], ")"}], "2"], "+", 
+                    SuperscriptBox["\[Eta]", "2"]}]]}], "\n", "          ", 
+                 "\n", "          ", "+", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"2", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "c", ",", "i", ",", "k"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "k", ",", "j", ",", "c"}], 
+                    "\[RightDoubleBracket]"}]}], " ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "c", ",", "i", ",", "k"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "k", ",", "c", ",", "j"}], 
+                    "\[RightDoubleBracket]"}]}], "\n", "          ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"b", ",", "c", ",", "k", ",", "i"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "k", ",", "j", ",", "c"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], "\n", "          ", 
+                  "*", 
+                  FractionBox[
+                   RowBox[{"-", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "c", 
+                    "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "k", 
+                    "\[RightDoubleBracket]"}]}], ")"}]}], 
+                   RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"-", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "c", 
+                    "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "k", 
+                    "\[RightDoubleBracket]"}]}], ")"}]}], ")"}], "2"], "+", 
+                    SuperscriptBox["\[Eta]", "2"]}]]}]}], ")"}]}]}]}], "\n", 
+            "          ", "\n", "          ", ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "nO"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", 
+              RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "nO"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"b", ",", 
+              RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+           "        ", "\n", "        ", "]"}]}], ";", "\n", "      ", "\n", 
+         "      ", 
+         RowBox[{"(*", 
+          RowBox[{"3", "rd", " ", "term"}], "*)"}], "\n", "      ", 
+         RowBox[{"Bstat", " ", "=", " ", 
+          RowBox[{"Bstat", " ", "-", "\n", "       ", "\n", "        ", 
+           RowBox[{"Table", "[", "\n", "      ", "\n", "          ", 
+            RowBox[{
+             RowBox[{"0.5", "*", 
+              RowBox[{
+               UnderoverscriptBox["\[Sum]", 
+                RowBox[{"c", "=", 
+                 RowBox[{"nO", "+", "1"}]}], "nBas"], 
+               RowBox[{
+                UnderoverscriptBox["\[Sum]", 
+                 RowBox[{"d", "=", 
+                  RowBox[{"nO", "+", "1"}]}], "nBas"], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"c", ",", "d", ",", "j", ",", "i"}], 
+                    "\[RightDoubleBracket]"}]}], " ", "+", " ", 
+                   RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "d", ",", "c"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"c", ",", "d", ",", "i", ",", "j"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], "\n", "          ", 
+                 "*", 
+                 FractionBox[
+                  RowBox[{"-", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "c", 
+                    "\[RightDoubleBracket]"}], "+", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "d", 
+                    "\[RightDoubleBracket]"}]}], ")"}]}], 
+                  RowBox[{
+                   SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"-", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "c", 
+                    "\[RightDoubleBracket]"}], "+", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "d", 
+                    "\[RightDoubleBracket]"}]}], ")"}]}], ")"}], "2"], "+", 
+                   SuperscriptBox["\[Eta]", "2"]}]]}]}]}]}], "\n", "        ",
+              "\n", "          ", ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "nO"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"a", ",", 
+               RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", "nO"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"b", ",", 
+               RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+            "        ", "\n", "        ", "]"}]}]}], ";", "\n", "        ", 
+         "\n", "      ", 
+         RowBox[{"(*", 
+          RowBox[{"4", "th", " ", "term"}], "*)"}], "   ", "\n", "      ", 
+         RowBox[{"Bstat", " ", "=", " ", "\n", "      ", "\n", "        ", 
+          RowBox[{"Bstat", " ", "-", "\n", "        ", "\n", "        ", 
+           RowBox[{"Table", "[", "\n", "      ", "\n", "          ", 
+            RowBox[{
+             RowBox[{"0.5", "*", 
+              RowBox[{
+               UnderoverscriptBox["\[Sum]", 
+                RowBox[{"k", "=", "1"}], "nO"], 
+               RowBox[{
+                UnderoverscriptBox["\[Sum]", 
+                 RowBox[{"l", "=", "1"}], "nO"], 
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "k", ",", "l"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"k", ",", "l", ",", "j", ",", "i"}], 
+                    "\[RightDoubleBracket]"}]}], " ", "+", " ", 
+                   RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "l", ",", "k"}], 
+                    "\[RightDoubleBracket]"}], "*", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"k", ",", "l", ",", "i", ",", "j"}], 
+                    "\[RightDoubleBracket]"}]}]}], ")"}], "\n", "          ", 
+                 "*", 
+                 FractionBox[
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "k", 
+                    "\[RightDoubleBracket]"}], "+", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "l", 
+                    "\[RightDoubleBracket]"}]}], ")"}], 
+                  RowBox[{
+                   SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "k", 
+                    "\[RightDoubleBracket]"}], "+", 
+                    RowBox[{
+                    "eGF2", "\[LeftDoubleBracket]", "l", 
+                    "\[RightDoubleBracket]"}]}], ")"}], "2"], "+", 
+                   SuperscriptBox["\[Eta]", "2"]}]]}]}]}]}], "\n", "        ",
+              "\n", "          ", ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "nO"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"a", ",", 
+               RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"j", ",", "nO"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"b", ",", 
+               RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
+            "        ", "\n", "        ", "]"}]}]}], ";"}]}], "\n", "    ", 
+       "]"}], ";", "\n", "\n", "    ", 
+      RowBox[{"Bstat", " ", "=", " ", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"Bstat", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "2"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"3", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";", "\n", 
+      "\n", "    ", 
+      RowBox[{"Return", "[", "Bstat", "]"}]}]}], "\n", "  ", "\n", "  ", 
+    "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.8727317681319304`*^9, 3.872731959796709*^9}, {
+   3.8739433160086117`*^9, 3.8739433774841022`*^9}, 3.873944865332333*^9, {
+   3.877574284988188*^9, 3.8775743187543783`*^9}, {3.877574637982684*^9, 
+   3.8775746416793623`*^9}, {3.877574672409362*^9, 3.877574749430909*^9}, {
+   3.877574805635688*^9, 3.877574808909143*^9}, {3.877574866716196*^9, 
+   3.877574983009645*^9}, {3.877575032270555*^9, 3.877575306555148*^9}, {
+   3.8775755549462147`*^9, 3.877575707003161*^9}, {3.877575753862959*^9, 
+   3.877575865082244*^9}, {3.877583742553087*^9, 3.877584047291726*^9}, {
+   3.877584316988826*^9, 3.877584337438307*^9}, {3.877584532883191*^9, 
+   3.8775845434318743`*^9}, {3.8775845781885557`*^9, 3.877584605006844*^9}, {
+   3.8775846381381617`*^9, 3.8775846487017593`*^9}, {3.877584688012847*^9, 
+   3.877584690782621*^9}, {3.877584731069974*^9, 3.877584758079116*^9}, {
+   3.877585442792882*^9, 3.87758567858867*^9}, {3.877585723879301*^9, 
+   3.877585767854628*^9}, {3.8775858214090977`*^9, 3.877585876364584*^9}, {
+   3.877585957310561*^9, 3.877586111561586*^9}, {3.877586142447194*^9, 
+   3.8775862648055477`*^9}, {3.87759072724795*^9, 3.877590731354136*^9}, {
+   3.877590775715399*^9, 3.8775907843136587`*^9}, {3.8775908882031717`*^9, 
+   3.877590971346554*^9}, {3.8775910529738617`*^9, 3.877591055687045*^9}, {
+   3.877591105068129*^9, 3.877591171910777*^9}, {3.877593237305903*^9, 
+   3.877593242529882*^9}},ExpressionUUID->"e7461eb3-88fd-47fd-86e3-\
+c9728a5c898f"]
+},
+WindowSize->{1329, 677},
+WindowMargins->{{Automatic, -24}, {-338, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"f95004b6-8663-4b73-b2a6-eff2e885f644"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 29167, 615, 3798, "Code",ExpressionUUID->"e7461eb3-88fd-47fd-86e3-c9728a5c898f"]
+}
+]
+*)
+

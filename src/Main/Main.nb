@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    117449,       2020]
-NotebookOptionsPosition[    116928,       2002]
-NotebookOutlinePosition[    117360,       2019]
-CellTagsIndexPosition[    117317,       2016]
+NotebookDataLength[    117712,       2023]
+NotebookOptionsPosition[    117188,       2005]
+NotebookOutlinePosition[    117623,       2022]
+CellTagsIndexPosition[    117580,       2019]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -612,8 +612,8 @@ Cell[BoxData[
               "        ", 
               RowBox[{
                RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/RPA/G0F2.nb\>\""}], "]"}], 
-               ";", "\n", "\t    ", 
+                RowBox[{"path", "<>", "\"\</src/GF/G0F2.nb\>\""}], "]"}], ";",
+                "\n", "\t    ", 
                RowBox[{"PrintTemporary", "[", 
                 RowBox[{"Style", "[", 
                  RowBox[{
@@ -626,11 +626,11 @@ Cell[BoxData[
                  RowBox[{"G0F2", "[", 
                   RowBox[{
                   "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI",
-                    ",", "TDA", ",", "singlet", ",", "triplet"}], "]"}], 
-                 "]"}]}], ";", "\n", "\t    ", 
-               RowBox[{"ERPAx", "=", 
+                    ",", "Enuc", ",", "ERHF", ",", "options", ",", 
+                   "verbose"}], "]"}], "]"}]}], ";", "\n", "\t    ", 
+               RowBox[{"EG0F2", "=", 
                 RowBox[{"ERHF", "+", 
-                 RowBox[{"outputs", "[", "\"\<EcRPAx\>\"", "]"}]}]}], ";", 
+                 RowBox[{"outputs", "[", "\"\<EcMP2\>\"", "]"}]}]}], ";", 
                "\n", "    ", "\n", "        ", 
                RowBox[{"If", "[", 
                 RowBox[{
@@ -1995,15 +1995,18 @@ Cell[BoxData[
    3.878361663514174*^9}, {3.878378484865642*^9, 3.878378485250649*^9}, {
    3.878560580187768*^9, 3.8785606029794283`*^9}, {3.878560733295116*^9, 
    3.878560738095667*^9}, {3.878560780557537*^9, 3.878560851756103*^9}, {
-   3.878560882259796*^9, 
-   3.878560882704948*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
+   3.878560882259796*^9, 3.878560882704948*^9}, {3.878617804131852*^9, 
+   3.878617827884864*^9}, {3.878618145123495*^9, 3.878618146148634*^9}, {
+   3.8786192063951483`*^9, 3.878619218553177*^9}, {3.878619316667836*^9, 
+   3.878619332063879*^9}, {3.8786218979586687`*^9, 
+   3.878621898071678*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
 2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{692.25, 762.},
 WindowMargins->{{Automatic, 0}, {0, Automatic}},
 TaggingRules->{"TryRealOnly" -> False},
-FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"45975483-b222-4bbd-a1ba-1aef2816c3d6"
 ]
@@ -2020,7 +2023,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 45, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 116167, 1972, 6250, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 116427, 1975, 5821, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]
