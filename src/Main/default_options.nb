@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     12252,        211]
-NotebookOptionsPosition[     11873,        196]
-NotebookOutlinePosition[     12297,        213]
-CellTagsIndexPosition[     12254,        210]
+NotebookDataLength[     12551,        213]
+NotebookOptionsPosition[     12173,        198]
+NotebookOutlinePosition[     12596,        215]
+CellTagsIndexPosition[     12553,        212]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -34,9 +34,9 @@ Cell[BoxData[
          
          RowBox[{"\"\<singlet\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
          RowBox[{"\"\<triplet\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
-         RowBox[{"\"\<TDA\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
-         RowBox[{"\"\<spinorbital\>\"", "\[Rule]", "False"}], ",", "\n", "\t",
-          "\n", "\t", 
+         RowBox[{"\"\<TDA\>\"", "\[Rule]", "False"}], ",", "\n", "\t", 
+         RowBox[{"\"\<spinorbital\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
+         "\n", "\t", 
          RowBox[{"(*", " ", 
           RowBox[{
            RowBox[{"HF", " ", "options"}], ",", " ", 
@@ -67,15 +67,15 @@ Cell[BoxData[
            RowBox[{"-", "7"}]]}], ",", " ", 
          RowBox[{"(*", " ", 
           RowBox[{"MBPT", " ", "options"}], " ", "*)"}], "\n", "\t", 
-         RowBox[{"\"\<linearized\>\"", "\[Rule]", "False"}], ",", "\n", "\t", 
-         
-         RowBox[{"\"\<\[Eta]\>\"", "\[Rule]", "0.01"}], ",", "\n", "\t", 
+         RowBox[{"\"\<linearized\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
+         RowBox[{"\"\<\[Eta]\>\"", "\[Rule]", "0.0"}], ",", "\n", "\t", 
          RowBox[{"\"\<Renormalized\>\"", "\[Rule]", "False"}], ",", "\n", 
          "\t", 
          RowBox[{"\"\<TDA_GW\>\"", "\[Rule]", "False"}], ",", "\n", "\t", 
+         RowBox[{"\"\<TDA_T\>\"", "\[Rule]", "False"}], ",", "\n", "\t", 
          RowBox[{"\"\<qs_static_form\>\"", "->", "\"\<Sym\>\""}], ",", "\n", 
          "\t", 
-         RowBox[{"\"\<BSE\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
+         RowBox[{"\"\<BSE\>\"", "\[Rule]", "False"}], ",", "\n", "\t", 
          RowBox[{"\"\<dBSE\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
          RowBox[{"\"\<dTDA\>\"", "\[Rule]", "True"}]}], "\n", "\t", "|>"}]}], 
       ";", "\n", "  ", "\n", "    ", "\n", "    ", 
@@ -190,12 +190,14 @@ Cell[BoxData[
    3.878377078201971*^9, 3.8783770854554157`*^9}, {3.878377293362597*^9, 
    3.878377322194072*^9}, {3.878377964976624*^9, 3.8783779653944597`*^9}, {
    3.878378551110032*^9, 3.878378588391303*^9}, {3.878620883504674*^9, 
-   3.87862088416992*^9}, {3.878621745002195*^9, 
-   3.8786217460235443`*^9}},ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-\
-be7c5a4f21c2"]
+   3.87862088416992*^9}, {3.878621745002195*^9, 3.8786217460235443`*^9}, {
+   3.8786297836880283`*^9, 3.878629791550124*^9}, {3.878630931666938*^9, 
+   3.878630938710905*^9}, {3.878631042947113*^9, 3.878631043446189*^9}, 
+   3.878633141265258*^9, {3.878634239465138*^9, 3.878634239832431*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
 },
-WindowSize->{933, 792},
-WindowMargins->{{184, Automatic}, {Automatic, 22}},
+WindowSize->{933, 789},
+WindowMargins->{{184, Automatic}, {Automatic, 0}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -212,7 +214,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 11311, 174, 1157, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
+Cell[558, 20, 11611, 176, 1186, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
 }
 ]
 *)

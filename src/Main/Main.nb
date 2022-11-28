@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    117712,       2023]
-NotebookOptionsPosition[    117188,       2005]
-NotebookOutlinePosition[    117623,       2022]
-CellTagsIndexPosition[    117580,       2019]
+NotebookDataLength[    117863,       2025]
+NotebookOptionsPosition[    117339,       2007]
+NotebookOutlinePosition[    117774,       2024]
+CellTagsIndexPosition[    117731,       2021]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -894,7 +894,7 @@ Cell[BoxData[
               "        ", 
               RowBox[{
                RowBox[{"NotebookEvaluate", "[", 
-                RowBox[{"path", "<>", "\"\</src/GW/G0T0.nb\>\""}], "]"}], ";",
+                RowBox[{"path", "<>", "\"\</src/GT/G0T0.nb\>\""}], "]"}], ";",
                 "\n", "\t    ", 
                RowBox[{"PrintTemporary", "[", 
                 RowBox[{"Style", "[", 
@@ -908,8 +908,9 @@ Cell[BoxData[
                  RowBox[{"G0T0", "[", 
                   RowBox[{
                   "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI",
-                    ",", "TDA", ",", "singlet", ",", "triplet"}], "]"}], 
-                 "]"}]}], ";", "\n", "    ", "\n", "        ", 
+                    ",", "Enuc", ",", "ERHF", ",", "options", ",", 
+                   "verbose"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", 
+               "        ", 
                RowBox[{"If", "[", 
                 RowBox[{
                  RowBox[{"verbose", "\[Equal]", "True"}], ",", 
@@ -1998,9 +1999,10 @@ Cell[BoxData[
    3.878560882259796*^9, 3.878560882704948*^9}, {3.878617804131852*^9, 
    3.878617827884864*^9}, {3.878618145123495*^9, 3.878618146148634*^9}, {
    3.8786192063951483`*^9, 3.878619218553177*^9}, {3.878619316667836*^9, 
-   3.878619332063879*^9}, {3.8786218979586687`*^9, 
-   3.878621898071678*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
-2b85bb5dd0be"]
+   3.878619332063879*^9}, {3.8786218979586687`*^9, 3.878621898071678*^9}, {
+   3.8786268051833353`*^9, 3.878626816682164*^9}, {3.878626877045279*^9, 
+   3.878626877446747*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{692.25, 762.},
@@ -2023,7 +2025,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 45, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 116427, 1975, 5821, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 116578, 1977, 5821, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]
