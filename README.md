@@ -321,13 +321,12 @@ Note that TDA can be used with the ph-RPA flavor and gives ph-dTDA. Ground state
 \EcRPA=\frac{1}{2} \qty(\sum_m \Omega_m^{\ph} - \text{Tr}(\bm{A})) 
 \end{equation}
 Keywords for the method argument need to be specified for the different approaches and options:
-\begin{itemize}
-\item \keyword{RPAx}: run a ph-RPA calculation
-\item \keyword{RPA}: run a ph-dRPA calculation
-\end{itemize}
-The option \keyword{TDA} can be set to \keyword{True}, by default \keyword{TDA=False}.
+- `RPAx`: run a ph-RPA calculation
+- `RPA`: run a ph-dRPA calculation
 
-\subsubsection*{Particle-particle random-phase approximation (pp-RPA)}
+The option `TDA` can be set to `True`, by default `TDA=False`.
+
+### Particle-particle random-phase approximation (pp-RPA)
 \label{subsec:pp-RPA}
 
 The particle-particle RPA (pp-RPA) problem considers the excitation energies of the $N+2$ and $N-2$ system (with $N$ the number of electrons). It is also defined by a slightly different eigenvalue problem than ph-RPA:
