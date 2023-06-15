@@ -218,7 +218,6 @@ where $\nu$ runs over all solutions, quasiparticle and satellites and with [^5]
 	\end{pmatrix}
 ```
 Note that the different blocks will depend on the approximated self-energy. Now that the general equations have been set, we can turn to the various approximations of the self-energy. Three different approximations are available in qcmath: the second-order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. For each approximation the three partially self-consistent schemes and the upfolding process are available. Note also that, the regularization parameters are also available in qcmath.
-%Note that the upfolding process is here written for the one-shot scheme 
  
 ### Second-order Green's function (GF2) approximation
 The GF2 correlation self-energy is closely related to MP2 and is given by the following expression
