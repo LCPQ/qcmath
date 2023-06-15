@@ -128,23 +128,23 @@ The qcmath software is currently undergoing active development, and while many o
 In the context of the Hartree-Fock (HF) approximation, the electronic wave function is expressed as a Slater determinant comprising $N$ molecular orbitals (MOs). Within the restricted HF (RHF) formalism, the Roothaan-Hall equations come into play, given by $\mathbf{F} \mathbf{C} = \mathbf{S} \mathbf{C} \mathbf{\epsilon}$. Here, $\mathbf{F}$ represents the Fock matrix, $\mathbf{C}$ denotes the matrix of MO coefficients, $\mathbf{S}$ stands for the matrix representing atomic orbital overlaps, and $\mathbf{\epsilon}$ is a diagonal matrix containing the orbital energies.
 
 Since the Fock matrix relies on the MO coefficients $\mathbf{C}$, which are obtained from the Fock matrix itself, these equations necessitate a self-consistent solution. To facilitate this process, various options can be specified to customize the calculations and achieve desired outcomes:
-- an initial guess of the Fock matrix needs to be diagonalized to give the MO coefficients and this initial guess is described by the keyword `mo_guess`
-  - `mo_guess="core"` (default) corresponds to the core Hamiltonian defined as $\mathbf{H_c} = \mathbf{T} + \mathbf{V}$ where $\mathbf{T}$ is the kinetic energy matrix and $\mathbf{V}$ is the external potential.
-  - `mo_guess="huckel"`  corresponds to the Hückel Hamiltonian 
-  - `mo_guess="random"`  corresponds to random MO coefficients
+- an initial guess of the Fock matrix needs to be diagonalized to give the MO coefficients and this initial guess is described by the keyword `"guess_type"`
+  - `"guess_type"="core"` (default) corresponds to the core Hamiltonian defined as $\mathbf{H_c} = \mathbf{T} + \mathbf{V}$ where $\mathbf{T}$ is the kinetic energy matrix and $\mathbf{V}$ is the external potential.
+  - `"guess_type"="huckel"`  corresponds to the Hückel Hamiltonian 
+  - `"guess_type"="random"`  corresponds to random MO coefficients
 - converging HF calculation
-  - `maxSCF`: maximum number of iterations, by default `maxSCF=100`
-  - `threshHF`: convergence threshold on the commutator $\mathbf{F} \mathbf{P} \mathbf{S} - \mathbf{S} \mathbf{P} \mathbf{F}$, by default `threshHF=10^-7`
-  - `DIIS`: rely on the Direct Inversion in the Iterative Subspace (DIIS) where the Fock matrix is extrapolated at each iteration using the ones of the previous iterations, by default `DIIS=True`
-  - `n_DIIS`: size of the DIIS space, by default `n_DIIS=5`
-  - `level_shift`: a level shift increases the gap between the occupied and virtual orbitals, it can help to converge the SCF process for systems with a small HOMO-LUMO gap, by default `level_shift=0.0`eV
+  - `"maxSCF"`: maximum number of iterations, by default `"maxSCF"=100`
+  - `"threshHF"`: convergence threshold on the commutator $\mathbf{F} \mathbf{P} \mathbf{S} - \mathbf{S} \mathbf{P} \mathbf{F}$, by default `"threshHF"=10^-7`
+  - `"DIIS"`: rely on the Direct Inversion in the Iterative Subspace (DIIS) where the Fock matrix is extrapolated at each iteration using the ones of the previous iterations, by default `"DIIS"=True`
+  - `"n_DIIS"`: size of the DIIS space, by default `"n_DIIS"=5`
+  - `level_shift`: a level shift increases the gap between the occupied and virtual orbitals, it can help to converge the SCF process for systems with a small HOMO-LUMO gap, by default `"level_shift"=0.0`eV
 
-- orthogonalization matrix with the keyword `ortho_type`
-  - `ortho_type="lowdin"` (default): Löwdin orthogonalization 
-  - `ortho_type="canonical"`: Canonical orthogonalization 
+- orthogonalization matrix with the keyword `"ortho_type"`
+  - `"ortho_type"="lowdin"` (default): Löwdin orthogonalization 
+  - `"ortho_type"="canonical"`: Canonical orthogonalization 
 
-- print supplementary information about the calculation with the keyword `verbose`
-  - `verbose = False` by default, if `verbose = True` then more information about the CPU timing and additional quantities are printed. Note that this option is available for most methods in qcmath.
+- print supplementary information about the calculation with the keyword `"verbose"`
+  - `"verbose" = False` by default, if `"verbose" = True` then more information about the CPU timing and additional quantities are printed. Note that this option is available for most methods in qcmath.
 
 Two flavors of Hartree-Fock (HF) are available in qcmath: restricted HF (RHF) and unrestricted HF (UHF). To run a UHF calculation, one simply does
 
@@ -225,10 +225,10 @@ The GF2 correlation self-energy is closely related to MP2 and is given by the fo
 	\Sigma_{pq}^{\text{GF2}}(\omega) = \frac{1}{2}\sum_{ija} \frac{\bra{pa}\ket{ij} \bra{qa}\ket{ij}}{\omega + \epsilon_{a}^{\text{HF}} - \epsilon_{i}^{\text{HF}} - \epsilon_{j}^{\text{HF}}}  + \frac{1}{2}\sum_{iab} \frac{\bra{pi}\ket{ab} \bra{qi}\ket{ab}}{\omega + \epsilon_{i}^{\text{HF}} - \epsilon_{a}^{\text{HF}} - \epsilon_{b}^{\text{HF}}}
 ```
 Keywords need to be specified for the different schemes:
-- `GOF2`: run a one-shot calculation
-- `evGF2`: run an eigenvalue calculation 
-- `qsGF2`: run a quasiparticle calculation 
-- `upfGF2`: run an upfolded calculation
+- `"GOF2"`: run a one-shot calculation
+- `"evGF2"`: run an eigenvalue calculation 
+- `"qsGF2"`: run a quasiparticle calculation 
+- `"upfGF2"`: run an upfolded calculation
 
 Example of a one-shot calculation
 ```ruby
@@ -249,10 +249,10 @@ where the screened two-electron integrals are given by
 ```
 with $\mathbf{X}^{\text{ph}}$ and $\mathbf{Y}^{\text{ph}}$ are the eigenvectors and excitations energies $\Omega_{m}^{\text{ph}}$ are the eigenvalues of the ph-dRPA problem.
 Keywords for the method argument need to be specified for the different schemes: 
-- `GOWO`: run a one-shot calculation
-- `evGW`: run an eigenvalue calculation 
-- `qsGW`: run a quasiparticle calculation 
-- `upfGW`: run an upfolded calculation
+- `"GOWO"`: run a one-shot calculation
+- `"evGW"`: run an eigenvalue calculation 
+- `"qsGW"`: run a quasiparticle calculation 
+- `"upfGW"`: run an upfolded calculation
 
 Example of an eigenvalue calculation
 ```ruby
@@ -277,10 +277,10 @@ where the pp and hh versions of the screened two-electron integrals read
 ```
 The components $X_{cd,n}^{\text{pp/hh}}$ and $Y_{kl,n}^{\text{pp/hh}}$ and excitation energies $\Omega_{n}^{\text{pp/hh}}$ are the double addition/removal eigenvector components and eigenvalues, respectively, of the pp-RPA eigenvalue problem.
 Keywords for the method argument need to be specified for the different schemes:
-- `GOTO`: run a one-shot calculation
-- `evGT`: run an eigenvalue calculation 
-- `qsGT`: run a quasiparticle calculation 
-- `upfGT`: run an upfolded calculation
+- `"GOTO"`: run a one-shot calculation
+- `"evGT"`: run an eigenvalue calculation 
+- `"qsGT"`: run a quasiparticle calculation 
+- `"upfGT"`: run an upfolded calculation
 
 Example of a quasiparticle calculation
 ```ruby
@@ -339,10 +339,10 @@ Note that TDA can be used with the ph-RPA flavor and gives ph-dTDA. Ground state
 E_c^{\text{RPA}}=\frac{1}{2} \left(\sum_m \Omega_m^{\text{ph}} - \text{Tr}(\mathbf{A})\right) 
 ```
 Keywords for the method argument need to be specified for the different approaches and options:
-- `RPAx`: run a ph-RPA calculation
-- `RPA`: run a ph-dRPA calculation
+- `"RPAx"`: run a ph-RPA calculation
+- `"RPA"`: run a ph-dRPA calculation
 
-The option `TDA` can be set to `True`, by default `TDA=False`.
+The option `"TDA"` can be set to `True`, by default `"TDA"=False`.
 
 ### Particle-particle random-phase approximation (pp-RPA)
 
@@ -365,7 +365,7 @@ where $\mathbf{\Omega}^{\text{pp/hh}}$ are the diagonal matrices of the double a
 ```
 The $\mathbf{X}^{\text{pp/hh}}$ and $\mathbf{Y}^{\text{pp/hh}}$ are the double addition/removal transition coefficients matrices. In the same way we did for the ph-RPA, we can obtain the correlation energy at the pp-RPA level using [^7]
 $$E_c^{\text{ppRPA}} =  \frac{1}{2} \left(\sum_n \Omega_n^{\text{pp}}  - \sum_n \Omega_n^{\text{hh}}  - \text{Tr}\mathbf{C}^{\text{pp}} - \text{Tr}\mathbf{D}^{\text{hh}}\right)$$
-The keyword to use pp-RPA is `pp-RPA`. Note that TDA is also available with the option `TDA=True`.
+The keyword to use pp-RPA is `"pp-RPA"`. Note that TDA is also available with the option `"TDA"=True`.
 
 ### Bethe-Salpeter equation (BSE)
 The Bethe-Salpeter equation (BSE) is related to the two-body Green's function (2-GF). The central quantity is the so-called BSE kernel defined as the functional derivative of the self-energy with respect to the 1-GF. There are several approximations of the self-energy and each one of them leads to a different BSE approximation. The common central equation is the following eigenvalue equation
@@ -374,7 +374,7 @@ The Bethe-Salpeter equation (BSE) is related to the two-body Green's function (2
 \begin{pmatrix}\mathbf{A}^{\text{BSE}} & \mathbf{B}^{\text{BSE}} \\ -\mathbf{B}^{\text{BSE}} & -\mathbf{A}^{\text{BSE}} \end{pmatrix}\cdot\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}=\mathbf{\Omega}_m^{\text{BSE}}\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}
 ```
     
-where the BSE matrix elements depend on the choice of the BSE kernel. To run a BSE calculation we have first to specify the approximation for the self-energy with the method argument and the keyword for this option is `BSE=True`. Note that in general a BSE calculation is done in the static approximation, which is the equivalent of the adiabatic approximation in TD-DFT. It is possible to take into account dynamical effects using first-order perturbation theory [^8] using the option `dBSE=True`. This dynamical correction is applicable for all the different BSE kernels available in qcmath. Note that this dynamical correction is only available in TDA with the option `dTDA`.
+where the BSE matrix elements depend on the choice of the BSE kernel. To run a BSE calculation we have first to specify the approximation for the self-energy with the method argument and the keyword for this option is `BSE=True`. Note that in general a BSE calculation is done in the static approximation, which is the equivalent of the adiabatic approximation in TD-DFT. It is possible to take into account dynamical effects using first-order perturbation theory [^8] using the option `dBSE=True`. This dynamical correction is applicable for all the different BSE kernels available in qcmath. Note that this dynamical correction is only available in TDA with the option `"dTDA"`.
 
 # Programmer guide
 
