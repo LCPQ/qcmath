@@ -46,14 +46,26 @@ Due to its modular structure it should be easy to implement your own new method 
 There is a module_example.nb notebook in the utils folder that explains how to add a module to the code as well as describing the coding convention. 
 --->
 
-In this chapter, we present a quantum chemistry software for electronic structure calculations based on the Wolfram Mathematica language. The purpose of this software is to take advantage of the powerful symbolic nature of Mathematica to help newcomers in quantum chemistry easily develop their ideas. 
+# qcmath
+Mathematica modules for electronic structure calculations developed at the 
+Laboratoire de Chimie et Physique Quantiques ([LCPQ](https://www.lcpq.ups-tlse.fr)) UMR5626 (Toulouse, France).
+The purpose of this software is to take advantage of the powerful symbolic nature of Mathematica to help newcomers in quantum chemistry easily develop their ideas.
+Note that qcmath is **not** designed for computational efficiency.
+
+**Contributors:**
+- [Pierre-Francois Loos](https://pfloos.github.io/WEB_LOOS)
+- [Anthony Scemama](https://scemama.github.io)
+- Enzo Monino
+- Antoine Marie
+- Raul Quintero
+
 
 # Introduction
 Most of the quantum chemistry methods are well suited for the use of computers. Indeed, the matrix formulation of quantum mechanics allows us to greatly benefit from linear algebra packages like LAPACK and BLAS. Thus, a plethora of quantum chemistry software is available, whether they are free or commercial. This software can be devoted to some specific methods or many different ones, they can use a specific type of basis functions or various ones, etc $\ldots$ A significant amount of quantum chemistry codes, covering all of its methods, are available and a list of most of them can be found in Wikipedia (https://en.wikipedia.org/wiki/List_of_quantum_chemistry_and_solid-state_physics_software). 
 
 But unfortunately, even though most of these software are well designed for efficiency purposes, they can be difficult to read (when they are open source) due to the use of the low-level programming language. They are also not so much intended for understanding and learning. This is where qcmath comes in, indeed, the main goal of qcmath is to help newcomers in quantum chemistry to easily develop their ideas and codes. Note that some software are using higher-level programming languages that can improve the understanding of the code. This qcmath software is a collection of Mathematica modules for electronic structure calculations. 
 
-Before going into details of qcmath let's say a few words about the Mathematica environment. Wolfram Mathematica is a software system with built-in libraries that can be used for many different purposes. It was conceived by Stephen Wolfram and is developed by Wolfram Research. The main strengths of this language are the possibility to do computer algebra (derivatives, integrals, expression simplifications, ...), then these different expressions can be evaluated numerically. Another important point is the capability of doing very sophisticated plots of various types of functions in 1, 2, and 3 dimensions. Many examples of applications are available in many different books. All these different points make Mathematica a very powerful tool used in many different areas of science whether it is for educational purposes, research, or industry. Mathematica is split into two parts: the kernel and the front end. The kernel interprets expressions and returns result expressions that can be displayed by the front end. The original front end is a notebook interface and allows the creation and editing of notebook documents that can contain code, plaintext, images, and graphics. The qcmath software relies on these notebook documents. Note that qcmath is \textbf{not} designed for computational efficiency. 
+Before going into details of qcmath let's say a few words about the Mathematica environment. Wolfram Mathematica is a software system with built-in libraries that can be used for many different purposes. It was conceived by Stephen Wolfram and is developed by Wolfram Research. The main strengths of this language are the possibility to do computer algebra (derivatives, integrals, expression simplifications, ...), then these different expressions can be evaluated numerically. Another important point is the capability of doing very sophisticated plots of various types of functions in 1, 2, and 3 dimensions. Many examples of applications are available in many different books. All these different points make Mathematica a very powerful tool used in many different areas of science whether it is for educational purposes, research, or industry. Mathematica is split into two parts: the kernel and the front end. The kernel interprets expressions and returns result expressions that can be displayed by the front end. The original front end is a notebook interface and allows the creation and editing of notebook documents that can contain code, plaintext, images, and graphics. The qcmath software relies on these notebook documents. Note that qcmath is **not** designed for computational efficiency. 
 
 # Installation guide
 The qcmath software can be downloaded on GitHub as a Git repository
@@ -94,7 +106,7 @@ The call to the qcmath module is done with the qcmath word. Then, we have to spe
 ```
 qcmath["H2","6-31g",{"RHF"}]
 ```
-The molecular geometry is specified in a .xyz file in the mol directory while the basis set file is in the basis directory. Other options can be specified like the charge and the spin multiplicity, if they are not stated then by default the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital} and the default value is `False` (spatial orbitals by default). All options are listed in the `main/default_options.nb`.
+The molecular geometry is specified in a .xyz file in the mol directory while the basis set file is in the basis directory. Other options can be specified like the charge and the spin multiplicity, if they are not stated then by default the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in the `main/default_options.nb`.
 
 # User guide
 The qcmath software is still in development, so many of the features presented in the following are not available yet but constitute the first roadmap. This User guide introduces some theoretical background and displays the functionalities of these methods.
@@ -362,43 +374,26 @@ where $\bOme^{\pp/\hh}$ are the diagonal matrices of the double addition/removal
 \end{align}
 \end{subequations}
 The $\bX^{\pp/\hh}$ and $\bY^{\pp/\hh}$ are the double addition/removal transition coefficients matrices. In the same way we did for the ph-RPA, we can obtain the correlation energy at the pp-RPA level using \cite{Peng_2013}
-\begin{equation}
-\EcppRPA =  \frac{1}{2} \qty(\sum_n \Omega_n^{\pp}  - \sum_n \Omega_n^{\hh}  - \text{Tr}\bm{C}^{\pp} - \text{Tr}\bm{D}^{\hh})
-\end{equation}
+$$E_c^{\text{ppRPA}} =  \frac{1}{2} \left(\sum_n \Omega_n^{\text{pp}}  - \sum_n \Omega_n^{\text{hh}}  - \text{Tr}\mathbf{C}^{\text{pp}} - \text{Tr}\mathbf{D}^{\text{hh}}\right)$$
 The keyword to use the pp-RPA is `pp-RPA`. Note that TDA is also available with the option `TDA=True`.
 
 ### Bethe-Salpeter equation (BSE)
 The Bethe-Salpeter equation (BSE) is related to the two-body Green's function (2-GF). The central quantity is the so-called BSE kernel defined as the functional derivative of the self-energy with respect to the 1-GF. As exposed in Section~\ref{sec:charged_excitations}, there are several approximations of the self-energy and each one of them leads to a different BSE approximation. The common central equation is the following eigenvalue equation
-\begin{equation}
-    \begin{pmatrix}
-    	\bA^{\BSE} & \bB^{\BSE} 
-		\\
-	    -\bB^{\BSE} & -\bA^{\BSE}
-    \end{pmatrix}
-	\cdot 
-    \begin{pmatrix}
-	    \bX_{m}^{\BSE} 
-	    \\
-	    \bY_{m}^{\BSE}
-    \end{pmatrix}
-	=
-	\Ome_{m}^{\BSE}
-	\begin{pmatrix}
-		\bX_{m}^{\BSE} 
-		\\
-		\bY_{m}^{\BSE}
-	\end{pmatrix}
-\end{equation}
-where the BSE matrix elements depend on the choice of the BSE kernel. To run a BSE calculation we have first to specify the approximation for the self-energy with the method argument and the keyword for this option is `BSE=True`. Note that in general a BSE calculation is done in the static approximation, which is the equivalent of the adiabatic approximation in TD-DFT. It is possible to take into account dynamical effects using first-order perturbation theory \cite{Loos_2020h} using the option `{dBSE=True`. This dynamical correction is applicable for all the different BSE kernels available in qcmath. Note that this dynamical correction is only available in TDA with the option `dTDA`.
+
+```math
+\begin{pmatrix}\mathbf{A}^{\text{BSE}} & \mathbf{B}^{\text{BSE}} \\ -\mathbf{B}^{\text{BSE}} & -\mathbf{A}^{\text{BSE}} \end{pmatrix}\cdot\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}=\Omega_m^{\text{BSE}}\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}
+```
+    
+where the BSE matrix elements depend on the choice of the BSE kernel. To run a BSE calculation we have first to specify the approximation for the self-energy with the method argument and the keyword for this option is `BSE=True`. Note that in general a BSE calculation is done in the static approximation, which is the equivalent of the adiabatic approximation in TD-DFT. It is possible to take into account dynamical effects using first-order perturbation theory \cite{Loos_2020h} using the option `dBSE=True`. This dynamical correction is applicable for all the different BSE kernels available in qcmath. Note that this dynamical correction is only available in TDA with the option `dTDA`.
 
 # Programmer guide
 
 As it was said in the introduction of this chapter, one goal of qcmath is to allow newcomers in quantum chemistry to test and develop their ideas in the code. So they have to be able to add their methods in qcmath. To do so we have created a notebook example called `module_example.nb` to help the user. Here we describe the different steps to add a new method to qcmath:
-\begin{enumerate}
-\item The new method needs to be implemented in its notebook
-\item add your method in the utils/list_method.nb and specify the dependencies (ex: if post-HF method $\rightarrow$ dependency=`RHF`)
-\item add default options in main/default_options.nb if needed
-\item add a call to your method in Main.nb as
+
+- The new method needs to be implemented in its notebook
+- Add your method in the utils/list_method.nb and specify the dependencies (ex: if post-HF method $\rightarrow$ dependency=`RHF`)
+- Add default options in main/default_options.nb if needed
+- Add a call to your method in Main.nb as
 ```
 NameNewMethod="NameNewMethod"
 If[ToDoModules[NameNewMethod]["Do"] == True,
