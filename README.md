@@ -80,7 +80,7 @@ pip install pyscf
 
 PySCF is used for the computation of one- and two-electron integrals. Here is the list of the requirements to use qcmath:
 - Linux OS
-- Wolfram Mathematica 
+- Wolfram Mathematica $\geq$ 12.1
 - PySCF
 - Python $\geq$ 3.6.0 
 - Numpy $\geq$ 1.13
@@ -216,7 +216,7 @@ Keywords need to be specified for the different schemes:
 - `upfGF2`: run an upfolded calculation
 
 Example of a one-shot calculation
-```
+```ruby
 qcmath["H2","6-31g",{"G0F2"}]
 ```
 Note that here, an RHF calculation is done by default.
