@@ -107,19 +107,27 @@ Once this first step is done, one can run a qcmath calculation as follows
 ```ruby
 qcmath[molecule_name,basis_set,methods]
 ```
-The call to the qcmath module is done with the qcmath word. Then, one has to specify three arguments. These arguments are strings or a list of strings, the first one is the name of the molecule that we want to study and it is defined as a string. The second one is the basis set which is also a string. The last one is a list of methods that one wants to use and it is defined with a list of strings. To simplify the explanations, let us see the example of the $\text{H}_2$ molecule in the 6-31G basis set using the restricted Hartree-Fock method:
+The call to the qcmath module is done with the qcmath keyword. Then, one has to specify three arguments. These arguments are strings or a list of strings. The first one is the name of the molecule that we want to study and it is defined as a string. The second one is the basis set which is also a string. The last one is a list of methods that one wants to use and it is defined with a list of strings. In summary, taking the example of the $\text{H}_2$ molecule in the 6-31G basis set using the restricted Hartree-Fock method, the qcmath module call would resemble the following code:
 ```ruby
 qcmath["H2","6-31g",{"RHF"}]
 ```
-The molecular geometry is specified in a .xyz file in the `mol` directory while the basis set file is in the `basis` directory. Other options can be specified like the charge and the spin multiplicity. If they are not stated then by default, the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in the `main/default_options.nb` notebook in the form of a dictionary.
 
-# User guide
-The qcmath software is still in development, so many of the features presented in the following are not available yet but constitute the first roadmap. This User guide introduces some theoretical background and displays the functionalities of these methods.
+The molecular geometry is provided through a .xyz file located in the `mol` directory, while the basis set file is stored in the `basis` directory. Additional options can be specified, such as the charge and spin multiplicity of the molecule. If these options are not explicitly stated, the default values are zero for the charge (neutral) and singlet state for the spin multiplicity.
+
+Furthermore, options related to different methods can also be specified, but we will discuss them in the upcoming section. It is worth noting that most of the presented methods offer both spin and spatial orbital implementations. You can choose between them using the keyword `spinorbital`, with the default value being `False` (indicating spatial orbitals as the default choice).
+
+For a comprehensive list of all available options, including charge, spin multiplicity, and method-related choices, please refer to the `main/default_options.nb` notebook. This notebook presents the options in the form of a dictionary, providing a convenient reference for configuring and customizing the calculations.
+
+# User Guide
+
+The qcmath software is currently undergoing active development, and while many of the features discussed below are not yet available, they represent the initial roadmap for the software's future. This User Guide provides a comprehensive introduction to the underlying theoretical concepts and showcases the functionalities offered by these methods. It serves as a valuable resource to gain insights into the theoretical background and explore the capabilities that will be incorporated into qcmath as it continues to evolve.
 
 ## Ground-state calculations
 
 ### Hartree-Fock
-Within the Hartree-Fock (HF) approximation, the electronic wave function is written as a Slater determinant of $N$ molecular orbitals (MOs). The restricted HF (RHF) formalism leads to the Roothaan-Hall equations $\mathbf{F} \mathbf{C} = \mathbf{S} \mathbf{C} \mathbf{\epsilon}$ where $\mathbf{F}$ is the Fock matrix, $\mathbf{C}$ is the matrix of MO coefficients, $\mathbf{S}$ is the atomic orbital overlap matrix and $\mathbf{\epsilon}$ is a diagonal matrix of the orbital energies. Because the Fock matrix depends on $\mathbf{C}$ that is obtained from the Fock matrix itself, these equations need to be solved self-consistently and some options can be specified: 
+In the context of the Hartree-Fock (HF) approximation, the electronic wave function is expressed as a Slater determinant comprising $N$ molecular orbitals (MOs). Within the restricted HF (RHF) formalism, the Roothaan-Hall equations come into play, given by $\mathbf{F} \mathbf{C} = \mathbf{S} \mathbf{C} \mathbf{\epsilon}$. Here, $\mathbf{F}$ represents the Fock matrix, $\mathbf{C}$ denotes the matrix of MO coefficients, $\mathbf{S}$ stands for the matrix representing atomic orbital overlaps, and $\mathbf{\epsilon}$ is a diagonal matrix containing the orbital energies.
+
+Since the Fock matrix relies on the MO coefficients $\mathbf{C}$, which are obtained from the Fock matrix itself, these equations necessitate a self-consistent solution. To facilitate this process, various options can be specified to customize the calculations and achieve desired outcomes:
 - an initial guess of the Fock matrix needs to be diagonalized to give the MO coefficients and this initial guess is described by the keyword `mo_guess`
   - `mo_guess="core"` (default) corresponds to the core Hamiltonian defined as $\mathbf{H_c} = \mathbf{T} + \mathbf{V}$ where $\mathbf{T}$ is the kinetic energy matrix and $\mathbf{V}$ is the external potential.
   - `mo_guess="huckel"`  corresponds to the Hückel Hamiltonian 
