@@ -69,12 +69,12 @@ Before going into details of qcmath let's say a few words about the Mathematica 
 
 # Installation guide
 The qcmath software can be downloaded on GitHub as a Git repository
-```ruby
+```
 git clone https://github.com/LCPQ/qcmath.git
 ```
 
 Then define your `QCMATH_ROOT` and install PySCF using `pip`
-```ruby
+```
 pip install pyscf
 ```
 
