@@ -391,5 +391,5 @@ For each new method notebook, it is essential to organize the code into potentia
 [^4]:
 [^5]: J. Tölle and G. Kin-Lic Chan, J. Chem. Phys. 158, 124123 (2023).
 [^6]: M. E. Casida, J. Chem. Phys. 122, 054111 (2005).
-[^7]:
-[^8]:
+[^7]: D. Peng, S. N. Steinmann, H. van Aggelen, J. Chem. Phys. 139, 104112 (2013).
+[^8]: P.-F. Loos and X. Blase, J. Chem. Phys. 153, 114120 (2020).
