@@ -174,7 +174,9 @@ qcmath["H2","6-31g",{"UHF","MP2"}]
 
 ## Charged excitations
 
-Methods based on the one-body Green's function (1-GF) allow us to describe charged excitations, i.e. ionization potential (IP) and electron affinity (EA) of the system. This part is the core of qcmath and hence, various methods, approximations, and options are available. Thus, for the sake of clarity, this part is structured as follows. First, we do a quick introduction on the general equations depending on the level of (partial) self-consistency. These general equations are common to the three approximations of the self-energy available in qcmath, the second-order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. Finally, we give the various expressions specific to the different approximations of the self-energy. 
+Methods based on the one-body Green's function (1-GF) offer a means to describe charged excitations, namely, the ionization potential (IP) and electron affinity (EA) of a system. This particular aspect forms the heart of qcmath, with a diverse range of methods, approximations, and options available. To ensure clarity and coherence, this section is organized as follows:
+Firstly, we provide a brief introduction to the general equations that depend on the degree of (partial) self-consistency. These general equations are shared among the three self-energy approximations implemented in qcmath: the second-order Green's function (GF2), the $GW$ approximation, and the $T$-matrix approximation. By outlining these common equations, we establish a foundational understanding of the framework.
+Subsequently, we present the specific expressions corresponding to each of the self-energy approximations. This breakdown allows for a comprehensive exploration of the distinct methodologies incorporated in qcmath, enabling users to leverage the most suitable approach for their research goals.
 
 Three levels of (partial) self-consistency are available in qcmath:
 - the one-shot scheme where quasiparticles and satellites are obtained by solving, for each orbital $p$, the frequency-dependent quasiparticle equation 
