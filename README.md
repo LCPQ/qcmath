@@ -363,11 +363,11 @@ where the BSE matrix elements depend on the choice of the BSE kernel. To run a B
 
 # Programmer guide
 
-As it was said in the introduction of this chapter, one goal of qcmath is to allow newcomers in quantum chemistry to test and develop their ideas in the code. So they have to be able to add their methods in qcmath. To do so we have created a notebook example called `module_example.nb` to help the user. Here we describe the different steps to add a new method to qcmath:
+As mentioned in the chapter's introduction, one of the primary objectives of qcmath is to enable newcomers in quantum chemistry to explore and advance their ideas through coding. Therefore, it is crucial to provide them with the ability to incorporate their methods into qcmath. To facilitate this process, we have developed a notebook example called `module_example.nb` to guide users step-by-step. The following outlines the different stages involved in adding a new method to qcmath:
 
 - The new method needs to be implemented in its notebook
-- Add your method in the utils/list_method.nb and specify the dependencies (ex: if post-HF method $\rightarrow$ dependency=`RHF`)
-- Add default options in main/default_options.nb if needed
+- Add your method in the `utils/list_method.nb` and specify the dependencies (ex: if post-HF method $\rightarrow$ dependency=`RHF`)
+- Add default options in `main/default_options.nb` if needed
 - Add a call to your method in Main.nb as
 ```ruby
 NameNewMethod="NameNewMethod"
@@ -381,6 +381,6 @@ If[verbose == True,
   Print["CPU time for "<>NameNewMethod<>" calculation= ", time]];
 ];
 ```
-Each new method notebook needs to be divided into (potentially) three modules. The first part reads the input and the options, then call either the spin or spatial orbitals module, and finally returns the associated output. Then the two other modules are devoted to the implementation of the new method in spin and spatial orbitals. Note that if your method is, for example, only implemented in spatial orbitals then your notebook will be divided into only two parts. This information can be found in `module_example.nb`. 
+For each new method notebook, it is essential to organize the code into potentially three modules. The first module is responsible for reading the input and options, followed by invoking either the spin or spatial orbitals module, and ultimately returning the corresponding output. The remaining two modules are dedicated to implementing the new method in spin and spatial orbitals, respectively. It is important to note that if your method is exclusively implemented in spatial orbitals, your notebook will consist of only two parts. Further details regarding this structure can be found in the `module_example.nb` notebook.
 
 
