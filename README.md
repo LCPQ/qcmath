@@ -290,7 +290,10 @@ qcmath["H2","6-31g",{"qsGT"}]
 Note that here, an RHF calculation is done by default.
 
 ## Neutral excitations
-In qcmath, the methods available for the computation of excitation energies are in the form of a Casida-like equation.[^6] This equation is an eigenvalue equation that is very common in linear response theory. It is a central equation in time-dependent density functional theory (TD-DFT), random phase approximation (RPA), and the Bethe-Salpeter equation (BSE). In this part we talk first about the RPA method and make the distinction between different flavors of this method, then we discuss the BSE method.
+
+Within qcmath, the computation of excitation energies utilizes methods formulated as a Casida-like equation.[^6] This equation is an eigenvalue equation that serves as a fundamental component in linear response theory. It plays a pivotal role in various approaches, including time-dependent density functional theory (TD-DFT), the random phase approximation (RPA), and the Bethe-Salpeter equation (BSE).
+In this section, we begin by exploring the RPA method and distinguishing between different variations within this framework. By examining these different flavors of the RPA method, we gain insights into their unique characteristics and applicability.
+Subsequently, we delve into the discussion of the BSE method. This method represents another important approach for computing excitation energies, with its distinct theoretical foundations and computational considerations. By exploring the BSE method, users can gain a comprehensive understanding of its principles and its role within qcmath.
 
 ### Particle-hole random-phase approximation (ph-RPA)
 
