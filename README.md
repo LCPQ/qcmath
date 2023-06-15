@@ -3,7 +3,7 @@
 
 Mathematica modules for electronic structure calculations developed at the 
 Laboratoire de Chimie et Physique Quantiques ([LCPQ](https://www.lcpq.ups-tlse.fr)) UMR5626 (Toulouse, France).
-qcmath is primarily developed to help newcomers in quantum chemistry to easily develop their own ideas and codes.
+qcmath is primarily developed to help newcomers in quantum chemistry easily develop their own ideas and codes.
 Note that qcmath is **not** designed for computational efficiency.
 
 **Contributors:**
@@ -18,7 +18,7 @@ Note that qcmath is **not** designed for computational efficiency.
 ## Ground-state calculations
 - restricted and unrestricted Hartree-Fock (HF)
 - Moller-Plesset (MP) perturbation theory
-- various flavours of coupled-cluster (CC) calculations
+- various flavors of coupled-cluster (CC) calculations
 
 ## Charged excitations
 - *GW* approximation
@@ -42,8 +42,8 @@ To be written...
 
 # Coding and contributing to qcmath
 
-Due to its modular structure it should be easy to implement your own new method in qcmath.
-There is a module_example.nb notebook in the utils folder that explains how to add a module to the code as well as describing the coding convention. 
+Due to its modular structure, it should be easy to implement your own new method in qcmath.
+There is a module_example.nb notebook in the utils folder that explains how to add a module to the code as well as describes the coding convention. 
 --->
 
 # qcmath
@@ -114,7 +114,7 @@ The qcmath software is still in development, so many of the features presented i
 ## Ground state calculations
 
 ### Hartree-Fock
-Within the Hartree-Fock (HF) approximation, the electronic wave function is written as a Slater determinant of $N$ molecular orbitals (MOs). We have seen that the restricted HF (RHF) formalism leads to the Roothaan-Hall equations $\mathbf{F} \mathbf{C} = \mathbf{S} \mathbf{C} \mathbf{\epsilon}$ where $\mathbf{F}$ is the Fock matrix, $\mathbf{C}$ is the matrix of MO coefficients, $\mathbf{S}$ is the atomic orbital overlap matrix and $\mathbf{\epsilon}$ is a diagonal matrix of the orbital energies. Because the Fock matrix depends on $\mathbf{C}$ that are obtained from the Fock matrix itself, these equations need to be solved self-consistently and some options can be specified: 
+Within the Hartree-Fock (HF) approximation, the electronic wave function is written as a Slater determinant of $N$ molecular orbitals (MOs). We have seen that the restricted HF (RHF) formalism leads to the Roothaan-Hall equations $\mathbf{F} \mathbf{C} = \mathbf{S} \mathbf{C} \mathbf{\epsilon}$ where $\mathbf{F}$ is the Fock matrix, $\mathbf{C}$ is the matrix of MO coefficients, $\mathbf{S}$ is the atomic orbital overlap matrix and $\mathbf{\epsilon}$ is a diagonal matrix of the orbital energies. Because the Fock matrix depends on $\mathbf{C}$ that is obtained from the Fock matrix itself, these equations need to be solved self-consistently and some options can be specified: 
 - an initial guess for the Fock matrix needs to be diagonalized to give the MO coefficients and this initial guess is described by the keyword `mo_guess`
   - `mo_guess="core"` (default) corresponds to the core Hamiltonian defined as $\mathbf{H_c} = \mathbf{T} + \mathbf{V}$ where $\mathbf{T}$ is the kinetic energy matrix and $\mathbf{V}$ is the external potential.
   - `mo_guess="huckel"`  corresponds to the Hückel Hamiltonian 
@@ -160,7 +160,7 @@ qcmath["H2","6-31g",{"UHF","MP2"}]
 
 ## Charged excitations
 
-Methods based on the one body Green's function (1-GF) allow us to describe charged excitations, i.e. ionization potential (IP) and electron affinity (EA) of the system. This part is the core of qcmath and hence, various methods, approximations, and options are available. Thus, for the sake of clarity, this part is structured as follows, first, we do a quick introduction on the general equations depending on the level of (partial) self-consistency. These general equations are common to the three approximations of the self-energy available in qcmath, the second order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. Finally, we give the various expressions specific to the different approximations of the self-energy. 
+Methods based on the one body Green's function (1-GF) allow us to describe charged excitations, i.e. ionization potential (IP) and electron affinity (EA) of the system. This part is the core of qcmath and hence, various methods, approximations, and options are available. Thus, for the sake of clarity, this part is structured as follows, first, we do a quick introduction on the general equations depending on the level of (partial) self-consistency. These general equations are common to the three approximations of the self-energy available in qcmath, the second-order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. Finally, we give the various expressions specific to the different approximations of the self-energy. 
 
 Three levels of (partial) self-consistency are available in qcmath:
 - the one-shot scheme where quasiparticles and satellites are obtained by solving, for each orbital $p$, the frequency-dependent quasiparticle equation 
@@ -246,7 +246,7 @@ qcmath["H2","6-31g",{"evGW"}]
 Note that here, an RHF calculation is done by default.
 
 ### T-matrix approximation
-The T-matrix correlation self-enegy is given by
+The T-matrix correlation self-energy is given by
 ```math
 	\Sigma_{pq}^{GT}(\omega) 
 	= \sum_{in} \frac{M_{pi,n}^{\text{pp}}M_{qi,n}^{\text{pp}}}{\omega + \epsilon_{i}^{\text{HF}} - \Omega_{n}^{\text{pp}}}
@@ -347,7 +347,7 @@ where $\mathbf{\Omega}^{\text{pp/hh}}$ are the diagonal matrices of the double a
 ```
 The $\mathbf{X}^{\text{pp/hh}}$ and $\mathbf{Y}^{\text{pp/hh}}$ are the double addition/removal transition coefficients matrices. In the same way we did for the ph-RPA, we can obtain the correlation energy at the pp-RPA level using \cite{Peng_2013}
 $$E_c^{\text{ppRPA}} =  \frac{1}{2} \left(\sum_n \Omega_n^{\text{pp}}  - \sum_n \Omega_n^{\text{hh}}  - \text{Tr}\mathbf{C}^{\text{pp}} - \text{Tr}\mathbf{D}^{\text{hh}}\right)$$
-The keyword to use the pp-RPA is `pp-RPA`. Note that TDA is also available with the option `TDA=True`.
+The keyword to use pp-RPA is `pp-RPA`. Note that TDA is also available with the option `TDA=True`.
 
 ### Bethe-Salpeter equation (BSE)
 The Bethe-Salpeter equation (BSE) is related to the two-body Green's function (2-GF). The central quantity is the so-called BSE kernel defined as the functional derivative of the self-energy with respect to the 1-GF. There are several approximations of the self-energy and each one of them leads to a different BSE approximation. The common central equation is the following eigenvalue equation
