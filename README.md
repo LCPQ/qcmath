@@ -56,7 +56,7 @@ Note that qcmath is **not** designed for computational efficiency.
 - [Pierre-Francois Loos](https://pfloos.github.io/WEB_LOOS)
 - [Anthony Scemama](https://scemama.github.io)
 - Enzo Monino
-- Antoine Marie
+- [Antoine Marie](https://antoine-marie.github.io)
 - Raul Quintero
 
 
