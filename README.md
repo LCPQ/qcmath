@@ -45,10 +45,10 @@ To be written...
 Due to its modular structure, it should be easy to implement your own new method in qcmath.
 There is a module_example.nb notebook in the utils folder that explains how to add a module to the code as well as describes the coding convention. 
 --->
+# qcmath
 
 <img src="logo_qcmath.png"  width="250">
 
-# qcmath
 Mathematica modules for electronic structure calculations developed at the 
 Laboratoire de Chimie et Physique Quantiques ([LCPQ](https://www.lcpq.ups-tlse.fr)) UMR5626 (Toulouse, France).
 The purpose of this software is to take advantage of the powerful symbolic nature of [Mathematica](https://www.wolfram.com/mathematica/) to help newcomers in quantum chemistry easily develop their ideas.
