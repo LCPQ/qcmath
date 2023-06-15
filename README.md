@@ -69,12 +69,12 @@ Before going into details of qcmath let's say a few words about the Mathematica 
 
 # Installation guide
 The qcmath software can be downloaded on GitHub as a Git repository
-```
+```ruby
 git clone https://github.com/LCPQ/qcmath.git
 ```
 
 Then define your `QCMATH_ROOT` and install PySCF using `pip`
-```
+```ruby
 pip install pyscf
 ```
 
@@ -89,7 +89,7 @@ Note that the version of Python and Numpy is fixed by PySCF.
 
 # Quick start
 Before running any qcmath calculation, we need to define the working directory as 
-```
+```ruby
 SetDirectory[NotebookDirectory[]];
 path=Directory[];
 py="your_path_to_python"
@@ -99,11 +99,11 @@ NotebookEvaluate[path<>"/src/Main/Main.nb"]
 The first line set the working directory as the notebook directory. This is to avoid changing directories while evaluating other notebooks. The second line defines the variable path as the current directory, i.e., the working one. The third line defines the path to your Python installation. The last line evaluates the main notebook and notes that we use the path variable to find the right directory. 
 
 Once this first step is done, we can run a qcmath calculation as follows
-```
+```ruby
 qcmath[molecule_name,basis_set,methods]
 ```
 The call to the qcmath module is done with the qcmath word. Then, we have to specify three arguments. These arguments are \textbf{strings} or a list of strings, the first one is the name of the molecule that we want to study and it is defined as a string. The second one is the basis set which is also a string. The last one is a list of methods that we want to use and it is defined with a list of strings. To simplify the explications let's see the example of the $\text{H}_2$ molecule in the 6-31g basis set using the restricted Hartree-Fock method:
-```
+```ruby
 qcmath["H2","6-31g",{"RHF"}]
 ```
 The molecular geometry is specified in a .xyz file in the mol directory while the basis set file is in the basis directory. Other options can be specified like the charge and the spin multiplicity, if they are not stated then by default the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in `main/default_options.nb`.
@@ -134,7 +134,7 @@ Within the Hartree-Fock (HF) approximation, the electronic wave function is writ
   - `verbose = False` by default, if `verbose = True` then more information about the CPU timing and additional quantities are printed. Note that this option is available for most methods in qcmath.
 
 Two flavors of Hartree-Fock (HF) are available in qcmath, the restricted HF (RHF) and the unrestricted HF (UHF). We have already seen in the previous section how to run an RHF calculation, for UHF it is very similar and we have to use "UHF"
-```
+```ruby
 qcmath["H2","6-31g",{"UHF"}]
 ```
 
@@ -145,21 +145,22 @@ E_c^{\text{MP2}} = \frac{1}{4} \sum_{ij}^{\text{occ}} \sum_{ab}^{\text{vir}} \fr
 ```
 
 Since MP2 needs an HF reference, a first HF calculation needs to be done. This is automatically taken into account by qcmath and a MP2 calculation can be done using 
-```
+```ruby
 qcmath["H2","6-31g",{"RHF","MP2"}]
+
 ```
 or 
-```
+```ruby
 qcmath["H2","6-31g",{"MP2"}]
 ```
 Note that in the last case, a RHF is performed by default so if we want to have a UHF reference we will run
-```
+```ruby
 qcmath["H2","6-31g",{"UHF","MP2"}]
 ```
 
 ## Charged excitations
-\label{sec:charged_excitations}
-We have seen in Section~\ref{sec:MP2} of Chapter~\ref{chap:1} that methods based on the one body Green's function (1-GF) allow us to describe charged excitations, i.e. ionization potential (IP) and electron affinity (EA) of the system. This part is the core of qcmath and hence, various methods, approximations, and options are available. Thus, for the sake of clarity, this part is structured as follows, first, we do a quick introduction on the general equations depending on the level of (partial) self-consistency. These general equations are common to the three approximations of the self-energy available in qcmath, the second order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. Finally, we give the various expressions specific to the different approximations of the self-energy. 
+
+Methods based on the one body Green's function (1-GF) allow us to describe charged excitations, i.e. ionization potential (IP) and electron affinity (EA) of the system. This part is the core of qcmath and hence, various methods, approximations, and options are available. Thus, for the sake of clarity, this part is structured as follows, first, we do a quick introduction on the general equations depending on the level of (partial) self-consistency. These general equations are common to the three approximations of the self-energy available in qcmath, the second order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. Finally, we give the various expressions specific to the different approximations of the self-energy. 
 
 Three levels of (partial) self-consistency are available in qcmath:
 - the one-shot scheme where quasiparticles and satellites are obtained by solving, for each orbital $p$, the frequency-dependent quasiparticle equation 
@@ -174,7 +175,7 @@ where the renormalization factor $Z_p$ is defined as
 ```math
 Z_p=\left[ 1-\frac{\partial \Sigma_{pp}(\omega)}{\partial \omega}\Bigr\rvert_{\omega =\epsilon^{\text{HF}}_p } \right]^{-1}
 ```
-- the eigenvalue scheme where we iterate on the quasiparticle solutions of Eq~\eqref{eq:lin_quasiparticle_equation_chap6} that are used to build the self-energy $\Sigma_{pp}^c$ (and $Z_p$)
+- the eigenvalue scheme where we iterate on the quasiparticle solutions of the linearized equation that are used to build the self-energy $\Sigma_{pp}^c$ (and $Z_p$)
 - the quasiparticle scheme where an effective Fock matrix built from a frequency-independent Hermitian self-energy as \cite{Monino_2021}
 ```math
 \tilde{F}_{pq}= F_{pq} + \tilde{\Sigma}_{pq}
@@ -185,7 +186,7 @@ where
 ```
 Note that the whole self-energy is computed for this last scheme.
 
-The non-linear Eq~\eqref{eq:w_quasiparticle_equation_chap6} can be exactly transformed in a linear eigenvalue problem by use of the upfolding process\cite{Backhouse_2020a,Bintrim_2021,Monino_2022}. For each orbital $p$, this yields a linear eigenvalue problem of the form
+The non-linear quasiparticle equation can be exactly transformed in a linear eigenvalue problem by use of the upfolding process\cite{Backhouse_2020a,Bintrim_2021,Monino_2022}. For each orbital $p$, this yields a linear eigenvalue problem of the form
 ```math
 \mathbf{H}_{p} \cdot \mathbf{c}_{\nu} = \epsilon_{\nu}^{\text{QP}} \mathbf{c}_{\nu}
 ```
@@ -200,7 +201,7 @@ where $\nu$ runs over all solutions, quasiparticle and satellites and with \cite
 		(\mathbf{V}_{p}^{\text{2p1h}})^T	&	\mathbf{0}				&	\mathbf{C}^{\text{2p1h}}	
 	\end{pmatrix}
 ```
-Note that the different blocks will depend on the approximated self-energy. Now that the general equations have been set, we can turn to the various approximations of the self-energy. Three different approximations are available in qcmath: the second-order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. For each approximation the three partially self-consistent schemes and the upfolding process are available. Note also that, the regularization parameters seen in Chapter \ref{chap:4} are also available in qcmath.
+Note that the different blocks will depend on the approximated self-energy. Now that the general equations have been set, we can turn to the various approximations of the self-energy. Three different approximations are available in qcmath: the second-order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. For each approximation the three partially self-consistent schemes and the upfolding process are available. Note also that, the regularization parameters are also available in qcmath.
 %Note that the upfolding process is here written for the one-shot scheme 
  
 ### Second-order Green's function (GF2) approximation
@@ -239,7 +240,7 @@ Keywords for the method argument need to be specified for the different schemes:
 - `upfGW`: run an upfolded calculation
 
 Example of an eigenvalue calculation
-```
+```ruby
 qcmath["H2","6-31g",{"evGW"}]
 ```
 Note that here, an RHF calculation is done by default.
@@ -267,7 +268,7 @@ Keywords for the method argument need to be specified for the different schemes:
 - `upfGT`: run an upfolded calculation
 
 Example of a quasiparticle calculation
-```
+```ruby
 qcmath["H2","6-31g",{"qsGT"}]
 ```
 Note that here, an RHF calculation is done by default.
@@ -276,7 +277,6 @@ Note that here, an RHF calculation is done by default.
 In qcmath, the methods available for the computation of excitation energies are in the form of a Casida-like equation \cite{Casida_2005}. This equation is an eigenvalue equation that is very common in linear response theory. It is a central equation in time-dependent density functional theory (TD-DFT), random phase approximation (RPA), and the Bethe-Salpeter equation (BSE). In this part we talk first about the RPA method and make the distinction between different flavors of this method, then we discuss the BSE method.
 
 ### Particle-hole random-phase approximation (ph-RPA)
-\label{subsec:ph-RPA}
 
 The traditional RPA can be found under different names like RPAx or ph-RPA. We choose to call it ph-RPA to make the difference with the particle-particle RPA (pp-RPA). The ph-RPA problem takes the form of the following Casida-like equation 
 ```math
@@ -350,7 +350,7 @@ $$E_c^{\text{ppRPA}} =  \frac{1}{2} \left(\sum_n \Omega_n^{\text{pp}}  - \sum_n 
 The keyword to use the pp-RPA is `pp-RPA`. Note that TDA is also available with the option `TDA=True`.
 
 ### Bethe-Salpeter equation (BSE)
-The Bethe-Salpeter equation (BSE) is related to the two-body Green's function (2-GF). The central quantity is the so-called BSE kernel defined as the functional derivative of the self-energy with respect to the 1-GF. As exposed in Section~\ref{sec:charged_excitations}, there are several approximations of the self-energy and each one of them leads to a different BSE approximation. The common central equation is the following eigenvalue equation
+The Bethe-Salpeter equation (BSE) is related to the two-body Green's function (2-GF). The central quantity is the so-called BSE kernel defined as the functional derivative of the self-energy with respect to the 1-GF. There are several approximations of the self-energy and each one of them leads to a different BSE approximation. The common central equation is the following eigenvalue equation
 
 ```math
 \begin{pmatrix}\mathbf{A}^{\text{BSE}} & \mathbf{B}^{\text{BSE}} \\ -\mathbf{B}^{\text{BSE}} & -\mathbf{A}^{\text{BSE}} \end{pmatrix}\cdot\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}=\mathbf{\Omega}_m^{\text{BSE}}\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}
@@ -366,16 +366,14 @@ As it was said in the introduction of this chapter, one goal of qcmath is to all
 - Add your method in the utils/list_method.nb and specify the dependencies (ex: if post-HF method $\rightarrow$ dependency=`RHF`)
 - Add default options in main/default_options.nb if needed
 - Add a call to your method in Main.nb as
-```
+```ruby
 NameNewMethod="NameNewMethod"
 If[ToDoModules[NameNewMethod]["Do"] == True,
   NotebookEvaluate[path<>"/src/"<>NameNewMethod<>".nb"];
-```
-```
+
 PrintTemporary[Style[NameNewMethod<>" calculation...", Bold, Orange]];
 {time, outputsNewMethod} = Timing[NewMethod[arguments, options]];	
-```
-```
+
 If[verbose == True, 
   Print["CPU time for "<>NameNewMethod<>" calculation= ", time]];
 ];
