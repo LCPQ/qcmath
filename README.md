@@ -101,17 +101,17 @@ py="your_path_to_python"
 NotebookEvaluate[path<>"/src/Main/Main.nb"]
 ```
 
-The first line set the working directory as the notebook directory. This is to avoid changing directories while evaluating other notebooks. The second line defines the variable path as the current directory, i.e., the working one. The third line defines the path to your Python installation. The last line evaluates the main notebook and notes that we use the path variable to find the right directory. 
+To streamline the execution of other notebooks and prevent the need for directory changes, the first line of code sets the working directory as the directory containing the notebook. This ensures a seamless evaluation process. Following that, the second line establishes the variable `path` as the current directory, which corresponds to the working directory. The third line designates the path to your Python installation, allowing for appropriate configuration. Lastly, the main notebook is evaluated, with the inclusion of the `path` variable to locate the correct directory. This approach ensures smooth execution and seamless integration of the required files.
 
-Once this first step is done, we can run a qcmath calculation as follows
+Once this first step is done, one can run a qcmath calculation as follows
 ```ruby
 qcmath[molecule_name,basis_set,methods]
 ```
-The call to the qcmath module is done with the qcmath word. Then, one has to specify three arguments. These arguments are **strings** or a list of strings, the first one is the name of the molecule that we want to study and it is defined as a string. The second one is the basis set which is also a string. The last one is a list of methods that one wants to use and it is defined with a list of strings. To simplify the explanations, let us see the example of the $\text{H}_2$ molecule in the 6-31G basis set using the restricted Hartree-Fock method:
+The call to the qcmath module is done with the qcmath word. Then, one has to specify three arguments. These arguments are strings or a list of strings, the first one is the name of the molecule that we want to study and it is defined as a string. The second one is the basis set which is also a string. The last one is a list of methods that one wants to use and it is defined with a list of strings. To simplify the explanations, let us see the example of the $\text{H}_2$ molecule in the 6-31G basis set using the restricted Hartree-Fock method:
 ```ruby
 qcmath["H2","6-31g",{"RHF"}]
 ```
-The molecular geometry is specified in a .xyz file in the mol directory while the basis set file is in the basis directory. Other options can be specified like the charge and the spin multiplicity. If they are not stated then by default, the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in the `main/default_options.nb` notebook in the form of a dictionary.
+The molecular geometry is specified in a .xyz file in the `mol` directory while the basis set file is in the `basis` directory. Other options can be specified like the charge and the spin multiplicity. If they are not stated then by default, the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in the `main/default_options.nb` notebook in the form of a dictionary.
 
 # User guide
 The qcmath software is still in development, so many of the features presented in the following are not available yet but constitute the first roadmap. This User guide introduces some theoretical background and displays the functionalities of these methods.
@@ -119,16 +119,16 @@ The qcmath software is still in development, so many of the features presented i
 ## Ground-state calculations
 
 ### Hartree-Fock
-Within the Hartree-Fock (HF) approximation, the electronic wave function is written as a Slater determinant of $N$ molecular orbitals (MOs). We have seen that the restricted HF (RHF) formalism leads to the Roothaan-Hall equations $\mathbf{F} \mathbf{C} = \mathbf{S} \mathbf{C} \mathbf{\epsilon}$ where $\mathbf{F}$ is the Fock matrix, $\mathbf{C}$ is the matrix of MO coefficients, $\mathbf{S}$ is the atomic orbital overlap matrix and $\mathbf{\epsilon}$ is a diagonal matrix of the orbital energies. Because the Fock matrix depends on $\mathbf{C}$ that is obtained from the Fock matrix itself, these equations need to be solved self-consistently and some options can be specified: 
-- an initial guess for the Fock matrix needs to be diagonalized to give the MO coefficients and this initial guess is described by the keyword `mo_guess`
+Within the Hartree-Fock (HF) approximation, the electronic wave function is written as a Slater determinant of $N$ molecular orbitals (MOs). The restricted HF (RHF) formalism leads to the Roothaan-Hall equations $\mathbf{F} \mathbf{C} = \mathbf{S} \mathbf{C} \mathbf{\epsilon}$ where $\mathbf{F}$ is the Fock matrix, $\mathbf{C}$ is the matrix of MO coefficients, $\mathbf{S}$ is the atomic orbital overlap matrix and $\mathbf{\epsilon}$ is a diagonal matrix of the orbital energies. Because the Fock matrix depends on $\mathbf{C}$ that is obtained from the Fock matrix itself, these equations need to be solved self-consistently and some options can be specified: 
+- an initial guess of the Fock matrix needs to be diagonalized to give the MO coefficients and this initial guess is described by the keyword `mo_guess`
   - `mo_guess="core"` (default) corresponds to the core Hamiltonian defined as $\mathbf{H_c} = \mathbf{T} + \mathbf{V}$ where $\mathbf{T}$ is the kinetic energy matrix and $\mathbf{V}$ is the external potential.
   - `mo_guess="huckel"`  corresponds to the Hückel Hamiltonian 
   - `mo_guess="random"`  corresponds to random MO coefficients
 - converging HF calculation
   - `maxSCF`: maximum number of iterations, by default `maxSCF=100`
-  - `threshHF`: threshold for the HF to converge, by default `threshHF=10^-7`
-  - `DIIS`: we can use the Direct Inversion in the Iterative Subspace (DIIS) where the Fock matrix is extrapolated at each iteration using the ones of the previous iterations, by default `DIIS=True`
-  - `n_DIIS`: by default `n_DIIS=5`
+  - `threshHF`: convergence threshold on the commutator $\mathbf{F} \mathbf{P} \mathbf{S} - \mathbf{S} \mathbf{P} \mathbf{F}$, by default `threshHF=10^-7`
+  - `DIIS`: rely on the Direct Inversion in the Iterative Subspace (DIIS) where the Fock matrix is extrapolated at each iteration using the ones of the previous iterations, by default `DIIS=True`
+  - `n_DIIS`: size of the DIIS space, by default `n_DIIS=5`
   - `level_shift`: a level shift increases the gap between the occupied and virtual orbitals, it can help to converge the SCF process for systems with a small HOMO-LUMO gap, by default `level_shift=0.0`eV
 
 - orthogonalization matrix with the keyword `ortho_type`
@@ -138,7 +138,8 @@ Within the Hartree-Fock (HF) approximation, the electronic wave function is writ
 - print supplementary information about the calculation with the keyword `verbose`
   - `verbose = False` by default, if `verbose = True` then more information about the CPU timing and additional quantities are printed. Note that this option is available for most methods in qcmath.
 
-Two flavors of Hartree-Fock (HF) are available in qcmath, the restricted HF (RHF) and the unrestricted HF (UHF). We have already seen in the previous section how to run an RHF calculation, for UHF it is very similar and we have to use "UHF"
+Two flavors of Hartree-Fock (HF) are available in qcmath: restricted HF (RHF) and unrestricted HF (UHF). To run a UHF calculation, one simply does
+
 ```ruby
 qcmath["H2","6-31g",{"UHF"}]
 ```
@@ -149,7 +150,7 @@ The MP2 correlation energy is defined by
 E_c^{\text{MP2}} = \frac{1}{4} \sum_{ij}^{\text{occ}} \sum_{ab}^{\text{vir}} \frac{ |\bra{ij}\ket{ab}|^2 }{\epsilon^{\text{HF}}_i + \epsilon^{\text{HF}}_j - \epsilon^{\text{HF}}_a - \epsilon^{\text{HF}}_b}
 ```
 
-Since MP2 needs an HF reference, a first HF calculation needs to be done. This is automatically taken into account by qcmath and a MP2 calculation can be done using 
+Since MP2 needs a HF reference, a first HF calculation must be done. This is automatically taken into account by qcmath and a MP2 calculation can be done using 
 ```ruby
 qcmath["H2","6-31g",{"RHF","MP2"}]
 
@@ -165,7 +166,7 @@ qcmath["H2","6-31g",{"UHF","MP2"}]
 
 ## Charged excitations
 
-Methods based on the one body Green's function (1-GF) allow us to describe charged excitations, i.e. ionization potential (IP) and electron affinity (EA) of the system. This part is the core of qcmath and hence, various methods, approximations, and options are available. Thus, for the sake of clarity, this part is structured as follows, first, we do a quick introduction on the general equations depending on the level of (partial) self-consistency. These general equations are common to the three approximations of the self-energy available in qcmath, the second-order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. Finally, we give the various expressions specific to the different approximations of the self-energy. 
+Methods based on the one-body Green's function (1-GF) allow us to describe charged excitations, i.e. ionization potential (IP) and electron affinity (EA) of the system. This part is the core of qcmath and hence, various methods, approximations, and options are available. Thus, for the sake of clarity, this part is structured as follows. First, we do a quick introduction on the general equations depending on the level of (partial) self-consistency. These general equations are common to the three approximations of the self-energy available in qcmath, the second-order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. Finally, we give the various expressions specific to the different approximations of the self-energy. 
 
 Three levels of (partial) self-consistency are available in qcmath:
 - the one-shot scheme where quasiparticles and satellites are obtained by solving, for each orbital $p$, the frequency-dependent quasiparticle equation 
