@@ -385,4 +385,11 @@ If[verbose == True,
 ```
 For each new method notebook, it is essential to organize the code into potentially three modules. The first module is responsible for reading the input and options, followed by invoking either the spin or spatial orbitals module, and ultimately returning the corresponding output. The remaining two modules are dedicated to implementing the new method in spin and spatial orbitals, respectively. It is important to note that if your method is exclusively implemented in spatial orbitals, your notebook will consist of only two parts. Further details regarding this structure can be found in the `module_example.nb` notebook.
 
-
+[^1]:
+[^2]:
+[^3]:
+[^4]:
+[^5]:
+[^6]:
+[^7]:
+[^8]:
