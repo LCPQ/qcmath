@@ -102,7 +102,7 @@ Once this first step is done, we can run a qcmath calculation as follows
 ```
 qcmath[molecule_name,basis_set,methods]
 ```
-The call to the qcmath module is done with the qcmath word. Then, we have to specify three arguments. These arguments are \textbf{strings} or a list of strings, the first one is the name of the molecule that we want to study and it is defined as a string. The second one is the basis set which is also a string. The last one is a list of methods that we want to use and it is defined with a list of strings. To simplify the explications let's see the example of the \ce{H2} molecule in the 6-31g basis set using the restricted Hartree-Fock method:
+The call to the qcmath module is done with the qcmath word. Then, we have to specify three arguments. These arguments are \textbf{strings} or a list of strings, the first one is the name of the molecule that we want to study and it is defined as a string. The second one is the basis set which is also a string. The last one is a list of methods that we want to use and it is defined with a list of strings. To simplify the explications let's see the example of the $\text{H}_2$ molecule in the 6-31g basis set using the restricted Hartree-Fock method:
 ```
 qcmath["H2","6-31g",{"RHF"}]
 ```
@@ -141,7 +141,7 @@ qcmath["H2","6-31g",{"UHF"}]
 ### Møller-Plesset (MP) perturbation theory
 The MP2 correlation energy is defined by 
 ```math
-E_c^{\text{MP2}} = \frac{1}{4} \sum_{ij}^{\text{occ}} \sum_{ab}^{\text{vir}} \frac{ |\mel{ij}{}{ab}|^2 }{\epsilon^{\text{HF}}_i + \epsilon^{\text{HF}}_j - \epsilon^{\text{HF}}_a - \epsilon^{\text{HF}}_b}
+E_c^{\text{MP2}} = \frac{1}{4} \sum_{ij}^{\text{occ}} \sum_{ab}^{\text{vir}} \frac{ |\bra{ij}\ket{ab}|^2 }{\epsilon^{\text{HF}}_i + \epsilon^{\text{HF}}_j - \epsilon^{\text{HF}}_a - \epsilon^{\text{HF}}_b}
 ```
 
 Since MP2 needs an HF reference, a first HF calculation needs to be done. This is automatically taken into account by qcmath and a MP2 calculation can be done using 
@@ -206,7 +206,7 @@ Note that the different blocks will depend on the approximated self-energy. Now 
 ### Second-order Green's function (GF2) approximation
 The GF2 correlation self-energy is closely related to MP2 and is given by the following expression
 ```math
-	\Sigma_{pq}^{\text{GF2}}(\omega) = \frac{1}{2}\sum_{ija} \frac{\mel{pa}{}{ij} \pERI{qa}{ij}}{\omega + \epsilon_{a}^{\text{HF}} - \epsilon_{i}^{\text{HF}} - \epsilon_{j}^{\text{HF}}}  + \frac{1}{2}\sum_{iab} \frac{\pERI{pi}{ab} \pERI{qi}{ab}}{\omega + \epsilon_{i}^{\text{HF}} - \epsilon_{a}^{\text{HF}} - \epsilon_{b}^{\text{HF}}}
+	\Sigma_{pq}^{\text{GF2}}(\omega) = \frac{1}{2}\sum_{ija} \frac{\bra{pa}\ket{ij} \bra{qa}\ket{ij}}{\omega + \epsilon_{a}^{\text{HF}} - \epsilon_{i}^{\text{HF}} - \epsilon_{j}^{\text{HF}}}  + \frac{1}{2}\sum_{iab} \frac{\bra{pi}\ket{ab} \bra{qi}\ket{ab}}{\omega + \epsilon_{i}^{\text{HF}} - \epsilon_{a}^{\text{HF}} - \epsilon_{b}^{\text{HF}}}
 ```
 Keywords need to be specified for the different schemes:
 - `GOF2`: run a one-shot calculation
@@ -229,9 +229,9 @@ The $GW$ correlation self-enegy is given by
 ```
 where the screened two-electron integrals are given by 
 ```math
-	M_{pq,m}^{\text{ph}} = \sum_{ia} \braket*{pi}{qa} \left(\mathbf{X}^{\text{ph}} + \mathbf{Y}^{\text{ph}} \right)_{ia,m}
+	M_{pq,m}^{\text{ph}} = \sum_{ia} \braket{pi|qa} \left(\mathbf{X}^{\text{ph}} + \mathbf{Y}^{\text{ph}} \right)_{ia,m}
 ```
-with $\mathbf{X}^{\text{ph}}$ and $\mathbf{Y}^{\text{ph}}$ are the eigenvectors and excitations energies $\Omega_{m}^{\text{ph}}$ are the eigenvalues of the ph-dRPA problem that is discussed in Section~\ref{subsec:ph-RPA}.
+with $\mathbf{X}^{\text{ph}}$ and $\mathbf{Y}^{\text{ph}}$ are the eigenvectors and excitations energies $\Omega_{m}^{\text{ph}}$ are the eigenvalues of the ph-dRPA problem.
 Keywords for the method argument need to be specified for the different schemes: 
 - `GOWO`: run a one-shot calculation
 - `evGW`: run an eigenvalue calculation 
@@ -248,22 +248,18 @@ Note that here, an RHF calculation is done by default.
 The T-matrix correlation self-enegy is given by
 ```math
 	\Sigma_{pq}^{GT}(\omega) 
-	= \sum_{in} \frac{M_{pi,n}^{\text{pp}}\sERI{qi,n}{\text{pp}}}{\omega + \epsilon_{i}^{\text{HF}} - \Omega_{n}^{\text{pp}}}
-	+ \sum_{an} \frac{M_{pa,n}^{\text{hh}}\sERI{qa,n}{\text{hh}}}{\omega + \epsilon_{a}^{\text{HF}} - \Omega_{n}^{\text{hh}}}
+	= \sum_{in} \frac{M_{pi,n}^{\text{pp}}M_{qi,n}^{\text{pp}}}{\omega + \epsilon_{i}^{\text{HF}} - \Omega_{n}^{\text{pp}}}
+	+ \sum_{an} \frac{M_{pa,n}^{\text{hh}}M_{qa,n}^{\text{hh}}}{\omega + \epsilon_{a}^{\text{HF}} - \Omega_{n}^{\text{hh}}}
 ```
 where the pp and hh versions of the screened two-electron integrals read
 ```math
 \begin{align}
-	M_{pq,n}{\text{pp}} 
-	& = \sum_{c<d} \pERI{pq}{cd} X_{cd,n}^{\text{pp}} 
-	+ \sum_{k<l} \pERI{pq}{kl} Y_{kl,n}^{\text{pp}}
+	M_{pq,n}^{\text{pp}} & = \sum_{c < d} \bra{pq}\ket{cd} X_{cd,n}^{\text{pp}} + \sum_{k < l} \bra{pq}\ket{kl} Y_{kl,n}^{\text{pp}}
 	\\
-	M_{pq,n}^{\text{hh}} 
-	& = \sum_{c<d} \pERI{pq}{cd} X_{cd,n}^{\text{hh}} 
-	+ \sum_{k<l} \pERI{pq}{kl} Y_{kl,n}^{\text{hh}} 
+	M_{pq,n}^{\text{hh}} & = \sum_{c < d} \bra{pq}\ket{cd} X_{cd,n}^{\text{hh}} + \sum_{k < l} \bra{pq}\ket{kl} Y_{kl,n}^{\text{hh}} 
 \end{align}
 ```
-The components $X_{cd,n}^{\text{pp/hh}}$ and $Y_{kl,n}^{\text{pp/hh}}$ and excitation energies $\Omega_{n}^{\text{pp/hh}}$ are the double addition/removal eigenvector components and eigenvalues, respectively, of the pp-RPA eigenvalue problem discussed in Section~\ref{subsec:pp-RPA}.
+The components $X_{cd,n}^{\text{pp/hh}}$ and $Y_{kl,n}^{\text{pp/hh}}$ and excitation energies $\Omega_{n}^{\text{pp/hh}}$ are the double addition/removal eigenvector components and eigenvalues, respectively, of the pp-RPA eigenvalue problem.
 Keywords for the method argument need to be specified for the different schemes:
 - `GOTO`: run a one-shot calculation
 - `evGT`: run an eigenvalue calculation 
@@ -308,17 +304,18 @@ The traditional RPA can be found under different names like RPAx or ph-RPA. We c
 		\mathbf{0} & -\mathbf{\Omega}^{\text{ph}}
 	\end{pmatrix}
 ```
-where $\Omega_m$ is the diagonal matrix of the excitation energies, $\mathbf{X}^{\text{ph}}$ and $\mathfb{Y}^{\text{ph}}$ matrices are the transition coefficients, and the matrix elements are defined as 
+where $\Omega_m$ is the diagonal matrix of the excitation energies, $\mathbf{X}^{\text{ph}}$ and $\mathbf{Y}^{\text{ph}}$ matrices are the transition coefficients, and the matrix elements are defined as 
 ```math
 \begin{align}
-	A_{ia,jb}^{\text{ph}} & = (\epsilon_{a}^{\text{HF}} - \epsilon_{i}^{\text{HF}}) \delta_{ij} \delta_{ab} + \mel{ib}{}{aj} 
+	A_{ia,jb}^{\text{ph}} & = (\epsilon_{a}^{\text{HF}} - \epsilon_{i}^{\text{HF}}) \delta_{ij} \delta_{ab} + \bra{ib}\ket{aj} 
 	\\
-	B_{ia,jb}^{\text{ph}} & = \mel{ij}{}{ab} 
+	B_{ia,jb}^{\text{ph}} & = \bra{ij}\ket{ab} 
 \end{align}
 ```
 Now, from these equations, different approximations arise:
 - if we only take the direct term for the antisymmetrized two-electron integrals we end up with the direct ph-RPA (ph-dRPA), this is the one used in the $GW$ approximation
-- if we use the Tamm–Dancoff approximation (TDA) that sets $\Mat{B}{ph}=\bm{0}$, we end up with the ph-TDA approach
+- if we use the Tamm–Dancoff approximation (TDA) that sets $\mathbf{B}^{\text{ph}}=\mathbf{0}$, we end up with the ph-TDA approach
+
 Note that TDA can be used with the ph-RPA flavor and gives ph-dTDA. Ground state correlation energy can be computed with 
 ```math
 E_c^{\text{RPA}}=\frac{1}{2} \left(\sum_m \Omega_m^{\text{ph}} - \text{Tr}(\mathbf{A})\right) 
@@ -339,13 +336,13 @@ where $\mathbf{\Omega}^{\text{pp/hh}}$ are the diagonal matrices of the double a
 ```math
 \begin{align}
 	C_{ab,cd}^{\text{pp}} 
-	& = (\epsilon_{a}^{\text{HF}} + \epsilon_{b}^{\text{HF}}) \delta_{ac} \delta_{bd} + \pERI{ab}{cd}
+	& = (\epsilon_{a}^{\text{HF}} + \epsilon_{b}^{\text{HF}}) \delta_{ac} \delta_{bd} + \bra{ab}\ket{cd}
 	\\
 	B_{ab,ij}^{\text{pp/hh}} 
-	& = \pERI{ab}{ij}
+	& = \bra{ab}\ket{ij}
 	\\
 	D_{ij,kl}^{\text{hh}} 
-	& = -(\epsilon_{i}^{\text{HF}} + \epsilon_{j}^{\text{HF}}) \delta_{ik} \delta_{jl} + \pERI{ij}{kl}
+	& = -(\epsilon_{i}^{\text{HF}} + \epsilon_{j}^{\text{HF}}) \delta_{ik} \delta_{jl} + \bra{ij}\ket{kl}
 \end{align}
 ```
 The $\mathbf{X}^{\text{pp/hh}}$ and $\mathbf{Y}^{\text{pp/hh}}$ are the double addition/removal transition coefficients matrices. In the same way we did for the ph-RPA, we can obtain the correlation energy at the pp-RPA level using \cite{Peng_2013}
