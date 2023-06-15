@@ -46,6 +46,8 @@ Due to its modular structure, it should be easy to implement your own new method
 There is a module_example.nb notebook in the utils folder that explains how to add a module to the code as well as describes the coding convention. 
 --->
 
+<img src="logo_qcmath.png"  width="250">
+
 # qcmath
 Mathematica modules for electronic structure calculations developed at the 
 Laboratoire de Chimie et Physique Quantiques ([LCPQ](https://www.lcpq.ups-tlse.fr)) UMR5626 (Toulouse, France).
@@ -109,7 +111,7 @@ The call to the qcmath module is done with the qcmath word. Then, one has to spe
 ```ruby
 qcmath["H2","6-31g",{"RHF"}]
 ```
-The molecular geometry is specified in a .xyz file in the mol directory while the basis set file is in the basis directory. Other options can be specified like the charge and the spin multiplicity. If they are not stated then by default, the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in `main/default_options.nb`.
+The molecular geometry is specified in a .xyz file in the mol directory while the basis set file is in the basis directory. Other options can be specified like the charge and the spin multiplicity. If they are not stated then by default, the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in the `main/default_options.nb` notebook in the form of a dictionary.
 
 # User guide
 The qcmath software is still in development, so many of the features presented in the following are not available yet but constitute the first roadmap. This User guide introduces some theoretical background and displays the functionalities of these methods.
@@ -179,7 +181,7 @@ where the renormalization factor $Z_p$ is defined as
 Z_p=\left[ 1-\frac{\partial \Sigma_{pp}(\omega)}{\partial \omega}\Bigr\rvert_{\omega =\epsilon^{\text{HF}}_p } \right]^{-1}
 ```
 - the eigenvalue scheme where we iterate on the quasiparticle solutions of the linearized equation that are used to build the self-energy $\Sigma_{pp}^c$ (and $Z_p$)
-- the quasiparticle scheme where an effective Fock matrix built from a frequency-independent Hermitian self-energy as [^1]\cite{Monino_2021}
+- the quasiparticle scheme where an effective Fock matrix built from a frequency-independent Hermitian self-energy as [^1]
 ```math
 \tilde{F}_{pq}= F_{pq} + \tilde{\Sigma}_{pq}
 ```
@@ -189,11 +191,11 @@ where
 ```
 Note that the whole self-energy is computed for this last scheme.
 
-The non-linear quasiparticle equation can be exactly transformed in a linear eigenvalue problem by use of the upfolding process\cite{Backhouse_2020a,Bintrim_2021,Monino_2022}.[^2],[^3],[^4] For each orbital $p$, this yields a linear eigenvalue problem of the form
+The non-linear quasiparticle equation can be exactly transformed in a linear eigenvalue problem by use of the upfolding process.[^2],[^3],[^4] For each orbital $p$, this yields a linear eigenvalue problem of the form
 ```math
 \mathbf{H}_{p} \cdot \mathbf{c}_{\nu} = \epsilon_{\nu}^{\text{QP}} \mathbf{c}_{\nu}
 ```
-where $\nu$ runs over all solutions, quasiparticle and satellites and with [^5]\cite{Tolle_2023}
+where $\nu$ runs over all solutions, quasiparticle and satellites and with [^5]
 ```math
 	\mathbf{H}_{p} = 
 	\begin{pmatrix}
@@ -277,7 +279,7 @@ qcmath["H2","6-31g",{"qsGT"}]
 Note that here, an RHF calculation is done by default.
 
 ## Neutral excitations
-In qcmath, the methods available for the computation of excitation energies are in the form of a Casida-like equation \cite{Casida_2005}.[^6] This equation is an eigenvalue equation that is very common in linear response theory. It is a central equation in time-dependent density functional theory (TD-DFT), random phase approximation (RPA), and the Bethe-Salpeter equation (BSE). In this part we talk first about the RPA method and make the distinction between different flavors of this method, then we discuss the BSE method.
+In qcmath, the methods available for the computation of excitation energies are in the form of a Casida-like equation.[^6] This equation is an eigenvalue equation that is very common in linear response theory. It is a central equation in time-dependent density functional theory (TD-DFT), random phase approximation (RPA), and the Bethe-Salpeter equation (BSE). In this part we talk first about the RPA method and make the distinction between different flavors of this method, then we discuss the BSE method.
 
 ### Particle-hole random-phase approximation (ph-RPA)
 
@@ -348,7 +350,7 @@ where $\mathbf{\Omega}^{\text{pp/hh}}$ are the diagonal matrices of the double a
 	& = -(\epsilon_{i}^{\text{HF}} + \epsilon_{j}^{\text{HF}}) \delta_{ik} \delta_{jl} + \bra{ij}\ket{kl}
 \end{align}
 ```
-The $\mathbf{X}^{\text{pp/hh}}$ and $\mathbf{Y}^{\text{pp/hh}}$ are the double addition/removal transition coefficients matrices. In the same way we did for the ph-RPA, we can obtain the correlation energy at the pp-RPA level using [^7]\cite{Peng_2013}
+The $\mathbf{X}^{\text{pp/hh}}$ and $\mathbf{Y}^{\text{pp/hh}}$ are the double addition/removal transition coefficients matrices. In the same way we did for the ph-RPA, we can obtain the correlation energy at the pp-RPA level using [^7]
 $$E_c^{\text{ppRPA}} =  \frac{1}{2} \left(\sum_n \Omega_n^{\text{pp}}  - \sum_n \Omega_n^{\text{hh}}  - \text{Tr}\mathbf{C}^{\text{pp}} - \text{Tr}\mathbf{D}^{\text{hh}}\right)$$
 The keyword to use pp-RPA is `pp-RPA`. Note that TDA is also available with the option `TDA=True`.
 
@@ -359,7 +361,7 @@ The Bethe-Salpeter equation (BSE) is related to the two-body Green's function (2
 \begin{pmatrix}\mathbf{A}^{\text{BSE}} & \mathbf{B}^{\text{BSE}} \\ -\mathbf{B}^{\text{BSE}} & -\mathbf{A}^{\text{BSE}} \end{pmatrix}\cdot\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}=\mathbf{\Omega}_m^{\text{BSE}}\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}
 ```
     
-where the BSE matrix elements depend on the choice of the BSE kernel. To run a BSE calculation we have first to specify the approximation for the self-energy with the method argument and the keyword for this option is `BSE=True`. Note that in general a BSE calculation is done in the static approximation, which is the equivalent of the adiabatic approximation in TD-DFT. It is possible to take into account dynamical effects using first-order perturbation theory [^8]\cite{Loos_2020h} using the option `dBSE=True`. This dynamical correction is applicable for all the different BSE kernels available in qcmath. Note that this dynamical correction is only available in TDA with the option `dTDA`.
+where the BSE matrix elements depend on the choice of the BSE kernel. To run a BSE calculation we have first to specify the approximation for the self-energy with the method argument and the keyword for this option is `BSE=True`. Note that in general a BSE calculation is done in the static approximation, which is the equivalent of the adiabatic approximation in TD-DFT. It is possible to take into account dynamical effects using first-order perturbation theory [^8] using the option `dBSE=True`. This dynamical correction is applicable for all the different BSE kernels available in qcmath. Note that this dynamical correction is only available in TDA with the option `dTDA`.
 
 # Programmer guide
 
@@ -383,4 +385,11 @@ If[verbose == True,
 ```
 For each new method notebook, it is essential to organize the code into potentially three modules. The first module is responsible for reading the input and options, followed by invoking either the spin or spatial orbitals module, and ultimately returning the corresponding output. The remaining two modules are dedicated to implementing the new method in spin and spatial orbitals, respectively. It is important to note that if your method is exclusively implemented in spatial orbitals, your notebook will consist of only two parts. Further details regarding this structure can be found in the `module_example.nb` notebook.
 
-
+[^1]: [E. Monino and P. F. Loos, J. Chem. Theory Comput. (Open Access) 17, 2852 (2021).](https://doi.org/10.1021/acs.jctc.1c00074)
+[^2]: [O. J. Backhouse, M. Nusspickel, and G. H. Booth, J. Chem. Theory Comput. 16, 1090−1104 (2020).](https://doi.org/10.1021/acs.jctc.9b01182)
+[^3]: [S. J. Bintrim, and T. C. Berkelbach, J. Chem. Phys. 154, 041101 (2021).](https://doi.org/10.1063/5.0035141)
+[^4]: [E. Monino and P. F. Loos, J. Chem. Phys. (Open Access) 156, 231101 (2022).](https://doi.org/10.1063/5.0089317)
+[^5]: [J. Tölle and G. Kin-Lic Chan, J. Chem. Phys. 158, 124123 (2023).](https://doi.org/10.1063/5.0139716)
+[^6]: [M. E. Casida, J. Chem. Phys. 122, 054111 (2005).](https://doi.org/10.1063/1.1836757)
+[^7]: [D. Peng, S. N. Steinmann, H. van Aggelen, J. Chem. Phys. 139, 104112 (2013).](https://doi.org/10.1063/1.4820556)
+[^8]: [P.-F. Loos and X. Blase, J. Chem. Phys. 153, 114120 (2020).](https://doi.org/10.1063/5.0023168)
