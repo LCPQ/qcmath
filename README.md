@@ -179,7 +179,7 @@ where the renormalization factor $Z_p$ is defined as
 Z_p=\left[ 1-\frac{\partial \Sigma_{pp}(\omega)}{\partial \omega}\Bigr\rvert_{\omega =\epsilon^{\text{HF}}_p } \right]^{-1}
 ```
 - the eigenvalue scheme where we iterate on the quasiparticle solutions of the linearized equation that are used to build the self-energy $\Sigma_{pp}^c$ (and $Z_p$)
-- the quasiparticle scheme where an effective Fock matrix built from a frequency-independent Hermitian self-energy as \cite{Monino_2021}
+- the quasiparticle scheme where an effective Fock matrix built from a frequency-independent Hermitian self-energy as [^1]\cite{Monino_2021}
 ```math
 \tilde{F}_{pq}= F_{pq} + \tilde{\Sigma}_{pq}
 ```
@@ -189,11 +189,11 @@ where
 ```
 Note that the whole self-energy is computed for this last scheme.
 
-The non-linear quasiparticle equation can be exactly transformed in a linear eigenvalue problem by use of the upfolding process\cite{Backhouse_2020a,Bintrim_2021,Monino_2022}. For each orbital $p$, this yields a linear eigenvalue problem of the form
+The non-linear quasiparticle equation can be exactly transformed in a linear eigenvalue problem by use of the upfolding process\cite{Backhouse_2020a,Bintrim_2021,Monino_2022}.[^2],[^3],[^4] For each orbital $p$, this yields a linear eigenvalue problem of the form
 ```math
 \mathbf{H}_{p} \cdot \mathbf{c}_{\nu} = \epsilon_{\nu}^{\text{QP}} \mathbf{c}_{\nu}
 ```
-where $\nu$ runs over all solutions, quasiparticle and satellites and with \cite{Tolle_2023}
+where $\nu$ runs over all solutions, quasiparticle and satellites and with [^5]\cite{Tolle_2023}
 ```math
 	\mathbf{H}_{p} = 
 	\begin{pmatrix}
@@ -277,7 +277,7 @@ qcmath["H2","6-31g",{"qsGT"}]
 Note that here, an RHF calculation is done by default.
 
 ## Neutral excitations
-In qcmath, the methods available for the computation of excitation energies are in the form of a Casida-like equation \cite{Casida_2005}. This equation is an eigenvalue equation that is very common in linear response theory. It is a central equation in time-dependent density functional theory (TD-DFT), random phase approximation (RPA), and the Bethe-Salpeter equation (BSE). In this part we talk first about the RPA method and make the distinction between different flavors of this method, then we discuss the BSE method.
+In qcmath, the methods available for the computation of excitation energies are in the form of a Casida-like equation \cite{Casida_2005}.[^6] This equation is an eigenvalue equation that is very common in linear response theory. It is a central equation in time-dependent density functional theory (TD-DFT), random phase approximation (RPA), and the Bethe-Salpeter equation (BSE). In this part we talk first about the RPA method and make the distinction between different flavors of this method, then we discuss the BSE method.
 
 ### Particle-hole random-phase approximation (ph-RPA)
 
@@ -348,7 +348,7 @@ where $\mathbf{\Omega}^{\text{pp/hh}}$ are the diagonal matrices of the double a
 	& = -(\epsilon_{i}^{\text{HF}} + \epsilon_{j}^{\text{HF}}) \delta_{ik} \delta_{jl} + \bra{ij}\ket{kl}
 \end{align}
 ```
-The $\mathbf{X}^{\text{pp/hh}}$ and $\mathbf{Y}^{\text{pp/hh}}$ are the double addition/removal transition coefficients matrices. In the same way we did for the ph-RPA, we can obtain the correlation energy at the pp-RPA level using \cite{Peng_2013}
+The $\mathbf{X}^{\text{pp/hh}}$ and $\mathbf{Y}^{\text{pp/hh}}$ are the double addition/removal transition coefficients matrices. In the same way we did for the ph-RPA, we can obtain the correlation energy at the pp-RPA level using [^7]\cite{Peng_2013}
 $$E_c^{\text{ppRPA}} =  \frac{1}{2} \left(\sum_n \Omega_n^{\text{pp}}  - \sum_n \Omega_n^{\text{hh}}  - \text{Tr}\mathbf{C}^{\text{pp}} - \text{Tr}\mathbf{D}^{\text{hh}}\right)$$
 The keyword to use pp-RPA is `pp-RPA`. Note that TDA is also available with the option `TDA=True`.
 
@@ -359,7 +359,7 @@ The Bethe-Salpeter equation (BSE) is related to the two-body Green's function (2
 \begin{pmatrix}\mathbf{A}^{\text{BSE}} & \mathbf{B}^{\text{BSE}} \\ -\mathbf{B}^{\text{BSE}} & -\mathbf{A}^{\text{BSE}} \end{pmatrix}\cdot\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}=\mathbf{\Omega}_m^{\text{BSE}}\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}
 ```
     
-where the BSE matrix elements depend on the choice of the BSE kernel. To run a BSE calculation we have first to specify the approximation for the self-energy with the method argument and the keyword for this option is `BSE=True`. Note that in general a BSE calculation is done in the static approximation, which is the equivalent of the adiabatic approximation in TD-DFT. It is possible to take into account dynamical effects using first-order perturbation theory \cite{Loos_2020h} using the option `dBSE=True`. This dynamical correction is applicable for all the different BSE kernels available in qcmath. Note that this dynamical correction is only available in TDA with the option `dTDA`.
+where the BSE matrix elements depend on the choice of the BSE kernel. To run a BSE calculation we have first to specify the approximation for the self-energy with the method argument and the keyword for this option is `BSE=True`. Note that in general a BSE calculation is done in the static approximation, which is the equivalent of the adiabatic approximation in TD-DFT. It is possible to take into account dynamical effects using first-order perturbation theory [^8]\cite{Loos_2020h} using the option `dBSE=True`. This dynamical correction is applicable for all the different BSE kernels available in qcmath. Note that this dynamical correction is only available in TDA with the option `dTDA`.
 
 # Programmer guide
 
