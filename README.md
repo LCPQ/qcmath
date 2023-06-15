@@ -46,7 +46,7 @@ Due to its modular structure, it should be easy to implement your own new method
 There is a module_example.nb notebook in the utils folder that explains how to add a module to the code as well as describes the coding convention. 
 --->
 
-![Screenshot](logo_qcmath.png)
+<img src="logo_qcmath.png"  width="250">
 
 # qcmath
 Mathematica modules for electronic structure calculations developed at the 
