@@ -331,38 +331,13 @@ Keywords for the method argument need to be specified for the different approach
 The option `TDA` can be set to `True`, by default `TDA=False`.
 
 ### Particle-particle random-phase approximation (pp-RPA)
-\label{subsec:pp-RPA}
 
 The particle-particle RPA (pp-RPA) problem considers the excitation energies of the $N+2$ and $N-2$ system (with $N$ the number of electrons). It is also defined by a slightly different eigenvalue problem than ph-RPA:
-\begin{equation}
-	\begin{pmatrix}
-		\bC^{\pp} & \bB^{\pp/\hh}
-		\\
-		-\qty(\bB^{\pp/\hh})^{\dag} &  -\bD^{\hh}
-	\end{pmatrix}
-	\cdot
-	\begin{pmatrix}
-		\bX^{\pp} & \bY^{\hh}
-		\\
-		\bY^{\pp} & \bX^{\hh}
-	\end{pmatrix}
-	\\
-	=
-	\begin{pmatrix}
-		\bOme^{\pp} & \bO 
-		\\
-		\bO & \bOme^{\hh}
-	\end{pmatrix}
-	\cdot
-	\begin{pmatrix}
-		\bX^{\pp} & \bY^{\hh}
-		\\
-		\bY^{\pp} & \bX^{\hh}
-	\end{pmatrix}
-\end{equation}
-where $\bOme^{\pp/\hh}$ are the diagonal matrices of the double addition/removal excitation energies, labeled by $n$, and the matrix elements are defined as 
-\begin{subequations}
-\begin{align}
+```math
+\begin{pmatrix}\mathbf{C}^{\text{pp}} & \mathbf{B}^{\text{pp/hh}} \\ -\left(\mathbf{B}^{\text{pp/hh}}\right)^{\dagger} & -\mathbf{D}^{\text{hh}} \end{pmatrix} \cdot\begin{pmatrix} \mathbf{X}^{\text{pp}} & \mathbf{Y}^{\text{hh}} \\ \mathbf{Y}^{\text{pp}} & \mathbf{X}^{\text{hh}}\end{pmatrix} \\ = \begin{pmatrix} \mathbf{\Omega}^{\text{pp}} & \mathbf{O} \\ \mathbf{O} & \mathbf{\Omega}^{\text{hh}} \end{pmatrix} \cdot \begin{pmatrix} \mathbf{X}^{\text{pp}} & \mathbf{Y}^{\text{hh}} \\ \mathbf{Y}^{\text{pp}} & \mathbf{X}^{\text{hh}} \end{pmatrix}
+```
+where $\mathbf{\Omega}^{\text{pp/hh}}$ are the diagonal matrices of the double addition/removal excitation energies, labeled by $n$, and the matrix elements are defined as 
+$$\begin{align}
 	C_{ab,cd}^{\pp} 
 	& = (\ep_{a}^{\HF} + \ep_{b}^{\HF}) \delta_{ac} \delta_{bd} + \pERI{ab}{cd}
 	\\
@@ -371,9 +346,8 @@ where $\bOme^{\pp/\hh}$ are the diagonal matrices of the double addition/removal
 	\\
 	D_{ij,kl}^{\hh} 
 	& = -(\ep_{i}^{\HF} + \ep_{j}^{\HF}) \delta_{ik} \delta_{jl} + \pERI{ij}{kl}
-\end{align}
-\end{subequations}
-The $\bX^{\pp/\hh}$ and $\bY^{\pp/\hh}$ are the double addition/removal transition coefficients matrices. In the same way we did for the ph-RPA, we can obtain the correlation energy at the pp-RPA level using \cite{Peng_2013}
+\end{align}$$
+The $\mathbf{X}^{\text{pp/hh}}$ and $\mathbf{Y}^{\text{pp/hh}}$ are the double addition/removal transition coefficients matrices. In the same way we did for the ph-RPA, we can obtain the correlation energy at the pp-RPA level using \cite{Peng_2013}
 $$E_c^{\text{ppRPA}} =  \frac{1}{2} \left(\sum_n \Omega_n^{\text{pp}}  - \sum_n \Omega_n^{\text{hh}}  - \text{Tr}\mathbf{C}^{\text{pp}} - \text{Tr}\mathbf{D}^{\text{hh}}\right)$$
 The keyword to use the pp-RPA is `pp-RPA`. Note that TDA is also available with the option `TDA=True`.
 
@@ -381,7 +355,7 @@ The keyword to use the pp-RPA is `pp-RPA`. Note that TDA is also available with 
 The Bethe-Salpeter equation (BSE) is related to the two-body Green's function (2-GF). The central quantity is the so-called BSE kernel defined as the functional derivative of the self-energy with respect to the 1-GF. As exposed in Section~\ref{sec:charged_excitations}, there are several approximations of the self-energy and each one of them leads to a different BSE approximation. The common central equation is the following eigenvalue equation
 
 ```math
-\begin{pmatrix}\mathbf{A}^{\text{BSE}} & \mathbf{B}^{\text{BSE}} \\ -\mathbf{B}^{\text{BSE}} & -\mathbf{A}^{\text{BSE}} \end{pmatrix}\cdot\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}=\Omega_m^{\text{BSE}}\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}
+\begin{pmatrix}\mathbf{A}^{\text{BSE}} & \mathbf{B}^{\text{BSE}} \\ -\mathbf{B}^{\text{BSE}} & -\mathbf{A}^{\text{BSE}} \end{pmatrix}\cdot\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}=\mathbf{\Omega}_m^{\text{BSE}}\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}
 ```
     
 where the BSE matrix elements depend on the choice of the BSE kernel. To run a BSE calculation we have first to specify the approximation for the self-energy with the method argument and the keyword for this option is `BSE=True`. Note that in general a BSE calculation is done in the static approximation, which is the equivalent of the adiabatic approximation in TD-DFT. It is possible to take into account dynamical effects using first-order perturbation theory \cite{Loos_2020h} using the option `dBSE=True`. This dynamical correction is applicable for all the different BSE kernels available in qcmath. Note that this dynamical correction is only available in TDA with the option `dTDA`.
