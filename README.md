@@ -76,7 +76,7 @@ The qcmath software can be downloaded on GitHub as a Git repository
 git clone https://github.com/LCPQ/qcmath.git
 ```
 
-Then, one must define the variable `QCMATH_ROOT` and install PySCF using `pip`
+Then, one must define the variable `QCMATH_ROOT` and install [PySCF](https://pyscf.org) using `pip`
 ```
 pip install pyscf
 ```
@@ -105,16 +105,16 @@ Once this first step is done, we can run a qcmath calculation as follows
 ```ruby
 qcmath[molecule_name,basis_set,methods]
 ```
-The call to the qcmath module is done with the qcmath word. Then, we have to specify three arguments. These arguments are \textbf{strings} or a list of strings, the first one is the name of the molecule that we want to study and it is defined as a string. The second one is the basis set which is also a string. The last one is a list of methods that we want to use and it is defined with a list of strings. To simplify the explications let's see the example of the $\text{H}_2$ molecule in the 6-31g basis set using the restricted Hartree-Fock method:
+The call to the qcmath module is done with the qcmath word. Then, one has to specify three arguments. These arguments are **strings** or a list of strings, the first one is the name of the molecule that we want to study and it is defined as a string. The second one is the basis set which is also a string. The last one is a list of methods that one wants to use and it is defined with a list of strings. To simplify the explanations, let us see the example of the $\text{H}_2$ molecule in the 6-31G basis set using the restricted Hartree-Fock method:
 ```ruby
 qcmath["H2","6-31g",{"RHF"}]
 ```
-The molecular geometry is specified in a .xyz file in the mol directory while the basis set file is in the basis directory. Other options can be specified like the charge and the spin multiplicity, if they are not stated then by default the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in `main/default_options.nb`.
+The molecular geometry is specified in a .xyz file in the mol directory while the basis set file is in the basis directory. Other options can be specified like the charge and the spin multiplicity. If they are not stated then by default, the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in `main/default_options.nb`.
 
 # User guide
 The qcmath software is still in development, so many of the features presented in the following are not available yet but constitute the first roadmap. This User guide introduces some theoretical background and displays the functionalities of these methods.
 
-## Ground state calculations
+## Ground-state calculations
 
 ### Hartree-Fock
 Within the Hartree-Fock (HF) approximation, the electronic wave function is written as a Slater determinant of $N$ molecular orbitals (MOs). We have seen that the restricted HF (RHF) formalism leads to the Roothaan-Hall equations $\mathbf{F} \mathbf{C} = \mathbf{S} \mathbf{C} \mathbf{\epsilon}$ where $\mathbf{F}$ is the Fock matrix, $\mathbf{C}$ is the matrix of MO coefficients, $\mathbf{S}$ is the atomic orbital overlap matrix and $\mathbf{\epsilon}$ is a diagonal matrix of the orbital energies. Because the Fock matrix depends on $\mathbf{C}$ that is obtained from the Fock matrix itself, these equations need to be solved self-consistently and some options can be specified: 
