@@ -386,8 +386,8 @@ If[verbose == True,
 For each new method notebook, it is essential to organize the code into potentially three modules. The first module is responsible for reading the input and options, followed by invoking either the spin or spatial orbitals module, and ultimately returning the corresponding output. The remaining two modules are dedicated to implementing the new method in spin and spatial orbitals, respectively. It is important to note that if your method is exclusively implemented in spatial orbitals, your notebook will consist of only two parts. Further details regarding this structure can be found in the `module_example.nb` notebook.
 
 [^1]: E. Monino and P. F. Loos, J. Chem. Theory Comput. (Open Access) 17, 2852 (2021).
-[^2]:
-[^3]:
+[^2]: O. J. Backhouse, M. Nusspickel, and G. H. Booth, J. Chem. Theory Comput. 16, 1090−1104 (2020).
+[^3]: S. J. Bintrim, and T. C. Berkelbach, J. Chem. Phys. 154, 041101 (2021).
 [^4]: E. Monino and P. F. Loos, J. Chem. Phys. (Open Access) 156, 231101 (2022).
 [^5]: J. Tölle and G. Kin-Lic Chan, J. Chem. Phys. 158, 124123 (2023).
 [^6]: M. E. Casida, J. Chem. Phys. 122, 054111 (2005).
