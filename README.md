@@ -114,14 +114,14 @@ The qcmath software is still in development, so many of the features presented i
 ## Ground state calculations
 
 ### Hartree-Fock
-Within the Hartree-Fock (HF) approximation, the electronic wave function is written as a Slater determinant of $N$ molecular orbitals (MOs). We have seen that the restricted HF (RHF) formalism leads to the Roothaan-Hall equations $\FkMat \CMat = \SMat \CMat \MOevMat$ where $\FMat$ is the Fock matrix, $\CMat$ is the matrix of MO coefficients, $\SMat$ is the atomic orbital overlap matrix and $\MOevMat$ is a diagonal matrix of the orbital energies. Because the Fock matrix depends on $\CMat$ that are obtained from the Fock matrix itself, these equations need to be solved self-consistently and some options can be specified: 
+Within the Hartree-Fock (HF) approximation, the electronic wave function is written as a Slater determinant of $N$ molecular orbitals (MOs). We have seen that the restricted HF (RHF) formalism leads to the Roothaan-Hall equations $\mathbf{F} \mathbf{C} = \mathbf{S} \mathbf{C} \mathbf{\epsilon}$ where $\mathbf{F}$ is the Fock matrix, $\mathbf{C}$ is the matrix of MO coefficients, $\mathbf{S}$ is the atomic orbital overlap matrix and $\mathbf{\epsilon}$ is a diagonal matrix of the orbital energies. Because the Fock matrix depends on $\mathbf{C}$ that are obtained from the Fock matrix itself, these equations need to be solved self-consistently and some options can be specified: 
 - an initial guess for the Fock matrix needs to be diagonalized to give the MO coefficients and this initial guess is described by the keyword `mo_guess`
-  - `mo_guess="core"` (default) corresponds to the core Hamiltonian defined as $\HcMat = \TMat + \VMat$ where $\TMat$ is the kinetic energy matrix and $\VMat$ is the external potential.
+  - `mo_guess="core"` (default) corresponds to the core Hamiltonian defined as $\mathbf{H_c} = \mathbf{T} + \mathbf{V}$ where $\mathbf{T}$ is the kinetic energy matrix and $\mathbf{V}$ is the external potential.
   - `mo_guess="huckel"`  corresponds to the Hückel Hamiltonian 
   - `mo_guess="random"`  corresponds to random MO coefficients
 - converging HF calculation
   - `maxSCF`: maximum number of iterations, by default `maxSCF=100`
-  - `threshHF`: threshold for the HF to converge, by default `threshHF=$10^{-7}$`
+  - `threshHF`: threshold for the HF to converge, by default `threshHF=10^-7`
   - `DIIS`: we can use the Direct Inversion in the Iterative Subspace (DIIS) where the Fock matrix is extrapolated at each iteration using the ones of the previous iterations, by default `DIIS=True`
   - `n_DIIS`: by default `n_DIIS=5`
   - `level_shift`: a level shift increases the gap between the occupied and virtual orbitals, it can help to converge the SCF process for systems with a small HOMO-LUMO gap, by default `level_shift=0.0`eV
@@ -205,9 +205,9 @@ Note that the different blocks will depend on the approximated self-energy. Now 
  
 ### Second-order Green's function (GF2) approximation
 The GF2 correlation self-energy is closely related to MP2 and is given by the following expression
-\begin{equation}
-	\Sigm_{pq}^{\GF2}(\omega) = \frac{1}{2}\sum_{ija} \frac{\pERI{pa}{ij} \pERI{qa}{ij}}{\omega + \ep_{a}^{\HF} - \ep_{i}^{\HF} - \ep_{j}^{\HF}}  + \frac{1}{2}\sum_{iab} \frac{\pERI{pi}{ab} \pERI{qi}{ab}}{\omega + \ep_{i}^{\HF} - \ep_{a}^{\HF} - \ep_{b}^{\HF}}
-\end{equation}
+```math
+	\Sigma_{pq}^{\text{GF2}}(\omega) = \frac{1}{2}\sum_{ija} \frac{\mel{pa}{}{ij} \pERI{qa}{ij}}{\omega + \epsilon_{a}^{\text{HF}} - \epsilon_{i}^{\text{HF}} - \epsilon_{j}^{\text{HF}}}  + \frac{1}{2}\sum_{iab} \frac{\pERI{pi}{ab} \pERI{qi}{ab}}{\omega + \epsilon_{i}^{\text{HF}} - \epsilon_{a}^{\text{HF}} - \epsilon_{b}^{\text{HF}}}
+```
 Keywords need to be specified for the different schemes:
 - `GOF2`: run a one-shot calculation
 - `evGF2`: run an eigenvalue calculation 
@@ -222,16 +222,16 @@ Note that here, an RHF calculation is done by default.
 
 ### $GW$ approximation
 The $GW$ correlation self-enegy is given by
-\begin{equation}
-	\Sigm_{pq}^{GW}(\omega) 
-	= \sum_{im} \frac{\sERI{pi,m}{\ph}\sERI{qi,m}{\ph}}{\omega - \ep_{i}^{\HF} + \Ome_{m}^{\ph}}
-	+ \sum_{am} \frac{\sERI{pa,m}{\ph}\sERI{qa,m}{\ph}}{\omega - \ep_{a}^{\HF} - \Ome_{m}^{\ph}}
-\end{equation}
+```math
+	\Sigma_{pq}^{GW}(\omega) 
+	= \sum_{im} \frac{M_{pi,m}^{\text{ph}}M_{qi,m}^{\text{ph}}}{\omega - \epsilon_{i}^{\text{HF}} + \Omega_{m}^{\text{ph}}}
+	+ \sum_{am} \frac{M_{pa,m}^{\text{ph}}M_{qa,m}^{\text{ph}}}{\omega - \epsilon_{a}^{\text{HF}} - \Omega_{m}^{\text{ph}}}
+```
 where the screened two-electron integrals are given by 
-\begin{equation}
-	\sERI{pq,m}{\ph} = \sum_{ia} \braket*{pi}{qa} \qty(\bX^{\ph} + \bY^{\ph} )_{ia,m}
-\end{equation}
-with $\bX^{\ph}$ and $\bY^{\ph}$ are the eigenvectors and excitations energies $\Ome_{m}^{\ph}$ are the eigenvalues of the ph-dRPA problem that is discussed in Section~\ref{subsec:ph-RPA}.
+```math
+	M_{pq,m}^{\text{ph}} = \sum_{ia} \braket*{pi}{qa} \left(\mathbf{X}^{\text{ph}} + \mathbf{Y}^{\text{ph}} \right)_{ia,m}
+```
+with $\mathbf{X}^{\text{ph}}$ and $\mathbf{Y}^{\text{ph}}$ are the eigenvectors and excitations energies $\Omega_{m}^{\text{ph}}$ are the eigenvalues of the ph-dRPA problem that is discussed in Section~\ref{subsec:ph-RPA}.
 Keywords for the method argument need to be specified for the different schemes: 
 - `GOWO`: run a one-shot calculation
 - `evGW`: run an eigenvalue calculation 
@@ -246,24 +246,24 @@ Note that here, an RHF calculation is done by default.
 
 ### T-matrix approximation
 The T-matrix correlation self-enegy is given by
-\begin{equation}
-	\Sigm_{pq}^{\GT}(\omega) 
-	= \sum_{in} \frac{\sERI{pi,n}{\pp}\sERI{qi,n}{\pp}}{\omega + \ep_{i}^{\HF} - \Ome_{n}^{\pp}}
-	+ \sum_{an} \frac{\sERI{pa,n}{\hh}\sERI{qa,n}{\hh}}{\omega + \ep_{a}^{\HF} - \Ome_{n}^{\hh}}
-\end{equation}
+```math
+	\Sigma_{pq}^{GT}(\omega) 
+	= \sum_{in} \frac{M_{pi,n}^{\text{pp}}\sERI{qi,n}{\text{pp}}}{\omega + \epsilon_{i}^{\text{HF}} - \Omega_{n}^{\text{pp}}}
+	+ \sum_{an} \frac{M_{pa,n}^{\text{hh}}\sERI{qa,n}{\text{hh}}}{\omega + \epsilon_{a}^{\text{HF}} - \Omega_{n}^{\text{hh}}}
+```
 where the pp and hh versions of the screened two-electron integrals read
-\begin{subequations}
+```math
 \begin{align}
-	\sERI{pq,n}{\pp} 
-	& = \sum_{c<d} \pERI{pq}{cd} X_{cd,n}^{\pp} 
-	+ \sum_{k<l} \pERI{pq}{kl} Y_{kl,n}^{\pp}
+	M_{pq,n}{\text{pp}} 
+	& = \sum_{c<d} \pERI{pq}{cd} X_{cd,n}^{\text{pp}} 
+	+ \sum_{k<l} \pERI{pq}{kl} Y_{kl,n}^{\text{pp}}
 	\\
-	\sERI{pq,n}{\hh} 
-	& = \sum_{c<d} \pERI{pq}{cd} X_{cd,n}^{\hh} 
-	+ \sum_{k<l} \pERI{pq}{kl} Y_{kl,n}^{\hh} 
+	M_{pq,n}^{\text{hh}} 
+	& = \sum_{c<d} \pERI{pq}{cd} X_{cd,n}^{\text{hh}} 
+	+ \sum_{k<l} \pERI{pq}{kl} Y_{kl,n}^{\text{hh}} 
 \end{align}
-\end{subequations}
-The components $X_{cd,n}^{\pp/hh}$ and $Y_{kl,n}^{\pp/hh}$ and excitation energies $\Ome_{n}^{\pp/hh}$ are the double addition/removal eigenvector components and eigenvalues, respectively, of the pp-RPA eigenvalue problem discussed in Section~\ref{subsec:pp-RPA}.
+```
+The components $X_{cd,n}^{\text{pp/hh}}$ and $Y_{kl,n}^{\text{pp/hh}}$ and excitation energies $\Omega_{n}^{\text{pp/hh}}$ are the double addition/removal eigenvector components and eigenvalues, respectively, of the pp-RPA eigenvalue problem discussed in Section~\ref{subsec:pp-RPA}.
 Keywords for the method argument need to be specified for the different schemes:
 - `GOTO`: run a one-shot calculation
 - `evGT`: run an eigenvalue calculation 
@@ -283,46 +283,46 @@ In qcmath, the methods available for the computation of excitation energies are 
 \label{subsec:ph-RPA}
 
 The traditional RPA can be found under different names like RPAx or ph-RPA. We choose to call it ph-RPA to make the difference with the particle-particle RPA (pp-RPA). The ph-RPA problem takes the form of the following Casida-like equation 
-\begin{equation}
+```math
 	\begin{pmatrix}
-		\bA^{\ph} & \bB^{\ph} 
+		\mathbf{A}^{\text{ph}} & \mathbf{B}^{\text{ph}} 
 		\\
-		- \bB^{\ph} &  -\bA^{\ph}
+		- \mathbf{B}^{\text{ph}} &  -\mathbf{A}^{\text{ph}}
 	\end{pmatrix}
 	\cdot
 	\begin{pmatrix}
-		\bX^{\ph} & \bY^{\ph}
+		\mathbf{X}^{\text{ph}} & \mathbf{Y}^{\text{ph}}
 		\\
-		\bY^{\ph} & \bX^{\ph}
+		\mathbf{Y}^{\text{ph}} & \mathbf{X}^{\text{ph}}
 	\end{pmatrix}
 	=
 	\begin{pmatrix}
-		\bX^{\ph} & \bY^{\ph}
+		\mathbf{X}^{\text{ph}} & \mathbf{Y}^{\text{ph}}
 		\\
-		\bY^{\ph} & \bX^{\ph}
+		\mathbf{Y}^{\text{ph}} & \mathbf{X}^{\text{ph}}
 	\end{pmatrix}
 	\cdot
 	\begin{pmatrix}
-		\bOme^{\ph} & \bO
+		\mathbf{\Omega}^{\text{ph}} & \mathbf{0}
 		\\
-		\bO & -\bOme^{\ph}
+		\mathbf{0} & -\mathbf{\Omega}^{\text{ph}}
 	\end{pmatrix}
-\end{equation}
-where $\Omega_m$ is the diagonal matrix of the excitation energies, $\bX^{\ph}$ and $\bY^{\ph}$ matrices are the transition coefficients, and the matrix elements are defined as 
+```
+where $\Omega_m$ is the diagonal matrix of the excitation energies, $\mathbf{X}^{\text{ph}}$ and $\mathfb{Y}^{\text{ph}}$ matrices are the transition coefficients, and the matrix elements are defined as 
+```math
 \begin{align}
-	A_{ia,jb}^\ph & = (\ep_{a}^{\HF} - \ep_{i}^{\HF}) \delta_{ij} \delta_{ab} + \mel{ib}{}{aj} 
+	A_{ia,jb}^{\text{ph}} & = (\epsilon_{a}^{\text{HF}} - \epsilon_{i}^{\text{HF}}) \delta_{ij} \delta_{ab} + \mel{ib}{}{aj} 
 	\\
-	B_{ia,jb}^\ph & = \mel{ij}{}{ab} 
+	B_{ia,jb}^{\text{ph}} & = \mel{ij}{}{ab} 
 \end{align}
+```
 Now, from these equations, different approximations arise:
-\begin{itemize}
-\item if we only take the direct term for the antisymmetrized two-electron integrals we end up with the direct ph-RPA (ph-dRPA), this is the one used in the $GW$ approximation
-\item if we use the Tamm–Dancoff approximation (TDA) that sets $\Mat{B}{ph}=\bm{0}$, we end up with the ph-TDA approach
-\end{itemize}
+- if we only take the direct term for the antisymmetrized two-electron integrals we end up with the direct ph-RPA (ph-dRPA), this is the one used in the $GW$ approximation
+- if we use the Tamm–Dancoff approximation (TDA) that sets $\Mat{B}{ph}=\bm{0}$, we end up with the ph-TDA approach
 Note that TDA can be used with the ph-RPA flavor and gives ph-dTDA. Ground state correlation energy can be computed with 
-\begin{equation}
-\EcRPA=\frac{1}{2} \qty(\sum_m \Omega_m^{\ph} - \text{Tr}(\bm{A})) 
-\end{equation}
+```math
+E_c^{\text{RPA}}=\frac{1}{2} \left(\sum_m \Omega_m^{\text{ph}} - \text{Tr}(\mathbf{A})\right) 
+```
 Keywords for the method argument need to be specified for the different approaches and options:
 - `RPAx`: run a ph-RPA calculation
 - `RPA`: run a ph-dRPA calculation
@@ -336,16 +336,18 @@ The particle-particle RPA (pp-RPA) problem considers the excitation energies of 
 \begin{pmatrix}\mathbf{C}^{\text{pp}} & \mathbf{B}^{\text{pp/hh}} \\ -\left(\mathbf{B}^{\text{pp/hh}}\right)^{\dagger} & -\mathbf{D}^{\text{hh}} \end{pmatrix} \cdot\begin{pmatrix} \mathbf{X}^{\text{pp}} & \mathbf{Y}^{\text{hh}} \\ \mathbf{Y}^{\text{pp}} & \mathbf{X}^{\text{hh}}\end{pmatrix} \\ = \begin{pmatrix} \mathbf{\Omega}^{\text{pp}} & \mathbf{O} \\ \mathbf{O} & \mathbf{\Omega}^{\text{hh}} \end{pmatrix} \cdot \begin{pmatrix} \mathbf{X}^{\text{pp}} & \mathbf{Y}^{\text{hh}} \\ \mathbf{Y}^{\text{pp}} & \mathbf{X}^{\text{hh}} \end{pmatrix}
 ```
 where $\mathbf{\Omega}^{\text{pp/hh}}$ are the diagonal matrices of the double addition/removal excitation energies, labeled by $n$, and the matrix elements are defined as 
-$$\begin{align}
-	C_{ab,cd}^{\pp} 
-	& = (\ep_{a}^{\HF} + \ep_{b}^{\HF}) \delta_{ac} \delta_{bd} + \pERI{ab}{cd}
+```math
+\begin{align}
+	C_{ab,cd}^{\text{pp}} 
+	& = (\epsilon_{a}^{\text{HF}} + \epsilon_{b}^{\text{HF}}) \delta_{ac} \delta_{bd} + \pERI{ab}{cd}
 	\\
-	B_{ab,ij}^{\pp/\hh} 
+	B_{ab,ij}^{\text{pp/hh}} 
 	& = \pERI{ab}{ij}
 	\\
-	D_{ij,kl}^{\hh} 
-	& = -(\ep_{i}^{\HF} + \ep_{j}^{\HF}) \delta_{ik} \delta_{jl} + \pERI{ij}{kl}
-\end{align}$$
+	D_{ij,kl}^{\text{hh}} 
+	& = -(\epsilon_{i}^{\text{HF}} + \epsilon_{j}^{\text{HF}}) \delta_{ik} \delta_{jl} + \pERI{ij}{kl}
+\end{align}
+```
 The $\mathbf{X}^{\text{pp/hh}}$ and $\mathbf{Y}^{\text{pp/hh}}$ are the double addition/removal transition coefficients matrices. In the same way we did for the ph-RPA, we can obtain the correlation energy at the pp-RPA level using \cite{Peng_2013}
 $$E_c^{\text{ppRPA}} =  \frac{1}{2} \left(\sum_n \Omega_n^{\text{pp}}  - \sum_n \Omega_n^{\text{hh}}  - \text{Tr}\mathbf{C}^{\text{pp}} - \text{Tr}\mathbf{D}^{\text{hh}}\right)$$
 The keyword to use the pp-RPA is `pp-RPA`. Note that TDA is also available with the option `TDA=True`.
