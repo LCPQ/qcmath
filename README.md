@@ -106,7 +106,7 @@ The call to the qcmath module is done with the qcmath word. Then, we have to spe
 ```
 qcmath["H2","6-31g",{"RHF"}]
 ```
-The molecular geometry is specified in a .xyz file in the mol directory while the basis set file is in the basis directory. Other options can be specified like the charge and the spin multiplicity, if they are not stated then by default the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in the `main/default_options.nb`.
+The molecular geometry is specified in a .xyz file in the mol directory while the basis set file is in the basis directory. Other options can be specified like the charge and the spin multiplicity, if they are not stated then by default the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in `main/default_options.nb`.
 
 # User guide
 The qcmath software is still in development, so many of the features presented in the following are not available yet but constitute the first roadmap. This User guide introduces some theoretical background and displays the functionalities of these methods.
@@ -117,7 +117,7 @@ The qcmath software is still in development, so many of the features presented i
 Within the Hartree-Fock (HF) approximation, the electronic wave function is written as a Slater determinant of $N$ molecular orbitals (MOs). We have seen that the restricted HF (RHF) formalism leads to the Roothaan-Hall equations $\FkMat \CMat = \SMat \CMat \MOevMat$ where $\FMat$ is the Fock matrix, $\CMat$ is the matrix of MO coefficients, $\SMat$ is the atomic orbital overlap matrix and $\MOevMat$ is a diagonal matrix of the orbital energies. Because the Fock matrix depends on $\CMat$ that are obtained from the Fock matrix itself, these equations need to be solved self-consistently and some options can be specified: 
 - an initial guess for the Fock matrix needs to be diagonalized to give the MO coefficients and this initial guess is described by the keyword `mo_guess`
   - `mo_guess="core"` (default) corresponds to the core Hamiltonian defined as $\HcMat = \TMat + \VMat$ where $\TMat$ is the kinetic energy matrix and $\VMat$ is the external potential.
-  - `mo_guess="huckel"`  corresponds to the H\"uckel Hamiltonian 
+  - `mo_guess="huckel"`  corresponds to the Hückel Hamiltonian 
   - `mo_guess="random"`  corresponds to random MO coefficients
 - converging HF calculation
   - `maxSCF`: maximum number of iterations, by default `maxSCF=100`
@@ -127,7 +127,7 @@ Within the Hartree-Fock (HF) approximation, the electronic wave function is writ
   - `level_shift`: a level shift increases the gap between the occupied and virtual orbitals, it can help to converge the SCF process for systems with a small HOMO-LUMO gap, by default `level_shift=0.0`eV
 
 - orthogonalization matrix with the keyword `ortho_type`
-  - `ortho_type="lowdin" (default): Löwdin orthogonalization 
+  - `ortho_type="lowdin"` (default): Löwdin orthogonalization 
   - `ortho_type="canonical"`: Canonical orthogonalization 
 
 - print supplementary information about the calculation with the keyword `verbose`
@@ -140,7 +140,9 @@ qcmath["H2","6-31g",{"UHF"}]
 
 ### Møller-Plesset (MP) perturbation theory
 The MP2 correlation energy is defined by 
-$$\EcMP = \frac{1}{4} \sum_{ij}^{\text{occ}} \sum_{ab}^{\text{vir}} \frac{ |\mel{ij}{}{ab}|^2 }{\eHF{i} + \eHF{j} - \eHF{a} - \eHF{b}}$$
+```math
+E_c^{\text{MP2}} = \frac{1}{4} \sum_{ij}^{\text{occ}} \sum_{ab}^{\text{vir}} \frac{ |\mel{ij}{}{ab}|^2 }{\epsilon^{\text{HF}}_i + \epsilon^{\text{HF}}_j - \epsilon^{\text{HF}}_a - \epsilon^{\text{HF}}_b}
+```
 
 Since MP2 needs an HF reference, a first HF calculation needs to be done. This is automatically taken into account by qcmath and a MP2 calculation can be done using 
 ```
@@ -157,51 +159,48 @@ qcmath["H2","6-31g",{"UHF","MP2"}]
 
 ## Charged excitations
 \label{sec:charged_excitations}
-We have seen in Section~\ref{sec:MP2} of Chapter~\ref{chap:1} that methods based on the one body Green's function (1-GF) allow us to describe charged excitations, i.e. ionization potential (IP) and electron affinity (EA) of the system. This part is the core of qcmath and hence, various methods, approximations, and options are available. Thus, for the sake of clarity, this part is structured as follows, first, we do a quick introduction on the general equations depending on the level of (partial) self-consistency. These general equations are common to the three approximations of the self-energy available in qcmath, the second order Green's function (\GFtwo), the {\GW} approximation, and the T-matrix approximation. Finally, we give the various expressions specific to the different approximations of the self-energy. 
+We have seen in Section~\ref{sec:MP2} of Chapter~\ref{chap:1} that methods based on the one body Green's function (1-GF) allow us to describe charged excitations, i.e. ionization potential (IP) and electron affinity (EA) of the system. This part is the core of qcmath and hence, various methods, approximations, and options are available. Thus, for the sake of clarity, this part is structured as follows, first, we do a quick introduction on the general equations depending on the level of (partial) self-consistency. These general equations are common to the three approximations of the self-energy available in qcmath, the second order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. Finally, we give the various expressions specific to the different approximations of the self-energy. 
 
 Three levels of (partial) self-consistency are available in qcmath:
-\begin{itemize}
-\item the one-shot scheme where quasiparticles and satellites are obtained by solving, for each orbital $p$, the frequency-dependent quasiparticle equation 
-\begin{equation}
-\label{eq:w_quasiparticle_equation_chap6}
-\omega = \eHF{p} + \Sigma_{pp}^c(\omega)
-\end{equation}
+- the one-shot scheme where quasiparticles and satellites are obtained by solving, for each orbital $p$, the frequency-dependent quasiparticle equation 
+```math
+\omega = \epsilon^{\text{HF}}_p + \Sigma_{pp}^c(\omega)
+```
 where the diagonal approximation is used. Because we are, most of the time, interested in the quasiparticle solution we can use the linearized quasiparticle equation
-\begin{equation}
-\label{eq:lin_quasiparticle_equation_chap6}
-\eQP{p} = \eHF{p} + \Z{p} \Sigma_{pp}^c(\eHF{p})
-\end{equation}
-where the renormalization factor $\Z{p}$ is defined as 
-\begin{equation}
-\Z{p}=\qty[ 1-\frac{\partial \Sigma_{pp}(\omega)}{\partial \omega}\Bigr\rvert_{\omega =\eHF{p} } ]^{-1}
-\end{equation}
-\item the eigenvalue scheme where we iterate on the quasiparticle solutions of Eq~\eqref{eq:lin_quasiparticle_equation_chap6} that are used to build the self-energy $\Sigma_{pp}^c$ (and $\Z{p}$)
-\item the quasiparticle scheme where an effective Fock matrix built from a frequency-independent Hermitian self-energy as \cite{Monino_2021}
-\begin{equation}
+```math
+\epsilon^{\text{QP}}_p = \epsilon^{\text{HF}}_p + Z_p \Sigma_{pp}^c(\epsilon^{\text{HF}}_p)
+```
+where the renormalization factor $Z_p$ is defined as 
+```math
+Z_p=\left[ 1-\frac{\partial \Sigma_{pp}(\omega)}{\partial \omega}\Bigr\rvert_{\omega =\epsilon^{\text{HF}}_p } \right]^{-1}
+```
+- the eigenvalue scheme where we iterate on the quasiparticle solutions of Eq~\eqref{eq:lin_quasiparticle_equation_chap6} that are used to build the self-energy $\Sigma_{pp}^c$ (and $Z_p$)
+- the quasiparticle scheme where an effective Fock matrix built from a frequency-independent Hermitian self-energy as \cite{Monino_2021}
+```math
 \tilde{F}_{pq}= F_{pq} + \tilde{\Sigma}_{pq}
-\end{equation}
+```
 where 
-\begin{equation}
-\tilde{\Sigma}_{pq}=\frac{1}{2}\qty[\Sigma_{pq}^c(\eHF{p}) + \Sigma_{qp}^c(\eHF{p})]
-\end{equation}
+```math
+\tilde{\Sigma}_{pq}=\frac{1}{2}\left[\Sigma_{pq}^c(\epsilon^{\text{HF}}_p) + \Sigma_{qp}^c(\epsilon^{\text{HF}}_p)\right]
+```
 Note that the whole self-energy is computed for this last scheme.
-\end{itemize}
+
 The non-linear Eq~\eqref{eq:w_quasiparticle_equation_chap6} can be exactly transformed in a linear eigenvalue problem by use of the upfolding process\cite{Backhouse_2020a,Bintrim_2021,Monino_2022}. For each orbital $p$, this yields a linear eigenvalue problem of the form
-\begin{equation}
-	\bH_{p} \cdot \bc_{\nu} = \ep_{\nu}^{\text{QP}} \bc_{\nu}
-\end{equation}
+```math
+\mathbf{H}_{p} \cdot \mathbf{c}_{\nu} = \epsilon_{\nu}^{\text{QP}} \mathbf{c}_{\nu}
+```
 where $\nu$ runs over all solutions, quasiparticle and satellites and with \cite{Tolle_2023}
-\begin{equation}
-	\bH_{p} = 
+```math
+	\mathbf{H}_{p} = 
 	\begin{pmatrix}
-		\epss{p}{\HF}		&	\bV{p}{\text{2h1p}}	&	\bV{p}{\text{2p1h}}
+		\epsilon_{p}^{\text{HF}}		&	\mathbf{V}_{p}^{\text{2h1p}}	&	\mathbf{V}_{p}^{\text{2p1h}}
 		\\
-		\T{(\bV{p}{\text{2h1p}})}	&	\bCs{}{\text{2h1p}}			&	\bO
+		(\mathbf{V}_{p}^{\text{2h1p}})^T	&	\mathbf{C}^{\text{2h1p}}			&	\mathbf{0}
 		\\
-		\T{(\bV{p}{\text{2p1h}})}	&	\bO				&	\bCs{}{\text{2p1h}}	
+		(\mathbf{V}_{p}^{\text{2p1h}})^T	&	\mathbf{0}				&	\mathbf{C}^{\text{2p1h}}	
 	\end{pmatrix}
-\end{equation}
-Note that the different blocks will depend on the approximated self-energy. Now that the general equations have been set, we can turn to the various approximations of the self-energy. Three different approximations are available in qcmath: the second-order Green's function (\GFtwo), the {\GW} approximation, and the T-matrix approximation. For each approximation the three partially self-consistent schemes and the upfolding process are available. Note also that, the regularization parameters seen in Chapter \ref{chap:4} are also available in qcmath.
+```
+Note that the different blocks will depend on the approximated self-energy. Now that the general equations have been set, we can turn to the various approximations of the self-energy. Three different approximations are available in qcmath: the second-order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. For each approximation the three partially self-consistent schemes and the upfolding process are available. Note also that, the regularization parameters seen in Chapter \ref{chap:4} are also available in qcmath.
 %Note that the upfolding process is here written for the one-shot scheme 
  
 ### Second-order Green's function (GF2) approximation
@@ -222,9 +221,9 @@ qcmath["H2","6-31g",{"G0F2"}]
 Note that here, an RHF calculation is done by default.
 
 ### $GW$ approximation
-The $\GW$ correlation self-enegy is given by
+The $GW$ correlation self-enegy is given by
 \begin{equation}
-	\Sigm_{pq}^{\GW}(\omega) 
+	\Sigm_{pq}^{GW}(\omega) 
 	= \sum_{im} \frac{\sERI{pi,m}{\ph}\sERI{qi,m}{\ph}}{\omega - \ep_{i}^{\HF} + \Ome_{m}^{\ph}}
 	+ \sum_{am} \frac{\sERI{pa,m}{\ph}\sERI{qa,m}{\ph}}{\omega - \ep_{a}^{\HF} - \Ome_{m}^{\ph}}
 \end{equation}
@@ -317,7 +316,7 @@ where $\Omega_m$ is the diagonal matrix of the excitation energies, $\bX^{\ph}$ 
 \end{align}
 Now, from these equations, different approximations arise:
 \begin{itemize}
-\item if we only take the direct term for the antisymmetrized two-electron integrals we end up with the direct ph-RPA (ph-dRPA), this is the one used in the {\GW} approximation
+\item if we only take the direct term for the antisymmetrized two-electron integrals we end up with the direct ph-RPA (ph-dRPA), this is the one used in the $GW$ approximation
 \item if we use the Tamm–Dancoff approximation (TDA) that sets $\Mat{B}{ph}=\bm{0}$, we end up with the ph-TDA approach
 \end{itemize}
 Note that TDA can be used with the ph-RPA flavor and gives ph-dTDA. Ground state correlation energy can be computed with 
