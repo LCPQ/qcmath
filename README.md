@@ -389,7 +389,7 @@ For each new method notebook, it is essential to organize the code into potentia
 [^2]:
 [^3]:
 [^4]:
-[^5]:
-[^6]:
+[^5]: J. Tölle and G. Kin-Lic Chan, J. Chem. Phys. 158, 124123 (2023).
+[^6]: M. E. Casida, J. Chem. Phys. 122, 054111 (2005).
 [^7]:
 [^8]:
