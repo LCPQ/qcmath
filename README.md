@@ -111,7 +111,7 @@ The call to the qcmath module is done with the qcmath word. Then, one has to spe
 ```ruby
 qcmath["H2","6-31g",{"RHF"}]
 ```
-The molecular geometry is specified in a .xyz file in the mol directory while the basis set file is in the basis directory. Other options can be specified like the charge and the spin multiplicity. If they are not stated then by default, the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in `main/default_options.nb`.
+The molecular geometry is specified in a .xyz file in the mol directory while the basis set file is in the basis directory. Other options can be specified like the charge and the spin multiplicity. If they are not stated then by default, the charge is zero and the molecule is in a singlet state. Options regarding methods can also be specified but we present them in the next section. Note that most of the presented methods have spin and spatial orbital implementations, this can be chosen with the keyword `spinorbital` and the default value is `False` (spatial orbitals by default). All options are listed in the `main/default_options.nb` notebook in the form of a dictionary.
 
 # User guide
 The qcmath software is still in development, so many of the features presented in the following are not available yet but constitute the first roadmap. This User guide introduces some theoretical background and displays the functionalities of these methods.
