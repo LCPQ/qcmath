@@ -368,7 +368,7 @@ As mentioned in the chapter's introduction, one of the primary objectives of qcm
 - The new method needs to be implemented in its notebook
 - Add your method in the `utils/list_method.nb` and specify the dependencies (ex: if post-HF method $\rightarrow$ dependency=`RHF`)
 - Add default options in `main/default_options.nb` if needed
-- Add a call to your method in Main.nb as
+- Add a call to your method in `Main.nb` as
 ```ruby
 NameNewMethod="NameNewMethod"
 If[ToDoModules[NameNewMethod]["Do"] == True,
