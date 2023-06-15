@@ -49,7 +49,7 @@ There is a module_example.nb notebook in the utils folder that explains how to a
 # qcmath
 Mathematica modules for electronic structure calculations developed at the 
 Laboratoire de Chimie et Physique Quantiques ([LCPQ](https://www.lcpq.ups-tlse.fr)) UMR5626 (Toulouse, France).
-The purpose of this software is to take advantage of the powerful symbolic nature of Mathematica to help newcomers in quantum chemistry easily develop their ideas.
+The purpose of this software is to take advantage of the powerful symbolic nature of [Mathematica](https://www.wolfram.com/mathematica/) to help newcomers in quantum chemistry easily develop their ideas.
 Note that qcmath is **not** designed for computational efficiency.
 
 **Contributors:**
@@ -61,11 +61,16 @@ Note that qcmath is **not** designed for computational efficiency.
 
 
 # Introduction
-Most of the quantum chemistry methods are well suited for the use of computers. Indeed, the matrix formulation of quantum mechanics allows us to greatly benefit from linear algebra packages like LAPACK and BLAS. Thus, a plethora of quantum chemistry software is available, whether they are free or commercial. This software can be devoted to some specific methods or many different ones, they can use a specific type of basis functions or various ones, etc $\ldots$ A significant amount of quantum chemistry codes, covering all of its methods, are available and a list of most of them can be found in Wikipedia (https://en.wikipedia.org/wiki/List_of_quantum_chemistry_and_solid-state_physics_software). 
 
-But unfortunately, even though most of these software are well designed for efficiency purposes, they can be difficult to read (when they are open source) due to the use of the low-level programming language. They are also not so much intended for understanding and learning. This is where qcmath comes in, indeed, the main goal of qcmath is to help newcomers in quantum chemistry to easily develop their ideas and codes. Note that some software are using higher-level programming languages that can improve the understanding of the code. This qcmath software is a collection of Mathematica modules for electronic structure calculations. 
+Quantum chemistry methods are highly compatible with computer utilization, owing to the matrix formulation of quantum mechanics, which leverages the power of linear algebra packages like LAPACK and BLAS. As a result, a wide array of quantum chemistry software is currently available, encompassing both free and commercial options. These software packages cater to specific methods or offer a diverse range of methodologies, utilizing various types of basis functions, among other features. A considerable number of quantum chemistry codes exist, covering a comprehensive range of methods. For a comprehensive list of these codes, refer to Wikipedia's page on quantum chemistry and solid-state physics software (https://en.wikipedia.org/wiki/List_of_quantum_chemistry_and_solid-state_physics_software).
 
-Before going into details of qcmath let's say a few words about the Mathematica environment. Wolfram Mathematica is a software system with built-in libraries that can be used for many different purposes. It was conceived by Stephen Wolfram and is developed by Wolfram Research. The main strengths of this language are the possibility to do computer algebra (derivatives, integrals, expression simplifications, ...), then these different expressions can be evaluated numerically. Another important point is the capability of doing very sophisticated plots of various types of functions in 1, 2, and 3 dimensions. Many examples of applications are available in many different books. All these different points make Mathematica a very powerful tool used in many different areas of science whether it is for educational purposes, research, or industry. Mathematica is split into two parts: the kernel and the front end. The kernel interprets expressions and returns result expressions that can be displayed by the front end. The original front end is a notebook interface and allows the creation and editing of notebook documents that can contain code, plaintext, images, and graphics. The qcmath software relies on these notebook documents. Note that qcmath is **not** designed for computational efficiency. 
+Regrettably, despite the efficient design of many of these software packages, they can be challenging to comprehend, particularly in open-source cases, as they often employ low-level programming languages. Moreover, these programs are not primarily intended for educational purposes or facilitating understanding. This is precisely where qcmath comes into play. qcmath aims to assist newcomers in the field of quantum chemistry by providing a user-friendly platform for developing ideas and codes. It is worth noting that certain software packages utilize higher-level programming languages, which can enhance code comprehension. As for qcmath, it is a compilation of Mathematica modules specifically designed for conducting electronic structure calculations.
+
+Before delving into the specifics of qcmath, let's provide an overview of the Mathematica environment. Mathematica is a comprehensive software system developed by Wolfram Research, initially conceptualized by Stephen Wolfram. It boasts a wide range of built-in libraries that can be utilized for diverse purposes. One of its key strengths lies in its ability to perform computer algebra operations, such as derivatives, integrals, and expression simplifications. Furthermore, Mathematica enables the numerical evaluation of these expressions. Another notable feature is its advanced plotting capabilities, supporting intricate visualizations of functions in one, two, and three dimensions. Numerous books offer extensive examples of Mathematica's applications across various domains. With its versatility, Mathematica has become a powerful tool employed in numerous scientific fields, including education, research, and industry.
+
+Mathematica comprises two main components: the kernel and the front end. The kernel interprets expressions and generates result expressions, which can then be displayed using the front end. The original front end takes the form of a notebook interface, facilitating the creation and editing of notebook documents that can contain code, plaintext, images, and graphics. qcmath, specifically, relies on these notebook documents. It is important to note that qcmath is not primarily designed for computational efficiency but rather focuses on providing a user-friendly environment.
+
+By utilizing the robust capabilities of Mathematica, qcmath offers a platform tailored for quantum chemistry calculations within the framework of notebook documents.
 
 # Installation guide
 The qcmath software can be downloaded on GitHub as a Git repository
@@ -73,7 +78,7 @@ The qcmath software can be downloaded on GitHub as a Git repository
 git clone https://github.com/LCPQ/qcmath.git
 ```
 
-Then define your `QCMATH_ROOT` and install PySCF using `pip`
+Then, one must define the variable `QCMATH_ROOT` and install PySCF using `pip`
 ```
 pip install pyscf
 ```
