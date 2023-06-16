@@ -1,50 +1,3 @@
-<!---
-# qcmath
-
-Mathematica modules for electronic structure calculations developed at the 
-Laboratoire de Chimie et Physique Quantiques ([LCPQ](https://www.lcpq.ups-tlse.fr)) UMR5626 (Toulouse, France).
-qcmath is primarily developed to help newcomers in quantum chemistry easily develop their own ideas and codes.
-Note that qcmath is **not** designed for computational efficiency.
-
-**Contributors:**
-- [Pierre-Francois Loos](https://pfloos.github.io/WEB_LOOS)
-- [Anthony Scemama](https://scemama.github.io)
-- Enzo Monino
-- [Antoine Marie](https://antoine-marie.github.io)
-- Raul Quintero
-
-# qcmath abilities
-
-## Ground-state calculations
-- restricted and unrestricted Hartree-Fock (HF)
-- Moller-Plesset (MP) perturbation theory
-- various flavors of coupled-cluster (CC) calculations
-
-## Charged excitations
-- *GW* approximation
-- T-matrix approximation
-- second- and third-order Green's function (GF)
-
-## Neutral excitations
-- maximum overlap method (MOM)
-- configuration interaction (CI)
-- random-phase approximation (RPA)
-- Bethe-Salpeter equation (BSE)
-- algebraic-diagrammatic construction (ADC)
-
-# Miscellaneous
-The computation of integrals within qcmath is currently performed with [QCaml](https://gitlab.com/scemama/QCaml).
-All the IO are performed with [TREXIO](https://github.com/TREX-CoE/trexio).
-
-# Installation blueprint
-
-To be written...
-
-# Coding and contributing to qcmath
-
-Due to its modular structure, it should be easy to implement your own new method in qcmath.
-There is a module_example.nb notebook in the utils folder that explains how to add a module to the code as well as describes the coding convention. 
---->
 # qcmath
 
 <img src="logo_qcmath.png"  width="250">
@@ -61,8 +14,7 @@ Note that qcmath is **not** designed for computational efficiency.
 - [Antoine Marie](https://antoine-marie.github.io)
 - Raul Quintero
 
-
-# Introduction
+# What is it?
 
 Quantum chemistry methods are highly compatible with computer utilization, owing to the matrix formulation of quantum mechanics, which leverages the power of linear algebra packages like [BLAS](https://www.netlib.org/blas/) and [LAPACK](https://www.netlib.org/lapack/). As a result, a wide array of quantum chemistry software is currently available, encompassing both free and commercial options. These software packages cater to specific methods or offer a diverse range of methodologies, utilizing various types of basis functions, among other features. A considerable number of quantum chemistry codes exist, covering a comprehensive range of methods. For a comprehensive list of these codes, refer to Wikipedia's page on quantum chemistry and solid-state physics software (<https://en.wikipedia.org/wiki/List_of_quantum_chemistry_and_solid-state_physics_software>).
 
@@ -93,7 +45,7 @@ PySCF is used for the computation of one- and two-electron integrals. Here is th
 Note that the version of Python and Numpy is fixed by PySCF.
 
 # Quick start
-Before running any qcmath calculation, we need to define the working directory as 
+Before running any qcmath calculation, one needs to define the working directory as 
 ```ruby
 SetDirectory[NotebookDirectory[]];
 path=Directory[];
@@ -107,15 +59,13 @@ Once this first step is done, one can run a qcmath calculation as follows
 ```ruby
 qcmath[molecule_name,basis_set,methods]
 ```
-The call to the qcmath module is done with the qcmath keyword. Then, one has to specify three arguments. These arguments are strings or a list of strings. The first one is the name of the molecule that we want to study and it is defined as a string. The second one is the basis set which is also a string. The last one is a list of methods that one wants to use and it is defined with a list of strings. In summary, taking the example of the $\text{H}_2$ molecule in the 6-31G basis set using the restricted Hartree-Fock method, the qcmath module call would resemble the following code:
+To invoke the qcmath module, use the keyword "qcmath" followed by three arguments. These arguments are either strings or a list of strings. The first argument is the name of the molecule to be studied, represented as a string. For example, in the case of the $\text{H}_2$ molecule, it would be specified as "H2". The second argument corresponds to the basis set and is also provided as a string. For instance, in the example of the 6-31G basis set, it would be specified as "6-31G". In summary, taking the example of the $\text{H}_2$ molecule in the 6-31G basis set using the restricted Hartree-Fock method, the qcmath module call would resemble the following code:
 ```ruby
 qcmath["H2","6-31g",{"RHF"}]
 ```
 
 The molecular geometry is provided through a .xyz file located in the `mol` directory, while the basis set file is stored in the `basis` directory. Additional options can be specified, such as the charge and spin multiplicity of the molecule. If these options are not explicitly stated, the default values are zero for the charge (neutral) and singlet state for the spin multiplicity.
-
-Furthermore, options related to different methods can also be specified, but we will discuss them in the upcoming section. It is worth noting that most of the presented methods offer both spin and spatial orbital implementations. You can choose between them using the keyword `"spinorbital"`, with the default value being `False` (indicating spatial orbitals as the default choice).
-
+Furthermore, options related to different methods can also be specified, but we will discuss them in the upcoming section. It is worth noting that most of the presented methods offer both spin and spatial orbital implementations. You can choose between them using the keyword `"spinorbital"`, with the default value being `False` (indicating `spatialorbital` as the default choice).
 For a comprehensive list of all available options, including charge, spin multiplicity, and method-related choices, please refer to the `main/default_options.nb` notebook. This notebook presents the options in the form of a dictionary, providing a convenient reference for configuring and customizing the calculations.
 
 # User Guide
@@ -184,7 +134,7 @@ Three levels of (partial) self-consistency are available in qcmath:
 ```math
 \omega = \epsilon^{\text{HF}}_p + \Sigma_{pp}^c(\omega)
 ```
-where the diagonal approximation is used. Because we are, most of the time, interested in the quasiparticle solution we can use the linearized quasiparticle equation
+where a diagonal approximation of the self-energy is used. Because we are, most of the time, interested in the quasiparticle solution one can use the linearized quasiparticle equation
 ```math
 \epsilon^{\text{QP}}_p = \epsilon^{\text{HF}}_p + Z_p \Sigma_{pp}^c(\epsilon^{\text{HF}}_p)
 ```
@@ -192,8 +142,8 @@ where the renormalization factor $Z_p$ is defined as
 ```math
 Z_p=\left[ 1-\frac{\partial \Sigma_{pp}(\omega)}{\partial \omega}\Bigr\rvert_{\omega =\epsilon^{\text{HF}}_p } \right]^{-1}
 ```
-- the eigenvalue scheme where we iterate on the quasiparticle solutions of the linearized equation that are used to build the self-energy $\Sigma_{pp}^c$ (and $Z_p$)
-- the quasiparticle scheme where an effective Fock matrix built from a frequency-independent Hermitian self-energy as [^1]
+- the eigenvalue scheme where one iterates the quasiparticle energies that are used to build the self-energy $\Sigma_{pp}^c$ (and $Z_p$)
+- the quasiparticle self-consistent scheme where an effective Fock matrix built from a frequency-independent Hermitian self-energy as [^1]
 ```math
 \tilde{F}_{pq}= F_{pq} + \tilde{\Sigma}_{pq}
 ```
@@ -201,9 +151,9 @@ where
 ```math
 \tilde{\Sigma}_{pq}=\frac{1}{2}\left[\Sigma_{pq}^c(\epsilon^{\text{HF}}_p) + \Sigma_{qp}^c(\epsilon^{\text{HF}}_p)\right]
 ```
-Note that the whole self-energy is computed for this last scheme.
+Note that the whole self-energy is computed for this last scheme (not only the diagonal).
 
-The non-linear quasiparticle equation can be exactly transformed in a linear eigenvalue problem by use of the upfolding process.[^2],[^3],[^4] For each orbital $p$, this yields a linear eigenvalue problem of the form
+The non-linear quasiparticle equation can be exactly transformed in a linear eigenvalue problem using an upfolding process.[^2],[^3],[^4] For each orbital $p$, this yields a linear eigenvalue problem of the form
 ```math
 \mathbf{H}_{p} \cdot \mathbf{c}_{\nu} = \epsilon_{\nu}^{\text{QP}} \mathbf{c}_{\nu}
 ```
@@ -218,7 +168,9 @@ where $\nu$ runs over all solutions, quasiparticle and satellites and with [^5]
 		(\mathbf{V}_{p}^{\text{2p1h}})^T	&	\mathbf{0}				&	\mathbf{C}^{\text{2p1h}}	
 	\end{pmatrix}
 ```
-Note that the different blocks will depend on the approximated self-energy. Now that the general equations have been set, we can turn to the various approximations of the self-energy. Three different approximations are available in qcmath: the second-order Green's function (GF2), the $GW$ approximation, and the T-matrix approximation. For each approximation the three partially self-consistent schemes and the upfolding process are available. Note also that, the regularization parameters are also available in qcmath.
+Note that the different blocks will depend on the approximated self-energy. 
+
+Now that the general equations have been set, we can turn our attention to the various approximations of the self-energy. Three different approximations are available in qcmath: the second-order Green's function (GF2), the $GW$ approximation, and the $T$-matrix approximation. For each approximation the three partially self-consistent schemes and the upfolding process are available. Note also that, the regularization parameters are also available in qcmath.
  
 ### Second-order Green's function (GF2) approximation
 The GF2 correlation self-energy is closely related to MP2 and is given by the following expression
@@ -235,7 +187,7 @@ Example of a one-shot calculation
 ```ruby
 qcmath["H2","6-31g",{"G0F2"}]
 ```
-Note that here, an RHF calculation is done by default.
+Note that here, a RHF calculation is done by default.
 
 ### $GW$ approximation
 The $GW$ correlation self-enegy is given by
@@ -259,7 +211,7 @@ Example of an eigenvalue calculation
 ```ruby
 qcmath["H2","6-31g",{"evGW"}]
 ```
-Note that here, an RHF calculation is done by default.
+Note that here, a RHF calculation is done by default.
 
 ### T-matrix approximation
 The T-matrix correlation self-energy is given by
@@ -287,7 +239,7 @@ Example of a quasiparticle calculation
 ```ruby
 qcmath["H2","6-31g",{"qsGT"}]
 ```
-Note that here, an RHF calculation is done by default.
+Note that here, a RHF calculation is done by default.
 
 ## Neutral excitations
 
@@ -335,7 +287,7 @@ Now, from these equations, different approximations arise:
 - if we only take the direct term for the antisymmetrized two-electron integrals we end up with the direct ph-RPA (ph-dRPA), this is the one used in the $GW$ approximation
 - if we use the Tamm–Dancoff approximation (TDA) that sets $\mathbf{B}^{\text{ph}}=\mathbf{0}$, we end up with the ph-TDA approach
 
-Note that TDA can be used with the ph-RPA flavor and gives ph-dTDA. Ground state correlation energy can be computed with 
+Note that TDA can be used with the ph-dRPA flavor and gives ph-dTDA. Ground-state correlation energy can be computed with 
 ```math
 E_c^{\text{ph-RPA}}=\frac{1}{2} \left(\sum_m \Omega_m^{\text{ph}} - \text{Tr}(\mathbf{A})\right) 
 ```
@@ -347,7 +299,7 @@ The option `"TDA"` can be set to `True`, by default `"TDA"=False`.
 
 ### Particle-particle random-phase approximation (pp-RPA)
 
-The particle-particle RPA (pp-RPA) problem considers the excitation energies of the $N+2$ and $N-2$ system (with $N$ the number of electrons). It is also defined by a slightly different eigenvalue problem than ph-RPA:
+The particle-particle RPA (pp-RPA) problem considers the excitation energies of the ($N+2$)- and ($N-2$)-electron system (with $N$ the number of electrons). It is also defined by a slightly different eigenvalue problem than ph-RPA:
 ```math
 \begin{pmatrix}\mathbf{C}^{\text{pp}} & \mathbf{B}^{\text{pp/hh}} \\ -\left(\mathbf{B}^{\text{pp/hh}}\right)^{\dagger} & -\mathbf{D}^{\text{hh}} \end{pmatrix} \cdot\begin{pmatrix} \mathbf{X}^{\text{pp}} & \mathbf{Y}^{\text{hh}} \\ \mathbf{Y}^{\text{pp}} & \mathbf{X}^{\text{hh}}\end{pmatrix} \\ = \begin{pmatrix} \mathbf{\Omega}^{\text{pp}} & \mathbf{O} \\ \mathbf{O} & \mathbf{\Omega}^{\text{hh}} \end{pmatrix} \cdot \begin{pmatrix} \mathbf{X}^{\text{pp}} & \mathbf{Y}^{\text{hh}} \\ \mathbf{Y}^{\text{pp}} & \mathbf{X}^{\text{hh}} \end{pmatrix}
 ```
@@ -364,7 +316,7 @@ where $\mathbf{\Omega}^{\text{pp/hh}}$ are the diagonal matrices of the double a
 	& = -(\epsilon_{i}^{\text{HF}} + \epsilon_{j}^{\text{HF}}) \delta_{ik} \delta_{jl} + \bra{ij}\ket{kl}
 \end{align}
 ```
-The $\mathbf{X}^{\text{pp/hh}}$ and $\mathbf{Y}^{\text{pp/hh}}$ are the double addition/removal transition coefficients matrices. In the same way we did for the ph-RPA, we can obtain the correlation energy at the pp-RPA level using [^7]
+The $\mathbf{X}^{\text{pp/hh}}$ and $\mathbf{Y}^{\text{pp/hh}}$ are the double addition/removal transition coefficients matrices. We can obtain the correlation energy at the pp-RPA level using [^7]
 $$E_c^{\text{pp-RPA}} =  \frac{1}{2} \left(\sum_n \Omega_n^{\text{pp}}  - \sum_n \Omega_n^{\text{hh}}  - \text{Tr}\mathbf{C}^{\text{pp}} - \text{Tr}\mathbf{D}^{\text{hh}}\right)$$
 The keyword to use pp-RPA is `"pp-RPA"`. Note that TDA is also available with the option `"TDA"=True`.
 
@@ -377,9 +329,9 @@ The Bethe-Salpeter equation (BSE) is related to the two-body Green's function (2
     
 where the BSE matrix elements depend on the choice of the BSE kernel. To run a BSE calculation we have first to specify the approximation for the self-energy with the method argument and the keyword for this option is `"BSE"=True`. Note that in general a BSE calculation is done in the static approximation, which is the equivalent of the adiabatic approximation in TD-DFT. It is possible to take into account dynamical effects using first-order perturbation theory [^8] using the option `"dBSE"=True`. This dynamical correction is applicable for all the different BSE kernels available in qcmath. Note that this dynamical correction is only available in TDA with the option `"dTDA"`.
 
-# Programmer guide
+# Programmer Guide
 
-As mentioned in the chapter's introduction, one of the primary objectives of qcmath is to enable newcomers in quantum chemistry to explore and advance their ideas through coding. Therefore, it is crucial to provide them with the ability to incorporate their methods into qcmath. To facilitate this process, we have developed a notebook example called `module_example.nb` to guide users step-by-step. The following outlines the different stages involved in adding a new method to qcmath:
+As mentioned in the first section, one of the primary objectives of qcmath is to enable newcomers in quantum chemistry to explore and advance their ideas through coding. Therefore, it is crucial to provide them with the ability to incorporate their methods into qcmath. To facilitate this process, we have developed a notebook example called `module_example.nb` to guide users step-by-step. The following outlines the different stages involved in adding a new method to qcmath:
 
 - The new method needs to be implemented in its notebook
 - Add your method in the `utils/list_method.nb` and specify the dependencies (ex: if post-HF method then dependency=`"RHF"`)
