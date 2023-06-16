@@ -245,7 +245,7 @@ Note that here, a RHF calculation is done by default.
 
 Within qcmath, the computation of excitation energies utilizes methods formulated as a Casida-like equation.[^6] This equation is an eigenvalue equation that serves as a fundamental component in linear response theory. It plays a pivotal role in various approaches, including time-dependent density functional theory (TD-DFT), the random phase approximation (RPA), and the Bethe-Salpeter equation (BSE).
 In this section, we begin by exploring the RPA method and distinguishing between different variations within this framework. By examining these different flavors of the RPA method, we gain insights into their unique characteristics and applicability.
-Subsequently, we delve into the discussion of the BSE method. This method represents another important approach for computing excitation energies, with its distinct theoretical foundations and computational considerations. By exploring the BSE method, users can gain a comprehensive understanding of its principles and its role within qcmath.
+Subsequently, we delve into the discussion of the BSE method. This method represents another important approach for computing excitation energies, with its distinct theoretical foundations and computational considerations. By exploring the BSE method, users can gain a comprehensive understanding of its principles and its role within qcmath. Note that when the spatial orbital implementation of a method is available, then we can use the `"singlet"` and/or `"triplet"` keywords to compute only singlet and/or triplet states.
 
 ### Particle-hole random-phase approximation (ph-RPA)
 
@@ -334,9 +334,9 @@ where the BSE matrix elements depend on the choice of the BSE kernel. To run a B
 As mentioned in the first section, one of the primary objectives of qcmath is to enable newcomers in quantum chemistry to explore and advance their ideas through coding. Therefore, it is crucial to provide them with the ability to incorporate their methods into qcmath. To facilitate this process, we have developed a notebook example called `module_example.nb` to guide users step-by-step. The following outlines the different stages involved in adding a new method to qcmath:
 
 - The new method needs to be implemented in its notebook
-- Add your method in the `utils/list_method.nb` and specify the dependencies (ex: if post-HF method then dependency->`"RHF"`)
-- Add default options in `main/default_options.nb` if needed
-- Add a call to your method in `Main.nb` as
+- Add your method in the `src/utils/list_method.nb` and specify the dependencies (ex: if post-HF method then dependency->`"RHF"`)
+- Add default options in `src/Main/default_options.nb` if needed
+- Add a call to your method in `src/Main/Main.nb` as
 ```ruby
 NameNewMethod="NameNewMethod"
 If[ToDoModules[NameNewMethod]["Do"] == True,
