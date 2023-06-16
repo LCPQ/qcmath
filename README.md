@@ -79,23 +79,23 @@ In the context of the Hartree-Fock (HF) approximation, the electronic wave funct
 
 Since the Fock matrix relies on the MO coefficients $\mathbf{C}$, which are obtained from the Fock matrix itself, these equations necessitate a self-consistent solution. To facilitate this process, various options can be specified to customize the calculations and achieve desired outcomes:
 - an initial guess of the Fock matrix needs to be diagonalized to give the MO coefficients and this initial guess is described by the keyword `"guess_type"`
-  - `"guess_type"="core"` (default) corresponds to the core Hamiltonian defined as $\mathbf{H_c} = \mathbf{T} + \mathbf{V}$ where $\mathbf{T}$ is the kinetic energy matrix and $\mathbf{V}$ is the external potential.
-  - `"guess_type"`$\rightarrow$`="huckel"` corresponds to the Hückel Hamiltonian 
-  - `"guess_type"="random"`  corresponds to random MO coefficients
+  - `"guess_type"->"core"` (default) corresponds to the core Hamiltonian defined as $\mathbf{H_c} = \mathbf{T} + \mathbf{V}$ where $\mathbf{T}$ is the kinetic energy matrix and $\mathbf{V}$ is the external potential.
+  - `"guess_type"->"huckel"` corresponds to the Hückel Hamiltonian 
+  - `"guess_type"->"random"`  corresponds to random MO coefficients
   
 - converging HF calculation
-  - `"maxSCF"`: maximum number of iterations, by default `"maxSCF"=100`
-  - `"threshHF"`: convergence threshold on the commutator $\mathbf{F} \mathbf{P} \mathbf{S} - \mathbf{S} \mathbf{P} \mathbf{F}$, by default `"threshHF"=10^-7`
-  - `"DIIS"`: rely on the Direct Inversion in the Iterative Subspace (DIIS) where the Fock matrix is extrapolated at each iteration using the ones of the previous iterations, by default `"DIIS"=True`
-  - `"n_DIIS"`: size of the DIIS space, by default `"n_DIIS"=5`
-  - `"level_shift"`: a level shift increases the gap between the occupied and virtual orbitals, it can help to converge the SCF process for systems with a small HOMO-LUMO gap, by default `"level_shift"=0.0`eV
+  - `"maxSCF"`: maximum number of iterations, by default `"maxSCF"->100`
+  - `"threshHF"`: convergence threshold on the commutator $\mathbf{F} \mathbf{P} \mathbf{S} - \mathbf{S} \mathbf{P} \mathbf{F}$, by default `"threshHF"->10^-7`
+  - `"DIIS"`: rely on the Direct Inversion in the Iterative Subspace (DIIS) where the Fock matrix is extrapolated at each iteration using the ones of the previous iterations, by default `"DIIS"->True`
+  - `"n_DIIS"`: size of the DIIS space, by default `"n_DIIS"->5`
+  - `"level_shift"`: a level shift increases the gap between the occupied and virtual orbitals, it can help to converge the SCF process for systems with a small HOMO-LUMO gap, by default `"level_shift"->0.0`eV
 
 - orthogonalization matrix with the keyword `"ortho_type"`
-  - `"ortho_type"="lowdin"` (default): Löwdin orthogonalization 
-  - `"ortho_type"="canonical"`: Canonical orthogonalization 
+  - `"ortho_type"->"lowdin"` (default): Löwdin orthogonalization 
+  - `"ortho_type"->"canonical"`: Canonical orthogonalization 
 
 - print supplementary information about the calculation with the keyword `"verbose"`
-  - `"verbose" = False` by default, if `"verbose" = True` then more information about the CPU timing and additional quantities are printed. Note that this option is available for most methods in qcmath.
+  - `"verbose"->False` by default, if `"verbose"->True` then more information about the CPU timing and additional quantities are printed. Note that this option is available for most methods in qcmath.
 
 Two flavors of Hartree-Fock (HF) are available in qcmath: restricted HF (RHF) and unrestricted HF (UHF). To run a UHF calculation, one simply does
 
@@ -295,7 +295,7 @@ Keywords for the method argument need to be specified for the different approach
 - `"RPAx"`: run a ph-RPA calculation
 - `"RPA"`: run a ph-dRPA calculation
 
-The option `"TDA"` can be set to `True`, by default `"TDA"=False`.
+The option `"TDA"` can be set to `True`, by default `"TDA"->False`.
 
 ### Particle-particle random-phase approximation (pp-RPA)
 
@@ -318,7 +318,7 @@ where $\mathbf{\Omega}^{\text{pp/hh}}$ are the diagonal matrices of the double a
 ```
 The $\mathbf{X}^{\text{pp/hh}}$ and $\mathbf{Y}^{\text{pp/hh}}$ are the double addition/removal transition coefficients matrices. We can obtain the correlation energy at the pp-RPA level using [^7]
 $$E_c^{\text{pp-RPA}} =  \frac{1}{2} \left(\sum_n \Omega_n^{\text{pp}}  - \sum_n \Omega_n^{\text{hh}}  - \text{Tr}\mathbf{C}^{\text{pp}} - \text{Tr}\mathbf{D}^{\text{hh}}\right)$$
-The keyword to use pp-RPA is `"pp-RPA"`. Note that TDA is also available with the option `"TDA"=True`.
+The keyword to use pp-RPA is `"pp-RPA"`. Note that TDA is also available with the option `"TDA"->True`.
 
 ### Bethe-Salpeter equation (BSE)
 The Bethe-Salpeter equation (BSE) is related to the two-body Green's function (2-GF). The central quantity is the so-called BSE kernel defined as the functional derivative of the self-energy with respect to the 1-GF. There are several approximations of the self-energy and each one of them leads to a different BSE approximation. The common central equation is the following eigenvalue equation
@@ -327,14 +327,14 @@ The Bethe-Salpeter equation (BSE) is related to the two-body Green's function (2
 \begin{pmatrix}\mathbf{A}^{\text{BSE}} & \mathbf{B}^{\text{BSE}} \\ -\mathbf{B}^{\text{BSE}} & -\mathbf{A}^{\text{BSE}} \end{pmatrix}\cdot\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}=\mathbf{\Omega}_m^{\text{BSE}}\begin{pmatrix}\mathbf{X}_m^{\text{BSE}}\\ \mathbf{Y}_m^{\text{BSE}}\end{pmatrix}
 ```
     
-where the BSE matrix elements depend on the choice of the BSE kernel. To run a BSE calculation we have first to specify the approximation for the self-energy with the method argument and the keyword for this option is `"BSE"=True`. Note that in general a BSE calculation is done in the static approximation, which is the equivalent of the adiabatic approximation in TD-DFT. It is possible to take into account dynamical effects using first-order perturbation theory [^8] using the option `"dBSE"=True`. This dynamical correction is applicable for all the different BSE kernels available in qcmath. Note that this dynamical correction is only available in TDA with the option `"dTDA"`.
+where the BSE matrix elements depend on the choice of the BSE kernel. To run a BSE calculation we have first to specify the approximation for the self-energy with the method argument and the keyword for this option is `"BSE"->True`. Note that in general a BSE calculation is done in the static approximation, which is the equivalent of the adiabatic approximation in TD-DFT. It is possible to take into account dynamical effects using first-order perturbation theory [^8] using the option `"dBSE"->True`. This dynamical correction is applicable for all the different BSE kernels available in qcmath. Note that this dynamical correction is only available in TDA with the option `"dTDA"`.
 
 # Programmer Guide
 
 As mentioned in the first section, one of the primary objectives of qcmath is to enable newcomers in quantum chemistry to explore and advance their ideas through coding. Therefore, it is crucial to provide them with the ability to incorporate their methods into qcmath. To facilitate this process, we have developed a notebook example called `module_example.nb` to guide users step-by-step. The following outlines the different stages involved in adding a new method to qcmath:
 
 - The new method needs to be implemented in its notebook
-- Add your method in the `utils/list_method.nb` and specify the dependencies (ex: if post-HF method then dependency=`"RHF"`)
+- Add your method in the `utils/list_method.nb` and specify the dependencies (ex: if post-HF method then dependency->`"RHF"`)
 - Add default options in `main/default_options.nb` if needed
 - Add a call to your method in `Main.nb` as
 ```ruby
