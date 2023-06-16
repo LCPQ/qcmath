@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7019,        169]
-NotebookOptionsPosition[      6642,        154]
-NotebookOutlinePosition[      7065,        171]
-CellTagsIndexPosition[      7022,        168]
+NotebookDataLength[      8440,        202]
+NotebookOptionsPosition[      8063,        187]
+NotebookOutlinePosition[      8486,        204]
+CellTagsIndexPosition[      8443,        201]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -29,11 +29,11 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"{", "\n", "      ", 
       RowBox[{
-      "e", ",", "Cp", ",", "C", ",", "Orb", ",", "P", ",", "\n", "      ", 
-       "F", ",", "a"}], "\n", "    ", "}"}], ",", "\n", "    ", "\n", "    ", 
-     
+      "e", ",", "Cp", ",", "C", ",", "Orb", ",", "P", ",", "F", ",", "a"}], 
+      "\n", "    ", "}"}], ",", "\n", "    ", "\n", "    ", 
+     RowBox[{"(*", "Initialization", "*)"}], "\n", "    ", 
      RowBox[{
-      RowBox[{"F", " ", "=", " ", 
+      RowBox[{"F", "=", 
        RowBox[{"Table", "[", 
         RowBox[{"0", ",", 
          RowBox[{"{", 
@@ -45,20 +45,35 @@ Cell[BoxData[
        RowBox[{
         RowBox[{"guessType", "\[Equal]", "1"}], ",", " ", 
         RowBox[{"(*", 
-         RowBox[{"core", " ", "Hamiltonian"}], "*)"}], "\n", "      ", "\n", 
-        "      ", 
-        RowBox[{"F", " ", "=", " ", "Hc"}], ",", "\n", "      ", "\n", 
-        "      ", 
+         RowBox[{"core", " ", "Hamiltonian"}], "*)"}], "\n", "      ", 
+        RowBox[{
+         RowBox[{"F", " ", "=", " ", "Hc"}], ";", "\n", "      ", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"e", ",", "Cp"}], "}"}], "=", 
+          RowBox[{"Chop", "[", 
+           RowBox[{"SortEigensystem", "[", 
+            RowBox[{"Eigensystem", "[", 
+             RowBox[{
+              RowBox[{"X", "\[Transpose]"}], ".", "F", ".", "X"}], "]"}], 
+            "]"}], "]"}]}], ";", " ", 
+         RowBox[{"Cp", " ", "=", " ", 
+          RowBox[{"Cp", "\[Transpose]"}]}], ";"}], 
+        RowBox[{"(*", 
+         RowBox[{
+         "to", " ", "have", " ", "the", " ", "good", " ", "shape", " ", "in", 
+          " ", "Mathematica"}], "*)"}], "\n", "      ", ",", "\n", "      ", 
+        "\n", "      ", 
         RowBox[{"guessType", "\[Equal]", "2"}], ",", " ", 
         RowBox[{"(*", 
          RowBox[{"H\[UDoubleDot]ckel", " ", "Hamiltonian"}], "*)"}], "\n", 
-        "      ", "\n", "      ", 
+        "      ", 
         RowBox[{
          RowBox[{"a", " ", "=", " ", "1.75"}], ";", " ", 
          RowBox[{"(*", 
           RowBox[{"extended", " ", "H\[UDoubleDot]ckel", " ", "parameter"}], 
-          "*)"}], "\n", "      ", "\n", "      ", 
-         RowBox[{"Do", "[", "\n", "        ", "\n", "        ", 
+          "*)"}], "\n", "      ", 
+         RowBox[{"Do", "[", "\n", "        ", 
           RowBox[{
            RowBox[{
             RowBox[{
@@ -67,8 +82,8 @@ Cell[BoxData[
               "=", " ", 
              RowBox[{"Hc", "\[LeftDoubleBracket]", 
               RowBox[{"\[Mu]", ",", "\[Mu]"}], "\[RightDoubleBracket]"}]}], 
-            ";", "\n", "         ", "\n", "        ", 
-            RowBox[{"Do", "[", "\n", "        ", "\n", "          ", 
+            ";", "\n", "        ", 
+            RowBox[{"Do", "[", "\n", "          ", 
              RowBox[{
               RowBox[{
                RowBox[{
@@ -87,48 +102,60 @@ Cell[BoxData[
                    RowBox[{"Hc", "\[LeftDoubleBracket]", 
                     RowBox[{"\[Nu]", ",", "\[Nu]"}], 
                     "\[RightDoubleBracket]"}]}], ")"}]}]}], ";", "\n", 
-               "          ", "\n", "          ", 
+               "          ", 
                RowBox[{
                 RowBox[{"F", "\[LeftDoubleBracket]", 
                  RowBox[{"\[Nu]", ",", "\[Mu]"}], "\[RightDoubleBracket]"}], 
                 " ", "=", " ", 
                 RowBox[{"F", "\[LeftDoubleBracket]", 
                  RowBox[{"\[Mu]", ",", "\[Nu]"}], "\[RightDoubleBracket]"}]}],
-                ";"}], "\n", "          ", "\n", "          ", ",", 
+                ";"}], "\n", "          ", ",", 
               RowBox[{"{", 
                RowBox[{"\[Nu]", ",", 
                 RowBox[{"\[Mu]", "+", "1"}], ",", "nBas"}], "}"}]}], "\n", 
-             "        ", "]"}], ";"}], "\n", "         ", "\n", "        ", 
-           ",", 
+             "        ", "]"}], ";"}], "\n", "         ", ",", 
            RowBox[{"{", 
-            RowBox[{"\[Mu]", ",", "nBas"}], "}"}]}], "\n", "        ", "\n", 
-          "      ", "]"}], ";"}]}], "\n", "\n", "    ", "]"}], ";", "\n", 
-      "      ", "\n", "    ", 
-      RowBox[{
-       RowBox[{"{", 
-        RowBox[{"e", ",", "Cp"}], "}"}], " ", "=", " ", 
-       RowBox[{"Chop", "[", 
-        RowBox[{"SortEigensystem", "[", 
-         RowBox[{"Eigensystem", "[", 
-          RowBox[{
-           RowBox[{"X", "\[Transpose]"}], ".", "F", ".", "X"}], "]"}], "]"}], 
-        "]"}]}], ";", " ", 
-      RowBox[{"Cp", " ", "=", " ", 
-       RowBox[{"Cp", "\[Transpose]"}]}], ";", 
-      RowBox[{"(*", 
-       RowBox[{
-       "to", " ", "have", " ", "the", " ", "good", " ", "shape", " ", "in", 
-        " ", "Mathematica"}], "*)"}], "\n", "    ", "\n", "    ", 
-      RowBox[{"C", " ", "=", " ", 
+            RowBox[{"\[Mu]", ",", "nBas"}], "}"}]}], "\n", "      ", "]"}], 
+         ";", "\n", "      ", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"e", ",", "Cp"}], "}"}], "=", 
+          RowBox[{"Chop", "[", 
+           RowBox[{"SortEigensystem", "[", 
+            RowBox[{"Eigensystem", "[", 
+             RowBox[{
+              RowBox[{"X", "\[Transpose]"}], ".", "F", ".", "X"}], "]"}], 
+            "]"}], "]"}]}], ";", " ", 
+         RowBox[{"Cp", " ", "=", " ", 
+          RowBox[{"Cp", "\[Transpose]"}]}], ";"}], 
+        RowBox[{"(*", 
+         RowBox[{
+         "to", " ", "have", " ", "the", " ", "good", " ", "shape", " ", "in", 
+          " ", "Mathematica"}], "*)"}], "\n", "      ", ",", "\n", "      ", 
+        "\n", "      ", 
+        RowBox[{"guessType", "\[Equal]", "3"}], ",", 
+        RowBox[{"(*", 
+         RowBox[{"random", " ", "coefficients"}], "*)"}], "\n", "      ", 
+        RowBox[{
+         RowBox[{"Cp", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"RandomReal", "[", "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\[Mu]", ",", "nBas"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"\[Nu]", ",", "nBas"}], "}"}]}], "]"}]}], ";"}]}], "\n", 
+       "      ", "\n", "    ", "]"}], ";", "\n", "    ", "\n", "    ", 
+      RowBox[{"C", "=", 
        RowBox[{"X", ".", "Cp"}]}], ";", "  ", 
-      RowBox[{"Orb", " ", "=", " ", 
+      RowBox[{"Orb", "=", 
        RowBox[{
         RowBox[{"Take", "[", 
          RowBox[{
           RowBox[{"C", "\[Transpose]"}], ",", 
           RowBox[{"Nelc", "/", "2"}]}], "]"}], "\[Transpose]"}]}], ";", "  ", 
       "\n", "    ", "\n", "    ", 
-      RowBox[{"P", " ", "=", " ", 
+      RowBox[{"P", "=", 
        RowBox[{"2", " ", 
         RowBox[{"Orb", ".", 
          RowBox[{"Orb", "\[Transpose]"}]}]}]}], ";", "\n", "    ", "\n", 
@@ -149,7 +176,13 @@ Cell[BoxData[
    3.873862096483328*^9, 3.873862135451799*^9}, 3.873862167787784*^9, {
    3.8738622264639883`*^9, 3.873862256676508*^9}, {3.873862363195436*^9, 
    3.873862375551581*^9}, {3.8738624481394033`*^9, 3.873862501304661*^9}, 
-   3.8738625576256533`*^9, {3.873864872606841*^9, 3.873864875220598*^9}},
+   3.8738625576256533`*^9, {3.873864872606841*^9, 3.873864875220598*^9}, {
+   3.890276508421465*^9, 3.890276527051331*^9}, {3.890276561107439*^9, 
+   3.890276595613345*^9}, {3.89027664326609*^9, 3.890276644713543*^9}, {
+   3.890276884623169*^9, 3.8902770591281853`*^9}, {3.8902771126551113`*^9, 
+   3.890277132191663*^9}, {3.890277206294672*^9, 3.89027724561357*^9}, {
+   3.891655687251706*^9, 3.8916556964409227`*^9}, {3.8916557774612303`*^9, 
+   3.891655777592259*^9}},
  CellLabel->"In[1]:=",ExpressionUUID->"482ecdcf-1730-4692-a62d-aa681c50aaa2"]
 },
 WindowSize->{1350, 762},
@@ -170,7 +203,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 6080, 132, 1384, "Code",ExpressionUUID->"482ecdcf-1730-4692-a62d-aa681c50aaa2"]
+Cell[558, 20, 7501, 165, 1239, "Code",ExpressionUUID->"482ecdcf-1730-4692-a62d-aa681c50aaa2"]
 }
 ]
 *)

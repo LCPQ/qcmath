@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21356,        470]
-NotebookOptionsPosition[     20979,        455]
-NotebookOutlinePosition[     21401,        472]
-CellTagsIndexPosition[     21358,        469]
+NotebookDataLength[     21654,        476]
+NotebookOptionsPosition[     21275,        461]
+NotebookOutlinePosition[     21699,        478]
+CellTagsIndexPosition[     21656,        475]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -50,7 +50,8 @@ Cell[BoxData[
        RowBox[{"nVV", "*", "nO"}]}], ";", "\n", "\n", "    ", 
       RowBox[{"nH", " ", "=", " ", 
        RowBox[{"1", " ", "+", " ", "n2h1p", " ", "+", " ", "n2p1h"}]}], ";", 
-      " ", "\n", "\n", "    ", 
+      " ", "\n", 
+      RowBox[{"Print", "[", "\"\<Hello\>\"", "]"}], ";", "\n", "    ", 
       RowBox[{"f", " ", "=", " ", 
        RowBox[{"DiagonalMatrix", "[", "\[Epsilon]", "]"}]}], ";", "\n", "\n", 
       "    ", 
@@ -277,10 +278,13 @@ Cell[BoxData[
           RowBox[{"cGW", "\[Transpose]"}]}], ";", " ", 
          RowBox[{"(*", 
           RowBox[{
-           RowBox[{"Print", "[", 
+           RowBox[{"If", "[", 
             RowBox[{
-             RowBox[{"eGW", "*", "HaToeV"}], "//", "MatrixForm"}], "]"}], 
-           ";"}], "*)"}], "\n", "\n", "      ", 
+             RowBox[{"p", "\[Equal]", "5"}], ",", 
+             RowBox[{"Print", "[", 
+              RowBox[{
+               RowBox[{"eGW", "*", "HaToeV"}], "//", "MatrixForm"}], "]"}]}], 
+            "]"}], ";"}], "*)"}], "\n", "\n", "      ", 
          RowBox[{
           RowBox[{
           "eigenvalues", "\[LeftDoubleBracket]", "p", 
@@ -449,12 +453,14 @@ Cell[BoxData[
    3.873433876580655*^9, 3.8734341744776278`*^9}, {3.873434257471273*^9, 
    3.873434503355953*^9}, {3.873434535856324*^9, 3.8734345640719137`*^9}, {
    3.873434594467758*^9, 3.873434598717264*^9}, {3.875149674469496*^9, 
-   3.8751496828783197`*^9}, {3.875160458737507*^9, 
-   3.875160461018241*^9}},ExpressionUUID->"cfb1ff81-e9be-4223-8fdd-\
+   3.8751496828783197`*^9}, {3.875160458737507*^9, 3.875160461018241*^9}, 
+   3.895310995321486*^9, 3.895311070304121*^9, {3.895311138484603*^9, 
+   3.895311145521204*^9}, 
+   3.89531154807234*^9},ExpressionUUID->"cfb1ff81-e9be-4223-8fdd-\
 456304e30599"]
 },
 WindowSize->{1205, 721},
-WindowMargins->{{Automatic, 0}, {0, Automatic}},
+WindowMargins->{{112, Automatic}, {Automatic, 4}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -471,7 +477,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 20417, 433, 2508, "Code",ExpressionUUID->"cfb1ff81-e9be-4223-8fdd-456304e30599"]
+Cell[558, 20, 20713, 439, 2508, "Code",ExpressionUUID->"cfb1ff81-e9be-4223-8fdd-456304e30599"]
 }
 ]
 *)

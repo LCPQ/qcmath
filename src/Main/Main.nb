@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    117863,       2025]
-NotebookOptionsPosition[    117339,       2007]
-NotebookOutlinePosition[    117774,       2024]
-CellTagsIndexPosition[    117731,       2021]
+NotebookDataLength[    123300,       2140]
+NotebookOptionsPosition[    122779,       2122]
+NotebookOutlinePosition[    123211,       2139]
+CellTagsIndexPosition[    123168,       2136]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -44,8 +44,8 @@ Cell[BoxData[
       RowBox[{"(*", "info", "*)"}], "    ", 
       RowBox[{
       "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "n\[Alpha]", ",", 
-       "n\[Beta]", ",", "Nelc", ",", "ERI", ",", "ToDoModules", ",", 
-       "options", ",", "\n", "\n", 
+       "n\[Beta]", ",", "Nelc", ",", "ToDoModules", ",", "options", ",", "\n",
+        "\n", 
        RowBox[{"(*", "energies", "*)"}], "Enuc", ",", "ERHF", ",", "EUHF", 
        ",", "ERPA", ",", "EURPA", ",", "ERPAx", ",", "EcGM", ",", "EqsGW", 
        ",", "\n", "            ", "EqsUGW", ",", "EcMP2", ",", "EMP2", ",", 
@@ -54,33 +54,35 @@ Cell[BoxData[
        ",", "EUG0F2", ",", "EURPAx", ",", "EqsG", ",", "EqsUG", ",", "\n", 
        "            ", "EevGF2", ",", "EevUGF2", ",", "EG0T0", ",", "eG0T0", 
        ",", "EevGT", ",", "EqsGT", ",", "EUG0T0", ",", "EevUGT", ",", "\n", 
-       "            ", "EqsUGT", ",", "EppRPA", ",", "EG0W0", ",", "\n", 
-       "            ", "\n", 
+       "            ", "EqsUGT", ",", "EppRPA", ",", "EG0W0", ",", "ECISD", 
+       ",", "\n", "            ", "\n", 
        RowBox[{"(*", "timing", "*)"}], " ", "time", ",", "\n", "\n", 
        RowBox[{"(*", "options", "*)"}], "option", ",", "maxSCF", ",", 
        "thresh", ",", "lin", ",", "guessType", ",", "levelShift", ",", "\n", 
        "            ", "\n", 
        RowBox[{"(*", "outputs", "*)"}], "IntegralsQuantities", ",", 
-       "ParametersQuantities", ",", "MoleculeQuantities", ",", "\n", 
-       "            ", "\n", "S", ",", "T", ",", "V", ",", "U", ",", "X", ",",
-        "TabRHF", ",", "IP", ",", "outputs", ",", "verbose", "\n", ",", "C", 
-       ",", "\[Epsilon]", ",", "XplusY", ",", "\[CapitalOmega]RPA", ",", 
-       "ERIaa", ",", "ufBSE", ",", "dBSE", ",", "dTDA", "\n", ",", "ERIab", 
-       ",", "ERIba", ",", "ERIbb", ",", "Ca", ",", "Cb", ",", "\[Epsilon]a", 
-       ",", "\[Epsilon]b", ",", "TDA", ",", "TDAW", ",", "TDAT", ",", 
-       "singlet", ",", "triplet", ",", "spinconserved", ",", "spinflip", ",", 
-       "LR", ",", "BSE", ",", "qsGWOMIntegrals", ",", "qsGW\[Epsilon]", ",", 
-       "W", ",", "EUBSE", ",", "W1", ",", "W2", ",", "qsGWOMIntegralsaa", ",",
-        "qsGWOMIntegralsab", ",", "qsGWOMIntegralsba", ",", 
-       "qsGWOMIntegralsbb", "\n", ",", "qsGW\[Epsilon]a", ",", 
-       "qsGW\[Epsilon]b", "\n", ",", "P", ",", "K", ",", "Vxc", ",", 
-       "RPAG0W0", ",", "GMG0W0", ",", "eG0W0", ",", "RPAevGW", ",", "GMevGW", 
-       ",", "RPAUG0W0", ",", "GMUG0W0", ",", "eG0W0a", ",", "eG0W0b", ",", 
-       "Vxca", ",", "Vxcb", ",", "Ka", ",", "Kb", ",", "RPAevUGW", "\n", ",", 
-       "GMevUGW", "\n", ",", "i", ",", "sfile", ",", "FFeGW", ",", "Z", ",", 
-       "\[CapitalSigma]cG0W0", ",", "\[CapitalSigma]c\[Omega]G0W0", ",", 
-       "Re\[CapitalSigma]c", ",", "Im\[CapitalSigma]c", ",", "\[Epsilon]evGW",
-        ",", "\[CapitalSigma]c\[Omega]", ",", "eGT", ",", "ZG0T0", ",", 
+       "ParametersQuantities", ",", "MoleculeQuantities", ",", "\n", "\n", 
+       RowBox[{"(*", "integrals", "*)"}], "S", ",", "T", ",", "V", ",", "U", 
+       ",", "O1", ",", "ERI", ",", "ERIaa", ",", "ERIab", ",", "ERIba", ",", 
+       "ERIbb", ",", "qsGWOMIntegrals", ",", "qsGWOMIntegralsaa", ",", 
+       "qsGWOMIntegralsab", ",", "qsGWOMIntegralsba", ",", 
+       "qsGWOMIntegralsbb", ",", "\n", "            ", "\n", "X", ",", 
+       "TabRHF", ",", "IP", ",", "outputs", ",", "verbose", ",", "file", ",", 
+       "cISD", ",", "\n", "C", ",", "\[Epsilon]", ",", "XplusY", ",", 
+       "\[CapitalOmega]RPA", ",", "ufBSE", ",", "dBSE", ",", "dTDA", ",", 
+       "Ca", ",", "Cb", ",", "\[Epsilon]a", ",", "\[Epsilon]b", ",", "TDA", 
+       ",", "TDAW", ",", "TDAT", ",", "singlet", ",", "triplet", ",", 
+       "spinconserved", ",", "spinflip", ",", "LR", ",", "BSE", ",", 
+       "qsGW\[Epsilon]", ",", "W", ",", "EUBSE", ",", "W1", ",", "W2", ",", 
+       "\n", "qsGW\[Epsilon]a", ",", "qsGW\[Epsilon]b", ",", "P", ",", "K", 
+       ",", "Vxc", ",", "RPAG0W0", ",", "GMG0W0", ",", "eG0W0", ",", 
+       "RPAevGW", ",", "GMevGW", ",", "RPAUG0W0", ",", "GMUG0W0", ",", 
+       "eG0W0a", ",", "eG0W0b", ",", "Vxca", ",", "Vxcb", ",", "Ka", ",", 
+       "Kb", ",", "RPAevUGW", ",", "GMevUGW", "\n", ",", "i", ",", "sfile", 
+       ",", "FFeGW", ",", "Z", ",", "\[CapitalSigma]cG0W0", ",", 
+       "\[CapitalSigma]c\[Omega]G0W0", ",", "Re\[CapitalSigma]c", ",", 
+       "Im\[CapitalSigma]c", ",", "\[Epsilon]evGW", ",", 
+       "\[CapitalSigma]c\[Omega]", ",", "eGT", ",", "ZG0T0", ",", 
        "\[CapitalSigma]cG0T0", ",", "ZevGT", ",", "\[CapitalSigma]cevGT", ",",
         "Im\[CapitalSigma]c\[Omega]", "\n", ",", "\[Eta]", ",", "DIISex", ",",
         "ECCSD", ",", "Regularized", ",", "\[CapitalSigma]qsGW", ",", 
@@ -129,34 +131,47 @@ Cell[BoxData[
       RowBox[{"(*", 
        RowBox[{
        "Computation", " ", "of", " ", "the", " ", "number", " ", "of", " ", 
-        "electrons", " ", "by", " ", "Qcaml"}], "*)"}], "\n", 
-      RowBox[{"If", "[", 
+        "electrons", " ", "and", " ", "integrals", " ", "by", " ", "PySCF"}], 
+       "*)"}], "\n", 
+      RowBox[{"(*", 
        RowBox[{
-        RowBox[{
-         RowBox[{"SameQ", "[", 
+        RowBox[{"If", "[", 
+         RowBox[{
           RowBox[{
-           RowBox[{"OpenRead", "[", 
-            RowBox[{"path", "<>", "\"\</input/basis\>\""}], "]"}], ",", 
-           "$Failed"}], "]"}], "\[Equal]", "False"}], ",", "\n", "\t", 
+           RowBox[{"SameQ", "[", 
+            RowBox[{
+             RowBox[{"OpenRead", "[", 
+              RowBox[{"path", "<>", "\"\</input/basis\>\""}], "]"}], ",", 
+             "$Failed"}], "]"}], "\[Equal]", "False"}], ",", "\n", "\t", 
+          RowBox[{
+           RowBox[{"DeleteFile", "[", 
+            RowBox[{"path", "<>", "\"\</input/basis\>\""}], "]"}], ";", "\n", 
+           "\t", 
+           RowBox[{"Off", "[", 
+            RowBox[{"OpenRead", "::", "noopen"}], "]"}], ";"}]}], "\n", "  ", 
+         "]"}], ";"}], "*)"}], "\n", 
+      RowBox[{
+      "PrintTemporary", "[", 
+       "\"\<Computation of the integrals by PySCF...\>\"", "]"}], ";", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"RunProcess", "[", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<./electron.sh\>\"", ",", "basis", ",", "multiplicity", ",", 
+           "charge"}], "}"}], "]"}], ";"}], " ", 
+       RowBox[{"(*", 
         RowBox[{
-         RowBox[{"DeleteFile", "[", 
-          RowBox[{"path", "<>", "\"\</input/basis\>\""}], "]"}], ";", "\n", 
-         "\t", 
-         RowBox[{"Off", "[", 
-          RowBox[{"OpenRead", "::", "noopen"}], "]"}], ";"}]}], "\n", "  ", 
-       "]"}], ";", "\n", 
-      RowBox[{"PrintTemporary", "[", "\"\<Number of electrons...\>\"", "]"}], 
-      ";", "\n", 
+         RowBox[{
+          RowBox[{"for", " ", "closed"}], "-", 
+          RowBox[{"shell", " ", "multiplicity"}]}], "=", "1"}], "*)"}], 
+       "*)"}], "\n", 
       RowBox[{"RunProcess", "[", 
        RowBox[{"{", 
         RowBox[{
-        "\"\<./electron.sh\>\"", ",", "basis", ",", "multiplicity", ",", 
-         "charge"}], "}"}], "]"}], ";", " ", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{
-         RowBox[{"for", " ", "closed"}], "-", 
-         RowBox[{"shell", " ", "multiplicity"}]}], "=", "1"}], "*)"}], "\n", 
+        "py", ",", "\"\<qcmath.py\>\"", ",", "\"\<-b\>\"", ",", "basis", ",", 
+         "\"\<-x\>\"", ",", "molecule", ",", "\"\<--cartesian\>\""}], "}"}], 
+       "]"}], ";", "\n", 
       RowBox[{"n\[Alpha]", "=", 
        RowBox[{
         RowBox[{
@@ -180,15 +195,12 @@ Cell[BoxData[
        RowBox[{
        "Computation", " ", "of", " ", "the", " ", "integrals", " ", "by", " ",
          "Qcaml"}], "*)"}], "\n", 
-      RowBox[{
-      "PrintTemporary", "[", 
-       "\"\<Computation of the two-electron integrals by Qcaml...\>\"", "]"}],
-       ";", "\n", 
-      RowBox[{"RunProcess", "[", 
-       RowBox[{"{", 
-        RowBox[{"\"\<./integrals.sh\>\"", ",", "basis"}], "}"}], "]"}], ";", 
-      "\n", 
-      RowBox[{"PrintTemporary", "[", "\"\<Done !\>\"", "]"}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"RunProcess", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<./integrals.sh\>\"", ",", "basis"}], "}"}], "]"}], 
+        ";"}], "*)"}], "\n", "\n", 
       RowBox[{"(*", 
        RowBox[{"Read", " ", "integrals"}], "*)"}], "\n", 
       RowBox[{
@@ -300,9 +312,18 @@ Cell[BoxData[
       RowBox[{"NotebookEvaluate", "[", 
        RowBox[{"path", "<>", "\"\</src/utils/read_basis.nb\>\""}], "]"}], ";",
        "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"nBas", "=", 
+         RowBox[{"readBasis", "[", 
+          RowBox[{"nAt", ",", "xyz"}], "]"}]}], ";"}], "*)"}], "\n", 
+      RowBox[{"file", "=", 
+       RowBox[{"OpenRead", "[", 
+        RowBox[{"path", "<>", "\"\</int/nBas.dat\>\""}], "]"}]}], ";", "\n", 
       RowBox[{"nBas", "=", 
-       RowBox[{"readBasis", "[", 
-        RowBox[{"nAt", ",", "xyz"}], "]"}]}], ";", "\n", 
+       RowBox[{"ToExpression", "[", 
+        RowBox[{"ReadLine", "[", "file", "]"}], "]"}]}], ";", "\n", 
+      RowBox[{"Close", "[", "file", "]"}], ";", "\n", 
       RowBox[{"nO", "=", 
        RowBox[{
         RowBox[{"(", 
@@ -410,7 +431,9 @@ Cell[BoxData[
             RowBox[{"ERHF", "=", 
              RowBox[{
               RowBox[{"outputs", "[", "\"\<EHF\>\"", "]"}], "+", "Enuc"}]}], 
-            ";", "\n", "\t\t", 
+            ";", "\n", "        ", 
+            RowBox[{"O1", "=", 
+             RowBox[{"outputs", "[", "\"\<O1\>\"", "]"}]}], ";", "\n", "\t\t", 
             RowBox[{"ERI", "=", 
              RowBox[{"outputs", "[", "\"\<ERI\>\"", "]"}]}], ";", "\n", 
             "\t\t", 
@@ -422,6 +445,9 @@ Cell[BoxData[
             "\t\t", 
             RowBox[{"P", "=", 
              RowBox[{"outputs", "[", "\"\<P\>\"", "]"}]}], ";", "\n", "\t\t", 
+            
+            RowBox[{"J", "=", 
+             RowBox[{"outputs", "[", "\"\<J\>\"", "]"}]}], ";", "\n", "\t\t", 
             
             RowBox[{"K", "=", 
              RowBox[{"outputs", "[", "\"\<K\>\"", "]"}]}], ";", "\n", "\t\t", 
@@ -496,6 +522,61 @@ Cell[BoxData[
                  RowBox[{"Print", "[", 
                   RowBox[{
                   "\"\<CPU time for MP2 calculation= \>\"", ",", "time"}], 
+                  "]"}]}], "]"}], ";"}]}], "\n", "\t", "]"}], ";", "\n", "\t",
+             "\n", "\t", 
+            StyleBox[
+             RowBox[{"(*", " ", 
+              RowBox[{"CISD", " ", 
+               StyleBox["NOT",
+                FontColor->RGBColor[1, 0, 0]], 
+               StyleBox[" ",
+                FontColor->RGBColor[1, 0, 0]], 
+               StyleBox[
+                RowBox[{"WORKING", "!!"}],
+                FontColor->RGBColor[1, 0, 0]]}], " ", "*)"}],
+             FontSize->18], 
+            StyleBox["\n",
+             FontSize->18], 
+            StyleBox["   ",
+             FontSize->18], 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"ToDoModules", "[", "\"\<CISD\>\"", "]"}], "[", 
+                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "    ", 
+              
+              RowBox[{
+               RowBox[{"NotebookEvaluate", "[", 
+                RowBox[{"path", "<>", "\"\</src/CI/CISD.nb\>\""}], "]"}], ";",
+                "\n", "    ", 
+               RowBox[{"PrintTemporary", "[", 
+                RowBox[{"Style", "[", 
+                 RowBox[{
+                 "\"\<CISD calculation...\>\"", ",", "Bold", ",", "Orange"}], 
+                 "]"}], "]"}], ";", "\n", "    ", "\n", "    ", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                RowBox[{"Timing", "[", 
+                 RowBox[{"CISD", "[", 
+                  RowBox[{
+                  "nBas", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "J", ",", 
+                   "K", ",", "O1", ",", "ERI", ",", "ERHF", ",", "options", 
+                   ",", "verbose"}], "]"}], "]"}]}], ";", "\n", "\t", "\n", 
+               "\t", 
+               RowBox[{"ECISD", "=", 
+                RowBox[{"outputs", "[", "\"\<ECISD\>\"", "]"}]}], ";", "\n", 
+               "\t", 
+               RowBox[{"cISD", "=", 
+                RowBox[{"outputs", "[", "\"\<cISDs\>\"", "]"}]}], ";", "\n", 
+               "\t", "\n", "    ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"verbose", "\[Equal]", "True"}], ",", 
+                 RowBox[{"Print", "[", 
+                  RowBox[{
+                  "\"\<CPU time for CISD calculation= \>\"", ",", "time"}], 
                   "]"}]}], "]"}], ";"}]}], "\n", "\t", "]"}], ";", "\n", "  ",
              "\n", "\t", 
             StyleBox[
@@ -631,7 +712,10 @@ Cell[BoxData[
                RowBox[{"EG0F2", "=", 
                 RowBox[{"ERHF", "+", 
                  RowBox[{"outputs", "[", "\"\<EcMP2\>\"", "]"}]}]}], ";", 
-               "\n", "    ", "\n", "        ", 
+               "\n", "    ", 
+               RowBox[{"IP", "=", 
+                RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";", "\n", 
+               "        ", 
                RowBox[{"If", "[", 
                 RowBox[{
                  RowBox[{"verbose", "\[Equal]", "True"}], ",", 
@@ -773,7 +857,9 @@ Cell[BoxData[
                   RowBox[{
                   "nBas", ",", "nO", ",", "nV", ",", "nS", ",", "\[Epsilon]", 
                    ",", "ERI", ",", "Enuc", ",", "ERHF", ",", "options", ",", 
-                   "verbose"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", 
+                   "verbose"}], "]"}], "]"}]}], ";", "\n", "    ", 
+               RowBox[{"IP", "=", 
+                RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";", "\n", 
                "        ", 
                RowBox[{"If", "[", 
                 RowBox[{
@@ -909,7 +995,9 @@ Cell[BoxData[
                   RowBox[{
                   "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI",
                     ",", "Enuc", ",", "ERHF", ",", "options", ",", 
-                   "verbose"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", 
+                   "verbose"}], "]"}], "]"}]}], ";", "\n", "    ", 
+               RowBox[{"IP", "=", 
+                RowBox[{"outputs", "[", "\"\<IP\>\"", "]"}]}], ";", "\n", 
                "        ", 
                RowBox[{"If", "[", 
                 RowBox[{
@@ -963,8 +1051,14 @@ Cell[BoxData[
                  RowBox[{"Print", "[", 
                   RowBox[{
                   "\"\<CPU time for G0T0 calculation= \>\"", ",", "time"}], 
-                  "]"}]}], "]"}], ";"}]}], "  ", "\n", "\t", "]"}], ";"}]}], 
-          "\n", "  ", "\n", "\n", "\n", 
+                  "]"}]}], "]"}], ";"}]}], "  ", "\n", "\t", "]"}], ";", "\n",
+             "  ", "\n", 
+            RowBox[{"outputs", "=", 
+             RowBox[{"Association", "[", 
+              RowBox[{
+               RowBox[{"\"\<ERHF\>\"", "\[Rule]", "ERHF"}], ",", 
+               RowBox[{"\"\<IP\>\"", "\[Rule]", "IP"}]}], "]"}]}], ";"}]}], 
+          "\n", "\n", 
           RowBox[{"(*", " ", 
            RowBox[{
            "end", " ", "of", " ", "if", " ", "RHF", " ", "converged"}], " ", 
@@ -2001,12 +2095,33 @@ Cell[BoxData[
    3.8786192063951483`*^9, 3.878619218553177*^9}, {3.878619316667836*^9, 
    3.878619332063879*^9}, {3.8786218979586687`*^9, 3.878621898071678*^9}, {
    3.8786268051833353`*^9, 3.878626816682164*^9}, {3.878626877045279*^9, 
-   3.878626877446747*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+   3.878626877446747*^9}, {3.881898149110921*^9, 3.881898161405369*^9}, {
+   3.88189821172299*^9, 3.881898226321463*^9}, {3.8819013610015306`*^9, 
+   3.881901367812718*^9}, {3.88190296683206*^9, 3.881902976801907*^9}, {
+   3.891429682672183*^9, 3.891429756690239*^9}, {3.891430435664321*^9, 
+   3.891430468093231*^9}, {3.891430550383216*^9, 3.891430631299901*^9}, {
+   3.891430987051304*^9, 3.891431125424919*^9}, {3.891431334220827*^9, 
+   3.8914313533487663`*^9}, 3.891431512133501*^9, {3.891477698063572*^9, 
+   3.89147770375733*^9}, 3.8914779160375834`*^9, {3.891644157353362*^9, 
+   3.891644172378533*^9}, {3.891645330561257*^9, 3.891645337650942*^9}, {
+   3.891645820631048*^9, 3.89164582470547*^9}, {3.8916472269557467`*^9, 
+   3.891647239141621*^9}, 3.8916497134843493`*^9, 3.891651612188044*^9, {
+   3.891651661512993*^9, 3.891651674346492*^9}, {3.8916517298758507`*^9, 
+   3.891651817065022*^9}, 3.892613624209279*^9, {3.892613686972015*^9, 
+   3.892613753323762*^9}, {3.8926183465859833`*^9, 3.892618381193798*^9}, {
+   3.892618411413601*^9, 3.892618416180086*^9}, {3.8926184694262867`*^9, 
+   3.892618497771091*^9}, {3.892618560109824*^9, 3.8926186102900763`*^9}, 
+   3.892619528959958*^9, {3.895915619261731*^9, 3.895915650368393*^9}, {
+   3.8959158769767036`*^9, 3.895915960695537*^9}, {3.895916035273459*^9, 
+   3.8959161024856443`*^9}, {3.89591623604473*^9, 3.8959162548138313`*^9}, {
+   3.895916357063201*^9, 3.89591651333672*^9}, {3.89591658194127*^9, 
+   3.8959166251229*^9}, 
+   3.895916827268515*^9},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
+2b85bb5dd0be"]
 }, Open  ]]
 },
-WindowSize->{692.25, 762.},
-WindowMargins->{{Automatic, 0}, {0, Automatic}},
+WindowSize->{1384, 789},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
 TaggingRules->{"TryRealOnly" -> False},
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -2025,7 +2140,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 45, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 116578, 1977, 5821, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 122018, 2092, 6127, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]

@@ -1,0 +1,813 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     35646,        805]
+NotebookOptionsPosition[     34699,        779]
+NotebookOutlinePosition[     35125,        796]
+CellTagsIndexPosition[     35082,        793]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["CISD", "Title",
+ CellChangeTimes->{{3.89591268953036*^9, 
+  3.895912690824666*^9}},ExpressionUUID->"0f026a09-b638-4757-8f84-\
+7f50616bc273"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"CISD", "[", 
+    RowBox[{
+    "nBas_", ",", "n\[Alpha]_", ",", "n\[Beta]_", ",", "J_", ",", "K_", ",", 
+     "O1_", ",", "ERI_", ",", "EHF_", ",", "options_", ",", "verbose_"}], 
+    "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "outputsCISD", "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"options", "[", "\"\<spinorbital\>\"", "]"}], "\[Equal]", 
+         "True"}], ",", "\n", "\n", "  ", 
+        RowBox[{
+         RowBox[{"outputsCISD", "=", 
+          RowBox[{"spinOrbCISD", "[", 
+           RowBox[{
+           "nBas", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "J", ",", "K", ",",
+             "O1", ",", "ERI", ",", "EHF", ",", "verbose"}], "]"}]}], ";"}], 
+        "\n", "  ", "\n", "  ", ",", 
+        RowBox[{"(*", 
+         RowBox[{"else", " ", "go", " ", "to", " ", "spatial"}], "*)"}], "\n",
+         "  ", "\n", "  ", 
+        RowBox[{
+         RowBox[{"outputsCISD", "=", 
+          RowBox[{"spatialOrbCISD", "[", 
+           RowBox[{
+           "nBas", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "J", ",", "K", ",",
+             "O1", ",", "ERI", ",", "EHF", ",", "verbose"}], "]"}]}], ";"}]}],
+        "\n", "  ", "\n", "]"}], ";", "\n", "  ", "\n", 
+      RowBox[{"Return", "[", "outputsCISD", "]"}], ";"}]}], "\n", "  ", "\n", 
+    "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.895912711303755*^9, 3.895912712883309*^9}, {
+   3.895912814892219*^9, 3.8959130907468777`*^9}, {3.895913232227111*^9, 
+   3.895913266420108*^9}, {3.895913803699543*^9, 3.895913811197904*^9}, {
+   3.895913895546928*^9, 3.8959138983957853`*^9}, {3.89591393335421*^9, 
+   3.895913943208845*^9}, {3.895914730685265*^9, 3.89591475330096*^9}, {
+   3.895915972975959*^9, 3.895915982093134*^9}, {3.8959163115449944`*^9, 
+   3.8959163335451117`*^9}, {3.895916738472672*^9, 3.895916749122305*^9}, 
+   3.8959168929800653`*^9, {3.895917448463121*^9, 3.89591745778559*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"5d364ea2-4466-4587-a2cc-4288568852bc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Spin orbitals", "Title",
+ CellChangeTimes->{{3.895912752274666*^9, 
+  3.895912755507401*^9}},ExpressionUUID->"20e95af1-0b06-48c2-bc37-\
+89dcea75c5d4"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"spinOrbCISD", "[", 
+    RowBox[{
+    "nBas_", ",", "n\[Alpha]_", ",", "n\[Beta]_", ",", "O1_", ",", "ERI_", 
+     ",", "EHF_", ",", "J_", ",", "K_", ",", "verbose_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\[CapitalPsi]CISD", ",", "\[CapitalPsi]HF\[Alpha]", ",", 
+       "\[CapitalPsi]HF\[Beta]", ",", "\[CapitalPsi]\[Alpha]", ",", 
+       "\[CapitalPsi]\[Beta]", ",", "Comp\[Alpha]", ",", "Comp\[Beta]", ",", 
+       "nSub\[Alpha]", ",", "nSub\[Beta]"}], "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"Return", "[", 
+       RowBox[{
+        RowBox[{
+        "Print", "[", "\"\<spinorbital implementation not available\>\"", 
+         "]"}], ";"}], "]"}], ";"}]}], "\n", "\n", "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.895913210064638*^9, 3.89591332846737*^9}, {
+  3.895913381029174*^9, 3.895913506689502*^9}, {3.895913569878758*^9, 
+  3.8959136235225058`*^9}, {3.8959139050147448`*^9, 3.8959139147634478`*^9}, {
+  3.89591424466868*^9, 3.895914247452861*^9}, {3.89591478804311*^9, 
+  3.895914790112898*^9}, {3.895915991406872*^9, 3.895915993167388*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"7a967ea8-f269-4074-9f24-c307582e39b9"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Spatial orbitals", "Title",
+ CellChangeTimes->{{3.895912758526196*^9, 
+  3.895912762035838*^9}},ExpressionUUID->"06d8d0d3-589f-4594-b91b-\
+f07300ffd0ee"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"spatialOrbCISD", "[", 
+    RowBox[{
+    "nBas_", ",", "n\[Alpha]_", ",", "n\[Beta]_", ",", "J_", ",", "K_", ",", 
+     "O1_", ",", "ERI_", ",", "EHF_", ",", "verbose_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "\[CapitalPsi]CISD", ",", "\[CapitalPsi]HF\[Alpha]", ",", 
+       "\[CapitalPsi]HF\[Beta]", ",", "\[CapitalPsi]\[Alpha]", ",", 
+       "\[CapitalPsi]\[Beta]", ",", "Comp\[Alpha]", ",", "Comp\[Beta]", ",", 
+       "nSub\[Alpha]", ",", "nSub\[Beta]", ",", "nDetCISD", ",", "HCISD", ",",
+        "ECISD", ",", "cISD", ",", "\[CapitalPsi]i\[Alpha]", ",", 
+       "\[CapitalPsi]i\[Beta]", ",", "\[CapitalPsi]j\[Alpha]", ",", 
+       "\[CapitalPsi]j\[Beta]", ",", "\n", " ", "CompI\[Alpha]", ",", 
+       "CompI\[Beta]", ",", "CompJ\[Alpha]", ",", "CompJ\[Beta]", ",", 
+       "ijlist", ",", "Hlist", ",", "a", ",", "b", ",", "c", ",", "d", ",", 
+       "Pa", ",", "Pb", ",", "Pc", ",", "Pd", ",", "\[CapitalPsi]", ",", 
+       "nDet\[Alpha]", ",", "nDet\[Beta]", ",", "nDet", ",", "outputsCISD"}], 
+      "}"}], ",", "\n", " ", "\n", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Step", " ", "1"}], ":", " ", 
+       RowBox[{
+       "form", " ", "the", " ", "FCI", " ", "list", " ", "of", " ", 
+        "determinants", " ", "to", " ", "get", " ", "nDet"}]}], "*)"}], " ", 
+     "\n", 
+     RowBox[{
+      RowBox[{"PrintTemporary", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+        "\"\<Form FCI wave function...\>\"", ",", "Bold", ",", "Orange"}], 
+        "]"}], "]"}], ";", "\n", "\[IndentingNewLine]", 
+      RowBox[{"\[CapitalPsi]\[Alpha]", "=", 
+       RowBox[{"Subsets", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{"m", ",", 
+           RowBox[{"{", 
+            RowBox[{"m", ",", "nBas"}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", "n\[Alpha]", "}"}]}], "]"}]}], ";", "\t", 
+      RowBox[{"nDet\[Alpha]", "=", 
+       RowBox[{"Length", "[", "\[CapitalPsi]\[Alpha]", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"\[CapitalPsi]\[Beta]", "=", 
+       RowBox[{
+        FormBox["Subsets",
+         TraditionalForm], "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{"m", ",", 
+           RowBox[{"{", 
+            RowBox[{"m", ",", "nBas"}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", "n\[Beta]", "}"}]}], "]"}]}], ";", "\t", 
+      RowBox[{"nDet\[Beta]", "=", 
+       RowBox[{"Length", "[", "\[CapitalPsi]\[Beta]", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"\[CapitalPsi]", "=", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+             "\[CapitalPsi]\[Alpha]", "\[LeftDoubleBracket]", "p", 
+              "\[RightDoubleBracket]"}], ",", 
+             RowBox[{
+             "\[CapitalPsi]\[Beta]", "\[LeftDoubleBracket]", "q", 
+              "\[RightDoubleBracket]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"p", ",", "nDet\[Alpha]"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"q", ",", "nDet\[Beta]"}], "}"}]}], "]"}], ",", "1"}], 
+        "]"}]}], ";", "\n", 
+      RowBox[{"nDet", "=", 
+       RowBox[{"Length", "[", "\[CapitalPsi]", "]"}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Step", " ", "2"}], ":", " ", 
+        RowBox[{
+        "form", " ", "the", " ", "CISD", " ", "list", " ", "of", " ", 
+         "determinants"}]}], "*)"}], "\n", 
+      RowBox[{"PrintTemporary", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+        "\"\<Form CISD wave function...\>\"", ",", "Bold", ",", "Orange"}], 
+        "]"}], "]"}], ";", "\n", "\[IndentingNewLine]", 
+      RowBox[{"\[CapitalPsi]CISD", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"\[CapitalPsi]HF\[Alpha]", "=", 
+       RowBox[{"\[CapitalPsi]", "\[LeftDoubleBracket]", 
+        RowBox[{"1", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", "\t", 
+      RowBox[{"\[CapitalPsi]HF\[Beta]", "=", 
+       RowBox[{"\[CapitalPsi]", "\[LeftDoubleBracket]", 
+        RowBox[{"1", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", "\n", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", "\n", "  ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"\[CapitalPsi]\[Alpha]", "=", 
+          RowBox[{"\[CapitalPsi]", "\[LeftDoubleBracket]", 
+           RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", "\t", 
+         RowBox[{"\[CapitalPsi]\[Beta]", "=", 
+          RowBox[{"\[CapitalPsi]", "\[LeftDoubleBracket]", 
+           RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+         "\[IndentingNewLine]", "  ", 
+         RowBox[{"Comp\[Alpha]", "=", 
+          RowBox[{"Complement", "[", 
+           RowBox[{"\[CapitalPsi]HF\[Alpha]", ",", "\[CapitalPsi]\[Alpha]"}], 
+           "]"}]}], ";", "\t", 
+         RowBox[{"nSub\[Alpha]", "=", 
+          RowBox[{"Length", "[", "Comp\[Alpha]", "]"}]}], ";", 
+         "\[IndentingNewLine]", "  ", 
+         RowBox[{"Comp\[Beta]", "=", 
+          RowBox[{"Complement", "[", 
+           RowBox[{"\[CapitalPsi]HF\[Beta]", ",", "\[CapitalPsi]\[Beta]"}], 
+           "]"}]}], ";", "\t", 
+         RowBox[{"nSub\[Beta]", "=", 
+          RowBox[{"Length", "[", "Comp\[Beta]", "]"}]}], ";", "\n", "  ", 
+         "\[IndentingNewLine]", "  ", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"0", "\[LessEqual]", 
+            RowBox[{"nSub\[Alpha]", "+", "nSub\[Beta]"}], "\[LessEqual]", 
+            "2"}], ",", "\[IndentingNewLine]", "    ", 
+           RowBox[{
+            RowBox[{"\[CapitalPsi]CISD", "=", 
+             RowBox[{"Append", "[", 
+              RowBox[{"\[CapitalPsi]CISD", ",", 
+               RowBox[{
+               "\[CapitalPsi]", "\[LeftDoubleBracket]", "i", 
+                "\[RightDoubleBracket]"}]}], "]"}]}], ";"}]}], 
+          "\[IndentingNewLine]", "  ", "]"}]}], "\n", "  ", "\n", ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "nDet"}], "}"}]}], "]"}], ";", "\t", "\n", "\n", 
+      RowBox[{"nDetCISD", "=", 
+       RowBox[{"Length", "[", "\[CapitalPsi]CISD", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PrintTemporary", "[", 
+       RowBox[{"\"\<nDetCISD = \>\"", ",", "nDetCISD"}], "]"}], ";", "\n", 
+      "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Step", " ", "3"}], ":", " ", 
+        RowBox[{"form", " ", "the", " ", "Hamiltonian"}]}], "*)"}], "\n", 
+      RowBox[{"PrintTemporary", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+        "\"\<Form CISD Hamiltonian...\>\"", ",", "Bold", ",", "Orange"}], 
+        "]"}], "]"}], ";", "\[IndentingNewLine]", "\n", 
+      RowBox[{"HCISD", "=", 
+       RowBox[{"First", "[", 
+        RowBox[{"Last", "[", 
+         RowBox[{"Reap", "[", 
+          RowBox[{"Do", "[", "\n", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"\[CapitalPsi]i\[Alpha]", "=", 
+              RowBox[{"\[CapitalPsi]", "\[LeftDoubleBracket]", 
+               RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+             "\t", 
+             RowBox[{"\[CapitalPsi]i\[Beta]", "=", 
+              RowBox[{"\[CapitalPsi]", "\[LeftDoubleBracket]", 
+               RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+             "\t", 
+             RowBox[{"\[CapitalPsi]j\[Alpha]", "=", 
+              RowBox[{"\[CapitalPsi]", "\[LeftDoubleBracket]", 
+               RowBox[{"j", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", 
+             "\t", 
+             RowBox[{"\[CapitalPsi]j\[Beta]", "=", 
+              RowBox[{"\[CapitalPsi]", "\[LeftDoubleBracket]", 
+               RowBox[{"j", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"CompI\[Alpha]", "=", 
+              RowBox[{"Complement", "[", 
+               RowBox[{
+               "\[CapitalPsi]i\[Alpha]", ",", "\[CapitalPsi]j\[Alpha]"}], 
+               "]"}]}], ";", "\t", 
+             RowBox[{"CompJ\[Alpha]", "=", 
+              RowBox[{"Complement", "[", 
+               RowBox[{
+               "\[CapitalPsi]j\[Alpha]", ",", "\[CapitalPsi]i\[Alpha]"}], 
+               "]"}]}], ";", "\t", 
+             RowBox[{"nSub\[Alpha]", "=", 
+              RowBox[{"Length", "[", "CompI\[Alpha]", "]"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"CompI\[Beta]", "=", 
+              RowBox[{"Complement", "[", 
+               RowBox[{
+               "\[CapitalPsi]i\[Beta]", ",", "\[CapitalPsi]j\[Beta]"}], 
+               "]"}]}], ";", "\t", 
+             RowBox[{"CompJ\[Beta]", "=", 
+              RowBox[{"Complement", "[", 
+               RowBox[{
+               "\[CapitalPsi]j\[Beta]", ",", "\[CapitalPsi]i\[Beta]"}], 
+               "]"}]}], ";", "\t", 
+             RowBox[{"nSub\[Beta]", "=", 
+              RowBox[{"Length", "[", "CompI\[Beta]", "]"}]}], ";", "\n", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Which", "[", "\n", "  ", 
+              RowBox[{"(*", 
+               RowBox[{"Case", " ", "1"}], "*)"}], "\n", "  ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"nSub\[Alpha]", "\[Equal]", "0"}], "\[And]", 
+                RowBox[{"nSub\[Beta]", "\[Equal]", "0"}]}], ",", "\n", "  ", 
+               "\n", "  ", 
+               RowBox[{"(", 
+                RowBox[{"Sow", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"i", ",", "j", ",", "\n", "    ", 
+                   RowBox[{
+                    RowBox[{"Sum", "[", 
+                    RowBox[{
+                    RowBox[{"O1", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "p"}], "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"p", ",", "\[CapitalPsi]i\[Alpha]"}], "}"}]}], 
+                    "]"}], "+", 
+                    RowBox[{
+                    FractionBox["1", "2"], 
+                    RowBox[{"Sum", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"J", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q"}], "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{"K", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q"}], "\[RightDoubleBracket]"}]}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"p", ",", "\[CapitalPsi]i\[Alpha]"}], "}"}], ",", 
+                    
+                    RowBox[{"{", 
+                    RowBox[{"q", ",", "\[CapitalPsi]i\[Alpha]"}], "}"}]}], 
+                    "]"}]}], "\n", "   ", "+", 
+                    RowBox[{"Sum", "[", 
+                    RowBox[{
+                    RowBox[{"O1", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "p"}], "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"p", ",", "\[CapitalPsi]i\[Beta]"}], "}"}]}], 
+                    "]"}], "+", 
+                    RowBox[{
+                    FractionBox["1", "2"], 
+                    RowBox[{"Sum", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"J", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q"}], "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{"K", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q"}], "\[RightDoubleBracket]"}]}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"p", ",", "\[CapitalPsi]i\[Beta]"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"q", ",", "\[CapitalPsi]i\[Beta]"}], "}"}]}], 
+                    "]"}]}], "+", 
+                    RowBox[{"Sum", "[", 
+                    RowBox[{
+                    RowBox[{"J", "\[LeftDoubleBracket]", 
+                    RowBox[{"p", ",", "q"}], "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"p", ",", "\[CapitalPsi]i\[Alpha]"}], "}"}], ",", 
+                    
+                    RowBox[{"{", 
+                    RowBox[{"q", ",", "\[CapitalPsi]i\[Beta]"}], "}"}]}], 
+                    "]"}]}]}], "\n", "   ", "}"}], "]"}], "\n", "   ", ")"}], 
+               ",", "\n", "   ", "\n", "   ", 
+               RowBox[{"(*", 
+                RowBox[{"Case", " ", "2"}], "*)"}], "\n", "   ", 
+               RowBox[{
+                RowBox[{"nSub\[Alpha]", "\[Equal]", "1"}], "\[And]", 
+                RowBox[{"nSub\[Beta]", "\[Equal]", "0"}]}], ",", "\n", "   ", 
+               "\n", "   ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"{", "a", "}"}], "=", "CompI\[Alpha]"}], ";", "\t", 
+                 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pa", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]i\[Alpha]", ",", "a"}], "]"}]}], ";",
+                  "\[IndentingNewLine]", "   ", 
+                 RowBox[{
+                  RowBox[{"{", "c", "}"}], "=", "CompJ\[Alpha]"}], ";", "\t", 
+                 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pc", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]j\[Alpha]", ",", "c"}], "]"}]}], ";",
+                  "\n", "   ", "\n", "   ", 
+                 RowBox[{"Sow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", "j", ",", 
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"-", "1"}], ")"}], 
+                    RowBox[{"Pa", "+", "Pc"}]], 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"O1", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "c"}], "\[RightDoubleBracket]"}], "+", 
+                    RowBox[{"Sum", "[", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "p", ",", "c", ",", "p"}], 
+                    "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "p", ",", "p", ",", "c"}], 
+                    "\[RightDoubleBracket]"}]}], ")"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"p", ",", "\[CapitalPsi]i\[Alpha]"}], "}"}]}], 
+                    "]"}], "+", 
+                    RowBox[{"Sum", "[", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "p", ",", "c", ",", "p"}], 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"p", ",", "\[CapitalPsi]i\[Beta]"}], "}"}]}], 
+                    "]"}]}], ")"}]}]}], "}"}], "]"}]}], "\n", "   ", ")"}], 
+               ",", "\n", "   ", "\n", "   ", 
+               RowBox[{"(*", 
+                RowBox[{"Case", " ", "3"}], "*)"}], "\n", "   ", 
+               RowBox[{
+                RowBox[{"nSub\[Alpha]", "\[Equal]", "0"}], "\[And]", 
+                RowBox[{"nSub\[Beta]", "\[Equal]", "1"}]}], ",", "\n", "   ", 
+               "\n", "   ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"{", "a", "}"}], "=", "CompI\[Beta]"}], ";", "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pa", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]i\[Beta]", ",", "a"}], "]"}]}], ";", 
+                 "\n", "    ", 
+                 RowBox[{
+                  RowBox[{"{", "c", "}"}], "=", "CompJ\[Beta]"}], ";", "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pc", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]j\[Beta]", ",", "c"}], "]"}]}], ";", 
+                 "\n", "    ", "\n", "    ", 
+                 RowBox[{"Sow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", "j", ",", 
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"-", "1"}], ")"}], 
+                    RowBox[{"Pa", "+", "Pc"}]], 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"O1", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "c"}], "\[RightDoubleBracket]"}], "+", 
+                    RowBox[{"Sum", "[", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "p", ",", "c", ",", "p"}], 
+                    "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "p", ",", "p", ",", "c"}], 
+                    "\[RightDoubleBracket]"}]}], ")"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"p", ",", "\[CapitalPsi]i\[Beta]"}], "}"}]}], 
+                    "]"}], "+", 
+                    RowBox[{"Sum", "[", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "p", ",", "c", ",", "p"}], 
+                    "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"p", ",", "\[CapitalPsi]i\[Alpha]"}], "}"}]}], 
+                    "]"}]}], ")"}]}]}], "}"}], "]"}]}], "\n", "    ", ")"}], 
+               ",", "\n", "    ", "\n", "    ", 
+               RowBox[{"(*", 
+                RowBox[{"Case", " ", "4"}], "*)"}], "\n", "    ", 
+               RowBox[{
+                RowBox[{"nSub\[Alpha]", "\[Equal]", "2"}], "\[And]", 
+                RowBox[{"nSub\[Beta]", "\[Equal]", "0"}]}], ",", "\n", "    ",
+                "\n", "    ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"a", ",", "b"}], "}"}], "=", "CompI\[Alpha]"}], 
+                 ";", "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pa", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]i\[Alpha]", ",", "a"}], "]"}]}], ";",
+                  "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pb", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]i\[Alpha]", ",", "b"}], "]"}]}], ";",
+                  "\n", "     ", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"c", ",", "d"}], "}"}], "=", "CompJ\[Alpha]"}], 
+                 ";", "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pc", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]j\[Alpha]", ",", "c"}], "]"}]}], ";",
+                  "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pd", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]j\[Alpha]", ",", "d"}], "]"}]}], ";",
+                  "\n", "     ", "\n", "     ", 
+                 RowBox[{"Sow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", "j", ",", 
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"-", "1"}], ")"}], 
+                    RowBox[{"Pa", "+", "Pb", "+", "Pc", "+", "Pd"}]], 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], 
+                    "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "d", ",", "c"}], 
+                    "\[RightDoubleBracket]"}]}], ")"}]}]}], "}"}], "]"}]}], 
+                "\[IndentingNewLine]", "\t", ")"}], ",", "\n", "\t", "\n", 
+               "\t", 
+               RowBox[{"(*", 
+                RowBox[{"Case", " ", "5"}], "*)"}], "\n", "\t", 
+               RowBox[{
+                RowBox[{"nSub\[Alpha]", "\[Equal]", "0"}], "\[And]", 
+                RowBox[{"nSub\[Beta]", "\[Equal]", "2"}]}], ",", "\n", "\t", 
+               "\n", "\t", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"a", ",", "b"}], "}"}], "=", "CompI\[Beta]"}], ";",
+                  "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pa", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]i\[Beta]", ",", "a"}], "]"}]}], ";", 
+                 "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pb", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]i\[Beta]", ",", "b"}], "]"}]}], ";", 
+                 "\n", "\t ", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"c", ",", "d"}], "}"}], "=", "CompJ\[Beta]"}], ";",
+                  "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pc", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]j\[Beta]", ",", "c"}], "]"}]}], ";", 
+                 "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pd", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]j\[Beta]", ",", "d"}], "]"}]}], ";", 
+                 "\n", "\t ", "\n", "\t ", 
+                 RowBox[{"Sow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", "j", ",", 
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"-", "1"}], ")"}], 
+                    RowBox[{"Pa", "+", "Pb", "+", "Pc", "+", "Pd"}]], 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], 
+                    "\[RightDoubleBracket]"}], "-", 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "d", ",", "c"}], 
+                    "\[RightDoubleBracket]"}]}], ")"}]}]}], "}"}], "]"}]}], 
+                "\[IndentingNewLine]", "\t", ")"}], ",", "\n", "\t", "\n", 
+               "\t", 
+               RowBox[{"(*", 
+                RowBox[{"Case", " ", "6"}], "*)"}], "\n", "\t", 
+               RowBox[{
+                RowBox[{"nSub\[Alpha]", "\[Equal]", "1"}], "\[And]", 
+                RowBox[{"nSub\[Beta]", "\[Equal]", "1"}]}], ",", "\n", "\t", 
+               "\n", "\t", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"{", "a", "}"}], "=", "CompI\[Alpha]"}], ";", "\t", 
+                 
+                 RowBox[{
+                  RowBox[{"{", "b", "}"}], "=", "CompI\[Beta]"}], ";", "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pa", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]i\[Alpha]", ",", "a"}], "]"}]}], ";",
+                  "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pb", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]i\[Beta]", ",", "b"}], "]"}]}], ";", 
+                 "\n", "\t ", 
+                 RowBox[{
+                  RowBox[{"{", "c", "}"}], "=", "CompJ\[Alpha]"}], ";", "\t", 
+                 
+                 RowBox[{
+                  RowBox[{"{", "d", "}"}], "=", "CompJ\[Beta]"}], ";", "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pc", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]j\[Alpha]", ",", "c"}], "]"}]}], ";",
+                  "\t", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"{", "Pd", "}"}], "}"}], "=", 
+                  RowBox[{"Position", "[", 
+                   RowBox[{"\[CapitalPsi]j\[Beta]", ",", "d"}], "]"}]}], ";", 
+                 "\n", "\t ", "\n", "\t ", 
+                 RowBox[{"Sow", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", "j", ",", 
+                    RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"(", 
+                    RowBox[{"-", "1"}], ")"}], 
+                    RowBox[{"Pa", "+", "Pb", "+", "Pc", "+", "Pd"}]], 
+                    RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                    RowBox[{"a", ",", "b", ",", "c", ",", "d"}], 
+                    "\[RightDoubleBracket]"}]}]}], "}"}], "]"}]}], 
+                "\[IndentingNewLine]", "\t", ")"}]}], "\[IndentingNewLine]", 
+              "]"}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "nDet"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "nDet"}], "}"}]}], "]"}], "]"}], "]"}], 
+        "]"}]}], ";", "\n", "\[IndentingNewLine]", 
+      RowBox[{"HCISD", "=", 
+       RowBox[{"Transpose", "[", "HCISD", "]"}]}], ";", "\t", 
+      RowBox[{"ijlist", "=", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"Take", "[", 
+         RowBox[{"HCISD", ",", "2"}], "]"}], "]"}]}], ";", "\t", 
+      RowBox[{"Hlist", "=", 
+       RowBox[{"Last", "[", "HCISD", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"HCISD", "=", 
+       RowBox[{"SparseArray", "[", 
+        RowBox[{"ijlist", "\[Rule]", "Hlist"}], "]"}]}], ";", "\n", 
+      RowBox[{"PrintTemporary", "[", 
+       RowBox[{"\"\<Dimensions of the Hamiltonian = \>\"", ",", 
+        RowBox[{"Dimensions", "[", "HCISD", "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", "\n", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Step", " ", "4"}], ":", " ", 
+        RowBox[{"diagonalize", " ", "the", " ", "Hamiltonian"}]}], "*)"}], 
+      "\n", 
+      RowBox[{"PrintTemporary", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+        "\"\<Diagonalize CISD Hamiltonian...\>\"", ",", "Bold", ",", 
+         "Orange"}], "]"}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"ECISD", ",", "cISD"}], "}"}], "=", 
+       RowBox[{"Chop", "[", 
+        RowBox[{"SortEigensystem", "[", 
+         RowBox[{"Eigensystem", "[", 
+          RowBox[{"N", "[", 
+           RowBox[{"HCISD", ",", "15"}], "]"}], "]"}], "]"}], "]"}]}], ";", 
+      "\n", "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{"verbose", ",", "\n", "  ", 
+        RowBox[{
+         RowBox[{"Print", "[", 
+          RowBox[{"TableForm", "[", 
+           RowBox[{"{", 
+            RowBox[{"{", 
+             RowBox[{
+             "\"\<\!\(\*SuperscriptBox[\(E\), \(CISD\)]\) = \>\"", ",", 
+              RowBox[{"SetPrecision", "[", 
+               RowBox[{
+                RowBox[{
+                "ECISD", "\[LeftDoubleBracket]", "1", 
+                 "\[RightDoubleBracket]"}], ",", "15"}], "]"}], ",", 
+              "\"\<\!\(\*SubsuperscriptBox[\(E\), \(c\), \(CISD\)]\) = \>\"", 
+              ",", 
+              RowBox[{"SetPrecision", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                 "ECISD", "\[LeftDoubleBracket]", "1", 
+                  "\[RightDoubleBracket]"}], "-", "EHF"}], ",", "9"}], 
+               "]"}]}], "}"}], "}"}], "]"}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", "  ", 
+          RowBox[{
+           RowBox[{"Print", "[", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"ECISD", "-", 
+               RowBox[{
+               "ECISD", "\[LeftDoubleBracket]", "1", 
+                "\[RightDoubleBracket]"}]}], ")"}], "HaToeV"}], "]"}], ";"}], 
+          "*)"}], "\n", "  ", 
+         RowBox[{"PrintTemporary", "[", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<Done!\>\"", ",", "Bold", ",", "Orange"}], "]"}], 
+          "]"}], ";"}]}], "\n", "]"}], ";", "\n", "\n", 
+      RowBox[{"outputsCISD", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{
+         RowBox[{"\"\<ECISD\>\"", "\[Rule]", "ECISD"}], ",", 
+         RowBox[{"\"\<cISD\>\"", "\[Rule]", "cISD"}]}], "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"Return", "[", "outputsCISD", "]"}], ";"}]}], "\n", "\n", 
+    "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.895913553883196*^9, 3.89591355500296*^9}, 
+   3.8959136299451313`*^9, {3.89591374065047*^9, 3.8959138848316793`*^9}, {
+   3.895913917261383*^9, 3.8959139183076763`*^9}, {3.8959140123646193`*^9, 
+   3.895914013505719*^9}, {3.895914063223864*^9, 3.895914555000255*^9}, {
+   3.895914606955453*^9, 3.8959146453428926`*^9}, {3.8959147749646063`*^9, 
+   3.8959148744748793`*^9}, {3.895914974837205*^9, 3.8959150734236603`*^9}, {
+   3.895915161595208*^9, 3.895915185828238*^9}, {3.8959153234969254`*^9, 
+   3.895915366081121*^9}, {3.895915516827807*^9, 3.895915575615308*^9}, {
+   3.8959159850040417`*^9, 3.895916002646536*^9}, {3.895916211106089*^9, 
+   3.895916211972157*^9}, {3.895916301210218*^9, 3.8959163193066263`*^9}, {
+   3.895916681547887*^9, 3.8959167134809*^9}, {3.895916966067721*^9, 
+   3.895917001386683*^9}, {3.895917045131431*^9, 3.895917051045701*^9}, {
+   3.895917201191442*^9, 3.895917234087345*^9}, {3.895917433379331*^9, 
+   3.895917443376822*^9}, {3.895917588320033*^9, 3.8959175889191628`*^9}, 
+   3.895917635725263*^9},ExpressionUUID->"b56a4d04-5c16-484b-b74b-\
+b35221d5d8f4"]
+}, Open  ]]
+},
+WindowSize->{1041, 696},
+WindowMargins->{{Automatic, 123}, {43, Automatic}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"3d8026b7-be98-4ffa-8d47-5f1eadac3da7"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 146, 3, 123, "Title",ExpressionUUID->"0f026a09-b638-4757-8f84-7f50616bc273"],
+Cell[729, 27, 2073, 44, 402, "Code",ExpressionUUID->"5d364ea2-4466-4587-a2cc-4288568852bc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2839, 76, 156, 3, 123, "Title",ExpressionUUID->"20e95af1-0b06-48c2-bc37-89dcea75c5d4"],
+Cell[2998, 81, 1247, 26, 162, "Code",ExpressionUUID->"7a967ea8-f269-4074-9f24-c307582e39b9"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[4282, 112, 159, 3, 89, "Title",ExpressionUUID->"06d8d0d3-589f-4594-b91b-f07300ffd0ee"],
+Cell[4444, 117, 30239, 659, 2999, "Code",ExpressionUUID->"b56a4d04-5c16-484b-b74b-b35221d5d8f4"]
+}, Open  ]]
+}
+]
+*)
+

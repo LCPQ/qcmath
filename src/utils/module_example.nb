@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6098,        170]
-NotebookOptionsPosition[      4776,        139]
-NotebookOutlinePosition[      5174,        155]
-CellTagsIndexPosition[      5131,        152]
+NotebookDataLength[      6169,        171]
+NotebookOptionsPosition[      4851,        140]
+NotebookOutlinePosition[      5245,        156]
+CellTagsIndexPosition[      5202,        153]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -31,12 +31,12 @@ Then this module is called in the main notebook along its dependencies if \
 needed.
 To add a module you should first open the utils/list_methods.nb notebook and \
 add your method (and its dependencies) in the list.
-Then add a call to you method in the main notebook as\
+Then add a call to your method in the main notebook as\
 \>", "Text",
  CellChangeTimes->{{3.8782645420561533`*^9, 3.8782646411775217`*^9}, {
-  3.878264712882963*^9, 3.878264714738963*^9}, {3.878264767281973*^9, 
-  3.8782648126192904`*^9}, {3.878264904251996*^9, 
-  3.878264946480859*^9}},ExpressionUUID->"634b733e-b8cf-4d3b-ad7a-\
+   3.878264712882963*^9, 3.878264714738963*^9}, {3.878264767281973*^9, 
+   3.8782648126192904`*^9}, {3.878264904251996*^9, 3.878264946480859*^9}, 
+   3.890964822617135*^9},ExpressionUUID->"634b733e-b8cf-4d3b-ad7a-\
 9d4d1d2f36f3"],
 
 Cell[BoxData[
@@ -104,8 +104,9 @@ Cell["\<\
 A module that reads the input and the options, then call either the spin or \
 spatial orb module, and finally return the associated output.\
 \>", "Text",
- CellChangeTimes->{{3.878265204729205*^9, 
-  3.878265245574705*^9}},ExpressionUUID->"ea261d55-c187-4e10-bcbf-\
+ CellChangeTimes->{{3.878265204729205*^9, 3.878265245574705*^9}, {
+  3.890965794940845*^9, 
+  3.890965797115366*^9}},ExpressionUUID->"ea261d55-c187-4e10-bcbf-\
 844a6f0591dd"]
 }, Open  ]],
 
@@ -137,9 +138,9 @@ Cell["Implementation in spatial orbital", "Text",
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{720., 782.25},
-WindowMargins->{{147, Automatic}, {-1080, Automatic}},
-FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
+WindowSize->{720, 783},
+WindowMargins->{{147, Automatic}, {-1, Automatic}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"4f760051-a0d8-4cb0-952f-2fcd83128f48"
 ]
@@ -156,20 +157,20 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 159, 3, 69, "Chapter",ExpressionUUID->"de726db4-92ae-422e-bb18-c8f04d4dbfe3"],
-Cell[742, 27, 635, 12, 127, "Text",ExpressionUUID->"634b733e-b8cf-4d3b-ad7a-9d4d1d2f36f3"],
-Cell[1380, 41, 1428, 37, 206, "Input",ExpressionUUID->"ba36fd76-a4b2-49ee-9fda-926e2a48cec9"],
-Cell[2811, 80, 676, 13, 173, "Text",ExpressionUUID->"06efef6c-6e0d-4a80-be7e-d2f058eafe1e"],
+Cell[742, 27, 661, 12, 127, "Text",ExpressionUUID->"634b733e-b8cf-4d3b-ad7a-9d4d1d2f36f3"],
+Cell[1406, 41, 1428, 37, 199, "Input",ExpressionUUID->"ba36fd76-a4b2-49ee-9fda-926e2a48cec9"],
+Cell[2837, 80, 676, 13, 173, "Text",ExpressionUUID->"06efef6c-6e0d-4a80-be7e-d2f058eafe1e"],
 Cell[CellGroupData[{
-Cell[3512, 97, 155, 3, 68, "Section",ExpressionUUID->"a6a76f47-0d70-41e0-a662-2fb5ae06e9ea"],
-Cell[3670, 102, 289, 6, 58, "Text",ExpressionUUID->"ea261d55-c187-4e10-bcbf-844a6f0591dd"]
+Cell[3538, 97, 155, 3, 67, "Section",ExpressionUUID->"a6a76f47-0d70-41e0-a662-2fb5ae06e9ea"],
+Cell[3696, 102, 338, 7, 58, "Text",ExpressionUUID->"ea261d55-c187-4e10-bcbf-844a6f0591dd"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3996, 113, 206, 4, 68, "Section",ExpressionUUID->"f33afad6-4c17-422f-b282-11d700608359"],
-Cell[4205, 119, 172, 3, 35, "Text",ExpressionUUID->"11de5dd1-b0a1-45a2-af25-7680b09c17ef"]
+Cell[4071, 114, 206, 4, 67, "Section",ExpressionUUID->"f33afad6-4c17-422f-b282-11d700608359"],
+Cell[4280, 120, 172, 3, 35, "Text",ExpressionUUID->"11de5dd1-b0a1-45a2-af25-7680b09c17ef"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4414, 127, 156, 3, 68, "Section",ExpressionUUID->"b3675979-5b80-4a92-b6eb-d8b095161e91"],
-Cell[4573, 132, 175, 3, 35, "Text",ExpressionUUID->"ac061e30-1dff-4c88-b4aa-0df4cc19eaab"]
+Cell[4489, 128, 156, 3, 67, "Section",ExpressionUUID->"b3675979-5b80-4a92-b6eb-d8b095161e91"],
+Cell[4648, 133, 175, 3, 35, "Text",ExpressionUUID->"ac061e30-1dff-4c88-b4aa-0df4cc19eaab"]
 }, Open  ]]
 }, Open  ]]
 }

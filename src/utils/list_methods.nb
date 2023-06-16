@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      7502,        176]
-NotebookOptionsPosition[      7127,        161]
-NotebookOutlinePosition[      7549,        178]
-CellTagsIndexPosition[      7506,        175]
+NotebookDataLength[      7848,        183]
+NotebookOptionsPosition[      7469,        168]
+NotebookOutlinePosition[      7894,        185]
+CellTagsIndexPosition[      7851,        182]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -60,6 +60,12 @@ Cell[BoxData[
             RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
              RowBox[{"{", "}"}]}]}], "|>"}]}], ",", "\n", "\n", 
          RowBox[{"\"\<MP2\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", "\n", 
+         RowBox[{"\"\<CISD\>\"", "\[Rule]", 
           RowBox[{"<|", 
            RowBox[{
             RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
@@ -156,13 +162,14 @@ Cell[BoxData[
    3.872915872752756*^9, 3.872915879704833*^9}, {3.875157824915531*^9, 
    3.875157842902246*^9}, {3.875236880807357*^9, 3.8752369338184347`*^9}, {
    3.8768933500667953`*^9, 3.876893369706602*^9}, {3.876893612688497*^9, 
-   3.876893613088059*^9}},ExpressionUUID->"2080cd3e-7f88-48b7-bee4-\
+   3.876893613088059*^9}, {3.8959161454555683`*^9, 
+   3.8959161567859583`*^9}},ExpressionUUID->"2080cd3e-7f88-48b7-bee4-\
 a3de0810e066"]
 },
 WindowSize->{1384.5, 762.},
 WindowMargins->{{0, Automatic}, {0, Automatic}},
 Magnification:>1.5 Inherited,
-FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"eb25125d-11ba-4855-81b8-7f0d8613f6d4"
 ]
@@ -177,10 +184,8 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 6565, 139, 993, "Code",ExpressionUUID->"2080cd3e-7f88-48b7-bee4-a3de0810e066"]
+Cell[558, 20, 6907, 146, 1036, "Code",ExpressionUUID->"2080cd3e-7f88-48b7-bee4-a3de0810e066"]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
