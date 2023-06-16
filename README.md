@@ -65,7 +65,7 @@ qcmath["H2","6-31g",{"RHF"}]
 ```
 
 The molecular geometry is provided through a .xyz file located in the `mol` directory, while the basis set file is stored in the `basis` directory. Additional options can be specified, such as the charge and spin multiplicity of the molecule. If these options are not explicitly stated, the default values are zero for the charge (neutral) and singlet state for the spin multiplicity.
-Furthermore, options related to different methods can also be specified, but we will discuss them in the upcoming section. It is worth noting that most of the presented methods offer both spin and spatial orbital implementations. You can choose between them using the keyword `"spinorbital"`, with the default value being `False` (indicating `spatialorbital` as the default choice).
+Furthermore, options related to different methods can also be specified, but we will discuss them in the upcoming section. It is worth noting that most of the presented methods offer both spin and spatial orbital implementations. You can choose between them using the keyword `"spinorbital"`, with the default value being `False` (indicating spatialorbital as the default choice).
 For a comprehensive list of all available options, including charge, spin multiplicity, and method-related choices, please refer to the `main/default_options.nb` notebook. This notebook presents the options in the form of a dictionary, providing a convenient reference for configuring and customizing the calculations.
 
 # User Guide
