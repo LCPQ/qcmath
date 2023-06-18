@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14725,        245]
-NotebookOptionsPosition[     14349,        230]
-NotebookOutlinePosition[     14770,        247]
-CellTagsIndexPosition[     14727,        244]
+NotebookDataLength[     14866,        248]
+NotebookOptionsPosition[     14490,        233]
+NotebookOutlinePosition[     14911,        250]
+CellTagsIndexPosition[     14868,        247]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -35,8 +35,8 @@ Cell[BoxData[
          RowBox[{"\"\<singlet\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
          RowBox[{"\"\<triplet\>\"", "\[Rule]", "False"}], ",", "\n", "\t", 
          RowBox[{"\"\<TDA\>\"", "\[Rule]", "False"}], ",", "\n", "\t", 
-         RowBox[{"\"\<spinorbital\>\"", "\[Rule]", "False"}], ",", "\n", "\t",
-          "\n", "\t", 
+         RowBox[{"\"\<spinorbital\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
+         "\n", "\t", 
          RowBox[{"(*", " ", 
           RowBox[{
            RowBox[{"HF", " ", "options"}], ",", " ", 
@@ -51,8 +51,10 @@ Cell[BoxData[
             RowBox[{"-", "7"}]], "*)"}], "0.0000001"}], ",", "\n", "\t", 
          RowBox[{"\"\<DIIS\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
          RowBox[{"\"\<n_DIIS\>\"", "\[Rule]", "5"}], ",", "\n", "\t", 
-         RowBox[{"\"\<guess_type\>\"", "\[Rule]", "1"}], ",", "\n", "\t", 
-         RowBox[{"\"\<ortho_type\>\"", "\[Rule]", "1"}], ",", "\n", "\t", 
+         RowBox[{"\"\<guess_type\>\"", "\[Rule]", "\"\<core\>\""}], ",", "\n",
+          "\t", 
+         RowBox[{"\"\<ortho_type\>\"", "\[Rule]", "\"\<lowdin\>\""}], ",", 
+         "\n", "\t", 
          RowBox[{"\"\<level_shift\>\"", "\[Rule]", "0.0"}], ",", "\n", "\n", 
          "\t", 
          RowBox[{"\"\<MP2_regularizer_methods\>\"", "->", "None"}], ",", "\n",
@@ -224,8 +226,9 @@ Cell[BoxData[
    3.881939858724181*^9}, {3.881939927529698*^9, 3.8819399466422*^9}, {
    3.881979099044731*^9, 3.88197909944444*^9}, {3.884768208205676*^9, 
    3.884768209853635*^9}, {3.8847682625339212`*^9, 3.88476826299053*^9}, {
-   3.891003203713052*^9, 
-   3.89100321722388*^9}},ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-\
+   3.891003203713052*^9, 3.89100321722388*^9}, {3.896069238843319*^9, 
+   3.896069239223879*^9}, {3.896070283588283*^9, 
+   3.8960702919512997`*^9}},ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-\
 be7c5a4f21c2"]
 },
 WindowSize->{933, 785},
@@ -246,7 +249,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 13787, 208, 1186, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
+Cell[558, 20, 13928, 211, 1186, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
 }
 ]
 *)

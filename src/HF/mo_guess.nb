@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      8440,        202]
-NotebookOptionsPosition[      8063,        187]
-NotebookOutlinePosition[      8486,        204]
-CellTagsIndexPosition[      8443,        201]
+NotebookDataLength[      8508,        203]
+NotebookOptionsPosition[      8131,        188]
+NotebookOutlinePosition[      8554,        205]
+CellTagsIndexPosition[      8511,        202]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -43,7 +43,7 @@ Cell[BoxData[
       "    ", 
       RowBox[{"Which", "[", "\n", "      ", 
        RowBox[{
-        RowBox[{"guessType", "\[Equal]", "1"}], ",", " ", 
+        RowBox[{"guessType", "\[Equal]", "\"\<core\>\""}], ",", " ", 
         RowBox[{"(*", 
          RowBox[{"core", " ", "Hamiltonian"}], "*)"}], "\n", "      ", 
         RowBox[{
@@ -64,7 +64,7 @@ Cell[BoxData[
          "to", " ", "have", " ", "the", " ", "good", " ", "shape", " ", "in", 
           " ", "Mathematica"}], "*)"}], "\n", "      ", ",", "\n", "      ", 
         "\n", "      ", 
-        RowBox[{"guessType", "\[Equal]", "2"}], ",", " ", 
+        RowBox[{"guessType", "\[Equal]", "\"\<huckel\>\""}], ",", " ", 
         RowBox[{"(*", 
          RowBox[{"H\[UDoubleDot]ckel", " ", "Hamiltonian"}], "*)"}], "\n", 
         "      ", 
@@ -133,7 +133,7 @@ Cell[BoxData[
          "to", " ", "have", " ", "the", " ", "good", " ", "shape", " ", "in", 
           " ", "Mathematica"}], "*)"}], "\n", "      ", ",", "\n", "      ", 
         "\n", "      ", 
-        RowBox[{"guessType", "\[Equal]", "3"}], ",", 
+        RowBox[{"guessType", "\[Equal]", "\"\<random\>\""}], ",", 
         RowBox[{"(*", 
          RowBox[{"random", " ", "coefficients"}], "*)"}], "\n", "      ", 
         RowBox[{
@@ -182,8 +182,9 @@ Cell[BoxData[
    3.890276884623169*^9, 3.8902770591281853`*^9}, {3.8902771126551113`*^9, 
    3.890277132191663*^9}, {3.890277206294672*^9, 3.89027724561357*^9}, {
    3.891655687251706*^9, 3.8916556964409227`*^9}, {3.8916557774612303`*^9, 
-   3.891655777592259*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"482ecdcf-1730-4692-a62d-aa681c50aaa2"]
+   3.891655777592259*^9}, {3.8960703158215847`*^9, 
+   3.896070332941724*^9}},ExpressionUUID->"482ecdcf-1730-4692-a62d-\
+aa681c50aaa2"]
 },
 WindowSize->{1350, 762},
 WindowMargins->{{Automatic, 17}, {1, Automatic}},
@@ -203,7 +204,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 7501, 165, 1239, "Code",ExpressionUUID->"482ecdcf-1730-4692-a62d-aa681c50aaa2"]
+Cell[558, 20, 7569, 166, 1239, "Code",ExpressionUUID->"482ecdcf-1730-4692-a62d-aa681c50aaa2"]
 }
 ]
 *)
