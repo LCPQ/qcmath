@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     14866,        248]
-NotebookOptionsPosition[     14490,        233]
-NotebookOutlinePosition[     14911,        250]
-CellTagsIndexPosition[     14868,        247]
+NotebookDataLength[     15328,        257]
+NotebookOptionsPosition[     14952,        242]
+NotebookOutlinePosition[     15373,        259]
+CellTagsIndexPosition[     15330,        256]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -55,10 +55,16 @@ Cell[BoxData[
           "\t", 
          RowBox[{"\"\<ortho_type\>\"", "\[Rule]", "\"\<lowdin\>\""}], ",", 
          "\n", "\t", 
-         RowBox[{"\"\<level_shift\>\"", "\[Rule]", "0.0"}], ",", "\n", "\n", 
-         "\t", 
-         RowBox[{"\"\<MP2_regularizer_methods\>\"", "->", "None"}], ",", "\n",
+         RowBox[{"\"\<level_shift\>\"", "\[Rule]", "0.0"}], ",", "\n", "\t", 
+         "\n", "\t", 
+         RowBox[{
+          RowBox[{"\"\<thresh_CC\>\"", "\[Rule]", 
+           SuperscriptBox["10", 
+            RowBox[{"-", "5"}]]}], ";", "\n", "\t", 
+          RowBox[{"\"\<max_SCF_CC\>\"", "\[Rule]", "50"}], ";", "\n", "\n", 
           "\t", 
+          RowBox[{"\"\<MP2_regularizer_methods\>\"", "->", "None"}]}], ",", 
+         "\n", "\t", 
          RowBox[{"\"\<MP2_regularizer_value\>\"", "->", "1"}], ",", "\n", 
          "\n", "\t", 
          RowBox[{"\"\<MBPT_regularizer_methods\>\"", "->", "None"}], ",", 
@@ -227,8 +233,11 @@ Cell[BoxData[
    3.881979099044731*^9, 3.88197909944444*^9}, {3.884768208205676*^9, 
    3.884768209853635*^9}, {3.8847682625339212`*^9, 3.88476826299053*^9}, {
    3.891003203713052*^9, 3.89100321722388*^9}, {3.896069238843319*^9, 
-   3.896069239223879*^9}, {3.896070283588283*^9, 
-   3.8960702919512997`*^9}},ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-\
+   3.896069239223879*^9}, {3.896070283588283*^9, 3.8960702919512997`*^9}, {
+   3.896151048001295*^9, 3.896151048883645*^9}, {3.896153484327705*^9, 
+   3.8961534847588787`*^9}, {3.8961536889920263`*^9, 3.896153715709861*^9}, {
+   3.8961538560191393`*^9, 
+   3.8961539131354437`*^9}},ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-\
 be7c5a4f21c2"]
 },
 WindowSize->{933, 785},
@@ -249,7 +258,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 13928, 211, 1186, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
+Cell[558, 20, 14390, 220, 1273, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
 }
 ]
 *)
