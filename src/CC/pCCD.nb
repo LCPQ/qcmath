@@ -10,21 +10,107 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     81485,       1662]
-NotebookOptionsPosition[     81105,       1647]
-NotebookOutlinePosition[     81501,       1663]
-CellTagsIndexPosition[     81458,       1660]
+NotebookDataLength[     88092,       1821]
+NotebookOptionsPosition[     87116,       1794]
+NotebookOutlinePosition[     87543,       1811]
+CellTagsIndexPosition[     87500,       1808]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
+Cell["pCCD", "Title",
+ CellChangeTimes->{{3.896151164751602*^9, 
+  3.89615116542204*^9}},ExpressionUUID->"9a8e0ae5-dd23-495f-b71b-\
+0a2ea68c0f6c"],
+
 Cell[BoxData[
  RowBox[{
   RowBox[{
    RowBox[{"pCCD", "[", 
     RowBox[{
-    "nElec_", ",", "nBas_", ",", "ENuc_", ",", "EHF_", ",", "F_", ",", "C_", 
-     ",", "\[Epsilon]_", ",", "T_", ",", "V_", ",", "U_"}], "]"}], ":=", 
+    "nElec_", ",", "nBas_", ",", "ENuc_", ",", "EHF_", ",", "FOM_", ",", 
+     "\[Epsilon]_", ",", "h_", ",", "ERI_", ",", "options_", ",", 
+     "verbose_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "outputsPCCD", "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"options", "[", "\"\<spinorbital\>\"", "]"}], "\[Equal]", 
+         "True"}], ",", "\n", "\n", "  ", 
+        RowBox[{
+         RowBox[{"outputsPCCD", "=", 
+          RowBox[{"spinOrbPCCD", "[", 
+           RowBox[{
+           "nElec", ",", "nBas", ",", "ENuc", ",", "EHF", ",", "FOM", ",", 
+            "\[Epsilon]", ",", "h", ",", "ERI", ",", "verbose"}], "]"}]}], 
+         ";"}], "\n", "  ", "\n", "  ", ",", 
+        RowBox[{"(*", 
+         RowBox[{"else", " ", "go", " ", "to", " ", "spatial"}], "*)"}], "\n",
+         "  ", "\n", "  ", 
+        RowBox[{
+         RowBox[{"outputsPCCD", "=", 
+          RowBox[{"spatialOrbPCCD", "[", 
+           RowBox[{
+           "nElec", ",", "nBas", ",", "ENuc", ",", "EHF", ",", "FOM", ",", 
+            "\[Epsilon]", ",", "h", ",", "ERI", ",", "verbose"}], "]"}]}], 
+         ";"}]}], "\n", "  ", "\n", "]"}], ";", "\n", "  ", "\n", 
+      RowBox[{"Return", "[", "outputsPCCD", "]"}], ";"}]}], "\n", "  ", "\n", 
+    "]"}]}], ";"}]], "Code",
+ CellChangeTimes->{{3.8961514084387407`*^9, 3.896151536615937*^9}, {
+  3.896152253577273*^9, 3.896152285636903*^9}, {3.896152568742482*^9, 
+  3.89615257848076*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"0135170a-1fc7-4bd4-a8f7-8b2eddf67b90"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Spin orbitals", "Title",
+ CellChangeTimes->{{3.8961513196019697`*^9, 
+  3.896151325911278*^9}},ExpressionUUID->"97c83226-ca46-4efb-9421-\
+855fefcd52fa"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"spinOrbPCCD", "[", 
+   RowBox[{
+   "nElec_", ",", "nBas_", ",", "ENuc_", ",", "EHF_", ",", "F_", ",", 
+    "\[Epsilon]_", ",", "T_", ",", "V_", ",", "U_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\n", "\n", 
+    RowBox[{
+     RowBox[{"Return", "[", 
+      RowBox[{"Print", "[", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+        "\"\<spinorbital implementation not available!!!\>\"", ",", "Bold", 
+         ",", "Red"}], "]"}], "]"}], "]"}], ";", "\n", "\n", 
+     RowBox[{"Return", "[", "]"}]}]}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.896151329870126*^9, 3.896151334382737*^9}, {
+  3.896152933952965*^9, 
+  3.896152934831773*^9}},ExpressionUUID->"2bfe67ee-b4e2-48a4-9cb7-\
+91c532371f58"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Spatial orbitals", "Title",
+ CellChangeTimes->{{3.896151342360363*^9, 
+  3.896151348006137*^9}},ExpressionUUID->"69b6cd10-74e7-4f94-aba4-\
+90795ece0c55"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"spatialOrbPCCD", "[", 
+    RowBox[{
+    "nElec_", ",", "nBas_", ",", "ENuc_", ",", "EHF_", ",", "FOM_", ",", 
+     "\[Epsilon]_", ",", "h_", ",", "ERI_", ",", "verbose_"}], "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
@@ -32,13 +118,12 @@ Cell[BoxData[
       "ConvE", ",", "ConvC", ",", "threshC", ",", "threshE", ",", "nIt", ",", 
        "maxIt", ",", "nSCF", ",", "maxSCF", ",", "OOOO", ",", "OOVV", ",", 
        "OVOV", ",", "OVVO", ",", "VVVV", ",", "nO", ",", "nV", ",", "c", ",", 
-       "f", ",", "foo", ",", "fvv", ",", "ERI", ",", "h", ",", 
-       "\[CapitalDelta]", ",", "t", ",", "z", ",", "rt", ",", "rz", ",", 
-       "xoo", ",", "xvv", ",", "xov", ",", "xvo", ",", "\[Gamma]oo", ",", 
-       "\[Gamma]vv", ",", "\[Gamma]ov", ",", "\[Gamma]vo", ",", "\[Gamma]", 
-       ",", "\[CapitalGamma]", ",", "g", ",", "H", ",", "\[Kappa]", ",", 
-       "EpCCD", ",", "EcpCCD"}], "}"}], ",", "\[IndentingNewLine]", 
-     "\[IndentingNewLine]", 
+       "f", ",", "foo", ",", "fvv", ",", "\[CapitalDelta]", ",", "t", ",", 
+       "z", ",", "rt", ",", "rz", ",", "xoo", ",", "xvv", ",", "xov", ",", 
+       "xvo", ",", "\[Gamma]oo", ",", "\[Gamma]vv", ",", "\[Gamma]ov", ",", 
+       "\[Gamma]vo", ",", "\[Gamma]", ",", "\[CapitalGamma]", ",", "g", ",", 
+       "H", ",", "\[Kappa]", ",", "EpCCD", ",", "EcpCCD"}], "}"}], ",", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"(*", " ", 
       RowBox[{"KEY", " ", "QUANTITIES"}], " ", "*)"}], "\[IndentingNewLine]", 
      
@@ -53,16 +138,28 @@ Cell[BoxData[
       RowBox[{"ConvC", "=", "1"}], ";", "\t", 
       RowBox[{"nIt", "=", "0"}], ";", "\t", 
       RowBox[{"maxIt", "=", "36"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"c", "=", "C"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"f", "=", "FOM"}], ";", "\[IndentingNewLine]", 
       "\[IndentingNewLine]", 
       RowBox[{"(*", " ", 
        RowBox[{"ORBITAL", " ", "OPTIMIZATION", " ", "LOOP"}], " ", "*)"}], 
       "\[IndentingNewLine]", 
-      RowBox[{"Print", "[", 
-       RowBox[{"Style", "[", 
+      RowBox[{"If", "[", 
+       RowBox[{"verbose", ",", "\[IndentingNewLine]", 
         RowBox[{
-        "\"\<pCCD orbital optimization...\>\"", ",", "Bold", ",", "Red"}], 
-        "]"}], "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"Style", "[", 
+           RowBox[{
+           "\"\<pCCD orbital optimization...\>\"", ",", "Bold", ",", "Red"}], 
+           "]"}], "]"}], ";"}], "\[IndentingNewLine]", ",", 
+        RowBox[{"(*", "else", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"PrintTemporary", "[", 
+          RowBox[{"Style", "[", 
+           RowBox[{
+           "\"\<pCCD orbital optimization...\>\"", ",", "Bold", ",", "Red"}], 
+           "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
       RowBox[{"While", "[", 
        RowBox[{
         RowBox[{
@@ -71,29 +168,6 @@ Cell[BoxData[
         RowBox[{
          RowBox[{"nIt", "++"}], ";", "\[IndentingNewLine]", 
          "\[IndentingNewLine]", 
-         RowBox[{"Print", "[", 
-          RowBox[{"Style", "[", 
-           RowBox[{
-           "\"\<AO to MO transformation...\>\"", ",", "Bold", ",", "Red"}], 
-           "]"}], "]"}], ";", "\[IndentingNewLine]", 
-         RowBox[{"h", "=", 
-          RowBox[{
-           RowBox[{"c", "\[Transpose]"}], ".", 
-           RowBox[{"(", 
-            RowBox[{"T", "+", "V"}], ")"}], ".", "c"}]}], ";", "\t", 
-         RowBox[{"ERI", "=", 
-          RowBox[{
-           RowBox[{"c", "\[Transpose]"}], ".", 
-           RowBox[{"Transpose", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"c", "\[Transpose]"}], ".", "U", ".", "c"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"2", ",", "1", ",", "4", ",", "3"}], "}"}]}], "]"}], 
-           ".", "c"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-         RowBox[{"f", "=", 
-          RowBox[{
-           RowBox[{"c", "\[Transpose]"}], ".", "F", ".", "c"}]}], ";", "\t", 
          RowBox[{"foo", "=", 
           RowBox[{"Table", "[", 
            RowBox[{
@@ -205,11 +279,22 @@ Cell[BoxData[
           RowBox[{
           "ITERATIVE", " ", "pCCD", " ", "ALGORITHM", " ", "FOR", " ", "t", 
            " ", "AMPLITUDES"}], " ", "*)"}], "\[IndentingNewLine]", 
-         RowBox[{"Print", "[", 
-          RowBox[{"Style", "[", 
+         RowBox[{"If", "[", 
+          RowBox[{"verbose", ",", "\[IndentingNewLine]", 
            RowBox[{
-           "\"\<Computing t amplitudes...\>\"", ",", "Bold", ",", "Red"}], 
-           "]"}], "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Computing t amplitudes...\>\"", ",", "Bold", ",", "Red"}], 
+              "]"}], "]"}], ";"}], "\[IndentingNewLine]", ",", 
+           RowBox[{"(*", "else", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"PrintTemporary", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Computing t amplitudes...\>\"", ",", "Bold", ",", "Red"}], 
+              "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
          RowBox[{"threshE", "=", 
           SuperscriptBox["10", 
            RowBox[{"-", "10"}]]}], ";", "\t", 
@@ -369,11 +454,22 @@ Cell[BoxData[
           RowBox[{
           "ITERATIVE", " ", "pCCD", " ", "ALGORITHM", " ", "FOR", " ", "z", 
            " ", "AMPLITUDES"}], "*)"}], "\[IndentingNewLine]", 
-         RowBox[{"Print", "[", 
-          RowBox[{"Style", "[", 
+         RowBox[{"If", "[", 
+          RowBox[{"verbose", ",", "\[IndentingNewLine]", 
            RowBox[{
-           "\"\<Computing z amplitudes...\>\"", ",", "Bold", ",", "Red"}], 
-           "]"}], "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Computing z amplitudes...\>\"", ",", "Bold", ",", "Red"}], 
+              "]"}], "]"}], ";"}], "\[IndentingNewLine]", ",", 
+           RowBox[{"(*", "else", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"PrintTemporary", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Computing z amplitudes...\>\"", ",", "Bold", ",", "Red"}], 
+              "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
          RowBox[{"threshE", "=", 
           SuperscriptBox["10", 
            RowBox[{"-", "10"}]]}], ";", "\t", 
@@ -546,11 +642,23 @@ Cell[BoxData[
            RowBox[{"and", " ", "two"}], "-", 
            RowBox[{"body", " ", "density", " ", "matrices"}]}], " ", "*)"}], 
          "\[IndentingNewLine]", 
-         RowBox[{"Print", "[", 
-          RowBox[{"Style", "[", 
+         RowBox[{"If", "[", 
+          RowBox[{"verbose", ",", "\[IndentingNewLine]", 
            RowBox[{
-           "\"\<Computing one- and two-particle density matrices...\>\"", ",",
-             "Bold", ",", "Red"}], "]"}], "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Computing one- and two-particle density matrices...\>\"", 
+               ",", "Bold", ",", "Red"}], "]"}], "]"}], ";"}], 
+           "\[IndentingNewLine]", ",", 
+           RowBox[{"(*", "else", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"PrintTemporary", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Computing one- and two-particle density matrices...\>\"", 
+               ",", "Bold", ",", "Red"}], "]"}], "]"}], ";"}]}], 
+          "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
          RowBox[{"xoo", "=", 
           RowBox[{"Table", "[", 
            RowBox[{
@@ -953,11 +1061,22 @@ Cell[BoxData[
           RowBox[{
           "Compute", " ", "energy", " ", "based", " ", "on", " ", "density", 
            " ", "matrices"}], " ", "*)"}], "\[IndentingNewLine]", 
-         RowBox[{"Print", "[", 
-          RowBox[{"Style", "[", 
+         RowBox[{"If", "[", 
+          RowBox[{"verbose", ",", "\[IndentingNewLine]", 
            RowBox[{
-           "\"\<Computing pCCD energy...\>\"", ",", "Bold", ",", "Red"}], 
-           "]"}], "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Computing pCCD energy...\>\"", ",", "Bold", ",", "Red"}], 
+              "]"}], "]"}], ";"}], "\[IndentingNewLine]", ",", 
+           RowBox[{"(*", "else", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"PrintTemporary", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Computing pCCD energy...\>\"", ",", "Bold", ",", "Red"}], 
+              "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+         "\[IndentingNewLine]", "\[IndentingNewLine]", 
          RowBox[{"EpCCD", "=", 
           RowBox[{
            RowBox[{
@@ -1005,10 +1124,22 @@ Cell[BoxData[
          RowBox[{"(*", " ", 
           RowBox[{"Compute", " ", "gradient"}], " ", "*)"}], 
          "\[IndentingNewLine]", 
-         RowBox[{"Print", "[", 
-          RowBox[{"Style", "[", 
-           RowBox[{"\"\<Computing gradient...\>\"", ",", "Bold", ",", "Red"}],
-            "]"}], "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{"verbose", ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Print", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Computing gradient...\>\"", ",", "Bold", ",", "Red"}], 
+              "]"}], "]"}], ";"}], "\[IndentingNewLine]", ",", 
+           RowBox[{"(*", "else", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"PrintTemporary", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Computing gradient...\>\"", ",", "Bold", ",", "Red"}], 
+              "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+         "\[IndentingNewLine]", 
          RowBox[{"g", "=", 
           RowBox[{"Table", "[", 
            RowBox[{
@@ -1091,10 +1222,22 @@ Cell[BoxData[
          RowBox[{"(*", " ", 
           RowBox[{"Compute", " ", "Hessian"}], " ", "*)"}], 
          "\[IndentingNewLine]", 
-         RowBox[{"Print", "[", 
-          RowBox[{"Style", "[", 
-           RowBox[{"\"\<Computing Hessian...\>\"", ",", "Bold", ",", "Red"}], 
-           "]"}], "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{"verbose", ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Print", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Computing Hessian...\>\"", ",", "Bold", ",", "Red"}], 
+              "]"}], "]"}], ";"}], "\[IndentingNewLine]", ",", 
+           RowBox[{"(*", "else", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"PrintTemporary", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+              "\"\<Computing Hessian...\>\"", ",", "Bold", ",", "Red"}], 
+              "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+         "\[IndentingNewLine]", 
          RowBox[{"H", "=", 
           RowBox[{"Table", "[", 
            RowBox[{
@@ -1641,13 +1784,18 @@ Cell[BoxData[
    3.823188961674402*^9}, {3.823189052735174*^9, 3.823189052811118*^9}, 
    3.823189198896861*^9, {3.823189239497998*^9, 3.823189242612661*^9}, {
    3.823250197652626*^9, 3.823250278948078*^9}, {3.8235877277029533`*^9, 
-   3.823587743393215*^9}, {3.864140480499989*^9, 
-   3.864140481673086*^9}},ExpressionUUID->"e20a7517-729b-4250-a5a6-\
-358da7bf4c1b"]
+   3.823587743393215*^9}, {3.864140480499989*^9, 3.864140481673086*^9}, {
+   3.896151387036861*^9, 3.896151393563895*^9}, {3.896151923677129*^9, 
+   3.896151924800108*^9}, {3.896151968762587*^9, 3.8961520232695627`*^9}, {
+   3.896152123182928*^9, 3.896152146501337*^9}, {3.896152200995934*^9, 
+   3.896152240788411*^9}, {3.8961522934661083`*^9, 3.896152528658515*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"e20a7517-729b-4250-a5a6-358da7bf4c1b"]
+}, Closed]]
 },
-WindowSize->{808, 747},
-WindowMargins->{{20, Automatic}, {Automatic, 44}},
-FrontEndVersion->"13.0 for Mac OS X ARM (64-bit) (December 2, 2021)",
+WindowSize->{1221, 759},
+WindowMargins->{{Automatic, 105}, {-39, Automatic}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"5ef30c53-a6f2-4bee-b472-ab7e6343fb5b"
 ]
@@ -1662,8 +1810,19 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 80543, 1625, 4403, "Input",ExpressionUUID->"e20a7517-729b-4250-a5a6-358da7bf4c1b",
+Cell[CellGroupData[{
+Cell[580, 22, 146, 3, 123, "Title",ExpressionUUID->"9a8e0ae5-dd23-495f-b71b-0a2ea68c0f6c"],
+Cell[729, 27, 1665, 39, 402, "Code",ExpressionUUID->"0135170a-1fc7-4bd4-a8f7-8b2eddf67b90"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2431, 71, 158, 3, 123, "Title",ExpressionUUID->"97c83226-ca46-4efb-9421-855fefcd52fa"],
+Cell[2592, 76, 774, 20, 162, "Code",ExpressionUUID->"2bfe67ee-b4e2-48a4-9cb7-91c532371f58"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[3403, 101, 159, 3, 89, "Title",ExpressionUUID->"69b6cd10-74e7-4f94-aba4-90795ece0c55"],
+Cell[3565, 106, 83535, 1685, 5887, "Input",ExpressionUUID->"e20a7517-729b-4250-a5a6-358da7bf4c1b",
  InitializationCell->True]
+}, Closed]]
 }
 ]
 *)

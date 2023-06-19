@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    128618,       2257]
-NotebookOptionsPosition[    128097,       2239]
-NotebookOutlinePosition[    128529,       2256]
-CellTagsIndexPosition[    128486,       2253]
+NotebookDataLength[    133741,       2372]
+NotebookOptionsPosition[    133220,       2354]
+NotebookOutlinePosition[    133652,       2371]
+CellTagsIndexPosition[    133609,       2368]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -55,7 +55,8 @@ Cell[BoxData[
        "            ", "EevGF2", ",", "EevUGF2", ",", "EG0T0", ",", "eG0T0", 
        ",", "EevGT", ",", "EqsGT", ",", "EUG0T0", ",", "EevUGT", ",", "\n", 
        "            ", "EqsUGT", ",", "EppRPA", ",", "EG0W0", ",", "ECISD", 
-       ",", "ECCSD", ",", "ECCSDT", ",", "\n", "            ", "\n", 
+       ",", "ECCSD", ",", "ECCSDT", ",", "EFCI", ",", "EpCCD", ",", "\n", 
+       "            ", "\n", 
        RowBox[{"(*", "timing", "*)"}], " ", "time", ",", "\n", "\n", 
        RowBox[{"(*", "options", "*)"}], "option", ",", "maxSCF", ",", 
        "thresh", ",", "lin", ",", "guessType", ",", "levelShift", ",", "\n", 
@@ -63,26 +64,26 @@ Cell[BoxData[
        RowBox[{"(*", "outputs", "*)"}], "IntegralsQuantities", ",", 
        "ParametersQuantities", ",", "MoleculeQuantities", ",", "\n", "\n", 
        RowBox[{"(*", "integrals", "*)"}], "S", ",", "T", ",", "V", ",", "U", 
-       ",", "O1", ",", "ERI", ",", "ERIaa", ",", "ERIab", ",", "ERIba", ",", 
+       ",", "h", ",", "ERI", ",", "ERIaa", ",", "ERIab", ",", "ERIba", ",", 
        "ERIbb", ",", "qsGWOMIntegrals", ",", "qsGWOMIntegralsaa", ",", 
        "qsGWOMIntegralsab", ",", "qsGWOMIntegralsba", ",", 
        "qsGWOMIntegralsbb", ",", "\n", "            ", "\n", "X", ",", 
        "TabRHF", ",", "IP", ",", "outputs", ",", "verbose", ",", "file", ",", 
-       "cISD", ",", "J", ",", "t1", ",", "t2", ",", "\n", "C", ",", 
-       "\[Epsilon]", ",", "XplusY", ",", "\[CapitalOmega]RPA", ",", "ufBSE", 
-       ",", "dBSE", ",", "dTDA", ",", "Ca", ",", "Cb", ",", "\[Epsilon]a", 
-       ",", "\[Epsilon]b", ",", "TDA", ",", "TDAW", ",", "TDAT", ",", 
-       "singlet", ",", "triplet", ",", "spinconserved", ",", "spinflip", ",", 
-       "LR", ",", "BSE", ",", "qsGW\[Epsilon]", ",", "W", ",", "EUBSE", ",", 
-       "W1", ",", "W2", ",", "\n", "qsGW\[Epsilon]a", ",", "qsGW\[Epsilon]b", 
-       ",", "P", ",", "K", ",", "Vxc", ",", "RPAG0W0", ",", "GMG0W0", ",", 
-       "eG0W0", ",", "RPAevGW", ",", "GMevGW", ",", "RPAUG0W0", ",", 
-       "GMUG0W0", ",", "eG0W0a", ",", "eG0W0b", ",", "Vxca", ",", "Vxcb", ",",
-        "Ka", ",", "Kb", ",", "RPAevUGW", ",", "GMevUGW", ",", "\n", "i", ",",
-        "sfile", ",", "FFeGW", ",", "Z", ",", "\[CapitalSigma]cG0W0", ",", 
-       "\[CapitalSigma]c\[Omega]G0W0", ",", "Re\[CapitalSigma]c", ",", 
-       "Im\[CapitalSigma]c", ",", "\[Epsilon]evGW", ",", 
-       "\[CapitalSigma]c\[Omega]", ",", "eGT", ",", "ZG0T0", ",", 
+       "cISD", ",", "J", ",", "t1", ",", "t2", ",", "FOM", ",", "\n", "C", 
+       ",", "\[Epsilon]", ",", "XplusY", ",", "\[CapitalOmega]RPA", ",", 
+       "ufBSE", ",", "dBSE", ",", "dTDA", ",", "Ca", ",", "Cb", ",", 
+       "\[Epsilon]a", ",", "\[Epsilon]b", ",", "TDA", ",", "TDAW", ",", 
+       "TDAT", ",", "singlet", ",", "triplet", ",", "spinconserved", ",", 
+       "spinflip", ",", "LR", ",", "BSE", ",", "qsGW\[Epsilon]", ",", "W", 
+       ",", "EUBSE", ",", "W1", ",", "W2", ",", "\n", "qsGW\[Epsilon]a", ",", 
+       "qsGW\[Epsilon]b", ",", "P", ",", "K", ",", "Vxc", ",", "RPAG0W0", ",",
+        "GMG0W0", ",", "eG0W0", ",", "RPAevGW", ",", "GMevGW", ",", 
+       "RPAUG0W0", ",", "GMUG0W0", ",", "eG0W0a", ",", "eG0W0b", ",", "Vxca", 
+       ",", "Vxcb", ",", "Ka", ",", "Kb", ",", "RPAevUGW", ",", "GMevUGW", 
+       ",", "\n", "i", ",", "sfile", ",", "FFeGW", ",", "Z", ",", 
+       "\[CapitalSigma]cG0W0", ",", "\[CapitalSigma]c\[Omega]G0W0", ",", 
+       "Re\[CapitalSigma]c", ",", "Im\[CapitalSigma]c", ",", "\[Epsilon]evGW",
+        ",", "\[CapitalSigma]c\[Omega]", ",", "eGT", ",", "ZG0T0", ",", 
        "\[CapitalSigma]cG0T0", ",", "ZevGT", ",", "\[CapitalSigma]cevGT", ",",
         "Im\[CapitalSigma]c\[Omega]", ",", "\n", "\[Eta]", ",", "DIISex", ",",
         "Regularized", ",", "\[CapitalSigma]qsGW", ",", "EppURPA", ",", 
@@ -204,8 +205,8 @@ Cell[BoxData[
       RowBox[{"(*", 
        RowBox[{"Read", " ", "integrals"}], "*)"}], "\n", 
       RowBox[{
-      "PrintTemporary", "[", "\"\<Reading two-electron integrals...\>\"", 
-       "]"}], ";", "\n", 
+      "PrintTemporary", "[", 
+       "\"\<Reading one- and two-electron integrals...\>\"", "]"}], ";", "\n", 
       RowBox[{"NotebookEvaluate", "[", 
        RowBox[{"path", "<>", "\"\</src/utils/read_integrals.nb\>\""}], "]"}], 
       ";", "\n", 
@@ -432,8 +433,9 @@ Cell[BoxData[
              RowBox[{
               RowBox[{"outputs", "[", "\"\<EHF\>\"", "]"}], "+", "Enuc"}]}], 
             ";", "\n", "        ", 
-            RowBox[{"O1", "=", 
-             RowBox[{"outputs", "[", "\"\<O1\>\"", "]"}]}], ";", "\n", "\t\t", 
+            RowBox[{"h", "=", 
+             RowBox[{"outputs", "[", "\"\<h\>\"", "]"}]}], ";", "\n", "\t\t", 
+            
             RowBox[{"ERI", "=", 
              RowBox[{"outputs", "[", "\"\<ERI\>\"", "]"}]}], ";", "\n", 
             "\t\t", 
@@ -442,6 +444,9 @@ Cell[BoxData[
              "\t\t", 
             RowBox[{"C", "=", 
              RowBox[{"outputs", "[", "\"\<C\>\"", "]"}]}], ";", " ", "\n", 
+            "\t\t", 
+            RowBox[{"FOM", "=", 
+             RowBox[{"outputs", "[", "\"\<FOM\>\"", "]"}]}], ";", " ", "\n", 
             "\t\t", 
             RowBox[{"P", "=", 
              RowBox[{"outputs", "[", "\"\<P\>\"", "]"}]}], ";", "\n", "\t\t", 
@@ -532,7 +537,7 @@ Cell[BoxData[
                StyleBox[" ",
                 FontColor->RGBColor[1, 0, 0]], 
                StyleBox[
-                RowBox[{"WORKING", "!!"}],
+                RowBox[{"VERIFIED", "!!"}],
                 FontColor->RGBColor[1, 0, 0]]}], " ", "*)"}],
              FontSize->18], 
             StyleBox["\n",
@@ -562,7 +567,7 @@ Cell[BoxData[
                  RowBox[{"CISD", "[", 
                   RowBox[{
                   "nBas", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "J", ",", 
-                   "K", ",", "O1", ",", "ERI", ",", "ERHF", ",", "options", 
+                   "K", ",", "h", ",", "ERI", ",", "ERHF", ",", "options", 
                    ",", "verbose"}], "]"}], "]"}]}], ";", "\n", "\t", "\n", 
                "\t", 
                RowBox[{"ECISD", "=", 
@@ -581,13 +586,117 @@ Cell[BoxData[
              "\n", "\t", 
             StyleBox[
              RowBox[{"(*", " ", 
+              RowBox[{"FCI", " ", 
+               StyleBox["NOT",
+                FontColor->RGBColor[1, 0, 0]], 
+               StyleBox[" ",
+                FontColor->RGBColor[1, 0, 0]], 
+               StyleBox[
+                RowBox[{"VERIFIED", "!!"}],
+                FontColor->RGBColor[1, 0, 0]]}], " ", "*)"}],
+             FontSize->18], 
+            StyleBox["\n",
+             FontSize->18], 
+            StyleBox["   ",
+             FontSize->18], 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"ToDoModules", "[", "\"\<FCI\>\"", "]"}], "[", 
+                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "    ", 
+              
+              RowBox[{
+               RowBox[{"NotebookEvaluate", "[", 
+                RowBox[{"path", "<>", "\"\</src/CI/FCI.nb\>\""}], "]"}], ";", 
+               "\n", "    ", 
+               RowBox[{"PrintTemporary", "[", 
+                RowBox[{"Style", "[", 
+                 RowBox[{
+                 "\"\<FCI calculation...\>\"", ",", "Bold", ",", "Orange"}], 
+                 "]"}], "]"}], ";", "\n", "    ", "\n", "    ", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                RowBox[{"Timing", "[", 
+                 RowBox[{"FCI", "[", 
+                  RowBox[{
+                  "nBas", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "J", ",", 
+                   "K", ",", "h", ",", "ERI", ",", "ERHF", ",", "options", 
+                   ",", "verbose"}], "]"}], "]"}]}], ";", "\n", "\t", "\n", 
+               "\t", 
+               RowBox[{"EFCI", "=", 
+                RowBox[{"outputs", "[", "\"\<EFCI\>\"", "]"}]}], ";", "\n", 
+               "\t", "\n", "    ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"verbose", "\[Equal]", "True"}], ",", 
+                 RowBox[{"Print", "[", 
+                  RowBox[{
+                  "\"\<CPU time for FCI calculation= \>\"", ",", "time"}], 
+                  "]"}]}], "]"}], ";"}]}], "\n", "\t", "]"}], ";", "\n", "\t",
+             "\n", "\t", "\n", "\t", 
+            StyleBox[
+             RowBox[{"(*", " ", 
+              RowBox[{"pCCD", " ", 
+               StyleBox["NOT",
+                FontColor->RGBColor[1, 0, 0]], 
+               StyleBox[" ",
+                FontColor->RGBColor[1, 0, 0]], 
+               StyleBox[
+                RowBox[{"VERIFIED", "!!"}],
+                FontColor->RGBColor[1, 0, 0]]}], " ", "*)"}],
+             FontSize->18], 
+            StyleBox["\n",
+             FontSize->18], 
+            StyleBox["   ",
+             FontSize->18], 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"ToDoModules", "[", "\"\<pCCD\>\"", "]"}], "[", 
+                "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "    ", 
+              
+              RowBox[{
+               RowBox[{"NotebookEvaluate", "[", 
+                RowBox[{"path", "<>", "\"\</src/CC/pCCD.nb\>\""}], "]"}], ";",
+                "\n", "    ", 
+               RowBox[{"PrintTemporary", "[", 
+                RowBox[{"Style", "[", 
+                 RowBox[{
+                 "\"\<pCCD calculation...\>\"", ",", "Bold", ",", "Orange"}], 
+                 "]"}], "]"}], ";", "\n", "    ", "\n", "    ", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"time", ",", "outputs"}], "}"}], "=", 
+                RowBox[{"Timing", "[", 
+                 RowBox[{"pCCD", "[", 
+                  RowBox[{
+                  "Nelc", ",", "nBas", ",", "Enuc", ",", "ERHF", ",", "FOM", 
+                   ",", "\[Epsilon]", ",", "h", ",", "ERI", ",", "options", 
+                   ",", "verbose"}], "]"}], "]"}]}], ";", "\n", "\t", "\n", 
+               "\t", 
+               RowBox[{"EpCCD", "=", 
+                RowBox[{"outputs", "[", "\"\<EpCCD\>\"", "]"}]}], ";", "\n", 
+               "\t", "\n", "    ", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"verbose", "\[Equal]", "True"}], ",", 
+                 RowBox[{"Print", "[", 
+                  RowBox[{
+                  "\"\<CPU time for pCCD calculation= \>\"", ",", "time"}], 
+                  "]"}]}], "]"}], ";"}]}], "\n", "\t", "]"}], ";", "\n", 
+            "\t\t\t", "\n", "\t", "\n", "\t", 
+            StyleBox[
+             RowBox[{"(*", " ", 
               RowBox[{"CCSD", " ", 
                StyleBox["NOT",
                 FontColor->RGBColor[1, 0, 0]], 
                StyleBox[" ",
                 FontColor->RGBColor[1, 0, 0]], 
                StyleBox[
-                RowBox[{"WORKING", "!!"}],
+                RowBox[{"VERIFIED", "!!"}],
                 FontColor->RGBColor[1, 0, 0]]}], " ", "*)"}],
              FontSize->18], 
             StyleBox["\n",
@@ -648,7 +757,7 @@ Cell[BoxData[
                 StyleBox[" ",
                  FontColor->RGBColor[1, 0, 0]], 
                 StyleBox[
-                 RowBox[{"WORKING", "!!"}],
+                 RowBox[{"VERIFIED", "!!"}],
                  FontColor->RGBColor[1, 0, 0]]}]}], " ", "*)"}],
              FontSize->18], 
             StyleBox["\n",
@@ -677,7 +786,7 @@ Cell[BoxData[
                 RowBox[{"Timing", "[", 
                  RowBox[{"EOMCCSD", "[", 
                   RowBox[{
-                  "Nelc", ",", "nBas", ",", "\[Epsilon]", ",", "O1", ",", 
+                  "Nelc", ",", "nBas", ",", "\[Epsilon]", ",", "h", ",", 
                    "ERI", ",", "t1", ",", "t2", ",", "ERHF", ",", "options", 
                    ",", "verbose"}], "]"}], "]"}]}], ";", "\n", "\t", "\n", 
                "    ", 
@@ -2233,7 +2342,13 @@ Cell[BoxData[
    3.896068997691334*^9, 3.896069046930439*^9}, {3.896069620686304*^9, 
    3.896069620964052*^9}, {3.8960701278311462`*^9, 3.896070147026956*^9}, {
    3.896070408550158*^9, 3.896070419127589*^9}, {3.89607118552665*^9, 
-   3.89607125564102*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
+   3.89607125564102*^9}, {3.896150824272423*^9, 3.896150852727577*^9}, {
+   3.8961508850682917`*^9, 3.896150885452684*^9}, {3.8961509522069798`*^9, 
+   3.896150968604453*^9}, {3.896151553913982*^9, 3.8961516471926823`*^9}, {
+   3.896151686629345*^9, 3.896151688586009*^9}, {3.896151749194331*^9, 
+   3.896151749807819*^9}, {3.896151918123846*^9, 3.896151918450549*^9}, {
+   3.896152046040416*^9, 3.8961521152500362`*^9}, {3.8961526154421167`*^9, 
+   3.896152668985217*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
 2b85bb5dd0be"]
 }, Open  ]]
 },
@@ -2257,7 +2372,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 45, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 127336, 2209, 6625, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 132459, 2324, 7142, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]

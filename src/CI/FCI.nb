@@ -10,32 +10,32 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     35902,        813]
-NotebookOptionsPosition[     34956,        787]
-NotebookOutlinePosition[     35381,        804]
-CellTagsIndexPosition[     35338,        801]
+NotebookDataLength[     31307,        726]
+NotebookOptionsPosition[     30360,        700]
+NotebookOutlinePosition[     30786,        717]
+CellTagsIndexPosition[     30743,        714]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["CISD", "Title",
- CellChangeTimes->{{3.89591268953036*^9, 
-  3.895912690824666*^9}},ExpressionUUID->"0f026a09-b638-4757-8f84-\
-7f50616bc273"],
+Cell["FCI", "Title",
+ CellChangeTimes->{{3.896150138623569*^9, 
+  3.896150138938068*^9}},ExpressionUUID->"cd452429-fe21-4963-8e1f-\
+3e2d4237f346"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"CISD", "[", 
+   RowBox[{"FCI", "[", 
     RowBox[{
     "nBas_", ",", "n\[Alpha]_", ",", "n\[Beta]_", ",", "J_", ",", "K_", ",", 
      "h_", ",", "ERI_", ",", "EHF_", ",", "options_", ",", "verbose_"}], 
     "]"}], ":=", 
    RowBox[{"Module", "[", 
     RowBox[{
-     RowBox[{"{", "outputsCISD", "}"}], ",", "\n", "\n", 
+     RowBox[{"{", "outputsFCI", "}"}], ",", "\n", "\n", 
      RowBox[{
       RowBox[{"If", "[", 
        RowBox[{
@@ -43,8 +43,8 @@ Cell[BoxData[
          RowBox[{"options", "[", "\"\<spinorbital\>\"", "]"}], "\[Equal]", 
          "True"}], ",", "\n", "\n", "  ", 
         RowBox[{
-         RowBox[{"outputsCISD", "=", 
-          RowBox[{"spinOrbCISD", "[", 
+         RowBox[{"outputsFCI", "=", 
+          RowBox[{"spinOrbFCI", "[", 
            RowBox[{
            "nBas", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "J", ",", "K", ",",
              "h", ",", "ERI", ",", "EHF", ",", "verbose"}], "]"}]}], ";"}], 
@@ -53,38 +53,31 @@ Cell[BoxData[
          RowBox[{"else", " ", "go", " ", "to", " ", "spatial"}], "*)"}], "\n",
          "  ", "\n", "  ", 
         RowBox[{
-         RowBox[{"outputsCISD", "=", 
-          RowBox[{"spatialOrbCISD", "[", 
+         RowBox[{"outputsFCI", "=", 
+          RowBox[{"spatialOrbFCI", "[", 
            RowBox[{
            "nBas", ",", "n\[Alpha]", ",", "n\[Beta]", ",", "J", ",", "K", ",",
              "h", ",", "ERI", ",", "EHF", ",", "verbose"}], "]"}]}], ";"}]}], 
        "\n", "  ", "\n", "]"}], ";", "\n", "  ", "\n", 
-      RowBox[{"Return", "[", "outputsCISD", "]"}], ";"}]}], "\n", "  ", "\n", 
+      RowBox[{"Return", "[", "outputsFCI", "]"}], ";"}]}], "\n", "  ", "\n", 
     "]"}]}], ";"}]], "Code",
- CellChangeTimes->{{3.895912711303755*^9, 3.895912712883309*^9}, {
-   3.895912814892219*^9, 3.8959130907468777`*^9}, {3.895913232227111*^9, 
-   3.895913266420108*^9}, {3.895913803699543*^9, 3.895913811197904*^9}, {
-   3.895913895546928*^9, 3.8959138983957853`*^9}, {3.89591393335421*^9, 
-   3.895913943208845*^9}, {3.895914730685265*^9, 3.89591475330096*^9}, {
-   3.895915972975959*^9, 3.895915982093134*^9}, {3.8959163115449944`*^9, 
-   3.8959163335451117`*^9}, {3.895916738472672*^9, 3.895916749122305*^9}, 
-   3.8959168929800653`*^9, {3.895917448463121*^9, 3.89591745778559*^9}, {
-   3.896152679374865*^9, 
-   3.89615268252529*^9}},ExpressionUUID->"5d364ea2-4466-4587-a2cc-\
-4288568852bc"]
+ CellChangeTimes->{{3.896150177517329*^9, 3.896150216911851*^9}, {
+  3.8961502510877657`*^9, 3.896150254783902*^9}, {3.896152726491683*^9, 
+  3.896152728965757*^9}},ExpressionUUID->"b720ef9c-711a-41f7-b8bd-\
+5f988a8408d1"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
 Cell["Spin orbitals", "Title",
- CellChangeTimes->{{3.895912752274666*^9, 
-  3.895912755507401*^9}},ExpressionUUID->"20e95af1-0b06-48c2-bc37-\
-89dcea75c5d4"],
+ CellChangeTimes->{{3.896150145555004*^9, 
+  3.896150148467153*^9}},ExpressionUUID->"733c7719-8a87-4c5b-8c15-\
+fafcf7fb9877"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"spinOrbCISD", "[", 
+   RowBox[{"spinOrbFCI", "[", 
     RowBox[{
     "nBas_", ",", "n\[Alpha]_", ",", "n\[Beta]_", ",", "h_", ",", "ERI_", ",",
       "EHF_", ",", "J_", ",", "K_", ",", "verbose_"}], "]"}], ":=", 
@@ -104,27 +97,22 @@ Cell[BoxData[
          "\"\<spinorbital implementation not available!!!\>\"", ",", "Bold", 
           ",", "Red"}], "]"}], "]"}], "]"}], ";"}]}], "\n", "\n", "]"}]}], 
   ";"}]], "Code",
- CellChangeTimes->{{3.895913210064638*^9, 3.89591332846737*^9}, {
-   3.895913381029174*^9, 3.895913506689502*^9}, {3.895913569878758*^9, 
-   3.8959136235225058`*^9}, {3.8959139050147448`*^9, 
-   3.8959139147634478`*^9}, {3.89591424466868*^9, 3.895914247452861*^9}, {
-   3.89591478804311*^9, 3.895914790112898*^9}, {3.895915991406872*^9, 
-   3.895915993167388*^9}, {3.89606927025664*^9, 3.89606927493902*^9}, 
-   3.8961526869142447`*^9},ExpressionUUID->"7a967ea8-f269-4074-9f24-\
-c307582e39b9"]
+ CellChangeTimes->{{3.896150243939411*^9, 3.896150258359693*^9}, 
+   3.896152733173258*^9},ExpressionUUID->"4012a45a-e324-4f9c-86e5-\
+e6496e7c7cbd"]
 }, Closed]],
 
 Cell[CellGroupData[{
 
 Cell["Spatial orbitals", "Title",
- CellChangeTimes->{{3.895912758526196*^9, 
-  3.895912762035838*^9}},ExpressionUUID->"06d8d0d3-589f-4594-b91b-\
-f07300ffd0ee"],
+ CellChangeTimes->{{3.896150152527516*^9, 
+  3.896150156340837*^9}},ExpressionUUID->"f9ebc6a3-753d-4ae5-9d4c-\
+ec92bd0159cb"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"spatialOrbCISD", "[", 
+   RowBox[{"spatialOrbFCI", "[", 
     RowBox[{
     "nBas_", ",", "n\[Alpha]_", ",", "n\[Beta]_", ",", "J_", ",", "K_", ",", 
      "h_", ",", "ERI_", ",", "EHF_", ",", "verbose_"}], "]"}], ":=", 
@@ -135,8 +123,8 @@ Cell[BoxData[
       "\[CapitalPsi]CISD", ",", "\[CapitalPsi]HF\[Alpha]", ",", 
        "\[CapitalPsi]HF\[Beta]", ",", "\[CapitalPsi]\[Alpha]", ",", 
        "\[CapitalPsi]\[Beta]", ",", "Comp\[Alpha]", ",", "Comp\[Beta]", ",", 
-       "nSub\[Alpha]", ",", "nSub\[Beta]", ",", "nDetCISD", ",", "HCISD", ",",
-        "ECISD", ",", "cISD", ",", "\[CapitalPsi]i\[Alpha]", ",", 
+       "nSub\[Alpha]", ",", "nSub\[Beta]", ",", "nDetCISD", ",", "HFCI", ",", 
+       "EFCI", ",", "cFCI", ",", "\[CapitalPsi]i\[Alpha]", ",", 
        "\[CapitalPsi]i\[Beta]", ",", "\[CapitalPsi]j\[Alpha]", ",", 
        "\[CapitalPsi]j\[Beta]", ",", "\n", " ", "CompI\[Alpha]", ",", 
        "CompI\[Beta]", ",", "CompJ\[Alpha]", ",", "CompJ\[Beta]", ",", 
@@ -204,78 +192,14 @@ Cell[BoxData[
       RowBox[{"(*", 
        RowBox[{
         RowBox[{"Step", " ", "2"}], ":", " ", 
-        RowBox[{
-        "form", " ", "the", " ", "CISD", " ", "list", " ", "of", " ", 
-         "determinants"}]}], "*)"}], "\n", 
+        RowBox[{"form", " ", "the", " ", "FCI", " ", "Hamiltonian"}]}], 
+       "*)"}], "\n", 
       RowBox[{"PrintTemporary", "[", 
        RowBox[{"Style", "[", 
         RowBox[{
-        "\"\<Form CISD wave function...\>\"", ",", "Bold", ",", "Orange"}], 
-        "]"}], "]"}], ";", "\n", "\[IndentingNewLine]", 
-      RowBox[{"\[CapitalPsi]CISD", "=", 
-       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"\[CapitalPsi]HF\[Alpha]", "=", 
-       RowBox[{"\[CapitalPsi]", "\[LeftDoubleBracket]", 
-        RowBox[{"1", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", "\t", 
-      RowBox[{"\[CapitalPsi]HF\[Beta]", "=", 
-       RowBox[{"\[CapitalPsi]", "\[LeftDoubleBracket]", 
-        RowBox[{"1", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", "\n", 
-      "\[IndentingNewLine]", 
-      RowBox[{"Do", "[", "\n", "  ", 
-       RowBox[{
-        RowBox[{
-         RowBox[{"\[CapitalPsi]\[Alpha]", "=", 
-          RowBox[{"\[CapitalPsi]", "\[LeftDoubleBracket]", 
-           RowBox[{"i", ",", "1"}], "\[RightDoubleBracket]"}]}], ";", "\t", 
-         RowBox[{"\[CapitalPsi]\[Beta]", "=", 
-          RowBox[{"\[CapitalPsi]", "\[LeftDoubleBracket]", 
-           RowBox[{"i", ",", "2"}], "\[RightDoubleBracket]"}]}], ";", 
-         "\[IndentingNewLine]", "  ", 
-         RowBox[{"Comp\[Alpha]", "=", 
-          RowBox[{"Complement", "[", 
-           RowBox[{"\[CapitalPsi]HF\[Alpha]", ",", "\[CapitalPsi]\[Alpha]"}], 
-           "]"}]}], ";", "\t", 
-         RowBox[{"nSub\[Alpha]", "=", 
-          RowBox[{"Length", "[", "Comp\[Alpha]", "]"}]}], ";", 
-         "\[IndentingNewLine]", "  ", 
-         RowBox[{"Comp\[Beta]", "=", 
-          RowBox[{"Complement", "[", 
-           RowBox[{"\[CapitalPsi]HF\[Beta]", ",", "\[CapitalPsi]\[Beta]"}], 
-           "]"}]}], ";", "\t", 
-         RowBox[{"nSub\[Beta]", "=", 
-          RowBox[{"Length", "[", "Comp\[Beta]", "]"}]}], ";", "\n", "  ", 
-         "\[IndentingNewLine]", "  ", 
-         RowBox[{"If", "[", 
-          RowBox[{
-           RowBox[{"0", "\[LessEqual]", 
-            RowBox[{"nSub\[Alpha]", "+", "nSub\[Beta]"}], "\[LessEqual]", 
-            "2"}], ",", "\[IndentingNewLine]", "    ", 
-           RowBox[{
-            RowBox[{"\[CapitalPsi]CISD", "=", 
-             RowBox[{"Append", "[", 
-              RowBox[{"\[CapitalPsi]CISD", ",", 
-               RowBox[{
-               "\[CapitalPsi]", "\[LeftDoubleBracket]", "i", 
-                "\[RightDoubleBracket]"}]}], "]"}]}], ";"}]}], 
-          "\[IndentingNewLine]", "  ", "]"}]}], "\n", "  ", "\n", ",", 
-        RowBox[{"{", 
-         RowBox[{"i", ",", "nDet"}], "}"}]}], "]"}], ";", "\t", "\n", "\n", 
-      RowBox[{"nDetCISD", "=", 
-       RowBox[{"Length", "[", "\[CapitalPsi]CISD", "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"PrintTemporary", "[", 
-       RowBox[{"\"\<nDetCISD = \>\"", ",", "nDetCISD"}], "]"}], ";", "\n", 
-      "\n", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{"Step", " ", "3"}], ":", " ", 
-        RowBox[{"form", " ", "the", " ", "Hamiltonian"}]}], "*)"}], "\n", 
-      RowBox[{"PrintTemporary", "[", 
-       RowBox[{"Style", "[", 
-        RowBox[{
-        "\"\<Form CISD Hamiltonian...\>\"", ",", "Bold", ",", "Orange"}], 
+        "\"\<Form FCI Hamiltonian...\>\"", ",", "Bold", ",", "Orange"}], 
         "]"}], "]"}], ";", "\[IndentingNewLine]", "\n", 
-      RowBox[{"HCISD", "=", 
+      RowBox[{"HFCI", "=", 
        RowBox[{"First", "[", 
         RowBox[{"Last", "[", 
          RowBox[{"Reap", "[", 
@@ -681,43 +605,43 @@ Cell[BoxData[
                 "\[IndentingNewLine]", "\t", ")"}]}], "\[IndentingNewLine]", 
               "]"}]}], ",", 
             RowBox[{"{", 
-             RowBox[{"i", ",", "nDetCISD"}], "}"}], ",", 
+             RowBox[{"i", ",", "nDet"}], "}"}], ",", 
             RowBox[{"{", 
-             RowBox[{"j", ",", "nDetCISD"}], "}"}]}], "]"}], "]"}], "]"}], 
+             RowBox[{"j", ",", "nDet"}], "}"}]}], "]"}], "]"}], "]"}], 
         "]"}]}], ";", "\n", "\[IndentingNewLine]", 
-      RowBox[{"HCISD", "=", 
-       RowBox[{"Transpose", "[", "HCISD", "]"}]}], ";", "\t", 
+      RowBox[{"HFCI", "=", 
+       RowBox[{"Transpose", "[", "HFCI", "]"}]}], ";", "\t", 
       RowBox[{"ijlist", "=", 
        RowBox[{"Transpose", "[", 
         RowBox[{"Take", "[", 
-         RowBox[{"HCISD", ",", "2"}], "]"}], "]"}]}], ";", "\t", 
+         RowBox[{"HFCI", ",", "2"}], "]"}], "]"}]}], ";", "\t", 
       RowBox[{"Hlist", "=", 
-       RowBox[{"Last", "[", "HCISD", "]"}]}], ";", "\[IndentingNewLine]", 
-      RowBox[{"HCISD", "=", 
+       RowBox[{"Last", "[", "HFCI", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"HFCI", "=", 
        RowBox[{"SparseArray", "[", 
         RowBox[{"ijlist", "\[Rule]", "Hlist"}], "]"}]}], ";", "\n", 
       RowBox[{"PrintTemporary", "[", 
        RowBox[{"\"\<Dimensions of the Hamiltonian = \>\"", ",", 
-        RowBox[{"Dimensions", "[", "HCISD", "]"}]}], "]"}], ";", 
+        RowBox[{"Dimensions", "[", "HFCI", "]"}]}], "]"}], ";", 
       "\[IndentingNewLine]", "\n", 
       RowBox[{"(*", 
        RowBox[{
-        RowBox[{"Step", " ", "4"}], ":", " ", 
+        RowBox[{"Step", " ", "3"}], ":", " ", 
         RowBox[{"diagonalize", " ", "the", " ", "Hamiltonian"}]}], "*)"}], 
       "\n", 
       RowBox[{"PrintTemporary", "[", 
        RowBox[{"Style", "[", 
         RowBox[{
-        "\"\<Diagonalize CISD Hamiltonian...\>\"", ",", "Bold", ",", 
+        "\"\<Diagonalize FCI Hamiltonian...\>\"", ",", "Bold", ",", 
          "Orange"}], "]"}], "]"}], ";", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"{", 
-        RowBox[{"ECISD", ",", "cISD"}], "}"}], "=", 
+        RowBox[{"EFCI", ",", "cFCI"}], "}"}], "=", 
        RowBox[{"Chop", "[", 
         RowBox[{"SortEigensystem", "[", 
          RowBox[{"Eigensystem", "[", 
           RowBox[{"N", "[", 
-           RowBox[{"HCISD", ",", "15"}], "]"}], "]"}], "]"}], "]"}]}], ";", 
+           RowBox[{"HFCI", ",", "15"}], "]"}], "]"}], "]"}], "]"}]}], ";", 
       "\n", "\n", 
       RowBox[{"If", "[", 
        RowBox[{"verbose", ",", "\n", "  ", 
@@ -726,20 +650,19 @@ Cell[BoxData[
           RowBox[{"TableForm", "[", 
            RowBox[{"{", 
             RowBox[{"{", 
-             RowBox[{
-             "\"\<\!\(\*SuperscriptBox[\(E\), \(CISD\)]\) = \>\"", ",", 
+             RowBox[{"\"\<\!\(\*SuperscriptBox[\(E\), \(FCI\)]\) = \>\"", ",", 
               RowBox[{"SetPrecision", "[", 
                RowBox[{
                 RowBox[{
-                "ECISD", "\[LeftDoubleBracket]", "1", 
+                "EFCI", "\[LeftDoubleBracket]", "1", 
                  "\[RightDoubleBracket]"}], ",", "15"}], "]"}], ",", 
-              "\"\<\!\(\*SubsuperscriptBox[\(E\), \(c\), \(CISD\)]\) = \>\"", 
+              "\"\<\!\(\*SubsuperscriptBox[\(E\), \(c\), \(FCI\)]\) = \>\"", 
               ",", 
               RowBox[{"SetPrecision", "[", 
                RowBox[{
                 RowBox[{
                  RowBox[{
-                 "ECISD", "\[LeftDoubleBracket]", "1", 
+                 "EFCI", "\[LeftDoubleBracket]", "1", 
                   "\[RightDoubleBracket]"}], "-", "EHF"}], ",", "9"}], 
                "]"}]}], "}"}], "}"}], "]"}], "]"}], ";", 
          "\[IndentingNewLine]", 
@@ -760,37 +683,27 @@ Cell[BoxData[
       RowBox[{"outputsCISD", "=", 
        RowBox[{"Association", "[", 
         RowBox[{
-         RowBox[{"\"\<ECISD\>\"", "\[Rule]", "ECISD"}], ",", 
-         RowBox[{"\"\<cISD\>\"", "\[Rule]", "cISD"}]}], "]"}]}], ";", "\n", 
+         RowBox[{"\"\<EFCI\>\"", "\[Rule]", "EFCI"}], ",", 
+         RowBox[{"\"\<cFCI\>\"", "\[Rule]", "cFCI"}]}], "]"}]}], ";", "\n", 
       "\n", 
       RowBox[{"Return", "[", "outputsCISD", "]"}], ";"}]}], "\n", "\n", 
     "]"}]}], ";"}]], "Code",
- CellChangeTimes->{{3.895913553883196*^9, 3.89591355500296*^9}, 
-   3.8959136299451313`*^9, {3.89591374065047*^9, 3.8959138848316793`*^9}, {
-   3.895913917261383*^9, 3.8959139183076763`*^9}, {3.8959140123646193`*^9, 
-   3.895914013505719*^9}, {3.895914063223864*^9, 3.895914555000255*^9}, {
-   3.895914606955453*^9, 3.8959146453428926`*^9}, {3.8959147749646063`*^9, 
-   3.8959148744748793`*^9}, {3.895914974837205*^9, 3.8959150734236603`*^9}, {
-   3.895915161595208*^9, 3.895915185828238*^9}, {3.8959153234969254`*^9, 
-   3.895915366081121*^9}, {3.895915516827807*^9, 3.895915575615308*^9}, {
-   3.8959159850040417`*^9, 3.895916002646536*^9}, {3.895916211106089*^9, 
-   3.895916211972157*^9}, {3.895916301210218*^9, 3.8959163193066263`*^9}, {
-   3.895916681547887*^9, 3.8959167134809*^9}, {3.895916966067721*^9, 
-   3.895917001386683*^9}, {3.895917045131431*^9, 3.895917051045701*^9}, {
-   3.895917201191442*^9, 3.895917234087345*^9}, {3.895917433379331*^9, 
-   3.895917443376822*^9}, {3.895917588320033*^9, 3.8959175889191628`*^9}, 
-   3.895917635725263*^9, {3.896150752104793*^9, 3.896150753108543*^9}, {
-   3.896152690758771*^9, 
-   3.896152703570023*^9}},ExpressionUUID->"b56a4d04-5c16-484b-b74b-\
-b35221d5d8f4"]
-}, Closed]]
+ CellChangeTimes->{{3.8961502794197063`*^9, 3.896150324519569*^9}, {
+  3.896150371679894*^9, 3.8961504369004993`*^9}, {3.896150488861352*^9, 
+  3.8961504954984827`*^9}, {3.896150555586945*^9, 3.896150570240058*^9}, {
+  3.896150670191729*^9, 3.896150673025052*^9}, {3.896150764308283*^9, 
+  3.8961507648830442`*^9}, {3.8961508619142237`*^9, 3.8961508729811897`*^9}, {
+  3.896152737216426*^9, 
+  3.89615274867142*^9}},ExpressionUUID->"3fae8959-c324-4565-88d4-\
+d3d0d9bdd315"]
+}, Open  ]]
 },
-WindowSize->{1041, 696},
-WindowMargins->{{Automatic, 193}, {Automatic, 0}},
+WindowSize->{1136, 790},
+WindowMargins->{{Automatic, 132}, {Automatic, 25}},
 Magnification:>1.25 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
-ExpressionUUID->"3d8026b7-be98-4ffa-8d47-5f1eadac3da7"
+ExpressionUUID->"3ba44744-c4b4-4430-96c6-06a77db8394b"
 ]
 (* End of Notebook Content *)
 
@@ -804,17 +717,17 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 146, 3, 123, "Title",ExpressionUUID->"0f026a09-b638-4757-8f84-7f50616bc273"],
-Cell[729, 27, 2102, 46, 402, "Code",ExpressionUUID->"5d364ea2-4466-4587-a2cc-4288568852bc"]
+Cell[580, 22, 146, 3, 123, "Title",ExpressionUUID->"cd452429-fe21-4963-8e1f-3e2d4237f346"],
+Cell[729, 27, 1625, 39, 402, "Code",ExpressionUUID->"b720ef9c-711a-41f7-b8bd-5f988a8408d1"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2868, 78, 156, 3, 123, "Title",ExpressionUUID->"20e95af1-0b06-48c2-bc37-89dcea75c5d4"],
-Cell[3027, 83, 1372, 30, 162, "Code",ExpressionUUID->"7a967ea8-f269-4074-9f24-c307582e39b9"]
+Cell[2391, 71, 156, 3, 123, "Title",ExpressionUUID->"733c7719-8a87-4c5b-8c15-fafcf7fb9877"],
+Cell[2550, 76, 1026, 25, 162, "Code",ExpressionUUID->"4012a45a-e324-4f9c-86e5-e6496e7c7cbd"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[4436, 118, 159, 3, 89, "Title",ExpressionUUID->"06d8d0d3-589f-4594-b91b-f07300ffd0ee"],
-Cell[4598, 123, 30342, 661, 2999, "Code",ExpressionUUID->"b56a4d04-5c16-484b-b74b-b35221d5d8f4"]
-}, Closed]]
+Cell[3613, 106, 159, 3, 89, "Title",ExpressionUUID->"f9ebc6a3-753d-4ae5-9d4c-ec92bd0159cb"],
+Cell[3775, 111, 26569, 586, 2519, "Code",ExpressionUUID->"3fae8959-c324-4565-88d4-d3d0d9bdd315"]
+}, Open  ]]
 }
 ]
 *)
