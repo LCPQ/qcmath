@@ -1,1 +1,0 @@
-qcaml/gaussian/lib/contracted_shell_pair_couple.ml: Angular_momentum Common Constants Contracted_shell Contracted_shell_pair Coordinate List Primitive_shell_pair_couple Util

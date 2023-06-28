@@ -1,1 +1,0 @@
-qcaml/gaussian_integrals/lib/orthonormalization.ml: Angular_momentum Array Basis Common Contracted_shell Gaussian Linear_algebra Matrix Orthonormalization Overlap Spherical_to_cartesian Vector

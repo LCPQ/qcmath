@@ -1,1 +1,0 @@
-qcaml/gaussian_integrals/lib/electron_nucleus.ml: Angular_momentum Array Basis Common Constants Contracted_shell Contracted_shell_pair Gaussian Linear_algebra Matrix One_electron_rr Particles Util Zkey Zmap

@@ -1,1 +1,0 @@
-qcaml/gaussian_integrals/lib/two_electron_rr_vectorized.ml: Angular_momentum Array Bigarray Common Constants Contracted_shell Contracted_shell_pair Contracted_shell_pair_couple Coordinate Gaussian Linear_algebra Matrix Powers Primitive_shell Primitive_shell_pair Util Vector Zero_m_parameters Zkey Zmap

@@ -1,1 +1,0 @@
-qcaml/gaussian/lib/atomic_shell_pair_couple.ml: Angular_momentum Atomic_shell Atomic_shell_pair Common Constants Contracted_shell_pair_couple Coordinate Format List Util

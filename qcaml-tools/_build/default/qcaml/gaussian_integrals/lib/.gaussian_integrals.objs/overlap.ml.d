@@ -1,1 +1,0 @@
-qcaml/gaussian_integrals/lib/overlap.ml: Angular_momentum Array Basis Common Constants Contracted_shell Contracted_shell_pair Coordinate Gaussian Linear_algebra List Matrix Overlap_primitives Powers Primitive_shell_pair Util Zkey Zmap

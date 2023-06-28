@@ -1,2 +1,0 @@
-(** @canonical Top.Install_printers *)
-module Install_printers = Top__Install_printers

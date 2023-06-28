@@ -1,1 +1,0 @@
-../../../../../default/qcaml/mo/lib/class.mli

@@ -1,1 +1,0 @@
-qcaml/gaussian/lib/atomic_shell_pair_couple.mli: Angular_momentum Atomic_shell Atomic_shell_pair Common Contracted_shell_pair_couple Format Zkey

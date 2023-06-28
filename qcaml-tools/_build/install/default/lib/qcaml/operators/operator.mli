@@ -1,1 +1,0 @@
-../../../../../default/qcaml/operators/lib/operator.mli

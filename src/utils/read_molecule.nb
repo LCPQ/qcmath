@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     10199,        253]
-NotebookOptionsPosition[      9691,        235]
-NotebookOutlinePosition[     10113,        252]
-CellTagsIndexPosition[     10070,        249]
+NotebookDataLength[     11236,        264]
+NotebookOptionsPosition[     10724,        246]
+NotebookOutlinePosition[     11150,        263]
+CellTagsIndexPosition[     11107,        260]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -33,8 +33,9 @@ Cell[BoxData[
     RowBox[{
      RowBox[{"{", 
       RowBox[{
-      "mol", ",", "xyz", ",", "nAt", ",", "elements", ",", "Znuc", ",", 
-       "sfile", ",", "Enuc", ",", "outputs"}], "}"}], ",", "\n", "\n", "\t", 
+      "mol", ",", "atoms", ",", "xyz", ",", "nAt", ",", "elements", ",", 
+       "Znuc", ",", "sfile", ",", "Enuc", ",", "outputs", ",", "listAtoms"}], 
+      "}"}], ",", "\n", "\n", "\t", 
      RowBox[{
       RowBox[{"If", "[", 
        RowBox[{
@@ -47,7 +48,7 @@ Cell[BoxData[
           RowBox[{"atom", "'"}], "s", " ", "symbols"}], "*)"}], "\n", "    ", 
         
         RowBox[{
-         RowBox[{"mol", "=", 
+         RowBox[{"atoms", "=", 
           RowBox[{"Import", "[", 
            RowBox[{
             RowBox[{
@@ -58,7 +59,7 @@ Cell[BoxData[
           RowBox[{
            RowBox[{
             RowBox[{"SameQ", "[", 
-             RowBox[{"mol", ",", "$Failed"}], "]"}], "\[Equal]", "True"}], 
+             RowBox[{"atoms", ",", "$Failed"}], "]"}], "\[Equal]", "True"}], 
            ",", 
            RowBox[{
             RowBox[{"Print", "[", 
@@ -76,50 +77,44 @@ Cell[BoxData[
             RowBox[{
             "path", "<>", "\"\</mol/\>\"", "<>", "molecule", "<>", 
              "\"\<.xyz\>\""}], ",", "\"\<VertexCoordinates\>\""}], "]"}]}], 
-         ";"}], "\n", "\t", ",", " ", "\n", "\t", 
+         ";"}], "\n", "    ", "\n", "\t", ",", " ", 
+        RowBox[{"(*", "else", "*)"}], "\n", "\t", "\n", "\t", 
+        RowBox[{"(*", 
+         RowBox[{
+         "The", " ", "geometry", " ", "is", " ", "an", " ", "input", " ", 
+          "in", " ", "qcmath", " ", "call"}], "*)"}], "\n", "\t", 
         RowBox[{
-         RowBox[{"mol", "=", 
-          RowBox[{"molecule", "[", 
-           RowBox[{"[", 
-            RowBox[{";;", ",", "1"}], "]"}], "]"}]}], ";", "\n", "\t", 
+         RowBox[{"listAtoms", "=", 
+          RowBox[{
+           RowBox[{"Dimensions", "[", "molecule", "]"}], 
+           "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], ";", 
+         "\n", "\t", 
+         RowBox[{"atoms", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "molecule", "\[LeftDoubleBracket]", "N", 
+              "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", "1", 
+             "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"N", ",", "listAtoms"}], "}"}]}], "]"}]}], ";", "\n", 
+         "\t", 
          RowBox[{"xyz", "=", 
-          RowBox[{"molecule", "[", 
-           RowBox[{"[", 
-            RowBox[{";;", ",", 
-             RowBox[{"2", ";;"}]}], "]"}], "]"}]}], ";"}]}], "\t ", "\n", 
-       "\t  ", "]"}], ";", "\n", "\n", "    ", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+             "molecule", "\[LeftDoubleBracket]", "N", 
+              "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", 
+             RowBox[{"2", ";;"}], "\[RightDoubleBracket]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"N", ",", "listAtoms"}], "}"}]}], "]"}]}], ";"}]}], "\n",
+        "\t  ", "]"}], ";", "\n", "\t  ", "\n", "\n", "    ", 
       RowBox[{"(*", 
        RowBox[{"Number", " ", "of", " ", "atoms"}], "*)"}], "\n", "    ", 
       RowBox[{"nAt", "=", 
-       RowBox[{"Length", "[", "mol", "]"}]}], ";", "\n", "\n", "    ", 
-      RowBox[{"(*", 
-       RowBox[{
-       "List", " ", "of", " ", "atoms", " ", "and", " ", "their", " ", 
-        "atomic", " ", "numbers"}], "*)"}], "\n", "    ", 
-      RowBox[{"elements", "=", 
-       RowBox[{"Association", "[", "\n", "               ", 
-        RowBox[{
-         RowBox[{"\"\<H\>\"", "\[Rule]", "1"}], ",", 
-         RowBox[{"\"\<He\>\"", "\[Rule]", "2"}], ",", 
-         RowBox[{"\"\<Li\>\"", "\[Rule]", "3"}], ",", 
-         RowBox[{"\"\<Be\>\"", "\[Rule]", "4"}], ",", 
-         RowBox[{"\"\<B\>\"", "\[Rule]", "5"}], ",", 
-         RowBox[{"\"\<C\>\"", "\[Rule]", "6"}], ",", 
-         RowBox[{"\"\<N\>\"", "\[Rule]", "7"}], ",", "\[IndentingNewLine]", 
-         "               ", 
-         RowBox[{"\"\<O\>\"", "\[Rule]", "8"}], ",", 
-         RowBox[{"\"\<F\>\"", "\[Rule]", "9"}], ",", 
-         RowBox[{"\"\<Ne\>\"", "\[Rule]", "10"}], ",", 
-         RowBox[{"\"\<Na\>\"", "\[Rule]", "11"}], ",", 
-         RowBox[{"\"\<Mg\>\"", "\[Rule]", "12"}], ",", 
-         RowBox[{"\"\<Al\>\"", "\[Rule]", "13"}], ",", "\n", 
-         "               ", 
-         RowBox[{"\"\<Si\>\"", "\[Rule]", "14"}], ",", 
-         RowBox[{"\"\<P\>\"", "\[Rule]", "15"}], ",", 
-         RowBox[{"\"\<S\>\"", "\[Rule]", "16"}], ",", 
-         RowBox[{"\"\<Cl\>\"", "\[Rule]", "17"}], ",", 
-         RowBox[{"\"\<Ar\>\"", "\[Rule]", "18"}]}], "\n", "             ", 
-        "]"}]}], ";", "\n", "\n", "    ", 
+       RowBox[{"Length", "[", "atoms", "]"}]}], ";", "\n", "\n", "    ", 
       RowBox[{"(*", 
        RowBox[{
        "Attribute", " ", "the", " ", "right", " ", "atomic", " ", "number", 
@@ -128,30 +123,25 @@ Cell[BoxData[
        RowBox[{"Table", "[", 
         RowBox[{"0", ",", 
          RowBox[{"{", 
-          RowBox[{"N", ",", 
-           RowBox[{"Length", "[", "mol", "]"}]}], "}"}]}], "]"}]}], ";", "\n",
-       "    ", 
+          RowBox[{"N", ",", "nAt"}], "}"}]}], "]"}]}], ";", "\n", "    ", 
       RowBox[{"Do", "[", 
        RowBox[{
         RowBox[{
          RowBox[{
-         "Znuc", "\[LeftDoubleBracket]", "N", "\[RightDoubleBracket]"}], "=", 
+         "Znuc", "\[LeftDoubleBracket]", "j", "\[RightDoubleBracket]"}], "=", 
          
-         RowBox[{"Replace", "[", 
+         RowBox[{"ElementData", "[", 
           RowBox[{
            RowBox[{
-           "mol", "\[LeftDoubleBracket]", "N", "\[RightDoubleBracket]"}], ",",
-            "elements"}], "]"}]}], ",", 
+           "atoms", "\[LeftDoubleBracket]", "j", "\[RightDoubleBracket]"}], 
+           ",", "\"\<AtomicNumber\>\""}], "]"}]}], ",", 
         RowBox[{"{", 
-         RowBox[{"N", ",", 
-          RowBox[{"Length", "[", "mol", "]"}]}], "}"}]}], "]"}], ";", "\n", 
-      "\n", "    ", 
+         RowBox[{"j", ",", "nAt"}], "}"}]}], "]"}], ";", "\n", "\n", "    ", 
       RowBox[{"(*", 
        RowBox[{"Definition", " ", "of", " ", "the", " ", 
         RowBox[{"atom", "/", "molecule"}], " ", "geometry", " ", "in", " ", 
         "the", " ", 
-        RowBox[{"mol", ".", "xyz"}], " ", "file"}], "*)"}], "\n", "\n", 
-      "    ", 
+        RowBox[{"mol", ".", "xyz"}], " ", "file"}], "*)"}], "\n", "    ", 
       RowBox[{"sfile", "=", 
        RowBox[{"OpenWrite", "[", 
         RowBox[{
@@ -168,8 +158,8 @@ Cell[BoxData[
         RowBox[{"Write", "[", 
          RowBox[{"sfile", ",", 
           RowBox[{
-          "mol", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
-          "\"\< \>\"", ",", 
+          "atoms", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+          ",", "\"\< \>\"", ",", 
           RowBox[{"Row", "[", 
            RowBox[{
             RowBox[{"xyz", "\[LeftDoubleBracket]", 
@@ -207,7 +197,7 @@ Cell[BoxData[
       RowBox[{"outputs", " ", "=", " ", 
        RowBox[{"Association", "[", 
         RowBox[{
-         RowBox[{"\"\<mol\>\"", "\[Rule]", "mol"}], ",", 
+         RowBox[{"\"\<atoms\>\"", "\[Rule]", "atoms"}], ",", 
          RowBox[{"\"\<xyz\>\"", "\[Rule]", "xyz"}], ",", 
          RowBox[{"\"\<nAt\>\"", "\[Rule]", "nAt"}], ",", 
          RowBox[{"\"\<Enuc\>\"", "\[Rule]", "Enuc"}]}], "]"}]}], ";", "\n", 
@@ -229,14 +219,35 @@ Cell[BoxData[
    3.875945101562223*^9, 3.8759451949517517`*^9}, {3.875945300700132*^9, 
    3.875945359893648*^9}, {3.875945422714819*^9, 3.87594544829253*^9}, {
    3.875945494838678*^9, 3.875945525057722*^9}, {3.875945575969743*^9, 
-   3.875945578160509*^9}, {3.875946133386404*^9, 3.8759461395818996`*^9}},
+   3.875945578160509*^9}, {3.875946133386404*^9, 3.8759461395818996`*^9}, {
+   3.8968617379161377`*^9, 3.89686174092138*^9}, {3.896861797492535*^9, 
+   3.896861802563047*^9}, {3.896862139826251*^9, 3.8968622165338087`*^9}, {
+   3.896862283459075*^9, 3.89686231100659*^9}, {3.896862627144692*^9, 
+   3.8968626406563673`*^9}, {3.896862680396367*^9, 3.896862708534433*^9}, {
+   3.896862796497897*^9, 3.896862847370481*^9}, {3.896862904940236*^9, 
+   3.896862954822242*^9}, {3.896863004471396*^9, 3.896863028462614*^9}, 
+   3.896863072212344*^9, 3.896863166767741*^9, {3.896863235238111*^9, 
+   3.89686324157498*^9}, {3.8968632730405197`*^9, 3.896863285320122*^9}, {
+   3.896863784737267*^9, 3.896863825633623*^9}, {3.896863879438319*^9, 
+   3.8968639819180527`*^9}, {3.896864021230814*^9, 3.896864071620405*^9}, {
+   3.896864106308199*^9, 3.8968641666438932`*^9}, {3.896864329895562*^9, 
+   3.8968643300113792`*^9}, {3.896864514924777*^9, 3.89686453405256*^9}, {
+   3.896864577747697*^9, 3.896864636545361*^9}, {3.896864725756425*^9, 
+   3.896864765303437*^9}, {3.896865044805613*^9, 3.896865047116047*^9}, {
+   3.896865106098323*^9, 3.896865132396984*^9}, {3.896865455945962*^9, 
+   3.896865497067478*^9}, {3.896865537458202*^9, 3.896865556471014*^9}, {
+   3.896865885458954*^9, 3.896865888343029*^9}, {3.896866223098942*^9, 
+   3.896866233781721*^9}, {3.896890346091414*^9, 3.896890346480215*^9}, {
+   3.896922918687381*^9, 3.896922958061721*^9}, {3.896922992513835*^9, 
+   3.896923000265999*^9}, {3.896926626937915*^9, 3.896926630066701*^9}, {
+   3.896927037200293*^9, 3.8969270424001226`*^9}, 3.8969271238349943`*^9},
  CellLabel->"In[1]:=",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
 }, Open  ]]
 },
-WindowSize->{692.25, 762.},
-WindowMargins->{{Automatic, 0}, {0, Automatic}},
+WindowSize->{1188, 747},
+WindowMargins->{{Automatic, 116}, {-27, Automatic}},
 Magnification:>1.5 Inherited,
-FrontEndVersion->"13.1 for Linux x86 (64-bit) (June 16, 2022)",
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"dda6dca9-2bb7-4979-8f14-e42f8a65dbd1"
 ]
@@ -252,8 +263,8 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 164, 3, 68, "Subsubsection",ExpressionUUID->"64551826-4a57-432a-9e6b-c97747ebd9a5"],
-Cell[747, 27, 8928, 205, 1488, "Code",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
+Cell[580, 22, 164, 3, 67, "Subsubsection",ExpressionUUID->"64551826-4a57-432a-9e6b-c97747ebd9a5"],
+Cell[747, 27, 9961, 216, 1358, "Code",ExpressionUUID->"b10ba7d6-eaac-4f06-9dbd-fe234b213ff0"]
 }, Open  ]]
 }
 ]

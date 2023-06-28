@@ -1,1 +1,0 @@
-../../../../../default/qcaml/gaussian/lib/general_basis.mli

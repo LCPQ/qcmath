@@ -1,1 +1,0 @@
-../../../../../default/qcaml/gaussian/lib/contracted_shell.mli

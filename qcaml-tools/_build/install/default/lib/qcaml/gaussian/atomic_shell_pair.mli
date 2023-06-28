@@ -1,1 +1,0 @@
-../../../../../default/qcaml/gaussian/lib/atomic_shell_pair.mli

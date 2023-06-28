@@ -1,1 +1,0 @@
-qcaml/gaussian_integrals/lib/kinetic.ml: Angular_momentum Array Basis Common Constants Contracted_shell Contracted_shell_pair Coordinate Gaussian Linear_algebra Matrix Overlap_primitives Powers Primitive_shell Primitive_shell_pair Util Zkey Zmap

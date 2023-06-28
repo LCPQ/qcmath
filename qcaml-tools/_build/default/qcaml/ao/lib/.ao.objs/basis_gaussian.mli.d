@@ -1,1 +1,0 @@
-qcaml/ao/lib/basis_gaussian.mli: Common Coordinate Electron_nucleus Eri Eri_long_range F12 Format Gaussian Gaussian_integrals Kinetic Linear_algebra Multipole Nuclei Operator Operators Orthonormalization Overlap Particles Screened_eri Vector

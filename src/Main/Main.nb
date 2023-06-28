@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    133741,       2372]
-NotebookOptionsPosition[    133220,       2354]
-NotebookOutlinePosition[    133652,       2371]
-CellTagsIndexPosition[    133609,       2368]
+NotebookDataLength[    134181,       2378]
+NotebookOptionsPosition[    133660,       2360]
+NotebookOutlinePosition[    134092,       2377]
+CellTagsIndexPosition[    134049,       2374]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -91,8 +91,9 @@ Cell[BoxData[
        "FFeG0W0", ",", "ZunfG0W0", ",", "eGWw", ",", "ZG0W0w", ",", 
        "typeRegularization", ",", "DiagElt", ",", "\[Epsilon]p", ",", "conf", 
        ",", "weights", ",", "eG0W0ww", ",", "\n", "restricted", ",", 
-       "unrestricted", ",", "mol", ",", "xyz", ",", "nAt", ",", "Znuc", ",", 
-       "elements", ",", "HFmaxSCF", ",", "HFthresh"}], "}"}], ",", "\n", "\n", 
+       "unrestricted", ",", "mol", ",", "atoms", ",", "xyz", ",", "nAt", ",", 
+       "Znuc", ",", "elements", ",", "HFmaxSCF", ",", "HFthresh"}], "}"}], 
+     ",", "\n", "\n", 
      RowBox[{"(*", 
       RowBox[{"Get", " ", "the", " ", "parameters"}], "*)"}], "\n", 
      RowBox[{
@@ -119,8 +120,8 @@ Cell[BoxData[
       ";", "\n", 
       RowBox[{"MoleculeQuantities", "=", 
        RowBox[{"readMolecule", "[", "molecule", "]"}]}], ";", "\n", 
-      RowBox[{"mol", "=", 
-       RowBox[{"MoleculeQuantities", "[", "\"\<mol\>\"", "]"}]}], ";", "\n", 
+      RowBox[{"atoms", "=", 
+       RowBox[{"MoleculeQuantities", "[", "\"\<atoms\>\"", "]"}]}], ";", "\n", 
       RowBox[{"xyz", "=", 
        RowBox[{"MoleculeQuantities", "[", "\"\<xyz\>\"", "]"}]}], ";", "\n", 
       RowBox[{"nAt", "=", 
@@ -171,8 +172,8 @@ Cell[BoxData[
        RowBox[{"{", 
         RowBox[{
         "py", ",", "\"\<qcmath.py\>\"", ",", "\"\<-b\>\"", ",", "basis", ",", 
-         "\"\<-x\>\"", ",", "molecule", ",", "\"\<--cartesian\>\""}], "}"}], 
-       "]"}], ";", "\n", 
+         "\"\<-x\>\"", ",", "\"\<mol\>\"", ",", "\"\<--cartesian\>\""}], 
+        "}"}], "]"}], ";", "\n", 
       RowBox[{"n\[Alpha]", "=", 
        RowBox[{
         RowBox[{
@@ -2348,8 +2349,13 @@ Cell[BoxData[
    3.896151686629345*^9, 3.896151688586009*^9}, {3.896151749194331*^9, 
    3.896151749807819*^9}, {3.896151918123846*^9, 3.896151918450549*^9}, {
    3.896152046040416*^9, 3.8961521152500362`*^9}, {3.8961526154421167`*^9, 
-   3.896152668985217*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
-2b85bb5dd0be"]
+   3.896152668985217*^9}, {3.896865159641871*^9, 3.89686516941415*^9}, {
+   3.8968654990537233`*^9, 3.896865523163059*^9}, {3.896865562423675*^9, 
+   3.896865602155346*^9}, {3.896866047922494*^9, 3.896866051701961*^9}, {
+   3.896866210538323*^9, 3.896866216915617*^9}, {3.896866331143417*^9, 
+   3.896866331446684*^9}, {3.896866530922843*^9, 3.896866532476843*^9}, {
+   3.8968668852864513`*^9, 3.896866886545581*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{1384, 789},
@@ -2372,7 +2378,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 45, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 132459, 2324, 7142, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 132899, 2330, 7142, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]
