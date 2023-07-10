@@ -358,3 +358,7 @@ For each new method notebook, it is essential to organize the code into potentia
 [^6]: [M. E. Casida, J. Chem. Phys. 122, 054111 (2005).](https://doi.org/10.1063/1.1836757)
 [^7]: [D. Peng, S. N. Steinmann, H. van Aggelen, J. Chem. Phys. 139, 104112 (2013).](https://doi.org/10.1063/1.4820556)
 [^8]: [P.-F. Loos and X. Blase, J. Chem. Phys. 153, 114120 (2020).](https://doi.org/10.1063/5.0023168)
+
+<img src="https://lcpq.github.io/PTEROSOR/img/ERC.png" width="200" />
+
+qcmath is supported by the [PTEROSOR](https://lcpq.github.io/PTEROSOR/) project that has received funding from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation programme (Grant agreement No. 863481).
