@@ -10,9 +10,8 @@ Note that qcmath is **not** designed for computational efficiency.
 **Contributors:**
 - [Pierre-Francois Loos](https://pfloos.github.io/WEB_LOOS)
 - [Anthony Scemama](https://scemama.github.io)
-- Enzo Monino
+- [Enzo Monino](https://enzomonino.github.io)
 - [Antoine Marie](https://antoine-marie.github.io)
-- Raul Quintero
 
 # What is it?
 
