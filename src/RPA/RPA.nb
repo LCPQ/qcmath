@@ -10,112 +10,262 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      6683,        161]
-NotebookOptionsPosition[      6300,        146]
-NotebookOutlinePosition[      6729,        163]
-CellTagsIndexPosition[      6686,        160]
+NotebookDataLength[     12933,        314]
+NotebookOptionsPosition[     11988,        288]
+NotebookOutlinePosition[     12413,        305]
+CellTagsIndexPosition[     12370,        302]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
+Cell["RPA", "Title",
+ CellChangeTimes->{{3.898063589692878*^9, 
+  3.898063590022256*^9}},ExpressionUUID->"9d40d400-c90a-494a-81cd-\
+be264014422c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RPA", "[", 
+   RowBox[{
+   "nBas_", ",", "nO_", ",", "nV_", ",", "\[Epsilon]_", ",", "ERI_", ",", 
+    "options_", ",", "verbose_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "outputsRPA", "}"}], ",", "\n", "\n", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"options", "[", "\"\<spinorbital\>\"", "]"}], "\[Equal]", 
+        "True"}], ",", "\n", "\n", "  ", 
+       RowBox[{
+        RowBox[{"outputsRPA", "=", 
+         RowBox[{"spinOrbRPA", "[", 
+          RowBox[{
+          "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI", ",", 
+           "options", ",", "verbose"}], "]"}]}], ";"}], "\n", "  ", "\n", 
+       "  ", ",", 
+       RowBox[{"(*", 
+        RowBox[{"else", " ", "go", " ", "to", " ", "spatial"}], "*)"}], "\n", 
+       "  ", "\n", "  ", 
+       RowBox[{
+        RowBox[{"outputsRPA", "=", 
+         RowBox[{"spatialOrbRPA", "[", 
+          RowBox[{
+          "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI", ",", 
+           "options", ",", "verbose"}], "]"}]}], ";"}]}], "\n", "\n", "]"}], 
+     ";", "\n", "\n", 
+     RowBox[{"Return", "[", "outputsRPA", "]"}], ";"}]}], "\n", "\n", 
+   "]"}]}]], "Code",
+ CellChangeTimes->{{3.898063611892104*^9, 3.898063820946582*^9}, 
+   3.8980644462581177`*^9, {3.898066503735096*^9, 3.8980665078261557`*^9}, {
+   3.898066537927269*^9, 3.89806654230304*^9}, {3.898067149261491*^9, 
+   3.898067150900564*^9}, {3.898067568378458*^9, 3.898067569619699*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"920f0e6d-3d73-4678-8feb-81336a5d97a4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Spin orbitals", "Title",
+ CellChangeTimes->{{3.898063830232671*^9, 
+  3.8980638355399523`*^9}},ExpressionUUID->"4121f268-b0b9-4d0d-9e1e-\
+9df8ff8169f7"],
+
 Cell[BoxData[
  RowBox[{
   RowBox[{
-   RowBox[{"RPA", "[", 
+   RowBox[{"spinOrbRPA", "[", 
     RowBox[{
     "nBas_", ",", "nO_", ",", "nV_", ",", "\[Epsilon]_", ",", "ERI_", ",", 
-     "TDA_", ",", 
-     RowBox[{"(*", 
-      RowBox[{"BSE_", ",", "W_", ","}], "*)"}], "singlet_", ",", "triplet_", 
-     ",", 
-     RowBox[{"verbose_", ":", "1"}]}], 
-    RowBox[{"(*", 
-     RowBox[{"Default", "=", 
-      RowBox[{"1", " ", 
-       RowBox[{"(", "True", ")"}]}]}], "*)"}], "]"}], ":=", 
+     "options_", ",", "verbose_"}], "]"}], ":=", 
    RowBox[{"Module", "[", "\n", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
-      "ispin", ",", "linearquantities", ",", "Ecsinglet", ",", "Ectriplet", 
-       ",", "dRPA", ",", "RPAquantities", ",", "\n", "EcRPA", ",", 
-       "\[CapitalOmega]", ",", "TabLR"}], "}"}], ",", "\n", "\n", 
+      "TDA", ",", "nBas2", ",", "nO2", ",", "nV2", ",", "ispin", ",", 
+       "linearquantities", ",", "so\[Epsilon]", ",", "soERI", ",", "dRPA", 
+       ",", "soRPAquantities", ",", "\n", "EcRPA", ",", "\[CapitalOmega]", 
+       ",", "TabLR"}], "}"}], ",", "\n", "\n", 
+     RowBox[{
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"path", "<>", "\"\</src/LR/linear_Response.nb\>\""}], "]"}], 
+      ";", "\n", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{"path", "<>", "\"\</src/utils/spatial_to_spin_ERI.nb\>\""}], 
+       "]"}], ";", "\n", 
+      RowBox[{"NotebookEvaluate", "[", 
+       RowBox[{
+       "path", "<>", "\"\</src/utils/spatial_to_spin_MO_energy.nb\>\""}], 
+       "]"}], ";", "\n", "\n", 
+      RowBox[{"TDA", "=", 
+       RowBox[{"options", "[", "\"\<TDA\>\"", "]"}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Define", " ", "the", " ", "spaces"}], "*)"}], "\n", 
+      RowBox[{"nBas2", "=", 
+       RowBox[{"2", "nBas"}]}], ";", "\n", 
+      RowBox[{"nO2", "=", 
+       RowBox[{"2", "nO"}]}], ";", "\n", 
+      RowBox[{"nV2", "=", 
+       RowBox[{"2", "nV"}]}], ";", "\n", "\n", 
+      RowBox[{"(*", 
+       RowBox[{"Spatial", " ", "to", " ", "spin", " ", "orbitals"}], "*)"}], 
+      "\n", 
+      RowBox[{"so\[Epsilon]", "=", 
+       RowBox[{"SpatialToSpinMOEnergy", "[", 
+        RowBox[{"nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]"}], "]"}]}], 
+      ";", "\n", 
+      RowBox[{"soERI", "=", 
+       RowBox[{"SpatialToSpinERI", "[", 
+        RowBox[{"nBas", ",", "nO", ",", "nV", ",", "ERI"}], "]"}]}], ";", 
+      "\n", "\n", "\n", 
+      RowBox[{"dRPA", "=", "True"}], ";", "\n", "\n", 
+      RowBox[{"ispin", "=", "4"}], ";", "\n", "\n", 
+      RowBox[{"linearquantities", "=", 
+       RowBox[{"LinearResponse", "[", 
+        RowBox[{
+        "nBas2", ",", "nO2", ",", "nV2", ",", "so\[Epsilon]", ",", "soERI", 
+         ",", "TDA", ",", "ispin", ",", "dRPA"}], "]"}]}], ";", "\n", "\n", 
+      RowBox[{"\[CapitalOmega]", "=", 
+       RowBox[{"linearquantities", "[", "\"\<\[CapitalOmega]\>\"", "]"}]}], 
+      ";", "\n", 
+      RowBox[{"EcRPA", "=", 
+       RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", "  ", 
+        RowBox[{
+         RowBox[{"NotebookEvaluate", "[", 
+          RowBox[{"path", "<>", "\"\</src/LR/print_excitation.nb\>\""}], 
+          "]"}], ";", "\n", "  ", 
+         RowBox[{"Print", "[", 
+          RowBox[{"Style", "[", 
+           RowBox[{"\"\<RPA outputs:\>\"", ",", "Bold", ",", "Red"}], "]"}], 
+          "]"}], ";", "\n", "  ", 
+         RowBox[{"TabLR", "=", 
+          RowBox[{"PrintExcitation", "[", 
+           RowBox[{"\"\<RPA\>\"", ",", "ispin", ",", "\[CapitalOmega]"}], 
+           "]"}]}], ";", "\n", "  ", 
+         RowBox[{"Print", "[", "TabLR", "]"}], ";"}]}], "\n", "]"}], ";", 
+      "\n", "\n", 
+      RowBox[{"soRPAquantities", "=", 
+       RowBox[{"Association", "[", 
+        RowBox[{"\"\<EcRPA\>\"", "\[Rule]", "EcRPA"}], "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"Return", "[", "soRPAquantities", "]"}]}]}], "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{
+  3.8980639962272243`*^9, {3.8980642554364023`*^9, 3.8980642624709806`*^9}, {
+   3.898064323195335*^9, 3.89806438666879*^9}, {3.898064427654025*^9, 
+   3.8980644400519953`*^9}, {3.898064482779829*^9, 3.898064611552045*^9}, {
+   3.8980652441681147`*^9, 3.898065246011956*^9}, {3.898065953386732*^9, 
+   3.898065956727459*^9}, 3.898065988806588*^9, {3.89806654620457*^9, 
+   3.898066549453973*^9}, {3.8980670559756317`*^9, 3.8980670845986423`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"fa7b2fa4-8bb0-4ed9-a9e8-f1145d320561"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Spatial orbitals", "Title",
+ CellChangeTimes->{{3.8980638403531227`*^9, 
+  3.898063844984861*^9}},ExpressionUUID->"a7a7e718-fad3-420a-bf62-\
+09a305474dc0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"spatialOrbRPA", "[", 
+    RowBox[{
+    "nBas_", ",", "nO_", ",", "nV_", ",", "\[Epsilon]_", ",", "ERI_", ",", 
+     "options_", ",", "verbose_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\n", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "TDA", ",", "singlet", ",", "triplet", ",", "ispin", ",", 
+       "linearquantities", ",", "Ecsinglet", ",", "Ectriplet", ",", "dRPA", 
+       ",", "RPAquantities", ",", "\n", "EcRPA", ",", "\[CapitalOmega]", ",", 
+       "TabLR"}], "}"}], ",", "\n", "\n", 
      RowBox[{
       RowBox[{"NotebookEvaluate", "[", 
        RowBox[{"path", "<>", "\"\</src/LR/linear_Response.nb\>\""}], "]"}], 
       ";", "\n", "\n", 
+      RowBox[{"TDA", "=", 
+       RowBox[{"options", "[", "\"\<TDA\>\"", "]"}]}], ";", "\n", 
+      RowBox[{"singlet", "=", 
+       RowBox[{"options", "[", "\"\<singlet\>\"", "]"}]}], ";", "\n", 
+      RowBox[{"triplet", "=", 
+       RowBox[{"options", "[", "\"\<triplet\>\"", "]"}]}], ";", "\n", "\n", 
       RowBox[{"Ecsinglet", "=", "0"}], ";", "\n", 
       RowBox[{"Ectriplet", "=", "0"}], ";", "\n", "\n", 
       RowBox[{"dRPA", "=", "True"}], ";", "\n", "\n", 
       RowBox[{"If", "[", 
-       RowBox[{"singlet", ",", 
+       RowBox[{"singlet", ",", "\n", "\n", "  ", 
         RowBox[{
-         RowBox[{"ispin", "=", "1"}], ";", "\n", "\n", 
+         RowBox[{"ispin", "=", "1"}], ";", "\n", "\n", "  ", 
          RowBox[{"linearquantities", "=", 
           RowBox[{"LinearResponse", "[", 
            RowBox[{
            "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI", ",", 
-            "TDA", ",", 
-            RowBox[{"(*", 
-             RowBox[{"BSE", ",", "W", ","}], "*)"}], "ispin", ",", "dRPA"}], 
-           "]"}]}], ";", "\n", "\n", 
+            "TDA", ",", "ispin", ",", "dRPA"}], "]"}]}], ";", "\n", "\n", 
+         "  ", 
          RowBox[{"\[CapitalOmega]", "=", 
           RowBox[{"linearquantities", "[", "\"\<\[CapitalOmega]\>\"", "]"}]}],
-          ";", "\n", 
+          ";", "\n", "  ", 
          RowBox[{"Ecsinglet", "=", 
           RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";", "\n", 
-         "\n", 
+         "\n", "  ", 
          RowBox[{"If", "[", 
           RowBox[{
-           RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", 
+           RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", "    ", 
            RowBox[{
             RowBox[{"NotebookEvaluate", "[", 
              RowBox[{"path", "<>", "\"\</src/LR/print_excitation.nb\>\""}], 
-             "]"}], ";", "\n", 
+             "]"}], ";", "\n", "    ", 
             RowBox[{"Print", "[", 
              RowBox[{"Style", "[", 
               RowBox[{"\"\<RPA outputs:\>\"", ",", "Bold", ",", "Red"}], 
-              "]"}], "]"}], ";", "\n", 
+              "]"}], "]"}], ";", "\n", "    ", 
             RowBox[{"TabLR", "=", 
              RowBox[{"PrintExcitation", "[", 
               RowBox[{"\"\<RPA\>\"", ",", "ispin", ",", "\[CapitalOmega]"}], 
-              "]"}]}], ";", "\n", 
-            RowBox[{"Print", "[", "TabLR", "]"}], ";"}]}], "\n", "]"}], 
+              "]"}]}], ";", "\n", "    ", 
+            RowBox[{"Print", "[", "TabLR", "]"}], ";"}]}], "\n", "  ", "]"}], 
          ";"}]}], "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"If", "[", 
-       RowBox[{"triplet", ",", 
+       RowBox[{"triplet", ",", "\n", "\n", "  ", 
         RowBox[{
-         RowBox[{"ispin", "=", "2"}], ";", "\n", "\n", 
+         RowBox[{"ispin", "=", "2"}], ";", "\n", "\n", "  ", 
          RowBox[{"linearquantities", "=", 
           RowBox[{"LinearResponse", "[", 
            RowBox[{
            "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI", ",", 
-            "TDA", ",", 
-            RowBox[{"(*", 
-             RowBox[{"BSE", ",", "W", ","}], "*)"}], "ispin", ",", "dRPA"}], 
-           "]"}]}], ";", "\n", "\n", 
+            "TDA", ",", "ispin", ",", "dRPA"}], "]"}]}], ";", "\n", "\n", 
+         "  ", 
          RowBox[{"\[CapitalOmega]", "=", 
           RowBox[{"linearquantities", "[", "\"\<\[CapitalOmega]\>\"", "]"}]}],
-          ";", "\n", 
+          ";", "\n", "  ", 
          RowBox[{"Ectriplet", "=", 
           RowBox[{"linearquantities", "[", "\"\<Ec\>\"", "]"}]}], ";", "\n", 
-         "\n", 
+         "\n", "  ", 
          RowBox[{"If", "[", 
           RowBox[{
-           RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", 
+           RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", "    ", 
            RowBox[{
             RowBox[{"NotebookEvaluate", "[", 
              RowBox[{"path", "<>", "\"\</src/LR/print_excitation.nb\>\""}], 
-             "]"}], ";", "\n", 
+             "]"}], ";", "\n", "    ", 
             RowBox[{"Print", "[", 
              RowBox[{"Style", "[", 
               RowBox[{"\"\<RPA outputs:\>\"", ",", "Bold", ",", "Red"}], 
-              "]"}], "]"}], ";", "\n", 
+              "]"}], "]"}], ";", "\n", "    ", 
             RowBox[{"TabLR", "=", 
              RowBox[{"PrintExcitation", "[", 
               RowBox[{"\"\<RPA\>\"", ",", "ispin", ",", "\[CapitalOmega]"}], 
-              "]"}]}], ";", "\n", 
-            RowBox[{"Print", "[", "TabLR", "]"}], ";"}]}], "\n", "]"}], 
+              "]"}]}], ";", "\n", "    ", 
+            RowBox[{"Print", "[", "TabLR", "]"}], ";"}]}], "\n", "  ", "]"}], 
          ";"}]}], "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"EcRPA", "=", 
        RowBox[{"Ecsinglet", "+", "Ectriplet"}]}], ";", "\n", "\n", 
@@ -125,27 +275,19 @@ Cell[BoxData[
       "\n", 
       RowBox[{"Return", "[", "RPAquantities", "]"}]}]}], "]"}]}], 
   ";"}]], "Code",
- CellChangeTimes->{{3.8413037715475187`*^9, 3.841303789802655*^9}, 
-   3.841303887546039*^9, {3.8413040767141123`*^9, 3.8413041531397963`*^9}, {
-   3.841304284266075*^9, 3.841304296144919*^9}, {3.841304421772735*^9, 
-   3.841304503235188*^9}, {3.841304718025049*^9, 3.8413047324978733`*^9}, {
-   3.8413047721131*^9, 3.8413047773306227`*^9}, {3.8413048371608763`*^9, 
-   3.8413048469867783`*^9}, {3.841304920791436*^9, 3.841304922971776*^9}, {
-   3.8413056245779657`*^9, 3.841305659250207*^9}, {3.8413057117087517`*^9, 
-   3.841305726778667*^9}, {3.8413057839627867`*^9, 3.841305825828639*^9}, {
-   3.841306544269328*^9, 3.841306552532071*^9}, {3.8413078968029823`*^9, 
-   3.841307901002223*^9}, {3.841308009712099*^9, 3.8413080100817013`*^9}, 
-   3.8642917722519913`*^9, 3.8715255801333857`*^9, {3.871526177857114*^9, 
-   3.87152619450205*^9}, {3.871526445695731*^9, 3.871526499569556*^9}, {
-   3.871526648544387*^9, 3.871526671773904*^9}, {3.871531736972464*^9, 
-   3.871531771376383*^9}, {3.872734611468972*^9, 3.872734747111397*^9}, {
-   3.872734795470027*^9, 3.872734803958784*^9}, {3.8727348461274443`*^9, 
-   3.872734894903832*^9}, {3.873894382688464*^9, 
-   3.8738943919714003`*^9}},ExpressionUUID->"efb756d3-aae8-491f-b48f-\
-7ab34c9c3d6b"]
+ CellChangeTimes->{{3.898063988599832*^9, 3.89806406604993*^9}, {
+   3.8980641152663403`*^9, 3.898064122617948*^9}, {3.898064219972151*^9, 
+   3.898064223625717*^9}, {3.89806461833634*^9, 3.898064662133934*^9}, {
+   3.898066341489106*^9, 3.8980663639381933`*^9}, {3.8980665556473*^9, 
+   3.898066605123554*^9}, {3.8980666469674177`*^9, 3.898066647093512*^9}, {
+   3.898067096959104*^9, 3.8980671280119257`*^9}, {3.898067536208932*^9, 
+   3.898067561120057*^9}, {3.898067871705389*^9, 3.8980678760181093`*^9}, 
+   3.898069215146832*^9},
+ CellLabel->"In[3]:=",ExpressionUUID->"3e01eac7-8172-4e3f-9cff-2e7908ec526e"]
+}, Closed]]
 },
-WindowSize->{1053, 686},
-WindowMargins->{{Automatic, -151}, {-209, Automatic}},
+WindowSize->{1215, 686},
+WindowMargins->{{Automatic, 94}, {-3, Automatic}},
 Magnification:>1.25 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -162,7 +304,18 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 5738, 124, 1146, "Code",ExpressionUUID->"efb756d3-aae8-491f-b48f-7ab34c9c3d6b"]
+Cell[CellGroupData[{
+Cell[580, 22, 146, 3, 123, "Title",ExpressionUUID->"9d40d400-c90a-494a-81cd-be264014422c"],
+Cell[729, 27, 1614, 38, 402, "Code",ExpressionUUID->"920f0e6d-3d73-4678-8feb-81336a5d97a4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2380, 70, 158, 3, 123, "Title",ExpressionUUID->"4121f268-b0b9-4d0d-9e1e-9df8ff8169f7"],
+Cell[2541, 75, 4019, 90, 978, "Code",ExpressionUUID->"fa7b2fa4-8bb0-4ed9-a9e8-f1145d320561"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[6597, 170, 161, 3, 89, "Title",ExpressionUUID->"a7a7e718-fad3-420a-bf62-09a305474dc0"],
+Cell[6761, 175, 5211, 110, 1338, "Code",ExpressionUUID->"3e01eac7-8172-4e3f-9cff-2e7908ec526e"]
+}, Closed]]
 }
 ]
 *)

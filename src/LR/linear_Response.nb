@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     27397,        543]
-NotebookOptionsPosition[     27016,        528]
-NotebookOutlinePosition[     27442,        545]
-CellTagsIndexPosition[     27399,        542]
+NotebookDataLength[     25896,        495]
+NotebookOptionsPosition[     25516,        480]
+NotebookOutlinePosition[     25941,        497]
+CellTagsIndexPosition[     25898,        494]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -68,16 +68,16 @@ Cell[BoxData[
             RowBox[{"3", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";", "\n", 
       "\n", 
       RowBox[{"If", "[", 
-       RowBox[{"TDA", ",", "\n", "\n", 
+       RowBox[{"TDA", ",", "\n", "\n", "  ", 
         RowBox[{
          RowBox[{
           RowBox[{"{", 
            RowBox[{"\[CapitalOmega]", ",", "XpY"}], "}"}], "=", 
           RowBox[{"SortEigensystem", "[", 
-           RowBox[{"Eigensystem", "[", "A", "]"}], "]"}]}], ";", 
+           RowBox[{"Eigensystem", "[", "A", "]"}], "]"}]}], ";", " ", 
          RowBox[{"XpY", "=", 
-          RowBox[{"XpY", "\[Transpose]"}]}], ";", "\n", "\n", 
-         RowBox[{"(*", "Metric", "*)"}], "\n", 
+          RowBox[{"XpY", "\[Transpose]"}]}], ";", "\n", "\n", "  ", 
+         RowBox[{"(*", "Metric", "*)"}], "\n", "  ", 
          RowBox[{"W", "=", 
           RowBox[{"Table", "[", 
            RowBox[{"0", ",", 
@@ -85,6 +85,7 @@ Cell[BoxData[
              RowBox[{"p", ",", "nS"}], "}"}], ",", 
             RowBox[{"{", 
              RowBox[{"q", ",", "nS"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+         "  ", 
          RowBox[{"Do", "[", 
           RowBox[{
            RowBox[{
@@ -92,31 +93,31 @@ Cell[BoxData[
              RowBox[{"p", ",", "p"}], "\[RightDoubleBracket]"}], "=", "1.0"}],
             ",", 
            RowBox[{"{", 
-            RowBox[{"p", ",", "nS"}], "}"}]}], "]"}], ";", "\n", "\n", 
-         RowBox[{"(*", "Orthogonalization", "*)"}], "\n", 
+            RowBox[{"p", ",", "nS"}], "}"}]}], "]"}], ";", "\n", "\n", "  ", 
+         RowBox[{"(*", "Orthogonalization", "*)"}], "\n", "  ", 
          RowBox[{"S1", "=", 
           RowBox[{
            RowBox[{"XpY", "\[Transpose]"}], ".", "W", ".", "XpY"}]}], ";", 
-         "\n", 
+         "\n", "  ", 
          RowBox[{"O1", "=", 
           RowBox[{"MatrixPower", "[", 
            RowBox[{"S1", ",", 
             RowBox[{"-", 
-             FractionBox["1", "2"]}]}], "]"}]}], ";", "\n", 
+             FractionBox["1", "2"]}]}], "]"}]}], ";", "\n", "  ", 
          RowBox[{"XpY", "=", 
-          RowBox[{"XpY", ".", "O1"}]}], ";", "\n", 
-         RowBox[{"XmY", "=", "XpY"}], ";"}], "\n", "\n", ",", 
-        RowBox[{"(*", "else", "*)"}], "\n", "\n", 
+          RowBox[{"XpY", ".", "O1"}]}], ";", "\n", "  ", 
+         RowBox[{"XmY", "=", "XpY"}], ";"}], "\n", "\n", "  ", ",", 
+        RowBox[{"(*", "else", "*)"}], "\n", "\n", "  ", 
         RowBox[{
          RowBox[{"B", "=", 
           RowBox[{"LinearResponseB", "[", 
            RowBox[{
            "nBas", ",", "nO", ",", "\[Epsilon]", ",", "ERI", ",", 
-            "\[Delta]RPA", ",", "ispin"}], "]"}]}], ";", "\n", "\n", 
+            "\[Delta]RPA", ",", "ispin"}], "]"}]}], ";", "\n", "\n", "  ", 
          RowBox[{"(*", 
           RowBox[{
           "We", " ", "give", " ", "the", " ", "good", " ", "forms", " ", 
-           "for", " ", "the", " ", "B", " ", "matrix"}], "*)"}], "\n", 
+           "for", " ", "the", " ", "B", " ", "matrix"}], "*)"}], "\n", "  ", 
          RowBox[{"B", "=", 
           RowBox[{"Flatten", "[", 
            RowBox[{"B", ",", 
@@ -126,82 +127,63 @@ Cell[BoxData[
                RowBox[{"1", ",", "2"}], "}"}], ",", 
               RowBox[{"{", 
                RowBox[{"3", ",", "4"}], "}"}]}], "}"}]}], "]"}]}], ";", "\n", 
-         "\n", 
-         RowBox[{"AmB", " ", "=", " ", 
-          RowBox[{"A", " ", "-", " ", "B"}]}], ";", "\n", 
-         RowBox[{"ApB", " ", "=", " ", 
-          RowBox[{"A", " ", "+", " ", "B"}]}], ";", "\n", "\n", 
-         RowBox[{"AmBSq", " ", "=", " ", 
+         "\n", "  ", 
+         RowBox[{"AmB", "=", 
+          RowBox[{"A", "-", "B"}]}], ";", "\n", "  ", 
+         RowBox[{"ApB", "=", 
+          RowBox[{"A", "+", "B"}]}], ";", "\n", "\n", "  ", 
+         RowBox[{"AmBSq", "=", 
           RowBox[{"MatrixPower", "[", 
            RowBox[{"AmB", ",", 
-            FractionBox["1", "2"]}], "]"}]}], ";", "\n", 
-         RowBox[{"AmBIv", " ", "=", " ", 
+            FractionBox["1", "2"]}], "]"}]}], ";", "\n", "  ", 
+         RowBox[{"AmBIv", "=", 
           RowBox[{"MatrixPower", "[", 
            RowBox[{"AmB", ",", 
             RowBox[{"-", 
-             FractionBox["1", "2"]}]}], "]"}]}], ";", "\n", "\n", 
+             FractionBox["1", "2"]}]}], "]"}]}], ";", "\n", "\n", "  ", 
          RowBox[{"(*", 
-          RowBox[{"Hermitian", " ", "problem"}], "*)"}], "\n", 
+          RowBox[{"Hermitian", " ", "problem"}], "*)"}], "\n", "  ", 
          RowBox[{
           RowBox[{"{", 
-           RowBox[{"\[CapitalOmega]", ",", "Z"}], "}"}], " ", "=", " ", 
+           RowBox[{"\[CapitalOmega]", ",", "Z"}], "}"}], "=", 
           RowBox[{"SortEigensystem", "[", 
            RowBox[{"Eigensystem", "[", 
             RowBox[{"AmBSq", ".", "ApB", ".", "AmBSq"}], "]"}], "]"}]}], ";", 
-         "\n", 
-         RowBox[{"\[CapitalOmega]", "=", " ", 
+         "\n", "  ", 
+         RowBox[{"\[CapitalOmega]", "=", 
           SuperscriptBox["\[CapitalOmega]", 
-           RowBox[{"1", "/", "2"}]]}], ";", "\n", 
-         RowBox[{"Z", "=", " ", 
-          SuperscriptBox["Z", "\[Transpose]"]}], ";", "\n", "\n", 
-         RowBox[{"XpY", " ", "=", " ", 
+           RowBox[{"1", "/", "2"}]]}], ";", "\n", "  ", 
+         RowBox[{"Z", "=", 
+          SuperscriptBox["Z", "\[Transpose]"]}], ";", "\n", "\n", "  ", 
+         RowBox[{"XpY", "=", 
           RowBox[{
            RowBox[{"DiagonalMatrix", "[", 
             SuperscriptBox["\[CapitalOmega]", 
              RowBox[{
               RowBox[{"-", "1"}], "/", "2"}]], "]"}], ".", 
-           RowBox[{"Z", "\[Transpose]"}], ".", "AmBSq"}]}], ";", 
-         RowBox[{"(*", 
-          RowBox[{
-           RowBox[{"Print", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"XpY", "\[Transpose]"}], "//", "Chop"}], "//", 
-             "MatrixForm"}], "]"}], ";"}], "*)"}], "\n", 
-         RowBox[{"XmY", " ", "=", " ", 
+           RowBox[{"Z", "\[Transpose]"}], ".", "AmBSq"}]}], ";", "\n", "  ", 
+         RowBox[{"XmY", "=", 
           RowBox[{
            RowBox[{"DiagonalMatrix", "[", 
             SuperscriptBox["\[CapitalOmega]", 
              RowBox[{"1", "/", "2"}]], "]"}], ".", 
            RowBox[{"Z", "\[Transpose]"}], ".", "AmBIv"}]}], ";", "\n", "\n", 
-         RowBox[{"X", " ", "=", " ", 
+         "  ", 
+         RowBox[{"X", "=", 
           RowBox[{
            FractionBox["1", "2"], 
            RowBox[{
             RowBox[{"(", 
-             RowBox[{"XpY", " ", "+", " ", "XmY"}], ")"}], 
-            "\[Transpose]"}]}]}], ";", "\n", 
-         RowBox[{"Y", " ", "=", " ", 
+             RowBox[{"XpY", "+", "XmY"}], ")"}], "\[Transpose]"}]}]}], ";", 
+         "\n", "  ", 
+         RowBox[{"Y", "=", 
           RowBox[{
            FractionBox["1", "2"], 
            RowBox[{
             RowBox[{"(", 
-             RowBox[{"XpY", " ", "-", " ", "XmY"}], ")"}], 
-            "\[Transpose]"}]}]}], ";", 
-         RowBox[{"(*", 
-          RowBox[{
-           RowBox[{"Print", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 RowBox[{"X", "\[Transpose]"}], ".", "X"}], "-", 
-                RowBox[{
-                 RowBox[{"Y", "\[Transpose]"}], ".", "Y"}]}], ")"}], "//", 
-              "MatrixForm"}], "//", "Chop"}], "]"}], ";"}], "*)"}], "\n", 
-         "\n", 
-         RowBox[{"(*", "Metric", "*)"}], "\n", 
+             RowBox[{"XpY", "-", "XmY"}], ")"}], "\[Transpose]"}]}]}], ";", 
+         "\n", "\n", "  ", 
+         RowBox[{"(*", "Metric", "*)"}], "\n", "  ", 
          RowBox[{"W", "=", 
           RowBox[{"Table", "[", 
            RowBox[{"0", ",", 
@@ -210,7 +192,8 @@ Cell[BoxData[
               RowBox[{"2", "nS"}]}], "}"}], ",", 
             RowBox[{"{", 
              RowBox[{"q", ",", 
-              RowBox[{"2", "nS"}]}], "}"}]}], "]"}]}], ";", "\n", "\n", 
+              RowBox[{"2", "nS"}]}], "}"}]}], "]"}]}], ";", "\n", "\n", "  ", 
+         
          RowBox[{"Do", "[", 
           RowBox[{
            RowBox[{
@@ -218,7 +201,7 @@ Cell[BoxData[
              RowBox[{"p", ",", "p"}], "\[RightDoubleBracket]"}], "=", "1.0"}],
             ",", 
            RowBox[{"{", 
-            RowBox[{"p", ",", "nS"}], "}"}]}], "]"}], ";", "\n", 
+            RowBox[{"p", ",", "nS"}], "}"}]}], "]"}], ";", "\n", "  ", 
          RowBox[{"Do", "[", 
           RowBox[{
            RowBox[{
@@ -228,30 +211,31 @@ Cell[BoxData[
            RowBox[{"{", 
             RowBox[{"p", ",", 
              RowBox[{"nS", "+", "1"}], ",", 
-             RowBox[{"2", "nS"}]}], "}"}]}], "]"}], ";", "\n", "\n", 
-         RowBox[{"(*", "Orthogonalization", "*)"}], "\n", 
+             RowBox[{"2", "nS"}]}], "}"}]}], "]"}], ";", "\n", "\n", "  ", 
+         RowBox[{"(*", "Orthogonalization", "*)"}], "\n", "  ", 
          RowBox[{"Z", "=", 
           RowBox[{"ArrayFlatten", "[", 
            RowBox[{"(", GridBox[{
               {"X"},
               {"Y"}
-             }], ")"}], "]"}]}], ";", "\n", "\n", 
+             }], ")"}], "]"}]}], ";", "\n", "\n", "  ", 
          RowBox[{"S1", "=", 
           RowBox[{
            RowBox[{"Z", "\[Transpose]"}], ".", "W", ".", "Z"}]}], ";", "\n", 
+         "  ", 
          RowBox[{"O1", "=", 
           RowBox[{"MatrixPower", "[", 
            RowBox[{"S1", ",", 
             RowBox[{"-", 
-             FractionBox["1", "2"]}]}], "]"}]}], ";", "\n", 
+             FractionBox["1", "2"]}]}], "]"}]}], ";", "\n", "  ", 
          RowBox[{"Z", "=", 
-          RowBox[{"Z", ".", "O1"}]}], ";", "\n", "\n", 
+          RowBox[{"Z", ".", "O1"}]}], ";", "\n", "\n", "  ", 
          RowBox[{"X", "=", 
           RowBox[{"Z", "\[LeftDoubleBracket]", 
            RowBox[{
             RowBox[{"1", ";;", "nS"}], ",", 
             RowBox[{"1", ";;", "nS"}]}], "\[RightDoubleBracket]"}]}], ";", 
-         "\n", 
+         "\n", "  ", 
          RowBox[{"Y", "=", 
           RowBox[{"Z", "\[LeftDoubleBracket]", 
            RowBox[{
@@ -259,29 +243,17 @@ Cell[BoxData[
              RowBox[{"nS", "+", "1"}], ";;", 
              RowBox[{"2", "nS"}]}], ",", 
             RowBox[{"1", ";;", "nS"}]}], "\[RightDoubleBracket]"}]}], ";", 
-         " ", 
-         RowBox[{"(*", 
-          RowBox[{
-           RowBox[{"Print", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 RowBox[{"X", "\[Transpose]"}], ".", "X"}], "-", 
-                RowBox[{
-                 RowBox[{"Y", "\[Transpose]"}], ".", "Y"}]}], ")"}], "//", 
-              "MatrixForm"}], "//", "Chop"}], "]"}], ";"}], "*)"}], "\n", 
-         "\n", 
+         " ", "\n", "\n", "  ", 
          RowBox[{"XpY", "=", 
           RowBox[{"(", 
-           RowBox[{"X", "+", "Y"}], ")"}]}], ";", "\n", 
+           RowBox[{"X", "+", "Y"}], ")"}]}], ";", "\n", "  ", 
          RowBox[{"XmY", "=", 
           RowBox[{"(", 
            RowBox[{"X", "-", "Y"}], ")"}]}], ";"}]}], "\n", "\n", "]"}], ";", 
       "\n", "\n", 
-      RowBox[{"Ec", "=", " ", 
-       RowBox[{"0.5", 
+      RowBox[{"Ec", "=", 
+       RowBox[{
+        FractionBox["1", "2"], 
         RowBox[{"(", 
          RowBox[{
           RowBox[{"Sum", "[", 
@@ -293,45 +265,16 @@ Cell[BoxData[
               RowBox[{"Length", "[", "\[CapitalOmega]", "]"}]}], "}"}]}], 
            "]"}], "-", 
           RowBox[{"Tr", "[", "A", "]"}]}], ")"}]}]}], ";", "\n", "\n", 
-      RowBox[{"(*", 
-       RowBox[{"Screened", " ", "integrals"}], "*)"}], "\n", 
-      RowBox[{"sERI", "=", " ", 
-       RowBox[{"Table", "[", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"jb", "=", "0"}], ";", "\[IndentingNewLine]", 
-          RowBox[{"Sum", "[", 
-           RowBox[{
-            RowBox[{"(", 
-             RowBox[{
-              RowBox[{"jb", "++"}], ";", 
-              RowBox[{
-               RowBox[{"ERI", "\[LeftDoubleBracket]", 
-                RowBox[{"p", ",", "j", ",", "q", ",", "b"}], 
-                "\[RightDoubleBracket]"}], 
-               RowBox[{"XpY", "[", 
-                RowBox[{"[", 
-                 RowBox[{"jb", ",", "ia"}], "]"}], "]"}]}]}], ")"}], ",", 
-            RowBox[{"{", 
-             RowBox[{"j", ",", "nO"}], "}"}], ",", 
-            RowBox[{"{", 
-             RowBox[{"b", ",", 
-              RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{"p", ",", "nBas"}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"q", ",", "nBas"}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"ia", ",", "nS"}], "}"}]}], "]"}]}], ";", "\n", "\n", 
       RowBox[{"LRquantities", "=", 
        RowBox[{"Association", "[", 
         RowBox[{
-         RowBox[{"\"\<Ec\>\"", "->", "Ec"}], ",", 
-         RowBox[{"\"\<XpY\>\"", "->", "XpY"}], ",", 
-         RowBox[{"\"\<XmY\>\"", "->", "XmY"}], ",", 
-         RowBox[{"\"\<\[CapitalOmega]\>\"", "->", "\[CapitalOmega]"}], ",", 
-         RowBox[{"\"\<sERI\>\"", "->", "sERI"}]}], "]"}]}], ";", "\n", "\n", 
+         RowBox[{"\"\<Ec\>\"", "\[Rule]", "Ec"}], ",", 
+         RowBox[{"\"\<XpY\>\"", "\[Rule]", "XpY"}], ",", 
+         RowBox[{"\"\<XmY\>\"", "\[Rule]", "XmY"}], ",", 
+         RowBox[{"\"\<\[CapitalOmega]\>\"", "\[Rule]", "\[CapitalOmega]"}], 
+         ",", 
+         RowBox[{"\"\<sERI\>\"", "\[Rule]", "sERI"}]}], "]"}]}], ";", "\n", 
+      "\n", 
       RowBox[{"Return", "[", "LRquantities", "]"}]}]}], "]"}]}], 
   ";"}]], "Code",
  CellChangeTimes->{{3.834742835282414*^9, 3.834742855292416*^9}, {
@@ -522,12 +465,21 @@ Cell[BoxData[
    3.8910519366497602`*^9, 3.891051965430876*^9}, {3.891052072011365*^9, 
    3.891052076657435*^9}, 3.891052144768999*^9, {3.8910521909213333`*^9, 
    3.891052195655776*^9}, {3.8910522285443983`*^9, 3.891052233128263*^9}, {
-   3.891052481597169*^9, 
-   3.891052485202169*^9}},ExpressionUUID->"4b79b27a-5930-4429-b503-\
+   3.891052481597169*^9, 3.891052485202169*^9}, {3.8980653452828712`*^9, 
+   3.898065396154388*^9}, {3.898065438381608*^9, 3.898065575099774*^9}, {
+   3.89806583209778*^9, 3.8980658658131237`*^9}, 3.8980659919337606`*^9, {
+   3.8980660984086103`*^9, 3.8980661192026453`*^9}, {3.898066183750412*^9, 
+   3.898066212321089*^9}, 3.898066493106928*^9, {3.8980668045171833`*^9, 
+   3.898066874371717*^9}, {3.8980669506495667`*^9, 3.898066987315394*^9}, {
+   3.898067378502084*^9, 3.898067399947358*^9}, 3.898067436712604*^9, {
+   3.898067835726329*^9, 3.898067895968059*^9}, {3.898142099750993*^9, 
+   3.89814210064135*^9}, {3.898152931863286*^9, 3.898152944311376*^9}, {
+   3.898153029826528*^9, 
+   3.898153035514069*^9}},ExpressionUUID->"4b79b27a-5930-4429-b503-\
 91ef63ec2096"]
 },
 WindowSize->{1194, 786},
-WindowMargins->{{Automatic, -13}, {-76, Automatic}},
+WindowMargins->{{Automatic, 39}, {-15, Automatic}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -544,7 +496,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 26454, 506, 2840, "Code",ExpressionUUID->"4b79b27a-5930-4429-b503-91ef63ec2096"]
+Cell[558, 20, 24954, 458, 2690, "Code",ExpressionUUID->"4b79b27a-5930-4429-b503-91ef63ec2096"]
 }
 ]
 *)
