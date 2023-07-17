@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    135249,       2398]
-NotebookOptionsPosition[    134723,       2380]
-NotebookOutlinePosition[    135160,       2397]
-CellTagsIndexPosition[    135117,       2394]
+NotebookDataLength[    136169,       2414]
+NotebookOptionsPosition[    135643,       2396]
+NotebookOutlinePosition[    136080,       2413]
+CellTagsIndexPosition[    136037,       2410]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -59,31 +59,33 @@ Cell[BoxData[
        "            ", "\n", 
        RowBox[{"(*", "timing", "*)"}], " ", "time", ",", "\n", "\n", 
        RowBox[{"(*", "options", "*)"}], "option", ",", "maxSCF", ",", 
-       "thresh", ",", "lin", ",", "guessType", ",", "levelShift", ",", "\n", 
-       "            ", "\n", 
+       "thresh", ",", "lin", ",", "guessType", ",", "levelShift", ",", "TDA", 
+       ",", "TDAW", ",", "TDAT", ",", "singlet", ",", "triplet", ",", 
+       "spinconserved", ",", "spinflip", ",", "HFmaxSCF", ",", "HFthresh", 
+       ",", "\n", "            ", "\n", 
        RowBox[{"(*", "outputs", "*)"}], "IntegralsQuantities", ",", 
        "ParametersQuantities", ",", "MoleculeQuantities", ",", "\n", "\n", 
        RowBox[{"(*", "integrals", "*)"}], "S", ",", "T", ",", "V", ",", "U", 
        ",", "h", ",", "ERI", ",", "ERIaa", ",", "ERIab", ",", "ERIba", ",", 
        "ERIbb", ",", "qsGWOMIntegrals", ",", "qsGWOMIntegralsaa", ",", 
        "qsGWOMIntegralsab", ",", "qsGWOMIntegralsba", ",", 
-       "qsGWOMIntegralsbb", ",", "\n", "            ", "\n", "X", ",", 
+       "qsGWOMIntegralsbb", ",", "\n", "\n", 
+       RowBox[{"(*", "matrices", "*)"}], "Hcore", ",", "X", ",", "\n", 
        "TabRHF", ",", "IP", ",", "outputs", ",", "verbose", ",", "file", ",", 
        "cISD", ",", "J", ",", "t1", ",", "t2", ",", "FOM", ",", "\n", "C", 
        ",", "\[Epsilon]", ",", "XplusY", ",", "\[CapitalOmega]RPA", ",", 
        "ufBSE", ",", "dBSE", ",", "dTDA", ",", "Ca", ",", "Cb", ",", 
-       "\[Epsilon]a", ",", "\[Epsilon]b", ",", "TDA", ",", "TDAW", ",", 
-       "TDAT", ",", "singlet", ",", "triplet", ",", "spinconserved", ",", 
-       "spinflip", ",", "LR", ",", "BSE", ",", "qsGW\[Epsilon]", ",", "W", 
-       ",", "EUBSE", ",", "W1", ",", "W2", ",", "\n", "qsGW\[Epsilon]a", ",", 
-       "qsGW\[Epsilon]b", ",", "P", ",", "K", ",", "Vxc", ",", "RPAG0W0", ",",
-        "GMG0W0", ",", "eG0W0", ",", "RPAevGW", ",", "GMevGW", ",", 
-       "RPAUG0W0", ",", "GMUG0W0", ",", "eG0W0a", ",", "eG0W0b", ",", "Vxca", 
-       ",", "Vxcb", ",", "Ka", ",", "Kb", ",", "RPAevUGW", ",", "GMevUGW", 
-       ",", "\n", "i", ",", "sfile", ",", "FFeGW", ",", "Z", ",", 
-       "\[CapitalSigma]cG0W0", ",", "\[CapitalSigma]c\[Omega]G0W0", ",", 
-       "Re\[CapitalSigma]c", ",", "Im\[CapitalSigma]c", ",", "\[Epsilon]evGW",
-        ",", "\[CapitalSigma]c\[Omega]", ",", "eGT", ",", "ZG0T0", ",", 
+       "\[Epsilon]a", ",", "\[Epsilon]b", ",", "LR", ",", "BSE", ",", 
+       "qsGW\[Epsilon]", ",", "W", ",", "EUBSE", ",", "W1", ",", "W2", ",", 
+       "\n", "qsGW\[Epsilon]a", ",", "qsGW\[Epsilon]b", ",", "P", ",", "K", 
+       ",", "Vxc", ",", "RPAG0W0", ",", "GMG0W0", ",", "eG0W0", ",", 
+       "RPAevGW", ",", "GMevGW", ",", "RPAUG0W0", ",", "GMUG0W0", ",", 
+       "eG0W0a", ",", "eG0W0b", ",", "Vxca", ",", "Vxcb", ",", "Ka", ",", 
+       "Kb", ",", "RPAevUGW", ",", "GMevUGW", ",", "\n", "i", ",", "sfile", 
+       ",", "FFeGW", ",", "Z", ",", "\[CapitalSigma]cG0W0", ",", 
+       "\[CapitalSigma]c\[Omega]G0W0", ",", "Re\[CapitalSigma]c", ",", 
+       "Im\[CapitalSigma]c", ",", "\[Epsilon]evGW", ",", 
+       "\[CapitalSigma]c\[Omega]", ",", "eGT", ",", "ZG0T0", ",", 
        "\[CapitalSigma]cG0T0", ",", "ZevGT", ",", "\[CapitalSigma]cevGT", ",",
         "Im\[CapitalSigma]c\[Omega]", ",", "\n", "\[Eta]", ",", "DIISex", ",",
         "Regularized", ",", "\[CapitalSigma]qsGW", ",", "EppURPA", ",", 
@@ -92,8 +94,7 @@ Cell[BoxData[
        "typeRegularization", ",", "DiagElt", ",", "\[Epsilon]p", ",", "conf", 
        ",", "weights", ",", "eG0W0ww", ",", "\n", "restricted", ",", 
        "unrestricted", ",", "mol", ",", "atoms", ",", "xyz", ",", "nAt", ",", 
-       "Znuc", ",", "elements", ",", "HFmaxSCF", ",", "HFthresh"}], "}"}], 
-     ",", "\n", "\n", 
+       "Znuc", ",", "elements"}], "}"}], ",", "\n", "\n", 
      RowBox[{"(*", 
       RowBox[{"Get", " ", "the", " ", "parameters"}], "*)"}], "\n", 
      RowBox[{
@@ -365,7 +366,7 @@ Cell[BoxData[
        RowBox[{
         RowBox[{
          RowBox[{"Length", "@", "optionsinput"}], "!=", "0"}], ",", "\n", 
-        "\t", 
+        "  ", 
         RowBox[{"Do", "[", 
          RowBox[{
           RowBox[{
@@ -379,13 +380,13 @@ Cell[BoxData[
           RowBox[{"{", 
            RowBox[{"i", ",", 
             RowBox[{"Length", "[", "optionsinput", "]"}]}], "}"}]}], "]"}]}], 
-       "\n", "  ", "]"}], ";", "\n", "\n", 
+       "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"verbose", "=", 
        RowBox[{
        "options", "\[LeftDoubleBracket]", "\"\<verbose\>\"", 
         "\[RightDoubleBracket]"}]}], ";", "\n", "\n", 
       RowBox[{"If", "[", 
-       RowBox[{"restricted", ",", "\n", "\t", 
+       RowBox[{"restricted", ",", "\n", "\n", "  ", 
         StyleBox[
          RowBox[{"(*", " ", 
           RowBox[{"RHF", " ", 
@@ -400,23 +401,27 @@ Cell[BoxData[
            StyleBox[
             RowBox[{"USE", "!!"}],
             FontColor->RGBColor[0., 0.6666666666666666, 0.]]}], " ", "*)"}],
-         FontSize->18], "\n", "\t", 
+         FontSize->18], 
+        StyleBox["\n",
+         FontSize->18], 
+        StyleBox[" ",
+         FontSize->18], 
         RowBox[{
          RowBox[{"If", "[", 
           RowBox[{
            RowBox[{
             RowBox[{
              RowBox[{"ToDoModules", "[", "\"\<RHF\>\"", "]"}], "[", 
-             "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "\t\t", 
+             "\"\<Do\>\"", "]"}], "\[Equal]", "True"}], ",", "\n", "    ", 
            RowBox[{
             RowBox[{"NotebookEvaluate", "[", 
              RowBox[{"path", "<>", "\"\</src/HF/RHF.nb\>\""}], "]"}], ";", 
-            "\n", "\t\t", 
+            "\n", "    ", 
             RowBox[{"PrintTemporary", "[", 
              RowBox[{"Style", "[", 
               RowBox[{
               "\"\<RHF calculation...\>\"", ",", "Bold", ",", "Orange"}], 
-              "]"}], "]"}], ";", "\n", "    ", "\n", "\t\t", 
+              "]"}], "]"}], ";", "\n", "    ", "\n", "    ", 
             RowBox[{
              RowBox[{"{", 
               RowBox[{"time", ",", "outputs"}], "}"}], "=", 
@@ -425,43 +430,43 @@ Cell[BoxData[
                RowBox[{
                "nBas", ",", "nO", ",", "Nelc", ",", "Enuc", ",", "S", ",", 
                 "T", ",", "V", ",", "U", ",", "X", ",", "options", ",", 
-                "verbose"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", 
-            "        ", 
+                "verbose"}], "]"}], "]"}]}], ";", "\n", "    ", "\n", "    ", 
+            
             RowBox[{"PrintTemporary", "[", 
              RowBox[{"\"\<CPU time = \>\"", ",", "time"}], "]"}], ";", "\n", 
-            "\n", "        ", 
+            "    ", "\n", "    ", 
             RowBox[{"ERHF", "=", 
              RowBox[{
               RowBox[{"outputs", "[", "\"\<EHF\>\"", "]"}], "+", "Enuc"}]}], 
-            ";", "\n", "        ", 
+            ";", "\n", "    ", 
+            RowBox[{"Hcore", "=", 
+             RowBox[{"outputs", "[", "\"\<Hcore\>\"", "]"}]}], ";", "\n", 
+            "    ", 
             RowBox[{"h", "=", 
-             RowBox[{"outputs", "[", "\"\<h\>\"", "]"}]}], ";", "\n", "\t\t", 
+             RowBox[{"outputs", "[", "\"\<h\>\"", "]"}]}], ";", "\n", "    ", 
             
             RowBox[{"ERI", "=", 
              RowBox[{"outputs", "[", "\"\<ERI\>\"", "]"}]}], ";", "\n", 
-            "\t\t", 
+            "    ", 
             RowBox[{"\[Epsilon]", "=", 
              RowBox[{"outputs", "[", "\"\<\[Epsilon]\>\"", "]"}]}], ";", "\n",
-             "\t\t", 
+             "    ", 
             RowBox[{"C", "=", 
              RowBox[{"outputs", "[", "\"\<C\>\"", "]"}]}], ";", " ", "\n", 
-            "\t\t", 
+            "\t", 
             RowBox[{"FOM", "=", 
              RowBox[{"outputs", "[", "\"\<FOM\>\"", "]"}]}], ";", " ", "\n", 
-            "\t\t", 
+            "\t", 
             RowBox[{"P", "=", 
-             RowBox[{"outputs", "[", "\"\<P\>\"", "]"}]}], ";", "\n", "\t\t", 
-            
+             RowBox[{"outputs", "[", "\"\<P\>\"", "]"}]}], ";", "\n", "\t", 
             RowBox[{"J", "=", 
-             RowBox[{"outputs", "[", "\"\<J\>\"", "]"}]}], ";", "\n", "\t\t", 
-            
+             RowBox[{"outputs", "[", "\"\<J\>\"", "]"}]}], ";", "\n", "\t", 
             RowBox[{"K", "=", 
-             RowBox[{"outputs", "[", "\"\<K\>\"", "]"}]}], ";", "\n", "\t\t", 
-            
+             RowBox[{"outputs", "[", "\"\<K\>\"", "]"}]}], ";", "\n", "\t", 
             RowBox[{"Vxc", "=", 
-             RowBox[{"outputs", "[", "\"\<Vx\>\"", "]"}]}], ";", "\n", "\t\t", 
-            RowBox[{"eG0W0", "=", "\[Epsilon]"}], ";", "\n", "\t\t", 
-            RowBox[{"eG0T0", "=", "\[Epsilon]"}], ";"}]}], "\n", "\t", "]"}], 
+             RowBox[{"outputs", "[", "\"\<Vx\>\"", "]"}]}], ";", "\n", "\t", 
+            RowBox[{"eG0W0", "=", "\[Epsilon]"}], ";", "\n", "\t", 
+            RowBox[{"eG0T0", "=", "\[Epsilon]"}], ";"}]}], "\n", "  ", "]"}], 
          ";", "\n", "     ", "\n", "     ", 
          RowBox[{"(*", 
           RowBox[{
@@ -993,10 +998,11 @@ Cell[BoxData[
                 RowBox[{"Timing", "[", 
                  RowBox[{"qsGF2", "[", 
                   RowBox[{
-                  "nBas", ",", "nO", ",", "nV", ",", "\[Epsilon]", ",", "ERI",
-                    ",", "Enuc", ",", "ERHF", ",", "options", ",", 
-                   "verbose"}], "]"}], "]"}]}], ";", "\t", "\n", "\t", "\n", 
-               "        ", 
+                  "Nelc", ",", "nBas", ",", "nO", ",", "nV", ",", 
+                   "\[Epsilon]", ",", "Enuc", ",", "ERHF", ",", "ERI", ",", 
+                   "P", ",", "S", ",", "T", ",", "V", ",", "U", ",", "X", ",",
+                    "C", ",", "options", ",", "verbose"}], "]"}], "]"}]}], 
+               ";", "\t", "\n", "\t", "\n", "        ", 
                RowBox[{"If", "[", 
                 RowBox[{
                  RowBox[{"verbose", "\[Equal]", "True"}], ",", 
@@ -1199,13 +1205,18 @@ Cell[BoxData[
             StyleBox[
              RowBox[{"(*", " ", 
               RowBox[{"G0T0", " ", 
-               StyleBox["NOT",
-                FontColor->RGBColor[1, 0, 0]], 
+               StyleBox["READY",
+                FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
                StyleBox[" ",
-                FontColor->RGBColor[1, 0, 0]], 
+                FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
+               StyleBox["TO",
+                FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
+               StyleBox[" ",
+                FontColor->RGBColor[0., 0.6666666666666666, 0.]], 
                StyleBox[
-                RowBox[{"WORKING", "!!"}],
-                FontColor->RGBColor[1, 0, 0]]}], " ", "*)"}],
+                RowBox[{"USE", "!!"}],
+                FontColor->RGBColor[0., 0.6666666666666666, 0.]]}], " ", 
+              "*)"}],
              FontSize->18], "\n", "    ", 
             RowBox[{"If", "[", 
              RowBox[{
@@ -2374,8 +2385,13 @@ Cell[BoxData[
    3.898064796798682*^9}, 3.898066518663775*^9, 3.898067032176091*^9, 
    3.898068742553679*^9, {3.898069759659876*^9, 3.898069768534596*^9}, 
    3.898070951188451*^9, 3.8981415921323767`*^9, {3.89814164974673*^9, 
-   3.898141650306076*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+   3.898141650306076*^9}, 3.898219348860455*^9, {3.898219432214736*^9, 
+   3.898219740110318*^9}, {3.898223001946619*^9, 3.898223095537982*^9}, {
+   3.898224790377266*^9, 3.8982248022438726`*^9}, {3.898240693964497*^9, 
+   3.898240709181912*^9}, {3.8982415730316677`*^9, 3.898241573330036*^9}, {
+   3.8982416048446302`*^9, 3.898241639230167*^9}, {3.898249646959744*^9, 
+   3.898249650093506*^9}},ExpressionUUID->"9ace567f-0cbd-4c06-a930-\
+2b85bb5dd0be"]
 }, Open  ]]
 },
 WindowSize->{1384, 789},
@@ -2398,7 +2414,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 162, 3, 45, "Subsubsection",ExpressionUUID->"1327eb38-bfaa-4cf8-9726-649c3d05ec18"],
-Cell[745, 27, 133962, 2350, 7142, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
+Cell[745, 27, 134882, 2366, 7199, "Code",ExpressionUUID->"9ace567f-0cbd-4c06-a930-2b85bb5dd0be"]
 }, Open  ]]
 }
 ]
