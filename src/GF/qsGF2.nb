@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     39039,        832]
-NotebookOptionsPosition[     38093,        806]
-NotebookOutlinePosition[     38518,        823]
-CellTagsIndexPosition[     38475,        820]
+NotebookDataLength[     39093,        833]
+NotebookOptionsPosition[     38145,        807]
+NotebookOutlinePosition[     38572,        824]
+CellTagsIndexPosition[     38529,        821]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -799,13 +799,14 @@ symmetrized version!\>\"", ",", "Red", ",", "Bold"}], "]"}], "]"}], ";", "\n",
    3.8985661389733458`*^9, 3.898566187156011*^9}, {3.898566364044132*^9, 
    3.898566380075953*^9}, {3.898566518987904*^9, 3.898566538823284*^9}, {
    3.898566652011507*^9, 3.898566674151493*^9}, {3.898576208427822*^9, 
-   3.898576284848441*^9}, {3.898576632583253*^9, 
-   3.898576633342455*^9}},ExpressionUUID->"a416dbd6-7232-4877-921c-\
+   3.898576284848441*^9}, {3.898576632583253*^9, 3.898576633342455*^9}, {
+   3.8985917089871807`*^9, 
+   3.898591716551298*^9}},ExpressionUUID->"a416dbd6-7232-4877-921c-\
 7ee1985bee99"]
-}, Open  ]]
+}, Closed]]
 },
 WindowSize->{1440, 648},
-WindowMargins->{{0, Automatic}, {-47, Automatic}},
+WindowMargins->{{52, Automatic}, {-352, Automatic}},
 Magnification:>1.25 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -832,8 +833,8 @@ Cell[3606, 90, 1014, 23, 162, "Code",ExpressionUUID->"0095856f-7adf-414f-becb-18
 }, Closed]],
 Cell[CellGroupData[{
 Cell[4657, 118, 159, 3, 89, "Title",ExpressionUUID->"67040f91-7199-4968-8d84-d72ee3690445"],
-Cell[4819, 123, 33258, 680, 3599, "Code",ExpressionUUID->"a416dbd6-7232-4877-921c-7ee1985bee99"]
-}, Open  ]]
+Cell[4819, 123, 33310, 681, 3599, "Code",ExpressionUUID->"a416dbd6-7232-4877-921c-7ee1985bee99"]
+}, Closed]]
 }
 ]
 *)

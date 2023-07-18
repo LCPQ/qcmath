@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19132,        418]
-NotebookOptionsPosition[     18754,        403]
-NotebookOutlinePosition[     19177,        420]
-CellTagsIndexPosition[     19134,        417]
+NotebookDataLength[     17619,        405]
+NotebookOptionsPosition[     17235,        390]
+NotebookOutlinePosition[     17664,        407]
+CellTagsIndexPosition[     17621,        404]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -25,30 +25,27 @@ Cell[BoxData[
     RowBox[{
     "nBas_", ",", "nO_", ",", "nV_", ",", "ERI_", ",", "X1_", ",", "Y1_", ",",
       "X2_", ",", "Y2_", ",", "nOO_", ",", "nVV_", ",", "ispin_"}], "]"}], ":=",
-    " ", "\n", "\n", "  ", 
-   RowBox[{"Module", "[", 
+    " ", 
+   RowBox[{"Module", "[", "\n", 
     RowBox[{
      RowBox[{"{", 
       RowBox[{
       "\[Rho]1", ",", "\[Rho]2", ",", "cd", ",", "kl", ",", "ppquantities", 
-       ",", "dERI", ",", "xERI"}], "}"}], ",", "\n", "\n", "    ", 
+       ",", "dERI", ",", "xERI"}], "}"}], ",", "\n", "\n", 
      RowBox[{
       RowBox[{"If", "[", 
        RowBox[{
-        RowBox[{"ispin", "\[Equal]", "3"}], ",", "\n", "      ", "\n", 
-        "      ", 
+        RowBox[{"ispin", "\[Equal]", "3"}], ",", "\n", "      ", "\n", "  ", 
         RowBox[{
-         RowBox[{"dERI", " ", "=", " ", "1"}], ";", "\n", "      ", 
-         RowBox[{"xERI", " ", "=", " ", "0"}], ";", "\n", "\n", "      ", 
+         RowBox[{"dERI", "=", "1"}], ";", "\n", "  ", 
+         RowBox[{"xERI", "=", "0"}], ";", "\n", "\n", " ", 
          RowBox[{"(*", 
-          RowBox[{"Screened", " ", "integrals"}], "*)"}], "\n", "      ", 
-         RowBox[{"\[Rho]1", " ", "=", " ", "\n", "      ", "\n", "      ", 
-          RowBox[{
-          "Table", "[", "\[IndentingNewLine]", "      ", "\n", "        ", 
+          RowBox[{"Screened", " ", "integrals"}], "*)"}], "\n", "  ", 
+         RowBox[{"\[Rho]1", "=", "\n", "  ", 
+          RowBox[{"Table", "[", "\n", "    ", 
            RowBox[{
             RowBox[{
-             RowBox[{"cd", " ", "=", " ", "0"}], ";", "\n", "        ", 
-             "\[IndentingNewLine]", "        ", 
+             RowBox[{"cd", "=", "0"}], ";", "\n", "    ", 
              RowBox[{"Sum", "[", 
               RowBox[{
                RowBox[{"(", 
@@ -74,22 +71,20 @@ Cell[BoxData[
                RowBox[{"{", 
                 RowBox[{"d", ",", 
                  RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}], 
-            "\n", "      ", "\n", "        ", ",", 
+            "\n", "    ", ",", 
             RowBox[{"{", 
              RowBox[{"p", ",", "nBas"}], "}"}], ",", 
             RowBox[{"{", 
              RowBox[{"q", ",", "nBas"}], "}"}], ",", 
             RowBox[{"{", 
-             RowBox[{"ab", ",", "nVV"}], "}"}]}], "\n", "      ", "\n", 
-           "      ", "]"}]}], ";", "\n", "\n", "      ", 
-         RowBox[{"\[Rho]1", " ", "=", " ", 
-          RowBox[{"\[Rho]1", " ", "+", " ", "\n", "      ", "\n", "      ", 
-           RowBox[{
-           "Table", "[", "\[IndentingNewLine]", "  ", "\n", "        ", 
+             RowBox[{"ab", ",", "nVV"}], "}"}]}], "\n", "  ", "]"}]}], ";", 
+         "\n", "\n", "  ", 
+         RowBox[{"\[Rho]1", "=", 
+          RowBox[{"\[Rho]1", "+", "\n", "  ", 
+           RowBox[{"Table", "[", "\n", "    ", 
             RowBox[{
              RowBox[{
-              RowBox[{"kl", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
-              "\n", "        ", 
+              RowBox[{"kl", "=", "0"}], ";", "\n", "    ", 
               RowBox[{"Sum", "[", 
                RowBox[{
                 RowBox[{"(", 
@@ -112,21 +107,20 @@ Cell[BoxData[
                 RowBox[{"{", 
                  RowBox[{"k", ",", "nO"}], "}"}], ",", 
                 RowBox[{"{", 
-                 RowBox[{"l", ",", "nO"}], "}"}]}], "]"}]}], "\n", "      ", 
-             "\n", "        ", ",", 
+                 RowBox[{"l", ",", "nO"}], "}"}]}], "]"}]}], "\n", "    ", 
+             ",", 
              RowBox[{"{", 
               RowBox[{"p", ",", "nBas"}], "}"}], ",", 
              RowBox[{"{", 
               RowBox[{"q", ",", "nBas"}], "}"}], ",", 
              RowBox[{"{", 
-              RowBox[{"ab", ",", "nVV"}], "}"}]}], "\n", "      ", "\n", 
-            "      ", "]"}]}]}], ";", "\n", "\n", "      ", 
-         RowBox[{"\[Rho]2", " ", "=", " ", "\n", "      ", "\n", "      ", 
-          RowBox[{"Table", "[", "\[IndentingNewLine]", "\n", "        ", 
+              RowBox[{"ab", ",", "nVV"}], "}"}]}], "\n", "  ", "]"}]}]}], ";",
+          "\n", "\n", "  ", 
+         RowBox[{"\[Rho]2", "=", "\n", "  ", 
+          RowBox[{"Table", "[", "\n", "    ", 
            RowBox[{
             RowBox[{
-             RowBox[{"cd", " ", "=", " ", "0"}], ";", "\n", "      ", 
-             "\[IndentingNewLine]", "        ", 
+             RowBox[{"cd", "=", "0"}], ";", "\n", "    ", 
              RowBox[{"Sum", "[", 
               RowBox[{
                RowBox[{"(", 
@@ -152,21 +146,20 @@ Cell[BoxData[
                RowBox[{"{", 
                 RowBox[{"d", ",", 
                  RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}], 
-            "\n", "      ", "\n", "        ", ",", 
+            "\n", "    ", ",", 
             RowBox[{"{", 
              RowBox[{"p", ",", "nBas"}], "}"}], ",", 
             RowBox[{"{", 
              RowBox[{"q", ",", "nBas"}], "}"}], ",", 
             RowBox[{"{", 
-             RowBox[{"ij", ",", "nOO"}], "}"}]}], "\n", "      ", "\n", 
-           "      ", "]"}]}], ";", "\n", "\n", "      ", 
-         RowBox[{"\[Rho]2", " ", "=", " ", 
-          RowBox[{"\[Rho]2", " ", "+", " ", "\n", "      ", "\n", "      ", 
-           RowBox[{"Table", "[", "\[IndentingNewLine]", "\n", "        ", 
+             RowBox[{"ij", ",", "nOO"}], "}"}]}], "\n", "  ", "]"}]}], ";", 
+         "\n", "\n", "  ", 
+         RowBox[{"\[Rho]2", "=", 
+          RowBox[{"\[Rho]2", "+", "\n", "  ", 
+           RowBox[{"Table", "[", "\n", "    ", 
             RowBox[{
              RowBox[{
-              RowBox[{"kl", " ", "=", " ", "0"}], ";", "\n", "        ", 
-              "\[IndentingNewLine]", "        ", 
+              RowBox[{"kl", "=", "0"}], ";", "\n", "    ", 
               RowBox[{"Sum", "[", 
                RowBox[{
                 RowBox[{"(", 
@@ -189,31 +182,29 @@ Cell[BoxData[
                 RowBox[{"{", 
                  RowBox[{"k", ",", "nO"}], "}"}], ",", 
                 RowBox[{"{", 
-                 RowBox[{"l", ",", "nO"}], "}"}]}], "]"}]}], "\n", "        ",
-              "\n", "        ", ",", 
+                 RowBox[{"l", ",", "nO"}], "}"}]}], "]"}]}], "\n", "    ", 
+             ",", 
              RowBox[{"{", 
               RowBox[{"p", ",", "nBas"}], "}"}], ",", 
              RowBox[{"{", 
               RowBox[{"q", ",", "nBas"}], "}"}], ",", 
              RowBox[{"{", 
-              RowBox[{"ij", ",", "nOO"}], "}"}]}], "\n", "        ", "\n", 
-            "      ", "]"}]}]}], ";"}]}], "\n", "\n", "    ", "]"}], ";", 
-      "\n", "\n", "    ", 
+              RowBox[{"ij", ",", "nOO"}], "}"}]}], "\n", "  ", "]"}]}]}], 
+         ";"}]}], "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"If", "[", 
        RowBox[{
-        RowBox[{"ispin", "\[Equal]", "4"}], ",", "\n", "\n", "      ", 
+        RowBox[{"ispin", "\[Equal]", "4"}], ",", "\n", "\n", "  ", 
         RowBox[{
-         RowBox[{"dERI", " ", "=", " ", "1"}], ";", "\n", "      ", 
-         RowBox[{"xERI", " ", "=", " ", 
-          RowBox[{"-", "1"}]}], ";", "\n", "\n", "      ", 
+         RowBox[{"dERI", "=", "1"}], ";", "\n", "  ", 
+         RowBox[{"xERI", "=", 
+          RowBox[{"-", "1"}]}], ";", "\n", "  ", "\n", "  ", 
          RowBox[{"(*", 
-          RowBox[{"Screened", " ", "integrals"}], "*)"}], "\n", "      ", 
-         RowBox[{"\[Rho]1", " ", "=", " ", "\n", "      ", "\n", "      ", 
-          RowBox[{"Table", "[", "\[IndentingNewLine]", "\n", "        ", 
+          RowBox[{"Screened", " ", "integrals"}], "*)"}], "\n", "  ", 
+         RowBox[{"\[Rho]1", "=", "\n", "  ", 
+          RowBox[{"Table", "[", "\n", "    ", 
            RowBox[{
             RowBox[{
-             RowBox[{"cd", " ", "=", " ", "0"}], ";", "\n", "      ", 
-             "\[IndentingNewLine]", "        ", 
+             RowBox[{"cd", "=", "0"}], ";", "\n", "    ", 
              RowBox[{"Sum", "[", 
               RowBox[{
                RowBox[{"(", 
@@ -239,21 +230,20 @@ Cell[BoxData[
                RowBox[{"{", 
                 RowBox[{"d", ",", 
                  RowBox[{"c", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}], 
-            "\n", "      ", "\n", "        ", ",", 
+            "\n", "    ", ",", 
             RowBox[{"{", 
              RowBox[{"p", ",", "nBas"}], "}"}], ",", 
             RowBox[{"{", 
              RowBox[{"q", ",", "nBas"}], "}"}], ",", 
             RowBox[{"{", 
-             RowBox[{"ab", ",", "nVV"}], "}"}]}], "\n", "        ", "\n", 
-           "      ", "]"}]}], ";", "\n", "\n", "      ", 
-         RowBox[{"\[Rho]1", " ", "=", " ", 
-          RowBox[{"\[Rho]1", " ", "+", " ", "\n", "      ", "\n", "      ", 
-           RowBox[{"Table", "[", "\[IndentingNewLine]", "\n", "        ", 
+             RowBox[{"ab", ",", "nVV"}], "}"}]}], "\n", "  ", "]"}]}], ";", 
+         "\n", "  ", "\n", "  ", 
+         RowBox[{"\[Rho]1", "=", 
+          RowBox[{"\[Rho]1", "+", "\n", "  ", 
+           RowBox[{"Table", "[", "\n", "    ", 
             RowBox[{
              RowBox[{
-              RowBox[{"kl", " ", "=", " ", "0"}], ";", "\n", "        ", 
-              "\[IndentingNewLine]", "        ", 
+              RowBox[{"kl", "=", "0"}], ";", "\n", "    ", 
               RowBox[{"Sum", "[", 
                RowBox[{
                 RowBox[{"(", 
@@ -278,20 +268,19 @@ Cell[BoxData[
                 RowBox[{"{", 
                  RowBox[{"l", ",", 
                   RowBox[{"k", "+", "1"}], ",", "nO"}], "}"}]}], "]"}]}], 
-             "\n", "        ", "\n", "        ", ",", 
+             "\n", "    ", ",", 
              RowBox[{"{", 
               RowBox[{"p", ",", "nBas"}], "}"}], ",", 
              RowBox[{"{", 
               RowBox[{"q", ",", "nBas"}], "}"}], ",", 
              RowBox[{"{", 
-              RowBox[{"ab", ",", "nVV"}], "}"}]}], "\n", "        ", "\n", 
-            "      ", "]"}]}]}], ";", "\n", "\n", "      ", 
-         RowBox[{"\[Rho]2", " ", "=", " ", "\n", "      ", "\n", "      ", 
-          RowBox[{"Table", "[", "\[IndentingNewLine]", "\n", "        ", 
+              RowBox[{"ab", ",", "nVV"}], "}"}]}], "\n", "  ", "]"}]}]}], ";",
+          "\n", "\n", "  ", 
+         RowBox[{"\[Rho]2", "=", "\n", "  ", 
+          RowBox[{"Table", "[", "\n", "    ", 
            RowBox[{
             RowBox[{
-             RowBox[{"cd", " ", "=", " ", "0"}], ";", "\n", "        ", 
-             "\[IndentingNewLine]", "        ", 
+             RowBox[{"cd", "=", "0"}], ";", "\n", "    ", 
              RowBox[{"Sum", "[", 
               RowBox[{
                RowBox[{"(", 
@@ -317,21 +306,20 @@ Cell[BoxData[
                RowBox[{"{", 
                 RowBox[{"d", ",", 
                  RowBox[{"c", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}], 
-            "\n", "        ", "\n", "        ", ",", 
+            "\n", "    ", ",", 
             RowBox[{"{", 
              RowBox[{"p", ",", "nBas"}], "}"}], ",", 
             RowBox[{"{", 
              RowBox[{"q", ",", "nBas"}], "}"}], ",", 
             RowBox[{"{", 
-             RowBox[{"ij", ",", "nOO"}], "}"}]}], "\n", "        ", "\n", 
-           "      ", "]"}]}], ";", "\n", "\n", "      ", 
-         RowBox[{"\[Rho]2", " ", "=", " ", 
-          RowBox[{"\[Rho]2", " ", "+", " ", "\n", "      ", "\n", "      ", 
-           RowBox[{"Table", "[", "\[IndentingNewLine]", "\n", "        ", 
+             RowBox[{"ij", ",", "nOO"}], "}"}]}], "\n", "  ", "]"}]}], ";", 
+         "\n", "\n", "  ", 
+         RowBox[{"\[Rho]2", "=", 
+          RowBox[{"\[Rho]2", "+", "\n", "  ", 
+           RowBox[{"Table", "[", "\n", "    ", 
             RowBox[{
              RowBox[{
-              RowBox[{"kl", " ", "=", " ", "0"}], ";", "\n", "        ", 
-              "\[IndentingNewLine]", "        ", 
+              RowBox[{"kl", "=", "0"}], ";", "\n", "    ", 
               RowBox[{"Sum", "[", 
                RowBox[{
                 RowBox[{"(", 
@@ -356,21 +344,20 @@ Cell[BoxData[
                 RowBox[{"{", 
                  RowBox[{"l", ",", 
                   RowBox[{"k", "+", "1"}], ",", "nO"}], "}"}]}], "]"}]}], 
-             "\n", "        ", "\n", "        ", ",", 
+             "\n", "    ", ",", 
              RowBox[{"{", 
               RowBox[{"p", ",", "nBas"}], "}"}], ",", 
              RowBox[{"{", 
               RowBox[{"q", ",", "nBas"}], "}"}], ",", 
              RowBox[{"{", 
-              RowBox[{"ij", ",", "nOO"}], "}"}]}], "\n", "        ", "\n", 
-            "      ", "]"}]}]}], ";"}]}], "\n", "\n", "    ", "]"}], ";", 
-      "\n", "\n", "    ", 
+              RowBox[{"ij", ",", "nOO"}], "}"}]}], "\n", "  ", "]"}]}]}], 
+         ";"}]}], "\n", "]"}], ";", "\n", "\n", 
       RowBox[{"ppquantities", " ", "=", " ", 
        RowBox[{"Association", "[", 
         RowBox[{
          RowBox[{"\"\<\[Rho]1\>\"", "\[Rule]", "\[Rho]1"}], ",", 
          RowBox[{"\"\<\[Rho]2\>\"", "\[Rule]", "\[Rho]2"}]}], "]"}]}], ";", 
-      "\n", "\n", "    ", 
+      "\n", "\n", 
       RowBox[{"Return", "[", "ppquantities", "]"}], ";"}]}], "\n", "\n", "  ",
      "]"}]}], ";"}]], "Code",
  CellChangeTimes->{{3.841292271411539*^9, 3.841292297122284*^9}, {
@@ -397,13 +384,13 @@ Cell[BoxData[
    3.8419802993435793`*^9}, {3.841980346774383*^9, 3.841980348068125*^9}, {
    3.8419804209509287`*^9, 3.841980426195224*^9}, {3.844145205291553*^9, 
    3.844145331526988*^9}, {3.8729169443072023`*^9, 3.872917087571313*^9}, {
-   3.8782638642946787`*^9, 
-   3.878264385610137*^9}},ExpressionUUID->"c9ca0a94-a436-4e1d-946e-\
+   3.8782638642946787`*^9, 3.878264385610137*^9}, {3.898650279606225*^9, 
+   3.898650689324658*^9}},ExpressionUUID->"c9ca0a94-a436-4e1d-946e-\
 55f3671633fb"]
 },
 WindowSize->{1249, 699},
-WindowMargins->{{Automatic, 35}, {0, Automatic}},
-Magnification:>1.5 Inherited,
+WindowMargins->{{Automatic, -101}, {-339, Automatic}},
+Magnification:>1.25 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"3cd80438-f61c-4e11-a9a6-fed3385d462e"
@@ -419,7 +406,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 18192, 381, 3559, "Code",ExpressionUUID->"c9ca0a94-a436-4e1d-946e-55f3671633fb"]
+Cell[558, 20, 16673, 368, 1914, "Code",ExpressionUUID->"c9ca0a94-a436-4e1d-946e-55f3671633fb"]
 }
 ]
 *)

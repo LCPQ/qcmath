@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     40454,        898]
-NotebookOptionsPosition[     39507,        872]
-NotebookOutlinePosition[     39934,        889]
-CellTagsIndexPosition[     39891,        886]
+NotebookDataLength[     39892,        884]
+NotebookOptionsPosition[     38945,        858]
+NotebookOutlinePosition[     39372,        875]
+CellTagsIndexPosition[     39329,        872]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -34,13 +34,9 @@ Cell[BoxData[
      "ERHF_", ",", "\[Epsilon]_", ",", "ERI_", ",", "S_", ",", "T_", ",", 
      "V_", ",", "U_", ",", "X_", ",", "C_", ",", "options_", ",", 
      "verbose_"}], "]"}], ":=", 
-   RowBox[{"Module", "[", "\n", 
+   RowBox[{"Module", "[", 
     RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-      "qsstaticform", ",", "maxSCF", ",", "thresh", ",", "TDAW", ",", 
-       "\[Eta]", ",", "DIISEx", ",", "nDIIS", ",", "outputsqsGW"}], "}"}], 
-     ",", "\n", "\n", 
+     RowBox[{"{", "outputsqsGW", "}"}], ",", "\n", "\n", 
      RowBox[{
       RowBox[{"If", "[", 
        RowBox[{
@@ -82,8 +78,9 @@ Cell[BoxData[
   3.878200664962863*^9, 3.8782006876520367`*^9}, {3.878200868075748*^9, 
   3.8782008892021103`*^9}, {3.8782707523429337`*^9, 3.87827075928719*^9}, {
   3.878270791848078*^9, 3.8782707921033297`*^9}, {3.898575956982334*^9, 
-  3.8985760869904947`*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"551203ff-483a-43dd-b703-03844f45a5a5"]
+  3.8985760869904947`*^9}, {3.8986471360560083`*^9, 
+  3.898647138691146*^9}},ExpressionUUID->"551203ff-483a-43dd-b703-\
+03844f45a5a5"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -535,8 +532,8 @@ Cell[BoxData[
                 RowBox[{"{", 
                  RowBox[{"p", ",", "nBas"}], "}"}], ",", 
                 RowBox[{"{", 
-                 RowBox[{"q", ",", "nBas"}], "}"}]}], "]"}]}]}]}]}], "]"}], 
-         ";", "\n", "\n", "\n", "  ", 
+                 RowBox[{"q", ",", "nBas"}], "}"}]}], "]"}]}]}]}]}], "\n", 
+          "  ", "]"}], ";", "\n", "\n", "\n", "  ", 
          RowBox[{"(*", 
           RowBox[{"Self", "-", 
            RowBox[{"Energy", " ", "in", " ", "AO", " ", "basis"}]}], "*)"}], 
@@ -751,38 +748,24 @@ Cell[BoxData[
         RowBox[{"nSCF", "\[Equal]", "maxSCF"}], ",", 
         RowBox[{"Print", "[", 
          RowBox[{"Style", "[", 
-          RowBox[{"\"\<Convergence failed for qsGF2!\>\"", ",", "Red"}], 
+          RowBox[{
+          "\"\<Convergence failed for qsGW!\>\"", ",", "Red", ",", "Bold"}], 
           "]"}], "]"}]}], "]"}], ";", "\n", "\n", 
       RowBox[{"If", "[", 
        RowBox[{
-        RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", "    ", 
+        RowBox[{"verbose", "\[Equal]", "True"}], ",", "\n", "  ", 
         RowBox[{
          RowBox[{"NotebookEvaluate", "[", 
           RowBox[{"path", "<>", "\"\</src/GW/print_qsGW.nb\>\""}], "]"}], ";",
-          "\n", "    ", 
+          "\n", "  ", 
          RowBox[{"TabqsGW", "=", 
           RowBox[{"PrintQsGW", "[", 
            RowBox[{"nO", ",", "\[Epsilon]", ",", 
             RowBox[{"Diagonal", "[", "\[CapitalSigma]c", "]"}], ",", 
             "\[Epsilon]GW", ",", "ENuc", ",", "ERHF", ",", "EcRPA", ",", 
-            "EcGM"}], "]"}]}], ";", "\n", "    ", 
-         RowBox[{"Print", "[", "TabqsGW", "]"}], ";"}]}], "\n", "  ", "]"}], 
-      ";", "\n", "\n", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{"If", "[", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"options", "[", "\"\<verbose\>\"", "]"}], "==", "True"}], 
-          ",", "\n", "  ", 
-          RowBox[{
-           RowBox[{"Print", "[", 
-            RowBox[{"PrintqsGW", "[", 
-             RowBox[{"nO", ",", "\[Epsilon]", ",", 
-              RowBox[{"Diagonal", "[", "\[CapitalSigma]c", "]"}], ",", 
-              "\[Epsilon]GW", ",", "ENuc", ",", "ERHF", ",", "EqsGW", ",", 
-              "EcRPA", ",", "EcGM", ",", "nSCF", ",", "conv"}], "]"}], "]"}], 
-           ";"}]}], "\n", "]"}], ";"}], "*)"}], "\n", "\n", 
+            "EcGM"}], "]"}]}], ";", "\n", "  ", 
+         RowBox[{"Print", "[", "TabqsGW", "]"}], ";"}]}], "\n", "]"}], ";", 
+      "\n", "\n", 
       RowBox[{"qsGWquantities", "=", 
        RowBox[{"Association", "[", 
         RowBox[{
@@ -866,9 +849,12 @@ Cell[BoxData[
    3.898590631041603*^9, 3.898591423498537*^9, {3.89859174395576*^9, 
    3.898591745909857*^9}, {3.8985922733451967`*^9, 3.898592276104281*^9}, 
    3.898592372290102*^9, 3.898592477781008*^9, {3.8985931313206377`*^9, 
-   3.898593204690789*^9}},
- CellLabel->"In[3]:=",ExpressionUUID->"813ac4d2-7a26-4041-a570-82cb6537f47e"]
-}, Closed]]
+   3.898593204690789*^9}, {3.898649256841783*^9, 3.898649260048059*^9}, {
+   3.898652357767179*^9, 3.89865235880364*^9}, {3.8986530231137333`*^9, 
+   3.898653027695239*^9}, {3.898654151036119*^9, 
+   3.898654154880365*^9}},ExpressionUUID->"813ac4d2-7a26-4041-a570-\
+82cb6537f47e"]
+}, Open  ]]
 },
 WindowSize->{1191, 776},
 WindowMargins->{{Automatic, 82}, {-382, Automatic}},
@@ -890,16 +876,16 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 147, 3, 123, "Title",ExpressionUUID->"0d6169d2-9cc2-4c10-a2fd-b52119c01192"],
-Cell[730, 27, 2824, 58, 426, "Code",ExpressionUUID->"551203ff-483a-43dd-b703-03844f45a5a5"]
+Cell[730, 27, 2702, 55, 402, "Code",ExpressionUUID->"551203ff-483a-43dd-b703-03844f45a5a5"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3591, 90, 156, 3, 123, "Title",ExpressionUUID->"97e909e2-77bf-4b98-a001-245982342548"],
-Cell[3750, 95, 843, 20, 162, "Code",ExpressionUUID->"d6611c06-b7c9-4201-8bc5-1fc4784f35c8"]
+Cell[3469, 87, 156, 3, 123, "Title",ExpressionUUID->"97e909e2-77bf-4b98-a001-245982342548"],
+Cell[3628, 92, 843, 20, 162, "Code",ExpressionUUID->"d6611c06-b7c9-4201-8bc5-1fc4784f35c8"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[4630, 120, 208, 4, 89, "Title",ExpressionUUID->"c5a72982-6654-48d0-910d-855338d08574"],
-Cell[4841, 126, 34650, 743, 3939, "Code",ExpressionUUID->"813ac4d2-7a26-4041-a570-82cb6537f47e"]
-}, Closed]]
+Cell[4508, 117, 208, 4, 89, "Title",ExpressionUUID->"c5a72982-6654-48d0-910d-855338d08574"],
+Cell[4719, 123, 34210, 732, 3875, "Code",ExpressionUUID->"813ac4d2-7a26-4041-a570-82cb6537f47e"]
+}, Open  ]]
 }
 ]
 *)

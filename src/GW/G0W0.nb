@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     71796,       1628]
+NotebookDataLength[     71795,       1628]
 NotebookOptionsPosition[     70785,       1601]
-NotebookOutlinePosition[     71265,       1619]
-CellTagsIndexPosition[     71222,       1616]
+NotebookOutlinePosition[     71264,       1619]
+CellTagsIndexPosition[     71221,       1616]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1600,7 +1600,7 @@ Cell[BoxData[
 }, Closed]]
 },
 WindowSize->{1272, 770},
-WindowMargins->{{Automatic, -257}, {-164, Automatic}},
+WindowMargins->{{Automatic, -10}, {-206, Automatic}},
 TaggingRules->Association["TryRealOnly" -> False],
 Magnification:>1.15 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
