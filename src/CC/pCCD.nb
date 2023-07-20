@@ -1809,7 +1809,7 @@ Cell[BoxData[
    3.898063082114848*^9, 
    3.898063099709034*^9}},ExpressionUUID->"e20a7517-729b-4250-a5a6-\
 358da7bf4c1b"]
-}, Open  ]]
+}, Closed]]
 },
 WindowSize->{1221, 759},
 WindowMargins->{{Automatic, 105}, {-39, Automatic}},
@@ -1841,7 +1841,7 @@ Cell[CellGroupData[{
 Cell[3533, 104, 159, 3, 89, "Title",ExpressionUUID->"69b6cd10-74e7-4f94-aba4-90795ece0c55"],
 Cell[3695, 109, 84388, 1701, 6049, "Input",ExpressionUUID->"e20a7517-729b-4250-a5a6-358da7bf4c1b",
  InitializationCell->True]
-}, Open  ]]
+}, Closed]]
 }
 ]
 *)

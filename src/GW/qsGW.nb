@@ -854,7 +854,7 @@ Cell[BoxData[
    3.898653027695239*^9}, {3.898654151036119*^9, 
    3.898654154880365*^9}},ExpressionUUID->"813ac4d2-7a26-4041-a570-\
 82cb6537f47e"]
-}, Open  ]]
+}, Closed]]
 },
 WindowSize->{1191, 776},
 WindowMargins->{{Automatic, 82}, {-382, Automatic}},
@@ -885,7 +885,7 @@ Cell[3628, 92, 843, 20, 162, "Code",ExpressionUUID->"d6611c06-b7c9-4201-8bc5-1fc
 Cell[CellGroupData[{
 Cell[4508, 117, 208, 4, 89, "Title",ExpressionUUID->"c5a72982-6654-48d0-910d-855338d08574"],
 Cell[4719, 123, 34210, 732, 3875, "Code",ExpressionUUID->"813ac4d2-7a26-4041-a570-82cb6537f47e"]
-}, Open  ]]
+}, Closed]]
 }
 ]
 *)

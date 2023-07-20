@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     17323,        283]
-NotebookOptionsPosition[     16947,        268]
-NotebookOutlinePosition[     17368,        285]
-CellTagsIndexPosition[     17325,        282]
+NotebookDataLength[     18357,        296]
+NotebookOptionsPosition[     17978,        281]
+NotebookOutlinePosition[     18402,        298]
+CellTagsIndexPosition[     18359,        295]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -35,8 +35,8 @@ Cell[BoxData[
          RowBox[{"\"\<singlet\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
          RowBox[{"\"\<triplet\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
          RowBox[{"\"\<TDA\>\"", "\[Rule]", "False"}], ",", "\n", "\t", 
-         RowBox[{"\"\<spinorbital\>\"", "\[Rule]", "False"}], ",", "\n", "\t",
-          "\n", "\t", 
+         RowBox[{"\"\<spinorbital\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
+         "\n", "\t", 
          RowBox[{"(*", " ", 
           RowBox[{
            RowBox[{"HF", " ", "options"}], ",", " ", 
@@ -49,7 +49,7 @@ Cell[BoxData[
           RowBox[{"(*", 
            SuperscriptBox["10", 
             RowBox[{"-", "7"}]], "*)"}], "0.0000001"}], ",", "\n", "\t", 
-         RowBox[{"\"\<DIIS\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
+         RowBox[{"\"\<DIIS\>\"", "\[Rule]", "False"}], ",", "\n", "\t", 
          RowBox[{"\"\<n_DIIS\>\"", "\[Rule]", "5"}], ",", "\n", "\t", 
          RowBox[{"\"\<guess_type\>\"", "\[Rule]", "\"\<core\>\""}], ",", "\n",
           "\t", 
@@ -57,14 +57,13 @@ Cell[BoxData[
          "\n", "\t", 
          RowBox[{"\"\<level_shift\>\"", "\[Rule]", "0.0"}], ",", "\n", "\t", 
          "\n", "\t", 
-         RowBox[{
-          RowBox[{"\"\<thresh_CC\>\"", "\[Rule]", 
-           SuperscriptBox["10", 
-            RowBox[{"-", "5"}]]}], ";", "\n", "\t", 
-          RowBox[{"\"\<max_SCF_CC\>\"", "\[Rule]", "50"}], ";", "\n", "\n", 
-          "\t", 
-          RowBox[{"\"\<MP2_regularizer_methods\>\"", "\[Rule]", "None"}]}], 
-         ",", "\n", "\t", 
+         RowBox[{"\"\<thresh_CC\>\"", "\[Rule]", 
+          SuperscriptBox["10", 
+           RowBox[{"-", "5"}]]}], ",", "\n", "\t", 
+         RowBox[{"\"\<max_SCF_CC\>\"", "\[Rule]", "50"}], ",", "\n", "\n", 
+         "\t", 
+         RowBox[{"\"\<MP2_regularizer_methods\>\"", "\[Rule]", "None"}], ",", 
+         "\n", "\t", 
          RowBox[{"\"\<MP2_regularizer_value\>\"", "\[Rule]", "1"}], ",", "\n",
           "\n", "\t", 
          RowBox[{"\"\<MBPT_regularizer_methods\>\"", "\[Rule]", "None"}], ",",
@@ -76,7 +75,7 @@ Cell[BoxData[
            RowBox[{"-", "5"}]]}], ",", " ", 
          RowBox[{"(*", " ", 
           RowBox[{"MBPT", " ", "options"}], " ", "*)"}], "\n", "\t", 
-         RowBox[{"\"\<maxSCF_MBPT\>\"", "\[Rule]", "100"}], ",", "\n", "\t", 
+         RowBox[{"\"\<maxSCF_MBPT\>\"", "\[Rule]", "50"}], ",", "\n", "\t", 
          RowBox[{"\"\<linearized\>\"", "\[Rule]", "True"}], ",", "\n", "\t", 
          RowBox[{"\"\<\[Eta]\>\"", "\[Rule]", "1.0"}], 
          RowBox[{"(*", "0.00367493", "*)"}], ",", "\n", "\t", 
@@ -262,12 +261,26 @@ Cell[BoxData[
    3.8982218924207783`*^9, 3.89822190630011*^9}, {3.898221938806374*^9, 
    3.898221938918951*^9}, {3.898241958246393*^9, 3.898241979493229*^9}, {
    3.898245532000053*^9, 3.8982455332083693`*^9}, {3.898245584686791*^9, 
-   3.898245585279277*^9}, {3.898246824538505*^9, 
-   3.898246825028736*^9}},ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-\
+   3.898245585279277*^9}, {3.898246824538505*^9, 3.898246825028736*^9}, {
+   3.898247330433877*^9, 3.8982473311083508`*^9}, {3.8985614816018744`*^9, 
+   3.898561482155773*^9}, {3.898562133373992*^9, 3.898562133713893*^9}, {
+   3.898564521282*^9, 3.898564523574464*^9}, {3.8985646662732697`*^9, 
+   3.898564666752624*^9}, {3.898579790948868*^9, 3.8985797910159693`*^9}, {
+   3.8985844918780737`*^9, 3.898584492676606*^9}, {3.89866077105787*^9, 
+   3.898660771796589*^9}, {3.898661423384408*^9, 3.8986614235729437`*^9}, {
+   3.8986615978464947`*^9, 3.898661598308414*^9}, {3.898665718780445*^9, 
+   3.898665720248108*^9}, {3.898666161208136*^9, 3.898666161445238*^9}, {
+   3.898671661280531*^9, 3.898671662060877*^9}, {3.8987623678536873`*^9, 
+   3.898762368595942*^9}, 3.898841007481846*^9, {3.8988414903859863`*^9, 
+   3.89884149076538*^9}, {3.898841804704912*^9, 3.898841805148003*^9}, {
+   3.898844687372127*^9, 3.8988446879910107`*^9}, {3.898851240133786*^9, 
+   3.898851241333206*^9}, {3.898859521441599*^9, 3.898859521912299*^9}, {
+   3.89886187571209*^9, 3.898861877111827*^9}, {3.898862328182209*^9, 
+   3.898862328857148*^9}},ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-\
 be7c5a4f21c2"]
 },
 WindowSize->{933, 785},
-WindowMargins->{{Automatic, 4}, {Automatic, 0}},
+WindowMargins->{{Automatic, -124}, {Automatic, 0}},
 Magnification:>1.5 Inherited,
 FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
@@ -284,7 +297,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 16385, 246, 1302, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
+Cell[558, 20, 17416, 259, 1302, "Code",ExpressionUUID->"176f4dca-e5a1-41a6-b9e1-be7c5a4f21c2"]
 }
 ]
 *)

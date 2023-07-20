@@ -1,0 +1,94 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2930,         86]
+NotebookOptionsPosition[      2551,         71]
+NotebookOutlinePosition[      2978,         88]
+CellTagsIndexPosition[      2935,         85]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"GWExcitationDensity", "[", 
+    RowBox[{"nBas_", ",", "nO_", ",", "nS_", ",", "ERI_", ",", "XpY_"}], 
+    "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"sERI", ",", "jb"}], "}"}], ",", "\n", "\n", 
+     RowBox[{"(*", " ", 
+      RowBox[{"Screened", " ", "integrals"}], " ", "*)"}], "\n", 
+     RowBox[{
+      RowBox[{"sERI", "=", "\n", "  ", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", "    ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"jb", "=", "0"}], ";", "\[IndentingNewLine]", "    ", 
+          RowBox[{"Sum", "[", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"jb", "++"}], ";", 
+              RowBox[{
+               RowBox[{"ERI", "\[LeftDoubleBracket]", 
+                RowBox[{"p", ",", "j", ",", "q", ",", "b"}], 
+                "\[RightDoubleBracket]"}], 
+               RowBox[{"XpY", "\[LeftDoubleBracket]", 
+                RowBox[{"jb", ",", "ia"}], "\[RightDoubleBracket]"}]}]}], 
+             ")"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "nO"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"b", ",", 
+              RowBox[{"nO", "+", "1"}], ",", "nBas"}], "}"}]}], "]"}]}], ",", 
+         "\[IndentingNewLine]", "    ", 
+         RowBox[{"{", 
+          RowBox[{"p", ",", "nBas"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"q", ",", "nBas"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"ia", ",", "nS"}], "}"}]}], "\n", "  ", "]"}]}], ";", "\n", 
+      "\n", 
+      RowBox[{"Return", "[", "sERI", "]"}], ";"}]}], "\n", "\n", "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.898142047390525*^9, 3.898142113817368*^9}, {
+   3.898142151726615*^9, 3.898142201493293*^9}, {3.898142385601062*^9, 
+   3.898142387484927*^9}, {3.898153229871504*^9, 3.8981532345101347`*^9}, 
+   3.898153830130867*^9},ExpressionUUID->"31e6c84c-9a0b-4f74-ac58-\
+13ba4525c32e"]
+},
+WindowSize->{981, 749},
+WindowMargins->{{Automatic, 213}, {-115, Automatic}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"70a61c89-566a-461c-857d-0a2883a5cc5b"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1989, 49, 354, "Code",ExpressionUUID->"31e6c84c-9a0b-4f74-ac58-13ba4525c32e"]
+}
+]
+*)
+

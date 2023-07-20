@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      9619,        219]
-NotebookOptionsPosition[      9240,        204]
-NotebookOutlinePosition[      9665,        221]
-CellTagsIndexPosition[      9622,        218]
+NotebookDataLength[     10280,        232]
+NotebookOptionsPosition[      9901,        217]
+NotebookOutlinePosition[     10326,        234]
+CellTagsIndexPosition[     10283,        231]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -77,6 +77,18 @@ Cell[BoxData[
             RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
             RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
              RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", "\n", 
+         RowBox[{"\"\<DCD\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
+         RowBox[{"\"\<lCCD\>\"", "\[Rule]", 
+          RowBox[{"<|", 
+           RowBox[{
+            RowBox[{"\"\<Do\>\"", "\[Rule]", "False"}], ",", 
+            RowBox[{"\"\<Dependencies\>\"", "\[Rule]", 
+             RowBox[{"{", "\"\<RHF\>\"", "}"}]}]}], "|>"}]}], ",", "\n", 
          RowBox[{"\"\<pCCD\>\"", "\[Rule]", 
           RowBox[{"<|", 
            RowBox[{
@@ -198,8 +210,9 @@ Cell[BoxData[
    3.896065416678998*^9, 3.896065419428789*^9}, {3.8960704298661127`*^9, 
    3.896070431852502*^9}, {3.896071282615712*^9, 3.896071284714588*^9}, {
    3.896150912690723*^9, 3.896150916138557*^9}, {3.89615176284513*^9, 
-   3.8961517668155537`*^9}, {3.898655105928748*^9, 
-   3.898655111578079*^9}},ExpressionUUID->"2080cd3e-7f88-48b7-bee4-\
+   3.8961517668155537`*^9}, {3.898655105928748*^9, 3.898655111578079*^9}, {
+   3.898846273695225*^9, 3.898846276231484*^9}, {3.898859422121204*^9, 
+   3.8988594243108797`*^9}},ExpressionUUID->"2080cd3e-7f88-48b7-bee4-\
 a3de0810e066"]
 },
 WindowSize->{1384.5, 762.},
@@ -220,7 +233,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 8678, 182, 1210, "Code",ExpressionUUID->"2080cd3e-7f88-48b7-bee4-a3de0810e066"]
+Cell[558, 20, 9339, 195, 1268, "Code",ExpressionUUID->"2080cd3e-7f88-48b7-bee4-a3de0810e066"]
 }
 ]
 *)
