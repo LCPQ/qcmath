@@ -13,6 +13,8 @@ Note that qcmath is **not** designed for computational efficiency.
 - [Enzo Monino](https://enzomonino.github.io)
 - [Antoine Marie](https://antoine-marie.github.io)
 
+A more up-to-date documentation can be found at <https://arxiv.org/abs/2308.14890>.
+
 # What is it?
 
 Quantum chemistry methods are highly compatible with computer utilization, owing to the matrix formulation of quantum mechanics, which leverages the power of linear algebra packages like [BLAS](https://www.netlib.org/blas/) and [LAPACK](https://www.netlib.org/lapack/). As a result, a wide array of quantum chemistry software is currently available, encompassing both free and commercial options. These software packages cater to specific methods or offer a diverse range of methodologies, utilizing various types of basis functions, among other features. A considerable number of quantum chemistry codes exist, covering a comprehensive range of methods. For a comprehensive list of these codes, refer to Wikipedia's page on quantum chemistry and solid-state physics software (<https://en.wikipedia.org/wiki/List_of_quantum_chemistry_and_solid-state_physics_software>).
